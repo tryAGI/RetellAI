@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Nuget">
+    <Description>C# SDK for the Retell AI API -- voice AI phone agents, calls, phone numbers, and knowledge bases.</Description>
+    <PackageTags>retell-ai;voice-ai;ai-agents;csharp;dotnet;sdk;ai;autosdk;openapi</PackageTags>
+  </PropertyGroup>
+
+</Project>

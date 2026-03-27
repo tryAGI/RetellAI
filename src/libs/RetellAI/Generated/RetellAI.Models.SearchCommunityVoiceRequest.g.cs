@@ -1,0 +1,58 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed partial class SearchCommunityVoiceRequest
+    {
+        /// <summary>
+        /// Voice provider to search.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voice_provider")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.SearchCommunityVoiceRequestVoiceProviderJsonConverter))]
+        public global::RetellAI.SearchCommunityVoiceRequestVoiceProvider? VoiceProvider { get; set; }
+
+        /// <summary>
+        /// Search query to find voices by name, description, or ID.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("search_query")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string SearchQuery { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchCommunityVoiceRequest" /> class.
+        /// </summary>
+        /// <param name="voiceProvider">
+        /// Voice provider to search.
+        /// </param>
+        /// <param name="searchQuery">
+        /// Search query to find voices by name, description, or ID.
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public SearchCommunityVoiceRequest(
+            string searchQuery,
+            global::RetellAI.SearchCommunityVoiceRequestVoiceProvider? voiceProvider)
+        {
+            this.SearchQuery = searchQuery ?? throw new global::System.ArgumentNullException(nameof(searchQuery));
+            this.VoiceProvider = voiceProvider;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchCommunityVoiceRequest" /> class.
+        /// </summary>
+        public SearchCommunityVoiceRequest()
+        {
+        }
+    }
+}

@@ -1,0 +1,78 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed partial class PressDigitTool
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.PressDigitToolTypeJsonConverter))]
+        public global::RetellAI.PressDigitToolType Type { get; set; }
+
+        /// <summary>
+        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Name { get; set; }
+
+        /// <summary>
+        /// Describes what the tool does, sometimes can also include information about when to call the tool.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string? Description { get; set; }
+
+        /// <summary>
+        /// Delay in milliseconds before pressing the digit, because a lot of IVR systems speak very slowly, and a delay can make sure the agent hears the full menu. Default to 1000 ms (1s). Valid range is 0 to 5000 ms (inclusive).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("delay_ms")]
+        public int? DelayMs { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PressDigitTool" /> class.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="name">
+        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+        /// </param>
+        /// <param name="description">
+        /// Describes what the tool does, sometimes can also include information about when to call the tool.
+        /// </param>
+        /// <param name="delayMs">
+        /// Delay in milliseconds before pressing the digit, because a lot of IVR systems speak very slowly, and a delay can make sure the agent hears the full menu. Default to 1000 ms (1s). Valid range is 0 to 5000 ms (inclusive).
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public PressDigitTool(
+            string name,
+            global::RetellAI.PressDigitToolType type,
+            string? description,
+            int? delayMs)
+        {
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Type = type;
+            this.Description = description;
+            this.DelayMs = delayMs;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PressDigitTool" /> class.
+        /// </summary>
+        public PressDigitTool()
+        {
+        }
+    }
+}

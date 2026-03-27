@@ -1,0 +1,45 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum UpdateChatAgentResponseStatus2
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        Error,
+    }
+
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class UpdateChatAgentResponseStatus2Extensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this UpdateChatAgentResponseStatus2 value)
+        {
+            return value switch
+            {
+                UpdateChatAgentResponseStatus2.Error => "error",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static UpdateChatAgentResponseStatus2? ToEnum(string value)
+        {
+            return value switch
+            {
+                "error" => UpdateChatAgentResponseStatus2.Error,
+                _ => null,
+            };
+        }
+    }
+}

@@ -1,0 +1,45 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// Type of the node
+    /// </summary>
+    public enum PressDigitNodeVariant2Type
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        PressDigit,
+    }
+
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class PressDigitNodeVariant2TypeExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this PressDigitNodeVariant2Type value)
+        {
+            return value switch
+            {
+                PressDigitNodeVariant2Type.PressDigit => "press_digit",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static PressDigitNodeVariant2Type? ToEnum(string value)
+        {
+            return value switch
+            {
+                "press_digit" => PressDigitNodeVariant2Type.PressDigit,
+                _ => null,
+            };
+        }
+    }
+}

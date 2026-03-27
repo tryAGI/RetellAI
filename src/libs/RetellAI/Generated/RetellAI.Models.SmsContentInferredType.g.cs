@@ -1,0 +1,45 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum SmsContentInferredType
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        Inferred,
+    }
+
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class SmsContentInferredTypeExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this SmsContentInferredType value)
+        {
+            return value switch
+            {
+                SmsContentInferredType.Inferred => "inferred",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static SmsContentInferredType? ToEnum(string value)
+        {
+            return value switch
+            {
+                "inferred" => SmsContentInferredType.Inferred,
+                _ => null,
+            };
+        }
+    }
+}

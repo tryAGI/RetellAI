@@ -1,0 +1,58 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed partial class NodeInstructionStaticText
+    {
+        /// <summary>
+        /// Type of instruction
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NodeInstructionStaticTextTypeJsonConverter))]
+        public global::RetellAI.NodeInstructionStaticTextType Type { get; set; }
+
+        /// <summary>
+        /// The static text for the instruction
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Text { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NodeInstructionStaticText" /> class.
+        /// </summary>
+        /// <param name="type">
+        /// Type of instruction
+        /// </param>
+        /// <param name="text">
+        /// The static text for the instruction
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public NodeInstructionStaticText(
+            string text,
+            global::RetellAI.NodeInstructionStaticTextType type)
+        {
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
+            this.Type = type;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NodeInstructionStaticText" /> class.
+        /// </summary>
+        public NodeInstructionStaticText()
+        {
+        }
+    }
+}

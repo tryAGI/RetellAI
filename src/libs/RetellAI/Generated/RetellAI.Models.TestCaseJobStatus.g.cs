@@ -1,0 +1,63 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// Status of the test case job
+    /// </summary>
+    public enum TestCaseJobStatus
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        Error,
+        /// <summary>
+        /// 
+        /// </summary>
+        Fail,
+        /// <summary>
+        /// 
+        /// </summary>
+        InProgress,
+        /// <summary>
+        /// 
+        /// </summary>
+        Pass,
+    }
+
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class TestCaseJobStatusExtensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this TestCaseJobStatus value)
+        {
+            return value switch
+            {
+                TestCaseJobStatus.Error => "error",
+                TestCaseJobStatus.Fail => "fail",
+                TestCaseJobStatus.InProgress => "in_progress",
+                TestCaseJobStatus.Pass => "pass",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static TestCaseJobStatus? ToEnum(string value)
+        {
+            return value switch
+            {
+                "error" => TestCaseJobStatus.Error,
+                "fail" => TestCaseJobStatus.Fail,
+                "in_progress" => TestCaseJobStatus.InProgress,
+                "pass" => TestCaseJobStatus.Pass,
+                _ => null,
+            };
+        }
+    }
+}
