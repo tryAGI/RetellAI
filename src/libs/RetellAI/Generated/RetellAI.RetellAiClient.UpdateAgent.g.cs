@@ -612,7 +612,7 @@ namespace RetellAI
             global::RetellAI.AgentRequestVoicemailOption? voicemailOption = default,
             global::RetellAI.AgentRequestIvrOption? ivrOption = default,
             global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>? postCallAnalysisData = default,
-            global::RetellAI.NullableLLMModel? postCallAnalysisModel = default,
+            global::RetellAI.LLMModelNullable? postCallAnalysisModel = default,
             string? analysisSuccessfulPrompt = default,
             string? analysisSummaryPrompt = default,
             string? analysisUserSentimentPrompt = default,

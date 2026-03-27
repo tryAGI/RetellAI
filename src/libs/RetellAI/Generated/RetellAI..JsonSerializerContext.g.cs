@@ -469,10 +469,6 @@ namespace RetellAI
 
             typeof(global::RetellAI.JsonConverters.NodeTransitionUtteranceRoleNullableJsonConverter),
 
-            typeof(global::RetellAI.JsonConverters.NullableLLMModelJsonConverter),
-
-            typeof(global::RetellAI.JsonConverters.NullableLLMModelNullableJsonConverter),
-
             typeof(global::RetellAI.JsonConverters.NumberAnalysisDataTypeJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.NumberAnalysisDataTypeNullableJsonConverter),
@@ -780,6 +776,10 @@ namespace RetellAI
             typeof(global::RetellAI.JsonConverters.WarmTransferStaticMessageTypeJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.WarmTransferStaticMessageTypeNullableJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.LLMModelNullableJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.LLMModelNullableNullableJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.CreatePhoneNumberRequestNumberProviderJsonConverter),
 
@@ -2451,7 +2451,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentRequestIvrOption))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AnalysisData))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NullableLLMModel))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.LLMModelNullable))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentRequestSttMode))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentRequestCustomSttConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentRequestCustomSttConfigProvider))]
@@ -3496,7 +3496,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListChatAgentsResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListChatAgentsResponseStatus2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.ChatResponse>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListChatResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListChatResponse), TypeInfoPropertyName = "ListChatResponse_RetellAI_ListChatResponse")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListChatResponseStatus))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListChatResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListChatResponseStatus2))]
@@ -3547,7 +3547,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListPhoneNumbersResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListPhoneNumbersResponseStatus2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.RetellLLMResponse>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListRetellLLMResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListRetellLLMResponse), TypeInfoPropertyName = "ListRetellLLMResponse_RetellAI_ListRetellLLMResponse")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListRetellLLMResponseStatus))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListRetellLLMResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListRetellLLMResponseStatus2))]

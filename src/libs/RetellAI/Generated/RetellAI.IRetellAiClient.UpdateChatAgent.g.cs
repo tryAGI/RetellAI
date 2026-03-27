@@ -117,7 +117,7 @@ namespace RetellAI
             bool? optInSignedUrl = default,
             int? signedUrlExpirationMs = default,
             global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>? postChatAnalysisData = default,
-            global::RetellAI.NullableLLMModel? postChatAnalysisModel = default,
+            global::RetellAI.LLMModelNullable? postChatAnalysisModel = default,
             string? analysisSuccessfulPrompt = default,
             string? analysisSummaryPrompt = default,
             string? analysisUserSentimentPrompt = default,

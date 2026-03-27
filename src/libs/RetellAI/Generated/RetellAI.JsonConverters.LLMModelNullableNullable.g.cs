@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class NullableLLMModelJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.NullableLLMModel>
+    public sealed class LLMModelNullableNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.LLMModelNullable?>
     {
         /// <inheritdoc />
-        public override global::RetellAI.NullableLLMModel Read(
+        public override global::RetellAI.LLMModelNullable? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.NullableLLMModelExtensions.ToEnum(stringValue) ?? default;
+                        return global::RetellAI.LLMModelNullableExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.NullableLLMModel)numValue;
+                    return (global::RetellAI.LLMModelNullable)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.NullableLLMModel);
+                    return default(global::RetellAI.LLMModelNullable?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.NullableLLMModel value,
+            global::RetellAI.LLMModelNullable? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::RetellAI.NullableLLMModelExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::RetellAI.LLMModelNullableExtensions.ToValueString(value.Value));
+            }
         }
     }
 }

@@ -42,6 +42,17 @@ if 'EquationCondition' in schemas:
         mapping = {'||': 'or', '&&': 'and'}
         props['operator']['enum'] = [mapping.get(e, e) for e in old]
 
+# Fix NullableLLMModel → LLMModelNullable to avoid SYSLIB1031 collision
+# (STJ source generator creates NullableLLMModel for LLMModel? nullable)
+if 'NullableLLMModel' in schemas:
+    schemas['LLMModelNullable'] = schemas.pop('NullableLLMModel')
+
+# Rename all $ref pointers from NullableLLMModel to LLMModelNullable
+import json
+text = json.dumps(spec)
+text = text.replace('#/components/schemas/NullableLLMModel', '#/components/schemas/LLMModelNullable')
+spec = json.loads(text)
+
 with open('openapi.yaml', 'w') as f:
     yaml.dump(spec, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=200)
 "
