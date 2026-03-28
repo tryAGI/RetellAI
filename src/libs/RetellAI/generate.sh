@@ -3,12 +3,13 @@ rm -rf Generated
 SPEC_URL=$(curl -s https://raw.githubusercontent.com/RetellAI/retell-python-sdk/main/.stats.yml | grep 'openapi_spec_url' | awk '{print $2}' | tr -d '"')
 curl -sL "$SPEC_URL" -o openapi.yaml
 
-# Fix operator symbol enum values that produce duplicate C# identifiers.
-# Replace symbols with descriptive names while keeping the serialized wire values
-# in the generated ToValueString/ToEnum methods.
-# Comparator enums: remove symbol duplicates (gt/ge/lt/le already exist).
-# Equation operator: replace symbols with descriptive names.
-# EquationCondition operator: replace symbols with descriptive names.
+# Fix 1: Comparator enum dedup — remove symbol duplicates (>, <, >=, <=) since text
+#         versions (gt, ge, lt, le) already exist in AlertRule*/AlertIncident schemas.
+# Fix 2: Equation operator rename — replace symbols (==, !=, >, >=, <, <=) with
+#         descriptive names (eq, ne, gt, ge, lt, le) in Equation schema.
+# Fix 3: EquationCondition operator rename — replace || and && with or and and.
+# Fix 4: SYSLIB1031 collision fix — rename NullableLLMModel to LLMModelNullable
+#         (STJ source generator creates NullableLLMModel for LLMModel? nullable).
 python3 -c "
 import yaml, sys
 
