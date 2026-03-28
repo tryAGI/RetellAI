@@ -3,8 +3,8 @@ set -euo pipefail
 
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
-SPEC_URL=$(curl -s https://raw.githubusercontent.com/RetellAI/retell-python-sdk/main/.stats.yml | grep 'openapi_spec_url' | awk '{print $2}' | tr -d '"')
-curl -sL "$SPEC_URL" -o openapi.yaml
+SPEC_URL=$(curl --fail --silent --show-error https://raw.githubusercontent.com/RetellAI/retell-python-sdk/main/.stats.yml | grep 'openapi_spec_url' | awk '{print $2}' | tr -d '"')
+curl --fail --silent --show-error -L "$SPEC_URL" -o openapi.yaml
 
 # Fix 1: Comparator enum dedup — remove symbol duplicates (>, <, >=, <=) since text
 #         versions (gt, ge, lt, le) already exist in AlertRule*/AlertIncident schemas.
