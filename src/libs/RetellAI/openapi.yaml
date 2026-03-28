@@ -3409,7 +3409,7 @@ components:
           type: string
           enum:
           - eq
-          - '!='
+          - ne
           - gt
           - ge
           - lt

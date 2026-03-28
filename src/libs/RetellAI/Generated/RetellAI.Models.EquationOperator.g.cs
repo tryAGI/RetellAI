@@ -11,10 +11,6 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        x__,
-        /// <summary>
-        /// 
-        /// </summary>
         Contains,
         /// <summary>
         /// 
@@ -43,6 +39,10 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        Ne,
+        /// <summary>
+        /// 
+        /// </summary>
         NotContains,
         /// <summary>
         /// 
@@ -62,7 +62,6 @@ namespace RetellAI
         {
             return value switch
             {
-                EquationOperator.x__ => "!=",
                 EquationOperator.Contains => "contains",
                 EquationOperator.Eq => "eq",
                 EquationOperator.Exists => "exists",
@@ -70,6 +69,7 @@ namespace RetellAI
                 EquationOperator.Gt => "gt",
                 EquationOperator.Le => "le",
                 EquationOperator.Lt => "lt",
+                EquationOperator.Ne => "ne",
                 EquationOperator.NotContains => "not_contains",
                 EquationOperator.NotExist => "not_exist",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -82,7 +82,6 @@ namespace RetellAI
         {
             return value switch
             {
-                "!=" => EquationOperator.x__,
                 "contains" => EquationOperator.Contains,
                 "eq" => EquationOperator.Eq,
                 "exists" => EquationOperator.Exists,
@@ -90,6 +89,7 @@ namespace RetellAI
                 "gt" => EquationOperator.Gt,
                 "le" => EquationOperator.Le,
                 "lt" => EquationOperator.Lt,
+                "ne" => EquationOperator.Ne,
                 "not_contains" => EquationOperator.NotContains,
                 "not_exist" => EquationOperator.NotExist,
                 _ => null,
