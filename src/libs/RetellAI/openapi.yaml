@@ -921,7 +921,7 @@ components:
           description: Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
           nullable: true
         post_call_analysis_model:
-          $ref: '#/components/schemas/LLMModelNullable'
+          $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
           description: The model to use for post call analysis. Default to gpt-4.1-mini.
         analysis_successful_prompt:
@@ -1842,7 +1842,7 @@ components:
           description: Post chat analysis data to extract from the chat. This data will augment the pre-defined variables extracted in the chat analysis. This will be available after the chat ends.
           nullable: true
         post_chat_analysis_model:
-          $ref: '#/components/schemas/LLMModelNullable'
+          $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
           description: The model to use for post chat analysis. Default to gpt-4.1-mini.
         analysis_successful_prompt:
@@ -3409,7 +3409,7 @@ components:
           type: string
           enum:
           - eq
-          - ne
+          - '!='
           - gt
           - ge
           - lt
@@ -4373,6 +4373,29 @@ components:
         new_node_name:
           type: string
           description: New node name
+    NullableLLMModel:
+      type: string
+      enum:
+      - gpt-4.1
+      - gpt-4.1-mini
+      - gpt-4.1-nano
+      - gpt-5
+      - gpt-5-mini
+      - gpt-5-nano
+      - gpt-5.1
+      - gpt-5.2
+      - gpt-5.4
+      - gpt-5.4-mini
+      - gpt-5.4-nano
+      - claude-4.5-sonnet
+      - claude-4.6-sonnet
+      - claude-4.5-haiku
+      - gemini-2.5-flash
+      - gemini-2.5-flash-lite
+      - gemini-3.0-flash
+      - null
+      nullable: true
+      description: Available LLM models for agents.
     NumberAnalysisData:
       type: object
       required:
@@ -5002,7 +5025,7 @@ components:
       description: Override properties for Retell LLM configuration in agent override requests.
       properties:
         model:
-          $ref: '#/components/schemas/LLMModelNullable'
+          $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1
           description: Select the underlying text LLM. If not set, would default to gpt-4.1.
         s2s_model:
@@ -6805,29 +6828,6 @@ components:
           type: string
           example: You can take it from here.
           description: The static message to be used for warm handoff. Can contain dynamic variables.
-    LLMModelNullable:
-      type: string
-      enum:
-      - gpt-4.1
-      - gpt-4.1-mini
-      - gpt-4.1-nano
-      - gpt-5
-      - gpt-5-mini
-      - gpt-5-nano
-      - gpt-5.1
-      - gpt-5.2
-      - gpt-5.4
-      - gpt-5.4-mini
-      - gpt-5.4-nano
-      - claude-4.5-sonnet
-      - claude-4.6-sonnet
-      - claude-4.5-haiku
-      - gemini-2.5-flash
-      - gemini-2.5-flash-lite
-      - gemini-3.0-flash
-      - null
-      nullable: true
-      description: Available LLM models for agents.
 security:
 - api_key: []
 paths:

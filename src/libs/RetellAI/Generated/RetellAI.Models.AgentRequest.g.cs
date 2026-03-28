@@ -330,8 +330,8 @@ namespace RetellAI
         /// Available LLM models for agents.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("post_call_analysis_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.LLMModelNullableJsonConverter))]
-        public global::RetellAI.LLMModelNullable? PostCallAnalysisModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableLLMModelJsonConverter))]
+        public global::RetellAI.NullableLLMModel? PostCallAnalysisModel { get; set; }
 
         /// <summary>
         /// Prompt to determine whether the post call or chat analysis should mark the interaction as successful. Set to null to use the default prompt.<br/>
@@ -701,7 +701,7 @@ namespace RetellAI
             global::RetellAI.AgentRequestVoicemailOption? voicemailOption,
             global::RetellAI.AgentRequestIvrOption? ivrOption,
             global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>? postCallAnalysisData,
-            global::RetellAI.LLMModelNullable? postCallAnalysisModel,
+            global::RetellAI.NullableLLMModel? postCallAnalysisModel,
             string? analysisSuccessfulPrompt,
             string? analysisSummaryPrompt,
             string? analysisUserSentimentPrompt,

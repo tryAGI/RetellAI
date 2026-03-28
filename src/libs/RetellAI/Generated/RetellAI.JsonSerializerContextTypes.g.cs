@@ -288,7 +288,7 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.LLMModelNullable? Type65 { get; set; }
+        public global::RetellAI.NullableLLMModel? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>

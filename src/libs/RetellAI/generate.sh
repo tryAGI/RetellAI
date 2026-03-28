@@ -11,8 +11,6 @@ curl -sL "$SPEC_URL" -o openapi.yaml
 # Fix 2: Equation operator rename — replace symbols (==, !=, >, >=, <, <=) with
 #         descriptive names (eq, ne, gt, ge, lt, le) in Equation schema.
 # Fix 3: EquationCondition operator rename — replace || and && with or and and.
-# Fix 4: SYSLIB1031 collision fix — rename NullableLLMModel to LLMModelNullable
-#         (STJ source generator creates NullableLLMModel for LLMModel? nullable).
 python3 -c "
 import yaml, sys
 
@@ -45,17 +43,6 @@ if 'EquationCondition' in schemas:
         old = props['operator'].get('enum', [])
         mapping = {'||': 'or', '&&': 'and'}
         props['operator']['enum'] = [mapping.get(e, e) for e in old]
-
-# Fix NullableLLMModel → LLMModelNullable to avoid SYSLIB1031 collision
-# (STJ source generator creates NullableLLMModel for LLMModel? nullable)
-if 'NullableLLMModel' in schemas:
-    schemas['LLMModelNullable'] = schemas.pop('NullableLLMModel')
-
-# Rename all $ref pointers from NullableLLMModel to LLMModelNullable
-import json
-text = json.dumps(spec)
-text = text.replace('#/components/schemas/NullableLLMModel', '#/components/schemas/LLMModelNullable')
-spec = json.loads(text)
 
 with open('openapi.yaml', 'w') as f:
     yaml.dump(spec, f, default_flow_style=False, allow_unicode=True, sort_keys=False, width=200)

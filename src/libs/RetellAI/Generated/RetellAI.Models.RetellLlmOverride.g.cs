@@ -12,8 +12,8 @@ namespace RetellAI
         /// Available LLM models for agents.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.LLMModelNullableJsonConverter))]
-        public global::RetellAI.LLMModelNullable? Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableLLMModelJsonConverter))]
+        public global::RetellAI.NullableLLMModel? Model { get; set; }
 
         /// <summary>
         /// Select the underlying speech to speech model. Can only set this or model, not both.<br/>
@@ -130,7 +130,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetellLlmOverride(
-            global::RetellAI.LLMModelNullable? model,
+            global::RetellAI.NullableLLMModel? model,
             global::RetellAI.RetellLlmOverrideS2sModel? s2sModel,
             double? modelTemperature,
             bool? modelHighPriority,
