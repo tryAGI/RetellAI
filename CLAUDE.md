@@ -31,14 +31,14 @@ var client = new RetellAiClient(apiKey); // RETELLAI_API_KEY env var
 
 ## Spec Notes
 
-The `generate.sh` applies several fixes:
+The `generate.sh` applies 4 fixes via Python (pre-generation):
 
 1. **Comparator enum dedup:** Removes symbol duplicates (`>`, `<`, `>=`, `<=`) from `AlertRuleResponse`, `AlertRuleRequest`, `AlertIncidentResponse` comparator enums since text versions (`gt`, `ge`, `lt`, `le`) already exist
 2. **Equation operator rename:** Replaces symbols (`==`, `!=`, `>`, `>=`, `<`, `<=`) with descriptive names (`eq`, `ne`, `gt`, `ge`, `lt`, `le`) in `Equation` schema
 3. **EquationCondition operator rename:** Replaces `||` and `&&` with `or` and `and` in `EquationCondition` schema
-4. **SYSLIB1031 collision fix:** Renames `NullableLLMModel` to `LLMModelNullable` (collides with nullable variant of `LLMModel?` in System.Text.Json source generator)
+4. **SYSLIB1031 collision fix:** Renames `NullableLLMModel` to `LLMModelNullable` and updates all `$ref` pointers (collides with nullable variant of `LLMModel?` in System.Text.Json source generator)
 
-Uses Python + `sed` for spec fixes (not `jq`/`yq`).
+Uses Python for spec fixes (not `jq`/`yq`). Spec URL resolved dynamically from `RetellAI/retell-python-sdk/.stats.yml`.
 Uses `--exclude-deprecated-operations` flag.
 No sub-client pattern -- all operations are on the flat `RetellAiClient`.
 
