@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 dotnet tool install --global autosdk.cli --prerelease
 rm -rf Generated
 SPEC_URL=$(curl -s https://raw.githubusercontent.com/RetellAI/retell-python-sdk/main/.stats.yml | grep 'openapi_spec_url' | awk '{print $2}' | tr -d '"')
