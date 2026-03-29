@@ -3408,12 +3408,12 @@ components:
         operator:
           type: string
           enum:
-          - eq
-          - ne
-          - gt
-          - ge
-          - lt
-          - le
+          - ==
+          - '!='
+          - '>'
+          - '>='
+          - <
+          - <=
           - contains
           - not_contains
           - exists

@@ -44,14 +44,14 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolCallResultUtterance" /> class.
         /// </summary>
-        /// <param name="role">
-        /// This is the result of a tool call.
-        /// </param>
         /// <param name="toolCallId">
         /// Tool call id, globally unique.
         /// </param>
         /// <param name="content">
         /// Result of the tool call, can be a string, a stringified json, etc.
+        /// </param>
+        /// <param name="role">
+        /// This is the result of a tool call.
         /// </param>
         /// <param name="successful">
         /// Whether the tool call was successful.
@@ -65,9 +65,9 @@ namespace RetellAI
             global::RetellAI.ToolCallResultUtteranceRole role,
             bool? successful)
         {
+            this.Role = role;
             this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
-            this.Role = role;
             this.Successful = successful;
         }
 

@@ -10,9 +10,11 @@ curl --fail --silent --show-error -L "$SPEC_URL" -o openapi.yaml
 
 # Fix 1: Comparator enum dedup — remove symbol duplicates (>, <, >=, <=) since text
 #         versions (gt, ge, lt, le) already exist in AlertRule*/AlertIncident schemas.
-# Fix 2: Equation operator rename — replace symbols (==, !=, >, >=, <, <=) with
-#         descriptive names (eq, ne, gt, ge, lt, le) in Equation schema.
-# Fix 3: EquationCondition operator rename — replace || and && with or and and.
+#         AutoSDK generates Gt/Gt2 disambiguation which is confusing; removing duplicates is cleaner.
+# Fix 2: EquationCondition operator rename — replace || and && with or and and.
+#         AutoSDK generates x__/x__2 for these which is unusable.
+# Note: Equation operator symbols (==, !=, >, etc.) no longer need fixing —
+#       AutoSDK dev.154+ generates clean names (Eq, Neq, Gt, etc.) natively.
 python3 -c "
 import yaml, sys
 
@@ -29,14 +31,6 @@ for name in ['AlertRuleResponse', 'AlertRuleRequest', 'AlertIncidentResponse']:
             enums = props['comparator'].get('enum', [])
             # Remove symbol versions, keep text versions
             props['comparator']['enum'] = [e for e in enums if e not in ['>', '<', '>=', '<=']]
-
-# Fix Equation operator
-if 'Equation' in schemas:
-    props = schemas['Equation'].get('properties', {})
-    if 'operator' in props:
-        old = props['operator'].get('enum', [])
-        mapping = {'==': 'eq', '!=': 'ne', '>': 'gt', '>=': 'ge', '<': 'lt', '<=': 'le'}
-        props['operator']['enum'] = [mapping.get(e, e) for e in old]
 
 # Fix EquationCondition operator
 if 'EquationCondition' in schemas:

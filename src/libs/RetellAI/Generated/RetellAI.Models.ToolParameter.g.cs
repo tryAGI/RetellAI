@@ -37,11 +37,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolParameter" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type must be "object" for a JSON Schema object.
-        /// </param>
         /// <param name="properties">
         /// The value of properties is an object, where each key is the name of a property and each value is a schema used to validate that property.
+        /// </param>
+        /// <param name="type">
+        /// Type must be "object" for a JSON Schema object.
         /// </param>
         /// <param name="required">
         /// List of names of required property when generating this parameter. LLM will do its best to generate the required properties in its function arguments. Property must exist in properties.
@@ -54,8 +54,8 @@ namespace RetellAI
             global::RetellAI.ToolParameterType type,
             global::System.Collections.Generic.IList<string>? required)
         {
-            this.Properties = properties ?? throw new global::System.ArgumentNullException(nameof(properties));
             this.Type = type;
+            this.Properties = properties ?? throw new global::System.ArgumentNullException(nameof(properties));
             this.Required = required;
         }
 

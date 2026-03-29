@@ -39,11 +39,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="StringFilter" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="op">
         /// eq: equal, ne: not equal, sw: starts with, ew: ends with, co: contains
         /// </param>
         /// <param name="value"></param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -52,9 +52,9 @@ namespace RetellAI
             string value,
             global::RetellAI.StringFilterType type)
         {
+            this.Type = type;
             this.Op = op;
             this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
-            this.Type = type;
         }
 
         /// <summary>

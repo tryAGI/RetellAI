@@ -39,11 +39,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="CohortSuccessfulCriteria" /> class.
         /// </summary>
+        /// <param name="value"></param>
+        /// <param name="op"></param>
         /// <param name="type">
         /// Type of the filter
         /// </param>
-        /// <param name="value"></param>
-        /// <param name="op"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -52,9 +52,9 @@ namespace RetellAI
             global::RetellAI.CohortSuccessfulCriteriaOp op,
             global::RetellAI.CohortSuccessfulCriteriaType? type)
         {
+            this.Type = type;
             this.Value = value;
             this.Op = op;
-            this.Type = type;
         }
 
         /// <summary>

@@ -157,6 +157,13 @@ namespace RetellAI
         /// Corresponding chat agent id of this chat.<br/>
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
+        /// <param name="chatStatus">
+        /// Status of chat.<br/>
+        /// - `ongoing`: Chat session is ongoing, chat agent can receive new message and generate response.<br/>
+        /// - `ended`: Chat session has ended, and no longer can generate new response.<br/>
+        /// - `error`: Chat encountered error.<br/>
+        /// Example: ongoing
+        /// </param>
         /// <param name="version">
         /// The version of the agent<br/>
         /// Example: 1
@@ -168,13 +175,6 @@ namespace RetellAI
         /// <param name="collectedDynamicVariables">
         /// Dynamic variables collected from the chat. Only available after the chat ends.<br/>
         /// Example: {"last_node_name":"Test node"}
-        /// </param>
-        /// <param name="chatStatus">
-        /// Status of chat.<br/>
-        /// - `ongoing`: Chat session is ongoing, chat agent can receive new message and generate response.<br/>
-        /// - `ended`: Chat session has ended, and no longer can generate new response.<br/>
-        /// - `error`: Chat encountered error.<br/>
-        /// Example: ongoing
         /// </param>
         /// <param name="chatType">
         /// Type of the chat<br/>
@@ -231,10 +231,10 @@ namespace RetellAI
         {
             this.ChatId = chatId ?? throw new global::System.ArgumentNullException(nameof(chatId));
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
-            this.ChatStatus = chatStatus;
             this.Version = version;
             this.RetellLlmDynamicVariables = retellLlmDynamicVariables;
             this.CollectedDynamicVariables = collectedDynamicVariables;
+            this.ChatStatus = chatStatus;
             this.ChatType = chatType;
             this.CustomAttributes = customAttributes;
             this.StartTimestamp = startTimestamp;

@@ -38,12 +38,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="RangeFilter" /> class.
         /// </summary>
+        /// <param name="value">
+        /// [lower_bound, upper_bound]
+        /// </param>
         /// <param name="type"></param>
         /// <param name="op">
         /// bt: between
-        /// </param>
-        /// <param name="value">
-        /// [lower_bound, upper_bound]
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -53,9 +53,9 @@ namespace RetellAI
             global::RetellAI.RangeFilterType type,
             global::RetellAI.RangeFilterOp op)
         {
-            this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
             this.Type = type;
             this.Op = op;
+            this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
         }
 
         /// <summary>

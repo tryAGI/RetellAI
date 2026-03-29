@@ -48,14 +48,14 @@ namespace RetellAI
         /// <param name="testCaseDefinitionId">
         /// Unique identifier for the test case definition
         /// </param>
-        /// <param name="type">
-        /// Type of test case definition
-        /// </param>
         /// <param name="creationTimestamp">
         /// Timestamp when the test case definition was created (milliseconds since epoch)
         /// </param>
         /// <param name="userModifiedTimestamp">
         /// Timestamp when the test case definition was last modified (milliseconds since epoch)
+        /// </param>
+        /// <param name="type">
+        /// Type of test case definition
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -67,9 +67,9 @@ namespace RetellAI
             global::RetellAI.TestCaseDefinitionVariant2Type type)
         {
             this.TestCaseDefinitionId = testCaseDefinitionId ?? throw new global::System.ArgumentNullException(nameof(testCaseDefinitionId));
+            this.Type = type;
             this.CreationTimestamp = creationTimestamp;
             this.UserModifiedTimestamp = userModifiedTimestamp;
-            this.Type = type;
         }
 
         /// <summary>

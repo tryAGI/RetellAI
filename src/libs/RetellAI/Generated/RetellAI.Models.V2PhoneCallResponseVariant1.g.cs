@@ -60,10 +60,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="V2PhoneCallResponseVariant1" /> class.
         /// </summary>
-        /// <param name="callType">
-        /// Type of the call. Used to distinguish between web call and phone call.<br/>
-        /// Example: phone_call
-        /// </param>
         /// <param name="fromNumber">
         /// The caller number.<br/>
         /// Example: +12137771234
@@ -75,6 +71,10 @@ namespace RetellAI
         /// <param name="direction">
         /// Direction of the phone call.<br/>
         /// Example: inbound
+        /// </param>
+        /// <param name="callType">
+        /// Type of the call. Used to distinguish between web call and phone call.<br/>
+        /// Example: phone_call
         /// </param>
         /// <param name="telephonyIdentifier">
         /// Telephony identifier of the call, populated when available. Tracking purposes only.
@@ -89,10 +89,10 @@ namespace RetellAI
             global::RetellAI.V2PhoneCallResponseVariant1CallType callType,
             global::RetellAI.V2PhoneCallResponseVariant1TelephonyIdentifier? telephonyIdentifier)
         {
+            this.CallType = callType;
             this.FromNumber = fromNumber ?? throw new global::System.ArgumentNullException(nameof(fromNumber));
             this.ToNumber = toNumber ?? throw new global::System.ArgumentNullException(nameof(toNumber));
             this.Direction = direction;
-            this.CallType = callType;
             this.TelephonyIdentifier = telephonyIdentifier;
         }
 

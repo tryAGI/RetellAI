@@ -59,10 +59,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="EnumAnalysisData" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the variable to extract.<br/>
-        /// Example: enum
-        /// </param>
         /// <param name="name">
         /// Name of the variable.<br/>
         /// Example: product_rating
@@ -74,6 +70,10 @@ namespace RetellAI
         /// <param name="choices">
         /// The possible values of the variable, must be non empty array.<br/>
         /// Example: [good]
+        /// </param>
+        /// <param name="type">
+        /// Type of the variable to extract.<br/>
+        /// Example: enum
         /// </param>
         /// <param name="required">
         /// Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
@@ -88,10 +88,10 @@ namespace RetellAI
             global::RetellAI.EnumAnalysisDataType type,
             bool? required)
         {
+            this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Choices = choices ?? throw new global::System.ArgumentNullException(nameof(choices));
-            this.Type = type;
             this.Required = required;
         }
 

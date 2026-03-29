@@ -50,10 +50,10 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ExtractDynamicVariablesNodeVariant2" /> class.
         /// </summary>
+        /// <param name="variables"></param>
         /// <param name="type">
         /// Type of the node
         /// </param>
-        /// <param name="variables"></param>
         /// <param name="edges"></param>
         /// <param name="elseEdge"></param>
         /// <param name="finetuneTransitionExamples"></param>
@@ -67,8 +67,8 @@ namespace RetellAI
             global::RetellAI.ElseEdge? elseEdge,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
         {
-            this.Variables = variables ?? throw new global::System.ArgumentNullException(nameof(variables));
             this.Type = type;
+            this.Variables = variables ?? throw new global::System.ArgumentNullException(nameof(variables));
             this.Edges = edges;
             this.ElseEdge = elseEdge;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;

@@ -81,15 +81,15 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="MCPTool" /> class.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="mcpId">
-        /// Unique id of the MCP.
-        /// </param>
         /// <param name="name">
         /// Name of the MCP tool.
         /// </param>
         /// <param name="description">
         /// Description of the MCP tool.
+        /// </param>
+        /// <param name="type"></param>
+        /// <param name="mcpId">
+        /// Unique id of the MCP.
         /// </param>
         /// <param name="inputSchema">
         /// The input schema of the MCP tool.
@@ -124,10 +124,10 @@ namespace RetellAI
             string? executionMessageDescription,
             global::RetellAI.MCPToolExecutionMessageType? executionMessageType)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Type = type;
             this.McpId = mcpId;
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.InputSchema = inputSchema;
             this.ResponseVariables = responseVariables;
             this.SpeakDuringExecution = speakDuringExecution;

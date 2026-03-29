@@ -53,13 +53,13 @@ namespace RetellAI
         /// Product name that has a cost associated with it.<br/>
         /// Example: elevenlabs_tts
         /// </param>
-        /// <param name="unitPrice">
-        /// Unit price of the product in cents per second.<br/>
-        /// Example: 1
-        /// </param>
         /// <param name="cost">
         /// Cost for the product in cents for the duration of the call.<br/>
         /// Example: 60
+        /// </param>
+        /// <param name="unitPrice">
+        /// Unit price of the product in cents per second.<br/>
+        /// Example: 1
         /// </param>
         /// <param name="isTransferLegCost">
         /// True if this cost item is for a transfer segment.
@@ -74,8 +74,8 @@ namespace RetellAI
             bool? isTransferLegCost)
         {
             this.Product = product ?? throw new global::System.ArgumentNullException(nameof(product));
-            this.Cost = cost;
             this.UnitPrice = unitPrice;
+            this.Cost = cost;
             this.IsTransferLegCost = isTransferLegCost;
         }
 

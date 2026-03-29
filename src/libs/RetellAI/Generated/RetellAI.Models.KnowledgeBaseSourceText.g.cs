@@ -45,9 +45,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="KnowledgeBaseSourceText" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the knowledge base source.
-        /// </param>
         /// <param name="sourceId">
         /// Unique id of the knowledge base source.
         /// </param>
@@ -56,6 +53,9 @@ namespace RetellAI
         /// </param>
         /// <param name="contentUrl">
         /// URL of the text content stored.
+        /// </param>
+        /// <param name="type">
+        /// Type of the knowledge base source.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -66,10 +66,10 @@ namespace RetellAI
             string contentUrl,
             global::RetellAI.KnowledgeBaseSourceTextType type)
         {
+            this.Type = type;
             this.SourceId = sourceId ?? throw new global::System.ArgumentNullException(nameof(sourceId));
             this.Title = title ?? throw new global::System.ArgumentNullException(nameof(title));
             this.ContentUrl = contentUrl ?? throw new global::System.ArgumentNullException(nameof(contentUrl));
-            this.Type = type;
         }
 
         /// <summary>

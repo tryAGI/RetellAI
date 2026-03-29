@@ -91,13 +91,13 @@ namespace RetellAI
         /// Indicates the provider of voice.<br/>
         /// Example: elevenlabs
         /// </param>
-        /// <param name="accent">
-        /// Accent annotation of the voice.<br/>
-        /// Example: American
-        /// </param>
         /// <param name="gender">
         /// Gender of voice.<br/>
         /// Example: male
+        /// </param>
+        /// <param name="accent">
+        /// Accent annotation of the voice.<br/>
+        /// Example: American
         /// </param>
         /// <param name="age">
         /// Age annotation of the voice.<br/>
@@ -122,8 +122,8 @@ namespace RetellAI
             this.VoiceId = voiceId ?? throw new global::System.ArgumentNullException(nameof(voiceId));
             this.VoiceName = voiceName ?? throw new global::System.ArgumentNullException(nameof(voiceName));
             this.Provider = provider;
-            this.Gender = gender;
             this.Accent = accent;
+            this.Gender = gender;
             this.Age = age;
             this.PreviewAudioUrl = previewAudioUrl;
         }

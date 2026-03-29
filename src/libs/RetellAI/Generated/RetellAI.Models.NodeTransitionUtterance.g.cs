@@ -52,9 +52,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="NodeTransitionUtterance" /> class.
         /// </summary>
-        /// <param name="role">
-        /// This is result of a node transition
-        /// </param>
         /// <param name="formerNodeId">
         /// Former node id
         /// </param>
@@ -67,6 +64,9 @@ namespace RetellAI
         /// <param name="newNodeName">
         /// New node name
         /// </param>
+        /// <param name="role">
+        /// This is result of a node transition
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -77,11 +77,11 @@ namespace RetellAI
             string newNodeName,
             global::RetellAI.NodeTransitionUtteranceRole role)
         {
+            this.Role = role;
             this.FormerNodeId = formerNodeId ?? throw new global::System.ArgumentNullException(nameof(formerNodeId));
             this.FormerNodeName = formerNodeName ?? throw new global::System.ArgumentNullException(nameof(formerNodeName));
             this.NewNodeId = newNodeId ?? throw new global::System.ArgumentNullException(nameof(newNodeId));
             this.NewNodeName = newNodeName ?? throw new global::System.ArgumentNullException(nameof(newNodeName));
-            this.Role = role;
         }
 
         /// <summary>

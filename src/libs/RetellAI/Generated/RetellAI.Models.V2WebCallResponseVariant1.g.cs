@@ -35,13 +35,13 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="V2WebCallResponseVariant1" /> class.
         /// </summary>
-        /// <param name="callType">
-        /// Type of the call. Used to distinguish between web call and phone call.<br/>
-        /// Example: web_call
-        /// </param>
         /// <param name="accessToken">
         /// Access token to enter the web call room. This needs to be passed to your frontend to join the call.<br/>
         /// Example: eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9p
+        /// </param>
+        /// <param name="callType">
+        /// Type of the call. Used to distinguish between web call and phone call.<br/>
+        /// Example: web_call
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -50,8 +50,8 @@ namespace RetellAI
             string accessToken,
             global::RetellAI.V2WebCallResponseVariant1CallType callType)
         {
-            this.AccessToken = accessToken ?? throw new global::System.ArgumentNullException(nameof(accessToken));
             this.CallType = callType;
+            this.AccessToken = accessToken ?? throw new global::System.ArgumentNullException(nameof(accessToken));
         }
 
         /// <summary>

@@ -213,6 +213,10 @@ namespace RetellAI
         /// <param name="score"></param>
         /// <param name="passed"></param>
         /// <param name="wer"></param>
+        /// <param name="callStartTimeMs"></param>
+        /// <param name="createdAt"></param>
+        /// <param name="updatedAt"></param>
+        /// <param name="calibrated"></param>
         /// <param name="interruptions"></param>
         /// <param name="userSentiments"></param>
         /// <param name="agentSentiments"></param>
@@ -229,10 +233,6 @@ namespace RetellAI
         /// <param name="passedMetrics"></param>
         /// <param name="recommendations"></param>
         /// <param name="notes"></param>
-        /// <param name="callStartTimeMs"></param>
-        /// <param name="createdAt"></param>
-        /// <param name="updatedAt"></param>
-        /// <param name="calibrated"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -276,10 +276,6 @@ namespace RetellAI
             this.Score = score;
             this.Passed = passed;
             this.Wer = wer ?? throw new global::System.ArgumentNullException(nameof(wer));
-            this.CallStartTimeMs = callStartTimeMs;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
-            this.Calibrated = calibrated;
             this.Interruptions = interruptions;
             this.UserSentiments = userSentiments;
             this.AgentSentiments = agentSentiments;
@@ -296,6 +292,10 @@ namespace RetellAI
             this.PassedMetrics = passedMetrics;
             this.Recommendations = recommendations;
             this.Notes = notes;
+            this.CallStartTimeMs = callStartTimeMs;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
+            this.Calibrated = calibrated;
         }
 
         /// <summary>

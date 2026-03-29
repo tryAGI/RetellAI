@@ -71,9 +71,9 @@ namespace RetellAI
         /// Call filter criteria to create QA.
         /// </param>
         /// <param name="samplingPercentage"></param>
-        /// <param name="samplingWeeklyMax"></param>
         /// <param name="scoringCriteria"></param>
         /// <param name="successfulCriteria"></param>
+        /// <param name="samplingWeeklyMax"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -90,9 +90,9 @@ namespace RetellAI
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.CohortFilter = cohortFilter ?? throw new global::System.ArgumentNullException(nameof(cohortFilter));
             this.SamplingPercentage = samplingPercentage;
+            this.SamplingWeeklyMax = samplingWeeklyMax;
             this.ScoringCriteria = scoringCriteria ?? throw new global::System.ArgumentNullException(nameof(scoringCriteria));
             this.SuccessfulCriteria = successfulCriteria ?? throw new global::System.ArgumentNullException(nameof(successfulCriteria));
-            this.SamplingWeeklyMax = samplingWeeklyMax;
         }
 
         /// <summary>

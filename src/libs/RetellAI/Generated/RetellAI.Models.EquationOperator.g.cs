@@ -11,27 +11,7 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        Contains,
-        /// <summary>
-        /// 
-        /// </summary>
-        Eq,
-        /// <summary>
-        /// 
-        /// </summary>
-        Exists,
-        /// <summary>
-        /// 
-        /// </summary>
-        Ge,
-        /// <summary>
-        /// 
-        /// </summary>
-        Gt,
-        /// <summary>
-        /// 
-        /// </summary>
-        Le,
+        Neq,
         /// <summary>
         /// 
         /// </summary>
@@ -39,7 +19,27 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        Ne,
+        Lte,
+        /// <summary>
+        /// 
+        /// </summary>
+        Eq,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gt,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gte,
+        /// <summary>
+        /// 
+        /// </summary>
+        Contains,
+        /// <summary>
+        /// 
+        /// </summary>
+        Exists,
         /// <summary>
         /// 
         /// </summary>
@@ -62,14 +62,14 @@ namespace RetellAI
         {
             return value switch
             {
+                EquationOperator.Neq => "!=",
+                EquationOperator.Lt => "<",
+                EquationOperator.Lte => "<=",
+                EquationOperator.Eq => "==",
+                EquationOperator.Gt => ">",
+                EquationOperator.Gte => ">=",
                 EquationOperator.Contains => "contains",
-                EquationOperator.Eq => "eq",
                 EquationOperator.Exists => "exists",
-                EquationOperator.Ge => "ge",
-                EquationOperator.Gt => "gt",
-                EquationOperator.Le => "le",
-                EquationOperator.Lt => "lt",
-                EquationOperator.Ne => "ne",
                 EquationOperator.NotContains => "not_contains",
                 EquationOperator.NotExist => "not_exist",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -82,14 +82,14 @@ namespace RetellAI
         {
             return value switch
             {
+                "!=" => EquationOperator.Neq,
+                "<" => EquationOperator.Lt,
+                "<=" => EquationOperator.Lte,
+                "==" => EquationOperator.Eq,
+                ">" => EquationOperator.Gt,
+                ">=" => EquationOperator.Gte,
                 "contains" => EquationOperator.Contains,
-                "eq" => EquationOperator.Eq,
                 "exists" => EquationOperator.Exists,
-                "ge" => EquationOperator.Ge,
-                "gt" => EquationOperator.Gt,
-                "le" => EquationOperator.Le,
-                "lt" => EquationOperator.Lt,
-                "ne" => EquationOperator.Ne,
                 "not_contains" => EquationOperator.NotContains,
                 "not_exist" => EquationOperator.NotExist,
                 _ => null,

@@ -39,11 +39,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseEngineRetellLm" /> class.
         /// </summary>
-        /// <param name="type">
-        /// type of the Response Engine.
-        /// </param>
         /// <param name="llmId">
         /// id of the Retell LLM Response Engine.
+        /// </param>
+        /// <param name="type">
+        /// type of the Response Engine.
         /// </param>
         /// <param name="version">
         /// Version of the Retell LLM Response Engine.<br/>
@@ -57,8 +57,8 @@ namespace RetellAI
             global::RetellAI.ResponseEngineRetellLmType type,
             double? version)
         {
-            this.LlmId = llmId ?? throw new global::System.ArgumentNullException(nameof(llmId));
             this.Type = type;
+            this.LlmId = llmId ?? throw new global::System.ArgumentNullException(nameof(llmId));
             this.Version = version;
         }
 

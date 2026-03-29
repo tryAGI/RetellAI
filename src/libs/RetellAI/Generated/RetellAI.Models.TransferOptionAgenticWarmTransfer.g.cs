@@ -64,6 +64,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferOptionAgenticWarmTransfer" /> class.
         /// </summary>
+        /// <param name="agenticTransferConfig">
+        /// Configuration for agentic warm transfer. Required for agentic warm transfer.
+        /// </param>
         /// <param name="type">
         /// The type of the transfer.
         /// </param>
@@ -78,9 +81,6 @@ namespace RetellAI
         /// </param>
         /// <param name="publicHandoffOption">
         /// If set, when transfer is successful, will say the handoff message to both the transferee and the agent receiving the transfer. Can leave either a static message or a dynamic one based on prompt. Set to null to disable warm handoff.
-        /// </param>
-        /// <param name="agenticTransferConfig">
-        /// Configuration for agentic warm transfer. Required for agentic warm transfer.
         /// </param>
         /// <param name="enableBridgeAudioCue">
         /// Whether to play an audio cue when bridging the call. Defaults to true.<br/>
@@ -98,12 +98,12 @@ namespace RetellAI
             global::RetellAI.OneOf<global::RetellAI.WarmTransferPrompt, global::RetellAI.WarmTransferStaticMessage>? publicHandoffOption,
             bool? enableBridgeAudioCue)
         {
-            this.AgenticTransferConfig = agenticTransferConfig ?? throw new global::System.ArgumentNullException(nameof(agenticTransferConfig));
             this.Type = type;
             this.ShowTransfereeAsCaller = showTransfereeAsCaller;
             this.OnHoldMusic = onHoldMusic;
             this.TransferRingDurationMs = transferRingDurationMs;
             this.PublicHandoffOption = publicHandoffOption;
+            this.AgenticTransferConfig = agenticTransferConfig ?? throw new global::System.ArgumentNullException(nameof(agenticTransferConfig));
             this.EnableBridgeAudioCue = enableBridgeAudioCue;
         }
 

@@ -38,9 +38,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="FinetuneExampleUtteranceVariant3" /> class.
         /// </summary>
-        /// <param name="role"></param>
         /// <param name="toolCallId"></param>
         /// <param name="content"></param>
+        /// <param name="role"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -49,9 +49,9 @@ namespace RetellAI
             string content,
             global::RetellAI.FinetuneExampleUtteranceVariant3Role role)
         {
+            this.Role = role;
             this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
-            this.Role = role;
         }
 
         /// <summary>

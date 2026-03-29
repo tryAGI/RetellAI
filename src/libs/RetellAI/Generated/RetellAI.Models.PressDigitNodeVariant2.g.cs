@@ -49,10 +49,10 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="PressDigitNodeVariant2" /> class.
         /// </summary>
+        /// <param name="instruction"></param>
         /// <param name="type">
         /// Type of the node
         /// </param>
-        /// <param name="instruction"></param>
         /// <param name="delayMs">
         /// Delay in milliseconds before pressing the digit
         /// </param>
@@ -68,8 +68,8 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
         {
-            this.Instruction = instruction ?? throw new global::System.ArgumentNullException(nameof(instruction));
             this.Type = type;
+            this.Instruction = instruction ?? throw new global::System.ArgumentNullException(nameof(instruction));
             this.DelayMs = delayMs;
             this.Edges = edges;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;

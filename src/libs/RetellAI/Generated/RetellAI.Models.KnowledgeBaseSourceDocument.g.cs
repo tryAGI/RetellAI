@@ -45,9 +45,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="KnowledgeBaseSourceDocument" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the knowledge base source.
-        /// </param>
         /// <param name="sourceId">
         /// Unique id of the knowledge base source.
         /// </param>
@@ -56,6 +53,9 @@ namespace RetellAI
         /// </param>
         /// <param name="fileUrl">
         /// URL of the document stored.
+        /// </param>
+        /// <param name="type">
+        /// Type of the knowledge base source.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -66,10 +66,10 @@ namespace RetellAI
             string fileUrl,
             global::RetellAI.KnowledgeBaseSourceDocumentType type)
         {
+            this.Type = type;
             this.SourceId = sourceId ?? throw new global::System.ArgumentNullException(nameof(sourceId));
             this.Filename = filename ?? throw new global::System.ArgumentNullException(nameof(filename));
             this.FileUrl = fileUrl ?? throw new global::System.ArgumentNullException(nameof(fileUrl));
-            this.Type = type;
         }
 
         /// <summary>

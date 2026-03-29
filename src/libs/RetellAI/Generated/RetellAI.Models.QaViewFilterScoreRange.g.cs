@@ -43,9 +43,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="QaViewFilterScoreRange" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="value"></param>
         /// <param name="op"></param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -54,9 +54,9 @@ namespace RetellAI
             global::RetellAI.QaViewFilterScoreRangeOp op,
             global::RetellAI.QaViewFilterScoreRangeType? type)
         {
+            this.Type = type;
             this.Value = value;
             this.Op = op;
-            this.Type = type;
         }
 
         /// <summary>

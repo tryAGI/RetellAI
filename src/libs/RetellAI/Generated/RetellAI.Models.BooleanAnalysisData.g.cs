@@ -50,10 +50,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="BooleanAnalysisData" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the variable to extract.<br/>
-        /// Example: boolean
-        /// </param>
         /// <param name="name">
         /// Name of the variable.<br/>
         /// Example: is_converted
@@ -61,6 +57,10 @@ namespace RetellAI
         /// <param name="description">
         /// Description of the variable.<br/>
         /// Example: Whether the customer converted.
+        /// </param>
+        /// <param name="type">
+        /// Type of the variable to extract.<br/>
+        /// Example: boolean
         /// </param>
         /// <param name="required">
         /// Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
@@ -74,9 +74,9 @@ namespace RetellAI
             global::RetellAI.BooleanAnalysisDataType type,
             bool? required)
         {
+            this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
-            this.Type = type;
             this.Required = required;
         }
 

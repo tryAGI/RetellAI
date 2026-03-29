@@ -44,14 +44,14 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="AddCommunityVoiceRequest" /> class.
         /// </summary>
-        /// <param name="voiceProvider">
-        /// Voice provider to add the voice from.
-        /// </param>
         /// <param name="providerVoiceId">
         /// Voice id assigned by the provider.
         /// </param>
         /// <param name="voiceName">
         /// A custom name for the voice.
+        /// </param>
+        /// <param name="voiceProvider">
+        /// Voice provider to add the voice from.
         /// </param>
         /// <param name="publicUserId">
         /// Required for ElevenLabs only. User id of the voice owner.
@@ -65,9 +65,9 @@ namespace RetellAI
             global::RetellAI.AddCommunityVoiceRequestVoiceProvider? voiceProvider,
             string? publicUserId)
         {
+            this.VoiceProvider = voiceProvider;
             this.ProviderVoiceId = providerVoiceId ?? throw new global::System.ArgumentNullException(nameof(providerVoiceId));
             this.VoiceName = voiceName ?? throw new global::System.ArgumentNullException(nameof(voiceName));
-            this.VoiceProvider = voiceProvider;
             this.PublicUserId = publicUserId;
         }
 

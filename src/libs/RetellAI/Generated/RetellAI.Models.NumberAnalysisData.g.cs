@@ -50,10 +50,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="NumberAnalysisData" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the variable to extract.<br/>
-        /// Example: number
-        /// </param>
         /// <param name="name">
         /// Name of the variable.<br/>
         /// Example: order_count
@@ -61,6 +57,10 @@ namespace RetellAI
         /// <param name="description">
         /// Description of the variable.<br/>
         /// Example: How many the customer intend to order.
+        /// </param>
+        /// <param name="type">
+        /// Type of the variable to extract.<br/>
+        /// Example: number
         /// </param>
         /// <param name="required">
         /// Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
@@ -74,9 +74,9 @@ namespace RetellAI
             global::RetellAI.NumberAnalysisDataType type,
             bool? required)
         {
+            this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
-            this.Type = type;
             this.Required = required;
         }
 

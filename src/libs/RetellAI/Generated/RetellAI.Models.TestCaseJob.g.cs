@@ -83,17 +83,17 @@ namespace RetellAI
         /// ID of the test case definition used
         /// </param>
         /// <param name="testCaseDefinitionSnapshot"></param>
-        /// <param name="transcriptSnapshot">
-        /// Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or MultiStatePromptPlaygroundSnapshot
-        /// </param>
-        /// <param name="resultExplanation">
-        /// Explanation of the test result
-        /// </param>
         /// <param name="creationTimestamp">
         /// Timestamp when the test case job was created (milliseconds since epoch)
         /// </param>
         /// <param name="userModifiedTimestamp">
         /// Timestamp when the test case job was last modified (milliseconds since epoch)
+        /// </param>
+        /// <param name="transcriptSnapshot">
+        /// Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or MultiStatePromptPlaygroundSnapshot
+        /// </param>
+        /// <param name="resultExplanation">
+        /// Explanation of the test result
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -112,10 +112,10 @@ namespace RetellAI
             this.Status = status;
             this.TestCaseDefinitionId = testCaseDefinitionId ?? throw new global::System.ArgumentNullException(nameof(testCaseDefinitionId));
             this.TestCaseDefinitionSnapshot = testCaseDefinitionSnapshot;
-            this.CreationTimestamp = creationTimestamp;
-            this.UserModifiedTimestamp = userModifiedTimestamp;
             this.TranscriptSnapshot = transcriptSnapshot;
             this.ResultExplanation = resultExplanation;
+            this.CreationTimestamp = creationTimestamp;
+            this.UserModifiedTimestamp = userModifiedTimestamp;
         }
 
         /// <summary>

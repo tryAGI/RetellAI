@@ -34,12 +34,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="VoicemailActionPrompt" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Example: prompt
-        /// </param>
         /// <param name="text">
         /// The prompt used to generate the text to be spoken when the call is detected to be in voicemail.<br/>
         /// Example: Summarize the call in 2 sentences.
+        /// </param>
+        /// <param name="type">
+        /// Example: prompt
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -48,8 +48,8 @@ namespace RetellAI
             string text,
             global::RetellAI.VoicemailActionPromptType type)
         {
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Type = type;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
         }
 
         /// <summary>

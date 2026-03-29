@@ -39,11 +39,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseEngineConversationFlow" /> class.
         /// </summary>
-        /// <param name="type">
-        /// type of the Response Engine.
-        /// </param>
         /// <param name="conversationFlowId">
         /// ID of the Conversation Flow Response Engine.
+        /// </param>
+        /// <param name="type">
+        /// type of the Response Engine.
         /// </param>
         /// <param name="version">
         /// Version of the Conversation Flow Response Engine.<br/>
@@ -57,8 +57,8 @@ namespace RetellAI
             global::RetellAI.ResponseEngineConversationFlowType type,
             double? version)
         {
-            this.ConversationFlowId = conversationFlowId ?? throw new global::System.ArgumentNullException(nameof(conversationFlowId));
             this.Type = type;
+            this.ConversationFlowId = conversationFlowId ?? throw new global::System.ArgumentNullException(nameof(conversationFlowId));
             this.Version = version;
         }
 

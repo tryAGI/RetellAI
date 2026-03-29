@@ -34,12 +34,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="VoicemailActionStaticText" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Example: static_text
-        /// </param>
         /// <param name="text">
         /// The text to be spoken when the call is detected to be in voicemail.<br/>
         /// Example: Please give us a callback tomorrow at 10am.
+        /// </param>
+        /// <param name="type">
+        /// Example: static_text
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -48,8 +48,8 @@ namespace RetellAI
             string text,
             global::RetellAI.VoicemailActionStaticTextType type)
         {
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Type = type;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
         }
 
         /// <summary>

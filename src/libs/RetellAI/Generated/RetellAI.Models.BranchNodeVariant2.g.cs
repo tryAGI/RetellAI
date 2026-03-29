@@ -44,11 +44,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="BranchNodeVariant2" /> class.
         /// </summary>
+        /// <param name="elseEdge"></param>
         /// <param name="type">
         /// Type of the node
         /// </param>
         /// <param name="edges"></param>
-        /// <param name="elseEdge"></param>
         /// <param name="finetuneTransitionExamples"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -59,9 +59,9 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
         {
-            this.ElseEdge = elseEdge;
             this.Type = type;
             this.Edges = edges;
+            this.ElseEdge = elseEdge;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
         }
 

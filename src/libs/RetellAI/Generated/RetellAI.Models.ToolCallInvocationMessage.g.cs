@@ -72,9 +72,6 @@ namespace RetellAI
         /// Unique id of the message<br/>
         /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
         /// </param>
-        /// <param name="role">
-        /// This is a tool call invocation.
-        /// </param>
         /// <param name="toolCallId">
         /// Tool call id, globally unique.
         /// </param>
@@ -83,6 +80,9 @@ namespace RetellAI
         /// </param>
         /// <param name="arguments">
         /// Arguments for this tool call, it's a stringified JSON object.
+        /// </param>
+        /// <param name="role">
+        /// This is a tool call invocation.
         /// </param>
         /// <param name="thoughtSignature">
         /// Optional thought signature from Google Gemini thinking models. This is used internally to maintain reasoning chain in multi-turn function calling.
@@ -104,10 +104,10 @@ namespace RetellAI
             long? createdTimestamp)
         {
             this.MessageId = messageId ?? throw new global::System.ArgumentNullException(nameof(messageId));
+            this.Role = role;
             this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Arguments = arguments ?? throw new global::System.ArgumentNullException(nameof(arguments));
-            this.Role = role;
             this.ThoughtSignature = thoughtSignature;
             this.CreatedTimestamp = createdTimestamp;
         }

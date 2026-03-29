@@ -90,15 +90,16 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferCallTool" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="name">
         /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges).<br/>
         /// Example: transfer_to_support
         /// </param>
+        /// <param name="transferDestination"></param>
+        /// <param name="transferOption"></param>
+        /// <param name="type"></param>
         /// <param name="description">
         /// Describes what the tool does, sometimes can also include information about when to call the tool.
         /// </param>
-        /// <param name="transferDestination"></param>
         /// <param name="ignoreE164Validation">
         /// If true, the e.164 validation will be ignored for the from_number. This can be useful when you want to dial to internal pseudo numbers. This only applies when you are using custom telephony and does not apply when you are using Retell Telephony. If omitted, the default value is false.<br/>
         /// Example: false
@@ -107,7 +108,6 @@ namespace RetellAI
         /// Custom SIP headers to be added to the call.<br/>
         /// Example: {"X-Custom-Header":"Custom Value"}
         /// </param>
-        /// <param name="transferOption"></param>
         /// <param name="speakDuringExecution">
         /// If true, will speak during execution.
         /// </param>
@@ -132,13 +132,13 @@ namespace RetellAI
             string? executionMessageDescription,
             global::RetellAI.TransferCallToolExecutionMessageType? executionMessageType)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.TransferDestination = transferDestination;
-            this.TransferOption = transferOption;
             this.Type = type;
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
+            this.TransferDestination = transferDestination;
             this.IgnoreE164Validation = ignoreE164Validation;
             this.CustomSipHeaders = customSipHeaders;
+            this.TransferOption = transferOption;
             this.SpeakDuringExecution = speakDuringExecution;
             this.ExecutionMessageDescription = executionMessageDescription;
             this.ExecutionMessageType = executionMessageType;

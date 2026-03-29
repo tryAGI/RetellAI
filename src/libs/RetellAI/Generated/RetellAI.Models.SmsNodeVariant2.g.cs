@@ -48,12 +48,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="SmsNodeVariant2" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the node
-        /// </param>
         /// <param name="instruction"></param>
         /// <param name="successEdge"></param>
         /// <param name="failedEdge"></param>
+        /// <param name="type">
+        /// Type of the node
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -63,10 +63,10 @@ namespace RetellAI
             global::RetellAI.SmsFailedEdge failedEdge,
             global::RetellAI.SmsNodeVariant2Type type)
         {
+            this.Type = type;
             this.Instruction = instruction;
             this.SuccessEdge = successEdge;
             this.FailedEdge = failedEdge;
-            this.Type = type;
         }
 
         /// <summary>

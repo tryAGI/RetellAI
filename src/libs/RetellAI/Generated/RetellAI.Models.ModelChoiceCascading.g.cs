@@ -38,11 +38,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ModelChoiceCascading" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of model choice
-        /// </param>
         /// <param name="model">
         /// Available LLM models for agents.
+        /// </param>
+        /// <param name="type">
+        /// Type of model choice
         /// </param>
         /// <param name="highPriority">
         /// Whether to use high priority pool with more dedicated resource, default false
@@ -55,8 +55,8 @@ namespace RetellAI
             global::RetellAI.ModelChoiceCascadingType type,
             bool? highPriority)
         {
-            this.Model = model;
             this.Type = type;
+            this.Model = model;
             this.HighPriority = highPriority;
         }
 

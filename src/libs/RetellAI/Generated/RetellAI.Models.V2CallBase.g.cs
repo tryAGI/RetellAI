@@ -280,10 +280,6 @@ namespace RetellAI
         /// Corresponding agent id of this call.<br/>
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
-        /// <param name="agentName">
-        /// Name of the agent.<br/>
-        /// Example: My Agent
-        /// </param>
         /// <param name="agentVersion">
         /// The version of the agent.<br/>
         /// Example: 1
@@ -295,6 +291,10 @@ namespace RetellAI
         /// - `ended`: The underlying websocket has ended for the call. Either user or agent hung up, or call transferred.<br/>
         /// - `error`: Call encountered error.<br/>
         /// Example: registered
+        /// </param>
+        /// <param name="agentName">
+        /// Name of the agent.<br/>
+        /// Example: My Agent
         /// </param>
         /// <param name="metadata">
         /// An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the call. Not used for processing. You can later get this field from the call object.
@@ -431,9 +431,9 @@ namespace RetellAI
         {
             this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
+            this.AgentName = agentName;
             this.AgentVersion = agentVersion;
             this.CallStatus = callStatus;
-            this.AgentName = agentName;
             this.Metadata = metadata;
             this.RetellLlmDynamicVariables = retellLlmDynamicVariables;
             this.CollectedDynamicVariables = collectedDynamicVariables;

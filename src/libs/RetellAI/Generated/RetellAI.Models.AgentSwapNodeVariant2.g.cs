@@ -85,16 +85,17 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="AgentSwapNodeVariant2" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the node
-        /// </param>
         /// <param name="agentId">
         /// The ID of the agent to swap to
+        /// </param>
+        /// <param name="postCallAnalysisSetting"></param>
+        /// <param name="edge"></param>
+        /// <param name="type">
+        /// Type of the node
         /// </param>
         /// <param name="agentVersion">
         /// The version of the agent to swap to. If not specified, will use the latest version
         /// </param>
-        /// <param name="postCallAnalysisSetting"></param>
         /// <param name="webhookSetting"></param>
         /// <param name="keepCurrentVoice">
         /// If true, keep the current voice when swapping agents. Defaults to false.
@@ -102,7 +103,6 @@ namespace RetellAI
         /// <param name="keepCurrentLanguage">
         /// If true, keep the current language when swapping agents. Defaults to false.
         /// </param>
-        /// <param name="edge"></param>
         /// <param name="speakDuringExecution">
         /// If true, will speak during execution
         /// </param>
@@ -122,14 +122,14 @@ namespace RetellAI
             bool? speakDuringExecution,
             global::RetellAI.NodeInstruction? instruction)
         {
-            this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
-            this.PostCallAnalysisSetting = postCallAnalysisSetting;
-            this.Edge = edge;
             this.Type = type;
+            this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.AgentVersion = agentVersion;
+            this.PostCallAnalysisSetting = postCallAnalysisSetting;
             this.WebhookSetting = webhookSetting;
             this.KeepCurrentVoice = keepCurrentVoice;
             this.KeepCurrentLanguage = keepCurrentLanguage;
+            this.Edge = edge;
             this.SpeakDuringExecution = speakDuringExecution;
             this.Instruction = instruction;
         }

@@ -185,6 +185,10 @@ namespace RetellAI
         /// Type of the phone number.<br/>
         /// Example: retell-twilio
         /// </param>
+        /// <param name="lastModificationTimestamp">
+        /// Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.<br/>
+        /// Example: 1703413636133
+        /// </param>
         /// <param name="phoneNumberPretty">
         /// Pretty printed phone number, provided for your reference.<br/>
         /// Example: +1 (415) 777-4444
@@ -225,10 +229,6 @@ namespace RetellAI
         /// If set, will send a webhook for inbound SMS, where you can override agent id, set dynamic variables and other fields specific to that chat.<br/>
         /// Example: https://example.com/inbound-sms-webhook
         /// </param>
-        /// <param name="lastModificationTimestamp">
-        /// Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.<br/>
-        /// Example: 1703413636133
-        /// </param>
         /// <param name="sipOutboundTrunkConfig"></param>
         /// <param name="fallbackNumber">
         /// Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode. Can be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
@@ -257,7 +257,6 @@ namespace RetellAI
         {
             this.PhoneNumber = phoneNumber ?? throw new global::System.ArgumentNullException(nameof(phoneNumber));
             this.PhoneNumberType = phoneNumberType;
-            this.LastModificationTimestamp = lastModificationTimestamp;
             this.PhoneNumberPretty = phoneNumberPretty;
             this.AllowedInboundCountryList = allowedInboundCountryList;
             this.AllowedOutboundCountryList = allowedOutboundCountryList;
@@ -269,6 +268,7 @@ namespace RetellAI
             this.Nickname = nickname;
             this.InboundWebhookUrl = inboundWebhookUrl;
             this.InboundSmsWebhookUrl = inboundSmsWebhookUrl;
+            this.LastModificationTimestamp = lastModificationTimestamp;
             this.SipOutboundTrunkConfig = sipOutboundTrunkConfig;
             this.FallbackNumber = fallbackNumber;
         }

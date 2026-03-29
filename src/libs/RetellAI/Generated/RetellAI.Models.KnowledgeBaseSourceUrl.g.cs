@@ -38,14 +38,14 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="KnowledgeBaseSourceUrl" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the knowledge base source.
-        /// </param>
         /// <param name="sourceId">
         /// Unique id of the knowledge base source.
         /// </param>
         /// <param name="url">
         /// URL used to be scraped and added to the knowledge base.
+        /// </param>
+        /// <param name="type">
+        /// Type of the knowledge base source.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -55,9 +55,9 @@ namespace RetellAI
             string url,
             global::RetellAI.KnowledgeBaseSourceUrlType type)
         {
+            this.Type = type;
             this.SourceId = sourceId ?? throw new global::System.ArgumentNullException(nameof(sourceId));
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
-            this.Type = type;
         }
 
         /// <summary>

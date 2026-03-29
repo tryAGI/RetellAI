@@ -83,14 +83,17 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="MCPNodeVariant2" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the node
-        /// </param>
         /// <param name="mcpId">
         /// Unique ID of the MCP server
         /// </param>
         /// <param name="mcpToolName">
         /// Name of the MCP tool to call
+        /// </param>
+        /// <param name="waitForResult">
+        /// If true, will wait for result before transitioning to next node
+        /// </param>
+        /// <param name="type">
+        /// Type of the node
         /// </param>
         /// <param name="edges"></param>
         /// <param name="elseEdge"></param>
@@ -101,9 +104,6 @@ namespace RetellAI
         /// If true, will speak during execution
         /// </param>
         /// <param name="instruction"></param>
-        /// <param name="waitForResult">
-        /// If true, will wait for result before transitioning to next node
-        /// </param>
         /// <param name="finetuneTransitionExamples"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -120,15 +120,15 @@ namespace RetellAI
             global::RetellAI.NodeInstruction? instruction,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
         {
+            this.Type = type;
             this.McpId = mcpId ?? throw new global::System.ArgumentNullException(nameof(mcpId));
             this.McpToolName = mcpToolName ?? throw new global::System.ArgumentNullException(nameof(mcpToolName));
-            this.WaitForResult = waitForResult;
-            this.Type = type;
             this.Edges = edges;
             this.ElseEdge = elseEdge;
             this.ResponseVariables = responseVariables;
             this.SpeakDuringExecution = speakDuringExecution;
             this.Instruction = instruction;
+            this.WaitForResult = waitForResult;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
         }
 

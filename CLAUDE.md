@@ -31,13 +31,12 @@ var client = new RetellAiClient(apiKey); // RETELLAI_API_KEY env var
 
 ## Spec Notes
 
-The `generate.sh` applies 3 fixes via Python (pre-generation):
+The `generate.sh` applies 2 fixes via Python (pre-generation):
 
-1. **Comparator enum dedup:** Removes symbol duplicates (`>`, `<`, `>=`, `<=`) from `AlertRuleResponse`, `AlertRuleRequest`, `AlertIncidentResponse` comparator enums since text versions (`gt`, `ge`, `lt`, `le`) already exist
-2. **Equation operator rename:** Replaces symbols (`==`, `!=`, `>`, `>=`, `<`, `<=`) with descriptive names (`eq`, `ne`, `gt`, `ge`, `lt`, `le`) in `Equation` schema
-3. **EquationCondition operator rename:** Replaces `||` and `&&` with `or` and `and` in `EquationCondition` schema
+1. **Comparator enum dedup:** Removes symbol duplicates (`>`, `<`, `>=`, `<=`) from `AlertRuleResponse`, `AlertRuleRequest`, `AlertIncidentResponse` comparator enums since text versions (`gt`, `ge`, `lt`, `le`) already exist (AutoSDK would generate confusing `Gt`/`Gt2` disambiguation)
+2. **EquationCondition operator rename:** Replaces `||` and `&&` with `or` and `and` in `EquationCondition` schema (AutoSDK generates unusable `x__`/`x__2` names)
 
-Note: The previous Fix 4 (SYSLIB1031 collision — renaming `NullableLLMModel` to `LLMModelNullable`) was removed after AutoSDK added built-in handling via `TypeInfoPropertyName` disambiguation.
+Note: Equation operator symbols (`==`, `!=`, `>`, etc.) no longer need fixing — AutoSDK dev.154+ generates clean names (`Eq`, `Neq`, `Gt`, etc.) natively.
 
 Uses Python for spec fixes (not `jq`/`yq`). Spec URL resolved dynamically from `RetellAI/retell-python-sdk/.stats.yml`.
 Uses `--exclude-deprecated-operations` flag.

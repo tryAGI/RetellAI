@@ -31,11 +31,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchCommunityVoiceRequest" /> class.
         /// </summary>
-        /// <param name="voiceProvider">
-        /// Voice provider to search.
-        /// </param>
         /// <param name="searchQuery">
         /// Search query to find voices by name, description, or ID.
+        /// </param>
+        /// <param name="voiceProvider">
+        /// Voice provider to search.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace RetellAI
             string searchQuery,
             global::RetellAI.SearchCommunityVoiceRequestVoiceProvider? voiceProvider)
         {
-            this.SearchQuery = searchQuery ?? throw new global::System.ArgumentNullException(nameof(searchQuery));
             this.VoiceProvider = voiceProvider;
+            this.SearchQuery = searchQuery ?? throw new global::System.ArgumentNullException(nameof(searchQuery));
         }
 
         /// <summary>

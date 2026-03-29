@@ -153,13 +153,13 @@ namespace RetellAI
         /// The number you are trying to import in E.164 format of the number (+country code, then number with no space, no special characters), used as the unique identifier for phone number APIs.<br/>
         /// Example: +14157774444
         /// </param>
-        /// <param name="ignoreE164Validation">
-        /// If true, E.164 validation for phone_number is skipped. This is useful for internal pseudo numbers when using custom telephony. If omitted, default is true. Must be a boolean literal; string values like "true" or "false" are invalid.<br/>
-        /// Example: true
-        /// </param>
         /// <param name="terminationUri">
         /// The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always end with ".pstn.twilio.com".<br/>
         /// Example: someuri.pstn.twilio.com
+        /// </param>
+        /// <param name="ignoreE164Validation">
+        /// If true, E.164 validation for phone_number is skipped. This is useful for internal pseudo numbers when using custom telephony. If omitted, default is true. Must be a boolean literal; string values like "true" or "false" are invalid.<br/>
+        /// Example: true
         /// </param>
         /// <param name="sipTrunkAuthUsername">
         /// The username used for authentication for the SIP trunk.<br/>
@@ -213,8 +213,8 @@ namespace RetellAI
             string? transport)
         {
             this.PhoneNumber = phoneNumber ?? throw new global::System.ArgumentNullException(nameof(phoneNumber));
-            this.TerminationUri = terminationUri ?? throw new global::System.ArgumentNullException(nameof(terminationUri));
             this.IgnoreE164Validation = ignoreE164Validation;
+            this.TerminationUri = terminationUri ?? throw new global::System.ArgumentNullException(nameof(terminationUri));
             this.SipTrunkAuthUsername = sipTrunkAuthUsername;
             this.SipTrunkAuthPassword = sipTrunkAuthPassword;
             this.InboundAgents = inboundAgents;

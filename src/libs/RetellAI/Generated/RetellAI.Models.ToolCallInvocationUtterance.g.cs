@@ -51,9 +51,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolCallInvocationUtterance" /> class.
         /// </summary>
-        /// <param name="role">
-        /// This is a tool call invocation.
-        /// </param>
         /// <param name="toolCallId">
         /// Tool call id, globally unique.
         /// </param>
@@ -62,6 +59,9 @@ namespace RetellAI
         /// </param>
         /// <param name="arguments">
         /// Arguments for this tool call, it's a stringified JSON object.
+        /// </param>
+        /// <param name="role">
+        /// This is a tool call invocation.
         /// </param>
         /// <param name="thoughtSignature">
         /// Optional thought signature from Google Gemini thinking models. This is used internally to maintain reasoning chain in multi-turn function calling.
@@ -76,10 +76,10 @@ namespace RetellAI
             global::RetellAI.ToolCallInvocationUtteranceRole role,
             string? thoughtSignature)
         {
+            this.Role = role;
             this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Arguments = arguments ?? throw new global::System.ArgumentNullException(nameof(arguments));
-            this.Role = role;
             this.ThoughtSignature = thoughtSignature;
         }
 

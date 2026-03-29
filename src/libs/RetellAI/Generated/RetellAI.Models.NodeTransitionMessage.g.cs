@@ -70,6 +70,10 @@ namespace RetellAI
         /// Unique id of the message<br/>
         /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
         /// </param>
+        /// <param name="createdTimestamp">
+        /// Create timestamp of the message<br/>
+        /// Example: 1703302428855
+        /// </param>
         /// <param name="role">
         /// This is a node transition.
         /// </param>
@@ -85,10 +89,6 @@ namespace RetellAI
         /// <param name="newNodeName">
         /// New node name
         /// </param>
-        /// <param name="createdTimestamp">
-        /// Create timestamp of the message<br/>
-        /// Example: 1703302428855
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -102,12 +102,12 @@ namespace RetellAI
             string? newNodeName)
         {
             this.MessageId = messageId ?? throw new global::System.ArgumentNullException(nameof(messageId));
-            this.CreatedTimestamp = createdTimestamp;
             this.Role = role;
             this.FormerNodeId = formerNodeId;
             this.FormerNodeName = formerNodeName;
             this.NewNodeId = newNodeId;
             this.NewNodeName = newNodeName;
+            this.CreatedTimestamp = createdTimestamp;
         }
 
         /// <summary>

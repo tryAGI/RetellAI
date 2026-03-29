@@ -31,11 +31,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ResponseEngineCustomLm" /> class.
         /// </summary>
-        /// <param name="type">
-        /// type of the Response Engine.
-        /// </param>
         /// <param name="llmWebsocketUrl">
         /// LLM websocket url of the custom LLM.
+        /// </param>
+        /// <param name="type">
+        /// type of the Response Engine.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace RetellAI
             string llmWebsocketUrl,
             global::RetellAI.ResponseEngineCustomLmType type)
         {
-            this.LlmWebsocketUrl = llmWebsocketUrl ?? throw new global::System.ArgumentNullException(nameof(llmWebsocketUrl));
             this.Type = type;
+            this.LlmWebsocketUrl = llmWebsocketUrl ?? throw new global::System.ArgumentNullException(nameof(llmWebsocketUrl));
         }
 
         /// <summary>

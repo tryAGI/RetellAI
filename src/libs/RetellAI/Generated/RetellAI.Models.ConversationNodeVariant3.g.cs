@@ -84,10 +84,10 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ConversationNodeVariant3" /> class.
         /// </summary>
+        /// <param name="instruction"></param>
         /// <param name="type">
         /// Type of the node
         /// </param>
-        /// <param name="instruction"></param>
         /// <param name="skipResponseEdge"></param>
         /// <param name="alwaysEdge"></param>
         /// <param name="edges"></param>
@@ -118,8 +118,8 @@ namespace RetellAI
             global::System.Collections.Generic.IList<string>? toolIds,
             global::System.Collections.Generic.IList<global::RetellAI.Tool>? tools)
         {
-            this.Instruction = instruction;
             this.Type = type;
+            this.Instruction = instruction;
             this.SkipResponseEdge = skipResponseEdge;
             this.AlwaysEdge = alwaysEdge;
             this.Edges = edges;

@@ -95,9 +95,6 @@ namespace RetellAI
         /// <param name="metricType">
         /// The metric type to monitor.
         /// </param>
-        /// <param name="filter">
-        /// Filter criteria for alert rules
-        /// </param>
         /// <param name="thresholdType">
         /// Whether threshold is absolute or relative to previous period.
         /// </param>
@@ -112,6 +109,9 @@ namespace RetellAI
         /// </param>
         /// <param name="window">
         /// Time window for metric evaluation.
+        /// </param>
+        /// <param name="filter">
+        /// Filter criteria for alert rules
         /// </param>
         /// <param name="emails">
         /// Email addresses to notify when alert triggers.
@@ -136,12 +136,12 @@ namespace RetellAI
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.MetricType = metricType;
+            this.Filter = filter;
             this.ThresholdType = thresholdType;
             this.ThresholdValue = thresholdValue;
             this.Comparator = comparator;
             this.Frequency = frequency;
             this.Window = window;
-            this.Filter = filter;
             this.Emails = emails;
             this.WebhookUrls = webhookUrls;
         }

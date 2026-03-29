@@ -39,11 +39,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="NumberFilter" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="op">
         /// eq: equal, ne: not equal, gt: greater than, ge: greater than or equal, lt: less than, le: less than or equal
         /// </param>
         /// <param name="value"></param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -52,9 +52,9 @@ namespace RetellAI
             double value,
             global::RetellAI.NumberFilterType type)
         {
+            this.Type = type;
             this.Op = op;
             this.Value = value;
-            this.Type = type;
         }
 
         /// <summary>

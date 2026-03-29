@@ -256,6 +256,7 @@ namespace RetellAI
         /// <param name="deprecated"></param>
         /// <param name="score"></param>
         /// <param name="passed"></param>
+        /// <param name="calibrated"></param>
         /// <param name="wordCount"></param>
         /// <param name="numberDeletions"></param>
         /// <param name="numberInsertions"></param>
@@ -284,7 +285,6 @@ namespace RetellAI
         /// <param name="transitionTotalCount"></param>
         /// <param name="agentTotalUtteranceCount"></param>
         /// <param name="userTotalUtteranceCount"></param>
-        /// <param name="calibrated"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -335,7 +335,6 @@ namespace RetellAI
             this.Deprecated = deprecated;
             this.Score = score;
             this.Passed = passed;
-            this.Calibrated = calibrated;
             this.WordCount = wordCount;
             this.NumberDeletions = numberDeletions;
             this.NumberInsertions = numberInsertions;
@@ -364,6 +363,7 @@ namespace RetellAI
             this.TransitionTotalCount = transitionTotalCount;
             this.AgentTotalUtteranceCount = agentTotalUtteranceCount;
             this.UserTotalUtteranceCount = userTotalUtteranceCount;
+            this.Calibrated = calibrated;
         }
 
         /// <summary>

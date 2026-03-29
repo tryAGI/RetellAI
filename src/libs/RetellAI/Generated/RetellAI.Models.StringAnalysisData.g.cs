@@ -58,10 +58,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="StringAnalysisData" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the variable to extract.<br/>
-        /// Example: string
-        /// </param>
         /// <param name="name">
         /// Name of the variable.<br/>
         /// Example: customer_name
@@ -69,6 +65,10 @@ namespace RetellAI
         /// <param name="description">
         /// Description of the variable.<br/>
         /// Example: The name of the customer.
+        /// </param>
+        /// <param name="type">
+        /// Type of the variable to extract.<br/>
+        /// Example: string
         /// </param>
         /// <param name="examples">
         /// Examples of the variable value to teach model the style and syntax.<br/>
@@ -87,9 +87,9 @@ namespace RetellAI
             global::System.Collections.Generic.IList<string>? examples,
             bool? required)
         {
+            this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
-            this.Type = type;
             this.Examples = examples;
             this.Required = required;
         }

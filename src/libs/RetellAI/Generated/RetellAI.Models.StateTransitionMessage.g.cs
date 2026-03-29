@@ -58,6 +58,10 @@ namespace RetellAI
         /// Unique id of the message<br/>
         /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
         /// </param>
+        /// <param name="createdTimestamp">
+        /// Create timestamp of the message<br/>
+        /// Example: 1703302428855
+        /// </param>
         /// <param name="role">
         /// This is a state transition.
         /// </param>
@@ -66,10 +70,6 @@ namespace RetellAI
         /// </param>
         /// <param name="newStateName">
         /// New state name
-        /// </param>
-        /// <param name="createdTimestamp">
-        /// Create timestamp of the message<br/>
-        /// Example: 1703302428855
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -82,10 +82,10 @@ namespace RetellAI
             string? newStateName)
         {
             this.MessageId = messageId ?? throw new global::System.ArgumentNullException(nameof(messageId));
-            this.CreatedTimestamp = createdTimestamp;
             this.Role = role;
             this.FormerStateName = formerStateName;
             this.NewStateName = newStateName;
+            this.CreatedTimestamp = createdTimestamp;
         }
 
         /// <summary>

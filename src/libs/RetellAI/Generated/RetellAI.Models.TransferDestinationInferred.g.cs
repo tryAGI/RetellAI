@@ -31,11 +31,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferDestinationInferred" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of transfer destination.
-        /// </param>
         /// <param name="prompt">
         /// The prompt to be used to help infer the transfer destination. The model will take the global prompt, the call transcript, and this prompt together to deduce the right number to transfer to. Can contain dynamic variables.
+        /// </param>
+        /// <param name="type">
+        /// The type of transfer destination.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace RetellAI
             string prompt,
             global::RetellAI.TransferDestinationInferredType type)
         {
-            this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
             this.Type = type;
+            this.Prompt = prompt ?? throw new global::System.ArgumentNullException(nameof(prompt));
         }
 
         /// <summary>

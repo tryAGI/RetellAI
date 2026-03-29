@@ -34,13 +34,13 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="PIIConfig" /> class.
         /// </summary>
-        /// <param name="mode">
-        /// The processing mode for PII scrubbing. Currently only post-call is supported.<br/>
-        /// Default Value: post_call
-        /// </param>
         /// <param name="categories">
         /// List of PII categories to scrub from transcripts and recordings.<br/>
         /// Default Value: []
+        /// </param>
+        /// <param name="mode">
+        /// The processing mode for PII scrubbing. Currently only post-call is supported.<br/>
+        /// Default Value: post_call
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -49,8 +49,8 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.PIIConfigCategorie> categories,
             global::RetellAI.PIIConfigMode mode = global::RetellAI.PIIConfigMode.PostCall)
         {
-            this.Categories = categories ?? throw new global::System.ArgumentNullException(nameof(categories));
             this.Mode = mode;
+            this.Categories = categories ?? throw new global::System.ArgumentNullException(nameof(categories));
         }
 
         /// <summary>

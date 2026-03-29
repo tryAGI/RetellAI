@@ -84,15 +84,15 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="CodeTool" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="name">
         /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </param>
-        /// <param name="description">
-        /// Describes what this tool does and when to call this tool.
-        /// </param>
         /// <param name="code">
         /// JavaScript code to execute in the sandbox.
+        /// </param>
+        /// <param name="type"></param>
+        /// <param name="description">
+        /// Describes what this tool does and when to call this tool.
         /// </param>
         /// <param name="timeoutMs">
         /// The maximum time in milliseconds the code can run before it's considered timeout. Defaults to 30,000 ms (30 s).
@@ -129,10 +129,10 @@ namespace RetellAI
             string? executionMessageDescription,
             global::RetellAI.CodeToolExecutionMessageType? executionMessageType)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Code = code ?? throw new global::System.ArgumentNullException(nameof(code));
             this.Type = type;
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
+            this.Code = code ?? throw new global::System.ArgumentNullException(nameof(code));
             this.TimeoutMs = timeoutMs;
             this.ResponseVariables = responseVariables;
             this.SpeakDuringExecution = speakDuringExecution;

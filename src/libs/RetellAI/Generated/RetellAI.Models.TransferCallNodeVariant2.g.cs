@@ -75,10 +75,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferCallNodeVariant2" /> class.
         /// </summary>
+        /// <param name="transferDestination"></param>
+        /// <param name="transferOption"></param>
+        /// <param name="edge"></param>
         /// <param name="type">
         /// Type of the node
         /// </param>
-        /// <param name="transferDestination"></param>
         /// <param name="ignoreE164Validation">
         /// If true, the e.164 validation will be ignored for the from_number. This can be useful when you want to dial to internal pseudo numbers. This only applies when you are using custom telephony and does not apply when you are using Retell Telephony. If omitted, the default value is false.<br/>
         /// Example: false
@@ -86,8 +88,6 @@ namespace RetellAI
         /// <param name="customSipHeaders">
         /// Custom SIP headers for transfer calls
         /// </param>
-        /// <param name="transferOption"></param>
-        /// <param name="edge"></param>
         /// <param name="speakDuringExecution">
         /// If true, will speak during execution
         /// </param>
@@ -105,12 +105,12 @@ namespace RetellAI
             bool? speakDuringExecution,
             global::RetellAI.NodeInstruction? instruction)
         {
-            this.TransferDestination = transferDestination;
-            this.TransferOption = transferOption;
-            this.Edge = edge;
             this.Type = type;
+            this.TransferDestination = transferDestination;
             this.IgnoreE164Validation = ignoreE164Validation;
             this.CustomSipHeaders = customSipHeaders;
+            this.TransferOption = transferOption;
+            this.Edge = edge;
             this.SpeakDuringExecution = speakDuringExecution;
             this.Instruction = instruction;
         }

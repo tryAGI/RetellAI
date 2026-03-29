@@ -56,10 +56,10 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="CancelTransferTool" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="name">
         /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </param>
+        /// <param name="type"></param>
         /// <param name="description">
         /// Describes what the tool does. This tool is only available to transfer agents (agents with isTransferAgent set to true) in agentic warm transfer mode. When invoked, it cancels the transfer, returns the original caller to the main agent, and ends the transfer agent call.
         /// </param>
@@ -83,8 +83,8 @@ namespace RetellAI
             string? executionMessageDescription,
             global::RetellAI.CancelTransferToolExecutionMessageType? executionMessageType)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Type = type;
+            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
             this.SpeakDuringExecution = speakDuringExecution;
             this.ExecutionMessageDescription = executionMessageDescription;

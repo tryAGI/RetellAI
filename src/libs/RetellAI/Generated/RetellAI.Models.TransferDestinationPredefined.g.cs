@@ -39,11 +39,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="TransferDestinationPredefined" /> class.
         /// </summary>
-        /// <param name="type">
-        /// The type of transfer destination.
-        /// </param>
         /// <param name="number">
         /// The number to transfer to in E.164 format or a dynamic variable like {{transfer_number}}.
+        /// </param>
+        /// <param name="type">
+        /// The type of transfer destination.
         /// </param>
         /// <param name="extension">
         /// Extension digits to dial after the main number connects. Sent via DTMF. Allow digits, '*', '#', or a dynamic variable like {{extension}}.<br/>
@@ -57,8 +57,8 @@ namespace RetellAI
             global::RetellAI.TransferDestinationPredefinedType type,
             string? extension)
         {
-            this.Number = number ?? throw new global::System.ArgumentNullException(nameof(number));
             this.Type = type;
+            this.Number = number ?? throw new global::System.ArgumentNullException(nameof(number));
             this.Extension = extension;
         }
 

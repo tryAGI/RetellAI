@@ -33,12 +33,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="DTMFUtterance" /> class.
         /// </summary>
-        /// <param name="role">
-        /// Digit pressed by the user from their phone keypad.
-        /// </param>
         /// <param name="digit">
         /// The digit pressed by the user. Will be a single digit string like "1", "2", "3", "*", "#" etc.<br/>
         /// Example: 1
+        /// </param>
+        /// <param name="role">
+        /// Digit pressed by the user from their phone keypad.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -47,8 +47,8 @@ namespace RetellAI
             string digit,
             global::RetellAI.DTMFUtteranceRole role)
         {
-            this.Digit = digit ?? throw new global::System.ArgumentNullException(nameof(digit));
             this.Role = role;
+            this.Digit = digit ?? throw new global::System.ArgumentNullException(nameof(digit));
         }
 
         /// <summary>

@@ -84,11 +84,14 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="CodeNodeVariant2" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the node
-        /// </param>
         /// <param name="code">
         /// JavaScript code to execute in the sandbox.
+        /// </param>
+        /// <param name="waitForResult">
+        /// Whether to wait for code execution result
+        /// </param>
+        /// <param name="type">
+        /// Type of the node
         /// </param>
         /// <param name="timeoutMs">
         /// The maximum time in milliseconds the code can run before it's considered timeout. Defaults to 30,000 ms (30 s).
@@ -101,9 +104,6 @@ namespace RetellAI
         /// Whether to speak during code execution
         /// </param>
         /// <param name="instruction"></param>
-        /// <param name="waitForResult">
-        /// Whether to wait for code execution result
-        /// </param>
         /// <param name="edges"></param>
         /// <param name="elseEdge"></param>
         /// <param name="finetuneTransitionExamples"></param>
@@ -122,13 +122,13 @@ namespace RetellAI
             global::RetellAI.ElseEdge? elseEdge,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
         {
-            this.Code = code ?? throw new global::System.ArgumentNullException(nameof(code));
-            this.WaitForResult = waitForResult;
             this.Type = type;
+            this.Code = code ?? throw new global::System.ArgumentNullException(nameof(code));
             this.TimeoutMs = timeoutMs;
             this.ResponseVariables = responseVariables;
             this.SpeakDuringExecution = speakDuringExecution;
             this.Instruction = instruction;
+            this.WaitForResult = waitForResult;
             this.Edges = edges;
             this.ElseEdge = elseEdge;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;

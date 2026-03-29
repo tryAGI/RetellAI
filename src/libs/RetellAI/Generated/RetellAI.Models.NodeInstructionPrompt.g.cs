@@ -31,11 +31,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="NodeInstructionPrompt" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of instruction
-        /// </param>
         /// <param name="text">
         /// The prompt text for the instruction
+        /// </param>
+        /// <param name="type">
+        /// Type of instruction
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace RetellAI
             string text,
             global::RetellAI.NodeInstructionPromptType type)
         {
-            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
             this.Type = type;
+            this.Text = text ?? throw new global::System.ArgumentNullException(nameof(text));
         }
 
         /// <summary>

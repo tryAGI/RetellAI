@@ -44,12 +44,12 @@ namespace RetellAI
         /// <param name="agentId">
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
-        /// <param name="agentVersion">
-        /// Example: 1
-        /// </param>
         /// <param name="weight">
         /// The weight of the agent. When used in a list of agents, the total weights must add up to 1.<br/>
         /// Example: 0.5
+        /// </param>
+        /// <param name="agentVersion">
+        /// Example: 1
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -60,8 +60,8 @@ namespace RetellAI
             int? agentVersion)
         {
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
-            this.Weight = weight;
             this.AgentVersion = agentVersion;
+            this.Weight = weight;
         }
 
         /// <summary>

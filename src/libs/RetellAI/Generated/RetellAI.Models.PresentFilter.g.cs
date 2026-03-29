@@ -32,10 +32,10 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="PresentFilter" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="op">
         /// pr: present (has value), np: not present
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -43,8 +43,8 @@ namespace RetellAI
             global::RetellAI.PresentFilterOp op,
             global::RetellAI.PresentFilterType type)
         {
-            this.Op = op;
             this.Type = type;
+            this.Op = op;
         }
 
         /// <summary>

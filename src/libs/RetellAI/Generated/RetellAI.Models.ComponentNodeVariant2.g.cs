@@ -61,9 +61,6 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ComponentNodeVariant2" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Type of the node
-        /// </param>
         /// <param name="componentId">
         /// The reference ID of the component
         /// </param>
@@ -72,10 +69,13 @@ namespace RetellAI
         /// - local: stored in conversation flow's components array<br/>
         /// - shared: stored in stand-alone conversation-flow-component table
         /// </param>
+        /// <param name="elseEdge"></param>
+        /// <param name="type">
+        /// Type of the node
+        /// </param>
         /// <param name="edges">
         /// Array of edges for conditional transitions
         /// </param>
-        /// <param name="elseEdge"></param>
         /// <param name="finetuneTransitionExamples"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -88,11 +88,11 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
         {
+            this.Type = type;
             this.ComponentId = componentId ?? throw new global::System.ArgumentNullException(nameof(componentId));
             this.ComponentType = componentType;
-            this.ElseEdge = elseEdge;
-            this.Type = type;
             this.Edges = edges;
+            this.ElseEdge = elseEdge;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
         }
 

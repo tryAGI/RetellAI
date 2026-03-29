@@ -38,11 +38,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="EnumFilter" /> class.
         /// </summary>
+        /// <param name="value"></param>
         /// <param name="type"></param>
         /// <param name="op">
         /// in: value is one of the listed values
         /// </param>
-        /// <param name="value"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -51,9 +51,9 @@ namespace RetellAI
             global::RetellAI.EnumFilterType type,
             global::RetellAI.EnumFilterOp op)
         {
-            this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
             this.Type = type;
             this.Op = op;
+            this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
         }
 
         /// <summary>

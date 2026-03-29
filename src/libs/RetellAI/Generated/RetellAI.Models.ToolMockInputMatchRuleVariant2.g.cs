@@ -31,11 +31,11 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolMockInputMatchRuleVariant2" /> class.
         /// </summary>
-        /// <param name="type">
-        /// Match only calls with specific arguments
-        /// </param>
         /// <param name="args">
         /// Arguments to match. Only provided fields will be checked
+        /// </param>
+        /// <param name="type">
+        /// Match only calls with specific arguments
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -44,8 +44,8 @@ namespace RetellAI
             object args,
             global::RetellAI.ToolMockInputMatchRuleVariant2Type type)
         {
-            this.Args = args ?? throw new global::System.ArgumentNullException(nameof(args));
             this.Type = type;
+            this.Args = args ?? throw new global::System.ArgumentNullException(nameof(args));
         }
 
         /// <summary>

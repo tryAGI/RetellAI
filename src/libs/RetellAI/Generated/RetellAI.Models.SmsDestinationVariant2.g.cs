@@ -31,10 +31,10 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="SmsDestinationVariant2" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="phoneNumber">
         /// Destination phone number in E.164 format.
         /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -42,8 +42,8 @@ namespace RetellAI
             string phoneNumber,
             global::RetellAI.SmsDestinationVariant2Type type)
         {
-            this.PhoneNumber = phoneNumber ?? throw new global::System.ArgumentNullException(nameof(phoneNumber));
             this.Type = type;
+            this.PhoneNumber = phoneNumber ?? throw new global::System.ArgumentNullException(nameof(phoneNumber));
         }
 
         /// <summary>

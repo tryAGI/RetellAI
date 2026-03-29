@@ -39,9 +39,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="EquationCondition" /> class.
         /// </summary>
-        /// <param name="type"></param>
         /// <param name="equations"></param>
         /// <param name="operator"></param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -50,9 +50,9 @@ namespace RetellAI
             global::RetellAI.EquationConditionOperator @operator,
             global::RetellAI.EquationConditionType type)
         {
+            this.Type = type;
             this.Equations = equations ?? throw new global::System.ArgumentNullException(nameof(equations));
             this.Operator = @operator;
-            this.Type = type;
         }
 
         /// <summary>

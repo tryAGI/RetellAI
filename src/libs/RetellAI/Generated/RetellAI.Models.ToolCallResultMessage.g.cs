@@ -66,21 +66,21 @@ namespace RetellAI
         /// Unique id of the message<br/>
         /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
         /// </param>
-        /// <param name="role">
-        /// This is the result of a tool call.
-        /// </param>
         /// <param name="toolCallId">
         /// Tool call id, globally unique.
         /// </param>
         /// <param name="content">
         /// Result of the tool call, can be a string, a stringified json, etc.
         /// </param>
-        /// <param name="successful">
-        /// Whether the tool call was successful.
-        /// </param>
         /// <param name="createdTimestamp">
         /// Create timestamp of the message<br/>
         /// Example: 1703302428855
+        /// </param>
+        /// <param name="role">
+        /// This is the result of a tool call.
+        /// </param>
+        /// <param name="successful">
+        /// Whether the tool call was successful.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -94,11 +94,11 @@ namespace RetellAI
             bool? successful)
         {
             this.MessageId = messageId ?? throw new global::System.ArgumentNullException(nameof(messageId));
+            this.Role = role;
             this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
-            this.CreatedTimestamp = createdTimestamp;
-            this.Role = role;
             this.Successful = successful;
+            this.CreatedTimestamp = createdTimestamp;
         }
 
         /// <summary>
