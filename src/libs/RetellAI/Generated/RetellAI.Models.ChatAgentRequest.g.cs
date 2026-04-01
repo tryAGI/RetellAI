@@ -107,7 +107,7 @@ namespace RetellAI
         /// Post chat analysis data to extract from the chat. This data will augment the pre-defined variables extracted in the chat analysis. This will be available after the chat ends.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("post_chat_analysis_data")]
-        public global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>? PostChatAnalysisData { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.PostChatAnalysisData>? PostChatAnalysisData { get; set; }
 
         /// <summary>
         /// Available LLM models for agents.
@@ -151,6 +151,20 @@ namespace RetellAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("guardrail_config")]
         public global::RetellAI.GuardrailConfig? GuardrailConfig { get; set; }
+
+        /// <summary>
+        /// Behavior presets for chat agents. Voice-only presets are excluded.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("handbook_config")]
+        public global::RetellAI.ChatHandbookConfig? HandbookConfig { get; set; }
+
+        /// <summary>
+        /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
+        /// Example: America/New_York
+        /// </summary>
+        /// <example>America/New_York</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
+        public string? Timezone { get; set; }
 
         /// <summary>
         /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
@@ -233,6 +247,13 @@ namespace RetellAI
         /// </param>
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
+        /// <param name="handbookConfig">
+        /// Behavior presets for chat agents. Voice-only presets are excluded.
+        /// </param>
+        /// <param name="timezone">
+        /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
+        /// Example: America/New_York
+        /// </param>
         /// <param name="isPublic">
         /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
         /// Example: false
@@ -253,13 +274,15 @@ namespace RetellAI
             int? dataStorageRetentionDays,
             bool? optInSignedUrl,
             int? signedUrlExpirationMs,
-            global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>? postChatAnalysisData,
+            global::System.Collections.Generic.IList<global::RetellAI.PostChatAnalysisData>? postChatAnalysisData,
             global::RetellAI.NullableLLMModel? postChatAnalysisModel,
             string? analysisSuccessfulPrompt,
             string? analysisSummaryPrompt,
             string? analysisUserSentimentPrompt,
             global::RetellAI.PIIConfig? piiConfig,
             global::RetellAI.GuardrailConfig? guardrailConfig,
+            global::RetellAI.ChatHandbookConfig? handbookConfig,
+            string? timezone,
             bool? isPublic)
         {
             this.ResponseEngine = responseEngine;
@@ -281,6 +304,8 @@ namespace RetellAI
             this.AnalysisUserSentimentPrompt = analysisUserSentimentPrompt;
             this.PiiConfig = piiConfig;
             this.GuardrailConfig = guardrailConfig;
+            this.HandbookConfig = handbookConfig;
+            this.Timezone = timezone;
             this.IsPublic = isPublic;
         }
 

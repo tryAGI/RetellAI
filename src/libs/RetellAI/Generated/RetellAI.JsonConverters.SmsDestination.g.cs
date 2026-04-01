@@ -29,6 +29,7 @@ namespace RetellAI.JsonConverters
             var __score0 = 0;
             if (__jsonProps.Contains("type")) __score0++;
             var __score1 = 0;
+            if (__jsonProps.Contains("ignore_e164_validation")) __score1++;
             if (__jsonProps.Contains("phone_number")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
             var __bestScore = 0;

@@ -23,6 +23,12 @@ namespace RetellAI
         public required string PhoneNumber { get; set; }
 
         /// <summary>
+        /// If true, skip E.164 validation for this phone number (same semantics as transfer_call ignore_e164_validation).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ignore_e164_validation")]
+        public bool? IgnoreE164Validation { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -35,15 +41,20 @@ namespace RetellAI
         /// Destination phone number in E.164 format.
         /// </param>
         /// <param name="type"></param>
+        /// <param name="ignoreE164Validation">
+        /// If true, skip E.164 validation for this phone number (same semantics as transfer_call ignore_e164_validation).
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SmsDestinationVariant2(
             string phoneNumber,
-            global::RetellAI.SmsDestinationVariant2Type type)
+            global::RetellAI.SmsDestinationVariant2Type type,
+            bool? ignoreE164Validation)
         {
             this.Type = type;
             this.PhoneNumber = phoneNumber ?? throw new global::System.ArgumentNullException(nameof(phoneNumber));
+            this.IgnoreE164Validation = ignoreE164Validation;
         }
 
         /// <summary>

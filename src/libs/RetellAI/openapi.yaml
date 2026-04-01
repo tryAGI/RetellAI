@@ -917,7 +917,7 @@ components:
         post_call_analysis_data:
           type: array
           items:
-            $ref: '#/components/schemas/AnalysisData'
+            $ref: '#/components/schemas/PostCallAnalysisData'
           description: Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
           nullable: true
         post_call_analysis_model:
@@ -1025,6 +1025,14 @@ components:
         guardrail_config:
           $ref: '#/components/schemas/GuardrailConfig'
           description: Configuration for guardrail checks to detect and prevent prohibited topics in agent output and user input.
+        handbook_config:
+          $ref: '#/components/schemas/VoiceHandbookConfig'
+          description: Toggle behavior presets on/off to influence agent response style and behaviors.
+        timezone:
+          type: string
+          description: IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.
+          example: America/New_York
+          nullable: true
         is_public:
           type: boolean
           example: false
@@ -1164,6 +1172,16 @@ components:
       - $ref: '#/components/schemas/EnumAnalysisData'
       - $ref: '#/components/schemas/BooleanAnalysisData'
       - $ref: '#/components/schemas/NumberAnalysisData'
+    PostCallAnalysisData:
+      oneOf:
+      - $ref: '#/components/schemas/AnalysisData'
+      - $ref: '#/components/schemas/CallPresetAnalysisData'
+      description: Post-call analysis item (custom data or voice preset). Use for voice agent post_call_analysis_data; validates only call presets (call_summary, call_successful, user_sentiment).
+    PostChatAnalysisData:
+      oneOf:
+      - $ref: '#/components/schemas/AnalysisData'
+      - $ref: '#/components/schemas/ChatPresetAnalysisData'
+      description: Post-chat analysis item (custom data or chat preset). Use for chat agent post_chat_analysis_data; validates only chat presets (chat_summary, chat_successful, user_sentiment).
     AverageMetric:
       type: object
       required:
@@ -1309,6 +1327,9 @@ components:
         required:
           type: boolean
           description: Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+        conditional_prompt:
+          type: string
+          description: Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
     BranchNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'
@@ -1838,7 +1859,7 @@ components:
         post_chat_analysis_data:
           type: array
           items:
-            $ref: '#/components/schemas/AnalysisData'
+            $ref: '#/components/schemas/PostChatAnalysisData'
           description: Post chat analysis data to extract from the chat. This data will augment the pre-defined variables extracted in the chat analysis. This will be available after the chat ends.
           nullable: true
         post_chat_analysis_model:
@@ -1867,6 +1888,14 @@ components:
         guardrail_config:
           $ref: '#/components/schemas/GuardrailConfig'
           description: Configuration for guardrail checks to detect and prevent prohibited topics in agent output and user input.
+        handbook_config:
+          $ref: '#/components/schemas/ChatHandbookConfig'
+          description: Toggle behavior presets on/off to influence agent response style and behaviors. Voice-only presets are not available for chat agents.
+        timezone:
+          type: string
+          description: IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.
+          example: America/New_York
+          nullable: true
         is_public:
           type: boolean
           example: false
@@ -2383,6 +2412,69 @@ components:
             items:
               type: string
             description: IDs of conversation flows linked to this shared component
+    Asset:
+      type: object
+      properties:
+        asset_id:
+          type: string
+          description: Unique identifier for the asset.
+          example: asset_abc123def456
+        file_name:
+          type: string
+          description: Original file name of the uploaded asset.
+          example: screenshot.png
+        content_type:
+          type: string
+          description: MIME type of the asset.
+          example: image/png
+        file_size:
+          type: number
+          description: File size in bytes.
+          example: 204800
+        url:
+          type: string
+          description: CDN URL to access the asset.
+          example: https://cdn.example.com/asset/org_123/asset_abc123def456/screenshot.png
+        created_timestamp:
+          type: number
+          description: Unix timestamp of when the asset was created.
+          example: 1710000000000
+    Note:
+      type: object
+      required:
+      - id
+      - content
+      - display_position
+      - size
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the note.
+          example: note_abc123
+        content:
+          type: string
+          description: Text content of the note, can contain refs to images in the format "<image:asset_id>"
+          example: Remember to handle edge cases here.
+        display_position:
+          type: object
+          properties:
+            x:
+              type: number
+              example: 300
+            y:
+              type: number
+              example: 150
+          description: Position of the note on the canvas.
+        size:
+          type: object
+          properties:
+            width:
+              type: number
+              example: 200
+            height:
+              type: number
+              example: 100
+          description: Dimensions of the note on the canvas.
     ConversationFlowComponent:
       type: object
       properties:
@@ -2436,9 +2528,16 @@ components:
               example: 200
           description: Display position for the begin tag in the frontend
           nullable: true
+        notes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Note'
+          description: Visual annotations displayed on the flow canvas.
+          nullable: true
     ConversationFlowNode:
       oneOf:
       - $ref: '#/components/schemas/ConversationNode'
+      - $ref: '#/components/schemas/SubagentNode'
       - $ref: '#/components/schemas/EndNode'
       - $ref: '#/components/schemas/FunctionNode'
       - $ref: '#/components/schemas/CodeNode'
@@ -2583,6 +2682,12 @@ components:
                 example: 200
             description: Display position for the begin tag in the frontend.
             nullable: true
+          notes:
+            type: array
+            items:
+              $ref: '#/components/schemas/Note'
+            description: Visual annotations displayed on the flow canvas.
+            nullable: true
           mcps:
             type: array
             items:
@@ -2652,17 +2757,55 @@ components:
             - kb_002
             description: Knowledge base IDs for RAG (Retrieval-Augmented Generation).
             nullable: true
+    SubagentNode:
+      allOf:
+      - $ref: '#/components/schemas/NodeBase'
+      - $ref: '#/components/schemas/AgentOverrideConfig'
+      - type: object
+        required:
+        - type
+        - instruction
+        properties:
+          type:
+            type: string
+            enum:
+            - subagent
+            description: Type of the node
+          instruction:
+            $ref: '#/components/schemas/NodeInstructionPrompt'
+          skip_response_edge:
+            $ref: '#/components/schemas/SkipResponseEdge'
+          always_edge:
+            $ref: '#/components/schemas/AlwaysEdge'
+          edges:
+            type: array
+            items:
+              $ref: '#/components/schemas/NodeEdge'
+          finetune_conversation_examples:
+            type: array
+            items:
+              $ref: '#/components/schemas/NodeFinetuneConversationExample'
+          finetune_transition_examples:
+            type: array
+            items:
+              $ref: '#/components/schemas/NodeFinetuneTransitionExample'
+          knowledge_base_ids:
+            type: array
+            items:
+              type: string
+            description: Knowledge base IDs for RAG (Retrieval-Augmented Generation).
+            nullable: true
           tool_ids:
             type: array
             items:
               type: string
-            description: The tool ids of the tools defined in main conversation flow or component that can be used in this conversation node.
+            description: The tool ids of the tools defined in main conversation flow or component that can be used in this subagent node.
             nullable: true
           tools:
             type: array
             items:
               $ref: '#/components/schemas/Tool'
-            description: The tools owned by this conversation node. This includes other tool types like transfer_call, agent_swap, etc.
+            description: The tools owned by this subagent node. This includes other tool types like transfer_call, agent_swap, etc.
             nullable: true
     CpsConfig:
       type: object
@@ -3375,6 +3518,9 @@ components:
         required:
           type: boolean
           description: Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+        conditional_prompt:
+          type: string
+          description: Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
     EquationCondition:
       type: object
       required:
@@ -4421,6 +4567,103 @@ components:
         required:
           type: boolean
           description: Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+        conditional_prompt:
+          type: string
+          description: Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
+    PresetAnalysisData:
+      type: object
+      required:
+      - type
+      - name
+      - description
+      description: System preset for post-call or post-chat analysis (summary, success, sentiment). Presets can be included in post_call_analysis_data or post_chat_analysis_data to override prompts or mark
+        fields optional.
+      properties:
+        type:
+          type: string
+          enum:
+          - system-presets
+          description: Identifies this item as a system preset.
+        name:
+          type: string
+          enum:
+          - call_summary
+          - call_successful
+          - chat_summary
+          - chat_successful
+          - user_sentiment
+          description: Preset identifier. Use call_summary/call_successful for voice; chat_summary/chat_successful for chat; user_sentiment for both.
+          example: call_summary
+        description:
+          type: string
+          minLength: 1
+          description: Prompt or description for this preset.
+        required:
+          type: boolean
+          description: If false, this field is optional in the analysis. If true or unset, the field is required.
+        conditional_prompt:
+          type: string
+          description: Optional instruction to help decide whether this field needs to be populated. If not set, the field is always included.
+    CallPresetAnalysisData:
+      type: object
+      required:
+      - type
+      - name
+      description: System preset for post-call analysis (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
+      properties:
+        type:
+          type: string
+          enum:
+          - system-presets
+          description: Identifies this item as a system preset.
+        name:
+          type: string
+          enum:
+          - call_summary
+          - call_successful
+          - user_sentiment
+          description: Preset identifier for voice agent analysis.
+          example: call_summary
+        description:
+          type: string
+          minLength: 1
+          description: Prompt or description for this preset.
+        required:
+          type: boolean
+          description: If false, this field is optional in the analysis. If true or unset, the field is required.
+        conditional_prompt:
+          type: string
+          description: Optional instruction to help decide whether this field needs to be populated. If not set, the field is always included.
+    ChatPresetAnalysisData:
+      type: object
+      required:
+      - type
+      - name
+      description: System preset for post-chat analysis (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
+      properties:
+        type:
+          type: string
+          enum:
+          - system-presets
+          description: Identifies this item as a system preset.
+        name:
+          type: string
+          enum:
+          - chat_summary
+          - chat_successful
+          - user_sentiment
+          description: Preset identifier for chat agent analysis.
+          example: chat_summary
+        description:
+          type: string
+          minLength: 1
+          description: Prompt or description for this preset.
+        required:
+          type: boolean
+          description: If false, this field is optional in the analysis. If true or unset, the field is required.
+        conditional_prompt:
+          type: string
+          description: Optional instruction to help decide whether this field needs to be populated. If not set, the field is always included.
     Organization:
       type: object
       properties:
@@ -4567,6 +4810,53 @@ components:
           uniqueItems: true
           description: Selected prohibited user topic categories to check. When user messages contain these topics, the agent will respond with a placeholder message instead of processing the request.
           nullable: true
+    VoiceHandbookConfig:
+      type: object
+      description: Behavior presets for voice agents. All presets are available.
+      properties:
+        default_personality:
+          type: boolean
+          description: Professional call center rep baseline.
+        natural_filler_words:
+          type: boolean
+          description: Sprinkle natural speech fillers like "um", "you know" for a more human, conversational tone.
+        high_empathy:
+          type: boolean
+          description: Warm acknowledgment of caller concerns.
+        echo_verification:
+          type: boolean
+          description: Repeat back and confirm important details (voice only).
+        nato_phonetic_alphabet:
+          type: boolean
+          description: Spell using NATO phonetic alphabet style (voice only).
+        speech_normalization:
+          type: boolean
+          description: Convert numbers/dates/currency to spoken forms (voice only).
+        smart_matching:
+          type: boolean
+          description: Treat near-match similar words as same entity to reduce impact of transcription error (voice only).
+        ai_disclosure:
+          type: boolean
+          description: When asked, acknowledge being a virtual assistant.
+        scope_boundaries:
+          type: boolean
+          description: Stay within prompt/context scope, don't invent details.
+    ChatHandbookConfig:
+      type: object
+      description: Behavior presets for chat agents. Voice-only presets are excluded.
+      properties:
+        default_personality:
+          type: boolean
+          description: Professional call center rep baseline.
+        high_empathy:
+          type: boolean
+          description: Warm acknowledgment of caller concerns.
+        ai_disclosure:
+          type: boolean
+          description: When asked, acknowledge being a virtual assistant.
+        scope_boundaries:
+          type: boolean
+          description: Stay within prompt/context scope, don't invent details.
     PerformanceMetricCriteria:
       type: object
       required:
@@ -5208,6 +5498,19 @@ components:
         description:
           type: string
           description: Describes what the tool does, sometimes can also include information about when to call the tool.
+        speak_during_execution:
+          type: boolean
+          description: If true, the agent will speak a short line before sending the SMS. If omitted, defaults to true (same as end_call / transfer_call tools).
+        execution_message_description:
+          type: string
+          description: Describes what to say before sending the SMS. Only applicable when speak_during_execution is true.
+        execution_message_type:
+          type: string
+          enum:
+          - prompt
+          - static_text
+          description: Type of execution message. "prompt" means the agent will use execution_message_description as a prompt to generate the message. "static_text" means the agent will speak the execution_message_description
+            directly. Defaults to "prompt".
         sms_content:
           $ref: '#/components/schemas/SmsContent'
       required:
@@ -5254,6 +5557,9 @@ components:
           phone_number:
             type: string
             description: Destination phone number in E.164 format.
+          ignore_e164_validation:
+            type: boolean
+            description: If true, skip E.164 validation for this phone number (same semantics as transfer_call ignore_e164_validation).
     SentimentAnalysis:
       type: object
       required:
@@ -5539,6 +5845,9 @@ components:
         required:
           type: boolean
           description: Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+        conditional_prompt:
+          type: string
+          description: Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
     TestCaseBatchJob:
       type: object
       required:
@@ -6254,10 +6563,15 @@ components:
           type: object
           additionalProperties:
             type: string
-          description: A JSON object containing form data with string values
-          example:
-            favorite_color: blue
-            preferred_contact: email
+          description: A JSON object containing survey form data with string values
+        utm_parameters:
+          type: object
+          additionalProperties:
+            type: string
+          description: UTM tracking parameters
+        referrer:
+          type: string
+          description: Referrer URL
     UtteranceHallucination:
       type: object
       required:

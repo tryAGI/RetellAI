@@ -1,0 +1,53 @@
+#nullable enable
+
+namespace RetellAI.JsonConverters
+{
+    /// <inheritdoc />
+    public sealed class CallPresetAnalysisDataTypeJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.CallPresetAnalysisDataType>
+    {
+        /// <inheritdoc />
+        public override global::RetellAI.CallPresetAnalysisDataType Read(
+            ref global::System.Text.Json.Utf8JsonReader reader,
+            global::System.Type typeToConvert,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            switch (reader.TokenType)
+            {
+                case global::System.Text.Json.JsonTokenType.String:
+                {
+                    var stringValue = reader.GetString();
+                    if (stringValue != null)
+                    {
+                        return global::RetellAI.CallPresetAnalysisDataTypeExtensions.ToEnum(stringValue) ?? default;
+                    }
+                    
+                    break;
+                }
+                case global::System.Text.Json.JsonTokenType.Number:
+                {
+                    var numValue = reader.GetInt32();
+                    return (global::RetellAI.CallPresetAnalysisDataType)numValue;
+                }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::RetellAI.CallPresetAnalysisDataType);
+                }
+                default:
+                    throw new global::System.ArgumentOutOfRangeException(nameof(reader));
+            }
+
+            return default;
+        }
+
+        /// <inheritdoc />
+        public override void Write(
+            global::System.Text.Json.Utf8JsonWriter writer,
+            global::RetellAI.CallPresetAnalysisDataType value,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
+
+            writer.WriteStringValue(global::RetellAI.CallPresetAnalysisDataTypeExtensions.ToValueString(value));
+        }
+    }
+}

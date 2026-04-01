@@ -64,18 +64,6 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<string>? KnowledgeBaseIds { get; set; }
 
         /// <summary>
-        /// The tool ids of the tools defined in main conversation flow or component that can be used in this conversation node.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_ids")]
-        public global::System.Collections.Generic.IList<string>? ToolIds { get; set; }
-
-        /// <summary>
-        /// The tools owned by this conversation node. This includes other tool types like transfer_call, agent_swap, etc.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tools")]
-        public global::System.Collections.Generic.IList<global::RetellAI.Tool>? Tools { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -97,12 +85,6 @@ namespace RetellAI
         /// Knowledge base IDs for RAG (Retrieval-Augmented Generation).<br/>
         /// Example: [kb_001, kb_002]
         /// </param>
-        /// <param name="toolIds">
-        /// The tool ids of the tools defined in main conversation flow or component that can be used in this conversation node.
-        /// </param>
-        /// <param name="tools">
-        /// The tools owned by this conversation node. This includes other tool types like transfer_call, agent_swap, etc.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -114,9 +96,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneConversationExample>? finetuneConversationExamples,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples,
-            global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
-            global::System.Collections.Generic.IList<string>? toolIds,
-            global::System.Collections.Generic.IList<global::RetellAI.Tool>? tools)
+            global::System.Collections.Generic.IList<string>? knowledgeBaseIds)
         {
             this.Type = type;
             this.Instruction = instruction;
@@ -126,8 +106,6 @@ namespace RetellAI
             this.FinetuneConversationExamples = finetuneConversationExamples;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
             this.KnowledgeBaseIds = knowledgeBaseIds;
-            this.ToolIds = toolIds;
-            this.Tools = tools;
         }
 
         /// <summary>

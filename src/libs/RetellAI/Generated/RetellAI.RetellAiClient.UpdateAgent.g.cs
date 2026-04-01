@@ -564,6 +564,13 @@ namespace RetellAI
         /// </param>
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
+        /// <param name="handbookConfig">
+        /// Behavior presets for voice agents. All presets are available.
+        /// </param>
+        /// <param name="timezone">
+        /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
+        /// Example: America/New_York
+        /// </param>
         /// <param name="isPublic">
         /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
         /// Example: false
@@ -611,7 +618,7 @@ namespace RetellAI
             int? voicemailDetectionTimeoutMs = default,
             global::RetellAI.AgentRequestVoicemailOption? voicemailOption = default,
             global::RetellAI.AgentRequestIvrOption? ivrOption = default,
-            global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>? postCallAnalysisData = default,
+            global::System.Collections.Generic.IList<global::RetellAI.PostCallAnalysisData>? postCallAnalysisData = default,
             global::RetellAI.NullableLLMModel? postCallAnalysisModel = default,
             string? analysisSuccessfulPrompt = default,
             string? analysisSummaryPrompt = default,
@@ -626,6 +633,8 @@ namespace RetellAI
             global::RetellAI.AgentRequestDenoisingMode? denoisingMode = default,
             global::RetellAI.PIIConfig? piiConfig = default,
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
+            global::RetellAI.VoiceHandbookConfig? handbookConfig = default,
+            string? timezone = default,
             bool? isPublic = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -684,6 +693,8 @@ namespace RetellAI
                 DenoisingMode = denoisingMode,
                 PiiConfig = piiConfig,
                 GuardrailConfig = guardrailConfig,
+                HandbookConfig = handbookConfig,
+                Timezone = timezone,
                 IsPublic = isPublic,
             };
 

@@ -423,6 +423,13 @@ namespace RetellAI
         /// </param>
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
+        /// <param name="handbookConfig">
+        /// Behavior presets for chat agents. Voice-only presets are excluded.
+        /// </param>
+        /// <param name="timezone">
+        /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
+        /// Example: America/New_York
+        /// </param>
         /// <param name="isPublic">
         /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
         /// Example: false
@@ -444,13 +451,15 @@ namespace RetellAI
             int? dataStorageRetentionDays = default,
             bool? optInSignedUrl = default,
             int? signedUrlExpirationMs = default,
-            global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>? postChatAnalysisData = default,
+            global::System.Collections.Generic.IList<global::RetellAI.PostChatAnalysisData>? postChatAnalysisData = default,
             global::RetellAI.NullableLLMModel? postChatAnalysisModel = default,
             string? analysisSuccessfulPrompt = default,
             string? analysisSummaryPrompt = default,
             string? analysisUserSentimentPrompt = default,
             global::RetellAI.PIIConfig? piiConfig = default,
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
+            global::RetellAI.ChatHandbookConfig? handbookConfig = default,
+            string? timezone = default,
             bool? isPublic = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -475,6 +484,8 @@ namespace RetellAI
                 AnalysisUserSentimentPrompt = analysisUserSentimentPrompt,
                 PiiConfig = piiConfig,
                 GuardrailConfig = guardrailConfig,
+                HandbookConfig = handbookConfig,
+                Timezone = timezone,
                 IsPublic = isPublic,
             };
 
