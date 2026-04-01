@@ -42,6 +42,12 @@ namespace RetellAI
         public bool? Required { get; set; }
 
         /// <summary>
+        /// Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conditional_prompt")]
+        public string? ConditionalPrompt { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -65,6 +71,9 @@ namespace RetellAI
         /// <param name="required">
         /// Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
         /// </param>
+        /// <param name="conditionalPrompt">
+        /// Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -72,12 +81,14 @@ namespace RetellAI
             string name,
             string description,
             global::RetellAI.NumberAnalysisDataType type,
-            bool? required)
+            bool? required,
+            string? conditionalPrompt)
         {
             this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Required = required;
+            this.ConditionalPrompt = conditionalPrompt;
         }
 
         /// <summary>

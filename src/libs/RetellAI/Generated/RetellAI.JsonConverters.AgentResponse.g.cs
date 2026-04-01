@@ -52,6 +52,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("end_call_after_silence_ms")) __score1++;
             if (__jsonProps.Contains("fallback_voice_ids")) __score1++;
             if (__jsonProps.Contains("guardrail_config")) __score1++;
+            if (__jsonProps.Contains("handbook_config")) __score1++;
             if (__jsonProps.Contains("interruption_sensitivity")) __score1++;
             if (__jsonProps.Contains("is_public")) __score1++;
             if (__jsonProps.Contains("ivr_option")) __score1++;
@@ -70,6 +71,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("ring_duration_ms")) __score1++;
             if (__jsonProps.Contains("signed_url_expiration_ms")) __score1++;
             if (__jsonProps.Contains("stt_mode")) __score1++;
+            if (__jsonProps.Contains("timezone")) __score1++;
             if (__jsonProps.Contains("user_dtmf_options")) __score1++;
             if (__jsonProps.Contains("version_description")) __score1++;
             if (__jsonProps.Contains("vocab_specialization")) __score1++;

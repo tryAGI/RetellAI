@@ -42,6 +42,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("is_transfer_llm")) __score1++;
             if (__jsonProps.Contains("mcps")) __score1++;
             if (__jsonProps.Contains("nodes")) __score1++;
+            if (__jsonProps.Contains("notes")) __score1++;
             if (__jsonProps.Contains("start_node_id")) __score1++;
             if (__jsonProps.Contains("tools")) __score1++;
             var __bestScore = 0;

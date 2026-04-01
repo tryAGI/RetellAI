@@ -53,6 +53,12 @@ namespace RetellAI
         public global::RetellAI.ConversationFlowVariant2BeginTagDisplayPosition? BeginTagDisplayPosition { get; set; }
 
         /// <summary>
+        /// Visual annotations displayed on the flow canvas.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("notes")]
+        public global::System.Collections.Generic.IList<global::RetellAI.Note>? Notes { get; set; }
+
+        /// <summary>
         /// A list of MCP server configurations to use for this conversation flow.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mcps")]
@@ -105,6 +111,9 @@ namespace RetellAI
         /// <param name="beginTagDisplayPosition">
         /// Display position for the begin tag in the frontend.
         /// </param>
+        /// <param name="notes">
+        /// Visual annotations displayed on the flow canvas.
+        /// </param>
         /// <param name="mcps">
         /// A list of MCP server configurations to use for this conversation flow.
         /// </param>
@@ -126,6 +135,7 @@ namespace RetellAI
             string? startNodeId,
             global::System.Collections.Generic.Dictionary<string, string>? defaultDynamicVariables,
             global::RetellAI.ConversationFlowVariant2BeginTagDisplayPosition? beginTagDisplayPosition,
+            global::System.Collections.Generic.IList<global::RetellAI.Note>? notes,
             global::System.Collections.Generic.IList<global::RetellAI.Mcp>? mcps,
             bool? isTransferLlm,
             global::System.Collections.Generic.IList<global::RetellAI.ConversationFlowNode>? nodes)
@@ -136,6 +146,7 @@ namespace RetellAI
             this.StartNodeId = startNodeId;
             this.DefaultDynamicVariables = defaultDynamicVariables;
             this.BeginTagDisplayPosition = beginTagDisplayPosition;
+            this.Notes = notes;
             this.Mcps = mcps;
             this.IsTransferLlm = isTransferLlm;
             this.Nodes = nodes;

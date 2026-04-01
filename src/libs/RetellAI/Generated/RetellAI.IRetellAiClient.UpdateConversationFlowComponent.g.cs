@@ -42,6 +42,9 @@ namespace RetellAI
         /// <param name="beginTagDisplayPosition">
         /// Display position for the begin tag in the frontend
         /// </param>
+        /// <param name="notes">
+        /// Visual annotations displayed on the flow canvas.
+        /// </param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.ConversationFlowComponentResponse> UpdateConversationFlowComponentAsync(
@@ -52,6 +55,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.ConversationFlowNode>? nodes = default,
             string? startNodeId = default,
             global::RetellAI.ConversationFlowComponentBeginTagDisplayPosition? beginTagDisplayPosition = default,
+            global::System.Collections.Generic.IList<global::RetellAI.Note>? notes = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

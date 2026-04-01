@@ -40,6 +40,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("data_storage_setting")) __score1++;
             if (__jsonProps.Contains("end_chat_after_silence_ms")) __score1++;
             if (__jsonProps.Contains("guardrail_config")) __score1++;
+            if (__jsonProps.Contains("handbook_config")) __score1++;
             if (__jsonProps.Contains("is_public")) __score1++;
             if (__jsonProps.Contains("language")) __score1++;
             if (__jsonProps.Contains("opt_in_signed_url")) __score1++;
@@ -48,6 +49,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("post_chat_analysis_model")) __score1++;
             if (__jsonProps.Contains("response_engine")) __score1++;
             if (__jsonProps.Contains("signed_url_expiration_ms")) __score1++;
+            if (__jsonProps.Contains("timezone")) __score1++;
             if (__jsonProps.Contains("webhook_events")) __score1++;
             if (__jsonProps.Contains("webhook_timeout_ms")) __score1++;
             if (__jsonProps.Contains("webhook_url")) __score1++;

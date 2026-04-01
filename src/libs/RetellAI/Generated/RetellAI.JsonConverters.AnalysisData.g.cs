@@ -27,6 +27,7 @@ namespace RetellAI.JsonConverters
             }
 
             var __score0 = 0;
+            if (__jsonProps.Contains("conditional_prompt")) __score0++;
             if (__jsonProps.Contains("description")) __score0++;
             if (__jsonProps.Contains("examples")) __score0++;
             if (__jsonProps.Contains("name")) __score0++;
@@ -34,16 +35,19 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("type")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("choices")) __score1++;
+            if (__jsonProps.Contains("conditional_prompt")) __score1++;
             if (__jsonProps.Contains("description")) __score1++;
             if (__jsonProps.Contains("name")) __score1++;
             if (__jsonProps.Contains("required")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
             var __score2 = 0;
+            if (__jsonProps.Contains("conditional_prompt")) __score2++;
             if (__jsonProps.Contains("description")) __score2++;
             if (__jsonProps.Contains("name")) __score2++;
             if (__jsonProps.Contains("required")) __score2++;
             if (__jsonProps.Contains("type")) __score2++;
             var __score3 = 0;
+            if (__jsonProps.Contains("conditional_prompt")) __score3++;
             if (__jsonProps.Contains("description")) __score3++;
             if (__jsonProps.Contains("name")) __score3++;
             if (__jsonProps.Contains("required")) __score3++;

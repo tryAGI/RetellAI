@@ -237,6 +237,10 @@ namespace RetellAI
 
             typeof(global::RetellAI.JsonConverters.ConversationNodeVariant3TypeNullableJsonConverter),
 
+            typeof(global::RetellAI.JsonConverters.SubagentNodeVariant3TypeJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.SubagentNodeVariant3TypeNullableJsonConverter),
+
             typeof(global::RetellAI.JsonConverters.CustomToolTypeJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.CustomToolTypeNullableJsonConverter),
@@ -477,6 +481,30 @@ namespace RetellAI
 
             typeof(global::RetellAI.JsonConverters.NumberAnalysisDataTypeNullableJsonConverter),
 
+            typeof(global::RetellAI.JsonConverters.PresetAnalysisDataTypeJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.PresetAnalysisDataTypeNullableJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.PresetAnalysisDataNameJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.PresetAnalysisDataNameNullableJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.CallPresetAnalysisDataTypeJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.CallPresetAnalysisDataTypeNullableJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.CallPresetAnalysisDataNameJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.CallPresetAnalysisDataNameNullableJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.ChatPresetAnalysisDataTypeJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.ChatPresetAnalysisDataTypeNullableJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.ChatPresetAnalysisDataNameJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.ChatPresetAnalysisDataNameNullableJsonConverter),
+
             typeof(global::RetellAI.JsonConverters.PIIConfigModeJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.PIIConfigModeNullableJsonConverter),
@@ -548,6 +576,10 @@ namespace RetellAI
             typeof(global::RetellAI.JsonConverters.SendSMSToolTypeJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.SendSMSToolTypeNullableJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.SendSMSToolExecutionMessageTypeJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.SendSMSToolExecutionMessageTypeNullableJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.SmsSenderVariant1TypeJsonConverter),
 
@@ -2179,6 +2211,10 @@ namespace RetellAI
 
             typeof(global::RetellAI.JsonConverters.AnalysisDataJsonConverter),
 
+            typeof(global::RetellAI.JsonConverters.PostCallAnalysisDataJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.PostChatAnalysisDataJsonConverter),
+
             typeof(global::RetellAI.JsonConverters.BranchNodeJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.BridgeTransferNodeJsonConverter),
@@ -2198,6 +2234,8 @@ namespace RetellAI
             typeof(global::RetellAI.JsonConverters.ConversationFlowJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.ConversationNodeJsonConverter),
+
+            typeof(global::RetellAI.JsonConverters.SubagentNodeJsonConverter),
 
             typeof(global::RetellAI.JsonConverters.CreateConversationFlowComponentRequestJsonConverter),
 
@@ -2449,8 +2487,8 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentRequestVoicemailOption))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.VoicemailAction), TypeInfoPropertyName = "VoicemailAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentRequestIvrOption))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AnalysisData), TypeInfoPropertyName = "AnalysisData2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.PostCallAnalysisData>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.PostCallAnalysisData), TypeInfoPropertyName = "PostCallAnalysisData2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NullableLLMModel), TypeInfoPropertyName = "NullableLLMModel2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentRequestSttMode), TypeInfoPropertyName = "AgentRequestSttMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentRequestCustomSttConfig))]
@@ -2460,6 +2498,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentRequestDenoisingMode), TypeInfoPropertyName = "AgentRequestDenoisingMode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.PIIConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GuardrailConfig))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.VoiceHandbookConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentResponse), TypeInfoPropertyName = "AgentResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentResponseVariant1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentResponseVariant3))]
@@ -2475,10 +2514,14 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentSwapTool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentSwapToolType), TypeInfoPropertyName = "AgentSwapToolType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentSwapToolExecutionMessageType), TypeInfoPropertyName = "AgentSwapToolExecutionMessageType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AnalysisData), TypeInfoPropertyName = "AnalysisData2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.StringAnalysisData))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.EnumAnalysisData))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.BooleanAnalysisData))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NumberAnalysisData))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CallPresetAnalysisData))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.PostChatAnalysisData), TypeInfoPropertyName = "PostChatAnalysisData2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ChatPresetAnalysisData))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AverageMetric))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.BatchCallResponse))]
@@ -2540,6 +2583,8 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.ChatAgentRequestWebhookEvent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ChatAgentRequestWebhookEvent), TypeInfoPropertyName = "ChatAgentRequestWebhookEvent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ChatAgentRequestDataStorageSetting), TypeInfoPropertyName = "ChatAgentRequestDataStorageSetting2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.PostChatAnalysisData>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ChatHandbookConfig))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ChatAgentResponse), TypeInfoPropertyName = "ChatAgentResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ChatAgentResponseVariant1))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ChatAgentResponseVariant3))]
@@ -2589,6 +2634,10 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ConversationFlowComponentResponse), TypeInfoPropertyName = "ConversationFlowComponentResponse2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateConversationFlowComponentRequest), TypeInfoPropertyName = "CreateConversationFlowComponentRequest2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ConversationFlowComponentResponseVariant2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.Asset))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.Note))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NoteDisplayPosition))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NoteSize))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ConversationFlowComponent))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.NodeTool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeTool), TypeInfoPropertyName = "NodeTool2")]
@@ -2597,7 +2646,9 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.ConversationFlowNode>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ConversationFlowNode), TypeInfoPropertyName = "ConversationFlowNode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ConversationFlowComponentBeginTagDisplayPosition))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.Note>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ConversationNode), TypeInfoPropertyName = "ConversationNode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SubagentNode), TypeInfoPropertyName = "SubagentNode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.EndNode), TypeInfoPropertyName = "EndNode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.FunctionNode), TypeInfoPropertyName = "FunctionNode2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CodeNode), TypeInfoPropertyName = "CodeNode2")]
@@ -2621,6 +2672,9 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AlwaysEdge), TypeInfoPropertyName = "AlwaysEdge2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneConversationExample>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeFinetuneConversationExample))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SubagentNodeVariant3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SubagentNodeVariant3Type), TypeInfoPropertyName = "SubagentNodeVariant3Type2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeInstructionPrompt))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.Tool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.Tool), TypeInfoPropertyName = "Tool2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CpsConfig))]
@@ -2702,6 +2756,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.EquationOperator), TypeInfoPropertyName = "EquationOperator2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ExtractDynamicVariableTool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ExtractDynamicVariableToolType), TypeInfoPropertyName = "ExtractDynamicVariableToolType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ExtractDynamicVariablesNodeVariant2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ExtractDynamicVariablesNodeVariant2Type), TypeInfoPropertyName = "ExtractDynamicVariablesNodeVariant2Type2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.FinetuneExampleUtterance), TypeInfoPropertyName = "FinetuneExampleUtterance2")]
@@ -2769,7 +2824,6 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeBaseCommonDisplayPosition))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.OneOf<global::RetellAI.PromptCondition, global::RetellAI.EquationCondition>), TypeInfoPropertyName = "OneOfPromptConditionEquationCondition2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.PromptCondition))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeInstructionPrompt))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeInstructionPromptType), TypeInfoPropertyName = "NodeInstructionPromptType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeInstructionStaticText))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeInstructionStaticTextType), TypeInfoPropertyName = "NodeInstructionStaticTextType2")]
@@ -2781,6 +2835,13 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeTransitionUtterance))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NodeTransitionUtteranceRole), TypeInfoPropertyName = "NodeTransitionUtteranceRole2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NumberAnalysisDataType), TypeInfoPropertyName = "NumberAnalysisDataType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.PresetAnalysisData))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.PresetAnalysisDataType), TypeInfoPropertyName = "PresetAnalysisDataType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.PresetAnalysisDataName), TypeInfoPropertyName = "PresetAnalysisDataName2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CallPresetAnalysisDataType), TypeInfoPropertyName = "CallPresetAnalysisDataType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CallPresetAnalysisDataName), TypeInfoPropertyName = "CallPresetAnalysisDataName2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ChatPresetAnalysisDataType), TypeInfoPropertyName = "ChatPresetAnalysisDataType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ChatPresetAnalysisDataName), TypeInfoPropertyName = "ChatPresetAnalysisDataName2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.Organization))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.OrganizationWebhookUrl>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.OrganizationWebhookUrl))]
@@ -2835,6 +2896,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.PerformanceMetricCriteria>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SendSMSTool))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SendSMSToolType), TypeInfoPropertyName = "SendSMSToolType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SendSMSToolExecutionMessageType), TypeInfoPropertyName = "SendSMSToolExecutionMessageType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SmsContent), TypeInfoPropertyName = "SmsContent2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SmsSender), TypeInfoPropertyName = "SmsSender2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SmsSenderVariant1))]
@@ -3726,7 +3788,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.UtteranceNaturalnessIssues>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.AgentRequestWebhookEvent>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.AgentRequestPronunciationDictionaryItem>))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.AnalysisData>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.PostCallAnalysisData>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.NodeEdge>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.NodeFinetuneTransitionExample>))]
@@ -3737,6 +3799,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.TimeWindow>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.DayOfWeek>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.ChatAgentRequestWebhookEvent>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.PostChatAnalysisData>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.MessageOrToolCall>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.ProductCost>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.CohortAggregatedResultTopQuestion>))]
@@ -3744,6 +3807,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.NodeTool>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.Mcp>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.ConversationFlowNode>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.Note>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.CreateConversationFlowComponentRequest>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.NodeFinetuneConversationExample>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.Tool>))]
@@ -3755,6 +3819,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.ToolCallFilter>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.AllOf<global::RetellAI.StringFilter, global::RetellAI.CallFilterDynamicVariable>>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.Equation>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.AnalysisData>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.FinetuneExampleUtterance>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.GlobalNodeFinetuneTransitionExample>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.UtteranceHallucination>))]

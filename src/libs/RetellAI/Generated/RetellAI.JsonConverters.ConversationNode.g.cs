@@ -39,8 +39,6 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("instruction")) __score2++;
             if (__jsonProps.Contains("knowledge_base_ids")) __score2++;
             if (__jsonProps.Contains("skip_response_edge")) __score2++;
-            if (__jsonProps.Contains("tool_ids")) __score2++;
-            if (__jsonProps.Contains("tools")) __score2++;
             if (__jsonProps.Contains("type")) __score2++;
             var __bestScore = 0;
             var __bestIndex = -1;

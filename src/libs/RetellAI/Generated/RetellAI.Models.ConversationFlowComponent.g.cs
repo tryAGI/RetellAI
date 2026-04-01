@@ -53,6 +53,12 @@ namespace RetellAI
         public global::RetellAI.ConversationFlowComponentBeginTagDisplayPosition? BeginTagDisplayPosition { get; set; }
 
         /// <summary>
+        /// Visual annotations displayed on the flow canvas.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("notes")]
+        public global::System.Collections.Generic.IList<global::RetellAI.Note>? Notes { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -83,6 +89,9 @@ namespace RetellAI
         /// <param name="beginTagDisplayPosition">
         /// Display position for the begin tag in the frontend
         /// </param>
+        /// <param name="notes">
+        /// Visual annotations displayed on the flow canvas.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -92,7 +101,8 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.Mcp>? mcps,
             global::System.Collections.Generic.IList<global::RetellAI.ConversationFlowNode>? nodes,
             string? startNodeId,
-            global::RetellAI.ConversationFlowComponentBeginTagDisplayPosition? beginTagDisplayPosition)
+            global::RetellAI.ConversationFlowComponentBeginTagDisplayPosition? beginTagDisplayPosition,
+            global::System.Collections.Generic.IList<global::RetellAI.Note>? notes)
         {
             this.Name = name;
             this.Tools = tools;
@@ -100,6 +110,7 @@ namespace RetellAI
             this.Nodes = nodes;
             this.StartNodeId = startNodeId;
             this.BeginTagDisplayPosition = beginTagDisplayPosition;
+            this.Notes = notes;
         }
 
         /// <summary>

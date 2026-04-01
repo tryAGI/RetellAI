@@ -4,8 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// A JSON object containing form data with string values<br/>
-    /// Example: {"favorite_color":"blue","preferred_contact":"email"}
+    /// A JSON object containing survey form data with string values
     /// </summary>
     public sealed partial class UserFormRequestForm
     {
