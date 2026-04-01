@@ -88,7 +88,7 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.IvrActionHangup), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.IvrActionHangup?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.IvrActionHangup).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Hangup, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Hangup!, typeInfo);
             }
         }
     }

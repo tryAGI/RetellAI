@@ -90,7 +90,7 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ModelChoiceCascading), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ModelChoiceCascading?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ModelChoiceCascading).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Cascading, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Cascading!, typeInfo);
             }
         }
     }
