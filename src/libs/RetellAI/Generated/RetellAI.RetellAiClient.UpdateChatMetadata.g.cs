@@ -370,7 +370,6 @@ namespace RetellAI
             object? customAttributes = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::RetellAI.UpdateChatMetadataRequest
             {
                 Metadata = metadata,

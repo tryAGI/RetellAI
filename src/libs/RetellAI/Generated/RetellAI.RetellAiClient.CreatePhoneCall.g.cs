@@ -458,7 +458,6 @@ namespace RetellAI
             bool? ignoreE164Validation = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-
             var __request = new global::RetellAI.CreatePhoneCallRequest
             {
                 FromNumber = fromNumber,
