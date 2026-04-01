@@ -582,79 +582,79 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EndCallTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EndCallTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EndCallTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.EndCall, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.EndCall!, typeInfo);
             }
             else if (value.IsTransferCall)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferCallTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferCallTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferCallTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TransferCall, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TransferCall!, typeInfo);
             }
             else if (value.IsCheckAvailabilityCal)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CheckAvailabilityCalTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CheckAvailabilityCalTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CheckAvailabilityCalTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CheckAvailabilityCal, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CheckAvailabilityCal!, typeInfo);
             }
             else if (value.IsBookAppointmentCal)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BookAppointmentCalTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BookAppointmentCalTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BookAppointmentCalTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BookAppointmentCal, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BookAppointmentCal!, typeInfo);
             }
             else if (value.IsAgentSwap)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentSwapTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentSwapTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentSwapTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AgentSwap, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AgentSwap!, typeInfo);
             }
             else if (value.IsPressDigit)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.PressDigitTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.PressDigitTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.PressDigitTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PressDigit, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PressDigit!, typeInfo);
             }
             else if (value.IsSendSM)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SendSMSTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SendSMSTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SendSMSTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SendSM, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SendSM!, typeInfo);
             }
             else if (value.IsCustom)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CustomTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CustomTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CustomTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Custom, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Custom!, typeInfo);
             }
             else if (value.IsCode)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CodeTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CodeTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CodeTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Code, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Code!, typeInfo);
             }
             else if (value.IsExtractDynamicVariable)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ExtractDynamicVariableTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ExtractDynamicVariableTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ExtractDynamicVariableTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ExtractDynamicVariable, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ExtractDynamicVariable!, typeInfo);
             }
             else if (value.IsBridgeTransfer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BridgeTransferTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BridgeTransferTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BridgeTransferTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BridgeTransfer, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BridgeTransfer!, typeInfo);
             }
             else if (value.IsCancelTransfer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CancelTransferTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CancelTransferTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CancelTransferTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CancelTransfer, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CancelTransfer!, typeInfo);
             }
             else if (value.IsMCP)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.MCPTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.MCPTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.MCPTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.MCP, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.MCP!, typeInfo);
             }
         }
     }

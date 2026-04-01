@@ -204,25 +204,25 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.StringAnalysisData), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.StringAnalysisData?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.StringAnalysisData).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.String, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.String!, typeInfo);
             }
             else if (value.IsEnum)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EnumAnalysisData), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EnumAnalysisData?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EnumAnalysisData).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Enum, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Enum!, typeInfo);
             }
             else if (value.IsBoolean)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BooleanAnalysisData), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BooleanAnalysisData?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BooleanAnalysisData).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Boolean, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Boolean!, typeInfo);
             }
             else if (value.IsNumber)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NumberAnalysisData), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NumberAnalysisData?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NumberAnalysisData).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Number, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Number!, typeInfo);
             }
         }
     }

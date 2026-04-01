@@ -269,37 +269,37 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.StringFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.StringFilter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.StringFilter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.String, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.String!, typeInfo);
             }
             else if (value.IsNumber)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NumberFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NumberFilter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NumberFilter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Number, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Number!, typeInfo);
             }
             else if (value.IsBoolean)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BooleanFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BooleanFilter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BooleanFilter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Boolean, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Boolean!, typeInfo);
             }
             else if (value.IsRange)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.RangeFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.RangeFilter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.RangeFilter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Range, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Range!, typeInfo);
             }
             else if (value.IsEnum)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EnumFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EnumFilter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EnumFilter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Enum, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Enum!, typeInfo);
             }
             else if (value.IsPresent)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.PresentFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.PresentFilter?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.PresentFilter).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Present, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Present!, typeInfo);
             }
         }
     }

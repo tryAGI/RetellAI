@@ -174,19 +174,19 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferOptionColdTransfer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferOptionColdTransfer?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferOptionColdTransfer).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ColdTransfer, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ColdTransfer!, typeInfo);
             }
             else if (value.IsWarmTransfer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferOptionWarmTransfer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferOptionWarmTransfer?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferOptionWarmTransfer).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WarmTransfer, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.WarmTransfer!, typeInfo);
             }
             else if (value.IsAgenticWarmTransfer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferOptionAgenticWarmTransfer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferOptionAgenticWarmTransfer?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferOptionAgenticWarmTransfer).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AgenticWarmTransfer, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AgenticWarmTransfer!, typeInfo);
             }
         }
     }

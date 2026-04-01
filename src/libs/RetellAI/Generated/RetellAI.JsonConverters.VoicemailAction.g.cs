@@ -192,25 +192,25 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.VoicemailActionPrompt), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.VoicemailActionPrompt?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.VoicemailActionPrompt).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Prompt, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Prompt!, typeInfo);
             }
             else if (value.IsStaticText)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.VoicemailActionStaticText), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.VoicemailActionStaticText?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.VoicemailActionStaticText).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.StaticText, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.StaticText!, typeInfo);
             }
             else if (value.IsHangup)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.VoicemailActionHangup), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.VoicemailActionHangup?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.VoicemailActionHangup).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Hangup, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Hangup!, typeInfo);
             }
             else if (value.IsBridgeTransfer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.VoicemailActionBridgeTransfer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.VoicemailActionBridgeTransfer?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.VoicemailActionBridgeTransfer).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BridgeTransfer, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BridgeTransfer!, typeInfo);
             }
         }
     }

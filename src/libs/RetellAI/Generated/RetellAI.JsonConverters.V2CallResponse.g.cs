@@ -146,13 +146,13 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2WebCallResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2WebCallResponse> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2WebCallResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Web, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Web!.Value, typeInfo);
             }
             else if (value.IsPhone)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2PhoneCallResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2PhoneCallResponse> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2PhoneCallResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Phone, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Phone!.Value, typeInfo);
             }
         }
     }
