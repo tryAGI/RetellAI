@@ -13,256 +13,256 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ConversationNode? Value1 { get; init; }
+        public global::RetellAI.ConversationNode? ConversationNode { get; init; }
 #else
-        public global::RetellAI.ConversationNode? Value1 { get; }
+        public global::RetellAI.ConversationNode? ConversationNode { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ConversationNode))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsConversationNode => ConversationNode != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.SubagentNode? Value2 { get; init; }
+        public global::RetellAI.SubagentNode? Subagent { get; init; }
 #else
-        public global::RetellAI.SubagentNode? Value2 { get; }
+        public global::RetellAI.SubagentNode? Subagent { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Subagent))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsSubagent => Subagent != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.EndNode? Value3 { get; init; }
+        public global::RetellAI.EndNode? End { get; init; }
 #else
-        public global::RetellAI.EndNode? Value3 { get; }
+        public global::RetellAI.EndNode? End { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value3))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(End))]
 #endif
-        public bool IsValue3 => Value3 != null;
+        public bool IsEnd => End != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.FunctionNode? Value4 { get; init; }
+        public global::RetellAI.FunctionNode? Function { get; init; }
 #else
-        public global::RetellAI.FunctionNode? Value4 { get; }
+        public global::RetellAI.FunctionNode? Function { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value4))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Function))]
 #endif
-        public bool IsValue4 => Value4 != null;
+        public bool IsFunction => Function != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.CodeNode? Value5 { get; init; }
+        public global::RetellAI.CodeNode? Code { get; init; }
 #else
-        public global::RetellAI.CodeNode? Value5 { get; }
+        public global::RetellAI.CodeNode? Code { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value5))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Code))]
 #endif
-        public bool IsValue5 => Value5 != null;
+        public bool IsCode => Code != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.TransferCallNode? Value6 { get; init; }
+        public global::RetellAI.TransferCallNode? TransferCall { get; init; }
 #else
-        public global::RetellAI.TransferCallNode? Value6 { get; }
+        public global::RetellAI.TransferCallNode? TransferCall { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value6))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TransferCall))]
 #endif
-        public bool IsValue6 => Value6 != null;
+        public bool IsTransferCall => TransferCall != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.PressDigitNode? Value7 { get; init; }
+        public global::RetellAI.PressDigitNode? PressDigit { get; init; }
 #else
-        public global::RetellAI.PressDigitNode? Value7 { get; }
+        public global::RetellAI.PressDigitNode? PressDigit { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value7))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PressDigit))]
 #endif
-        public bool IsValue7 => Value7 != null;
+        public bool IsPressDigit => PressDigit != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.BranchNode? Value8 { get; init; }
+        public global::RetellAI.BranchNode? Branch { get; init; }
 #else
-        public global::RetellAI.BranchNode? Value8 { get; }
+        public global::RetellAI.BranchNode? Branch { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value8))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Branch))]
 #endif
-        public bool IsValue8 => Value8 != null;
+        public bool IsBranch => Branch != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.SmsNode? Value9 { get; init; }
+        public global::RetellAI.SmsNode? Sms { get; init; }
 #else
-        public global::RetellAI.SmsNode? Value9 { get; }
+        public global::RetellAI.SmsNode? Sms { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value9))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Sms))]
 #endif
-        public bool IsValue9 => Value9 != null;
+        public bool IsSms => Sms != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ExtractDynamicVariablesNode? Value10 { get; init; }
+        public global::RetellAI.ExtractDynamicVariablesNode? ExtractDynamicVariables { get; init; }
 #else
-        public global::RetellAI.ExtractDynamicVariablesNode? Value10 { get; }
+        public global::RetellAI.ExtractDynamicVariablesNode? ExtractDynamicVariables { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value10))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ExtractDynamicVariables))]
 #endif
-        public bool IsValue10 => Value10 != null;
+        public bool IsExtractDynamicVariables => ExtractDynamicVariables != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.AgentSwapNode? Value11 { get; init; }
+        public global::RetellAI.AgentSwapNode? AgentSwap { get; init; }
 #else
-        public global::RetellAI.AgentSwapNode? Value11 { get; }
+        public global::RetellAI.AgentSwapNode? AgentSwap { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value11))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentSwap))]
 #endif
-        public bool IsValue11 => Value11 != null;
+        public bool IsAgentSwap => AgentSwap != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.MCPNode? Value12 { get; init; }
+        public global::RetellAI.MCPNode? Mcp { get; init; }
 #else
-        public global::RetellAI.MCPNode? Value12 { get; }
+        public global::RetellAI.MCPNode? Mcp { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value12))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Mcp))]
 #endif
-        public bool IsValue12 => Value12 != null;
+        public bool IsMcp => Mcp != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ComponentNode? Value13 { get; init; }
+        public global::RetellAI.ComponentNode? Component { get; init; }
 #else
-        public global::RetellAI.ComponentNode? Value13 { get; }
+        public global::RetellAI.ComponentNode? Component { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value13))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Component))]
 #endif
-        public bool IsValue13 => Value13 != null;
+        public bool IsComponent => Component != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.BridgeTransferNode? Value14 { get; init; }
+        public global::RetellAI.BridgeTransferNode? BridgeTransfer { get; init; }
 #else
-        public global::RetellAI.BridgeTransferNode? Value14 { get; }
+        public global::RetellAI.BridgeTransferNode? BridgeTransfer { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value14))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BridgeTransfer))]
 #endif
-        public bool IsValue14 => Value14 != null;
+        public bool IsBridgeTransfer => BridgeTransfer != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.CancelTransferNode? Value15 { get; init; }
+        public global::RetellAI.CancelTransferNode? CancelTransfer { get; init; }
 #else
-        public global::RetellAI.CancelTransferNode? Value15 { get; }
+        public global::RetellAI.CancelTransferNode? CancelTransfer { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value15))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CancelTransfer))]
 #endif
-        public bool IsValue15 => Value15 != null;
+        public bool IsCancelTransfer => CancelTransfer != null;
         /// <summary>
         /// 
         /// </summary>
@@ -271,14 +271,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ConversationNode?(ConversationFlowNode @this) => @this.Value1;
+        public static implicit operator global::RetellAI.ConversationNode?(ConversationFlowNode @this) => @this.ConversationNode;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.ConversationNode? value)
         {
-            Value1 = value;
+            ConversationNode = value;
         }
 
         /// <summary>
@@ -289,14 +289,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.SubagentNode?(ConversationFlowNode @this) => @this.Value2;
+        public static implicit operator global::RetellAI.SubagentNode?(ConversationFlowNode @this) => @this.Subagent;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.SubagentNode? value)
         {
-            Value2 = value;
+            Subagent = value;
         }
 
         /// <summary>
@@ -307,14 +307,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.EndNode?(ConversationFlowNode @this) => @this.Value3;
+        public static implicit operator global::RetellAI.EndNode?(ConversationFlowNode @this) => @this.End;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.EndNode? value)
         {
-            Value3 = value;
+            End = value;
         }
 
         /// <summary>
@@ -325,14 +325,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.FunctionNode?(ConversationFlowNode @this) => @this.Value4;
+        public static implicit operator global::RetellAI.FunctionNode?(ConversationFlowNode @this) => @this.Function;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.FunctionNode? value)
         {
-            Value4 = value;
+            Function = value;
         }
 
         /// <summary>
@@ -343,14 +343,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.CodeNode?(ConversationFlowNode @this) => @this.Value5;
+        public static implicit operator global::RetellAI.CodeNode?(ConversationFlowNode @this) => @this.Code;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.CodeNode? value)
         {
-            Value5 = value;
+            Code = value;
         }
 
         /// <summary>
@@ -361,14 +361,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.TransferCallNode?(ConversationFlowNode @this) => @this.Value6;
+        public static implicit operator global::RetellAI.TransferCallNode?(ConversationFlowNode @this) => @this.TransferCall;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.TransferCallNode? value)
         {
-            Value6 = value;
+            TransferCall = value;
         }
 
         /// <summary>
@@ -379,14 +379,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.PressDigitNode?(ConversationFlowNode @this) => @this.Value7;
+        public static implicit operator global::RetellAI.PressDigitNode?(ConversationFlowNode @this) => @this.PressDigit;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.PressDigitNode? value)
         {
-            Value7 = value;
+            PressDigit = value;
         }
 
         /// <summary>
@@ -397,14 +397,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.BranchNode?(ConversationFlowNode @this) => @this.Value8;
+        public static implicit operator global::RetellAI.BranchNode?(ConversationFlowNode @this) => @this.Branch;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.BranchNode? value)
         {
-            Value8 = value;
+            Branch = value;
         }
 
         /// <summary>
@@ -415,14 +415,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.SmsNode?(ConversationFlowNode @this) => @this.Value9;
+        public static implicit operator global::RetellAI.SmsNode?(ConversationFlowNode @this) => @this.Sms;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.SmsNode? value)
         {
-            Value9 = value;
+            Sms = value;
         }
 
         /// <summary>
@@ -433,14 +433,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ExtractDynamicVariablesNode?(ConversationFlowNode @this) => @this.Value10;
+        public static implicit operator global::RetellAI.ExtractDynamicVariablesNode?(ConversationFlowNode @this) => @this.ExtractDynamicVariables;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.ExtractDynamicVariablesNode? value)
         {
-            Value10 = value;
+            ExtractDynamicVariables = value;
         }
 
         /// <summary>
@@ -451,14 +451,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.AgentSwapNode?(ConversationFlowNode @this) => @this.Value11;
+        public static implicit operator global::RetellAI.AgentSwapNode?(ConversationFlowNode @this) => @this.AgentSwap;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.AgentSwapNode? value)
         {
-            Value11 = value;
+            AgentSwap = value;
         }
 
         /// <summary>
@@ -469,14 +469,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.MCPNode?(ConversationFlowNode @this) => @this.Value12;
+        public static implicit operator global::RetellAI.MCPNode?(ConversationFlowNode @this) => @this.Mcp;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.MCPNode? value)
         {
-            Value12 = value;
+            Mcp = value;
         }
 
         /// <summary>
@@ -487,14 +487,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ComponentNode?(ConversationFlowNode @this) => @this.Value13;
+        public static implicit operator global::RetellAI.ComponentNode?(ConversationFlowNode @this) => @this.Component;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.ComponentNode? value)
         {
-            Value13 = value;
+            Component = value;
         }
 
         /// <summary>
@@ -505,14 +505,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.BridgeTransferNode?(ConversationFlowNode @this) => @this.Value14;
+        public static implicit operator global::RetellAI.BridgeTransferNode?(ConversationFlowNode @this) => @this.BridgeTransfer;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.BridgeTransferNode? value)
         {
-            Value14 = value;
+            BridgeTransfer = value;
         }
 
         /// <summary>
@@ -523,94 +523,94 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.CancelTransferNode?(ConversationFlowNode @this) => @this.Value15;
+        public static implicit operator global::RetellAI.CancelTransferNode?(ConversationFlowNode @this) => @this.CancelTransfer;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(global::RetellAI.CancelTransferNode? value)
         {
-            Value15 = value;
+            CancelTransfer = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowNode(
-            global::RetellAI.ConversationNode? value1,
-            global::RetellAI.SubagentNode? value2,
-            global::RetellAI.EndNode? value3,
-            global::RetellAI.FunctionNode? value4,
-            global::RetellAI.CodeNode? value5,
-            global::RetellAI.TransferCallNode? value6,
-            global::RetellAI.PressDigitNode? value7,
-            global::RetellAI.BranchNode? value8,
-            global::RetellAI.SmsNode? value9,
-            global::RetellAI.ExtractDynamicVariablesNode? value10,
-            global::RetellAI.AgentSwapNode? value11,
-            global::RetellAI.MCPNode? value12,
-            global::RetellAI.ComponentNode? value13,
-            global::RetellAI.BridgeTransferNode? value14,
-            global::RetellAI.CancelTransferNode? value15
+            global::RetellAI.ConversationNode? conversationNode,
+            global::RetellAI.SubagentNode? subagent,
+            global::RetellAI.EndNode? end,
+            global::RetellAI.FunctionNode? function,
+            global::RetellAI.CodeNode? code,
+            global::RetellAI.TransferCallNode? transferCall,
+            global::RetellAI.PressDigitNode? pressDigit,
+            global::RetellAI.BranchNode? branch,
+            global::RetellAI.SmsNode? sms,
+            global::RetellAI.ExtractDynamicVariablesNode? extractDynamicVariables,
+            global::RetellAI.AgentSwapNode? agentSwap,
+            global::RetellAI.MCPNode? mcp,
+            global::RetellAI.ComponentNode? component,
+            global::RetellAI.BridgeTransferNode? bridgeTransfer,
+            global::RetellAI.CancelTransferNode? cancelTransfer
             )
         {
-            Value1 = value1;
-            Value2 = value2;
-            Value3 = value3;
-            Value4 = value4;
-            Value5 = value5;
-            Value6 = value6;
-            Value7 = value7;
-            Value8 = value8;
-            Value9 = value9;
-            Value10 = value10;
-            Value11 = value11;
-            Value12 = value12;
-            Value13 = value13;
-            Value14 = value14;
-            Value15 = value15;
+            ConversationNode = conversationNode;
+            Subagent = subagent;
+            End = end;
+            Function = function;
+            Code = code;
+            TransferCall = transferCall;
+            PressDigit = pressDigit;
+            Branch = branch;
+            Sms = sms;
+            ExtractDynamicVariables = extractDynamicVariables;
+            AgentSwap = agentSwap;
+            Mcp = mcp;
+            Component = component;
+            BridgeTransfer = bridgeTransfer;
+            CancelTransfer = cancelTransfer;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value15 as object ??
-            Value14 as object ??
-            Value13 as object ??
-            Value12 as object ??
-            Value11 as object ??
-            Value10 as object ??
-            Value9 as object ??
-            Value8 as object ??
-            Value7 as object ??
-            Value6 as object ??
-            Value5 as object ??
-            Value4 as object ??
-            Value3 as object ??
-            Value2 as object ??
-            Value1 as object 
+            CancelTransfer as object ??
+            BridgeTransfer as object ??
+            Component as object ??
+            Mcp as object ??
+            AgentSwap as object ??
+            ExtractDynamicVariables as object ??
+            Sms as object ??
+            Branch as object ??
+            PressDigit as object ??
+            TransferCall as object ??
+            Code as object ??
+            Function as object ??
+            End as object ??
+            Subagent as object ??
+            ConversationNode as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() ??
-            Value3?.ToString() ??
-            Value4?.ToString() ??
-            Value5?.ToString() ??
-            Value6?.ToString() ??
-            Value7?.ToString() ??
-            Value8?.ToString() ??
-            Value9?.ToString() ??
-            Value10?.ToString() ??
-            Value11?.ToString() ??
-            Value12?.ToString() ??
-            Value13?.ToString() ??
-            Value14?.ToString() ??
-            Value15?.ToString() 
+            ConversationNode?.ToString() ??
+            Subagent?.ToString() ??
+            End?.ToString() ??
+            Function?.ToString() ??
+            Code?.ToString() ??
+            TransferCall?.ToString() ??
+            PressDigit?.ToString() ??
+            Branch?.ToString() ??
+            Sms?.ToString() ??
+            ExtractDynamicVariables?.ToString() ??
+            AgentSwap?.ToString() ??
+            Mcp?.ToString() ??
+            Component?.ToString() ??
+            BridgeTransfer?.ToString() ??
+            CancelTransfer?.ToString() 
             ;
 
         /// <summary>
@@ -618,28 +618,28 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && IsValue12 && !IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && IsValue13 && !IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && IsValue14 && !IsValue15 || !IsValue1 && !IsValue2 && !IsValue3 && !IsValue4 && !IsValue5 && !IsValue6 && !IsValue7 && !IsValue8 && !IsValue9 && !IsValue10 && !IsValue11 && !IsValue12 && !IsValue13 && !IsValue14 && IsValue15;
+            return IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && IsCancelTransfer;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ConversationNode?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.SubagentNode?, TResult>? value2 = null,
-            global::System.Func<global::RetellAI.EndNode?, TResult>? value3 = null,
-            global::System.Func<global::RetellAI.FunctionNode?, TResult>? value4 = null,
-            global::System.Func<global::RetellAI.CodeNode?, TResult>? value5 = null,
-            global::System.Func<global::RetellAI.TransferCallNode?, TResult>? value6 = null,
-            global::System.Func<global::RetellAI.PressDigitNode?, TResult>? value7 = null,
-            global::System.Func<global::RetellAI.BranchNode?, TResult>? value8 = null,
-            global::System.Func<global::RetellAI.SmsNode?, TResult>? value9 = null,
-            global::System.Func<global::RetellAI.ExtractDynamicVariablesNode?, TResult>? value10 = null,
-            global::System.Func<global::RetellAI.AgentSwapNode?, TResult>? value11 = null,
-            global::System.Func<global::RetellAI.MCPNode?, TResult>? value12 = null,
-            global::System.Func<global::RetellAI.ComponentNode?, TResult>? value13 = null,
-            global::System.Func<global::RetellAI.BridgeTransferNode?, TResult>? value14 = null,
-            global::System.Func<global::RetellAI.CancelTransferNode?, TResult>? value15 = null,
+            global::System.Func<global::RetellAI.ConversationNode?, TResult>? conversationNode = null,
+            global::System.Func<global::RetellAI.SubagentNode?, TResult>? subagent = null,
+            global::System.Func<global::RetellAI.EndNode?, TResult>? end = null,
+            global::System.Func<global::RetellAI.FunctionNode?, TResult>? function = null,
+            global::System.Func<global::RetellAI.CodeNode?, TResult>? code = null,
+            global::System.Func<global::RetellAI.TransferCallNode?, TResult>? transferCall = null,
+            global::System.Func<global::RetellAI.PressDigitNode?, TResult>? pressDigit = null,
+            global::System.Func<global::RetellAI.BranchNode?, TResult>? branch = null,
+            global::System.Func<global::RetellAI.SmsNode?, TResult>? sms = null,
+            global::System.Func<global::RetellAI.ExtractDynamicVariablesNode?, TResult>? extractDynamicVariables = null,
+            global::System.Func<global::RetellAI.AgentSwapNode?, TResult>? agentSwap = null,
+            global::System.Func<global::RetellAI.MCPNode?, TResult>? mcp = null,
+            global::System.Func<global::RetellAI.ComponentNode?, TResult>? component = null,
+            global::System.Func<global::RetellAI.BridgeTransferNode?, TResult>? bridgeTransfer = null,
+            global::System.Func<global::RetellAI.CancelTransferNode?, TResult>? cancelTransfer = null,
             bool validate = true)
         {
             if (validate)
@@ -647,65 +647,65 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsConversationNode && conversationNode != null)
             {
-                return value1(Value1!);
+                return conversationNode(ConversationNode!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsSubagent && subagent != null)
             {
-                return value2(Value2!);
+                return subagent(Subagent!);
             }
-            else if (IsValue3 && value3 != null)
+            else if (IsEnd && end != null)
             {
-                return value3(Value3!);
+                return end(End!);
             }
-            else if (IsValue4 && value4 != null)
+            else if (IsFunction && function != null)
             {
-                return value4(Value4!);
+                return function(Function!);
             }
-            else if (IsValue5 && value5 != null)
+            else if (IsCode && code != null)
             {
-                return value5(Value5!);
+                return code(Code!);
             }
-            else if (IsValue6 && value6 != null)
+            else if (IsTransferCall && transferCall != null)
             {
-                return value6(Value6!);
+                return transferCall(TransferCall!);
             }
-            else if (IsValue7 && value7 != null)
+            else if (IsPressDigit && pressDigit != null)
             {
-                return value7(Value7!);
+                return pressDigit(PressDigit!);
             }
-            else if (IsValue8 && value8 != null)
+            else if (IsBranch && branch != null)
             {
-                return value8(Value8!);
+                return branch(Branch!);
             }
-            else if (IsValue9 && value9 != null)
+            else if (IsSms && sms != null)
             {
-                return value9(Value9!);
+                return sms(Sms!);
             }
-            else if (IsValue10 && value10 != null)
+            else if (IsExtractDynamicVariables && extractDynamicVariables != null)
             {
-                return value10(Value10!);
+                return extractDynamicVariables(ExtractDynamicVariables!);
             }
-            else if (IsValue11 && value11 != null)
+            else if (IsAgentSwap && agentSwap != null)
             {
-                return value11(Value11!);
+                return agentSwap(AgentSwap!);
             }
-            else if (IsValue12 && value12 != null)
+            else if (IsMcp && mcp != null)
             {
-                return value12(Value12!);
+                return mcp(Mcp!);
             }
-            else if (IsValue13 && value13 != null)
+            else if (IsComponent && component != null)
             {
-                return value13(Value13!);
+                return component(Component!);
             }
-            else if (IsValue14 && value14 != null)
+            else if (IsBridgeTransfer && bridgeTransfer != null)
             {
-                return value14(Value14!);
+                return bridgeTransfer(BridgeTransfer!);
             }
-            else if (IsValue15 && value15 != null)
+            else if (IsCancelTransfer && cancelTransfer != null)
             {
-                return value15(Value15!);
+                return cancelTransfer(CancelTransfer!);
             }
 
             return default(TResult);
@@ -715,21 +715,21 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ConversationNode?>? value1 = null,
-            global::System.Action<global::RetellAI.SubagentNode?>? value2 = null,
-            global::System.Action<global::RetellAI.EndNode?>? value3 = null,
-            global::System.Action<global::RetellAI.FunctionNode?>? value4 = null,
-            global::System.Action<global::RetellAI.CodeNode?>? value5 = null,
-            global::System.Action<global::RetellAI.TransferCallNode?>? value6 = null,
-            global::System.Action<global::RetellAI.PressDigitNode?>? value7 = null,
-            global::System.Action<global::RetellAI.BranchNode?>? value8 = null,
-            global::System.Action<global::RetellAI.SmsNode?>? value9 = null,
-            global::System.Action<global::RetellAI.ExtractDynamicVariablesNode?>? value10 = null,
-            global::System.Action<global::RetellAI.AgentSwapNode?>? value11 = null,
-            global::System.Action<global::RetellAI.MCPNode?>? value12 = null,
-            global::System.Action<global::RetellAI.ComponentNode?>? value13 = null,
-            global::System.Action<global::RetellAI.BridgeTransferNode?>? value14 = null,
-            global::System.Action<global::RetellAI.CancelTransferNode?>? value15 = null,
+            global::System.Action<global::RetellAI.ConversationNode?>? conversationNode = null,
+            global::System.Action<global::RetellAI.SubagentNode?>? subagent = null,
+            global::System.Action<global::RetellAI.EndNode?>? end = null,
+            global::System.Action<global::RetellAI.FunctionNode?>? function = null,
+            global::System.Action<global::RetellAI.CodeNode?>? code = null,
+            global::System.Action<global::RetellAI.TransferCallNode?>? transferCall = null,
+            global::System.Action<global::RetellAI.PressDigitNode?>? pressDigit = null,
+            global::System.Action<global::RetellAI.BranchNode?>? branch = null,
+            global::System.Action<global::RetellAI.SmsNode?>? sms = null,
+            global::System.Action<global::RetellAI.ExtractDynamicVariablesNode?>? extractDynamicVariables = null,
+            global::System.Action<global::RetellAI.AgentSwapNode?>? agentSwap = null,
+            global::System.Action<global::RetellAI.MCPNode?>? mcp = null,
+            global::System.Action<global::RetellAI.ComponentNode?>? component = null,
+            global::System.Action<global::RetellAI.BridgeTransferNode?>? bridgeTransfer = null,
+            global::System.Action<global::RetellAI.CancelTransferNode?>? cancelTransfer = null,
             bool validate = true)
         {
             if (validate)
@@ -737,65 +737,65 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsConversationNode)
             {
-                value1?.Invoke(Value1!);
+                conversationNode?.Invoke(ConversationNode!);
             }
-            else if (IsValue2)
+            else if (IsSubagent)
             {
-                value2?.Invoke(Value2!);
+                subagent?.Invoke(Subagent!);
             }
-            else if (IsValue3)
+            else if (IsEnd)
             {
-                value3?.Invoke(Value3!);
+                end?.Invoke(End!);
             }
-            else if (IsValue4)
+            else if (IsFunction)
             {
-                value4?.Invoke(Value4!);
+                function?.Invoke(Function!);
             }
-            else if (IsValue5)
+            else if (IsCode)
             {
-                value5?.Invoke(Value5!);
+                code?.Invoke(Code!);
             }
-            else if (IsValue6)
+            else if (IsTransferCall)
             {
-                value6?.Invoke(Value6!);
+                transferCall?.Invoke(TransferCall!);
             }
-            else if (IsValue7)
+            else if (IsPressDigit)
             {
-                value7?.Invoke(Value7!);
+                pressDigit?.Invoke(PressDigit!);
             }
-            else if (IsValue8)
+            else if (IsBranch)
             {
-                value8?.Invoke(Value8!);
+                branch?.Invoke(Branch!);
             }
-            else if (IsValue9)
+            else if (IsSms)
             {
-                value9?.Invoke(Value9!);
+                sms?.Invoke(Sms!);
             }
-            else if (IsValue10)
+            else if (IsExtractDynamicVariables)
             {
-                value10?.Invoke(Value10!);
+                extractDynamicVariables?.Invoke(ExtractDynamicVariables!);
             }
-            else if (IsValue11)
+            else if (IsAgentSwap)
             {
-                value11?.Invoke(Value11!);
+                agentSwap?.Invoke(AgentSwap!);
             }
-            else if (IsValue12)
+            else if (IsMcp)
             {
-                value12?.Invoke(Value12!);
+                mcp?.Invoke(Mcp!);
             }
-            else if (IsValue13)
+            else if (IsComponent)
             {
-                value13?.Invoke(Value13!);
+                component?.Invoke(Component!);
             }
-            else if (IsValue14)
+            else if (IsBridgeTransfer)
             {
-                value14?.Invoke(Value14!);
+                bridgeTransfer?.Invoke(BridgeTransfer!);
             }
-            else if (IsValue15)
+            else if (IsCancelTransfer)
             {
-                value15?.Invoke(Value15!);
+                cancelTransfer?.Invoke(CancelTransfer!);
             }
         }
 
@@ -806,35 +806,35 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                ConversationNode,
                 typeof(global::RetellAI.ConversationNode),
-                Value2,
+                Subagent,
                 typeof(global::RetellAI.SubagentNode),
-                Value3,
+                End,
                 typeof(global::RetellAI.EndNode),
-                Value4,
+                Function,
                 typeof(global::RetellAI.FunctionNode),
-                Value5,
+                Code,
                 typeof(global::RetellAI.CodeNode),
-                Value6,
+                TransferCall,
                 typeof(global::RetellAI.TransferCallNode),
-                Value7,
+                PressDigit,
                 typeof(global::RetellAI.PressDigitNode),
-                Value8,
+                Branch,
                 typeof(global::RetellAI.BranchNode),
-                Value9,
+                Sms,
                 typeof(global::RetellAI.SmsNode),
-                Value10,
+                ExtractDynamicVariables,
                 typeof(global::RetellAI.ExtractDynamicVariablesNode),
-                Value11,
+                AgentSwap,
                 typeof(global::RetellAI.AgentSwapNode),
-                Value12,
+                Mcp,
                 typeof(global::RetellAI.MCPNode),
-                Value13,
+                Component,
                 typeof(global::RetellAI.ComponentNode),
-                Value14,
+                BridgeTransfer,
                 typeof(global::RetellAI.BridgeTransferNode),
-                Value15,
+                CancelTransfer,
                 typeof(global::RetellAI.CancelTransferNode),
             };
             const int offset = unchecked((int)2166136261);
@@ -852,21 +852,21 @@ namespace RetellAI
         public bool Equals(ConversationFlowNode other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationNode?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SubagentNode?>.Default.Equals(Value2, other.Value2) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.EndNode?>.Default.Equals(Value3, other.Value3) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.FunctionNode?>.Default.Equals(Value4, other.Value4) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CodeNode?>.Default.Equals(Value5, other.Value5) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.TransferCallNode?>.Default.Equals(Value6, other.Value6) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.PressDigitNode?>.Default.Equals(Value7, other.Value7) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.BranchNode?>.Default.Equals(Value8, other.Value8) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsNode?>.Default.Equals(Value9, other.Value9) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ExtractDynamicVariablesNode?>.Default.Equals(Value10, other.Value10) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentSwapNode?>.Default.Equals(Value11, other.Value11) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.MCPNode?>.Default.Equals(Value12, other.Value12) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ComponentNode?>.Default.Equals(Value13, other.Value13) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.BridgeTransferNode?>.Default.Equals(Value14, other.Value14) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CancelTransferNode?>.Default.Equals(Value15, other.Value15) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationNode?>.Default.Equals(ConversationNode, other.ConversationNode) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SubagentNode?>.Default.Equals(Subagent, other.Subagent) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.EndNode?>.Default.Equals(End, other.End) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.FunctionNode?>.Default.Equals(Function, other.Function) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CodeNode?>.Default.Equals(Code, other.Code) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.TransferCallNode?>.Default.Equals(TransferCall, other.TransferCall) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.PressDigitNode?>.Default.Equals(PressDigit, other.PressDigit) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.BranchNode?>.Default.Equals(Branch, other.Branch) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsNode?>.Default.Equals(Sms, other.Sms) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ExtractDynamicVariablesNode?>.Default.Equals(ExtractDynamicVariables, other.ExtractDynamicVariables) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentSwapNode?>.Default.Equals(AgentSwap, other.AgentSwap) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.MCPNode?>.Default.Equals(Mcp, other.Mcp) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ComponentNode?>.Default.Equals(Component, other.Component) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.BridgeTransferNode?>.Default.Equals(BridgeTransfer, other.BridgeTransfer) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CancelTransferNode?>.Default.Equals(CancelTransfer, other.CancelTransfer) 
                 ;
         }
 

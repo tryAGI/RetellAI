@@ -13,52 +13,52 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.NodeBase? Value1 { get; init; }
+        public global::RetellAI.NodeBase? Base { get; init; }
 #else
-        public global::RetellAI.NodeBase? Value1 { get; }
+        public global::RetellAI.NodeBase? Base { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsBase => Base != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.AgentOverrideConfig? Value2 { get; init; }
+        public global::RetellAI.AgentOverrideConfig? AgentOverrideConfig { get; init; }
 #else
-        public global::RetellAI.AgentOverrideConfig? Value2 { get; }
+        public global::RetellAI.AgentOverrideConfig? AgentOverrideConfig { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentOverrideConfig))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsAgentOverrideConfig => AgentOverrideConfig != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ConversationNodeVariant3? Value3 { get; init; }
+        public global::RetellAI.ConversationNodeVariant3? ConversationNodeVariant3 { get; init; }
 #else
-        public global::RetellAI.ConversationNodeVariant3? Value3 { get; }
+        public global::RetellAI.ConversationNodeVariant3? ConversationNodeVariant3 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value3))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ConversationNodeVariant3))]
 #endif
-        public bool IsValue3 => Value3 != null;
+        public bool IsConversationNodeVariant3 => ConversationNodeVariant3 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -67,14 +67,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.NodeBase?(ConversationNode @this) => @this.Value1;
+        public static implicit operator global::RetellAI.NodeBase?(ConversationNode @this) => @this.Base;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationNode(global::RetellAI.NodeBase? value)
         {
-            Value1 = value;
+            Base = value;
         }
 
         /// <summary>
@@ -85,14 +85,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.AgentOverrideConfig?(ConversationNode @this) => @this.Value2;
+        public static implicit operator global::RetellAI.AgentOverrideConfig?(ConversationNode @this) => @this.AgentOverrideConfig;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationNode(global::RetellAI.AgentOverrideConfig? value)
         {
-            Value2 = value;
+            AgentOverrideConfig = value;
         }
 
         /// <summary>
@@ -103,46 +103,46 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ConversationNodeVariant3?(ConversationNode @this) => @this.Value3;
+        public static implicit operator global::RetellAI.ConversationNodeVariant3?(ConversationNode @this) => @this.ConversationNodeVariant3;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationNode(global::RetellAI.ConversationNodeVariant3? value)
         {
-            Value3 = value;
+            ConversationNodeVariant3 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationNode(
-            global::RetellAI.NodeBase? value1,
-            global::RetellAI.AgentOverrideConfig? value2,
-            global::RetellAI.ConversationNodeVariant3? value3
+            global::RetellAI.NodeBase? @base,
+            global::RetellAI.AgentOverrideConfig? agentOverrideConfig,
+            global::RetellAI.ConversationNodeVariant3? conversationNodeVariant3
             )
         {
-            Value1 = value1;
-            Value2 = value2;
-            Value3 = value3;
+            Base = @base;
+            AgentOverrideConfig = agentOverrideConfig;
+            ConversationNodeVariant3 = conversationNodeVariant3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value3 as object ??
-            Value2 as object ??
-            Value1 as object 
+            ConversationNodeVariant3 as object ??
+            AgentOverrideConfig as object ??
+            Base as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() ??
-            Value3?.ToString() 
+            Base?.ToString() ??
+            AgentOverrideConfig?.ToString() ??
+            ConversationNodeVariant3?.ToString() 
             ;
 
         /// <summary>
@@ -150,16 +150,16 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2 && IsValue3;
+            return IsBase && IsAgentOverrideConfig && IsConversationNodeVariant3;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeBase?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.AgentOverrideConfig?, TResult>? value2 = null,
-            global::System.Func<global::RetellAI.ConversationNodeVariant3?, TResult>? value3 = null,
+            global::System.Func<global::RetellAI.NodeBase?, TResult>? @base = null,
+            global::System.Func<global::RetellAI.AgentOverrideConfig?, TResult>? agentOverrideConfig = null,
+            global::System.Func<global::RetellAI.ConversationNodeVariant3?, TResult>? conversationNodeVariant3 = null,
             bool validate = true)
         {
             if (validate)
@@ -167,17 +167,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsBase && @base != null)
             {
-                return value1(Value1!);
+                return @base(Base!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsAgentOverrideConfig && agentOverrideConfig != null)
             {
-                return value2(Value2!);
+                return agentOverrideConfig(AgentOverrideConfig!);
             }
-            else if (IsValue3 && value3 != null)
+            else if (IsConversationNodeVariant3 && conversationNodeVariant3 != null)
             {
-                return value3(Value3!);
+                return conversationNodeVariant3(ConversationNodeVariant3!);
             }
 
             return default(TResult);
@@ -187,9 +187,9 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeBase?>? value1 = null,
-            global::System.Action<global::RetellAI.AgentOverrideConfig?>? value2 = null,
-            global::System.Action<global::RetellAI.ConversationNodeVariant3?>? value3 = null,
+            global::System.Action<global::RetellAI.NodeBase?>? @base = null,
+            global::System.Action<global::RetellAI.AgentOverrideConfig?>? agentOverrideConfig = null,
+            global::System.Action<global::RetellAI.ConversationNodeVariant3?>? conversationNodeVariant3 = null,
             bool validate = true)
         {
             if (validate)
@@ -197,17 +197,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsBase)
             {
-                value1?.Invoke(Value1!);
+                @base?.Invoke(Base!);
             }
-            else if (IsValue2)
+            else if (IsAgentOverrideConfig)
             {
-                value2?.Invoke(Value2!);
+                agentOverrideConfig?.Invoke(AgentOverrideConfig!);
             }
-            else if (IsValue3)
+            else if (IsConversationNodeVariant3)
             {
-                value3?.Invoke(Value3!);
+                conversationNodeVariant3?.Invoke(ConversationNodeVariant3!);
             }
         }
 
@@ -218,11 +218,11 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                Base,
                 typeof(global::RetellAI.NodeBase),
-                Value2,
+                AgentOverrideConfig,
                 typeof(global::RetellAI.AgentOverrideConfig),
-                Value3,
+                ConversationNodeVariant3,
                 typeof(global::RetellAI.ConversationNodeVariant3),
             };
             const int offset = unchecked((int)2166136261);
@@ -240,9 +240,9 @@ namespace RetellAI
         public bool Equals(ConversationNode other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBase?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentOverrideConfig?>.Default.Equals(Value2, other.Value2) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationNodeVariant3?>.Default.Equals(Value3, other.Value3) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBase?>.Default.Equals(Base, other.Base) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentOverrideConfig?>.Default.Equals(AgentOverrideConfig, other.AgentOverrideConfig) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationNodeVariant3?>.Default.Equals(ConversationNodeVariant3, other.ConversationNodeVariant3) 
                 ;
         }
 

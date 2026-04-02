@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.AnalysisData? Value1 { get; init; }
+        public global::RetellAI.AnalysisData? AnalysisData { get; init; }
 #else
-        public global::RetellAI.AnalysisData? Value1 { get; }
+        public global::RetellAI.AnalysisData? AnalysisData { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AnalysisData))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsAnalysisData => AnalysisData != null;
 
         /// <summary>
         /// System preset for post-chat analysis (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ChatPresetAnalysisData? Value2 { get; init; }
+        public global::RetellAI.ChatPresetAnalysisData? Preset { get; init; }
 #else
-        public global::RetellAI.ChatPresetAnalysisData? Value2 { get; }
+        public global::RetellAI.ChatPresetAnalysisData? Preset { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Preset))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsPreset => Preset != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.AnalysisData?(PostChatAnalysisData @this) => @this.Value1;
+        public static implicit operator global::RetellAI.AnalysisData?(PostChatAnalysisData @this) => @this.AnalysisData;
 
         /// <summary>
         /// 
         /// </summary>
         public PostChatAnalysisData(global::RetellAI.AnalysisData? value)
         {
-            Value1 = value;
+            AnalysisData = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ChatPresetAnalysisData?(PostChatAnalysisData @this) => @this.Value2;
+        public static implicit operator global::RetellAI.ChatPresetAnalysisData?(PostChatAnalysisData @this) => @this.Preset;
 
         /// <summary>
         /// 
         /// </summary>
         public PostChatAnalysisData(global::RetellAI.ChatPresetAnalysisData? value)
         {
-            Value2 = value;
+            Preset = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public PostChatAnalysisData(
-            global::RetellAI.AnalysisData? value1,
-            global::RetellAI.ChatPresetAnalysisData? value2
+            global::RetellAI.AnalysisData? analysisData,
+            global::RetellAI.ChatPresetAnalysisData? preset
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            AnalysisData = analysisData;
+            Preset = preset;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            Preset as object ??
+            AnalysisData as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            AnalysisData?.ToString() ??
+            Preset?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 || !IsValue1 && IsValue2;
+            return IsAnalysisData && !IsPreset || !IsAnalysisData && IsPreset;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.AnalysisData?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.ChatPresetAnalysisData?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.AnalysisData?, TResult>? analysisData = null,
+            global::System.Func<global::RetellAI.ChatPresetAnalysisData?, TResult>? preset = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsAnalysisData && analysisData != null)
             {
-                return value1(Value1!);
+                return analysisData(AnalysisData!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsPreset && preset != null)
             {
-                return value2(Value2!);
+                return preset(Preset!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.AnalysisData?>? value1 = null,
-            global::System.Action<global::RetellAI.ChatPresetAnalysisData?>? value2 = null,
+            global::System.Action<global::RetellAI.AnalysisData?>? analysisData = null,
+            global::System.Action<global::RetellAI.ChatPresetAnalysisData?>? preset = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsAnalysisData)
             {
-                value1?.Invoke(Value1!);
+                analysisData?.Invoke(AnalysisData!);
             }
-            else if (IsValue2)
+            else if (IsPreset)
             {
-                value2?.Invoke(Value2!);
+                preset?.Invoke(Preset!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                AnalysisData,
                 typeof(global::RetellAI.AnalysisData),
-                Value2,
+                Preset,
                 typeof(global::RetellAI.ChatPresetAnalysisData),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(PostChatAnalysisData other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AnalysisData?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ChatPresetAnalysisData?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AnalysisData?>.Default.Equals(AnalysisData, other.AnalysisData) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ChatPresetAnalysisData?>.Default.Equals(Preset, other.Preset) 
                 ;
         }
 

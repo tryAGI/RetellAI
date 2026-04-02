@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.CreateOrganizationRequest? Value1 { get; init; }
+        public global::RetellAI.CreateOrganizationRequest? Create { get; init; }
 #else
-        public global::RetellAI.CreateOrganizationRequest? Value1 { get; }
+        public global::RetellAI.CreateOrganizationRequest? Create { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Create))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsCreate => Create != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.UpdateOrganizationRequestVariant2? Value2 { get; init; }
+        public global::RetellAI.UpdateOrganizationRequestVariant2? UpdateOrganizationRequestVariant2 { get; init; }
 #else
-        public global::RetellAI.UpdateOrganizationRequestVariant2? Value2 { get; }
+        public global::RetellAI.UpdateOrganizationRequestVariant2? UpdateOrganizationRequestVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UpdateOrganizationRequestVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsUpdateOrganizationRequestVariant2 => UpdateOrganizationRequestVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.CreateOrganizationRequest?(UpdateOrganizationRequest @this) => @this.Value1;
+        public static implicit operator global::RetellAI.CreateOrganizationRequest?(UpdateOrganizationRequest @this) => @this.Create;
 
         /// <summary>
         /// 
         /// </summary>
         public UpdateOrganizationRequest(global::RetellAI.CreateOrganizationRequest? value)
         {
-            Value1 = value;
+            Create = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.UpdateOrganizationRequestVariant2?(UpdateOrganizationRequest @this) => @this.Value2;
+        public static implicit operator global::RetellAI.UpdateOrganizationRequestVariant2?(UpdateOrganizationRequest @this) => @this.UpdateOrganizationRequestVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public UpdateOrganizationRequest(global::RetellAI.UpdateOrganizationRequestVariant2? value)
         {
-            Value2 = value;
+            UpdateOrganizationRequestVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public UpdateOrganizationRequest(
-            global::RetellAI.CreateOrganizationRequest? value1,
-            global::RetellAI.UpdateOrganizationRequestVariant2? value2
+            global::RetellAI.CreateOrganizationRequest? create,
+            global::RetellAI.UpdateOrganizationRequestVariant2? updateOrganizationRequestVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Create = create;
+            UpdateOrganizationRequestVariant2 = updateOrganizationRequestVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            UpdateOrganizationRequestVariant2 as object ??
+            Create as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Create?.ToString() ??
+            UpdateOrganizationRequestVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsCreate && IsUpdateOrganizationRequestVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.CreateOrganizationRequest?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.UpdateOrganizationRequestVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.CreateOrganizationRequest?, TResult>? create = null,
+            global::System.Func<global::RetellAI.UpdateOrganizationRequestVariant2?, TResult>? updateOrganizationRequestVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsCreate && create != null)
             {
-                return value1(Value1!);
+                return create(Create!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsUpdateOrganizationRequestVariant2 && updateOrganizationRequestVariant2 != null)
             {
-                return value2(Value2!);
+                return updateOrganizationRequestVariant2(UpdateOrganizationRequestVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.CreateOrganizationRequest?>? value1 = null,
-            global::System.Action<global::RetellAI.UpdateOrganizationRequestVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.CreateOrganizationRequest?>? create = null,
+            global::System.Action<global::RetellAI.UpdateOrganizationRequestVariant2?>? updateOrganizationRequestVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsCreate)
             {
-                value1?.Invoke(Value1!);
+                create?.Invoke(Create!);
             }
-            else if (IsValue2)
+            else if (IsUpdateOrganizationRequestVariant2)
             {
-                value2?.Invoke(Value2!);
+                updateOrganizationRequestVariant2?.Invoke(UpdateOrganizationRequestVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                Create,
                 typeof(global::RetellAI.CreateOrganizationRequest),
-                Value2,
+                UpdateOrganizationRequestVariant2,
                 typeof(global::RetellAI.UpdateOrganizationRequestVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(UpdateOrganizationRequest other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CreateOrganizationRequest?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.UpdateOrganizationRequestVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CreateOrganizationRequest?>.Default.Equals(Create, other.Create) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.UpdateOrganizationRequestVariant2?>.Default.Equals(UpdateOrganizationRequestVariant2, other.UpdateOrganizationRequestVariant2) 
                 ;
         }
 

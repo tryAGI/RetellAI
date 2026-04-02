@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.NodeBaseCommon? Value1 { get; init; }
+        public global::RetellAI.NodeBaseCommon? BaseCommon { get; init; }
 #else
-        public global::RetellAI.NodeBaseCommon? Value1 { get; }
+        public global::RetellAI.NodeBaseCommon? BaseCommon { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BaseCommon))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsBaseCommon => BaseCommon != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ComponentNodeVariant2? Value2 { get; init; }
+        public global::RetellAI.ComponentNodeVariant2? ComponentNodeVariant2 { get; init; }
 #else
-        public global::RetellAI.ComponentNodeVariant2? Value2 { get; }
+        public global::RetellAI.ComponentNodeVariant2? ComponentNodeVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ComponentNodeVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsComponentNodeVariant2 => ComponentNodeVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.NodeBaseCommon?(ComponentNode @this) => @this.Value1;
+        public static implicit operator global::RetellAI.NodeBaseCommon?(ComponentNode @this) => @this.BaseCommon;
 
         /// <summary>
         /// 
         /// </summary>
         public ComponentNode(global::RetellAI.NodeBaseCommon? value)
         {
-            Value1 = value;
+            BaseCommon = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ComponentNodeVariant2?(ComponentNode @this) => @this.Value2;
+        public static implicit operator global::RetellAI.ComponentNodeVariant2?(ComponentNode @this) => @this.ComponentNodeVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public ComponentNode(global::RetellAI.ComponentNodeVariant2? value)
         {
-            Value2 = value;
+            ComponentNodeVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public ComponentNode(
-            global::RetellAI.NodeBaseCommon? value1,
-            global::RetellAI.ComponentNodeVariant2? value2
+            global::RetellAI.NodeBaseCommon? baseCommon,
+            global::RetellAI.ComponentNodeVariant2? componentNodeVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            BaseCommon = baseCommon;
+            ComponentNodeVariant2 = componentNodeVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            ComponentNodeVariant2 as object ??
+            BaseCommon as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            BaseCommon?.ToString() ??
+            ComponentNodeVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsBaseCommon && IsComponentNodeVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeBaseCommon?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.ComponentNodeVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.NodeBaseCommon?, TResult>? baseCommon = null,
+            global::System.Func<global::RetellAI.ComponentNodeVariant2?, TResult>? componentNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsBaseCommon && baseCommon != null)
             {
-                return value1(Value1!);
+                return baseCommon(BaseCommon!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsComponentNodeVariant2 && componentNodeVariant2 != null)
             {
-                return value2(Value2!);
+                return componentNodeVariant2(ComponentNodeVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeBaseCommon?>? value1 = null,
-            global::System.Action<global::RetellAI.ComponentNodeVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.NodeBaseCommon?>? baseCommon = null,
+            global::System.Action<global::RetellAI.ComponentNodeVariant2?>? componentNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsBaseCommon)
             {
-                value1?.Invoke(Value1!);
+                baseCommon?.Invoke(BaseCommon!);
             }
-            else if (IsValue2)
+            else if (IsComponentNodeVariant2)
             {
-                value2?.Invoke(Value2!);
+                componentNodeVariant2?.Invoke(ComponentNodeVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                BaseCommon,
                 typeof(global::RetellAI.NodeBaseCommon),
-                Value2,
+                ComponentNodeVariant2,
                 typeof(global::RetellAI.ComponentNodeVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(ComponentNode other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBaseCommon?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ComponentNodeVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBaseCommon?>.Default.Equals(BaseCommon, other.BaseCommon) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ComponentNodeVariant2?>.Default.Equals(ComponentNodeVariant2, other.ComponentNodeVariant2) 
                 ;
         }
 

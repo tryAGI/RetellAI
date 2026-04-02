@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.NodeBaseCommon? Value1 { get; init; }
+        public global::RetellAI.NodeBaseCommon? Common { get; init; }
 #else
-        public global::RetellAI.NodeBaseCommon? Value1 { get; }
+        public global::RetellAI.NodeBaseCommon? Common { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Common))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsCommon => Common != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.NodeBaseVariant2? Value2 { get; init; }
+        public global::RetellAI.NodeBaseVariant2? NodeBaseVariant2 { get; init; }
 #else
-        public global::RetellAI.NodeBaseVariant2? Value2 { get; }
+        public global::RetellAI.NodeBaseVariant2? NodeBaseVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NodeBaseVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsNodeBaseVariant2 => NodeBaseVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.NodeBaseCommon?(NodeBase @this) => @this.Value1;
+        public static implicit operator global::RetellAI.NodeBaseCommon?(NodeBase @this) => @this.Common;
 
         /// <summary>
         /// 
         /// </summary>
         public NodeBase(global::RetellAI.NodeBaseCommon? value)
         {
-            Value1 = value;
+            Common = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.NodeBaseVariant2?(NodeBase @this) => @this.Value2;
+        public static implicit operator global::RetellAI.NodeBaseVariant2?(NodeBase @this) => @this.NodeBaseVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public NodeBase(global::RetellAI.NodeBaseVariant2? value)
         {
-            Value2 = value;
+            NodeBaseVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public NodeBase(
-            global::RetellAI.NodeBaseCommon? value1,
-            global::RetellAI.NodeBaseVariant2? value2
+            global::RetellAI.NodeBaseCommon? common,
+            global::RetellAI.NodeBaseVariant2? nodeBaseVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Common = common;
+            NodeBaseVariant2 = nodeBaseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            NodeBaseVariant2 as object ??
+            Common as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Common?.ToString() ??
+            NodeBaseVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsCommon && IsNodeBaseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeBaseCommon?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.NodeBaseVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.NodeBaseCommon?, TResult>? common = null,
+            global::System.Func<global::RetellAI.NodeBaseVariant2?, TResult>? nodeBaseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsCommon && common != null)
             {
-                return value1(Value1!);
+                return common(Common!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsNodeBaseVariant2 && nodeBaseVariant2 != null)
             {
-                return value2(Value2!);
+                return nodeBaseVariant2(NodeBaseVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeBaseCommon?>? value1 = null,
-            global::System.Action<global::RetellAI.NodeBaseVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.NodeBaseCommon?>? common = null,
+            global::System.Action<global::RetellAI.NodeBaseVariant2?>? nodeBaseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsCommon)
             {
-                value1?.Invoke(Value1!);
+                common?.Invoke(Common!);
             }
-            else if (IsValue2)
+            else if (IsNodeBaseVariant2)
             {
-                value2?.Invoke(Value2!);
+                nodeBaseVariant2?.Invoke(NodeBaseVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                Common,
                 typeof(global::RetellAI.NodeBaseCommon),
-                Value2,
+                NodeBaseVariant2,
                 typeof(global::RetellAI.NodeBaseVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(NodeBase other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBaseCommon?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBaseVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBaseCommon?>.Default.Equals(Common, other.Common) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBaseVariant2?>.Default.Equals(NodeBaseVariant2, other.NodeBaseVariant2) 
                 ;
         }
 

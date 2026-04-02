@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.NodeBase? Value1 { get; init; }
+        public global::RetellAI.NodeBase? Base { get; init; }
 #else
-        public global::RetellAI.NodeBase? Value1 { get; }
+        public global::RetellAI.NodeBase? Base { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsBase => Base != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.BridgeTransferNodeVariant2? Value2 { get; init; }
+        public global::RetellAI.BridgeTransferNodeVariant2? BridgeTransferNodeVariant2 { get; init; }
 #else
-        public global::RetellAI.BridgeTransferNodeVariant2? Value2 { get; }
+        public global::RetellAI.BridgeTransferNodeVariant2? BridgeTransferNodeVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BridgeTransferNodeVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsBridgeTransferNodeVariant2 => BridgeTransferNodeVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.NodeBase?(BridgeTransferNode @this) => @this.Value1;
+        public static implicit operator global::RetellAI.NodeBase?(BridgeTransferNode @this) => @this.Base;
 
         /// <summary>
         /// 
         /// </summary>
         public BridgeTransferNode(global::RetellAI.NodeBase? value)
         {
-            Value1 = value;
+            Base = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.BridgeTransferNodeVariant2?(BridgeTransferNode @this) => @this.Value2;
+        public static implicit operator global::RetellAI.BridgeTransferNodeVariant2?(BridgeTransferNode @this) => @this.BridgeTransferNodeVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public BridgeTransferNode(global::RetellAI.BridgeTransferNodeVariant2? value)
         {
-            Value2 = value;
+            BridgeTransferNodeVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public BridgeTransferNode(
-            global::RetellAI.NodeBase? value1,
-            global::RetellAI.BridgeTransferNodeVariant2? value2
+            global::RetellAI.NodeBase? @base,
+            global::RetellAI.BridgeTransferNodeVariant2? bridgeTransferNodeVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Base = @base;
+            BridgeTransferNodeVariant2 = bridgeTransferNodeVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            BridgeTransferNodeVariant2 as object ??
+            Base as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Base?.ToString() ??
+            BridgeTransferNodeVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsBase && IsBridgeTransferNodeVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeBase?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.BridgeTransferNodeVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.NodeBase?, TResult>? @base = null,
+            global::System.Func<global::RetellAI.BridgeTransferNodeVariant2?, TResult>? bridgeTransferNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsBase && @base != null)
             {
-                return value1(Value1!);
+                return @base(Base!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsBridgeTransferNodeVariant2 && bridgeTransferNodeVariant2 != null)
             {
-                return value2(Value2!);
+                return bridgeTransferNodeVariant2(BridgeTransferNodeVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeBase?>? value1 = null,
-            global::System.Action<global::RetellAI.BridgeTransferNodeVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.NodeBase?>? @base = null,
+            global::System.Action<global::RetellAI.BridgeTransferNodeVariant2?>? bridgeTransferNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsBase)
             {
-                value1?.Invoke(Value1!);
+                @base?.Invoke(Base!);
             }
-            else if (IsValue2)
+            else if (IsBridgeTransferNodeVariant2)
             {
-                value2?.Invoke(Value2!);
+                bridgeTransferNodeVariant2?.Invoke(BridgeTransferNodeVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                Base,
                 typeof(global::RetellAI.NodeBase),
-                Value2,
+                BridgeTransferNodeVariant2,
                 typeof(global::RetellAI.BridgeTransferNodeVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(BridgeTransferNode other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBase?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.BridgeTransferNodeVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBase?>.Default.Equals(Base, other.Base) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.BridgeTransferNodeVariant2?>.Default.Equals(BridgeTransferNodeVariant2, other.BridgeTransferNodeVariant2) 
                 ;
         }
 

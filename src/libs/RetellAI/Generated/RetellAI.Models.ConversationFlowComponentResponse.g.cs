@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.CreateConversationFlowComponentRequest? Value1 { get; init; }
+        public global::RetellAI.CreateConversationFlowComponentRequest? CreateRequest { get; init; }
 #else
-        public global::RetellAI.CreateConversationFlowComponentRequest? Value1 { get; }
+        public global::RetellAI.CreateConversationFlowComponentRequest? CreateRequest { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CreateRequest))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsCreateRequest => CreateRequest != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ConversationFlowComponentResponseVariant2? Value2 { get; init; }
+        public global::RetellAI.ConversationFlowComponentResponseVariant2? ConversationFlowComponentResponseVariant2 { get; init; }
 #else
-        public global::RetellAI.ConversationFlowComponentResponseVariant2? Value2 { get; }
+        public global::RetellAI.ConversationFlowComponentResponseVariant2? ConversationFlowComponentResponseVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ConversationFlowComponentResponseVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsConversationFlowComponentResponseVariant2 => ConversationFlowComponentResponseVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.CreateConversationFlowComponentRequest?(ConversationFlowComponentResponse @this) => @this.Value1;
+        public static implicit operator global::RetellAI.CreateConversationFlowComponentRequest?(ConversationFlowComponentResponse @this) => @this.CreateRequest;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowComponentResponse(global::RetellAI.CreateConversationFlowComponentRequest? value)
         {
-            Value1 = value;
+            CreateRequest = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ConversationFlowComponentResponseVariant2?(ConversationFlowComponentResponse @this) => @this.Value2;
+        public static implicit operator global::RetellAI.ConversationFlowComponentResponseVariant2?(ConversationFlowComponentResponse @this) => @this.ConversationFlowComponentResponseVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowComponentResponse(global::RetellAI.ConversationFlowComponentResponseVariant2? value)
         {
-            Value2 = value;
+            ConversationFlowComponentResponseVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public ConversationFlowComponentResponse(
-            global::RetellAI.CreateConversationFlowComponentRequest? value1,
-            global::RetellAI.ConversationFlowComponentResponseVariant2? value2
+            global::RetellAI.CreateConversationFlowComponentRequest? createRequest,
+            global::RetellAI.ConversationFlowComponentResponseVariant2? conversationFlowComponentResponseVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            CreateRequest = createRequest;
+            ConversationFlowComponentResponseVariant2 = conversationFlowComponentResponseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            ConversationFlowComponentResponseVariant2 as object ??
+            CreateRequest as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            CreateRequest?.ToString() ??
+            ConversationFlowComponentResponseVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsCreateRequest && IsConversationFlowComponentResponseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.CreateConversationFlowComponentRequest?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.ConversationFlowComponentResponseVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.CreateConversationFlowComponentRequest?, TResult>? createRequest = null,
+            global::System.Func<global::RetellAI.ConversationFlowComponentResponseVariant2?, TResult>? conversationFlowComponentResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsCreateRequest && createRequest != null)
             {
-                return value1(Value1!);
+                return createRequest(CreateRequest!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsConversationFlowComponentResponseVariant2 && conversationFlowComponentResponseVariant2 != null)
             {
-                return value2(Value2!);
+                return conversationFlowComponentResponseVariant2(ConversationFlowComponentResponseVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.CreateConversationFlowComponentRequest?>? value1 = null,
-            global::System.Action<global::RetellAI.ConversationFlowComponentResponseVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.CreateConversationFlowComponentRequest?>? createRequest = null,
+            global::System.Action<global::RetellAI.ConversationFlowComponentResponseVariant2?>? conversationFlowComponentResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsCreateRequest)
             {
-                value1?.Invoke(Value1!);
+                createRequest?.Invoke(CreateRequest!);
             }
-            else if (IsValue2)
+            else if (IsConversationFlowComponentResponseVariant2)
             {
-                value2?.Invoke(Value2!);
+                conversationFlowComponentResponseVariant2?.Invoke(ConversationFlowComponentResponseVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                CreateRequest,
                 typeof(global::RetellAI.CreateConversationFlowComponentRequest),
-                Value2,
+                ConversationFlowComponentResponseVariant2,
                 typeof(global::RetellAI.ConversationFlowComponentResponseVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(ConversationFlowComponentResponse other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CreateConversationFlowComponentRequest?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationFlowComponentResponseVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CreateConversationFlowComponentRequest?>.Default.Equals(CreateRequest, other.CreateRequest) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationFlowComponentResponseVariant2?>.Default.Equals(ConversationFlowComponentResponseVariant2, other.ConversationFlowComponentResponseVariant2) 
                 ;
         }
 
