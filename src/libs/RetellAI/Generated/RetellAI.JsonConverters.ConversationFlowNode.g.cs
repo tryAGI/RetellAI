@@ -210,21 +210,21 @@ namespace RetellAI.JsonConverters
             if (__score13 > __bestScore) { __bestScore = __score13; __bestIndex = 13; }
             if (__score14 > __bestScore) { __bestScore = __score14; __bestIndex = 14; }
 
-            global::RetellAI.ConversationNode? value1 = default;
-            global::RetellAI.SubagentNode? value2 = default;
-            global::RetellAI.EndNode? value3 = default;
-            global::RetellAI.FunctionNode? value4 = default;
-            global::RetellAI.CodeNode? value5 = default;
-            global::RetellAI.TransferCallNode? value6 = default;
-            global::RetellAI.PressDigitNode? value7 = default;
-            global::RetellAI.BranchNode? value8 = default;
-            global::RetellAI.SmsNode? value9 = default;
-            global::RetellAI.ExtractDynamicVariablesNode? value10 = default;
-            global::RetellAI.AgentSwapNode? value11 = default;
-            global::RetellAI.MCPNode? value12 = default;
-            global::RetellAI.ComponentNode? value13 = default;
-            global::RetellAI.BridgeTransferNode? value14 = default;
-            global::RetellAI.CancelTransferNode? value15 = default;
+            global::RetellAI.ConversationNode? conversationNode = default;
+            global::RetellAI.SubagentNode? subagent = default;
+            global::RetellAI.EndNode? end = default;
+            global::RetellAI.FunctionNode? function = default;
+            global::RetellAI.CodeNode? code = default;
+            global::RetellAI.TransferCallNode? transferCall = default;
+            global::RetellAI.PressDigitNode? pressDigit = default;
+            global::RetellAI.BranchNode? branch = default;
+            global::RetellAI.SmsNode? sms = default;
+            global::RetellAI.ExtractDynamicVariablesNode? extractDynamicVariables = default;
+            global::RetellAI.AgentSwapNode? agentSwap = default;
+            global::RetellAI.MCPNode? mcp = default;
+            global::RetellAI.ComponentNode? component = default;
+            global::RetellAI.BridgeTransferNode? bridgeTransfer = default;
+            global::RetellAI.CancelTransferNode? cancelTransfer = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -234,7 +234,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConversationNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConversationNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConversationNode).Name}");
-                        value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        conversationNode = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -251,7 +251,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SubagentNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SubagentNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SubagentNode).Name}");
-                        value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        subagent = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -268,7 +268,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EndNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EndNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EndNode).Name}");
-                        value3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        end = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -285,7 +285,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.FunctionNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.FunctionNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.FunctionNode).Name}");
-                        value4 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        function = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -302,7 +302,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CodeNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CodeNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CodeNode).Name}");
-                        value5 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        code = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -319,7 +319,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferCallNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferCallNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferCallNode).Name}");
-                        value6 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        transferCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -336,7 +336,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.PressDigitNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.PressDigitNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.PressDigitNode).Name}");
-                        value7 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        pressDigit = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -353,7 +353,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BranchNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BranchNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BranchNode).Name}");
-                        value8 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        branch = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -370,7 +370,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsNode).Name}");
-                        value9 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        sms = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -387,7 +387,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ExtractDynamicVariablesNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ExtractDynamicVariablesNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ExtractDynamicVariablesNode).Name}");
-                        value10 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        extractDynamicVariables = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -404,7 +404,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentSwapNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentSwapNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentSwapNode).Name}");
-                        value11 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        agentSwap = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -421,7 +421,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.MCPNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.MCPNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.MCPNode).Name}");
-                        value12 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        mcp = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -438,7 +438,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ComponentNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ComponentNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ComponentNode).Name}");
-                        value13 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        component = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -455,7 +455,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BridgeTransferNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BridgeTransferNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BridgeTransferNode).Name}");
-                        value14 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        bridgeTransfer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -472,7 +472,7 @@ namespace RetellAI.JsonConverters
 
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CancelTransferNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CancelTransferNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CancelTransferNode).Name}");
-                        value15 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        cancelTransfer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -483,14 +483,14 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (value1 == null && value2 == null && value3 == null && value4 == null && value5 == null && value6 == null && value7 == null && value8 == null && value9 == null && value10 == null && value11 == null && value12 == null && value13 == null && value14 == null && value15 == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConversationNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConversationNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConversationNode).Name}");
-                    value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    conversationNode = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -504,7 +504,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SubagentNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SubagentNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SubagentNode).Name}");
-                    value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    subagent = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -518,7 +518,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EndNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EndNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EndNode).Name}");
-                    value3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    end = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -532,7 +532,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.FunctionNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.FunctionNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.FunctionNode).Name}");
-                    value4 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    function = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -546,7 +546,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CodeNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CodeNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CodeNode).Name}");
-                    value5 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    code = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -560,7 +560,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferCallNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferCallNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferCallNode).Name}");
-                    value6 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    transferCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -574,7 +574,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.PressDigitNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.PressDigitNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.PressDigitNode).Name}");
-                    value7 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    pressDigit = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -588,7 +588,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BranchNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BranchNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BranchNode).Name}");
-                    value8 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    branch = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -602,7 +602,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsNode).Name}");
-                    value9 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    sms = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -616,7 +616,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ExtractDynamicVariablesNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ExtractDynamicVariablesNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ExtractDynamicVariablesNode).Name}");
-                    value10 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    extractDynamicVariables = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -630,7 +630,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentSwapNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentSwapNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentSwapNode).Name}");
-                    value11 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    agentSwap = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -644,7 +644,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.MCPNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.MCPNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.MCPNode).Name}");
-                    value12 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    mcp = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -658,7 +658,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ComponentNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ComponentNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ComponentNode).Name}");
-                    value13 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    component = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -672,7 +672,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BridgeTransferNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BridgeTransferNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BridgeTransferNode).Name}");
-                    value14 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    bridgeTransfer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -686,7 +686,7 @@ namespace RetellAI.JsonConverters
 
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CancelTransferNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CancelTransferNode> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CancelTransferNode).Name}");
-                    value15 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    cancelTransfer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -697,35 +697,35 @@ namespace RetellAI.JsonConverters
             }
 
             var __value = new global::RetellAI.ConversationFlowNode(
-                value1,
+                conversationNode,
 
-                value2,
+                subagent,
 
-                value3,
+                end,
 
-                value4,
+                function,
 
-                value5,
+                code,
 
-                value6,
+                transferCall,
 
-                value7,
+                pressDigit,
 
-                value8,
+                branch,
 
-                value9,
+                sms,
 
-                value10,
+                extractDynamicVariables,
 
-                value11,
+                agentSwap,
 
-                value12,
+                mcp,
 
-                value13,
+                component,
 
-                value14,
+                bridgeTransfer,
 
-                value15
+                cancelTransfer
                 );
 
             return __value;
@@ -740,95 +740,95 @@ namespace RetellAI.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsConversationNode)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConversationNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConversationNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConversationNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ConversationNode!.Value, typeInfo);
             }
-            else if (value.IsValue2)
+            else if (value.IsSubagent)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SubagentNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SubagentNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SubagentNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Subagent!.Value, typeInfo);
             }
-            else if (value.IsValue3)
+            else if (value.IsEnd)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EndNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EndNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EndNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value3!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.End!.Value, typeInfo);
             }
-            else if (value.IsValue4)
+            else if (value.IsFunction)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.FunctionNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.FunctionNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.FunctionNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value4!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Function!.Value, typeInfo);
             }
-            else if (value.IsValue5)
+            else if (value.IsCode)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CodeNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CodeNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CodeNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value5!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Code!.Value, typeInfo);
             }
-            else if (value.IsValue6)
+            else if (value.IsTransferCall)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferCallNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferCallNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferCallNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value6!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TransferCall!.Value, typeInfo);
             }
-            else if (value.IsValue7)
+            else if (value.IsPressDigit)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.PressDigitNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.PressDigitNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.PressDigitNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value7!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PressDigit!.Value, typeInfo);
             }
-            else if (value.IsValue8)
+            else if (value.IsBranch)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BranchNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BranchNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BranchNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value8!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Branch!.Value, typeInfo);
             }
-            else if (value.IsValue9)
+            else if (value.IsSms)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value9!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Sms!.Value, typeInfo);
             }
-            else if (value.IsValue10)
+            else if (value.IsExtractDynamicVariables)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ExtractDynamicVariablesNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ExtractDynamicVariablesNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ExtractDynamicVariablesNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value10!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ExtractDynamicVariables!.Value, typeInfo);
             }
-            else if (value.IsValue11)
+            else if (value.IsAgentSwap)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentSwapNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentSwapNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentSwapNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value11!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AgentSwap!.Value, typeInfo);
             }
-            else if (value.IsValue12)
+            else if (value.IsMcp)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.MCPNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.MCPNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.MCPNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value12!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Mcp!.Value, typeInfo);
             }
-            else if (value.IsValue13)
+            else if (value.IsComponent)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ComponentNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ComponentNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ComponentNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value13!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Component!.Value, typeInfo);
             }
-            else if (value.IsValue14)
+            else if (value.IsBridgeTransfer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BridgeTransferNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BridgeTransferNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BridgeTransferNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value14!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BridgeTransfer!.Value, typeInfo);
             }
-            else if (value.IsValue15)
+            else if (value.IsCancelTransfer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CancelTransferNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CancelTransferNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CancelTransferNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value15!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CancelTransfer!.Value, typeInfo);
             }
         }
     }

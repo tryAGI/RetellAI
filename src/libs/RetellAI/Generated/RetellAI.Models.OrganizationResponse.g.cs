@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.Organization? Value1 { get; init; }
+        public global::RetellAI.Organization? Organization { get; init; }
 #else
-        public global::RetellAI.Organization? Value1 { get; }
+        public global::RetellAI.Organization? Organization { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Organization))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsOrganization => Organization != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.OrganizationResponseVariant2? Value2 { get; init; }
+        public global::RetellAI.OrganizationResponseVariant2? OrganizationResponseVariant2 { get; init; }
 #else
-        public global::RetellAI.OrganizationResponseVariant2? Value2 { get; }
+        public global::RetellAI.OrganizationResponseVariant2? OrganizationResponseVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(OrganizationResponseVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsOrganizationResponseVariant2 => OrganizationResponseVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.Organization?(OrganizationResponse @this) => @this.Value1;
+        public static implicit operator global::RetellAI.Organization?(OrganizationResponse @this) => @this.Organization;
 
         /// <summary>
         /// 
         /// </summary>
         public OrganizationResponse(global::RetellAI.Organization? value)
         {
-            Value1 = value;
+            Organization = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.OrganizationResponseVariant2?(OrganizationResponse @this) => @this.Value2;
+        public static implicit operator global::RetellAI.OrganizationResponseVariant2?(OrganizationResponse @this) => @this.OrganizationResponseVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public OrganizationResponse(global::RetellAI.OrganizationResponseVariant2? value)
         {
-            Value2 = value;
+            OrganizationResponseVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public OrganizationResponse(
-            global::RetellAI.Organization? value1,
-            global::RetellAI.OrganizationResponseVariant2? value2
+            global::RetellAI.Organization? organization,
+            global::RetellAI.OrganizationResponseVariant2? organizationResponseVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Organization = organization;
+            OrganizationResponseVariant2 = organizationResponseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            OrganizationResponseVariant2 as object ??
+            Organization as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Organization?.ToString() ??
+            OrganizationResponseVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsOrganization && IsOrganizationResponseVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.Organization?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.OrganizationResponseVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.Organization?, TResult>? organization = null,
+            global::System.Func<global::RetellAI.OrganizationResponseVariant2?, TResult>? organizationResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsOrganization && organization != null)
             {
-                return value1(Value1!);
+                return organization(Organization!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsOrganizationResponseVariant2 && organizationResponseVariant2 != null)
             {
-                return value2(Value2!);
+                return organizationResponseVariant2(OrganizationResponseVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.Organization?>? value1 = null,
-            global::System.Action<global::RetellAI.OrganizationResponseVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.Organization?>? organization = null,
+            global::System.Action<global::RetellAI.OrganizationResponseVariant2?>? organizationResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsOrganization)
             {
-                value1?.Invoke(Value1!);
+                organization?.Invoke(Organization!);
             }
-            else if (IsValue2)
+            else if (IsOrganizationResponseVariant2)
             {
-                value2?.Invoke(Value2!);
+                organizationResponseVariant2?.Invoke(OrganizationResponseVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                Organization,
                 typeof(global::RetellAI.Organization),
-                Value2,
+                OrganizationResponseVariant2,
                 typeof(global::RetellAI.OrganizationResponseVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(OrganizationResponse other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.Organization?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.OrganizationResponseVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.Organization?>.Default.Equals(Organization, other.Organization) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.OrganizationResponseVariant2?>.Default.Equals(OrganizationResponseVariant2, other.OrganizationResponseVariant2) 
                 ;
         }
 

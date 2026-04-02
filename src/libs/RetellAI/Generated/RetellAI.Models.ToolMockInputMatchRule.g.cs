@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ToolMockInputMatchRuleVariant1? Value1 { get; init; }
+        public global::RetellAI.ToolMockInputMatchRuleVariant1? ToolMockInputMatchRuleVariant1 { get; init; }
 #else
-        public global::RetellAI.ToolMockInputMatchRuleVariant1? Value1 { get; }
+        public global::RetellAI.ToolMockInputMatchRuleVariant1? ToolMockInputMatchRuleVariant1 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolMockInputMatchRuleVariant1))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsToolMockInputMatchRuleVariant1 => ToolMockInputMatchRuleVariant1 != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ToolMockInputMatchRuleVariant2? Value2 { get; init; }
+        public global::RetellAI.ToolMockInputMatchRuleVariant2? ToolMockInputMatchRuleVariant2 { get; init; }
 #else
-        public global::RetellAI.ToolMockInputMatchRuleVariant2? Value2 { get; }
+        public global::RetellAI.ToolMockInputMatchRuleVariant2? ToolMockInputMatchRuleVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolMockInputMatchRuleVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsToolMockInputMatchRuleVariant2 => ToolMockInputMatchRuleVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ToolMockInputMatchRuleVariant1?(ToolMockInputMatchRule @this) => @this.Value1;
+        public static implicit operator global::RetellAI.ToolMockInputMatchRuleVariant1?(ToolMockInputMatchRule @this) => @this.ToolMockInputMatchRuleVariant1;
 
         /// <summary>
         /// 
         /// </summary>
         public ToolMockInputMatchRule(global::RetellAI.ToolMockInputMatchRuleVariant1? value)
         {
-            Value1 = value;
+            ToolMockInputMatchRuleVariant1 = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ToolMockInputMatchRuleVariant2?(ToolMockInputMatchRule @this) => @this.Value2;
+        public static implicit operator global::RetellAI.ToolMockInputMatchRuleVariant2?(ToolMockInputMatchRule @this) => @this.ToolMockInputMatchRuleVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public ToolMockInputMatchRule(global::RetellAI.ToolMockInputMatchRuleVariant2? value)
         {
-            Value2 = value;
+            ToolMockInputMatchRuleVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public ToolMockInputMatchRule(
-            global::RetellAI.ToolMockInputMatchRuleVariant1? value1,
-            global::RetellAI.ToolMockInputMatchRuleVariant2? value2
+            global::RetellAI.ToolMockInputMatchRuleVariant1? toolMockInputMatchRuleVariant1,
+            global::RetellAI.ToolMockInputMatchRuleVariant2? toolMockInputMatchRuleVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            ToolMockInputMatchRuleVariant1 = toolMockInputMatchRuleVariant1;
+            ToolMockInputMatchRuleVariant2 = toolMockInputMatchRuleVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            ToolMockInputMatchRuleVariant2 as object ??
+            ToolMockInputMatchRuleVariant1 as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            ToolMockInputMatchRuleVariant1?.ToString() ??
+            ToolMockInputMatchRuleVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && !IsValue2 || !IsValue1 && IsValue2;
+            return IsToolMockInputMatchRuleVariant1 && !IsToolMockInputMatchRuleVariant2 || !IsToolMockInputMatchRuleVariant1 && IsToolMockInputMatchRuleVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ToolMockInputMatchRuleVariant1?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.ToolMockInputMatchRuleVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.ToolMockInputMatchRuleVariant1?, TResult>? toolMockInputMatchRuleVariant1 = null,
+            global::System.Func<global::RetellAI.ToolMockInputMatchRuleVariant2?, TResult>? toolMockInputMatchRuleVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsToolMockInputMatchRuleVariant1 && toolMockInputMatchRuleVariant1 != null)
             {
-                return value1(Value1!);
+                return toolMockInputMatchRuleVariant1(ToolMockInputMatchRuleVariant1!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsToolMockInputMatchRuleVariant2 && toolMockInputMatchRuleVariant2 != null)
             {
-                return value2(Value2!);
+                return toolMockInputMatchRuleVariant2(ToolMockInputMatchRuleVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant1?>? value1 = null,
-            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant1?>? toolMockInputMatchRuleVariant1 = null,
+            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant2?>? toolMockInputMatchRuleVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsToolMockInputMatchRuleVariant1)
             {
-                value1?.Invoke(Value1!);
+                toolMockInputMatchRuleVariant1?.Invoke(ToolMockInputMatchRuleVariant1!);
             }
-            else if (IsValue2)
+            else if (IsToolMockInputMatchRuleVariant2)
             {
-                value2?.Invoke(Value2!);
+                toolMockInputMatchRuleVariant2?.Invoke(ToolMockInputMatchRuleVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                ToolMockInputMatchRuleVariant1,
                 typeof(global::RetellAI.ToolMockInputMatchRuleVariant1),
-                Value2,
+                ToolMockInputMatchRuleVariant2,
                 typeof(global::RetellAI.ToolMockInputMatchRuleVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(ToolMockInputMatchRule other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ToolMockInputMatchRuleVariant1?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ToolMockInputMatchRuleVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ToolMockInputMatchRuleVariant1?>.Default.Equals(ToolMockInputMatchRuleVariant1, other.ToolMockInputMatchRuleVariant1) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ToolMockInputMatchRuleVariant2?>.Default.Equals(ToolMockInputMatchRuleVariant2, other.ToolMockInputMatchRuleVariant2) 
                 ;
         }
 

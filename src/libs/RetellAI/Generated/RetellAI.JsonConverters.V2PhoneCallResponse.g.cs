@@ -69,8 +69,8 @@ namespace RetellAI.JsonConverters
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
 
-            global::RetellAI.V2PhoneCallResponseVariant1? value1 = default;
-            global::RetellAI.V2CallBase? value2 = default;
+            global::RetellAI.V2PhoneCallResponseVariant1? v2PhoneCallResponseVariant1 = default;
+            global::RetellAI.V2CallBase? @base = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -79,7 +79,7 @@ namespace RetellAI.JsonConverters
                     {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2PhoneCallResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2PhoneCallResponseVariant1> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2PhoneCallResponseVariant1).Name}");
-                        value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        v2PhoneCallResponseVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -94,7 +94,7 @@ namespace RetellAI.JsonConverters
                     {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2CallBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2CallBase> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2CallBase).Name}");
-                        value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        @base = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -105,13 +105,13 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (value1 == null && value2 == null)
+            if (v2PhoneCallResponseVariant1 == null && @base == null)
             {
                 try
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2PhoneCallResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2PhoneCallResponseVariant1> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2PhoneCallResponseVariant1).Name}");
-                    value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    v2PhoneCallResponseVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -124,7 +124,7 @@ namespace RetellAI.JsonConverters
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2CallBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2CallBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2CallBase).Name}");
-                    value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    @base = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -135,9 +135,9 @@ namespace RetellAI.JsonConverters
             }
 
             var __value = new global::RetellAI.V2PhoneCallResponse(
-                value1,
+                v2PhoneCallResponseVariant1,
 
-                value2
+                @base
                 );
 
             return __value;
@@ -152,17 +152,17 @@ namespace RetellAI.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsV2PhoneCallResponseVariant1)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2PhoneCallResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2PhoneCallResponseVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2PhoneCallResponseVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.V2PhoneCallResponseVariant1!, typeInfo);
             }
-            else if (value.IsValue2)
+            else if (value.IsBase)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2CallBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2CallBase?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2CallBase).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Base!, typeInfo);
             }
         }
     }

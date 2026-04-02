@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.ValueFilter? Value1 { get; init; }
+        public global::RetellAI.ValueFilter? Value { get; init; }
 #else
-        public global::RetellAI.ValueFilter? Value1 { get; }
+        public global::RetellAI.ValueFilter? Value { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsValue => Value != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.CustomFieldFilterVariant2? Value2 { get; init; }
+        public global::RetellAI.CustomFieldFilterVariant2? CustomFieldFilterVariant2 { get; init; }
 #else
-        public global::RetellAI.CustomFieldFilterVariant2? Value2 { get; }
+        public global::RetellAI.CustomFieldFilterVariant2? CustomFieldFilterVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomFieldFilterVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsCustomFieldFilterVariant2 => CustomFieldFilterVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.ValueFilter?(CustomFieldFilter @this) => @this.Value1;
+        public static implicit operator global::RetellAI.ValueFilter?(CustomFieldFilter @this) => @this.Value;
 
         /// <summary>
         /// 
         /// </summary>
         public CustomFieldFilter(global::RetellAI.ValueFilter? value)
         {
-            Value1 = value;
+            Value = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.CustomFieldFilterVariant2?(CustomFieldFilter @this) => @this.Value2;
+        public static implicit operator global::RetellAI.CustomFieldFilterVariant2?(CustomFieldFilter @this) => @this.CustomFieldFilterVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public CustomFieldFilter(global::RetellAI.CustomFieldFilterVariant2? value)
         {
-            Value2 = value;
+            CustomFieldFilterVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public CustomFieldFilter(
-            global::RetellAI.ValueFilter? value1,
-            global::RetellAI.CustomFieldFilterVariant2? value2
+            global::RetellAI.ValueFilter? value,
+            global::RetellAI.CustomFieldFilterVariant2? customFieldFilterVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Value = value;
+            CustomFieldFilterVariant2 = customFieldFilterVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            CustomFieldFilterVariant2 as object ??
+            Value as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Value?.ToString() ??
+            CustomFieldFilterVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsValue && IsCustomFieldFilterVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ValueFilter?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.CustomFieldFilterVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.ValueFilter?, TResult>? value = null,
+            global::System.Func<global::RetellAI.CustomFieldFilterVariant2?, TResult>? customFieldFilterVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsValue && value != null)
             {
-                return value1(Value1!);
+                return value(Value!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsCustomFieldFilterVariant2 && customFieldFilterVariant2 != null)
             {
-                return value2(Value2!);
+                return customFieldFilterVariant2(CustomFieldFilterVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ValueFilter?>? value1 = null,
-            global::System.Action<global::RetellAI.CustomFieldFilterVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.ValueFilter?>? value = null,
+            global::System.Action<global::RetellAI.CustomFieldFilterVariant2?>? customFieldFilterVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsValue)
             {
-                value1?.Invoke(Value1!);
+                value?.Invoke(Value!);
             }
-            else if (IsValue2)
+            else if (IsCustomFieldFilterVariant2)
             {
-                value2?.Invoke(Value2!);
+                customFieldFilterVariant2?.Invoke(CustomFieldFilterVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                Value,
                 typeof(global::RetellAI.ValueFilter),
-                Value2,
+                CustomFieldFilterVariant2,
                 typeof(global::RetellAI.CustomFieldFilterVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(CustomFieldFilter other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ValueFilter?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CustomFieldFilterVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ValueFilter?>.Default.Equals(Value, other.Value) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CustomFieldFilterVariant2?>.Default.Equals(CustomFieldFilterVariant2, other.CustomFieldFilterVariant2) 
                 ;
         }
 

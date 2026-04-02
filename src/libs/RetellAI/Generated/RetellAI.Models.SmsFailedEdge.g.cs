@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.NodeEdge? Value1 { get; init; }
+        public global::RetellAI.NodeEdge? Node { get; init; }
 #else
-        public global::RetellAI.NodeEdge? Value1 { get; }
+        public global::RetellAI.NodeEdge? Node { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Node))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsNode => Node != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.SmsFailedEdgeVariant2? Value2 { get; init; }
+        public global::RetellAI.SmsFailedEdgeVariant2? SmsFailedEdgeVariant2 { get; init; }
 #else
-        public global::RetellAI.SmsFailedEdgeVariant2? Value2 { get; }
+        public global::RetellAI.SmsFailedEdgeVariant2? SmsFailedEdgeVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SmsFailedEdgeVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsSmsFailedEdgeVariant2 => SmsFailedEdgeVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.NodeEdge?(SmsFailedEdge @this) => @this.Value1;
+        public static implicit operator global::RetellAI.NodeEdge?(SmsFailedEdge @this) => @this.Node;
 
         /// <summary>
         /// 
         /// </summary>
         public SmsFailedEdge(global::RetellAI.NodeEdge? value)
         {
-            Value1 = value;
+            Node = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.SmsFailedEdgeVariant2?(SmsFailedEdge @this) => @this.Value2;
+        public static implicit operator global::RetellAI.SmsFailedEdgeVariant2?(SmsFailedEdge @this) => @this.SmsFailedEdgeVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public SmsFailedEdge(global::RetellAI.SmsFailedEdgeVariant2? value)
         {
-            Value2 = value;
+            SmsFailedEdgeVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public SmsFailedEdge(
-            global::RetellAI.NodeEdge? value1,
-            global::RetellAI.SmsFailedEdgeVariant2? value2
+            global::RetellAI.NodeEdge? node,
+            global::RetellAI.SmsFailedEdgeVariant2? smsFailedEdgeVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            Node = node;
+            SmsFailedEdgeVariant2 = smsFailedEdgeVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            SmsFailedEdgeVariant2 as object ??
+            Node as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            Node?.ToString() ??
+            SmsFailedEdgeVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsNode && IsSmsFailedEdgeVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeEdge?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.SmsFailedEdgeVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.NodeEdge?, TResult>? node = null,
+            global::System.Func<global::RetellAI.SmsFailedEdgeVariant2?, TResult>? smsFailedEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsNode && node != null)
             {
-                return value1(Value1!);
+                return node(Node!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsSmsFailedEdgeVariant2 && smsFailedEdgeVariant2 != null)
             {
-                return value2(Value2!);
+                return smsFailedEdgeVariant2(SmsFailedEdgeVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeEdge?>? value1 = null,
-            global::System.Action<global::RetellAI.SmsFailedEdgeVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.NodeEdge?>? node = null,
+            global::System.Action<global::RetellAI.SmsFailedEdgeVariant2?>? smsFailedEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsNode)
             {
-                value1?.Invoke(Value1!);
+                node?.Invoke(Node!);
             }
-            else if (IsValue2)
+            else if (IsSmsFailedEdgeVariant2)
             {
-                value2?.Invoke(Value2!);
+                smsFailedEdgeVariant2?.Invoke(SmsFailedEdgeVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                Node,
                 typeof(global::RetellAI.NodeEdge),
-                Value2,
+                SmsFailedEdgeVariant2,
                 typeof(global::RetellAI.SmsFailedEdgeVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(SmsFailedEdge other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeEdge?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsFailedEdgeVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeEdge?>.Default.Equals(Node, other.Node) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsFailedEdgeVariant2?>.Default.Equals(SmsFailedEdgeVariant2, other.SmsFailedEdgeVariant2) 
                 ;
         }
 

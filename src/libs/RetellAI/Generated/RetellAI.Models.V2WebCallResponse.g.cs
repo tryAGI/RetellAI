@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.V2WebCallResponseVariant1? Value1 { get; init; }
+        public global::RetellAI.V2WebCallResponseVariant1? V2WebCallResponseVariant1 { get; init; }
 #else
-        public global::RetellAI.V2WebCallResponseVariant1? Value1 { get; }
+        public global::RetellAI.V2WebCallResponseVariant1? V2WebCallResponseVariant1 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(V2WebCallResponseVariant1))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsV2WebCallResponseVariant1 => V2WebCallResponseVariant1 != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.V2CallBase? Value2 { get; init; }
+        public global::RetellAI.V2CallBase? Base { get; init; }
 #else
-        public global::RetellAI.V2CallBase? Value2 { get; }
+        public global::RetellAI.V2CallBase? Base { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsBase => Base != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.V2WebCallResponseVariant1?(V2WebCallResponse @this) => @this.Value1;
+        public static implicit operator global::RetellAI.V2WebCallResponseVariant1?(V2WebCallResponse @this) => @this.V2WebCallResponseVariant1;
 
         /// <summary>
         /// 
         /// </summary>
         public V2WebCallResponse(global::RetellAI.V2WebCallResponseVariant1? value)
         {
-            Value1 = value;
+            V2WebCallResponseVariant1 = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.V2CallBase?(V2WebCallResponse @this) => @this.Value2;
+        public static implicit operator global::RetellAI.V2CallBase?(V2WebCallResponse @this) => @this.Base;
 
         /// <summary>
         /// 
         /// </summary>
         public V2WebCallResponse(global::RetellAI.V2CallBase? value)
         {
-            Value2 = value;
+            Base = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public V2WebCallResponse(
-            global::RetellAI.V2WebCallResponseVariant1? value1,
-            global::RetellAI.V2CallBase? value2
+            global::RetellAI.V2WebCallResponseVariant1? v2WebCallResponseVariant1,
+            global::RetellAI.V2CallBase? @base
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            V2WebCallResponseVariant1 = v2WebCallResponseVariant1;
+            Base = @base;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            Base as object ??
+            V2WebCallResponseVariant1 as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            V2WebCallResponseVariant1?.ToString() ??
+            Base?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsV2WebCallResponseVariant1 && IsBase;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.V2WebCallResponseVariant1?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.V2CallBase?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.V2WebCallResponseVariant1?, TResult>? v2WebCallResponseVariant1 = null,
+            global::System.Func<global::RetellAI.V2CallBase?, TResult>? @base = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsV2WebCallResponseVariant1 && v2WebCallResponseVariant1 != null)
             {
-                return value1(Value1!);
+                return v2WebCallResponseVariant1(V2WebCallResponseVariant1!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsBase && @base != null)
             {
-                return value2(Value2!);
+                return @base(Base!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.V2WebCallResponseVariant1?>? value1 = null,
-            global::System.Action<global::RetellAI.V2CallBase?>? value2 = null,
+            global::System.Action<global::RetellAI.V2WebCallResponseVariant1?>? v2WebCallResponseVariant1 = null,
+            global::System.Action<global::RetellAI.V2CallBase?>? @base = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsV2WebCallResponseVariant1)
             {
-                value1?.Invoke(Value1!);
+                v2WebCallResponseVariant1?.Invoke(V2WebCallResponseVariant1!);
             }
-            else if (IsValue2)
+            else if (IsBase)
             {
-                value2?.Invoke(Value2!);
+                @base?.Invoke(Base!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                V2WebCallResponseVariant1,
                 typeof(global::RetellAI.V2WebCallResponseVariant1),
-                Value2,
+                Base,
                 typeof(global::RetellAI.V2CallBase),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(V2WebCallResponse other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2WebCallResponseVariant1?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2CallBase?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2WebCallResponseVariant1?>.Default.Equals(V2WebCallResponseVariant1, other.V2WebCallResponseVariant1) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2CallBase?>.Default.Equals(Base, other.Base) 
                 ;
         }
 

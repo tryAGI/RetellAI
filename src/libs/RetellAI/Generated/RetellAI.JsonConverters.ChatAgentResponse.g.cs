@@ -61,9 +61,9 @@ namespace RetellAI.JsonConverters
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
             if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
 
-            global::RetellAI.ChatAgentResponseVariant1? value1 = default;
-            global::RetellAI.ChatAgentRequest? value2 = default;
-            global::RetellAI.ChatAgentResponseVariant3? value3 = default;
+            global::RetellAI.ChatAgentResponseVariant1? chatAgentResponseVariant1 = default;
+            global::RetellAI.ChatAgentRequest? request = default;
+            global::RetellAI.ChatAgentResponseVariant3? chatAgentResponseVariant3 = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -72,7 +72,7 @@ namespace RetellAI.JsonConverters
                     {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatAgentResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatAgentResponseVariant1> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatAgentResponseVariant1).Name}");
-                        value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        chatAgentResponseVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -87,7 +87,7 @@ namespace RetellAI.JsonConverters
                     {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatAgentRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatAgentRequest> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatAgentRequest).Name}");
-                        value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        request = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -102,7 +102,7 @@ namespace RetellAI.JsonConverters
                     {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatAgentResponseVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatAgentResponseVariant3> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatAgentResponseVariant3).Name}");
-                        value3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                        chatAgentResponseVariant3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                     }
                     catch (global::System.Text.Json.JsonException)
                     {
@@ -113,13 +113,13 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (value1 == null && value2 == null && value3 == null)
+            if (chatAgentResponseVariant1 == null && request == null && chatAgentResponseVariant3 == null)
             {
                 try
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatAgentResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatAgentResponseVariant1> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatAgentResponseVariant1).Name}");
-                    value1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    chatAgentResponseVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -132,7 +132,7 @@ namespace RetellAI.JsonConverters
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatAgentRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatAgentRequest> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatAgentRequest).Name}");
-                    value2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    request = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -145,7 +145,7 @@ namespace RetellAI.JsonConverters
                 {
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatAgentResponseVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatAgentResponseVariant3> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatAgentResponseVariant3).Name}");
-                    value3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    chatAgentResponseVariant3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -156,11 +156,11 @@ namespace RetellAI.JsonConverters
             }
 
             var __value = new global::RetellAI.ChatAgentResponse(
-                value1,
+                chatAgentResponseVariant1,
 
-                value2,
+                request,
 
-                value3
+                chatAgentResponseVariant3
                 );
 
             return __value;
@@ -175,23 +175,23 @@ namespace RetellAI.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsValue1)
+            if (value.IsChatAgentResponseVariant1)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatAgentResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatAgentResponseVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatAgentResponseVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChatAgentResponseVariant1!, typeInfo);
             }
-            else if (value.IsValue2)
+            else if (value.IsRequest)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatAgentRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatAgentRequest?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatAgentRequest).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Request!, typeInfo);
             }
-            else if (value.IsValue3)
+            else if (value.IsChatAgentResponseVariant3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatAgentResponseVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatAgentResponseVariant3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatAgentResponseVariant3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Value3!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChatAgentResponseVariant3!, typeInfo);
             }
         }
     }

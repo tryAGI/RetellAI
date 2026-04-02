@@ -13,35 +13,35 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? Value1 { get; init; }
+        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? NodeToolVariant1 { get; init; }
 #else
-        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? Value1 { get; }
+        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? NodeToolVariant1 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NodeToolVariant1))]
 #endif
-        public bool IsValue1 => Value1 != null;
+        public bool IsNodeToolVariant1 => NodeToolVariant1 != null;
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.NodeToolVariant2? Value2 { get; init; }
+        public global::RetellAI.NodeToolVariant2? NodeToolVariant2 { get; init; }
 #else
-        public global::RetellAI.NodeToolVariant2? Value2 { get; }
+        public global::RetellAI.NodeToolVariant2? NodeToolVariant2 { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NodeToolVariant2))]
 #endif
-        public bool IsValue2 => Value2 != null;
+        public bool IsNodeToolVariant2 => NodeToolVariant2 != null;
         /// <summary>
         /// 
         /// </summary>
@@ -50,14 +50,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?(NodeTool @this) => @this.Value1;
+        public static implicit operator global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?(NodeTool @this) => @this.NodeToolVariant1;
 
         /// <summary>
         /// 
         /// </summary>
         public NodeTool(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? value)
         {
-            Value1 = value;
+            NodeToolVariant1 = value;
         }
 
         /// <summary>
@@ -68,42 +68,42 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator global::RetellAI.NodeToolVariant2?(NodeTool @this) => @this.Value2;
+        public static implicit operator global::RetellAI.NodeToolVariant2?(NodeTool @this) => @this.NodeToolVariant2;
 
         /// <summary>
         /// 
         /// </summary>
         public NodeTool(global::RetellAI.NodeToolVariant2? value)
         {
-            Value2 = value;
+            NodeToolVariant2 = value;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public NodeTool(
-            global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? value1,
-            global::RetellAI.NodeToolVariant2? value2
+            global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? nodeToolVariant1,
+            global::RetellAI.NodeToolVariant2? nodeToolVariant2
             )
         {
-            Value1 = value1;
-            Value2 = value2;
+            NodeToolVariant1 = nodeToolVariant1;
+            NodeToolVariant2 = nodeToolVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            Value2 as object ??
-            Value1 as object 
+            NodeToolVariant2 as object ??
+            NodeToolVariant1 as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            Value1?.ToString() ??
-            Value2?.ToString() 
+            NodeToolVariant1?.ToString() ??
+            NodeToolVariant2?.ToString() 
             ;
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsValue1 && IsValue2;
+            return IsNodeToolVariant1 && IsNodeToolVariant2;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?, TResult>? value1 = null,
-            global::System.Func<global::RetellAI.NodeToolVariant2?, TResult>? value2 = null,
+            global::System.Func<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?, TResult>? nodeToolVariant1 = null,
+            global::System.Func<global::RetellAI.NodeToolVariant2?, TResult>? nodeToolVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -127,13 +127,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1 && value1 != null)
+            if (IsNodeToolVariant1 && nodeToolVariant1 != null)
             {
-                return value1(Value1!);
+                return nodeToolVariant1(NodeToolVariant1!);
             }
-            else if (IsValue2 && value2 != null)
+            else if (IsNodeToolVariant2 && nodeToolVariant2 != null)
             {
-                return value2(Value2!);
+                return nodeToolVariant2(NodeToolVariant2!);
             }
 
             return default(TResult);
@@ -143,8 +143,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?>? value1 = null,
-            global::System.Action<global::RetellAI.NodeToolVariant2?>? value2 = null,
+            global::System.Action<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?>? nodeToolVariant1 = null,
+            global::System.Action<global::RetellAI.NodeToolVariant2?>? nodeToolVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -152,13 +152,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue1)
+            if (IsNodeToolVariant1)
             {
-                value1?.Invoke(Value1!);
+                nodeToolVariant1?.Invoke(NodeToolVariant1!);
             }
-            else if (IsValue2)
+            else if (IsNodeToolVariant2)
             {
-                value2?.Invoke(Value2!);
+                nodeToolVariant2?.Invoke(NodeToolVariant2!);
             }
         }
 
@@ -169,9 +169,9 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Value1,
+                NodeToolVariant1,
                 typeof(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>),
-                Value2,
+                NodeToolVariant2,
                 typeof(global::RetellAI.NodeToolVariant2),
             };
             const int offset = unchecked((int)2166136261);
@@ -189,8 +189,8 @@ namespace RetellAI
         public bool Equals(NodeTool other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?>.Default.Equals(Value1, other.Value1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeToolVariant2?>.Default.Equals(Value2, other.Value2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?>.Default.Equals(NodeToolVariant1, other.NodeToolVariant1) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeToolVariant2?>.Default.Equals(NodeToolVariant2, other.NodeToolVariant2) 
                 ;
         }
 
