@@ -6,6 +6,7 @@ namespace RetellAI
     public sealed partial class RetellAiClient
     {
         /// <inheritdoc cref="RetellAiClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::RetellAI.EndPointAuthorization}?, bool)"/>
+
         public RetellAiClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,
