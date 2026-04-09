@@ -5,6 +5,25 @@ namespace RetellAI
 {
     public partial class RetellAiClient
     {
+
+
+        private static readonly global::RetellAI.EndPointSecurityRequirement s_EndChatSecurityRequirement0 =
+            new global::RetellAI.EndPointSecurityRequirement
+            {
+                Authorizations = new global::RetellAI.EndPointAuthorizationRequirement[]
+                {                    new global::RetellAI.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::RetellAI.EndPointSecurityRequirement[] s_EndChatSecurityRequirements =
+            new global::RetellAI.EndPointSecurityRequirement[]
+            {                s_EndChatSecurityRequirement0,
+            };
         partial void PrepareEndChatArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string chatId);
@@ -34,9 +53,15 @@ namespace RetellAI
                 httpClient: HttpClient,
                 chatId: ref chatId);
 
+
+            var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_EndChatSecurityRequirements,
+                operationName: "EndChatAsync");
+
             var __pathBuilder = new global::RetellAI.PathBuilder(
                 path: $"/end-chat/{chatId}",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: new global::System.Net.Http.HttpMethod("PATCH"),
@@ -46,7 +71,7 @@ namespace RetellAI
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

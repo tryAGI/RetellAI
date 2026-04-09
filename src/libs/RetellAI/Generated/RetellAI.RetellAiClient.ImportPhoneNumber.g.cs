@@ -7,6 +7,25 @@ namespace RetellAI
 {
     public partial class RetellAiClient
     {
+
+
+        private static readonly global::RetellAI.EndPointSecurityRequirement s_ImportPhoneNumberSecurityRequirement0 =
+            new global::RetellAI.EndPointSecurityRequirement
+            {
+                Authorizations = new global::RetellAI.EndPointAuthorizationRequirement[]
+                {                    new global::RetellAI.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::RetellAI.EndPointSecurityRequirement[] s_ImportPhoneNumberSecurityRequirements =
+            new global::RetellAI.EndPointSecurityRequirement[]
+            {                s_ImportPhoneNumberSecurityRequirement0,
+            };
         partial void PrepareImportPhoneNumberArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::RetellAI.ImportPhoneNumberRequest request);
@@ -42,9 +61,15 @@ namespace RetellAI
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ImportPhoneNumberSecurityRequirements,
+                operationName: "ImportPhoneNumberAsync");
+
             var __pathBuilder = new global::RetellAI.PathBuilder(
                 path: "/import-phone-number",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -54,7 +79,7 @@ namespace RetellAI
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")

@@ -5,6 +5,25 @@ namespace RetellAI
 {
     public partial class RetellAiClient
     {
+
+
+        private static readonly global::RetellAI.EndPointSecurityRequirement s_ListPhoneNumbersV2SecurityRequirement0 =
+            new global::RetellAI.EndPointSecurityRequirement
+            {
+                Authorizations = new global::RetellAI.EndPointAuthorizationRequirement[]
+                {                    new global::RetellAI.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::RetellAI.EndPointSecurityRequirement[] s_ListPhoneNumbersV2SecurityRequirements =
+            new global::RetellAI.EndPointSecurityRequirement[]
+            {                s_ListPhoneNumbersV2SecurityRequirement0,
+            };
         partial void PrepareListPhoneNumbersV2Arguments(
             global::System.Net.Http.HttpClient httpClient,
             ref int? limit,
@@ -51,6 +70,12 @@ namespace RetellAI
                 sortOrder: ref sortOrder,
                 paginationKey: ref paginationKey);
 
+
+            var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_ListPhoneNumbersV2SecurityRequirements,
+                operationName: "ListPhoneNumbersV2Async");
+
             var __pathBuilder = new global::RetellAI.PathBuilder(
                 path: "/v2/list-phone-numbers",
                 baseUri: HttpClient.BaseAddress); 
@@ -58,7 +83,7 @@ namespace RetellAI
                 .AddOptionalParameter("limit", limit?.ToString())
                 .AddOptionalParameter("sort_order", sortOrder?.ToValueString())
                 .AddOptionalParameter("pagination_key", paginationKey) 
-                ; 
+                ;
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Get,
@@ -68,7 +93,7 @@ namespace RetellAI
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
