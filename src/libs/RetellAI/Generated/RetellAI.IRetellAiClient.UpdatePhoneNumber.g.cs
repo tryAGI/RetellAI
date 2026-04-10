@@ -13,12 +13,14 @@ namespace RetellAI
         /// Example: +14157774444
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.PhoneNumberResponse> UpdatePhoneNumberAsync(
             string phoneNumber,
 
             global::RetellAI.UpdatePhoneNumberRequest request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update agent bound to a purchased phone number
@@ -82,6 +84,7 @@ namespace RetellAI
         /// Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode. Can be either a Retell phone number or an external number. Set to null to remove. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
         /// Example: +14155551234
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.PhoneNumberResponse> UpdatePhoneNumberAsync(
@@ -101,6 +104,7 @@ namespace RetellAI
             string? authPassword = default,
             string? transport = default,
             string? fallbackNumber = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

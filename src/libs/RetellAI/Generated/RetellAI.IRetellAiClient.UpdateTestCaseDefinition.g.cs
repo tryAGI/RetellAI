@@ -9,12 +9,14 @@ namespace RetellAI
         /// </summary>
         /// <param name="testCaseDefinitionId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.TestCaseDefinition> UpdateTestCaseDefinitionAsync(
             string testCaseDefinitionId,
 
             global::RetellAI.TestCaseDefinitionInput request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a test case definition
@@ -41,6 +43,7 @@ namespace RetellAI
         /// <param name="llmModel">
         /// Available LLM models for agents.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.TestCaseDefinition> UpdateTestCaseDefinitionAsync(
@@ -52,6 +55,7 @@ namespace RetellAI
             global::System.Collections.Generic.Dictionary<string, string>? dynamicVariables = default,
             global::System.Collections.Generic.IList<global::RetellAI.ToolMock>? toolMocks = default,
             global::RetellAI.LLMModel? llmModel = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -15,6 +15,7 @@ namespace RetellAI
         /// Default Value: 50
         /// </param>
         /// <param name="paginationKey"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListBatchTestsV2Response2>> ListBatchTestsV2Async(
@@ -24,6 +25,7 @@ namespace RetellAI
             int? version = default,
             int? limit = default,
             string? paginationKey = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

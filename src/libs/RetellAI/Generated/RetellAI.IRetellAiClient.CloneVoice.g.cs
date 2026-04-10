@@ -8,11 +8,13 @@ namespace RetellAI
         /// Clone a voice from audio files
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.VoiceResponse> CloneVoiceAsync(
 
             global::RetellAI.CloneVoiceRequest request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Clone a voice from audio files
@@ -26,12 +28,14 @@ namespace RetellAI
         /// <param name="voiceProvider">
         /// Voice provider to use for cloning.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.VoiceResponse> CloneVoiceAsync(
             global::System.Collections.Generic.IList<byte[]> files,
             string voiceName,
             global::RetellAI.CloneVoiceRequestVoiceProvider voiceProvider,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

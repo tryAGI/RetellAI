@@ -11,12 +11,14 @@ namespace RetellAI
         /// Example: chat_98c1a2157aa0559144d67bb0729
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.ChatResponse> UpdateChatMetadataAsync(
             string chatId,
 
             global::RetellAI.UpdateChatMetadataRequest request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update metadata and sensitive data storage settings for an existing chat.
@@ -39,6 +41,7 @@ namespace RetellAI
         /// Custom attributes for the chat<br/>
         /// Example: {"custom_attribute_1":"value1","custom_attribute_2":"value2"}
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.ChatResponse> UpdateChatMetadataAsync(
@@ -47,6 +50,7 @@ namespace RetellAI
             global::RetellAI.UpdateChatMetadataRequestDataStorageSetting? dataStorageSetting = default,
             global::System.Collections.Generic.Dictionary<string, string>? overrideDynamicVariables = default,
             object? customAttributes = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
