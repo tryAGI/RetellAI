@@ -14,6 +14,7 @@ namespace RetellAI
         /// Example: 1
         /// </param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AgentResponse> UpdateAgentAsync(
@@ -21,6 +22,7 @@ namespace RetellAI
 
             global::RetellAI.AgentRequest request,
             int? version = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an existing agent's latest draft version
@@ -247,6 +249,7 @@ namespace RetellAI
         /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
         /// Example: false
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AgentResponse> UpdateAgentAsync(
@@ -308,6 +311,7 @@ namespace RetellAI
             global::RetellAI.VoiceHandbookConfig? handbookConfig = default,
             string? timezone = default,
             bool? isPublic = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

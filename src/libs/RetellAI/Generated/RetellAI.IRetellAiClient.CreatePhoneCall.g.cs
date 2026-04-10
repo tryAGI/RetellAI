@@ -8,11 +8,13 @@ namespace RetellAI
         /// Create a new outbound phone call
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.V2PhoneCallResponse> CreatePhoneCallAsync(
 
             global::RetellAI.CreatePhoneCallRequest request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a new outbound phone call
@@ -51,6 +53,7 @@ namespace RetellAI
         /// If true, the e.164 validation will be ignored for the from_number. This can be useful when you want to dial to internal pseudo numbers. This only applies when you are using custom telephony and does not apply when you are using Retell Telephony. If omitted, the default value is false.<br/>
         /// Example: true
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.V2PhoneCallResponse> CreatePhoneCallAsync(
@@ -63,6 +66,7 @@ namespace RetellAI
             object? retellLlmDynamicVariables = default,
             global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders = default,
             bool? ignoreE164Validation = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -25,6 +25,7 @@ namespace RetellAI
             Authorizations.Add(new global::RetellAI.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "ApiKey",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,

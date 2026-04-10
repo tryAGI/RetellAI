@@ -8,11 +8,13 @@ namespace RetellAI
         /// Create a batch call
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.BatchCallResponse> CreateBatchCallAsync(
 
             global::RetellAI.CreateBatchCallRequest request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create a batch call
@@ -38,6 +40,7 @@ namespace RetellAI
         /// <param name="callTimeWindow">
         /// Allowed calling windows in a specific timezone. Each window is a half-open interval [startMin, endMin) in minutes since 00:00 local time. Cross-midnight windows are NOT allowed (must satisfy startMin &lt; endMin). `endMin = 1440` (24:00) is valid.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.BatchCallResponse> CreateBatchCallAsync(
@@ -47,6 +50,7 @@ namespace RetellAI
             double? triggerTimestamp = default,
             int? reservedConcurrency = default,
             global::RetellAI.CallTimeWindow? callTimeWindow = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

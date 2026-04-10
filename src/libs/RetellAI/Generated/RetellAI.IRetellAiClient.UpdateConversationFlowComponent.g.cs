@@ -9,12 +9,14 @@ namespace RetellAI
         /// </summary>
         /// <param name="conversationFlowComponentId"></param>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.ConversationFlowComponentResponse> UpdateConversationFlowComponentAsync(
             string conversationFlowComponentId,
 
             global::RetellAI.ConversationFlowComponent request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update an existing shared conversation flow component
@@ -45,6 +47,7 @@ namespace RetellAI
         /// <param name="notes">
         /// Visual annotations displayed on the flow canvas.
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.ConversationFlowComponentResponse> UpdateConversationFlowComponentAsync(
@@ -56,6 +59,7 @@ namespace RetellAI
             string? startNodeId = default,
             global::RetellAI.ConversationFlowComponentBeginTagDisplayPosition? beginTagDisplayPosition = default,
             global::System.Collections.Generic.IList<global::RetellAI.Note>? notes = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
