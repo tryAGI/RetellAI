@@ -1,0 +1,59 @@
+{
+  "Examples": [
+    {
+      "Order": 1,
+      "Title": "Update an existing agent\u0027s latest draft version",
+      "Slug": "updateagent",
+      "Description": "Update an existing agent\u0027s latest draft version",
+      "Language": "http",
+      "Code": "### Update an existing agent\u0027s latest draft version\n# @name updateAgent\nPATCH {{host}}/update-agent/{{agent_id}}?version={{version}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022agent_name\u0022: \u0022Jarvis\u0022\n}\n\n## Responses\n# 200\n# Description: Successfully updated an agent.\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "updateAgent",
+      "Setup": null
+    },
+    {
+      "Order": 2,
+      "Title": "Update metadata and sensitive data storage settings for an existing call.",
+      "Slug": "updatecallmetadata",
+      "Description": "Update metadata and sensitive data storage settings for an existing call.",
+      "Language": "http",
+      "Code": "### Update metadata and sensitive data storage settings for an existing call.\n# @name updateCallMetadata\nPATCH {{host}}/v2/update-call/{{call_id}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022metadata\u0022: {\n    \u0022customer_id\u0022: \u0022cust_123\u0022,\n    \u0022notes\u0022: \u0022Follow-up required\u0022\n  },\n  \u0022data_storage_setting\u0022: \u0022everything_except_pii\u0022\n}\n\n## Responses\n# 200\n# Description: Call metadata updated successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "updateCallMetadata",
+      "Setup": null
+    },
+    {
+      "Order": 3,
+      "Title": "Update metadata and sensitive data storage settings for an existing chat.",
+      "Slug": "updatechatmetadata",
+      "Description": "Update metadata and sensitive data storage settings for an existing chat.",
+      "Language": "http",
+      "Code": "### Update metadata and sensitive data storage settings for an existing chat.\n# @name updateChatMetadata\nPATCH {{host}}/update-chat/{{chat_id}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022metadata\u0022: {\n    \u0022customer_id\u0022: \u0022cust_123\u0022,\n    \u0022notes\u0022: \u0022Follow-up required\u0022\n  },\n  \u0022data_storage_setting\u0022: \u0022everything\u0022,\n  \u0022override_dynamic_variables\u0022: {\n    \u0022additional_discount\u0022: \u002215%\u0022\n  }\n}\n\n## Responses\n# 200\n# Description: Chat metadata updated successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "updateChatMetadata",
+      "Setup": null
+    },
+    {
+      "Order": 4,
+      "Title": "Update agent bound to a purchased phone number",
+      "Slug": "updatephonenumber",
+      "Description": "Update agent bound to a purchased phone number",
+      "Language": "http",
+      "Code": "### Update agent bound to a purchased phone number\n# @name updatePhoneNumber\nPATCH {{host}}/update-phone-number/{{phone_number}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022inbound_agent_id\u0022: \u0022oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD\u0022,\n  \u0022outbound_agent_id\u0022: \u0022oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD\u0022,\n  \u0022nickname\u0022: \u0022Frontdesk Number\u0022\n}\n\n## Responses\n# 200\n# Description: Successfully updated an phone number object.\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "updatePhoneNumber",
+      "Setup": null
+    },
+    {
+      "Order": 5,
+      "Title": "Update an existing Retell LLM Response Engine",
+      "Slug": "updateretellllm",
+      "Description": "Update an existing Retell LLM Response Engine",
+      "Language": "http",
+      "Code": "### Update an existing Retell LLM Response Engine\n# @name updateRetellLLM\nPATCH {{host}}/update-retell-llm/{{llm_id}}?version={{version}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022begin_message\u0022: \u0022Hey I am a virtual assistant calling from Retell Hospital.\u0022\n}\n\n## Responses\n# 200\n# Description: Successfully updated an Retell LLM Response Engine.\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "updateRetellLLM",
+      "Setup": null
+    }
+  ]
+}
