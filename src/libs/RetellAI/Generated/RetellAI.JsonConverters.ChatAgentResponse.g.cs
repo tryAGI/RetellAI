@@ -23,6 +23,14 @@ namespace RetellAI.JsonConverters
                 foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
                 {
                     __jsonProps.Add(__jsonProp.Name);
+                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                    {
+                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
+                        {
+                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
+                        }
+                    }
+
                 }
             }
 
@@ -40,11 +48,19 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("data_storage_setting")) __score1++;
             if (__jsonProps.Contains("end_chat_after_silence_ms")) __score1++;
             if (__jsonProps.Contains("guardrail_config")) __score1++;
+            if (__jsonProps.Contains("guardrail_config.input_topics")) __score1++;
+            if (__jsonProps.Contains("guardrail_config.output_topics")) __score1++;
             if (__jsonProps.Contains("handbook_config")) __score1++;
+            if (__jsonProps.Contains("handbook_config.ai_disclosure")) __score1++;
+            if (__jsonProps.Contains("handbook_config.default_personality")) __score1++;
+            if (__jsonProps.Contains("handbook_config.high_empathy")) __score1++;
+            if (__jsonProps.Contains("handbook_config.scope_boundaries")) __score1++;
             if (__jsonProps.Contains("is_public")) __score1++;
             if (__jsonProps.Contains("language")) __score1++;
             if (__jsonProps.Contains("opt_in_signed_url")) __score1++;
             if (__jsonProps.Contains("pii_config")) __score1++;
+            if (__jsonProps.Contains("pii_config.categories")) __score1++;
+            if (__jsonProps.Contains("pii_config.mode")) __score1++;
             if (__jsonProps.Contains("post_chat_analysis_data")) __score1++;
             if (__jsonProps.Contains("post_chat_analysis_model")) __score1++;
             if (__jsonProps.Contains("response_engine")) __score1++;
