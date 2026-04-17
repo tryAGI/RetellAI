@@ -23,6 +23,14 @@ namespace RetellAI.JsonConverters
                 foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
                 {
                     __jsonProps.Add(__jsonProp.Name);
+                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                    {
+                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
+                        {
+                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
+                        }
+                    }
+
                 }
             }
 
@@ -35,6 +43,8 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("agent_detection_timeout_ms")) __score1++;
             if (__jsonProps.Contains("enable_bridge_audio_cue")) __score1++;
             if (__jsonProps.Contains("ivr_option")) __score1++;
+            if (__jsonProps.Contains("ivr_option.prompt")) __score1++;
+            if (__jsonProps.Contains("ivr_option.type")) __score1++;
             if (__jsonProps.Contains("on_hold_music")) __score1++;
             if (__jsonProps.Contains("opt_out_human_detection")) __score1++;
             if (__jsonProps.Contains("private_handoff_option")) __score1++;
@@ -44,6 +54,9 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("type")) __score1++;
             var __score2 = 0;
             if (__jsonProps.Contains("agentic_transfer_config")) __score2++;
+            if (__jsonProps.Contains("agentic_transfer_config.action_on_timeout")) __score2++;
+            if (__jsonProps.Contains("agentic_transfer_config.transfer_agent")) __score2++;
+            if (__jsonProps.Contains("agentic_transfer_config.transfer_timeout_ms")) __score2++;
             if (__jsonProps.Contains("enable_bridge_audio_cue")) __score2++;
             if (__jsonProps.Contains("on_hold_music")) __score2++;
             if (__jsonProps.Contains("public_handoff_option")) __score2++;
