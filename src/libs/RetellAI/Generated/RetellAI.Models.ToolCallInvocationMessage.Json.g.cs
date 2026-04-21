@@ -2,7 +2,7 @@
 
 namespace RetellAI
 {
-    public sealed partial class ToolCallInvocationMessage
+    public readonly partial struct ToolCallInvocationMessage
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -41,7 +41,7 @@ namespace RetellAI
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::RetellAI.ToolCallInvocationMessage),
-                jsonSerializerContext) as global::RetellAI.ToolCallInvocationMessage;
+                jsonSerializerContext) as global::RetellAI.ToolCallInvocationMessage?;
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace RetellAI
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::RetellAI.ToolCallInvocationMessage),
-                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.ToolCallInvocationMessage;
+                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.ToolCallInvocationMessage?;
         }
 
         /// <summary>

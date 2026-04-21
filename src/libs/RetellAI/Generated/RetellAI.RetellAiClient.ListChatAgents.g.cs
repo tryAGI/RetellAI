@@ -29,13 +29,15 @@ namespace RetellAI
             global::System.Net.Http.HttpClient httpClient,
             ref int? limit,
             ref string? paginationKey,
-            ref int? paginationKeyVersion);
+            ref int? paginationKeyVersion,
+            ref bool? isLatest);
         partial void PrepareListChatAgentsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             int? limit,
             string? paginationKey,
-            int? paginationKeyVersion);
+            int? paginationKeyVersion,
+            bool? isLatest);
         partial void ProcessListChatAgentsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -57,6 +59,9 @@ namespace RetellAI
         /// <param name="paginationKeyVersion">
         /// Example: 0
         /// </param>
+        /// <param name="isLatest">
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
@@ -64,6 +69,7 @@ namespace RetellAI
             int? limit = default,
             string? paginationKey = default,
             int? paginationKeyVersion = default,
+            bool? isLatest = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -73,7 +79,8 @@ namespace RetellAI
                 httpClient: HttpClient,
                 limit: ref limit,
                 paginationKey: ref paginationKey,
-                paginationKeyVersion: ref paginationKeyVersion);
+                paginationKeyVersion: ref paginationKeyVersion,
+                isLatest: ref isLatest);
 
 
             var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
@@ -103,7 +110,8 @@ namespace RetellAI
                             __pathBuilder
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("pagination_key", paginationKey)
-                                .AddOptionalParameter("pagination_key_version", paginationKeyVersion?.ToString()) 
+                                .AddOptionalParameter("pagination_key_version", paginationKeyVersion?.ToString())
+                                .AddOptionalParameter("is_latest", isLatest?.ToString().ToLowerInvariant()) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::RetellAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -147,7 +155,8 @@ namespace RetellAI
                     httpRequestMessage: __httpRequest,
                     limit: limit,
                     paginationKey: paginationKey,
-                    paginationKeyVersion: paginationKeyVersion);
+                    paginationKeyVersion: paginationKeyVersion,
+                    isLatest: isLatest);
 
                 return __httpRequest;
             }

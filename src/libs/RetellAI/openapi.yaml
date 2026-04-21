@@ -560,6 +560,7 @@ components:
           - speech-02-turbo
           - speech-2.8-turbo
           - s1
+          - s2-pro
           - null
           description: Select the voice model used for the selected voice. Each provider has a set of available voice models. Set to null to remove voice model selection, and default ones will apply. Check
             out dashboard for more details of each voice model.
@@ -862,12 +863,6 @@ components:
           description: A list of words / phrases and their pronunciation to be used to guide the audio synthesize for consistent pronunciation. Check the dashboard to see what provider supports this feature.
             Set to null to remove pronunciation dictionary from this agent.
           nullable: true
-        normalize_for_speech:
-          type: boolean
-          example: true
-          description: If set to true, will normalize the some part of text (number, currency, date, etc) to spoken to its spoken form for more consistent speech synthesis (sometimes the voice synthesize
-            system itself might read these wrong with the raw text). For example, it will convert "Call my number 2137112342 on Jul 5th, 2024 for the $24.12 payment" to "Call my number two one three seven
-            one one two three four two on july fifth, twenty twenty four for the twenty four dollars twelve cents payment" before starting audio generation.
         end_call_after_silence_ms:
           type: integer
           example: 600000
@@ -923,7 +918,7 @@ components:
         post_call_analysis_model:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
-          description: The model to use for post call analysis. Default to gpt-4.1-mini.
+          description: The model to use for post call analysis. Default to gpt-4.1.
         analysis_successful_prompt:
           type: string
           maxLength: 2000
@@ -971,10 +966,11 @@ components:
               enum:
               - azure
               - deepgram
+              - soniox
               description: The STT provider to use.
             endpointing_ms:
               type: integer
-              description: Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram.
+              description: Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox
           required:
           - provider
           - endpointing_ms
@@ -1865,7 +1861,7 @@ components:
         post_chat_analysis_model:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
-          description: The model to use for post chat analysis. Default to gpt-4.1-mini.
+          description: The model to use for post chat analysis. Default to gpt-4.1.
         analysis_successful_prompt:
           type: string
           example: The agent finished the task and the call was complete without being cutoff.
@@ -2070,6 +2066,19 @@ components:
           description: Post chat analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after chat ends. Subscribe to `chat_analyzed` webhook
             event type to receive it once ready.
           $ref: '#/components/schemas/ChatAnalysis'
+    V3ChatResponse:
+      allOf:
+      - $ref: '#/components/schemas/ChatResponse'
+      - type: object
+        description: V3 list chats response. Transcript fields are intentionally omitted.
+        not:
+          anyOf:
+          - required:
+            - transcript
+          - required:
+            - message_with_tool_calls
+          - required:
+            - scrubbed_message_with_tool_calls
     CheckAvailabilityCalTool:
       type: object
       properties:
@@ -2961,6 +2970,9 @@ components:
         args_at_root:
           type: boolean
           description: If set to true, the parameters will be passed as root level JSON object instead of nested under "args".
+        enable_typing_sound:
+          type: boolean
+          description: If true, play a typing sound on the agent audio track while this tool is executing. Useful when the tool takes a noticeable amount of time to prevent silence on the call.
       required:
       - type
       - name
@@ -3012,6 +3024,9 @@ components:
           - static_text
           description: Type of execution message. "prompt" means the agent will use execution_message_description as a prompt to generate the message. "static_text" means the agent will speak the execution_message_description
             directly. Defaults to "prompt".
+        enable_typing_sound:
+          type: boolean
+          description: If true, play a typing sound on the agent audio track while this tool is executing.
       required:
       - type
       - name
@@ -3403,6 +3418,7 @@ components:
       - registered_call_timeout
       - transfer_bridged
       - transfer_cancelled
+      - manual_stopped
     Duration:
       type: object
       required:
@@ -3695,6 +3711,9 @@ components:
           wait_for_result:
             type: boolean
             description: Whether to wait for tool result
+          enable_typing_sound:
+            type: boolean
+            description: If true, play a typing sound while this function executes.
           edges:
             type: array
             items:
@@ -3721,6 +3740,7 @@ components:
             description: Type of the node
           code:
             type: string
+            maxLength: 5000
             description: JavaScript code to execute in the sandbox.
           timeout_ms:
             type: integer
@@ -3742,6 +3762,9 @@ components:
           wait_for_result:
             type: boolean
             description: Whether to wait for code execution result
+          enable_typing_sound:
+            type: boolean
+            description: If true, play a typing sound while code executes.
           edges:
             type: array
             items:
@@ -4066,6 +4089,7 @@ components:
       - gemini-2.5-flash
       - gemini-2.5-flash-lite
       - gemini-3.0-flash
+      - gemini-3.1-flash-lite
       description: Available LLM models for agents.
     MCPNode:
       allOf:
@@ -4108,6 +4132,9 @@ components:
           wait_for_result:
             type: boolean
             description: If true, will wait for result before transitioning to next node
+          enable_typing_sound:
+            type: boolean
+            description: If true, play a typing sound while MCP tool executes.
           finetune_transition_examples:
             type: array
             items:
@@ -4184,6 +4211,9 @@ components:
           - static_text
           description: Type of execution message. "prompt" means the agent will use execution_message_description as a prompt to generate the message. "static_text" means the agent will speak the execution_message_description
             directly. Defaults to "prompt".
+        enable_typing_sound:
+          type: boolean
+          description: If true, play a typing sound on the agent audio track while this MCP tool is executing.
       required:
       - type
       - name
@@ -4224,13 +4254,19 @@ components:
       - $ref: '#/components/schemas/ToolCallResultMessage'
       - $ref: '#/components/schemas/NodeTransitionMessage'
       - $ref: '#/components/schemas/StateTransitionMessage'
-    Message:
+    ChatMessageInput:
+      description: Same shape as chat completion messages. message_id and created_timestamp are optional — server generates them if omitted.
+      oneOf:
+      - $ref: '#/components/schemas/MessageBase'
+      - $ref: '#/components/schemas/ToolCallInvocationMessageBase'
+      - $ref: '#/components/schemas/ToolCallResultMessageBase'
+      - $ref: '#/components/schemas/NodeTransitionMessageBase'
+      - $ref: '#/components/schemas/StateTransitionMessageBase'
+    MessageBase:
       type: object
       required:
-      - message_id
       - role
       - content
-      - created_timestamp
       properties:
         message_id:
           type: string
@@ -4251,6 +4287,12 @@ components:
           type: integer
           description: Create timestamp of the message
           example: 1703302428855
+    Message:
+      allOf:
+      - $ref: '#/components/schemas/MessageBase'
+      - required:
+        - message_id
+        - created_timestamp
     MetricResult:
       type: object
       required:
@@ -4419,6 +4461,22 @@ components:
         text:
           type: string
           description: The static text for the instruction
+    SmsInstructionTemplate:
+      type: object
+      required:
+      - type
+      - template
+      properties:
+        type:
+          type: string
+          enum:
+          - template
+          description: Type of instruction
+        template:
+          type: string
+          enum:
+          - info_collection
+          description: The template to use for the instruction. "info_collection" sends a predefined message requesting information from the user.
     NodeInstruction:
       oneOf:
       - $ref: '#/components/schemas/NodeInstructionPrompt'
@@ -4461,12 +4519,10 @@ components:
           type: number
         total_count:
           type: number
-    NodeTransitionMessage:
+    NodeTransitionMessageBase:
       type: object
       required:
-      - message_id
       - role
-      - created_timestamp
       properties:
         message_id:
           type: string
@@ -4489,10 +4545,25 @@ components:
         new_node_name:
           type: string
           description: New node name
+        transition_type:
+          type: string
+          enum:
+          - global
+          - global_go_back
+          - interrupt_go_back
+          - normal
+          description: How this node was reached. "global" means a global node transition, "global_go_back" means returning from a global node, "interrupt_go_back" means going back due to user interruption,
+            and "normal" means a regular edge transition.
         created_timestamp:
           type: integer
           description: Create timestamp of the message
           example: 1703302428855
+    NodeTransitionMessage:
+      allOf:
+      - $ref: '#/components/schemas/NodeTransitionMessageBase'
+      - required:
+        - message_id
+        - created_timestamp
     NodeTransitionUtterance:
       type: object
       required:
@@ -4519,6 +4590,15 @@ components:
         new_node_name:
           type: string
           description: New node name
+        transition_type:
+          type: string
+          enum:
+          - global
+          - global_go_back
+          - interrupt_go_back
+          - normal
+          description: How this node was reached. "global" means a global node transition, "global_go_back" means returning from a global node, "interrupt_go_back" means going back due to user interruption,
+            and "normal" means a regular edge transition.
     NullableLLMModel:
       type: string
       enum:
@@ -4539,6 +4619,7 @@ components:
       - gemini-2.5-flash
       - gemini-2.5-flash-lite
       - gemini-3.0-flash
+      - gemini-3.1-flash-lite
       - null
       nullable: true
       description: Available LLM models for agents.
@@ -4910,32 +4991,6 @@ components:
           type: string
           example: +1 (415) 777-4444
           description: Pretty printed phone number, provided for your reference.
-        inbound_agent_id:
-          type: string
-          example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-          description: Unique id of agent to bind to the number. The number will automatically use the agent when receiving inbound calls. If null, this number would not accept inbound call. Deprecated.
-            See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-          deprecated: true
-          nullable: true
-        outbound_agent_id:
-          type: string
-          example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-          description: Unique id of agent to bind to the number. The number will automatically use the agent when conducting outbound calls. If null, this number would not be able to initiate outbound call
-            without agent id override. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-          deprecated: true
-          nullable: true
-        inbound_agent_version:
-          type: integer
-          example: 1
-          description: Version of the inbound agent to bind to the number. If not provided, will default to latest version. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-          deprecated: true
-          nullable: true
-        outbound_agent_version:
-          type: integer
-          example: 1
-          description: Version of the outbound agent to bind to the number. If not provided, will default to latest version. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-          deprecated: true
-          nullable: true
         allowed_inbound_country_list:
           type: array
           items:
@@ -4964,14 +5019,14 @@ components:
           items:
             $ref: '#/components/schemas/AgentWeight'
           description: Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total
-            weights must add up to 1. If not set or empty, fallback to inbound_agent_id.
+            weights must add up to 1.
           nullable: true
         outbound_agents:
           type: array
           items:
             $ref: '#/components/schemas/AgentWeight'
           description: Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total
-            weights must add up to 1. If not set or empty, fallback to outbound_agent_id.
+            weights must add up to 1.
           nullable: true
         inbound_sms_agents:
           type: array
@@ -5132,6 +5187,9 @@ components:
           - $ref: '#/components/schemas/NumberFilter'
           - $ref: '#/components/schemas/RangeFilter'
           description: Start timestamp filter (epoch ms).
+        call_id:
+          $ref: '#/components/schemas/StringFilter'
+          description: Filter by call ID.
         score:
           $ref: '#/components/schemas/NumberFilter'
           description: Filter by QA score.
@@ -5534,7 +5592,7 @@ components:
           type:
             type: string
             enum:
-            - short_code
+            - retell_long_code
     SmsDestination:
       oneOf:
       - type: object
@@ -5663,10 +5721,26 @@ components:
         content:
           type: string
           description: The static message to be sent in the SMS. Can contain dynamic variables.
+    SmsContentTemplate:
+      type: object
+      required:
+      - type
+      - template
+      properties:
+        type:
+          type: string
+          enum:
+          - template
+        template:
+          type: string
+          enum:
+          - info_collection
+          description: The template to use for the SMS content. "info_collection" sends a predefined message requesting information from the user.
     SmsContent:
       oneOf:
       - $ref: '#/components/schemas/SmsContentPredefined'
       - $ref: '#/components/schemas/SmsContentInferred'
+      - $ref: '#/components/schemas/SmsContentTemplate'
     SmsFailedEdge:
       allOf:
       - $ref: '#/components/schemas/NodeEdge'
@@ -5705,7 +5779,9 @@ components:
             - sms
             description: Type of the node
           instruction:
-            $ref: '#/components/schemas/NodeInstruction'
+            oneOf:
+            - $ref: '#/components/schemas/NodeInstruction'
+            - $ref: '#/components/schemas/SmsInstructionTemplate'
           success_edge:
             $ref: '#/components/schemas/SmsSuccessEdge'
           failed_edge:
@@ -5750,12 +5826,10 @@ components:
           description: Describes what parameters you want to extract out when the transition changes. The parameters extracted here can be referenced in prompts & function descriptions of later states via
             dynamic variables. The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation
             about the format.
-    StateTransitionMessage:
+    StateTransitionMessageBase:
       type: object
       required:
-      - message_id
       - role
-      - created_timestamp
       properties:
         message_id:
           type: string
@@ -5776,6 +5850,12 @@ components:
           type: integer
           description: Create timestamp of the message
           example: 1703302428855
+    StateTransitionMessage:
+      allOf:
+      - $ref: '#/components/schemas/StateTransitionMessageBase'
+      - required:
+        - message_id
+        - created_timestamp
     State:
       type: object
       required:
@@ -5985,7 +6065,7 @@ components:
         transcript_snapshot:
           type: object
           nullable: true
-          description: Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or MultiStatePromptPlaygroundSnapshot
+          description: Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or RetellLlmPlaygroundSnapshot
         result_explanation:
           type: string
           nullable: true
@@ -6084,10 +6164,9 @@ components:
           type: number
         tool_call_total_count:
           type: number
-    ToolCallInvocationMessage:
+    ToolCallInvocationMessageBase:
       type: object
       required:
-      - message_id
       - role
       - tool_call_id
       - name
@@ -6118,6 +6197,12 @@ components:
           type: integer
           description: Create timestamp of the message
           example: 1703302428855
+    ToolCallInvocationMessage:
+      allOf:
+      - $ref: '#/components/schemas/ToolCallInvocationMessageBase'
+      - required:
+        - message_id
+        - created_timestamp
     ToolCallInvocationUtterance:
       type: object
       required:
@@ -6143,14 +6228,12 @@ components:
         thought_signature:
           type: string
           description: Optional thought signature from Google Gemini thinking models. This is used internally to maintain reasoning chain in multi-turn function calling.
-    ToolCallResultMessage:
+    ToolCallResultMessageBase:
       type: object
       required:
-      - message_id
       - role
       - tool_call_id
       - content
-      - created_timestamp
       properties:
         message_id:
           type: string
@@ -6174,6 +6257,12 @@ components:
           type: integer
           description: Create timestamp of the message
           example: 1703302428855
+    ToolCallResultMessage:
+      allOf:
+      - $ref: '#/components/schemas/ToolCallResultMessageBase'
+      - required:
+        - message_id
+        - created_timestamp
     ToolCallResultUtterance:
       type: object
       required:
@@ -6931,6 +7020,21 @@ components:
       oneOf:
       - $ref: '#/components/schemas/V2WebCallResponse'
       - $ref: '#/components/schemas/V2PhoneCallResponse'
+    V3CallResponse:
+      allOf:
+      - $ref: '#/components/schemas/V2CallResponse'
+      - type: object
+        description: V3 list calls response. Transcript fields are intentionally omitted.
+        not:
+          anyOf:
+          - required:
+            - transcript
+          - required:
+            - transcript_object
+          - required:
+            - transcript_with_tool_calls
+          - required:
+            - scrubbed_transcript_with_tool_calls
     V2PhoneCallResponse:
       allOf:
       - type: object
@@ -7414,11 +7518,6 @@ paths:
         schema:
           type: string
         description: Conversation flow ID (required when type is conversation-flow)
-      - in: query
-        name: version
-        schema:
-          type: integer
-        description: Version of the response engine (defaults to latest)
       responses:
         '200':
           description: Test case definitions retrieved successfully
@@ -7460,11 +7559,6 @@ paths:
         schema:
           type: string
         description: Conversation flow ID (required when type is conversation-flow)
-      - in: query
-        name: version
-        schema:
-          type: integer
-        description: Version of the response engine (defaults to latest)
       - $ref: '#/components/parameters/LimitParam'
       - $ref: '#/components/parameters/PaginationKeyParam'
       responses:
@@ -7965,47 +8059,19 @@ paths:
             schema:
               type: object
               properties:
-                inbound_agent_id:
-                  type: string
-                  minLength: 1
-                  example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: Unique id of agent to bind to the number. The number will automatically use the agent when receiving inbound calls. If null, this number would not accept inbound call. Deprecated.
-                    See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
-                outbound_agent_id:
-                  type: string
-                  minLength: 1
-                  example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: Unique id of agent to bind to the number. The number will automatically use the agent when conducting outbound calls. If null, this number would not be able to initiate outbound
-                    call without agent id override. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
-                inbound_agent_version:
-                  type: integer
-                  example: 1
-                  description: Version of the inbound agent to bind to the number. If not provided, will default to latest version. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
-                outbound_agent_version:
-                  type: integer
-                  example: 1
-                  description: Version of the outbound agent to bind to the number. If not provided, will default to latest version. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
                 inbound_agents:
                   type: array
                   items:
                     $ref: '#/components/schemas/AgentWeight'
                   description: Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight.
-                    Total weights must add up to 1. If not set or empty, fallback to inbound_agent_id.
+                    Total weights must add up to 1.
                   nullable: true
                 outbound_agents:
                   type: array
                   items:
                     $ref: '#/components/schemas/AgentWeight'
                   description: Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight.
-                    Total weights must add up to 1. If not set or empty, fallback to outbound_agent_id.
+                    Total weights must add up to 1.
                   nullable: true
                 area_code:
                   type: integer
@@ -9019,47 +9085,19 @@ paths:
                   type: string
                   example: '123456'
                   description: The password used for authentication for the SIP trunk.
-                inbound_agent_id:
-                  type: string
-                  minLength: 1
-                  example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: Unique id of agent to bind to the number. The number will automatically use the agent when receiving inbound calls. If null, this number would not accept inbound call. Deprecated.
-                    See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
-                outbound_agent_id:
-                  type: string
-                  minLength: 1
-                  example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: Unique id of agent to bind to the number. The number will automatically use the agent when conducting outbound calls. If null, this number would not be able to initiate outbound
-                    call without agent id override. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
-                inbound_agent_version:
-                  type: integer
-                  example: 1
-                  description: Version of the inbound agent to bind to the number. If not provided, will default to latest version. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
-                outbound_agent_version:
-                  type: integer
-                  example: 1
-                  description: Version of the outbound agent to bind to the number. If not provided, will default to latest version. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
                 inbound_agents:
                   type: array
                   items:
                     $ref: '#/components/schemas/AgentWeight'
                   description: Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight.
-                    Total weights must add up to 1. If not set or empty, fallback to inbound_agent_id.
+                    Total weights must add up to 1.
                   nullable: true
                 outbound_agents:
                   type: array
                   items:
                     $ref: '#/components/schemas/AgentWeight'
                   description: Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight.
-                    Total weights must add up to 1. If not set or empty, fallback to outbound_agent_id.
+                    Total weights must add up to 1.
                   nullable: true
                 nickname:
                   type: string
@@ -9137,6 +9175,13 @@ paths:
         allowEmptyValue: true
         description: Specifies the version of the agent associated with the pagination_key. When paginating, both the pagination_key and its version must be provided to ensure consistent ordering and to
           fetch the next page correctly.
+      - in: query
+        name: is_latest
+        schema:
+          type: boolean
+          example: true
+        required: false
+        description: If true, only return the latest version of each agent.
       responses:
         '200':
           description: Successfully retrieved all agents.
@@ -9180,6 +9225,13 @@ paths:
         allowEmptyValue: true
         description: Specifies the version of the agent associated with the pagination_key. When paginating, both the pagination_key and its version must be provided to ensure consistent ordering and to
           fetch the next page correctly.
+      - in: query
+        name: is_latest
+        schema:
+          type: boolean
+          example: true
+        required: false
+        description: If true, only return the latest version of each chat agent.
       responses:
         '200':
           description: Successfully retrieved all chat agents.
@@ -9231,6 +9283,67 @@ paths:
                   $ref: '#/components/schemas/ChatResponse'
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v3/list-chats:
+    post:
+      description: List chats with unified cursor pagination response and total count.
+      operationId: listChatsV3
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter_criteria:
+                  type: object
+                  description: Filter criteria for chats to retrieve.
+                  additionalProperties: true
+                sort_order:
+                  type: string
+                  enum:
+                  - ascending
+                  - descending
+                  default: descending
+                  description: Sort chats by `start_timestamp` in ascending or descending order.
+                limit:
+                  type: integer
+                  default: 50
+                  maximum: 1000
+                  description: Maximum number of chats to return.
+                skip:
+                  type: integer
+                  minimum: 0
+                  default: 0
+                  description: Number of records to skip for pagination.
+                pagination_key:
+                  type: string
+                  description: Opaque pagination cursor from a previous response.
+              not:
+                required:
+                - skip
+                - pagination_key
+      responses:
+        '200':
+          description: Successfully retrieved chats.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResponseBase'
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/V3ChatResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /v2/list-conversation-flow-components:
@@ -9752,46 +9865,19 @@ paths:
             schema:
               type: object
               properties:
-                inbound_agent_id:
-                  type: string
-                  minLength: 1
-                  example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: Unique id of agent to bind to the number. The number will automatically use the agent when receiving inbound calls. If set to null, this number would not accept inbound call.
-                    Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
-                outbound_agent_id:
-                  type: string
-                  minLength: 1
-                  example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: Unique id of agent to bind to the number. The number will automatically use the agent when conducting outbound calls. If set to null, this number would not be able to initiate
-                    outbound call without agent id override. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
-                inbound_agent_version:
-                  type: integer
-                  example: 1
-                  description: Version of the inbound agent to bind to the number. If not provided, will default to latest version. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields
-                  deprecated: true
-                  nullable: true
-                outbound_agent_version:
-                  type: integer
-                  example: 1
-                  description: Version of the outbound agent to bind to the number. If not provided, will default to latest version.
-                  nullable: true
                 inbound_agents:
                   type: array
                   items:
                     $ref: '#/components/schemas/AgentWeight'
                   description: Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight.
-                    Total weights must add up to 1. If not set or empty, fallback to inbound_agent_id.
+                    Total weights must add up to 1.
                   nullable: true
                 outbound_agents:
                   type: array
                   items:
                     $ref: '#/components/schemas/AgentWeight'
                   description: Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight.
-                    Total weights must add up to 1. If not set or empty, fallback to outbound_agent_id.
+                    Total weights must add up to 1.
                   nullable: true
                 inbound_sms_agents:
                   type: array
@@ -9865,8 +9951,14 @@ paths:
                     Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).
                   nullable: true
             example:
-              inbound_agent_id: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-              outbound_agent_id: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
+              inbound_agents:
+              - agent_id: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
+                agent_version: 1
+                weight: 1
+              outbound_agents:
+              - agent_id: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
+                agent_version: 1
+                weight: 1
               nickname: Frontdesk Number
       responses:
         '200':
@@ -10327,6 +10419,65 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v3/list-calls:
+    post:
+      description: List calls with unified cursor pagination response and total count.
+      operationId: listCallsV3
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter_criteria:
+                  $ref: '#/components/schemas/CallFilter'
+                sort_order:
+                  type: string
+                  enum:
+                  - ascending
+                  - descending
+                  default: descending
+                  description: Sort calls by `start_timestamp` in ascending or descending order.
+                limit:
+                  type: integer
+                  default: 50
+                  maximum: 1000
+                  description: Maximum number of calls to return.
+                skip:
+                  type: integer
+                  minimum: 0
+                  default: 0
+                  description: Number of records to skip for pagination.
+                pagination_key:
+                  type: string
+                  description: Opaque pagination cursor from a previous response.
+              not:
+                required:
+                - skip
+                - pagination_key
+      responses:
+        '200':
+          description: Successfully retrieved calls.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResponseBase'
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/V3CallResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /v2/list-export-requests:

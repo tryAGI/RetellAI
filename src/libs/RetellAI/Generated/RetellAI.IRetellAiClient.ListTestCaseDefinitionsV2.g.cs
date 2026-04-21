@@ -10,7 +10,6 @@ namespace RetellAI
         /// <param name="type"></param>
         /// <param name="llmId"></param>
         /// <param name="conversationFlowId"></param>
-        /// <param name="version"></param>
         /// <param name="limit">
         /// Default Value: 50
         /// </param>
@@ -22,7 +21,6 @@ namespace RetellAI
             global::RetellAI.ListTestCaseDefinitionsV2Type type,
             string? llmId = default,
             string? conversationFlowId = default,
-            int? version = default,
             int? limit = default,
             string? paginationKey = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,

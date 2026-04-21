@@ -73,6 +73,12 @@ namespace RetellAI
         public global::RetellAI.MCPToolExecutionMessageType? ExecutionMessageType { get; set; }
 
         /// <summary>
+        /// If true, play a typing sound on the agent audio track while this MCP tool is executing.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_typing_sound")]
+        public bool? EnableTypingSound { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -109,6 +115,9 @@ namespace RetellAI
         /// <param name="executionMessageType">
         /// Type of execution message. "prompt" means the agent will use execution_message_description as a prompt to generate the message. "static_text" means the agent will speak the execution_message_description directly. Defaults to "prompt".
         /// </param>
+        /// <param name="enableTypingSound">
+        /// If true, play a typing sound on the agent audio track while this MCP tool is executing.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -122,7 +131,8 @@ namespace RetellAI
             bool? speakDuringExecution,
             bool? speakAfterExecution,
             string? executionMessageDescription,
-            global::RetellAI.MCPToolExecutionMessageType? executionMessageType)
+            global::RetellAI.MCPToolExecutionMessageType? executionMessageType,
+            bool? enableTypingSound)
         {
             this.Type = type;
             this.McpId = mcpId;
@@ -134,6 +144,7 @@ namespace RetellAI
             this.SpeakAfterExecution = speakAfterExecution;
             this.ExecutionMessageDescription = executionMessageDescription;
             this.ExecutionMessageType = executionMessageType;
+            this.EnableTypingSound = enableTypingSound;
         }
 
         /// <summary>

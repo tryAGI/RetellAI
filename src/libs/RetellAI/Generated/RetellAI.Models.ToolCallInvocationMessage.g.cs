@@ -1,3 +1,4 @@
+#pragma warning disable CS0618 // Type or member is obsolete
 
 #nullable enable
 
@@ -6,117 +7,197 @@ namespace RetellAI
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class ToolCallInvocationMessage
+    public readonly partial struct ToolCallInvocationMessage : global::System.IEquatable<ToolCallInvocationMessage>
     {
         /// <summary>
-        /// Unique id of the message<br/>
-        /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
+        /// 
         /// </summary>
-        /// <example>Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("message_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string MessageId { get; set; }
-
-        /// <summary>
-        /// This is a tool call invocation.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ToolCallInvocationMessageRoleJsonConverter))]
-        public global::RetellAI.ToolCallInvocationMessageRole Role { get; set; }
-
-        /// <summary>
-        /// Tool call id, globally unique.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string ToolCallId { get; set; }
-
-        /// <summary>
-        /// Name of the function in this tool call.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
-
-        /// <summary>
-        /// Arguments for this tool call, it's a stringified JSON object.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("arguments")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Arguments { get; set; }
-
-        /// <summary>
-        /// Optional thought signature from Google Gemini thinking models. This is used internally to maintain reasoning chain in multi-turn function calling.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("thought_signature")]
-        public string? ThoughtSignature { get; set; }
-
-        /// <summary>
-        /// Create timestamp of the message<br/>
-        /// Example: 1703302428855
-        /// </summary>
-        /// <example>1703302428855</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("created_timestamp")]
-        public long? CreatedTimestamp { get; set; }
-
-        /// <summary>
-        /// Additional properties that are not explicitly defined in the schema
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonExtensionData]
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ToolCallInvocationMessage" /> class.
-        /// </summary>
-        /// <param name="messageId">
-        /// Unique id of the message<br/>
-        /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
-        /// </param>
-        /// <param name="toolCallId">
-        /// Tool call id, globally unique.
-        /// </param>
-        /// <param name="name">
-        /// Name of the function in this tool call.
-        /// </param>
-        /// <param name="arguments">
-        /// Arguments for this tool call, it's a stringified JSON object.
-        /// </param>
-        /// <param name="role">
-        /// This is a tool call invocation.
-        /// </param>
-        /// <param name="thoughtSignature">
-        /// Optional thought signature from Google Gemini thinking models. This is used internally to maintain reasoning chain in multi-turn function calling.
-        /// </param>
-        /// <param name="createdTimestamp">
-        /// Create timestamp of the message<br/>
-        /// Example: 1703302428855
-        /// </param>
-#if NET7_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#if NET6_0_OR_GREATER
+        public global::RetellAI.ToolCallInvocationMessageBase? Base { get; init; }
+#else
+        public global::RetellAI.ToolCallInvocationMessageBase? Base { get; }
 #endif
-        public ToolCallInvocationMessage(
-            string messageId,
-            string toolCallId,
-            string name,
-            string arguments,
-            global::RetellAI.ToolCallInvocationMessageRole role,
-            string? thoughtSignature,
-            long? createdTimestamp)
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
+#endif
+        public bool IsBase => Base != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public object? ToolCallInvocationMessageVariant2 { get; init; }
+#else
+        public object? ToolCallInvocationMessageVariant2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolCallInvocationMessageVariant2))]
+#endif
+        public bool IsToolCallInvocationMessageVariant2 => ToolCallInvocationMessageVariant2 != null;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ToolCallInvocationMessage(global::RetellAI.ToolCallInvocationMessageBase value) => new ToolCallInvocationMessage((global::RetellAI.ToolCallInvocationMessageBase?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::RetellAI.ToolCallInvocationMessageBase?(ToolCallInvocationMessage @this) => @this.Base;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ToolCallInvocationMessage(global::RetellAI.ToolCallInvocationMessageBase? value)
         {
-            this.MessageId = messageId ?? throw new global::System.ArgumentNullException(nameof(messageId));
-            this.Role = role;
-            this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
-            this.Arguments = arguments ?? throw new global::System.ArgumentNullException(nameof(arguments));
-            this.ThoughtSignature = thoughtSignature;
-            this.CreatedTimestamp = createdTimestamp;
+            Base = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ToolCallInvocationMessage" /> class.
+        /// 
         /// </summary>
-        public ToolCallInvocationMessage()
+        public ToolCallInvocationMessage(
+            global::RetellAI.ToolCallInvocationMessageBase? @base,
+            object? toolCallInvocationMessageVariant2
+            )
         {
+            Base = @base;
+            ToolCallInvocationMessageVariant2 = toolCallInvocationMessageVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object? Object =>
+            ToolCallInvocationMessageVariant2 as object ??
+            Base as object 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string? ToString() =>
+            Base?.ToString() ??
+            ToolCallInvocationMessageVariant2?.ToString() 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Validate()
+        {
+            return IsBase && IsToolCallInvocationMessageVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TResult? Match<TResult>(
+            global::System.Func<global::RetellAI.ToolCallInvocationMessageBase?, TResult>? @base = null,
+            global::System.Func<object?, TResult>? toolCallInvocationMessageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase && @base != null)
+            {
+                return @base(Base!);
+            }
+            else if (IsToolCallInvocationMessageVariant2 && toolCallInvocationMessageVariant2 != null)
+            {
+                return toolCallInvocationMessageVariant2(ToolCallInvocationMessageVariant2!);
+            }
+
+            return default(TResult);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Match(
+            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase?>? @base = null,
+            global::System.Action<object?>? toolCallInvocationMessageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsToolCallInvocationMessageVariant2)
+            {
+                toolCallInvocationMessageVariant2?.Invoke(ToolCallInvocationMessageVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override int GetHashCode()
+        {
+            var fields = new object?[]
+            {
+                Base,
+                typeof(global::RetellAI.ToolCallInvocationMessageBase),
+                ToolCallInvocationMessageVariant2,
+                typeof(object),
+            };
+            const int offset = unchecked((int)2166136261);
+            const int prime = 16777619;
+            static int HashCodeAggregator(int hashCode, object? value) => value == null
+                ? (hashCode ^ 0) * prime
+                : (hashCode ^ value.GetHashCode()) * prime;
+
+            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Equals(ToolCallInvocationMessage other)
+        {
+            return
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ToolCallInvocationMessageBase?>.Default.Equals(Base, other.Base) &&
+                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(ToolCallInvocationMessageVariant2, other.ToolCallInvocationMessageVariant2) 
+                ;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static bool operator ==(ToolCallInvocationMessage obj1, ToolCallInvocationMessage obj2)
+        {
+            return global::System.Collections.Generic.EqualityComparer<ToolCallInvocationMessage>.Default.Equals(obj1, obj2);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static bool operator !=(ToolCallInvocationMessage obj1, ToolCallInvocationMessage obj2)
+        {
+            return !(obj1 == obj2);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override bool Equals(object? obj)
+        {
+            return obj is ToolCallInvocationMessage o && Equals(o);
         }
     }
 }

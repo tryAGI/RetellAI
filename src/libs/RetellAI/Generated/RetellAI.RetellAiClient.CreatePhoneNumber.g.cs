@@ -1,8 +1,6 @@
 
 #nullable enable
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 namespace RetellAI
 {
     public partial class RetellAiClient
@@ -506,10 +504,10 @@ namespace RetellAI
         /// Buy a new phone number &amp; Bind agents
         /// </summary>
         /// <param name="inboundAgents">
-        /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to inbound_agent_id.
+        /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
         /// <param name="outboundAgents">
-        /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to outbound_agent_id.
+        /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
         /// <param name="areaCode">
         /// Area code of the number to obtain. Format is a 3 digit integer. Currently only supports US area code.<br/>

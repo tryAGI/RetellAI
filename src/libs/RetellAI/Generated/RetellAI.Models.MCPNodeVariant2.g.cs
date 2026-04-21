@@ -69,6 +69,12 @@ namespace RetellAI
         public required bool WaitForResult { get; set; }
 
         /// <summary>
+        /// If true, play a typing sound while MCP tool executes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_typing_sound")]
+        public bool? EnableTypingSound { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("finetune_transition_examples")]
@@ -104,6 +110,9 @@ namespace RetellAI
         /// If true, will speak during execution
         /// </param>
         /// <param name="instruction"></param>
+        /// <param name="enableTypingSound">
+        /// If true, play a typing sound while MCP tool executes.
+        /// </param>
         /// <param name="finetuneTransitionExamples"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -118,6 +127,7 @@ namespace RetellAI
             global::System.Collections.Generic.Dictionary<string, string>? responseVariables,
             bool? speakDuringExecution,
             global::RetellAI.NodeInstruction? instruction,
+            bool? enableTypingSound,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
         {
             this.Type = type;
@@ -129,6 +139,7 @@ namespace RetellAI
             this.SpeakDuringExecution = speakDuringExecution;
             this.Instruction = instruction;
             this.WaitForResult = waitForResult;
+            this.EnableTypingSound = enableTypingSound;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
         }
 

@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace RetellAI
@@ -38,42 +36,6 @@ namespace RetellAI
         public string? PhoneNumberPretty { get; set; }
 
         /// <summary>
-        /// Unique id of agent to bind to the number. The number will automatically use the agent when receiving inbound calls. If null, this number would not accept inbound call. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields<br/>
-        /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-        /// </summary>
-        /// <example>oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("inbound_agent_id")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public string? InboundAgentId { get; set; }
-
-        /// <summary>
-        /// Unique id of agent to bind to the number. The number will automatically use the agent when conducting outbound calls. If null, this number would not be able to initiate outbound call without agent id override. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields<br/>
-        /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-        /// </summary>
-        /// <example>oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outbound_agent_id")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public string? OutboundAgentId { get; set; }
-
-        /// <summary>
-        /// Version of the inbound agent to bind to the number. If not provided, will default to latest version. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields<br/>
-        /// Example: 1
-        /// </summary>
-        /// <example>1</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("inbound_agent_version")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public int? InboundAgentVersion { get; set; }
-
-        /// <summary>
-        /// Version of the outbound agent to bind to the number. If not provided, will default to latest version. Deprecated. See https://docs.retellai.com/deprecation-notice/2026/03-31_phone_number_agent_fields<br/>
-        /// Example: 1
-        /// </summary>
-        /// <example>1</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outbound_agent_version")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public int? OutboundAgentVersion { get; set; }
-
-        /// <summary>
         /// List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed. If not set or empty, calls from all countries are allowed.<br/>
         /// Example: [US, CA, GB]
         /// </summary>
@@ -98,13 +60,13 @@ namespace RetellAI
         public int? AreaCode { get; set; }
 
         /// <summary>
-        /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to inbound_agent_id.
+        /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("inbound_agents")]
         public global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? InboundAgents { get; set; }
 
         /// <summary>
-        /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to outbound_agent_id.
+        /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("outbound_agents")]
         public global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? OutboundAgents { get; set; }
@@ -206,10 +168,10 @@ namespace RetellAI
         /// Example: 415
         /// </param>
         /// <param name="inboundAgents">
-        /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to inbound_agent_id.
+        /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
         /// <param name="outboundAgents">
-        /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to outbound_agent_id.
+        /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
         /// <param name="inboundSmsAgents">
         /// Inbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound SMS, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to inbound_sms_agent_id.

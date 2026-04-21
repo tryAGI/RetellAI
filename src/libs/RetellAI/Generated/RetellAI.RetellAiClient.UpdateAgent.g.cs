@@ -695,10 +695,6 @@ namespace RetellAI
         /// <param name="pronunciationDictionary">
         /// A list of words / phrases and their pronunciation to be used to guide the audio synthesize for consistent pronunciation. Check the dashboard to see what provider supports this feature. Set to null to remove pronunciation dictionary from this agent.
         /// </param>
-        /// <param name="normalizeForSpeech">
-        /// If set to true, will normalize the some part of text (number, currency, date, etc) to spoken to its spoken form for more consistent speech synthesis (sometimes the voice synthesize system itself might read these wrong with the raw text). For example, it will convert "Call my number 2137112342 on Jul 5th, 2024 for the $24.12 payment" to "Call my number two one three seven one one two three four two on july fifth, twenty twenty four for the twenty four dollars twelve cents payment" before starting audio generation.<br/>
-        /// Example: true
-        /// </param>
         /// <param name="endCallAfterSilenceMs">
         /// If users stay silent for a period after agent speech, end the call. The minimum value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).<br/>
         /// Example: 600000
@@ -819,7 +815,6 @@ namespace RetellAI
             bool? optInSignedUrl = default,
             int? signedUrlExpirationMs = default,
             global::System.Collections.Generic.IList<global::RetellAI.AgentRequestPronunciationDictionaryItem>? pronunciationDictionary = default,
-            bool? normalizeForSpeech = default,
             int? endCallAfterSilenceMs = default,
             int? maxCallDurationMs = default,
             string? voicemailMessage = default,
@@ -880,7 +875,6 @@ namespace RetellAI
                 OptInSignedUrl = optInSignedUrl,
                 SignedUrlExpirationMs = signedUrlExpirationMs,
                 PronunciationDictionary = pronunciationDictionary,
-                NormalizeForSpeech = normalizeForSpeech,
                 EndCallAfterSilenceMs = endCallAfterSilenceMs,
                 MaxCallDurationMs = maxCallDurationMs,
                 VoicemailMessage = voicemailMessage,

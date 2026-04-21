@@ -39,7 +39,7 @@ namespace RetellAI
         public required global::RetellAI.TestCaseDefinition TestCaseDefinitionSnapshot { get; set; }
 
         /// <summary>
-        /// Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or MultiStatePromptPlaygroundSnapshot
+        /// Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or RetellLlmPlaygroundSnapshot
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcript_snapshot")]
         public object? TranscriptSnapshot { get; set; }
@@ -90,7 +90,7 @@ namespace RetellAI
         /// Timestamp when the test case job was last modified (milliseconds since epoch)
         /// </param>
         /// <param name="transcriptSnapshot">
-        /// Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or MultiStatePromptPlaygroundSnapshot
+        /// Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or RetellLlmPlaygroundSnapshot
         /// </param>
         /// <param name="resultExplanation">
         /// Explanation of the test result

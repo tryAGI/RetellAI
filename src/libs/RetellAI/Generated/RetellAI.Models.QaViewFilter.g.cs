@@ -26,6 +26,12 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("call_id")]
+        public global::RetellAI.StringFilter? CallId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("score")]
         public global::RetellAI.NumberFilter? Score { get; set; }
 
@@ -92,6 +98,7 @@ namespace RetellAI
         /// <param name="startTimestamp">
         /// Start timestamp filter (epoch ms).
         /// </param>
+        /// <param name="callId"></param>
         /// <param name="score"></param>
         /// <param name="disconnectionReason"></param>
         /// <param name="passed"></param>
@@ -103,6 +110,7 @@ namespace RetellAI
         public QaViewFilter(
             global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? agent,
             global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? startTimestamp,
+            global::RetellAI.StringFilter? callId,
             global::RetellAI.NumberFilter? score,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.QaViewFilterDisconnectionReason>? disconnectionReason,
             global::RetellAI.OneOf<bool?, global::RetellAI.BooleanFilter>? passed,
@@ -111,6 +119,7 @@ namespace RetellAI
         {
             this.Agent = agent;
             this.StartTimestamp = startTimestamp;
+            this.CallId = callId;
             this.Score = score;
             this.DisconnectionReason = disconnectionReason;
             this.Passed = passed;

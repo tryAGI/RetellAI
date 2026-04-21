@@ -17,7 +17,7 @@ namespace RetellAI
         public required global::RetellAI.AgentRequestCustomSttConfigProvider Provider { get; set; }
 
         /// <summary>
-        /// Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram.
+        /// Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endpointing_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -36,7 +36,7 @@ namespace RetellAI
         /// The STT provider to use.
         /// </param>
         /// <param name="endpointingMs">
-        /// Endpointing timeout in milliseconds. Minimum is 100 for azure, 10 for deepgram.
+        /// Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

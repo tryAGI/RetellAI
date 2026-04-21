@@ -80,7 +80,6 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("ivr_option.action")) __score1++;
             if (__jsonProps.Contains("language")) __score1++;
             if (__jsonProps.Contains("max_call_duration_ms")) __score1++;
-            if (__jsonProps.Contains("normalize_for_speech")) __score1++;
             if (__jsonProps.Contains("opt_in_signed_url")) __score1++;
             if (__jsonProps.Contains("pii_config")) __score1++;
             if (__jsonProps.Contains("pii_config.categories")) __score1++;

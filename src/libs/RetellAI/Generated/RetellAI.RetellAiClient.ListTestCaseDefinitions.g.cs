@@ -29,15 +29,13 @@ namespace RetellAI
             global::System.Net.Http.HttpClient httpClient,
             ref global::RetellAI.ListTestCaseDefinitionsType type,
             ref string? llmId,
-            ref string? conversationFlowId,
-            ref int? version);
+            ref string? conversationFlowId);
         partial void PrepareListTestCaseDefinitionsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             global::RetellAI.ListTestCaseDefinitionsType type,
             string? llmId,
-            string? conversationFlowId,
-            int? version);
+            string? conversationFlowId);
         partial void ProcessListTestCaseDefinitionsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -53,7 +51,6 @@ namespace RetellAI
         /// <param name="type"></param>
         /// <param name="llmId"></param>
         /// <param name="conversationFlowId"></param>
-        /// <param name="version"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
@@ -61,7 +58,6 @@ namespace RetellAI
             global::RetellAI.ListTestCaseDefinitionsType type,
             string? llmId = default,
             string? conversationFlowId = default,
-            int? version = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -71,8 +67,7 @@ namespace RetellAI
                 httpClient: HttpClient,
                 type: ref type,
                 llmId: ref llmId,
-                conversationFlowId: ref conversationFlowId,
-                version: ref version);
+                conversationFlowId: ref conversationFlowId);
 
 
             var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
@@ -102,8 +97,7 @@ namespace RetellAI
                             __pathBuilder
                                 .AddRequiredParameter("type", type.ToValueString())
                                 .AddOptionalParameter("llm_id", llmId)
-                                .AddOptionalParameter("conversation_flow_id", conversationFlowId)
-                                .AddOptionalParameter("version", version?.ToString()) 
+                                .AddOptionalParameter("conversation_flow_id", conversationFlowId) 
                                 ;
                             var __path = __pathBuilder.ToString();
                 __path = global::RetellAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -147,8 +141,7 @@ namespace RetellAI
                     httpRequestMessage: __httpRequest,
                     type: type,
                     llmId: llmId,
-                    conversationFlowId: conversationFlowId,
-                    version: version);
+                    conversationFlowId: conversationFlowId);
 
                 return __httpRequest;
             }
