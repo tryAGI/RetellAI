@@ -110,6 +110,12 @@ namespace RetellAI
         public bool? ArgsAtRoot { get; set; }
 
         /// <summary>
+        /// If true, play a typing sound on the agent audio track while this tool is executing. Useful when the tool takes a noticeable amount of time to prevent silence on the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_typing_sound")]
+        public bool? EnableTypingSound { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -164,6 +170,9 @@ namespace RetellAI
         /// <param name="argsAtRoot">
         /// If set to true, the parameters will be passed as root level JSON object instead of nested under "args".
         /// </param>
+        /// <param name="enableTypingSound">
+        /// If true, play a typing sound on the agent audio track while this tool is executing. Useful when the tool takes a noticeable amount of time to prevent silence on the call.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -182,7 +191,8 @@ namespace RetellAI
             string? executionMessageDescription,
             global::RetellAI.CustomToolExecutionMessageType? executionMessageType,
             int? timeoutMs,
-            bool? argsAtRoot)
+            bool? argsAtRoot,
+            bool? enableTypingSound)
         {
             this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
@@ -199,6 +209,7 @@ namespace RetellAI
             this.ExecutionMessageType = executionMessageType;
             this.TimeoutMs = timeoutMs;
             this.ArgsAtRoot = argsAtRoot;
+            this.EnableTypingSound = enableTypingSound;
         }
 
         /// <summary>

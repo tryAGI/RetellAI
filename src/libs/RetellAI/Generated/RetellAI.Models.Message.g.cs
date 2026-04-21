@@ -1,3 +1,4 @@
+#pragma warning disable CS0618 // Type or member is obsolete
 
 #nullable enable
 
@@ -6,90 +7,197 @@ namespace RetellAI
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class Message
+    public readonly partial struct Message : global::System.IEquatable<Message>
     {
         /// <summary>
-        /// Unique id of the message<br/>
-        /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
+        /// 
         /// </summary>
-        /// <example>Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("message_id")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string MessageId { get; set; }
-
-        /// <summary>
-        /// Documents whether this message is sent by agent or user.<br/>
-        /// Example: agent
-        /// </summary>
-        /// <example>agent</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.MessageRoleJsonConverter))]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::RetellAI.MessageRole Role { get; set; }
-
-        /// <summary>
-        /// Content of the message<br/>
-        /// Example: hi how are you doing?
-        /// </summary>
-        /// <example>hi how are you doing?</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Content { get; set; }
-
-        /// <summary>
-        /// Create timestamp of the message<br/>
-        /// Example: 1703302428855
-        /// </summary>
-        /// <example>1703302428855</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("created_timestamp")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required long CreatedTimestamp { get; set; }
-
-        /// <summary>
-        /// Additional properties that are not explicitly defined in the schema
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonExtensionData]
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Message" /> class.
-        /// </summary>
-        /// <param name="messageId">
-        /// Unique id of the message<br/>
-        /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
-        /// </param>
-        /// <param name="role">
-        /// Documents whether this message is sent by agent or user.<br/>
-        /// Example: agent
-        /// </param>
-        /// <param name="content">
-        /// Content of the message<br/>
-        /// Example: hi how are you doing?
-        /// </param>
-        /// <param name="createdTimestamp">
-        /// Create timestamp of the message<br/>
-        /// Example: 1703302428855
-        /// </param>
-#if NET7_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#if NET6_0_OR_GREATER
+        public global::RetellAI.MessageBase? Base { get; init; }
+#else
+        public global::RetellAI.MessageBase? Base { get; }
 #endif
-        public Message(
-            string messageId,
-            global::RetellAI.MessageRole role,
-            string content,
-            long createdTimestamp)
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
+#endif
+        public bool IsBase => Base != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public object? MessageVariant2 { get; init; }
+#else
+        public object? MessageVariant2 { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MessageVariant2))]
+#endif
+        public bool IsMessageVariant2 => MessageVariant2 != null;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator Message(global::RetellAI.MessageBase value) => new Message((global::RetellAI.MessageBase?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::RetellAI.MessageBase?(Message @this) => @this.Base;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Message(global::RetellAI.MessageBase? value)
         {
-            this.MessageId = messageId ?? throw new global::System.ArgumentNullException(nameof(messageId));
-            this.Role = role;
-            this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
-            this.CreatedTimestamp = createdTimestamp;
+            Base = value;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Message" /> class.
+        /// 
         /// </summary>
-        public Message()
+        public Message(
+            global::RetellAI.MessageBase? @base,
+            object? messageVariant2
+            )
         {
+            Base = @base;
+            MessageVariant2 = messageVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object? Object =>
+            MessageVariant2 as object ??
+            Base as object 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override string? ToString() =>
+            Base?.ToString() ??
+            MessageVariant2?.ToString() 
+            ;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Validate()
+        {
+            return IsBase && IsMessageVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public TResult? Match<TResult>(
+            global::System.Func<global::RetellAI.MessageBase?, TResult>? @base = null,
+            global::System.Func<object?, TResult>? messageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase && @base != null)
+            {
+                return @base(Base!);
+            }
+            else if (IsMessageVariant2 && messageVariant2 != null)
+            {
+                return messageVariant2(MessageVariant2!);
+            }
+
+            return default(TResult);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Match(
+            global::System.Action<global::RetellAI.MessageBase?>? @base = null,
+            global::System.Action<object?>? messageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsMessageVariant2)
+            {
+                messageVariant2?.Invoke(MessageVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override int GetHashCode()
+        {
+            var fields = new object?[]
+            {
+                Base,
+                typeof(global::RetellAI.MessageBase),
+                MessageVariant2,
+                typeof(object),
+            };
+            const int offset = unchecked((int)2166136261);
+            const int prime = 16777619;
+            static int HashCodeAggregator(int hashCode, object? value) => value == null
+                ? (hashCode ^ 0) * prime
+                : (hashCode ^ value.GetHashCode()) * prime;
+
+            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool Equals(Message other)
+        {
+            return
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.MessageBase?>.Default.Equals(Base, other.Base) &&
+                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(MessageVariant2, other.MessageVariant2) 
+                ;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static bool operator ==(Message obj1, Message obj2)
+        {
+            return global::System.Collections.Generic.EqualityComparer<Message>.Default.Equals(obj1, obj2);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static bool operator !=(Message obj1, Message obj2)
+        {
+            return !(obj1 == obj2);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override bool Equals(object? obj)
+        {
+            return obj is Message o && Equals(o);
         }
     }
 }

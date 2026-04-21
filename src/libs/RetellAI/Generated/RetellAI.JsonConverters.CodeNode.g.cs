@@ -32,6 +32,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("code")) __score1++;
             if (__jsonProps.Contains("edges")) __score1++;
             if (__jsonProps.Contains("else_edge")) __score1++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score1++;
             if (__jsonProps.Contains("finetune_transition_examples")) __score1++;
             if (__jsonProps.Contains("instruction")) __score1++;
             if (__jsonProps.Contains("response_variables")) __score1++;

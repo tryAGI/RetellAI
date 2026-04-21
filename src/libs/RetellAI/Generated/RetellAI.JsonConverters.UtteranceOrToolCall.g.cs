@@ -48,6 +48,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("new_node_id")) __score3++;
             if (__jsonProps.Contains("new_node_name")) __score3++;
             if (__jsonProps.Contains("role")) __score3++;
+            if (__jsonProps.Contains("transition_type")) __score3++;
             var __score4 = 0;
             if (__jsonProps.Contains("digit")) __score4++;
             if (__jsonProps.Contains("role")) __score4++;

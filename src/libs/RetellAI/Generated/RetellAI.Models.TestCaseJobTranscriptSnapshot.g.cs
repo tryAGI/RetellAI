@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or MultiStatePromptPlaygroundSnapshot
+    /// Snapshot of the transcript generated during test execution. Can be either ConversationFlowPlaygroundSnapshot or RetellLlmPlaygroundSnapshot
     /// </summary>
     public sealed partial class TestCaseJobTranscriptSnapshot
     {

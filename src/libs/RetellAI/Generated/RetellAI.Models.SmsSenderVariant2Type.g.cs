@@ -11,7 +11,7 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        ShortCode,
+        RetellLongCode,
     }
 
     /// <summary>
@@ -26,7 +26,7 @@ namespace RetellAI
         {
             return value switch
             {
-                SmsSenderVariant2Type.ShortCode => "short_code",
+                SmsSenderVariant2Type.RetellLongCode => "retell_long_code",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -37,7 +37,7 @@ namespace RetellAI
         {
             return value switch
             {
-                "short_code" => SmsSenderVariant2Type.ShortCode,
+                "retell_long_code" => SmsSenderVariant2Type.RetellLongCode,
                 _ => null,
             };
         }

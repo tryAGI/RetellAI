@@ -42,6 +42,23 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Inferred))]
 #endif
         public bool IsInferred => Inferred != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::RetellAI.SmsContentTemplate? Template { get; init; }
+#else
+        public global::RetellAI.SmsContentTemplate? Template { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Template))]
+#endif
+        public bool IsTemplate => Template != null;
         /// <summary>
         /// 
         /// </summary>
@@ -81,19 +98,40 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator SmsContent(global::RetellAI.SmsContentTemplate value) => new SmsContent((global::RetellAI.SmsContentTemplate?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::RetellAI.SmsContentTemplate?(SmsContent @this) => @this.Template;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public SmsContent(global::RetellAI.SmsContentTemplate? value)
+        {
+            Template = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public SmsContent(
             global::RetellAI.SmsContentPredefined? predefined,
-            global::RetellAI.SmsContentInferred? inferred
+            global::RetellAI.SmsContentInferred? inferred,
+            global::RetellAI.SmsContentTemplate? template
             )
         {
             Predefined = predefined;
             Inferred = inferred;
+            Template = template;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
+            Template as object ??
             Inferred as object ??
             Predefined as object 
             ;
@@ -103,7 +141,8 @@ namespace RetellAI
         /// </summary>
         public override string? ToString() =>
             Predefined?.ToString() ??
-            Inferred?.ToString() 
+            Inferred?.ToString() ??
+            Template?.ToString() 
             ;
 
         /// <summary>
@@ -111,7 +150,7 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsPredefined && !IsInferred || !IsPredefined && IsInferred;
+            return IsPredefined && !IsInferred && !IsTemplate || !IsPredefined && IsInferred && !IsTemplate || !IsPredefined && !IsInferred && IsTemplate;
         }
 
         /// <summary>
@@ -120,6 +159,7 @@ namespace RetellAI
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.SmsContentPredefined?, TResult>? predefined = null,
             global::System.Func<global::RetellAI.SmsContentInferred?, TResult>? inferred = null,
+            global::System.Func<global::RetellAI.SmsContentTemplate?, TResult>? template = null,
             bool validate = true)
         {
             if (validate)
@@ -135,6 +175,10 @@ namespace RetellAI
             {
                 return inferred(Inferred!);
             }
+            else if (IsTemplate && template != null)
+            {
+                return template(Template!);
+            }
 
             return default(TResult);
         }
@@ -145,6 +189,7 @@ namespace RetellAI
         public void Match(
             global::System.Action<global::RetellAI.SmsContentPredefined?>? predefined = null,
             global::System.Action<global::RetellAI.SmsContentInferred?>? inferred = null,
+            global::System.Action<global::RetellAI.SmsContentTemplate?>? template = null,
             bool validate = true)
         {
             if (validate)
@@ -160,6 +205,10 @@ namespace RetellAI
             {
                 inferred?.Invoke(Inferred!);
             }
+            else if (IsTemplate)
+            {
+                template?.Invoke(Template!);
+            }
         }
 
         /// <summary>
@@ -173,6 +222,8 @@ namespace RetellAI
                 typeof(global::RetellAI.SmsContentPredefined),
                 Inferred,
                 typeof(global::RetellAI.SmsContentInferred),
+                Template,
+                typeof(global::RetellAI.SmsContentTemplate),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -190,7 +241,8 @@ namespace RetellAI
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsContentPredefined?>.Default.Equals(Predefined, other.Predefined) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsContentInferred?>.Default.Equals(Inferred, other.Inferred) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsContentInferred?>.Default.Equals(Inferred, other.Inferred) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsContentTemplate?>.Default.Equals(Template, other.Template) 
                 ;
         }
 

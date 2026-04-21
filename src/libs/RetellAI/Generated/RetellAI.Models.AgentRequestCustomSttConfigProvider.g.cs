@@ -16,6 +16,10 @@ namespace RetellAI
         /// 
         /// </summary>
         Deepgram,
+        /// <summary>
+        /// 
+        /// </summary>
+        Soniox,
     }
 
     /// <summary>
@@ -32,6 +36,7 @@ namespace RetellAI
             {
                 AgentRequestCustomSttConfigProvider.Azure => "azure",
                 AgentRequestCustomSttConfigProvider.Deepgram => "deepgram",
+                AgentRequestCustomSttConfigProvider.Soniox => "soniox",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -44,6 +49,7 @@ namespace RetellAI
             {
                 "azure" => AgentRequestCustomSttConfigProvider.Azure,
                 "deepgram" => AgentRequestCustomSttConfigProvider.Deepgram,
+                "soniox" => AgentRequestCustomSttConfigProvider.Soniox,
                 _ => null,
             };
         }

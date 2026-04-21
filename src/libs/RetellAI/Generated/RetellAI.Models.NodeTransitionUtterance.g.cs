@@ -44,6 +44,13 @@ namespace RetellAI
         public required string NewNodeName { get; set; }
 
         /// <summary>
+        /// How this node was reached. "global" means a global node transition, "global_go_back" means returning from a global node, "interrupt_go_back" means going back due to user interruption, and "normal" means a regular edge transition.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transition_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NodeTransitionUtteranceTransitionTypeJsonConverter))]
+        public global::RetellAI.NodeTransitionUtteranceTransitionType? TransitionType { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -67,6 +74,9 @@ namespace RetellAI
         /// <param name="role">
         /// This is result of a node transition
         /// </param>
+        /// <param name="transitionType">
+        /// How this node was reached. "global" means a global node transition, "global_go_back" means returning from a global node, "interrupt_go_back" means going back due to user interruption, and "normal" means a regular edge transition.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -75,13 +85,15 @@ namespace RetellAI
             string formerNodeName,
             string newNodeId,
             string newNodeName,
-            global::RetellAI.NodeTransitionUtteranceRole role)
+            global::RetellAI.NodeTransitionUtteranceRole role,
+            global::RetellAI.NodeTransitionUtteranceTransitionType? transitionType)
         {
             this.Role = role;
             this.FormerNodeId = formerNodeId ?? throw new global::System.ArgumentNullException(nameof(formerNodeId));
             this.FormerNodeName = formerNodeName ?? throw new global::System.ArgumentNullException(nameof(formerNodeName));
             this.NewNodeId = newNodeId ?? throw new global::System.ArgumentNullException(nameof(newNodeId));
             this.NewNodeName = newNodeName ?? throw new global::System.ArgumentNullException(nameof(newNodeName));
+            this.TransitionType = transitionType;
         }
 
         /// <summary>

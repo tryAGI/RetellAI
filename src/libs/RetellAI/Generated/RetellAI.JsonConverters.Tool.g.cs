@@ -95,6 +95,7 @@ namespace RetellAI.JsonConverters
             var __score7 = 0;
             if (__jsonProps.Contains("args_at_root")) __score7++;
             if (__jsonProps.Contains("description")) __score7++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score7++;
             if (__jsonProps.Contains("execution_message_description")) __score7++;
             if (__jsonProps.Contains("execution_message_type")) __score7++;
             if (__jsonProps.Contains("headers")) __score7++;
@@ -114,6 +115,7 @@ namespace RetellAI.JsonConverters
             var __score8 = 0;
             if (__jsonProps.Contains("code")) __score8++;
             if (__jsonProps.Contains("description")) __score8++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score8++;
             if (__jsonProps.Contains("execution_message_description")) __score8++;
             if (__jsonProps.Contains("execution_message_type")) __score8++;
             if (__jsonProps.Contains("name")) __score8++;
@@ -143,6 +145,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("type")) __score11++;
             var __score12 = 0;
             if (__jsonProps.Contains("description")) __score12++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score12++;
             if (__jsonProps.Contains("execution_message_description")) __score12++;
             if (__jsonProps.Contains("execution_message_type")) __score12++;
             if (__jsonProps.Contains("input_schema")) __score12++;

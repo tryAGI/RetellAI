@@ -19,9 +19,9 @@ namespace RetellAI
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instruction")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NodeInstructionJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.NodeInstruction?, global::RetellAI.SmsInstructionTemplate>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::RetellAI.NodeInstruction Instruction { get; set; }
+        public required global::RetellAI.OneOf<global::RetellAI.NodeInstruction?, global::RetellAI.SmsInstructionTemplate> Instruction { get; set; }
 
         /// <summary>
         /// 
@@ -58,7 +58,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SmsNodeVariant2(
-            global::RetellAI.NodeInstruction instruction,
+            global::RetellAI.OneOf<global::RetellAI.NodeInstruction?, global::RetellAI.SmsInstructionTemplate> instruction,
             global::RetellAI.SmsSuccessEdge successEdge,
             global::RetellAI.SmsFailedEdge failedEdge,
             global::RetellAI.SmsNodeVariant2Type type)

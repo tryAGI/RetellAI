@@ -57,6 +57,12 @@ namespace RetellAI
         public required bool WaitForResult { get; set; }
 
         /// <summary>
+        /// If true, play a typing sound while code executes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_typing_sound")]
+        public bool? EnableTypingSound { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("edges")]
@@ -104,6 +110,9 @@ namespace RetellAI
         /// Whether to speak during code execution
         /// </param>
         /// <param name="instruction"></param>
+        /// <param name="enableTypingSound">
+        /// If true, play a typing sound while code executes.
+        /// </param>
         /// <param name="edges"></param>
         /// <param name="elseEdge"></param>
         /// <param name="finetuneTransitionExamples"></param>
@@ -118,6 +127,7 @@ namespace RetellAI
             global::System.Collections.Generic.Dictionary<string, string>? responseVariables,
             bool? speakDuringExecution,
             global::RetellAI.NodeInstruction? instruction,
+            bool? enableTypingSound,
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
             global::RetellAI.ElseEdge? elseEdge,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
@@ -129,6 +139,7 @@ namespace RetellAI
             this.SpeakDuringExecution = speakDuringExecution;
             this.Instruction = instruction;
             this.WaitForResult = waitForResult;
+            this.EnableTypingSound = enableTypingSound;
             this.Edges = edges;
             this.ElseEdge = elseEdge;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;

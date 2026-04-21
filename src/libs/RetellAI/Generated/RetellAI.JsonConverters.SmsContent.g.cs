@@ -33,13 +33,18 @@ namespace RetellAI.JsonConverters
             var __score1 = 0;
             if (__jsonProps.Contains("prompt")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
+            var __score2 = 0;
+            if (__jsonProps.Contains("template")) __score2++;
+            if (__jsonProps.Contains("type")) __score2++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
+            if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
 
             global::RetellAI.SmsContentPredefined? predefined = default;
             global::RetellAI.SmsContentInferred? inferred = default;
+            global::RetellAI.SmsContentTemplate? template = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -72,9 +77,24 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
+                else if (__bestIndex == 2)
+                {
+                    try
+                    {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsContentTemplate), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsContentTemplate> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsContentTemplate).Name}");
+                        template = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                }
             }
 
-            if (predefined == null && inferred == null)
+            if (predefined == null && inferred == null && template == null)
             {
                 try
                 {
@@ -101,12 +121,27 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+
+                try
+                {
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsContentTemplate), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsContentTemplate> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsContentTemplate).Name}");
+                    template = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
             }
 
             var __value = new global::RetellAI.SmsContent(
                 predefined,
 
-                inferred
+                inferred,
+
+                template
                 );
 
             return __value;
@@ -132,6 +167,12 @@ namespace RetellAI.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsContentInferred), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsContentInferred?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsContentInferred).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Inferred!, typeInfo);
+            }
+            else if (value.IsTemplate)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsContentTemplate), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsContentTemplate?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsContentTemplate).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Template!, typeInfo);
             }
         }
     }

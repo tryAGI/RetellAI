@@ -83,6 +83,10 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        ManualStopped,
+        /// <summary>
+        /// 
+        /// </summary>
         MarkedAsSpam,
         /// <summary>
         /// 
@@ -164,6 +168,7 @@ namespace RetellAI
                 DisconnectionReason4.Inactivity => "inactivity",
                 DisconnectionReason4.InvalidDestination => "invalid_destination",
                 DisconnectionReason4.IvrReached => "ivr_reached",
+                DisconnectionReason4.ManualStopped => "manual_stopped",
                 DisconnectionReason4.MarkedAsSpam => "marked_as_spam",
                 DisconnectionReason4.MaxDurationReached => "max_duration_reached",
                 DisconnectionReason4.NoValidPayment => "no_valid_payment",
@@ -205,6 +210,7 @@ namespace RetellAI
                 "inactivity" => DisconnectionReason4.Inactivity,
                 "invalid_destination" => DisconnectionReason4.InvalidDestination,
                 "ivr_reached" => DisconnectionReason4.IvrReached,
+                "manual_stopped" => DisconnectionReason4.ManualStopped,
                 "marked_as_spam" => DisconnectionReason4.MarkedAsSpam,
                 "max_duration_reached" => DisconnectionReason4.MaxDurationReached,
                 "no_valid_payment" => DisconnectionReason4.NoValidPayment,

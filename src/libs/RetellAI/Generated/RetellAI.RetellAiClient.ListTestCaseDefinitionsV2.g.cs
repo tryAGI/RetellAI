@@ -30,7 +30,6 @@ namespace RetellAI
             ref global::RetellAI.ListTestCaseDefinitionsV2Type type,
             ref string? llmId,
             ref string? conversationFlowId,
-            ref int? version,
             ref int? limit,
             ref string? paginationKey);
         partial void PrepareListTestCaseDefinitionsV2Request(
@@ -39,7 +38,6 @@ namespace RetellAI
             global::RetellAI.ListTestCaseDefinitionsV2Type type,
             string? llmId,
             string? conversationFlowId,
-            int? version,
             int? limit,
             string? paginationKey);
         partial void ProcessListTestCaseDefinitionsV2Response(
@@ -57,7 +55,6 @@ namespace RetellAI
         /// <param name="type"></param>
         /// <param name="llmId"></param>
         /// <param name="conversationFlowId"></param>
-        /// <param name="version"></param>
         /// <param name="limit">
         /// Default Value: 50
         /// </param>
@@ -69,7 +66,6 @@ namespace RetellAI
             global::RetellAI.ListTestCaseDefinitionsV2Type type,
             string? llmId = default,
             string? conversationFlowId = default,
-            int? version = default,
             int? limit = default,
             string? paginationKey = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
@@ -82,7 +78,6 @@ namespace RetellAI
                 type: ref type,
                 llmId: ref llmId,
                 conversationFlowId: ref conversationFlowId,
-                version: ref version,
                 limit: ref limit,
                 paginationKey: ref paginationKey);
 
@@ -115,7 +110,6 @@ namespace RetellAI
                                 .AddRequiredParameter("type", type.ToValueString())
                                 .AddOptionalParameter("llm_id", llmId)
                                 .AddOptionalParameter("conversation_flow_id", conversationFlowId)
-                                .AddOptionalParameter("version", version?.ToString())
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("pagination_key", paginationKey) 
                                 ;
@@ -162,7 +156,6 @@ namespace RetellAI
                     type: type,
                     llmId: llmId,
                     conversationFlowId: conversationFlowId,
-                    version: version,
                     limit: limit,
                     paginationKey: paginationKey);
 

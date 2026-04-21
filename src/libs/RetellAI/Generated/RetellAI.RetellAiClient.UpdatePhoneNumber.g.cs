@@ -1,8 +1,6 @@
 
 #nullable enable
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 namespace RetellAI
 {
     public partial class RetellAiClient
@@ -554,15 +552,11 @@ namespace RetellAI
         /// <param name="phoneNumber">
         /// Example: +14157774444
         /// </param>
-        /// <param name="outboundAgentVersion">
-        /// Version of the outbound agent to bind to the number. If not provided, will default to latest version.<br/>
-        /// Example: 1
-        /// </param>
         /// <param name="inboundAgents">
-        /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to inbound_agent_id.
+        /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
         /// <param name="outboundAgents">
-        /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to outbound_agent_id.
+        /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
         /// <param name="inboundSmsAgents">
         /// Inbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound SMS, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to inbound_sms_agent_id.
@@ -615,7 +609,6 @@ namespace RetellAI
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.PhoneNumberResponse> UpdatePhoneNumberAsync(
             string phoneNumber,
-            int? outboundAgentVersion = default,
             global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? inboundAgents = default,
             global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? outboundAgents = default,
             global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? inboundSmsAgents = default,
@@ -635,7 +628,6 @@ namespace RetellAI
         {
             var __request = new global::RetellAI.UpdatePhoneNumberRequest
             {
-                OutboundAgentVersion = outboundAgentVersion,
                 InboundAgents = inboundAgents,
                 OutboundAgents = outboundAgents,
                 InboundSmsAgents = inboundSmsAgents,

@@ -1,0 +1,130 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed partial class NodeTransitionMessageBase
+    {
+        /// <summary>
+        /// Unique id of the message<br/>
+        /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
+        /// </summary>
+        /// <example>Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("message_id")]
+        public string? MessageId { get; set; }
+
+        /// <summary>
+        /// This is a node transition.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("role")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NodeTransitionMessageBaseRoleJsonConverter))]
+        public global::RetellAI.NodeTransitionMessageBaseRole Role { get; set; }
+
+        /// <summary>
+        /// Former node id
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("former_node_id")]
+        public string? FormerNodeId { get; set; }
+
+        /// <summary>
+        /// Former node name
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("former_node_name")]
+        public string? FormerNodeName { get; set; }
+
+        /// <summary>
+        /// New node id
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("new_node_id")]
+        public string? NewNodeId { get; set; }
+
+        /// <summary>
+        /// New node name
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("new_node_name")]
+        public string? NewNodeName { get; set; }
+
+        /// <summary>
+        /// How this node was reached. "global" means a global node transition, "global_go_back" means returning from a global node, "interrupt_go_back" means going back due to user interruption, and "normal" means a regular edge transition.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("transition_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NodeTransitionMessageBaseTransitionTypeJsonConverter))]
+        public global::RetellAI.NodeTransitionMessageBaseTransitionType? TransitionType { get; set; }
+
+        /// <summary>
+        /// Create timestamp of the message<br/>
+        /// Example: 1703302428855
+        /// </summary>
+        /// <example>1703302428855</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("created_timestamp")]
+        public long? CreatedTimestamp { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NodeTransitionMessageBase" /> class.
+        /// </summary>
+        /// <param name="messageId">
+        /// Unique id of the message<br/>
+        /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
+        /// </param>
+        /// <param name="role">
+        /// This is a node transition.
+        /// </param>
+        /// <param name="formerNodeId">
+        /// Former node id
+        /// </param>
+        /// <param name="formerNodeName">
+        /// Former node name
+        /// </param>
+        /// <param name="newNodeId">
+        /// New node id
+        /// </param>
+        /// <param name="newNodeName">
+        /// New node name
+        /// </param>
+        /// <param name="transitionType">
+        /// How this node was reached. "global" means a global node transition, "global_go_back" means returning from a global node, "interrupt_go_back" means going back due to user interruption, and "normal" means a regular edge transition.
+        /// </param>
+        /// <param name="createdTimestamp">
+        /// Create timestamp of the message<br/>
+        /// Example: 1703302428855
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public NodeTransitionMessageBase(
+            string? messageId,
+            global::RetellAI.NodeTransitionMessageBaseRole role,
+            string? formerNodeId,
+            string? formerNodeName,
+            string? newNodeId,
+            string? newNodeName,
+            global::RetellAI.NodeTransitionMessageBaseTransitionType? transitionType,
+            long? createdTimestamp)
+        {
+            this.MessageId = messageId;
+            this.Role = role;
+            this.FormerNodeId = formerNodeId;
+            this.FormerNodeName = formerNodeName;
+            this.NewNodeId = newNodeId;
+            this.NewNodeName = newNodeName;
+            this.TransitionType = transitionType;
+            this.CreatedTimestamp = createdTimestamp;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NodeTransitionMessageBase" /> class.
+        /// </summary>
+        public NodeTransitionMessageBase()
+        {
+        }
+    }
+}
