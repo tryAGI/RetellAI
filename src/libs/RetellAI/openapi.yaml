@@ -7899,11 +7899,21 @@ paths:
                   items:
                     $ref: '#/components/schemas/ChatMessageInput'
                   description: Full conversation history, same shape as chat completion messages. message_id and created_timestamp are optional — server generates them if omitted.
+                  example:
+                  - role: user
+                    content: Hi, I'd like to check my appointment.
+                  - role: agent
+                    content: Sure! Could you please provide your name?
+                  - role: user
+                    content: My name is John Smith.
                 dynamic_variables:
                   type: object
                   additionalProperties:
                     type: string
                   description: Key-value pairs for dynamic variable substitution.
+                  example:
+                    customer_name: John Smith
+                    customer_phone: 444-223-3564
                 tool_mocks:
                   type: array
                   items:
@@ -7912,12 +7922,15 @@ paths:
                 current_state:
                   type: string
                   description: Current state name for retell-llm agents. Used to resume from a specific state.
+                  example: greeting
                 current_node_id:
                   type: string
                   description: Current node id for conversation-flow agents. Used to resume from a specific node. Must be provided together with component_id when testing components.
+                  example: start-node-abc123
                 component_id:
                   type: string
                   description: Conversation flow component id. Required when current_node_id refers to a node within a component.
+                  example: component_xyz789
       responses:
         '200':
           description: Successfully generated playground completion.
@@ -7936,22 +7949,29 @@ paths:
                   current_state:
                     type: string
                     description: Current state name (retell-llm agents).
+                    example: greeting
                   current_node_id:
                     type: string
                     description: Current node id (conversation-flow agents).
+                    example: node_abc123
                   dynamic_variables:
                     type: object
                     additionalProperties:
                       type: string
                     description: Updated dynamic variables after this turn.
+                    example:
+                      customer_name: John Doe
                   call_ended:
                     type: boolean
                     description: Whether the agent ended the conversation.
+                    example: false
                   knowledge_base_retrieved_contents:
                     type: array
                     items:
                       type: string
                     description: Knowledge base chunks retrieved for this turn.
+                    example:
+                    - Our business hours are Monday through Friday, 9am to 5pm.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':

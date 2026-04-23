@@ -26,22 +26,27 @@ namespace RetellAI
         /// <param name="agentId"></param>
         /// <param name="version"></param>
         /// <param name="messages">
-        /// Full conversation history, same shape as chat completion messages. message_id and created_timestamp are optional — server generates them if omitted.
+        /// Full conversation history, same shape as chat completion messages. message_id and created_timestamp are optional — server generates them if omitted.<br/>
+        /// Example: [{"role":"user","content":"Hi, I\u0027d like to check my appointment."}, {"role":"agent","content":"Sure! Could you please provide your name?"}, {"role":"user","content":"My name is John Smith."}]
         /// </param>
         /// <param name="dynamicVariables">
-        /// Key-value pairs for dynamic variable substitution.
+        /// Key-value pairs for dynamic variable substitution.<br/>
+        /// Example: {"customer_name":"John Smith","customer_phone":"444-223-3564"}
         /// </param>
         /// <param name="toolMocks">
         /// Optional mock responses for tools. When provided, the agent uses these instead of executing real tool calls.
         /// </param>
         /// <param name="currentState">
-        /// Current state name for retell-llm agents. Used to resume from a specific state.
+        /// Current state name for retell-llm agents. Used to resume from a specific state.<br/>
+        /// Example: greeting
         /// </param>
         /// <param name="currentNodeId">
-        /// Current node id for conversation-flow agents. Used to resume from a specific node. Must be provided together with component_id when testing components.
+        /// Current node id for conversation-flow agents. Used to resume from a specific node. Must be provided together with component_id when testing components.<br/>
+        /// Example: start-node-abc123
         /// </param>
         /// <param name="componentId">
-        /// Conversation flow component id. Required when current_node_id refers to a node within a component.
+        /// Conversation flow component id. Required when current_node_id refers to a node within a component.<br/>
+        /// Example: component_xyz789
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
