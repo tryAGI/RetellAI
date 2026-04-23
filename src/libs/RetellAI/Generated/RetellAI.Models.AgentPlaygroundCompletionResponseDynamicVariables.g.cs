@@ -4,7 +4,8 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Updated dynamic variables after this turn.
+    /// Updated dynamic variables after this turn.<br/>
+    /// Example: {"customer_name":"John Doe"}
     /// </summary>
     public sealed partial class AgentPlaygroundCompletionResponseDynamicVariables
     {

@@ -4,7 +4,8 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Key-value pairs for dynamic variable substitution.
+    /// Key-value pairs for dynamic variable substitution.<br/>
+    /// Example: {"customer_name":"John Smith","customer_phone":"444-223-3564"}
     /// </summary>
     public sealed partial class AgentPlaygroundCompletionRequestDynamicVariables
     {
