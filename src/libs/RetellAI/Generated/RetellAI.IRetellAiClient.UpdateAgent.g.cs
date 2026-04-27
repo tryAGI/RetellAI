@@ -120,8 +120,7 @@ namespace RetellAI
         /// Example: 1
         /// </param>
         /// <param name="language">
-        /// Specifies what language (and dialect) the speech recognition will operate in. For instance, selecting `en-GB` optimizes speech recognition for British English. If unset, will use default value `en-US`. Select `multi` for multilingual support.<br/>
-        /// Example: en-US
+        /// Specifies what language(s) the agent will operate in. Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual support, or an array of concrete locale codes for explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must contain concrete locale codes only — the `multi` value is valid only as the scalar legacy form and must not appear inside an array. Single-element arrays are normalized to the equivalent scalar on output. If unset, defaults to `en-US`.
         /// </param>
         /// <param name="webhookUrl">
         /// The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
@@ -272,7 +271,7 @@ namespace RetellAI
             int? reminderMaxCount = default,
             global::RetellAI.AgentRequestAmbientSound? ambientSound = default,
             double? ambientSoundVolume = default,
-            global::RetellAI.AgentRequestLanguage? language = default,
+            global::RetellAI.OneOf<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? language = default,
             string? webhookUrl = default,
             global::System.Collections.Generic.IList<global::RetellAI.AgentRequestWebhookEvent>? webhookEvents = default,
             int? webhookTimeoutMs = default,

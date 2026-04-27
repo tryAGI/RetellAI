@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class AgentRequestLanguageNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.AgentRequestLanguage?>
+    public sealed class LanguageLegacyEnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.LanguageLegacyEnum?>
     {
         /// <inheritdoc />
-        public override global::RetellAI.AgentRequestLanguage? Read(
+        public override global::RetellAI.LanguageLegacyEnum? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.AgentRequestLanguageExtensions.ToEnum(stringValue);
+                        return global::RetellAI.LanguageLegacyEnumExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.AgentRequestLanguage)numValue;
+                    return (global::RetellAI.LanguageLegacyEnum)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.AgentRequestLanguage?);
+                    return default(global::RetellAI.LanguageLegacyEnum?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.AgentRequestLanguage? value,
+            global::RetellAI.LanguageLegacyEnum? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace RetellAI.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::RetellAI.AgentRequestLanguageExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::RetellAI.LanguageLegacyEnumExtensions.ToValueString(value.Value));
             }
         }
     }

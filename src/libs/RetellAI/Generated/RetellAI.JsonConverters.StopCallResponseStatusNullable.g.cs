@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ChatAgentRequestLanguageNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.ChatAgentRequestLanguage?>
+    public sealed class StopCallResponseStatusNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.StopCallResponseStatus?>
     {
         /// <inheritdoc />
-        public override global::RetellAI.ChatAgentRequestLanguage? Read(
+        public override global::RetellAI.StopCallResponseStatus? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.ChatAgentRequestLanguageExtensions.ToEnum(stringValue);
+                        return global::RetellAI.StopCallResponseStatusExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.ChatAgentRequestLanguage)numValue;
+                    return (global::RetellAI.StopCallResponseStatus)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.ChatAgentRequestLanguage?);
+                    return default(global::RetellAI.StopCallResponseStatus?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.ChatAgentRequestLanguage? value,
+            global::RetellAI.StopCallResponseStatus? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace RetellAI.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::RetellAI.ChatAgentRequestLanguageExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::RetellAI.StopCallResponseStatusExtensions.ToValueString(value.Value));
             }
         }
     }

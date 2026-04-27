@@ -696,75 +696,14 @@ components:
           description: If set, will control the volume of the ambient sound. Value ranging from [0,2]. Lower value means quieter ambient sound, while higher value means louder ambient sound. If unset, default
             value 1 will apply.
         language:
-          type: string
-          example: en-US
-          enum:
-          - en-US
-          - en-IN
-          - en-GB
-          - en-AU
-          - en-NZ
-          - de-DE
-          - es-ES
-          - es-419
-          - hi-IN
-          - fr-FR
-          - fr-CA
-          - ja-JP
-          - pt-PT
-          - pt-BR
-          - zh-CN
-          - ru-RU
-          - it-IT
-          - ko-KR
-          - nl-NL
-          - nl-BE
-          - pl-PL
-          - tr-TR
-          - vi-VN
-          - ro-RO
-          - bg-BG
-          - ca-ES
-          - th-TH
-          - da-DK
-          - fi-FI
-          - el-GR
-          - hu-HU
-          - id-ID
-          - no-NO
-          - sk-SK
-          - sv-SE
-          - lt-LT
-          - lv-LV
-          - cs-CZ
-          - ms-MY
-          - af-ZA
-          - ar-SA
-          - az-AZ
-          - bs-BA
-          - cy-GB
-          - fa-IR
-          - fil-PH
-          - gl-ES
-          - he-IL
-          - hr-HR
-          - hy-AM
-          - is-IS
-          - kk-KZ
-          - kn-IN
-          - mk-MK
-          - mr-IN
-          - ne-NP
-          - sl-SI
-          - sr-RS
-          - sw-KE
-          - ta-IN
-          - ur-IN
-          - yue-CN
-          - uk-UA
-          - multi
-          description: Specifies what language (and dialect) the speech recognition will operate in. For instance, selecting `en-GB` optimizes speech recognition for British English. If unset, will use
-            default value `en-US`. Select `multi` for multilingual support.
+          oneOf:
+          - $ref: '#/components/schemas/LanguageLegacy'
+          - type: array
+            items:
+              $ref: '#/components/schemas/Language'
+          description: Specifies what language(s) the agent will operate in. Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual support, or an array of
+            concrete locale codes for explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must contain concrete locale codes only — the `multi` value is valid only as the scalar legacy
+            form and must not appear inside an array. Single-element arrays are normalized to the equivalent scalar on output. If unset, defaults to `en-US`.
         webhook_url:
           type: string
           example: https://webhook-url-here
@@ -1762,50 +1701,14 @@ components:
             default, this is set to 3,600,000 (1 hour).
           nullable: true
         language:
-          type: string
-          example: en-US
-          enum:
-          - en-US
-          - en-IN
-          - en-GB
-          - en-AU
-          - en-NZ
-          - de-DE
-          - es-ES
-          - es-419
-          - hi-IN
-          - fr-FR
-          - fr-CA
-          - ja-JP
-          - pt-PT
-          - pt-BR
-          - zh-CN
-          - ru-RU
-          - it-IT
-          - ko-KR
-          - nl-NL
-          - nl-BE
-          - pl-PL
-          - tr-TR
-          - th-TH
-          - vi-VN
-          - ro-RO
-          - bg-BG
-          - ca-ES
-          - da-DK
-          - fi-FI
-          - el-GR
-          - hu-HU
-          - id-ID
-          - no-NO
-          - sk-SK
-          - sv-SE
-          - lt-LT
-          - lv-LV
-          - cs-CZ
-          - multi
-          description: Specifies what language (and dialect) the chat will operate in. For instance, selecting `en-GB` optimizes for British English. If unset, will use default value `en-US`. Select `multi`
-            for multilingual support, currently this supports Spanish and English.
+          oneOf:
+          - $ref: '#/components/schemas/LanguageLegacy'
+          - type: array
+            items:
+              $ref: '#/components/schemas/Language'
+          description: Specifies what language(s) the agent will operate in. Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual support, or an array of
+            concrete locale codes for explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must contain concrete locale codes only — the `multi` value is valid only as the scalar legacy
+            form and must not appear inside an array. Single-element arrays are normalized to the equivalent scalar on output. If unset, defaults to `en-US`.
         webhook_url:
           type: string
           example: https://webhook-url-here
@@ -4069,6 +3972,83 @@ components:
         url:
           type: string
           description: URL used to be scraped and added to the knowledge base.
+    LanguageLegacy:
+      oneOf:
+      - $ref: '#/components/schemas/Language'
+      - type: string
+        enum:
+        - multi
+      example: en-US
+      description: Legacy single-string language format. Accepts any concrete locale from `Language`, plus the special scalar value `multi` for multilingual support. If unset, will use default value `en-US`.
+    Language:
+      type: string
+      example: en-US
+      enum:
+      - en-US
+      - en-IN
+      - en-GB
+      - en-AU
+      - en-NZ
+      - de-DE
+      - es-ES
+      - es-419
+      - hi-IN
+      - fr-FR
+      - fr-CA
+      - ja-JP
+      - pt-PT
+      - pt-BR
+      - zh-CN
+      - ru-RU
+      - it-IT
+      - ko-KR
+      - nl-NL
+      - nl-BE
+      - pl-PL
+      - tr-TR
+      - vi-VN
+      - ro-RO
+      - bg-BG
+      - ca-ES
+      - th-TH
+      - da-DK
+      - fi-FI
+      - el-GR
+      - hu-HU
+      - id-ID
+      - no-NO
+      - sk-SK
+      - sv-SE
+      - lt-LT
+      - lv-LV
+      - cs-CZ
+      - ms-MY
+      - af-ZA
+      - ar-SA
+      - az-AZ
+      - bs-BA
+      - cy-GB
+      - fa-IR
+      - fil-PH
+      - gl-ES
+      - he-IL
+      - hr-HR
+      - hy-AM
+      - is-IS
+      - kk-KZ
+      - kn-IN
+      - mk-MK
+      - mr-IN
+      - ne-NP
+      - sl-SI
+      - sr-RS
+      - sw-KE
+      - ta-IN
+      - ur-IN
+      - yue-CN
+      - uk-UA
+      description: Specifies what language (and dialect) the agent will operate in. For instance, selecting `en-GB` optimizes speech recognition for British English and indexes knowledge bases with English.
+        If unset, will use default value `en-US`. This enum does not include the legacy scalar value `multi`.
     LLMModel:
       type: string
       enum:
@@ -10787,6 +10767,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/V2CallResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v2/stop-call/{call_id}:
+    post:
+      description: Stop an ongoing call.
+      operationId: stopCall
+      parameters:
+      - in: path
+        name: call_id
+        schema:
+          type: string
+          example: call_a4441234567890777c4a4a123e6
+        required: true
+        description: The call id of the ongoing call to be stopped.
+      responses:
+        '204':
+          description: Call stopped successfully
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
