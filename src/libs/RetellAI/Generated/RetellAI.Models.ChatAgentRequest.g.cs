@@ -40,13 +40,11 @@ namespace RetellAI
         public int? EndChatAfterSilenceMs { get; set; }
 
         /// <summary>
-        /// Specifies what language (and dialect) the chat will operate in. For instance, selecting `en-GB` optimizes for British English. If unset, will use default value `en-US`. Select `multi` for multilingual support, currently this supports Spanish and English.<br/>
-        /// Example: en-US
+        /// Specifies what language(s) the agent will operate in. Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual support, or an array of concrete locale codes for explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must contain concrete locale codes only — the `multi` value is valid only as the scalar legacy form and must not appear inside an array. Single-element arrays are normalized to the equivalent scalar on output. If unset, defaults to `en-US`.
         /// </summary>
-        /// <example>en-US</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChatAgentRequestLanguageJsonConverter))]
-        public global::RetellAI.ChatAgentRequestLanguage? Language { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>))]
+        public global::RetellAI.OneOf<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? Language { get; set; }
 
         /// <summary>
         /// The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
@@ -197,8 +195,7 @@ namespace RetellAI
         /// Example: 3600000
         /// </param>
         /// <param name="language">
-        /// Specifies what language (and dialect) the chat will operate in. For instance, selecting `en-GB` optimizes for British English. If unset, will use default value `en-US`. Select `multi` for multilingual support, currently this supports Spanish and English.<br/>
-        /// Example: en-US
+        /// Specifies what language(s) the agent will operate in. Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual support, or an array of concrete locale codes for explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must contain concrete locale codes only — the `multi` value is valid only as the scalar legacy form and must not appear inside an array. Single-element arrays are normalized to the equivalent scalar on output. If unset, defaults to `en-US`.
         /// </param>
         /// <param name="webhookUrl">
         /// The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
@@ -266,7 +263,7 @@ namespace RetellAI
             string? agentName,
             string? autoCloseMessage,
             int? endChatAfterSilenceMs,
-            global::RetellAI.ChatAgentRequestLanguage? language,
+            global::RetellAI.OneOf<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? language,
             string? webhookUrl,
             global::System.Collections.Generic.IList<global::RetellAI.ChatAgentRequestWebhookEvent>? webhookEvents,
             int? webhookTimeoutMs,
