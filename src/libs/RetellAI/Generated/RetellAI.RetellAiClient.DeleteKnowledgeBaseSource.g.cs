@@ -133,8 +133,8 @@ namespace RetellAI
                 PrepareDeleteKnowledgeBaseSourceRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    knowledgeBaseId: knowledgeBaseId,
-                    sourceId: sourceId);
+                    knowledgeBaseId: knowledgeBaseId!,
+                    sourceId: sourceId!);
 
                 return __httpRequest;
             }

@@ -139,7 +139,7 @@ namespace RetellAI
                 PrepareListTestCaseDefinitionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    type: type,
+                    type: type!,
                     llmId: llmId,
                     conversationFlowId: conversationFlowId);
 

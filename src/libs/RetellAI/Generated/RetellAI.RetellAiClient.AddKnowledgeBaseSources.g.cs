@@ -125,13 +125,13 @@ namespace RetellAI
             }
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
                             __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent($"{knowledgeBaseId}"),
+                                content: new global::System.Net.Http.StringContent(knowledgeBaseId ?? string.Empty),
                                 name: "\"knowledge_base_id\"");
                             if (request.KnowledgeBaseTexts != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.KnowledgeBaseTexts, x => x))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.KnowledgeBaseTexts, x => x.ToJson(JsonSerializerContext)))}]"),
                                     name: "\"knowledge_base_texts\"");
                             } 
                             if (request.KnowledgeBaseFiles != default)
@@ -140,6 +140,7 @@ namespace RetellAI
                                 for (var __iKnowledgeBaseFiles = 0; __iKnowledgeBaseFiles < request.KnowledgeBaseFiles.Count; __iKnowledgeBaseFiles++)
                                 {
                                     var __contentKnowledgeBaseFiles = new global::System.Net.Http.ByteArrayContent(request.KnowledgeBaseFiles[__iKnowledgeBaseFiles]);
+                                __contentKnowledgeBaseFiles.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
                                     __httpRequestContent.Add(
                                         content: __contentKnowledgeBaseFiles,
                                         name: "\"knowledge_base_files\"",
@@ -169,7 +170,7 @@ namespace RetellAI
                 PrepareAddKnowledgeBaseSourcesRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    knowledgeBaseId: knowledgeBaseId,
+                    knowledgeBaseId: knowledgeBaseId!,
                     request: request);
 
                 return __httpRequest;

@@ -136,7 +136,7 @@ namespace RetellAI
                 PrepareGetRetellLLMRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    llmId: llmId,
+                    llmId: llmId!,
                     version: version);
 
                 return __httpRequest;

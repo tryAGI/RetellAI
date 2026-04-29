@@ -119,7 +119,7 @@ namespace RetellAI
                 PrepareDeleteTestCaseDefinitionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    testCaseDefinitionId: testCaseDefinitionId);
+                    testCaseDefinitionId: testCaseDefinitionId!);
 
                 return __httpRequest;
             }

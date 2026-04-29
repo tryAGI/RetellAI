@@ -152,9 +152,9 @@ namespace RetellAI
                 PrepareGetMCPToolsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    agentId: agentId,
+                    agentId: agentId!,
                     version: version,
-                    mcpId: mcpId,
+                    mcpId: mcpId!,
                     componentId: componentId);
 
                 return __httpRequest;

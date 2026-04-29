@@ -118,13 +118,13 @@ namespace RetellAI
             }
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
                             __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent($"{request.KnowledgeBaseName}"),
+                                content: new global::System.Net.Http.StringContent(request.KnowledgeBaseName ?? string.Empty),
                                 name: "\"knowledge_base_name\"");
                             if (request.KnowledgeBaseTexts != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.KnowledgeBaseTexts, x => x))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.KnowledgeBaseTexts, x => x.ToJson(JsonSerializerContext)))}]"),
                                     name: "\"knowledge_base_texts\"");
                             } 
                             if (request.KnowledgeBaseFiles != default)
@@ -133,6 +133,7 @@ namespace RetellAI
                                 for (var __iKnowledgeBaseFiles = 0; __iKnowledgeBaseFiles < request.KnowledgeBaseFiles.Count; __iKnowledgeBaseFiles++)
                                 {
                                     var __contentKnowledgeBaseFiles = new global::System.Net.Http.ByteArrayContent(request.KnowledgeBaseFiles[__iKnowledgeBaseFiles]);
+                                __contentKnowledgeBaseFiles.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
                                     __httpRequestContent.Add(
                                         content: __contentKnowledgeBaseFiles,
                                         name: "\"knowledge_base_files\"",
@@ -154,21 +155,21 @@ namespace RetellAI
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.EnableAutoRefresh}"),
+                                    content: new global::System.Net.Http.StringContent((global::System.Convert.ToString(request.EnableAutoRefresh, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty).ToLowerInvariant()),
                                     name: "\"enable_auto_refresh\"");
                             } 
                             if (request.MaxChunkSize != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.MaxChunkSize}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.MaxChunkSize, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"max_chunk_size\"");
                             } 
                             if (request.MinChunkSize != default)
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"{request.MinChunkSize}"),
+                                    content: new global::System.Net.Http.StringContent(global::System.Convert.ToString(request.MinChunkSize, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty),
                                     name: "\"min_chunk_size\"");
                             }
                             __httpRequest.Content = __httpRequestContent;

@@ -140,7 +140,7 @@ namespace RetellAI
                 PrepareListTestRunsV2Request(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    testCaseBatchJobId: testCaseBatchJobId,
+                    testCaseBatchJobId: testCaseBatchJobId!,
                     limit: limit,
                     paginationKey: paginationKey);
 

@@ -120,6 +120,7 @@ namespace RetellAI
                             for (var __iFiles = 0; __iFiles < request.Files.Count; __iFiles++)
                             {
                                 var __contentFiles = new global::System.Net.Http.ByteArrayContent(request.Files[__iFiles]);
+                            __contentFiles.Headers.ContentType = new global::System.Net.Http.Headers.MediaTypeHeaderValue("application/octet-stream");
                                 __httpRequestContent.Add(
                                     content: __contentFiles,
                                     name: "\"files\"",
@@ -130,10 +131,10 @@ namespace RetellAI
                                 }
                             }
                             __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent($"{request.VoiceName}"),
+                                content: new global::System.Net.Http.StringContent(request.VoiceName ?? string.Empty),
                                 name: "\"voice_name\"");
                             __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent($"{request.VoiceProvider.ToValueString()}"),
+                                content: new global::System.Net.Http.StringContent(request.VoiceProvider.ToValueString()),
                                 name: "\"voice_provider\"");
                             __httpRequest.Content = __httpRequestContent;
                 global::RetellAI.AutoSDKRequestOptionsSupport.ApplyHeaders(

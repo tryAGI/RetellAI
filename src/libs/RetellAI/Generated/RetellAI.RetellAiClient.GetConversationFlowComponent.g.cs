@@ -124,7 +124,7 @@ namespace RetellAI
                 PrepareGetConversationFlowComponentRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    conversationFlowComponentId: conversationFlowComponentId);
+                    conversationFlowComponentId: conversationFlowComponentId!);
 
                 return __httpRequest;
             }

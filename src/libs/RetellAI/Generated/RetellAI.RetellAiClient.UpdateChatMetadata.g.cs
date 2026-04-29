@@ -140,7 +140,7 @@ namespace RetellAI
                 PrepareUpdateChatMetadataRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    chatId: chatId,
+                    chatId: chatId!,
                     request: request);
 
                 return __httpRequest;

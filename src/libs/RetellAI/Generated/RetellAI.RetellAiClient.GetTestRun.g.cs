@@ -124,7 +124,7 @@ namespace RetellAI
                 PrepareGetTestRunRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    testCaseJobId: testCaseJobId);
+                    testCaseJobId: testCaseJobId!);
 
                 return __httpRequest;
             }

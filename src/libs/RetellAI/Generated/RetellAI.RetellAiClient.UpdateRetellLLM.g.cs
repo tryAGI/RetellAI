@@ -148,7 +148,7 @@ namespace RetellAI
                 PrepareUpdateRetellLLMRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    llmId: llmId,
+                    llmId: llmId!,
                     version: version,
                     request: request);
 
