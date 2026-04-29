@@ -145,7 +145,7 @@ namespace RetellAI
                 PrepareListBatchTestsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    type: type,
+                    type: type!,
                     llmId: llmId,
                     conversationFlowId: conversationFlowId,
                     version: version);

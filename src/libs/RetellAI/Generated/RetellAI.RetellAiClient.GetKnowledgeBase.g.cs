@@ -126,7 +126,7 @@ namespace RetellAI
                 PrepareGetKnowledgeBaseRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    knowledgeBaseId: knowledgeBaseId);
+                    knowledgeBaseId: knowledgeBaseId!);
 
                 return __httpRequest;
             }

@@ -121,7 +121,7 @@ namespace RetellAI
                 PrepareDeletePhoneNumberRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    phoneNumber: phoneNumber);
+                    phoneNumber: phoneNumber!);
 
                 return __httpRequest;
             }

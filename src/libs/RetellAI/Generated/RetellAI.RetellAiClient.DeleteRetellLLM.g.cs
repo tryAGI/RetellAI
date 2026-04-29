@@ -121,7 +121,7 @@ namespace RetellAI
                 PrepareDeleteRetellLLMRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    llmId: llmId);
+                    llmId: llmId!);
 
                 return __httpRequest;
             }

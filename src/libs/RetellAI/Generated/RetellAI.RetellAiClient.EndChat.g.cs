@@ -121,7 +121,7 @@ namespace RetellAI
                 PrepareEndChatRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    chatId: chatId);
+                    chatId: chatId!);
 
                 return __httpRequest;
             }

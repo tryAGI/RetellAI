@@ -146,7 +146,7 @@ namespace RetellAI
                 PrepareUpdateConversationFlowRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    conversationFlowId: conversationFlowId,
+                    conversationFlowId: conversationFlowId!,
                     version: version,
                     request: request);
 

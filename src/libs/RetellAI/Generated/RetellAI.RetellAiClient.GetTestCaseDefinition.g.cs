@@ -124,7 +124,7 @@ namespace RetellAI
                 PrepareGetTestCaseDefinitionRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    testCaseDefinitionId: testCaseDefinitionId);
+                    testCaseDefinitionId: testCaseDefinitionId!);
 
                 return __httpRequest;
             }

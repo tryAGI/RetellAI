@@ -150,7 +150,7 @@ namespace RetellAI
                 PrepareUpdateChatAgentRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    agentId: agentId,
+                    agentId: agentId!,
                     version: version,
                     request: request);
 

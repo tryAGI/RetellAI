@@ -126,7 +126,7 @@ namespace RetellAI
                 PrepareGetCallRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    callId: callId);
+                    callId: callId!);
 
                 return __httpRequest;
             }

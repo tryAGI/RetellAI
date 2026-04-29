@@ -136,7 +136,7 @@ namespace RetellAI
                 PrepareGetAgentRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    agentId: agentId,
+                    agentId: agentId!,
                     version: version);
 
                 return __httpRequest;
