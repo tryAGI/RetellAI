@@ -171,6 +171,13 @@ components:
       - qa_not_passed_count
       - total_call_cost
       - api_error_count
+    AsrProvider:
+      type: string
+      enum:
+      - azure
+      - deepgram
+      - soniox
+      description: ASR provider name.
     PaginatedResponseBase:
       type: object
       properties:
@@ -901,11 +908,8 @@ components:
           description: Custom STT configuration. Only used when stt_mode is set to custom.
           properties:
             provider:
-              type: string
-              enum:
-              - azure
-              - deepgram
-              - soniox
+              allOf:
+              - $ref: '#/components/schemas/AsrProvider'
               description: The STT provider to use.
             endpointing_ms:
               type: integer
@@ -2896,7 +2900,7 @@ components:
           description: Describes what this tool does and when to call this tool.
         code:
           type: string
-          maxLength: 5000
+          maxLength: 20000
           description: JavaScript code to execute in the sandbox.
         timeout_ms:
           type: integer
@@ -3643,7 +3647,7 @@ components:
             description: Type of the node
           code:
             type: string
-            maxLength: 5000
+            maxLength: 20000
             description: JavaScript code to execute in the sandbox.
           timeout_ms:
             type: integer
@@ -4063,6 +4067,7 @@ components:
       - gpt-5.4
       - gpt-5.4-mini
       - gpt-5.4-nano
+      - gpt-5.5
       - claude-4.5-sonnet
       - claude-4.6-sonnet
       - claude-4.5-haiku
@@ -4593,6 +4598,7 @@ components:
       - gpt-5.4
       - gpt-5.4-mini
       - gpt-5.4-nano
+      - gpt-5.5
       - claude-4.5-sonnet
       - claude-4.6-sonnet
       - claude-4.5-haiku
@@ -7478,6 +7484,7 @@ paths:
     get:
       description: List test case definitions for a response engine
       operationId: listTestCaseDefinitions
+      deprecated: true
       parameters:
       - in: query
         name: type
@@ -7629,6 +7636,7 @@ paths:
     get:
       description: List batch test jobs for a response engine
       operationId: listBatchTests
+      deprecated: true
       parameters:
       - in: query
         name: type
@@ -7756,6 +7764,7 @@ paths:
     get:
       description: List all test case jobs (test runs) for a batch test job
       operationId: listTestRuns
+      deprecated: true
       parameters:
       - in: path
         name: test_case_batch_job_id
@@ -9346,6 +9355,7 @@ paths:
     get:
       description: List all chats
       operationId: listChat
+      deprecated: true
       parameters:
       - in: query
         name: sort_order
@@ -9477,6 +9487,7 @@ paths:
     get:
       description: List shared conversation flow components
       operationId: listConversationFlowComponents
+      deprecated: true
       responses:
         '200':
           description: Successfully listed conversation flow components
@@ -9494,10 +9505,43 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /v2/list-conversation-flows:
+    get:
+      description: List conversation flows with pagination
+      operationId: listConversationFlowsV2
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SortOrderParam'
+      - $ref: '#/components/parameters/PaginationKeyParam'
+      responses:
+        '200':
+          description: Successfully retrieved conversation flows
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResponseBase'
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/ConversationFlowResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /list-conversation-flows:
     get:
       description: List all conversation flows that can be attached to an agent.
       operationId: listConversationFlows
+      deprecated: true
       parameters:
       - in: query
         name: limit
@@ -9584,6 +9628,7 @@ paths:
     get:
       description: List all phone numbers
       operationId: listPhoneNumbers
+      deprecated: true
       responses:
         '200':
           description: Successfully retrieved all phone numbers.
@@ -9601,6 +9646,7 @@ paths:
     get:
       description: List all Retell LLM Response Engines that can be attached to an agent.
       operationId: listRetellLLM
+      deprecated: true
       parameters:
       - in: query
         name: limit
@@ -9638,6 +9684,38 @@ paths:
                   $ref: '#/components/schemas/RetellLLMResponse'
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v2/list-retell-llms:
+    get:
+      description: List Retell LLM Response Engines with pagination
+      operationId: listRetellLLMV2
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SortOrderParam'
+      - $ref: '#/components/parameters/PaginationKeyParam'
+      responses:
+        '200':
+          description: Successfully retrieved Retell LLM Response Engines.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResponseBase'
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/RetellLLMResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /list-voices:
@@ -10311,6 +10389,7 @@ paths:
     post:
       description: Retrieve call details
       operationId: listCalls
+      deprecated: true
       requestBody:
         required: true
         content:

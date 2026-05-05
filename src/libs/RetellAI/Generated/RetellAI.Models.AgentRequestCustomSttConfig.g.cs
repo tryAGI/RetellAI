@@ -12,9 +12,9 @@ namespace RetellAI
         /// The STT provider to use.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("provider")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentRequestCustomSttConfigProviderJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AsrProviderJsonConverter))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::RetellAI.AgentRequestCustomSttConfigProvider Provider { get; set; }
+        public required global::RetellAI.AsrProvider Provider { get; set; }
 
         /// <summary>
         /// Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox
@@ -42,7 +42,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentRequestCustomSttConfig(
-            global::RetellAI.AgentRequestCustomSttConfigProvider provider,
+            global::RetellAI.AsrProvider provider,
             int endpointingMs)
         {
             this.Provider = provider;
