@@ -26,6 +26,22 @@ namespace RetellAI
         /// <param name="knowledgeBaseId">
         /// Example: kb_1234567890
         /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::RetellAI.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.KnowledgeBaseResponse>> AddKnowledgeBaseSourcesAsResponseAsync(
+            string knowledgeBaseId,
+
+            global::RetellAI.KnowledgeBaseAddSourcesRequest request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Add sources to a knowledge base
+        /// </summary>
+        /// <param name="knowledgeBaseId">
+        /// Example: kb_1234567890
+        /// </param>
         /// <param name="knowledgeBaseTexts">
         /// Texts to add to the knowledge base.
         /// </param>
@@ -43,6 +59,67 @@ namespace RetellAI
             string knowledgeBaseId,
             global::System.Collections.Generic.IList<global::RetellAI.KnowledgeBaseAddSourcesRequestKnowledgeBaseText>? knowledgeBaseTexts = default,
             global::System.Collections.Generic.IList<byte[]>? knowledgeBaseFiles = default,
+            global::System.Collections.Generic.IList<string>? knowledgeBaseUrls = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Add sources to a knowledge base
+        /// </summary>
+        /// <param name="knowledgeBaseId">
+        /// Example: kb_1234567890
+        /// </param>
+        /// <param name="knowledgeBaseTexts">
+        /// Texts to add to the knowledge base.
+        /// </param>
+        /// <param name="knowledgeBaseFiles">
+        /// Files to add to the knowledge base. Limit to 25 files, where each file is limited to 50MB.
+        /// </param>
+        /// <param name="knowledgeBaseFilesFileNames">
+        /// Optional file names to use for the multipart 'knowledge_base_files' file parts.
+        /// </param>
+        /// <param name="knowledgeBaseUrls">
+        /// URLs to be scraped and added to the knowledge base. Must be valid urls.<br/>
+        /// Example: [https://www.example.com, https://www.retellai.com]
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::RetellAI.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::RetellAI.KnowledgeBaseResponse> AddKnowledgeBaseSourcesAsync(
+            string knowledgeBaseId,
+            global::System.Collections.Generic.IList<global::RetellAI.KnowledgeBaseAddSourcesRequestKnowledgeBaseText>? knowledgeBaseTexts = default,
+            global::System.Collections.Generic.IReadOnlyList<global::System.IO.Stream>? knowledgeBaseFiles = default,
+            global::System.Collections.Generic.IReadOnlyList<string>? knowledgeBaseFilesFileNames = default,
+            global::System.Collections.Generic.IList<string>? knowledgeBaseUrls = default,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Add sources to a knowledge base
+        /// </summary>
+        /// <param name="knowledgeBaseId">
+        /// Example: kb_1234567890
+        /// </param>
+        /// <param name="knowledgeBaseTexts">
+        /// Texts to add to the knowledge base.
+        /// </param>
+        /// <param name="knowledgeBaseFiles">
+        /// Files to add to the knowledge base. Limit to 25 files, where each file is limited to 50MB.
+        /// </param>
+        /// <param name="knowledgeBaseFilesFileNames">
+        /// Optional file names to use for the multipart 'knowledge_base_files' file parts.
+        /// </param>
+        /// <param name="knowledgeBaseUrls">
+        /// URLs to be scraped and added to the knowledge base. Must be valid urls.<br/>
+        /// Example: [https://www.example.com, https://www.retellai.com]
+        /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::RetellAI.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.KnowledgeBaseResponse>> AddKnowledgeBaseSourcesAsResponseAsync(
+            string knowledgeBaseId,
+            global::System.Collections.Generic.IList<global::RetellAI.KnowledgeBaseAddSourcesRequestKnowledgeBaseText>? knowledgeBaseTexts = default,
+            global::System.Collections.Generic.IReadOnlyList<global::System.IO.Stream>? knowledgeBaseFiles = default,
+            global::System.Collections.Generic.IReadOnlyList<string>? knowledgeBaseFilesFileNames = default,
             global::System.Collections.Generic.IList<string>? knowledgeBaseUrls = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);

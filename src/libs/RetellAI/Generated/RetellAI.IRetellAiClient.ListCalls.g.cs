@@ -19,6 +19,18 @@ namespace RetellAI
         /// <summary>
         /// Retrieve call details
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::RetellAI.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::System.Collections.Generic.IList<global::RetellAI.V2CallResponse>>> ListCallsAsResponseAsync(
+
+            global::RetellAI.ListCallsRequest request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Retrieve call details
+        /// </summary>
         /// <param name="filterCriteria">
         /// Filter criteria for the calls to retrieve.<br/>
         /// Example: {"call_id":["call_5a82f0a43ea0977566b1104fcfc"],"agent_id":["agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345"],"call_status":["ended"],"call_type":["phone_call"],"direction":["inbound"],"user_sentiment":["Positive"],"call_successful":[true],"start_timestamp":{"upper_threshold":1738475421000,"lower_threshold":1738475411000},"metadata.customer_id":["cust_123"],"dynamic_variables.user_name":["John"]}
