@@ -26,6 +26,22 @@ namespace RetellAI
         /// <param name="phoneNumber">
         /// Example: +14157774444
         /// </param>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::RetellAI.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.PhoneNumberResponse>> UpdatePhoneNumberAsResponseAsync(
+            string phoneNumber,
+
+            global::RetellAI.UpdatePhoneNumberRequest request,
+            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Update agent bound to a purchased phone number
+        /// </summary>
+        /// <param name="phoneNumber">
+        /// Example: +14157774444
+        /// </param>
         /// <param name="inboundAgents">
         /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
