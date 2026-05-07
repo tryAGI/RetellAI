@@ -105,11 +105,14 @@ public static class RetellAiToolExtensions
         return AIFunctionFactory.Create(
             async (CancellationToken cancellationToken) =>
             {
-                var calls = await client.ListCallsAsync(
+                var calls = await client.ListCallsV3Async(
                     limit: limit,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
-                return FormatCallList(calls);
+                return FormatCallList(calls.Value2?.Items?
+                    .Where(static call => call.V2.HasValue)
+                    .Select(static call => call.V2!.Value)
+                    .ToList() ?? new List<V2CallResponse>());
             },
             name: "ListRetellCalls",
             description: "Lists recent Retell AI voice calls. Returns call IDs, statuses, agent info, durations, and timestamps.");
@@ -152,10 +155,10 @@ public static class RetellAiToolExtensions
         return AIFunctionFactory.Create(
             async (CancellationToken cancellationToken) =>
             {
-                var phoneNumbers = await client.ListPhoneNumbersAsync(
+                var phoneNumbers = await client.ListPhoneNumbersV2Async(
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
-                return FormatPhoneNumberList(phoneNumbers);
+                return FormatPhoneNumberList(phoneNumbers.Value2?.Items ?? new List<PhoneNumberResponse>());
             },
             name: "ListRetellPhoneNumbers",
             description: "Lists all Retell AI phone numbers. Returns phone numbers, types, nicknames, and bound agent configurations.");
