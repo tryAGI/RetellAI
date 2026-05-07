@@ -205,6 +205,9 @@ namespace RetellAI
         /// If this option is set, the call will try to detect IVR in the first 3 minutes of the call. Actions defined will be applied when the IVR is detected. Set this to null to disable IVR detection.<br/>
         /// Example: {"action":{"type":"hangup"}}
         /// </param>
+        /// <param name="callScreeningOption">
+        /// If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
+        /// </param>
         /// <param name="postCallAnalysisData">
         /// Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
         /// </param>
@@ -245,6 +248,10 @@ namespace RetellAI
         /// <param name="allowUserDtmf">
         /// If set to true, DTMF input will be accepted and processed. If false, any DTMF input will be ignored. Default to true.<br/>
         /// Example: true
+        /// </param>
+        /// <param name="allowDtmfInterruption">
+        /// If set to true, DTMF input will interrupt the agent even when interruption_sensitivity is 0. Can be overridden per conversation or subagent node. Default to false.<br/>
+        /// Example: false
         /// </param>
         /// <param name="userDtmfOptions"></param>
         /// <param name="denoisingMode">
@@ -307,6 +314,7 @@ namespace RetellAI
             int? voicemailDetectionTimeoutMs = default,
             global::RetellAI.AgentRequestVoicemailOption? voicemailOption = default,
             global::RetellAI.AgentRequestIvrOption? ivrOption = default,
+            global::RetellAI.CallScreeningOption? callScreeningOption = default,
             global::System.Collections.Generic.IList<global::RetellAI.PostCallAnalysisData>? postCallAnalysisData = default,
             global::RetellAI.NullableLLMModel? postCallAnalysisModel = default,
             string? analysisSuccessfulPrompt = default,
@@ -318,6 +326,7 @@ namespace RetellAI
             global::RetellAI.AgentRequestCustomSttConfig? customSttConfig = default,
             global::RetellAI.AgentRequestVocabSpecialization? vocabSpecialization = default,
             bool? allowUserDtmf = default,
+            bool? allowDtmfInterruption = default,
             global::RetellAI.AgentRequestUserDtmfOptions? userDtmfOptions = default,
             global::RetellAI.AgentRequestDenoisingMode? denoisingMode = default,
             global::RetellAI.PIIConfig? piiConfig = default,

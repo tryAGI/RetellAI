@@ -132,6 +132,34 @@ components:
               message:
                 type: string
                 example: The requested resource was not found.
+    Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                enum:
+                - error
+              message:
+                type: string
+                example: Resource update conflict.
+    PreconditionFailed:
+      description: Precondition Failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                enum:
+                - error
+              message:
+                type: string
+                example: Precondition failed for conditional update.
   parameters:
     LimitParam:
       in: query
@@ -503,8 +531,7 @@ components:
           minLength: 1
           example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         agent_version:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         weight:
           type: number
           example: 0.5
@@ -512,6 +539,42 @@ components:
           exclusiveMinimum: true
           maximum: 1
           description: The weight of the agent. When used in a list of agents, the total weights must add up to 1.
+    AgentVersionReference:
+      oneOf:
+      - type: integer
+        minimum: 0
+        example: 1
+      - type: string
+        minLength: 1
+        maxLength: 20
+        pattern: ^[a-z0-9_-]+$
+        example: prod
+      description: Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including
+        its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred
+        tag for that resolved version (most recently assigned), if any.
+    CreateAgentVersionRequest:
+      type: object
+      additionalProperties: false
+      required:
+      - base_version
+      properties:
+        base_version:
+          type: integer
+          minimum: 0
+          example: 12
+          description: Existing version used as the base when creating a new draft.
+    PublishAgentVersionRequest:
+      type: object
+      required:
+      - version
+      properties:
+        version:
+          type: integer
+          minimum: 0
+          example: 15
+        version_description:
+          type: string
+          example: Hotfix for transfer timeout
     AgentOverrideRequest:
       type: object
       description: Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
@@ -833,6 +896,11 @@ components:
           properties:
             action:
               $ref: '#/components/schemas/VoicemailAction'
+            detection_prompt:
+              type: string
+              maxLength: 2000
+              nullable: true
+              description: Optionally describe what should be treated as voicemail. Leave as null to use the default definition.
           required:
           - action
           description: If this option is set, the call will try to detect voicemail in the first 3 minutes of the call. Actions defined (hangup, or leave a message) will be applied when the voicemail is
@@ -847,6 +915,11 @@ components:
           properties:
             action:
               $ref: '#/components/schemas/IvrAction'
+            detection_prompt:
+              type: string
+              maxLength: 2000
+              nullable: true
+              description: Optionally describe what should be treated as an IVR. Leave as null to use the default definition.
           required:
           - action
           description: If this option is set, the call will try to detect IVR in the first 3 minutes of the call. Actions defined will be applied when the IVR is detected. Set this to null to disable IVR
@@ -855,6 +928,8 @@ components:
             action:
               type: hangup
           nullable: true
+        call_screening_option:
+          $ref: '#/components/schemas/CallScreeningOption'
         post_call_analysis_data:
           type: array
           items:
@@ -929,6 +1004,10 @@ components:
           type: boolean
           example: true
           description: If set to true, DTMF input will be accepted and processed. If false, any DTMF input will be ignored. Default to true.
+        allow_dtmf_interruption:
+          type: boolean
+          example: false
+          description: If set to true, DTMF input will interrupt the agent even when interruption_sensitivity is 0. Can be overridden per conversation or subagent node. Default to false.
         user_dtmf_options:
           type: object
           properties:
@@ -992,6 +1071,16 @@ components:
             type: integer
             example: 0
             description: Version of the agent.
+          base_version:
+            type: integer
+            nullable: true
+            example: 12
+            description: Version that this draft was based on. Null for initial versions.
+          assigned_tags:
+            type: array
+            items:
+              type: string
+            description: Tags assigned to this agent version. Preferred tag is listed first.
           is_published:
             type: boolean
             example: false
@@ -1008,6 +1097,9 @@ components:
             type: integer
             example: 1703413636133
             description: Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.
+          response_engine_data:
+            $ref: '#/components/schemas/ResponseEngineFull'
+            description: Hydrated response engine for this agent version. Only present when include_response_engine is true on /get-agent-versions.
     AgentSwapNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'
@@ -1027,7 +1119,7 @@ components:
             type: string
             description: The ID of the agent to swap to
           agent_version:
-            type: number
+            $ref: '#/components/schemas/AgentVersionReference'
             description: The version of the agent to swap to. If not specified, will use the latest version
           post_call_analysis_setting:
             $ref: '#/components/schemas/PostCallAnalysisSetting'
@@ -1068,7 +1160,7 @@ components:
           minLength: 1
           description: The id of the agent to swap to.
         agent_version:
-          type: number
+          $ref: '#/components/schemas/AgentVersionReference'
           description: The version of the agent to swap to. If not specified, will use the latest version.
         speak_during_execution:
           type: boolean
@@ -1187,8 +1279,7 @@ components:
           example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
           description: For this particular call, override the agent used with this agent id. This does not bind the agent to this number, this is for one time override.
         override_agent_version:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
           description: For this particular call, override the agent version used with this version. This does not bind the agent to this number, this is for one time override.
         agent_override:
           $ref: '#/components/schemas/AgentOverrideRequest'
@@ -1727,6 +1818,7 @@ components:
             - chat_started
             - chat_ended
             - chat_analyzed
+            - transcript_updated
           description: Which webhook events this agent should receive. If not set, defaults to chat_started, chat_ended, chat_analyzed.
           nullable: true
         webhook_timeout_ms:
@@ -1818,6 +1910,16 @@ components:
             type: integer
             example: 0
             description: The version of the chat agent.
+          base_version:
+            type: integer
+            nullable: true
+            example: 12
+            description: Version that this draft was based on. Null for initial versions.
+          assigned_tags:
+            type: array
+            items:
+              type: string
+            description: Tags assigned to this chat agent version. Preferred tag is listed first.
           is_published:
             type: boolean
             example: false
@@ -1833,6 +1935,9 @@ components:
             type: integer
             example: 1703413636133
             description: Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.
+          response_engine_data:
+            $ref: '#/components/schemas/ResponseEngineFull'
+            description: Hydrated response engine for this chat agent version. Only present when include_response_engine is true on /get-chat-agent-versions.
     ChatAnalysis:
       type: object
       properties:
@@ -2485,6 +2590,10 @@ components:
           minimum: 0.5
           maximum: 2
           nullable: true
+        allow_dtmf_interruption:
+          type: boolean
+          nullable: true
+          description: If set, overrides the agent-level allow_dtmf_interruption for this node only.
     ConversationFlowOverride:
       type: object
       description: Override properties for conversation flow configuration in agent override requests.
@@ -2673,6 +2782,10 @@ components:
             - kb_002
             description: Knowledge base IDs for RAG (Retrieval-Augmented Generation).
             nullable: true
+          kb_config:
+            type: object
+            $ref: '#/components/schemas/KBConfig'
+            description: Knowledge base configuration for RAG retrieval at the node level. If kb_instruction is set here, it overrides the flow-level kb_instruction.
     SubagentNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'
@@ -2711,6 +2824,10 @@ components:
               type: string
             description: Knowledge base IDs for RAG (Retrieval-Augmented Generation).
             nullable: true
+          kb_config:
+            type: object
+            $ref: '#/components/schemas/KBConfig'
+            description: Knowledge base configuration for RAG retrieval at the node level. If kb_instruction is set here, it overrides the flow-level kb_instruction.
           tool_ids:
             type: array
             items:
@@ -4071,7 +4188,6 @@ components:
       - claude-4.5-sonnet
       - claude-4.6-sonnet
       - claude-4.5-haiku
-      - gemini-2.5-flash
       - gemini-2.5-flash-lite
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
@@ -4602,7 +4718,6 @@ components:
       - claude-4.5-sonnet
       - claude-4.6-sonnet
       - claude-4.5-haiku
-      - gemini-2.5-flash
       - gemini-2.5-flash-lite
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
@@ -7194,6 +7309,27 @@ components:
     IvrAction:
       oneOf:
       - $ref: '#/components/schemas/IvrActionHangup'
+    CallScreeningOption:
+      type: object
+      properties:
+        agent_identity:
+          type: string
+          minLength: 1
+          maxLength: 100
+          example: Acme Health scheduling team
+          description: Identity the agent should provide when a call screen asks who is calling. Dynamic variables are supported.
+        call_purpose:
+          type: string
+          minLength: 1
+          maxLength: 300
+          example: confirming your appointment for tomorrow
+          description: Purpose the agent should provide when a call screen asks why it is calling. Dynamic variables are supported.
+      required:
+      - agent_identity
+      - call_purpose
+      additionalProperties: false
+      description: If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
+      nullable: true
     WER:
       type: object
       required:
@@ -8041,8 +8177,7 @@ paths:
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
                   description: The chat agent to use for the call.
                 agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the chat agent to use for the chat. If not provided, will default to latest version.
                 metadata:
                   type: object
@@ -8311,8 +8446,7 @@ paths:
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
                   description: For this particular chat, override the agent used with this agent id. This does not bind the agent to this number, this is for one time override.
                 override_agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: For this particular chat, override the agent version used with this version. This does not bind the agent version to this number, this is for one time override.
                 metadata:
                   type: object
@@ -8575,6 +8709,13 @@ paths:
           example: 16b980523634a6dc504898cda492e939
         required: true
         description: Unique id of the agent versions to be retrieved.
+      - in: query
+        name: include_response_engine
+        schema:
+          type: boolean
+          default: false
+        required: false
+        description: When true, each returned agent version includes a response_engine_data field with the hydrated response engine (full retell-llm or conversation-flow configuration) bound to that version.
       responses:
         '200':
           description: Successfully retrieved all versions of an agent.
@@ -8640,6 +8781,14 @@ paths:
           example: 16b980523634a6dc504898cda492e939
         required: true
         description: Unique id of the chat agent versions to be retrieved.
+      - in: query
+        name: include_response_engine
+        schema:
+          type: boolean
+          default: false
+        required: false
+        description: When true, each returned chat agent version includes a response_engine_data field with the hydrated response engine (full retell-llm or conversation-flow configuration) bound to that
+          version.
       responses:
         '200':
           description: Successfully retrieved all versions of a chat agent.
@@ -9735,22 +9884,34 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /publish-agent/{agent_id}:
+  /create-agent-version/{agent_id}:
     post:
-      description: Publish the latest version of the agent and create a new draft agent with newer version.
-      operationId: publishAgent
+      description: Create a new draft agent version from a base version.
+      operationId: createAgentVersion
       parameters:
       - in: path
         name: agent_id
         schema:
           type: string
           minLength: 1
-          example: 16b980523634a6dc504898cda492e939
+          example: agent_xxx
         required: true
-        description: Unique id of the agent to be published.
+        description: Unique id of the agent.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAgentVersionRequest'
       responses:
-        '200':
-          description: Agent successfully published
+        '201':
+          description: Draft version created successfully.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AgentResponse'
+                - $ref: '#/components/schemas/ChatAgentResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -9761,22 +9922,62 @@ paths:
           $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /publish-chat-agent/{agent_id}:
+  /publish-agent-version/{agent_id}:
     post:
-      description: Publish the latest version of the chat agent and create a new draft chat agent with newer version.
-      operationId: publishChatAgent
+      description: Publish an existing draft version in place.
+      operationId: publishAgentVersion
       parameters:
       - in: path
         name: agent_id
         schema:
           type: string
           minLength: 1
-          example: 16b980523634a6dc504898cda492e939
+          example: agent_xxx
         required: true
-        description: Unique id of the chat agent to be published.
+        description: Unique id of the agent.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishAgentVersionRequest'
       responses:
         '200':
-          description: Chat agent successfully published
+          description: Agent version published successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /delete-agent-version/{agent_id}:
+    delete:
+      description: Delete a specific agent version.
+      operationId: deleteAgentVersion
+      parameters:
+      - in: path
+        name: agent_id
+        schema:
+          type: string
+          minLength: 1
+          example: agent_xxx
+        required: true
+        description: Unique id of the agent.
+      - in: query
+        name: version
+        schema:
+          type: integer
+          minimum: 0
+          example: 1
+        required: true
+        description: Version to delete.
+      responses:
+        '204':
+          description: Version deleted successfully.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -9828,6 +10029,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /update-chat-agent/{agent_id}:
@@ -9869,6 +10072,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /update-chat/{chat_id}:
@@ -10222,8 +10427,7 @@ paths:
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
                   description: For this particular call, override the agent used with this agent id. This does not bind the agent to this number, this is for one time override.
                 override_agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: For this particular call, override the agent version used with this version. This does not bind the agent version to this number, this is for one time override.
                 agent_override:
                   $ref: '#/components/schemas/AgentOverrideRequest'
@@ -10288,8 +10492,7 @@ paths:
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
                   description: Unique id of agent used for the call. Your agent would contain the LLM Websocket url used for this call.
                 agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the agent to use for the call.
                 agent_override:
                   $ref: '#/components/schemas/AgentOverrideRequest'
@@ -10726,8 +10929,7 @@ paths:
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
                   description: The agent to use for the call.
                 agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the agent to use for the call.
                 agent_override:
                   $ref: '#/components/schemas/AgentOverrideRequest'
