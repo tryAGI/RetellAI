@@ -1,5 +1,4 @@
 #pragma warning disable CS3002 // Return type is not CLS-compliant
-using System.Text.Json;
 using Microsoft.Extensions.AI;
 
 namespace RetellAI;
@@ -164,9 +163,9 @@ public static class RetellAiToolExtensions
             description: "Lists all Retell AI phone numbers. Returns phone numbers, types, nicknames, and bound agent configurations.");
     }
 
-    private static string FormatAgentList(IList<AgentResponse> agents)
+    private static object FormatAgentList(IList<AgentResponse> agents)
     {
-        return JsonSerializer.Serialize(agents.Select(a =>
+        return agents.Select(a =>
         {
             var agentId = a.Value1?.AgentId;
             var name = a.Value2?.AgentName;
@@ -182,12 +181,12 @@ public static class RetellAiToolExtensions
                 isPublished,
                 voiceId,
             };
-        }));
+        });
     }
 
-    private static string FormatAgent(AgentResponse agent)
+    private static object FormatAgent(AgentResponse agent)
     {
-        return JsonSerializer.Serialize(new
+        return new
         {
             agentId = agent.Value1?.AgentId,
             name = agent.Value2?.AgentName,
@@ -195,12 +194,12 @@ public static class RetellAiToolExtensions
             isPublished = agent.Value1?.IsPublished,
             voiceId = agent.Value2?.VoiceId,
             versionDescription = agent.Value2?.VersionDescription,
-        });
+        };
     }
 
-    private static string FormatPhoneCallResponse(V2PhoneCallResponse call)
+    private static object FormatPhoneCallResponse(V2PhoneCallResponse call)
     {
-        return JsonSerializer.Serialize(new
+        return new
         {
             callId = call.Value2?.CallId,
             callStatus = call.Value2?.CallStatus.ToString(),
@@ -210,12 +209,12 @@ public static class RetellAiToolExtensions
             fromNumber = call.Value1?.FromNumber,
             toNumber = call.Value1?.ToNumber,
             direction = call.Value1?.Direction.ToString(),
-        });
+        };
     }
 
-    private static string FormatCallList(IList<V2CallResponse> calls)
+    private static object FormatCallList(IList<V2CallResponse> calls)
     {
-        return JsonSerializer.Serialize(calls.Select(c =>
+        return calls.Select(c =>
         {
             var callBase = c.Phone?.Value2 ?? c.Web?.Value2;
             var phoneInfo = c.Phone?.Value1;
@@ -234,15 +233,15 @@ public static class RetellAiToolExtensions
                 toNumber = phoneInfo?.ToNumber,
                 direction = phoneInfo?.Direction.ToString(),
             };
-        }));
+        });
     }
 
-    private static string FormatCallResponse(V2CallResponse call)
+    private static object FormatCallResponse(V2CallResponse call)
     {
         var callBase = call.Phone?.Value2 ?? call.Web?.Value2;
         var phoneInfo = call.Phone?.Value1;
 
-        return JsonSerializer.Serialize(new
+        return new
         {
             callId = callBase?.CallId,
             callStatus = callBase?.CallStatus.ToString(),
@@ -260,18 +259,18 @@ public static class RetellAiToolExtensions
             fromNumber = phoneInfo?.FromNumber,
             toNumber = phoneInfo?.ToNumber,
             direction = phoneInfo?.Direction.ToString(),
-        });
+        };
     }
 
-    private static string FormatPhoneNumberList(IList<PhoneNumberResponse> phoneNumbers)
+    private static object FormatPhoneNumberList(IList<PhoneNumberResponse> phoneNumbers)
     {
-        return JsonSerializer.Serialize(phoneNumbers.Select(p => new
+        return phoneNumbers.Select(p => new
         {
             phoneNumber = p.PhoneNumber,
             phoneNumberPretty = p.PhoneNumberPretty,
             phoneNumberType = p.PhoneNumberType.ToString(),
             nickname = p.Nickname,
             areaCode = p.AreaCode,
-        }));
+        });
     }
 }
