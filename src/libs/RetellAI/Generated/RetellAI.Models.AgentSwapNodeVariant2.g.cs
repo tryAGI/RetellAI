@@ -23,10 +23,11 @@ namespace RetellAI
         public required string AgentId { get; set; }
 
         /// <summary>
-        /// The version of the agent to swap to. If not specified, will use the latest version
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent_version")]
-        public double? AgentVersion { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentVersionReferenceJsonConverter))]
+        public global::RetellAI.AgentVersionReference? AgentVersion { get; set; }
 
         /// <summary>
         /// 
@@ -94,7 +95,7 @@ namespace RetellAI
         /// Type of the node
         /// </param>
         /// <param name="agentVersion">
-        /// The version of the agent to swap to. If not specified, will use the latest version
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="webhookSetting"></param>
         /// <param name="keepCurrentVoice">
@@ -115,7 +116,7 @@ namespace RetellAI
             global::RetellAI.PostCallAnalysisSetting postCallAnalysisSetting,
             global::RetellAI.TransferFailedEdge edge,
             global::RetellAI.AgentSwapNodeVariant2Type type,
-            double? agentVersion,
+            global::RetellAI.AgentVersionReference? agentVersion,
             global::RetellAI.AgentSwapWebhookSetting? webhookSetting,
             bool? keepCurrentVoice,
             bool? keepCurrentLanguage,

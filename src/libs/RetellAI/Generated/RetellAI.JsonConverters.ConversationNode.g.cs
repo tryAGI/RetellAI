@@ -23,12 +23,20 @@ namespace RetellAI.JsonConverters
                 foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
                 {
                     __jsonProps.Add(__jsonProp.Name);
+                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                    {
+                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
+                        {
+                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
+                        }
+                    }
 
                 }
             }
 
             var __score0 = 0;
             var __score1 = 0;
+            if (__jsonProps.Contains("allow_dtmf_interruption")) __score1++;
             if (__jsonProps.Contains("interruption_sensitivity")) __score1++;
             if (__jsonProps.Contains("responsiveness")) __score1++;
             if (__jsonProps.Contains("voice_speed")) __score1++;
@@ -38,6 +46,9 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("finetune_conversation_examples")) __score2++;
             if (__jsonProps.Contains("finetune_transition_examples")) __score2++;
             if (__jsonProps.Contains("instruction")) __score2++;
+            if (__jsonProps.Contains("kb_config")) __score2++;
+            if (__jsonProps.Contains("kb_config.filter_score")) __score2++;
+            if (__jsonProps.Contains("kb_config.top_k")) __score2++;
             if (__jsonProps.Contains("knowledge_base_ids")) __score2++;
             if (__jsonProps.Contains("skip_response_edge")) __score2++;
             if (__jsonProps.Contains("type")) __score2++;

@@ -478,24 +478,62 @@ namespace RetellAI
                                         h => h.Value),
                                 };
                             }
+                            // Precondition Failed
+                            if ((int)__response.StatusCode == 412)
+                            {
+                                string? __content_412 = null;
+                                global::System.Exception? __exception_412 = null;
+                                global::RetellAI.UpdateAgentResponse4? __value_412 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_412 = global::RetellAI.UpdateAgentResponse4.FromJson(__content_412, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_412 = global::RetellAI.UpdateAgentResponse4.FromJson(__content_412, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_412 = __ex;
+                                }
+
+                                throw new global::RetellAI.ApiException<global::RetellAI.UpdateAgentResponse4>(
+                                    message: __content_412 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_412,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_412,
+                                    ResponseObject = __value_412,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
                             // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.UpdateAgentResponse4? __value_500 = null;
+                                global::RetellAI.UpdateAgentResponse5? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.UpdateAgentResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.UpdateAgentResponse5.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.UpdateAgentResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.UpdateAgentResponse5.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -503,7 +541,7 @@ namespace RetellAI
                                     __exception_500 = __ex;
                                 }
 
-                                throw new global::RetellAI.ApiException<global::RetellAI.UpdateAgentResponse4>(
+                                throw new global::RetellAI.ApiException<global::RetellAI.UpdateAgentResponse5>(
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
                                     statusCode: __response.StatusCode)
@@ -777,6 +815,9 @@ namespace RetellAI
         /// If this option is set, the call will try to detect IVR in the first 3 minutes of the call. Actions defined will be applied when the IVR is detected. Set this to null to disable IVR detection.<br/>
         /// Example: {"action":{"type":"hangup"}}
         /// </param>
+        /// <param name="callScreeningOption">
+        /// If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
+        /// </param>
         /// <param name="postCallAnalysisData">
         /// Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
         /// </param>
@@ -817,6 +858,10 @@ namespace RetellAI
         /// <param name="allowUserDtmf">
         /// If set to true, DTMF input will be accepted and processed. If false, any DTMF input will be ignored. Default to true.<br/>
         /// Example: true
+        /// </param>
+        /// <param name="allowDtmfInterruption">
+        /// If set to true, DTMF input will interrupt the agent even when interruption_sensitivity is 0. Can be overridden per conversation or subagent node. Default to false.<br/>
+        /// Example: false
         /// </param>
         /// <param name="userDtmfOptions"></param>
         /// <param name="denoisingMode">
@@ -879,6 +924,7 @@ namespace RetellAI
             int? voicemailDetectionTimeoutMs = default,
             global::RetellAI.AgentRequestVoicemailOption? voicemailOption = default,
             global::RetellAI.AgentRequestIvrOption? ivrOption = default,
+            global::RetellAI.CallScreeningOption? callScreeningOption = default,
             global::System.Collections.Generic.IList<global::RetellAI.PostCallAnalysisData>? postCallAnalysisData = default,
             global::RetellAI.NullableLLMModel? postCallAnalysisModel = default,
             string? analysisSuccessfulPrompt = default,
@@ -890,6 +936,7 @@ namespace RetellAI
             global::RetellAI.AgentRequestCustomSttConfig? customSttConfig = default,
             global::RetellAI.AgentRequestVocabSpecialization? vocabSpecialization = default,
             bool? allowUserDtmf = default,
+            bool? allowDtmfInterruption = default,
             global::RetellAI.AgentRequestUserDtmfOptions? userDtmfOptions = default,
             global::RetellAI.AgentRequestDenoisingMode? denoisingMode = default,
             global::RetellAI.PIIConfig? piiConfig = default,
@@ -939,6 +986,7 @@ namespace RetellAI
                 VoicemailDetectionTimeoutMs = voicemailDetectionTimeoutMs,
                 VoicemailOption = voicemailOption,
                 IvrOption = ivrOption,
+                CallScreeningOption = callScreeningOption,
                 PostCallAnalysisData = postCallAnalysisData,
                 PostCallAnalysisModel = postCallAnalysisModel,
                 AnalysisSuccessfulPrompt = analysisSuccessfulPrompt,
@@ -950,6 +998,7 @@ namespace RetellAI
                 CustomSttConfig = customSttConfig,
                 VocabSpecialization = vocabSpecialization,
                 AllowUserDtmf = allowUserDtmf,
+                AllowDtmfInterruption = allowDtmfInterruption,
                 UserDtmfOptions = userDtmfOptions,
                 DenoisingMode = denoisingMode,
                 PiiConfig = piiConfig,

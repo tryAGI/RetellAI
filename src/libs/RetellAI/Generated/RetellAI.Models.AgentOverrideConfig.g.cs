@@ -27,6 +27,12 @@ namespace RetellAI
         public double? VoiceSpeed { get; set; }
 
         /// <summary>
+        /// If set, overrides the agent-level allow_dtmf_interruption for this node only.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allow_dtmf_interruption")]
+        public bool? AllowDtmfInterruption { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -38,17 +44,22 @@ namespace RetellAI
         /// <param name="interruptionSensitivity"></param>
         /// <param name="responsiveness"></param>
         /// <param name="voiceSpeed"></param>
+        /// <param name="allowDtmfInterruption">
+        /// If set, overrides the agent-level allow_dtmf_interruption for this node only.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentOverrideConfig(
             double? interruptionSensitivity,
             double? responsiveness,
-            double? voiceSpeed)
+            double? voiceSpeed,
+            bool? allowDtmfInterruption)
         {
             this.InterruptionSensitivity = interruptionSensitivity;
             this.Responsiveness = responsiveness;
             this.VoiceSpeed = voiceSpeed;
+            this.AllowDtmfInterruption = allowDtmfInterruption;
         }
 
         /// <summary>

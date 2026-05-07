@@ -18,6 +18,12 @@ namespace RetellAI
         public required global::RetellAI.VoicemailAction Action { get; set; }
 
         /// <summary>
+        /// Optionally describe what should be treated as voicemail. Leave as null to use the default definition.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("detection_prompt")]
+        public string? DetectionPrompt { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -27,13 +33,18 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="AgentRequestVoicemailOption" /> class.
         /// </summary>
         /// <param name="action"></param>
+        /// <param name="detectionPrompt">
+        /// Optionally describe what should be treated as voicemail. Leave as null to use the default definition.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AgentRequestVoicemailOption(
-            global::RetellAI.VoicemailAction action)
+            global::RetellAI.VoicemailAction action,
+            string? detectionPrompt)
         {
             this.Action = action;
+            this.DetectionPrompt = detectionPrompt;
         }
 
         /// <summary>

@@ -478,24 +478,62 @@ namespace RetellAI
                                         h => h.Value),
                                 };
                             }
+                            // Precondition Failed
+                            if ((int)__response.StatusCode == 412)
+                            {
+                                string? __content_412 = null;
+                                global::System.Exception? __exception_412 = null;
+                                global::RetellAI.UpdateChatAgentResponse4? __value_412 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_412 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_412, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_412 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_412, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_412 = __ex;
+                                }
+
+                                throw new global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse4>(
+                                    message: __content_412 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_412,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_412,
+                                    ResponseObject = __value_412,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
                             // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.UpdateChatAgentResponse4? __value_500 = null;
+                                global::RetellAI.UpdateChatAgentResponse5? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.UpdateChatAgentResponse5.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.UpdateChatAgentResponse5.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -503,7 +541,7 @@ namespace RetellAI
                                     __exception_500 = __ex;
                                 }
 
-                                throw new global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse4>(
+                                throw new global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse5>(
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
                                     statusCode: __response.StatusCode)

@@ -311,6 +311,12 @@ namespace RetellAI
         public global::RetellAI.AgentRequestIvrOption? IvrOption { get; set; }
 
         /// <summary>
+        /// If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("call_screening_option")]
+        public global::RetellAI.CallScreeningOption? CallScreeningOption { get; set; }
+
+        /// <summary>
         /// Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("post_call_analysis_data")]
@@ -394,6 +400,14 @@ namespace RetellAI
         /// <example>true</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("allow_user_dtmf")]
         public bool? AllowUserDtmf { get; set; }
+
+        /// <summary>
+        /// If set to true, DTMF input will interrupt the agent even when interruption_sensitivity is 0. Can be overridden per conversation or subagent node. Default to false.<br/>
+        /// Example: false
+        /// </summary>
+        /// <example>false</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("allow_dtmf_interruption")]
+        public bool? AllowDtmfInterruption { get; set; }
 
         /// <summary>
         /// 
@@ -605,6 +619,9 @@ namespace RetellAI
         /// If this option is set, the call will try to detect IVR in the first 3 minutes of the call. Actions defined will be applied when the IVR is detected. Set this to null to disable IVR detection.<br/>
         /// Example: {"action":{"type":"hangup"}}
         /// </param>
+        /// <param name="callScreeningOption">
+        /// If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
+        /// </param>
         /// <param name="postCallAnalysisData">
         /// Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
         /// </param>
@@ -645,6 +662,10 @@ namespace RetellAI
         /// <param name="allowUserDtmf">
         /// If set to true, DTMF input will be accepted and processed. If false, any DTMF input will be ignored. Default to true.<br/>
         /// Example: true
+        /// </param>
+        /// <param name="allowDtmfInterruption">
+        /// If set to true, DTMF input will interrupt the agent even when interruption_sensitivity is 0. Can be overridden per conversation or subagent node. Default to false.<br/>
+        /// Example: false
         /// </param>
         /// <param name="userDtmfOptions"></param>
         /// <param name="denoisingMode">
@@ -705,6 +726,7 @@ namespace RetellAI
             int? voicemailDetectionTimeoutMs,
             global::RetellAI.AgentRequestVoicemailOption? voicemailOption,
             global::RetellAI.AgentRequestIvrOption? ivrOption,
+            global::RetellAI.CallScreeningOption? callScreeningOption,
             global::System.Collections.Generic.IList<global::RetellAI.PostCallAnalysisData>? postCallAnalysisData,
             global::RetellAI.NullableLLMModel? postCallAnalysisModel,
             string? analysisSuccessfulPrompt,
@@ -716,6 +738,7 @@ namespace RetellAI
             global::RetellAI.AgentRequestCustomSttConfig? customSttConfig,
             global::RetellAI.AgentRequestVocabSpecialization? vocabSpecialization,
             bool? allowUserDtmf,
+            bool? allowDtmfInterruption,
             global::RetellAI.AgentRequestUserDtmfOptions? userDtmfOptions,
             global::RetellAI.AgentRequestDenoisingMode? denoisingMode,
             global::RetellAI.PIIConfig? piiConfig,
@@ -761,6 +784,7 @@ namespace RetellAI
             this.VoicemailDetectionTimeoutMs = voicemailDetectionTimeoutMs;
             this.VoicemailOption = voicemailOption;
             this.IvrOption = ivrOption;
+            this.CallScreeningOption = callScreeningOption;
             this.PostCallAnalysisData = postCallAnalysisData;
             this.PostCallAnalysisModel = postCallAnalysisModel;
             this.AnalysisSuccessfulPrompt = analysisSuccessfulPrompt;
@@ -772,6 +796,7 @@ namespace RetellAI
             this.CustomSttConfig = customSttConfig;
             this.VocabSpecialization = vocabSpecialization;
             this.AllowUserDtmf = allowUserDtmf;
+            this.AllowDtmfInterruption = allowDtmfInterruption;
             this.UserDtmfOptions = userDtmfOptions;
             this.DenoisingMode = denoisingMode;
             this.PiiConfig = piiConfig;

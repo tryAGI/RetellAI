@@ -20,6 +20,10 @@ namespace RetellAI
         /// 
         /// </summary>
         ChatStarted,
+        /// <summary>
+        /// 
+        /// </summary>
+        TranscriptUpdated,
     }
 
     /// <summary>
@@ -37,6 +41,7 @@ namespace RetellAI
                 ChatAgentRequestWebhookEvent.ChatAnalyzed => "chat_analyzed",
                 ChatAgentRequestWebhookEvent.ChatEnded => "chat_ended",
                 ChatAgentRequestWebhookEvent.ChatStarted => "chat_started",
+                ChatAgentRequestWebhookEvent.TranscriptUpdated => "transcript_updated",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -50,6 +55,7 @@ namespace RetellAI
                 "chat_analyzed" => ChatAgentRequestWebhookEvent.ChatAnalyzed,
                 "chat_ended" => ChatAgentRequestWebhookEvent.ChatEnded,
                 "chat_started" => ChatAgentRequestWebhookEvent.ChatStarted,
+                "transcript_updated" => ChatAgentRequestWebhookEvent.TranscriptUpdated,
                 _ => null,
             };
         }

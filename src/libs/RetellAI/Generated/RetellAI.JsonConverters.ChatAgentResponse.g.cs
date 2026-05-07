@@ -36,6 +36,8 @@ namespace RetellAI.JsonConverters
 
             var __score0 = 0;
             if (__jsonProps.Contains("agent_id")) __score0++;
+            if (__jsonProps.Contains("assigned_tags")) __score0++;
+            if (__jsonProps.Contains("base_version")) __score0++;
             if (__jsonProps.Contains("is_published")) __score0++;
             if (__jsonProps.Contains("version")) __score0++;
             var __score1 = 0;
@@ -71,6 +73,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("webhook_url")) __score1++;
             var __score2 = 0;
             if (__jsonProps.Contains("last_modification_timestamp")) __score2++;
+            if (__jsonProps.Contains("response_engine_data")) __score2++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }

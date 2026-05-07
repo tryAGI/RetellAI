@@ -27,11 +27,13 @@ namespace RetellAI
             };
         partial void PrepareGetChatAgentVersionsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string agentId);
+            ref string agentId,
+            ref bool? includeResponseEngine);
         partial void PrepareGetChatAgentVersionsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string agentId);
+            string agentId,
+            bool? includeResponseEngine);
         partial void ProcessGetChatAgentVersionsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -47,16 +49,21 @@ namespace RetellAI
         /// <param name="agentId">
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
+        /// <param name="includeResponseEngine">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::RetellAI.ChatAgentResponse>> GetChatAgentVersionsAsync(
             string agentId,
+            bool? includeResponseEngine = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await GetChatAgentVersionsAsResponseAsync(
                 agentId: agentId,
+                includeResponseEngine: includeResponseEngine,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -69,11 +76,15 @@ namespace RetellAI
         /// <param name="agentId">
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
+        /// <param name="includeResponseEngine">
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::System.Collections.Generic.IList<global::RetellAI.ChatAgentResponse>>> GetChatAgentVersionsAsResponseAsync(
             string agentId,
+            bool? includeResponseEngine = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -81,7 +92,8 @@ namespace RetellAI
                 client: HttpClient);
             PrepareGetChatAgentVersionsArguments(
                 httpClient: HttpClient,
-                agentId: ref agentId);
+                agentId: ref agentId,
+                includeResponseEngine: ref includeResponseEngine);
 
 
             var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
@@ -109,6 +121,9 @@ namespace RetellAI
                             var __pathBuilder = new global::RetellAI.PathBuilder(
                                 path: $"/get-chat-agent-versions/{agentId}",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("include_response_engine", includeResponseEngine?.ToString().ToLowerInvariant())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::RetellAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -149,7 +164,8 @@ namespace RetellAI
                 PrepareGetChatAgentVersionsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    agentId: agentId!);
+                    agentId: agentId!,
+                    includeResponseEngine: includeResponseEngine);
 
                 return __httpRequest;
             }
