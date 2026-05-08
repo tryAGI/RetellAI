@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickInput(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TestCaseDefinitionInput? value)
+        {
+            value = Input;
+            return IsInput;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TestCaseDefinitionVariant2? TestCaseDefinitionVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TestCaseDefinitionVariant2))]
 #endif
         public bool IsTestCaseDefinitionVariant2 => TestCaseDefinitionVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTestCaseDefinitionVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TestCaseDefinitionVariant2? value)
+        {
+            value = TestCaseDefinitionVariant2;
+            return IsTestCaseDefinitionVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.TestCaseDefinitionInput?, TResult>? input = null,
-            global::System.Func<global::RetellAI.TestCaseDefinitionVariant2?, TResult>? testCaseDefinitionVariant2 = null,
+            global::System.Func<global::RetellAI.TestCaseDefinitionInput, TResult>? input = null,
+            global::System.Func<global::RetellAI.TestCaseDefinitionVariant2, TResult>? testCaseDefinitionVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.TestCaseDefinitionInput?>? input = null,
-            global::System.Action<global::RetellAI.TestCaseDefinitionVariant2?>? testCaseDefinitionVariant2 = null,
+            global::System.Action<global::RetellAI.TestCaseDefinitionInput>? input = null,
+
+            global::System.Action<global::RetellAI.TestCaseDefinitionVariant2>? testCaseDefinitionVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsInput)
+            {
+                input?.Invoke(Input!);
+            }
+            else if (IsTestCaseDefinitionVariant2)
+            {
+                testCaseDefinitionVariant2?.Invoke(TestCaseDefinitionVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.TestCaseDefinitionInput>? input = null,
+            global::System.Action<global::RetellAI.TestCaseDefinitionVariant2>? testCaseDefinitionVariant2 = null,
             bool validate = true)
         {
             if (validate)

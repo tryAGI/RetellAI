@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BridgeTransferNodeVariant2? BridgeTransferNodeVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BridgeTransferNodeVariant2))]
 #endif
         public bool IsBridgeTransferNodeVariant2 => BridgeTransferNodeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickBridgeTransferNodeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.BridgeTransferNodeVariant2? value)
+        {
+            value = BridgeTransferNodeVariant2;
+            return IsBridgeTransferNodeVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -119,7 +145,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeBase?, TResult>? @base = null,
-            global::System.Func<global::RetellAI.BridgeTransferNodeVariant2?, TResult>? bridgeTransferNodeVariant2 = null,
+            global::System.Func<global::RetellAI.BridgeTransferNodeVariant2, TResult>? bridgeTransferNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +170,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeBase?>? @base = null,
-            global::System.Action<global::RetellAI.BridgeTransferNodeVariant2?>? bridgeTransferNodeVariant2 = null,
+
+            global::System.Action<global::RetellAI.BridgeTransferNodeVariant2>? bridgeTransferNodeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsBridgeTransferNodeVariant2)
+            {
+                bridgeTransferNodeVariant2?.Invoke(BridgeTransferNodeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeBase?>? @base = null,
+            global::System.Action<global::RetellAI.BridgeTransferNodeVariant2>? bridgeTransferNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)

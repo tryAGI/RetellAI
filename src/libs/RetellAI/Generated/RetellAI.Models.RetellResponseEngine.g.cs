@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickLm(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ResponseEngineRetellLm? value)
+        {
+            value = Lm;
+            return IsLm;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ResponseEngineConversationFlow? ConversationFlow { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ConversationFlow))]
 #endif
         public bool IsConversationFlow => ConversationFlow != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickConversationFlow(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ResponseEngineConversationFlow? value)
+        {
+            value = ConversationFlow;
+            return IsConversationFlow;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ResponseEngineRetellLm?, TResult>? lm = null,
-            global::System.Func<global::RetellAI.ResponseEngineConversationFlow?, TResult>? conversationFlow = null,
+            global::System.Func<global::RetellAI.ResponseEngineRetellLm, TResult>? lm = null,
+            global::System.Func<global::RetellAI.ResponseEngineConversationFlow, TResult>? conversationFlow = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ResponseEngineRetellLm?>? lm = null,
-            global::System.Action<global::RetellAI.ResponseEngineConversationFlow?>? conversationFlow = null,
+            global::System.Action<global::RetellAI.ResponseEngineRetellLm>? lm = null,
+
+            global::System.Action<global::RetellAI.ResponseEngineConversationFlow>? conversationFlow = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsLm)
+            {
+                lm?.Invoke(Lm!);
+            }
+            else if (IsConversationFlow)
+            {
+                conversationFlow?.Invoke(ConversationFlow!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ResponseEngineRetellLm>? lm = null,
+            global::System.Action<global::RetellAI.ResponseEngineConversationFlow>? conversationFlow = null,
             bool validate = true)
         {
             if (validate)

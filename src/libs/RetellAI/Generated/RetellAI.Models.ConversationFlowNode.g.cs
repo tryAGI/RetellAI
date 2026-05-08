@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickConversationNode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ConversationNode? value)
+        {
+            value = ConversationNode;
+            return IsConversationNode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SubagentNode? Subagent { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Subagent))]
 #endif
         public bool IsSubagent => Subagent != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSubagent(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SubagentNode? value)
+        {
+            value = Subagent;
+            return IsSubagent;
+        }
 
         /// <summary>
         /// 
@@ -63,6 +89,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickEnd(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.EndNode? value)
+        {
+            value = End;
+            return IsEnd;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.FunctionNode? Function { get; init; }
 #else
@@ -76,6 +115,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Function))]
 #endif
         public bool IsFunction => Function != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickFunction(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.FunctionNode? value)
+        {
+            value = Function;
+            return IsFunction;
+        }
 
         /// <summary>
         /// 
@@ -97,6 +149,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CodeNode? value)
+        {
+            value = Code;
+            return IsCode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferCallNode? TransferCall { get; init; }
 #else
@@ -110,6 +175,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TransferCall))]
 #endif
         public bool IsTransferCall => TransferCall != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTransferCall(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferCallNode? value)
+        {
+            value = TransferCall;
+            return IsTransferCall;
+        }
 
         /// <summary>
         /// 
@@ -131,6 +209,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickPressDigit(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.PressDigitNode? value)
+        {
+            value = PressDigit;
+            return IsPressDigit;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BranchNode? Branch { get; init; }
 #else
@@ -144,6 +235,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Branch))]
 #endif
         public bool IsBranch => Branch != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickBranch(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.BranchNode? value)
+        {
+            value = Branch;
+            return IsBranch;
+        }
 
         /// <summary>
         /// 
@@ -165,6 +269,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickSms(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SmsNode? value)
+        {
+            value = Sms;
+            return IsSms;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ExtractDynamicVariablesNode? ExtractDynamicVariables { get; init; }
 #else
@@ -178,6 +295,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ExtractDynamicVariables))]
 #endif
         public bool IsExtractDynamicVariables => ExtractDynamicVariables != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickExtractDynamicVariables(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ExtractDynamicVariablesNode? value)
+        {
+            value = ExtractDynamicVariables;
+            return IsExtractDynamicVariables;
+        }
 
         /// <summary>
         /// 
@@ -199,6 +329,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickAgentSwap(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.AgentSwapNode? value)
+        {
+            value = AgentSwap;
+            return IsAgentSwap;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.MCPNode? Mcp { get; init; }
 #else
@@ -212,6 +355,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Mcp))]
 #endif
         public bool IsMcp => Mcp != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickMcp(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.MCPNode? value)
+        {
+            value = Mcp;
+            return IsMcp;
+        }
 
         /// <summary>
         /// 
@@ -233,6 +389,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickComponent(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ComponentNode? value)
+        {
+            value = Component;
+            return IsComponent;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BridgeTransferNode? BridgeTransfer { get; init; }
 #else
@@ -250,6 +419,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBridgeTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.BridgeTransferNode? value)
+        {
+            value = BridgeTransfer;
+            return IsBridgeTransfer;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CancelTransferNode? CancelTransfer { get; init; }
 #else
@@ -263,6 +445,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CancelTransfer))]
 #endif
         public bool IsCancelTransfer => CancelTransfer != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCancelTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CancelTransferNode? value)
+        {
+            value = CancelTransfer;
+            return IsCancelTransfer;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -715,6 +910,108 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::RetellAI.ConversationNode?>? conversationNode = null,
+
+            global::System.Action<global::RetellAI.SubagentNode?>? subagent = null,
+
+            global::System.Action<global::RetellAI.EndNode?>? end = null,
+
+            global::System.Action<global::RetellAI.FunctionNode?>? function = null,
+
+            global::System.Action<global::RetellAI.CodeNode?>? code = null,
+
+            global::System.Action<global::RetellAI.TransferCallNode?>? transferCall = null,
+
+            global::System.Action<global::RetellAI.PressDigitNode?>? pressDigit = null,
+
+            global::System.Action<global::RetellAI.BranchNode?>? branch = null,
+
+            global::System.Action<global::RetellAI.SmsNode?>? sms = null,
+
+            global::System.Action<global::RetellAI.ExtractDynamicVariablesNode?>? extractDynamicVariables = null,
+
+            global::System.Action<global::RetellAI.AgentSwapNode?>? agentSwap = null,
+
+            global::System.Action<global::RetellAI.MCPNode?>? mcp = null,
+
+            global::System.Action<global::RetellAI.ComponentNode?>? component = null,
+
+            global::System.Action<global::RetellAI.BridgeTransferNode?>? bridgeTransfer = null,
+
+            global::System.Action<global::RetellAI.CancelTransferNode?>? cancelTransfer = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsConversationNode)
+            {
+                conversationNode?.Invoke(ConversationNode!);
+            }
+            else if (IsSubagent)
+            {
+                subagent?.Invoke(Subagent!);
+            }
+            else if (IsEnd)
+            {
+                end?.Invoke(End!);
+            }
+            else if (IsFunction)
+            {
+                function?.Invoke(Function!);
+            }
+            else if (IsCode)
+            {
+                code?.Invoke(Code!);
+            }
+            else if (IsTransferCall)
+            {
+                transferCall?.Invoke(TransferCall!);
+            }
+            else if (IsPressDigit)
+            {
+                pressDigit?.Invoke(PressDigit!);
+            }
+            else if (IsBranch)
+            {
+                branch?.Invoke(Branch!);
+            }
+            else if (IsSms)
+            {
+                sms?.Invoke(Sms!);
+            }
+            else if (IsExtractDynamicVariables)
+            {
+                extractDynamicVariables?.Invoke(ExtractDynamicVariables!);
+            }
+            else if (IsAgentSwap)
+            {
+                agentSwap?.Invoke(AgentSwap!);
+            }
+            else if (IsMcp)
+            {
+                mcp?.Invoke(Mcp!);
+            }
+            else if (IsComponent)
+            {
+                component?.Invoke(Component!);
+            }
+            else if (IsBridgeTransfer)
+            {
+                bridgeTransfer?.Invoke(BridgeTransfer!);
+            }
+            else if (IsCancelTransfer)
+            {
+                cancelTransfer?.Invoke(CancelTransfer!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::RetellAI.ConversationNode?>? conversationNode = null,
             global::System.Action<global::RetellAI.SubagentNode?>? subagent = null,
             global::System.Action<global::RetellAI.EndNode?>? end = null,

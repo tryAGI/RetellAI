@@ -27,6 +27,19 @@ namespace RetellAI
         public bool IsChatResponse => ChatResponse != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickChatResponse(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ChatResponse? value)
+        {
+            value = ChatResponse;
+            return IsChatResponse;
+        }
+
+        /// <summary>
         /// V3 list chats response. Transcript fields are intentionally omitted.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(V3ChatResponseVariant2))]
 #endif
         public bool IsV3ChatResponseVariant2 => V3ChatResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickV3ChatResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = V3ChatResponseVariant2;
+            return IsV3ChatResponseVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -100,8 +126,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ChatResponse?, TResult>? chatResponse = null,
-            global::System.Func<object?, TResult>? v3ChatResponseVariant2 = null,
+            global::System.Func<global::RetellAI.ChatResponse, TResult>? chatResponse = null,
+            global::System.Func<object, TResult>? v3ChatResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -125,8 +151,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ChatResponse?>? chatResponse = null,
-            global::System.Action<object?>? v3ChatResponseVariant2 = null,
+            global::System.Action<global::RetellAI.ChatResponse>? chatResponse = null,
+
+            global::System.Action<object>? v3ChatResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsChatResponse)
+            {
+                chatResponse?.Invoke(ChatResponse!);
+            }
+            else if (IsV3ChatResponseVariant2)
+            {
+                v3ChatResponseVariant2?.Invoke(V3ChatResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ChatResponse>? chatResponse = null,
+            global::System.Action<object>? v3ChatResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)

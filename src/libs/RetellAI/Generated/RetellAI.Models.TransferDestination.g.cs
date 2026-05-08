@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickPredefined(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferDestinationPredefined? value)
+        {
+            value = Predefined;
+            return IsPredefined;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferDestinationInferred? Inferred { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Inferred))]
 #endif
         public bool IsInferred => Inferred != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickInferred(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferDestinationInferred? value)
+        {
+            value = Inferred;
+            return IsInferred;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.TransferDestinationPredefined?, TResult>? predefined = null,
-            global::System.Func<global::RetellAI.TransferDestinationInferred?, TResult>? inferred = null,
+            global::System.Func<global::RetellAI.TransferDestinationPredefined, TResult>? predefined = null,
+            global::System.Func<global::RetellAI.TransferDestinationInferred, TResult>? inferred = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.TransferDestinationPredefined?>? predefined = null,
-            global::System.Action<global::RetellAI.TransferDestinationInferred?>? inferred = null,
+            global::System.Action<global::RetellAI.TransferDestinationPredefined>? predefined = null,
+
+            global::System.Action<global::RetellAI.TransferDestinationInferred>? inferred = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsPredefined)
+            {
+                predefined?.Invoke(Predefined!);
+            }
+            else if (IsInferred)
+            {
+                inferred?.Invoke(Inferred!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.TransferDestinationPredefined>? predefined = null,
+            global::System.Action<global::RetellAI.TransferDestinationInferred>? inferred = null,
             bool validate = true)
         {
             if (validate)

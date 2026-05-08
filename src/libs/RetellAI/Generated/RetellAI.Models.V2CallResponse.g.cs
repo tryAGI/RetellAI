@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickWeb(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.V2WebCallResponse? value)
+        {
+            value = Web;
+            return IsWeb;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.V2PhoneCallResponse? Phone { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Phone))]
 #endif
         public bool IsPhone => Phone != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPhone(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.V2PhoneCallResponse? value)
+        {
+            value = Phone;
+            return IsPhone;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -143,6 +169,30 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::RetellAI.V2WebCallResponse?>? web = null,
+
+            global::System.Action<global::RetellAI.V2PhoneCallResponse?>? phone = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsWeb)
+            {
+                web?.Invoke(Web!);
+            }
+            else if (IsPhone)
+            {
+                phone?.Invoke(Phone!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::RetellAI.V2WebCallResponse?>? web = null,
             global::System.Action<global::RetellAI.V2PhoneCallResponse?>? phone = null,
             bool validate = true)

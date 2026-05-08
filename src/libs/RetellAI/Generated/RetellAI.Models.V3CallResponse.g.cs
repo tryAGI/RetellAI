@@ -27,6 +27,19 @@ namespace RetellAI
         public bool IsV2 => V2 != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickV2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.V2CallResponse? value)
+        {
+            value = V2;
+            return IsV2;
+        }
+
+        /// <summary>
         /// V3 list calls response. Transcript fields are intentionally omitted.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(V3CallResponseVariant2))]
 #endif
         public bool IsV3CallResponseVariant2 => V3CallResponseVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickV3CallResponseVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = V3CallResponseVariant2;
+            return IsV3CallResponseVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -101,7 +127,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.V2CallResponse?, TResult>? v2 = null,
-            global::System.Func<object?, TResult>? v3CallResponseVariant2 = null,
+            global::System.Func<object, TResult>? v3CallResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -126,7 +152,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.V2CallResponse?>? v2 = null,
-            global::System.Action<object?>? v3CallResponseVariant2 = null,
+
+            global::System.Action<object>? v3CallResponseVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsV2)
+            {
+                v2?.Invoke(V2!);
+            }
+            else if (IsV3CallResponseVariant2)
+            {
+                v3CallResponseVariant2?.Invoke(V3CallResponseVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.V2CallResponse?>? v2 = null,
+            global::System.Action<object>? v3CallResponseVariant2 = null,
             bool validate = true)
         {
             if (validate)

@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickMessage(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.Message? value)
+        {
+            value = Message;
+            return IsMessage;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallInvocationMessage? Invocation { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Invocation))]
 #endif
         public bool IsInvocation => Invocation != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickInvocation(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallInvocationMessage? value)
+        {
+            value = Invocation;
+            return IsInvocation;
+        }
 
         /// <summary>
         /// 
@@ -63,6 +89,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickResult(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallResultMessage? value)
+        {
+            value = Result;
+            return IsResult;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeTransitionMessage? NodeTransition { get; init; }
 #else
@@ -80,6 +119,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickNodeTransition(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeTransitionMessage? value)
+        {
+            value = NodeTransition;
+            return IsNodeTransition;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.StateTransitionMessage? StateTransition { get; init; }
 #else
@@ -93,6 +145,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StateTransition))]
 #endif
         public bool IsStateTransition => StateTransition != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStateTransition(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.StateTransitionMessage? value)
+        {
+            value = StateTransition;
+            return IsStateTransition;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -275,6 +340,48 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::RetellAI.Message?>? message = null,
+
+            global::System.Action<global::RetellAI.ToolCallInvocationMessage?>? invocation = null,
+
+            global::System.Action<global::RetellAI.ToolCallResultMessage?>? result = null,
+
+            global::System.Action<global::RetellAI.NodeTransitionMessage?>? nodeTransition = null,
+
+            global::System.Action<global::RetellAI.StateTransitionMessage?>? stateTransition = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsMessage)
+            {
+                message?.Invoke(Message!);
+            }
+            else if (IsInvocation)
+            {
+                invocation?.Invoke(Invocation!);
+            }
+            else if (IsResult)
+            {
+                result?.Invoke(Result!);
+            }
+            else if (IsNodeTransition)
+            {
+                nodeTransition?.Invoke(NodeTransition!);
+            }
+            else if (IsStateTransition)
+            {
+                stateTransition?.Invoke(StateTransition!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::RetellAI.Message?>? message = null,
             global::System.Action<global::RetellAI.ToolCallInvocationMessage?>? invocation = null,
             global::System.Action<global::RetellAI.ToolCallResultMessage?>? result = null,

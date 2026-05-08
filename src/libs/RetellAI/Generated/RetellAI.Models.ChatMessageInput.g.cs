@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.MessageBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallInvocationMessageBase? ToolCallInvocationBase { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolCallInvocationBase))]
 #endif
         public bool IsToolCallInvocationBase => ToolCallInvocationBase != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickToolCallInvocationBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallInvocationMessageBase? value)
+        {
+            value = ToolCallInvocationBase;
+            return IsToolCallInvocationBase;
+        }
 
         /// <summary>
         /// 
@@ -63,6 +89,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickToolCallResultBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallResultMessageBase? value)
+        {
+            value = ToolCallResultBase;
+            return IsToolCallResultBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeTransitionMessageBase? NodeTransitionBase { get; init; }
 #else
@@ -80,6 +119,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickNodeTransitionBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeTransitionMessageBase? value)
+        {
+            value = NodeTransitionBase;
+            return IsNodeTransitionBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.StateTransitionMessageBase? StateTransitionBase { get; init; }
 #else
@@ -93,6 +145,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StateTransitionBase))]
 #endif
         public bool IsStateTransitionBase => StateTransitionBase != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStateTransitionBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.StateTransitionMessageBase? value)
+        {
+            value = StateTransitionBase;
+            return IsStateTransitionBase;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -235,11 +300,11 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.MessageBase?, TResult>? @base = null,
-            global::System.Func<global::RetellAI.ToolCallInvocationMessageBase?, TResult>? toolCallInvocationBase = null,
-            global::System.Func<global::RetellAI.ToolCallResultMessageBase?, TResult>? toolCallResultBase = null,
-            global::System.Func<global::RetellAI.NodeTransitionMessageBase?, TResult>? nodeTransitionBase = null,
-            global::System.Func<global::RetellAI.StateTransitionMessageBase?, TResult>? stateTransitionBase = null,
+            global::System.Func<global::RetellAI.MessageBase, TResult>? @base = null,
+            global::System.Func<global::RetellAI.ToolCallInvocationMessageBase, TResult>? toolCallInvocationBase = null,
+            global::System.Func<global::RetellAI.ToolCallResultMessageBase, TResult>? toolCallResultBase = null,
+            global::System.Func<global::RetellAI.NodeTransitionMessageBase, TResult>? nodeTransitionBase = null,
+            global::System.Func<global::RetellAI.StateTransitionMessageBase, TResult>? stateTransitionBase = null,
             bool validate = true)
         {
             if (validate)
@@ -275,11 +340,53 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.MessageBase?>? @base = null,
-            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase?>? toolCallInvocationBase = null,
-            global::System.Action<global::RetellAI.ToolCallResultMessageBase?>? toolCallResultBase = null,
-            global::System.Action<global::RetellAI.NodeTransitionMessageBase?>? nodeTransitionBase = null,
-            global::System.Action<global::RetellAI.StateTransitionMessageBase?>? stateTransitionBase = null,
+            global::System.Action<global::RetellAI.MessageBase>? @base = null,
+
+            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase>? toolCallInvocationBase = null,
+
+            global::System.Action<global::RetellAI.ToolCallResultMessageBase>? toolCallResultBase = null,
+
+            global::System.Action<global::RetellAI.NodeTransitionMessageBase>? nodeTransitionBase = null,
+
+            global::System.Action<global::RetellAI.StateTransitionMessageBase>? stateTransitionBase = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsToolCallInvocationBase)
+            {
+                toolCallInvocationBase?.Invoke(ToolCallInvocationBase!);
+            }
+            else if (IsToolCallResultBase)
+            {
+                toolCallResultBase?.Invoke(ToolCallResultBase!);
+            }
+            else if (IsNodeTransitionBase)
+            {
+                nodeTransitionBase?.Invoke(NodeTransitionBase!);
+            }
+            else if (IsStateTransitionBase)
+            {
+                stateTransitionBase?.Invoke(StateTransitionBase!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.MessageBase>? @base = null,
+            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase>? toolCallInvocationBase = null,
+            global::System.Action<global::RetellAI.ToolCallResultMessageBase>? toolCallResultBase = null,
+            global::System.Action<global::RetellAI.NodeTransitionMessageBase>? nodeTransitionBase = null,
+            global::System.Action<global::RetellAI.StateTransitionMessageBase>? stateTransitionBase = null,
             bool validate = true)
         {
             if (validate)
