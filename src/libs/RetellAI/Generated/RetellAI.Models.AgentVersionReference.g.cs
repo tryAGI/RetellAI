@@ -27,6 +27,19 @@ namespace RetellAI
         public bool IsAgentVersionReferenceVariant1 => AgentVersionReferenceVariant1 != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAgentVersionReferenceVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out int? value)
+        {
+            value = AgentVersionReferenceVariant1;
+            return IsAgentVersionReferenceVariant1;
+        }
+
+        /// <summary>
         /// Example: prod
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentVersionReferenceVariant2))]
 #endif
         public bool IsAgentVersionReferenceVariant2 => AgentVersionReferenceVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAgentVersionReferenceVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out string? value)
+        {
+            value = AgentVersionReferenceVariant2;
+            return IsAgentVersionReferenceVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -119,7 +145,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<int?, TResult>? agentVersionReferenceVariant1 = null,
-            global::System.Func<string?, TResult>? agentVersionReferenceVariant2 = null,
+            global::System.Func<string, TResult>? agentVersionReferenceVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +170,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<int?>? agentVersionReferenceVariant1 = null,
-            global::System.Action<string?>? agentVersionReferenceVariant2 = null,
+
+            global::System.Action<string>? agentVersionReferenceVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsAgentVersionReferenceVariant1)
+            {
+                agentVersionReferenceVariant1?.Invoke(AgentVersionReferenceVariant1!);
+            }
+            else if (IsAgentVersionReferenceVariant2)
+            {
+                agentVersionReferenceVariant2?.Invoke(AgentVersionReferenceVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<int?>? agentVersionReferenceVariant1 = null,
+            global::System.Action<string>? agentVersionReferenceVariant2 = null,
             bool validate = true)
         {
             if (validate)

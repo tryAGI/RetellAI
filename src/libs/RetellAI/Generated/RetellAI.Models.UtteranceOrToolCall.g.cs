@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickUtterance(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.Utterance? value)
+        {
+            value = Utterance;
+            return IsUtterance;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallInvocationUtterance? Invocation { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Invocation))]
 #endif
         public bool IsInvocation => Invocation != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickInvocation(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallInvocationUtterance? value)
+        {
+            value = Invocation;
+            return IsInvocation;
+        }
 
         /// <summary>
         /// 
@@ -63,6 +89,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickResult(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallResultUtterance? value)
+        {
+            value = Result;
+            return IsResult;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeTransitionUtterance? NodeTransition { get; init; }
 #else
@@ -80,6 +119,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickNodeTransition(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeTransitionUtterance? value)
+        {
+            value = NodeTransition;
+            return IsNodeTransition;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.DTMFUtterance? Dtmf { get; init; }
 #else
@@ -93,6 +145,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Dtmf))]
 #endif
         public bool IsDtmf => Dtmf != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickDtmf(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.DTMFUtterance? value)
+        {
+            value = Dtmf;
+            return IsDtmf;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -235,11 +300,11 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.Utterance?, TResult>? utterance = null,
-            global::System.Func<global::RetellAI.ToolCallInvocationUtterance?, TResult>? invocation = null,
-            global::System.Func<global::RetellAI.ToolCallResultUtterance?, TResult>? result = null,
-            global::System.Func<global::RetellAI.NodeTransitionUtterance?, TResult>? nodeTransition = null,
-            global::System.Func<global::RetellAI.DTMFUtterance?, TResult>? dtmf = null,
+            global::System.Func<global::RetellAI.Utterance, TResult>? utterance = null,
+            global::System.Func<global::RetellAI.ToolCallInvocationUtterance, TResult>? invocation = null,
+            global::System.Func<global::RetellAI.ToolCallResultUtterance, TResult>? result = null,
+            global::System.Func<global::RetellAI.NodeTransitionUtterance, TResult>? nodeTransition = null,
+            global::System.Func<global::RetellAI.DTMFUtterance, TResult>? dtmf = null,
             bool validate = true)
         {
             if (validate)
@@ -275,11 +340,53 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.Utterance?>? utterance = null,
-            global::System.Action<global::RetellAI.ToolCallInvocationUtterance?>? invocation = null,
-            global::System.Action<global::RetellAI.ToolCallResultUtterance?>? result = null,
-            global::System.Action<global::RetellAI.NodeTransitionUtterance?>? nodeTransition = null,
-            global::System.Action<global::RetellAI.DTMFUtterance?>? dtmf = null,
+            global::System.Action<global::RetellAI.Utterance>? utterance = null,
+
+            global::System.Action<global::RetellAI.ToolCallInvocationUtterance>? invocation = null,
+
+            global::System.Action<global::RetellAI.ToolCallResultUtterance>? result = null,
+
+            global::System.Action<global::RetellAI.NodeTransitionUtterance>? nodeTransition = null,
+
+            global::System.Action<global::RetellAI.DTMFUtterance>? dtmf = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsUtterance)
+            {
+                utterance?.Invoke(Utterance!);
+            }
+            else if (IsInvocation)
+            {
+                invocation?.Invoke(Invocation!);
+            }
+            else if (IsResult)
+            {
+                result?.Invoke(Result!);
+            }
+            else if (IsNodeTransition)
+            {
+                nodeTransition?.Invoke(NodeTransition!);
+            }
+            else if (IsDtmf)
+            {
+                dtmf?.Invoke(Dtmf!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.Utterance>? utterance = null,
+            global::System.Action<global::RetellAI.ToolCallInvocationUtterance>? invocation = null,
+            global::System.Action<global::RetellAI.ToolCallResultUtterance>? result = null,
+            global::System.Action<global::RetellAI.NodeTransitionUtterance>? nodeTransition = null,
+            global::System.Action<global::RetellAI.DTMFUtterance>? dtmf = null,
             bool validate = true)
         {
             if (validate)

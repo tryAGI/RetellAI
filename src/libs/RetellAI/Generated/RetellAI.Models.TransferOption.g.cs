@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickColdTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferOptionColdTransfer? value)
+        {
+            value = ColdTransfer;
+            return IsColdTransfer;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferOptionWarmTransfer? WarmTransfer { get; init; }
 #else
@@ -46,6 +59,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickWarmTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferOptionWarmTransfer? value)
+        {
+            value = WarmTransfer;
+            return IsWarmTransfer;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferOptionAgenticWarmTransfer? AgenticWarmTransfer { get; init; }
 #else
@@ -59,6 +85,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgenticWarmTransfer))]
 #endif
         public bool IsAgenticWarmTransfer => AgenticWarmTransfer != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAgenticWarmTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferOptionAgenticWarmTransfer? value)
+        {
+            value = AgenticWarmTransfer;
+            return IsAgenticWarmTransfer;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,9 +196,9 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.TransferOptionColdTransfer?, TResult>? coldTransfer = null,
-            global::System.Func<global::RetellAI.TransferOptionWarmTransfer?, TResult>? warmTransfer = null,
-            global::System.Func<global::RetellAI.TransferOptionAgenticWarmTransfer?, TResult>? agenticWarmTransfer = null,
+            global::System.Func<global::RetellAI.TransferOptionColdTransfer, TResult>? coldTransfer = null,
+            global::System.Func<global::RetellAI.TransferOptionWarmTransfer, TResult>? warmTransfer = null,
+            global::System.Func<global::RetellAI.TransferOptionAgenticWarmTransfer, TResult>? agenticWarmTransfer = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +226,39 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.TransferOptionColdTransfer?>? coldTransfer = null,
-            global::System.Action<global::RetellAI.TransferOptionWarmTransfer?>? warmTransfer = null,
-            global::System.Action<global::RetellAI.TransferOptionAgenticWarmTransfer?>? agenticWarmTransfer = null,
+            global::System.Action<global::RetellAI.TransferOptionColdTransfer>? coldTransfer = null,
+
+            global::System.Action<global::RetellAI.TransferOptionWarmTransfer>? warmTransfer = null,
+
+            global::System.Action<global::RetellAI.TransferOptionAgenticWarmTransfer>? agenticWarmTransfer = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsColdTransfer)
+            {
+                coldTransfer?.Invoke(ColdTransfer!);
+            }
+            else if (IsWarmTransfer)
+            {
+                warmTransfer?.Invoke(WarmTransfer!);
+            }
+            else if (IsAgenticWarmTransfer)
+            {
+                agenticWarmTransfer?.Invoke(AgenticWarmTransfer!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.TransferOptionColdTransfer>? coldTransfer = null,
+            global::System.Action<global::RetellAI.TransferOptionWarmTransfer>? warmTransfer = null,
+            global::System.Action<global::RetellAI.TransferOptionAgenticWarmTransfer>? agenticWarmTransfer = null,
             bool validate = true)
         {
             if (validate)

@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickValue(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ValueFilter? value)
+        {
+            value = Value;
+            return IsValue;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CustomFieldFilterVariant2? CustomFieldFilterVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomFieldFilterVariant2))]
 #endif
         public bool IsCustomFieldFilterVariant2 => CustomFieldFilterVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCustomFieldFilterVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CustomFieldFilterVariant2? value)
+        {
+            value = CustomFieldFilterVariant2;
+            return IsCustomFieldFilterVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -119,7 +145,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ValueFilter?, TResult>? value = null,
-            global::System.Func<global::RetellAI.CustomFieldFilterVariant2?, TResult>? customFieldFilterVariant2 = null,
+            global::System.Func<global::RetellAI.CustomFieldFilterVariant2, TResult>? customFieldFilterVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +170,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ValueFilter?>? value = null,
-            global::System.Action<global::RetellAI.CustomFieldFilterVariant2?>? customFieldFilterVariant2 = null,
+
+            global::System.Action<global::RetellAI.CustomFieldFilterVariant2>? customFieldFilterVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsValue)
+            {
+                value?.Invoke(Value!);
+            }
+            else if (IsCustomFieldFilterVariant2)
+            {
+                customFieldFilterVariant2?.Invoke(CustomFieldFilterVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ValueFilter?>? value = null,
+            global::System.Action<global::RetellAI.CustomFieldFilterVariant2>? customFieldFilterVariant2 = null,
             bool validate = true)
         {
             if (validate)

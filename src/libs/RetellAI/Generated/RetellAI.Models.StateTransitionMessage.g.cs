@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.StateTransitionMessageBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? StateTransitionMessageVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StateTransitionMessageVariant2))]
 #endif
         public bool IsStateTransitionMessageVariant2 => StateTransitionMessageVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStateTransitionMessageVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = StateTransitionMessageVariant2;
+            return IsStateTransitionMessageVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -100,8 +126,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.StateTransitionMessageBase?, TResult>? @base = null,
-            global::System.Func<object?, TResult>? stateTransitionMessageVariant2 = null,
+            global::System.Func<global::RetellAI.StateTransitionMessageBase, TResult>? @base = null,
+            global::System.Func<object, TResult>? stateTransitionMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -125,8 +151,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.StateTransitionMessageBase?>? @base = null,
-            global::System.Action<object?>? stateTransitionMessageVariant2 = null,
+            global::System.Action<global::RetellAI.StateTransitionMessageBase>? @base = null,
+
+            global::System.Action<object>? stateTransitionMessageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsStateTransitionMessageVariant2)
+            {
+                stateTransitionMessageVariant2?.Invoke(StateTransitionMessageVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.StateTransitionMessageBase>? @base = null,
+            global::System.Action<object>? stateTransitionMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)

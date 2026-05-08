@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallInvocationMessageBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? ToolCallInvocationMessageVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolCallInvocationMessageVariant2))]
 #endif
         public bool IsToolCallInvocationMessageVariant2 => ToolCallInvocationMessageVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickToolCallInvocationMessageVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = ToolCallInvocationMessageVariant2;
+            return IsToolCallInvocationMessageVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -100,8 +126,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ToolCallInvocationMessageBase?, TResult>? @base = null,
-            global::System.Func<object?, TResult>? toolCallInvocationMessageVariant2 = null,
+            global::System.Func<global::RetellAI.ToolCallInvocationMessageBase, TResult>? @base = null,
+            global::System.Func<object, TResult>? toolCallInvocationMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -125,8 +151,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase?>? @base = null,
-            global::System.Action<object?>? toolCallInvocationMessageVariant2 = null,
+            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase>? @base = null,
+
+            global::System.Action<object>? toolCallInvocationMessageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsToolCallInvocationMessageVariant2)
+            {
+                toolCallInvocationMessageVariant2?.Invoke(ToolCallInvocationMessageVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase>? @base = null,
+            global::System.Action<object>? toolCallInvocationMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)

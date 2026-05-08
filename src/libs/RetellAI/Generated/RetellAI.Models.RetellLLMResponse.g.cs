@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickRetellLLMResponseVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.RetellLLMResponseVariant1? value)
+        {
+            value = RetellLLMResponseVariant1;
+            return IsRetellLLMResponseVariant1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RetellLlmRequest? LlmRequest { get; init; }
 #else
@@ -46,6 +59,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickLlmRequest(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.RetellLlmRequest? value)
+        {
+            value = LlmRequest;
+            return IsLlmRequest;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RetellLLMResponseVariant3? RetellLLMResponseVariant3 { get; init; }
 #else
@@ -59,6 +85,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RetellLLMResponseVariant3))]
 #endif
         public bool IsRetellLLMResponseVariant3 => RetellLLMResponseVariant3 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickRetellLLMResponseVariant3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.RetellLLMResponseVariant3? value)
+        {
+            value = RetellLLMResponseVariant3;
+            return IsRetellLLMResponseVariant3;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -157,9 +196,9 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.RetellLLMResponseVariant1?, TResult>? retellLLMResponseVariant1 = null,
+            global::System.Func<global::RetellAI.RetellLLMResponseVariant1, TResult>? retellLLMResponseVariant1 = null,
             global::System.Func<global::RetellAI.RetellLlmRequest?, TResult>? llmRequest = null,
-            global::System.Func<global::RetellAI.RetellLLMResponseVariant3?, TResult>? retellLLMResponseVariant3 = null,
+            global::System.Func<global::RetellAI.RetellLLMResponseVariant3, TResult>? retellLLMResponseVariant3 = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +226,39 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.RetellLLMResponseVariant1?>? retellLLMResponseVariant1 = null,
+            global::System.Action<global::RetellAI.RetellLLMResponseVariant1>? retellLLMResponseVariant1 = null,
+
             global::System.Action<global::RetellAI.RetellLlmRequest?>? llmRequest = null,
-            global::System.Action<global::RetellAI.RetellLLMResponseVariant3?>? retellLLMResponseVariant3 = null,
+
+            global::System.Action<global::RetellAI.RetellLLMResponseVariant3>? retellLLMResponseVariant3 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsRetellLLMResponseVariant1)
+            {
+                retellLLMResponseVariant1?.Invoke(RetellLLMResponseVariant1!);
+            }
+            else if (IsLlmRequest)
+            {
+                llmRequest?.Invoke(LlmRequest!);
+            }
+            else if (IsRetellLLMResponseVariant3)
+            {
+                retellLLMResponseVariant3?.Invoke(RetellLLMResponseVariant3!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.RetellLLMResponseVariant1>? retellLLMResponseVariant1 = null,
+            global::System.Action<global::RetellAI.RetellLlmRequest?>? llmRequest = null,
+            global::System.Action<global::RetellAI.RetellLLMResponseVariant3>? retellLLMResponseVariant3 = null,
             bool validate = true)
         {
             if (validate)

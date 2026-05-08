@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickToolMockInputMatchRuleVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolMockInputMatchRuleVariant1? value)
+        {
+            value = ToolMockInputMatchRuleVariant1;
+            return IsToolMockInputMatchRuleVariant1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolMockInputMatchRuleVariant2? ToolMockInputMatchRuleVariant2 { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolMockInputMatchRuleVariant2))]
 #endif
         public bool IsToolMockInputMatchRuleVariant2 => ToolMockInputMatchRuleVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickToolMockInputMatchRuleVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolMockInputMatchRuleVariant2? value)
+        {
+            value = ToolMockInputMatchRuleVariant2;
+            return IsToolMockInputMatchRuleVariant2;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -118,8 +144,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ToolMockInputMatchRuleVariant1?, TResult>? toolMockInputMatchRuleVariant1 = null,
-            global::System.Func<global::RetellAI.ToolMockInputMatchRuleVariant2?, TResult>? toolMockInputMatchRuleVariant2 = null,
+            global::System.Func<global::RetellAI.ToolMockInputMatchRuleVariant1, TResult>? toolMockInputMatchRuleVariant1 = null,
+            global::System.Func<global::RetellAI.ToolMockInputMatchRuleVariant2, TResult>? toolMockInputMatchRuleVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +169,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant1?>? toolMockInputMatchRuleVariant1 = null,
-            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant2?>? toolMockInputMatchRuleVariant2 = null,
+            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant1>? toolMockInputMatchRuleVariant1 = null,
+
+            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant2>? toolMockInputMatchRuleVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsToolMockInputMatchRuleVariant1)
+            {
+                toolMockInputMatchRuleVariant1?.Invoke(ToolMockInputMatchRuleVariant1!);
+            }
+            else if (IsToolMockInputMatchRuleVariant2)
+            {
+                toolMockInputMatchRuleVariant2?.Invoke(ToolMockInputMatchRuleVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant1>? toolMockInputMatchRuleVariant1 = null,
+            global::System.Action<global::RetellAI.ToolMockInputMatchRuleVariant2>? toolMockInputMatchRuleVariant2 = null,
             bool validate = true)
         {
             if (validate)

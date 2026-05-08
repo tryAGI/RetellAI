@@ -29,6 +29,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickEndCall(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.EndCallTool? value)
+        {
+            value = EndCall;
+            return IsEndCall;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferCallTool? TransferCall { get; init; }
 #else
@@ -42,6 +55,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TransferCall))]
 #endif
         public bool IsTransferCall => TransferCall != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTransferCall(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferCallTool? value)
+        {
+            value = TransferCall;
+            return IsTransferCall;
+        }
 
         /// <summary>
         /// 
@@ -63,6 +89,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCheckAvailabilityCal(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CheckAvailabilityCalTool? value)
+        {
+            value = CheckAvailabilityCal;
+            return IsCheckAvailabilityCal;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BookAppointmentCalTool? BookAppointmentCal { get; init; }
 #else
@@ -76,6 +115,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BookAppointmentCal))]
 #endif
         public bool IsBookAppointmentCal => BookAppointmentCal != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickBookAppointmentCal(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.BookAppointmentCalTool? value)
+        {
+            value = BookAppointmentCal;
+            return IsBookAppointmentCal;
+        }
 
         /// <summary>
         /// 
@@ -97,6 +149,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickAgentSwap(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.AgentSwapTool? value)
+        {
+            value = AgentSwap;
+            return IsAgentSwap;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.PressDigitTool? PressDigit { get; init; }
 #else
@@ -110,6 +175,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PressDigit))]
 #endif
         public bool IsPressDigit => PressDigit != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPressDigit(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.PressDigitTool? value)
+        {
+            value = PressDigit;
+            return IsPressDigit;
+        }
 
         /// <summary>
         /// 
@@ -131,6 +209,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickSendSM(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SendSMSTool? value)
+        {
+            value = SendSM;
+            return IsSendSM;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CustomTool? Custom { get; init; }
 #else
@@ -144,6 +235,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
 #endif
         public bool IsCustom => Custom != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCustom(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CustomTool? value)
+        {
+            value = Custom;
+            return IsCustom;
+        }
 
         /// <summary>
         /// 
@@ -165,6 +269,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CodeTool? value)
+        {
+            value = Code;
+            return IsCode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ExtractDynamicVariableTool? ExtractDynamicVariable { get; init; }
 #else
@@ -178,6 +295,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ExtractDynamicVariable))]
 #endif
         public bool IsExtractDynamicVariable => ExtractDynamicVariable != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickExtractDynamicVariable(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ExtractDynamicVariableTool? value)
+        {
+            value = ExtractDynamicVariable;
+            return IsExtractDynamicVariable;
+        }
 
         /// <summary>
         /// 
@@ -199,6 +329,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBridgeTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.BridgeTransferTool? value)
+        {
+            value = BridgeTransfer;
+            return IsBridgeTransfer;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CancelTransferTool? CancelTransfer { get; init; }
 #else
@@ -216,6 +359,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCancelTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CancelTransferTool? value)
+        {
+            value = CancelTransfer;
+            return IsCancelTransfer;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.MCPTool? Mcp { get; init; }
 #else
@@ -229,6 +385,19 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Mcp))]
 #endif
         public bool IsMcp => Mcp != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickMcp(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.MCPTool? value)
+        {
+            value = Mcp;
+            return IsMcp;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -547,19 +716,19 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.EndCallTool?, TResult>? endCall = null,
-            global::System.Func<global::RetellAI.TransferCallTool?, TResult>? transferCall = null,
-            global::System.Func<global::RetellAI.CheckAvailabilityCalTool?, TResult>? checkAvailabilityCal = null,
-            global::System.Func<global::RetellAI.BookAppointmentCalTool?, TResult>? bookAppointmentCal = null,
-            global::System.Func<global::RetellAI.AgentSwapTool?, TResult>? agentSwap = null,
-            global::System.Func<global::RetellAI.PressDigitTool?, TResult>? pressDigit = null,
-            global::System.Func<global::RetellAI.SendSMSTool?, TResult>? sendSM = null,
-            global::System.Func<global::RetellAI.CustomTool?, TResult>? custom = null,
-            global::System.Func<global::RetellAI.CodeTool?, TResult>? code = null,
-            global::System.Func<global::RetellAI.ExtractDynamicVariableTool?, TResult>? extractDynamicVariable = null,
-            global::System.Func<global::RetellAI.BridgeTransferTool?, TResult>? bridgeTransfer = null,
-            global::System.Func<global::RetellAI.CancelTransferTool?, TResult>? cancelTransfer = null,
-            global::System.Func<global::RetellAI.MCPTool?, TResult>? mcp = null,
+            global::System.Func<global::RetellAI.EndCallTool, TResult>? endCall = null,
+            global::System.Func<global::RetellAI.TransferCallTool, TResult>? transferCall = null,
+            global::System.Func<global::RetellAI.CheckAvailabilityCalTool, TResult>? checkAvailabilityCal = null,
+            global::System.Func<global::RetellAI.BookAppointmentCalTool, TResult>? bookAppointmentCal = null,
+            global::System.Func<global::RetellAI.AgentSwapTool, TResult>? agentSwap = null,
+            global::System.Func<global::RetellAI.PressDigitTool, TResult>? pressDigit = null,
+            global::System.Func<global::RetellAI.SendSMSTool, TResult>? sendSM = null,
+            global::System.Func<global::RetellAI.CustomTool, TResult>? custom = null,
+            global::System.Func<global::RetellAI.CodeTool, TResult>? code = null,
+            global::System.Func<global::RetellAI.ExtractDynamicVariableTool, TResult>? extractDynamicVariable = null,
+            global::System.Func<global::RetellAI.BridgeTransferTool, TResult>? bridgeTransfer = null,
+            global::System.Func<global::RetellAI.CancelTransferTool, TResult>? cancelTransfer = null,
+            global::System.Func<global::RetellAI.MCPTool, TResult>? mcp = null,
             bool validate = true)
         {
             if (validate)
@@ -627,19 +796,109 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.EndCallTool?>? endCall = null,
-            global::System.Action<global::RetellAI.TransferCallTool?>? transferCall = null,
-            global::System.Action<global::RetellAI.CheckAvailabilityCalTool?>? checkAvailabilityCal = null,
-            global::System.Action<global::RetellAI.BookAppointmentCalTool?>? bookAppointmentCal = null,
-            global::System.Action<global::RetellAI.AgentSwapTool?>? agentSwap = null,
-            global::System.Action<global::RetellAI.PressDigitTool?>? pressDigit = null,
-            global::System.Action<global::RetellAI.SendSMSTool?>? sendSM = null,
-            global::System.Action<global::RetellAI.CustomTool?>? custom = null,
-            global::System.Action<global::RetellAI.CodeTool?>? code = null,
-            global::System.Action<global::RetellAI.ExtractDynamicVariableTool?>? extractDynamicVariable = null,
-            global::System.Action<global::RetellAI.BridgeTransferTool?>? bridgeTransfer = null,
-            global::System.Action<global::RetellAI.CancelTransferTool?>? cancelTransfer = null,
-            global::System.Action<global::RetellAI.MCPTool?>? mcp = null,
+            global::System.Action<global::RetellAI.EndCallTool>? endCall = null,
+
+            global::System.Action<global::RetellAI.TransferCallTool>? transferCall = null,
+
+            global::System.Action<global::RetellAI.CheckAvailabilityCalTool>? checkAvailabilityCal = null,
+
+            global::System.Action<global::RetellAI.BookAppointmentCalTool>? bookAppointmentCal = null,
+
+            global::System.Action<global::RetellAI.AgentSwapTool>? agentSwap = null,
+
+            global::System.Action<global::RetellAI.PressDigitTool>? pressDigit = null,
+
+            global::System.Action<global::RetellAI.SendSMSTool>? sendSM = null,
+
+            global::System.Action<global::RetellAI.CustomTool>? custom = null,
+
+            global::System.Action<global::RetellAI.CodeTool>? code = null,
+
+            global::System.Action<global::RetellAI.ExtractDynamicVariableTool>? extractDynamicVariable = null,
+
+            global::System.Action<global::RetellAI.BridgeTransferTool>? bridgeTransfer = null,
+
+            global::System.Action<global::RetellAI.CancelTransferTool>? cancelTransfer = null,
+
+            global::System.Action<global::RetellAI.MCPTool>? mcp = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsEndCall)
+            {
+                endCall?.Invoke(EndCall!);
+            }
+            else if (IsTransferCall)
+            {
+                transferCall?.Invoke(TransferCall!);
+            }
+            else if (IsCheckAvailabilityCal)
+            {
+                checkAvailabilityCal?.Invoke(CheckAvailabilityCal!);
+            }
+            else if (IsBookAppointmentCal)
+            {
+                bookAppointmentCal?.Invoke(BookAppointmentCal!);
+            }
+            else if (IsAgentSwap)
+            {
+                agentSwap?.Invoke(AgentSwap!);
+            }
+            else if (IsPressDigit)
+            {
+                pressDigit?.Invoke(PressDigit!);
+            }
+            else if (IsSendSM)
+            {
+                sendSM?.Invoke(SendSM!);
+            }
+            else if (IsCustom)
+            {
+                custom?.Invoke(Custom!);
+            }
+            else if (IsCode)
+            {
+                code?.Invoke(Code!);
+            }
+            else if (IsExtractDynamicVariable)
+            {
+                extractDynamicVariable?.Invoke(ExtractDynamicVariable!);
+            }
+            else if (IsBridgeTransfer)
+            {
+                bridgeTransfer?.Invoke(BridgeTransfer!);
+            }
+            else if (IsCancelTransfer)
+            {
+                cancelTransfer?.Invoke(CancelTransfer!);
+            }
+            else if (IsMcp)
+            {
+                mcp?.Invoke(Mcp!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.EndCallTool>? endCall = null,
+            global::System.Action<global::RetellAI.TransferCallTool>? transferCall = null,
+            global::System.Action<global::RetellAI.CheckAvailabilityCalTool>? checkAvailabilityCal = null,
+            global::System.Action<global::RetellAI.BookAppointmentCalTool>? bookAppointmentCal = null,
+            global::System.Action<global::RetellAI.AgentSwapTool>? agentSwap = null,
+            global::System.Action<global::RetellAI.PressDigitTool>? pressDigit = null,
+            global::System.Action<global::RetellAI.SendSMSTool>? sendSM = null,
+            global::System.Action<global::RetellAI.CustomTool>? custom = null,
+            global::System.Action<global::RetellAI.CodeTool>? code = null,
+            global::System.Action<global::RetellAI.ExtractDynamicVariableTool>? extractDynamicVariable = null,
+            global::System.Action<global::RetellAI.BridgeTransferTool>? bridgeTransfer = null,
+            global::System.Action<global::RetellAI.CancelTransferTool>? cancelTransfer = null,
+            global::System.Action<global::RetellAI.MCPTool>? mcp = null,
             bool validate = true)
         {
             if (validate)
