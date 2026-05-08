@@ -547,7 +547,7 @@ components:
       - type: string
         minLength: 1
         maxLength: 20
-        pattern: ^[a-z0-9_-]+$
+        pattern: ^(latest|(?!(?:v\d+)$)[a-z][a-z0-9_-]{0,19})$
         example: prod
       description: Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including
         its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred
@@ -6610,7 +6610,7 @@ components:
                   description: The agent ID of the transfer agent. This agent must have isTransferAgent set to true and should use bridge_transfer and cancel_transfer tools (for Retell LLM) or BridgeTransferNode
                     and CancelTransferNode (for Conversation Flow).
                 agent_version:
-                  type: number
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the transfer agent to use.
               required:
               - agent_id
@@ -8002,7 +8002,7 @@ paths:
         in: query
         required: false
         schema:
-          type: integer
+          $ref: '#/components/schemas/AgentVersionReference'
         description: Agent version to use. Defaults to latest.
       requestBody:
         required: true
@@ -8495,6 +8495,29 @@ paths:
           $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /delete-chat/{chat_id}:
+    delete:
+      description: Delete an existing chat
+      operationId: deleteChat
+      parameters:
+      - in: path
+        name: chat_id
+        schema:
+          type: string
+          example: 16b980523634a6dc504898cda492e939
+        required: true
+        description: Unique id of the chat to be deleted.
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /delete-chat-agent/{agent_id}:
     delete:
       description: Delete an existing chat agent
@@ -8736,8 +8759,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the API to use for this request. If not provided, will default to latest version.
       responses:
@@ -8799,8 +8821,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the API to use for this request. If not provided, will default to latest version.
       responses:
@@ -8998,8 +9019,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the agent to use for this request. Default to latest version.
       - in: query
@@ -9983,8 +10003,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the API to use for this request. Default to latest version.
       requestBody:
@@ -10028,8 +10047,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the API to use for this request. Default to latest version.
       requestBody:
