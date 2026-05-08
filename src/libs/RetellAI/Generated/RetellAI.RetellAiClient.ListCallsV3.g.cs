@@ -42,7 +42,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// List calls with unified cursor pagination response and total count.
+        /// List calls with unified cursor pagination response.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -64,7 +64,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// List calls with unified cursor pagination response and total count.
+        /// List calls with unified cursor pagination response.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -588,7 +588,7 @@ namespace RetellAI
             }
         }
         /// <summary>
-        /// List calls with unified cursor pagination response and total count.
+        /// List calls with unified cursor pagination response.
         /// </summary>
         /// <param name="filterCriteria">
         /// Filter criteria for calls. All conditions are implicitly connected with AND.

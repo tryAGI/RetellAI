@@ -1097,9 +1097,6 @@ components:
             type: integer
             example: 1703413636133
             description: Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.
-          response_engine_data:
-            $ref: '#/components/schemas/ResponseEngineFull'
-            description: Hydrated response engine for this agent version. Only present when include_response_engine is true on /get-agent-versions.
     AgentSwapNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'
@@ -1935,9 +1932,6 @@ components:
             type: integer
             example: 1703413636133
             description: Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.
-          response_engine_data:
-            $ref: '#/components/schemas/ResponseEngineFull'
-            description: Hydrated response engine for this chat agent version. Only present when include_response_engine is true on /get-chat-agent-versions.
     ChatAnalysis:
       type: object
       properties:
@@ -8709,13 +8703,6 @@ paths:
           example: 16b980523634a6dc504898cda492e939
         required: true
         description: Unique id of the agent versions to be retrieved.
-      - in: query
-        name: include_response_engine
-        schema:
-          type: boolean
-          default: false
-        required: false
-        description: When true, each returned agent version includes a response_engine_data field with the hydrated response engine (full retell-llm or conversation-flow configuration) bound to that version.
       responses:
         '200':
           description: Successfully retrieved all versions of an agent.
@@ -8781,14 +8768,6 @@ paths:
           example: 16b980523634a6dc504898cda492e939
         required: true
         description: Unique id of the chat agent versions to be retrieved.
-      - in: query
-        name: include_response_engine
-        schema:
-          type: boolean
-          default: false
-        required: false
-        description: When true, each returned chat agent version includes a response_engine_data field with the hydrated response engine (full retell-llm or conversation-flow configuration) bound to that
-          version.
       responses:
         '200':
           description: Successfully retrieved all versions of a chat agent.
@@ -9543,7 +9522,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /v3/list-chats:
     post:
-      description: List chats with unified cursor pagination response and total count.
+      description: List chats with unified cursor pagination response.
       operationId: listChatsV3
       requestBody:
         required: false
@@ -10802,7 +10781,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /v3/list-calls:
     post:
-      description: List calls with unified cursor pagination response and total count.
+      description: List calls with unified cursor pagination response.
       operationId: listCallsV3
       requestBody:
         required: false
