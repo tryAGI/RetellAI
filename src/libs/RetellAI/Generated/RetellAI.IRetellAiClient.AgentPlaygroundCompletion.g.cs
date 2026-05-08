@@ -8,7 +8,9 @@ namespace RetellAI
         /// Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side — the caller manages conversation state.
         /// </summary>
         /// <param name="agentId"></param>
-        /// <param name="version"></param>
+        /// <param name="version">
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -17,14 +19,16 @@ namespace RetellAI
             string agentId,
 
             global::RetellAI.AgentPlaygroundCompletionRequest request,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side — the caller manages conversation state.
         /// </summary>
         /// <param name="agentId"></param>
-        /// <param name="version"></param>
+        /// <param name="version">
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
+        /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -33,14 +37,16 @@ namespace RetellAI
             string agentId,
 
             global::RetellAI.AgentPlaygroundCompletionRequest request,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side — the caller manages conversation state.
         /// </summary>
         /// <param name="agentId"></param>
-        /// <param name="version"></param>
+        /// <param name="version">
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
+        /// </param>
         /// <param name="messages">
         /// Full conversation history, same shape as chat completion messages. message_id and created_timestamp are optional — server generates them if omitted.<br/>
         /// Example: [{"role":"user","content":"Hi, I\u0027d like to check my appointment."}, {"role":"agent","content":"Sure! Could you please provide your name?"}, {"role":"user","content":"My name is John Smith."}]
@@ -70,7 +76,7 @@ namespace RetellAI
         global::System.Threading.Tasks.Task<global::RetellAI.AgentPlaygroundCompletionResponse> AgentPlaygroundCompletionAsync(
             string agentId,
             global::System.Collections.Generic.IList<global::RetellAI.ChatMessageInput> messages,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::System.Collections.Generic.Dictionary<string, string>? dynamicVariables = default,
             global::System.Collections.Generic.IList<global::RetellAI.ToolMock>? toolMocks = default,
             string? currentState = default,

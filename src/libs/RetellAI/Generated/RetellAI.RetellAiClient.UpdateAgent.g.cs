@@ -28,13 +28,13 @@ namespace RetellAI
         partial void PrepareUpdateAgentArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string agentId,
-            ref int? version,
+            ref global::RetellAI.AgentVersionReference? version,
             global::RetellAI.AgentRequest request);
         partial void PrepareUpdateAgentRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string agentId,
-            int? version,
+            global::RetellAI.AgentVersionReference? version,
             global::RetellAI.AgentRequest request);
         partial void ProcessUpdateAgentResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -52,7 +52,7 @@ namespace RetellAI
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -62,7 +62,7 @@ namespace RetellAI
             string agentId,
 
             global::RetellAI.AgentRequest request,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -84,7 +84,7 @@ namespace RetellAI
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -94,7 +94,7 @@ namespace RetellAI
             string agentId,
 
             global::RetellAI.AgentRequest request,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -661,7 +661,7 @@ namespace RetellAI
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="responseEngine"></param>
         /// <param name="agentName">
@@ -886,7 +886,7 @@ namespace RetellAI
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AgentResponse> UpdateAgentAsync(
             string agentId,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.ResponseEngine? responseEngine = default,
             string? agentName = default,
             string? versionDescription = default,
