@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsFailedEdge FromNode(global::RetellAI.NodeEdge? value) => new SmsFailedEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsFailedEdge(global::RetellAI.SmsFailedEdgeVariant2 value) => new SmsFailedEdge((global::RetellAI.SmsFailedEdgeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             SmsFailedEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsFailedEdge FromSmsFailedEdgeVariant2(global::RetellAI.SmsFailedEdgeVariant2? value) => new SmsFailedEdge(value);
 
         /// <summary>
         /// 

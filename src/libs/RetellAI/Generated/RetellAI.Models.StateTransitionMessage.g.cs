@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static StateTransitionMessage FromBase(global::RetellAI.StateTransitionMessageBase? value) => new StateTransitionMessage(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public StateTransitionMessage(
             global::RetellAI.StateTransitionMessageBase? @base,
             object? stateTransitionMessageVariant2

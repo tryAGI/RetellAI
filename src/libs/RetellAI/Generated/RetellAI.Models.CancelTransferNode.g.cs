@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static CancelTransferNode FromBase(global::RetellAI.NodeBase? value) => new CancelTransferNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CancelTransferNode(global::RetellAI.CancelTransferNodeVariant2 value) => new CancelTransferNode((global::RetellAI.CancelTransferNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             CancelTransferNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CancelTransferNode FromCancelTransferNodeVariant2(global::RetellAI.CancelTransferNodeVariant2? value) => new CancelTransferNode(value);
 
         /// <summary>
         /// 

@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static OrganizationResponse FromOrganization(global::RetellAI.Organization? value) => new OrganizationResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator OrganizationResponse(global::RetellAI.OrganizationResponseVariant2 value) => new OrganizationResponse((global::RetellAI.OrganizationResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             OrganizationResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static OrganizationResponse FromOrganizationResponseVariant2(global::RetellAI.OrganizationResponseVariant2? value) => new OrganizationResponse(value);
 
         /// <summary>
         /// 

@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static PressDigitNode FromBase(global::RetellAI.NodeBase? value) => new PressDigitNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PressDigitNode(global::RetellAI.PressDigitNodeVariant2 value) => new PressDigitNode((global::RetellAI.PressDigitNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             PressDigitNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PressDigitNode FromPressDigitNodeVariant2(global::RetellAI.PressDigitNodeVariant2? value) => new PressDigitNode(value);
 
         /// <summary>
         /// 

@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AlwaysEdge FromNode(global::RetellAI.NodeEdge? value) => new AlwaysEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AlwaysEdge(global::RetellAI.AlwaysEdgeVariant2 value) => new AlwaysEdge((global::RetellAI.AlwaysEdgeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             AlwaysEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AlwaysEdge FromAlwaysEdgeVariant2(global::RetellAI.AlwaysEdgeVariant2? value) => new AlwaysEdge(value);
 
         /// <summary>
         /// 

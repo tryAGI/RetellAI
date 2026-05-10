@@ -419,6 +419,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static Tool FromEndCall(global::RetellAI.EndCallTool? value) => new Tool(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Tool(global::RetellAI.TransferCallTool value) => new Tool((global::RetellAI.TransferCallTool?)value);
 
         /// <summary>
@@ -433,6 +438,11 @@ namespace RetellAI
         {
             TransferCall = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Tool FromTransferCall(global::RetellAI.TransferCallTool? value) => new Tool(value);
 
         /// <summary>
         /// 
@@ -455,6 +465,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static Tool FromCheckAvailabilityCal(global::RetellAI.CheckAvailabilityCalTool? value) => new Tool(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Tool(global::RetellAI.BookAppointmentCalTool value) => new Tool((global::RetellAI.BookAppointmentCalTool?)value);
 
         /// <summary>
@@ -469,6 +484,11 @@ namespace RetellAI
         {
             BookAppointmentCal = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Tool FromBookAppointmentCal(global::RetellAI.BookAppointmentCalTool? value) => new Tool(value);
 
         /// <summary>
         /// 
@@ -491,6 +511,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static Tool FromAgentSwap(global::RetellAI.AgentSwapTool? value) => new Tool(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Tool(global::RetellAI.PressDigitTool value) => new Tool((global::RetellAI.PressDigitTool?)value);
 
         /// <summary>
@@ -505,6 +530,11 @@ namespace RetellAI
         {
             PressDigit = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Tool FromPressDigit(global::RetellAI.PressDigitTool? value) => new Tool(value);
 
         /// <summary>
         /// 
@@ -527,6 +557,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static Tool FromSendSM(global::RetellAI.SendSMSTool? value) => new Tool(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Tool(global::RetellAI.CustomTool value) => new Tool((global::RetellAI.CustomTool?)value);
 
         /// <summary>
@@ -541,6 +576,11 @@ namespace RetellAI
         {
             Custom = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Tool FromCustom(global::RetellAI.CustomTool? value) => new Tool(value);
 
         /// <summary>
         /// 
@@ -563,6 +603,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static Tool FromCode(global::RetellAI.CodeTool? value) => new Tool(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Tool(global::RetellAI.ExtractDynamicVariableTool value) => new Tool((global::RetellAI.ExtractDynamicVariableTool?)value);
 
         /// <summary>
@@ -577,6 +622,11 @@ namespace RetellAI
         {
             ExtractDynamicVariable = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Tool FromExtractDynamicVariable(global::RetellAI.ExtractDynamicVariableTool? value) => new Tool(value);
 
         /// <summary>
         /// 
@@ -599,6 +649,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static Tool FromBridgeTransfer(global::RetellAI.BridgeTransferTool? value) => new Tool(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Tool(global::RetellAI.CancelTransferTool value) => new Tool((global::RetellAI.CancelTransferTool?)value);
 
         /// <summary>
@@ -617,6 +672,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static Tool FromCancelTransfer(global::RetellAI.CancelTransferTool? value) => new Tool(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator Tool(global::RetellAI.MCPTool value) => new Tool((global::RetellAI.MCPTool?)value);
 
         /// <summary>
@@ -631,6 +691,11 @@ namespace RetellAI
         {
             Mcp = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Tool FromMcp(global::RetellAI.MCPTool? value) => new Tool(value);
 
         /// <summary>
         /// 

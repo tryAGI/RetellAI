@@ -479,6 +479,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlowNode FromConversationNode(global::RetellAI.ConversationNode? value) => new ConversationFlowNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.SubagentNode value) => new ConversationFlowNode((global::RetellAI.SubagentNode?)value);
 
         /// <summary>
@@ -493,6 +498,11 @@ namespace RetellAI
         {
             Subagent = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationFlowNode FromSubagent(global::RetellAI.SubagentNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
         /// 
@@ -515,6 +525,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlowNode FromEnd(global::RetellAI.EndNode? value) => new ConversationFlowNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.FunctionNode value) => new ConversationFlowNode((global::RetellAI.FunctionNode?)value);
 
         /// <summary>
@@ -529,6 +544,11 @@ namespace RetellAI
         {
             Function = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationFlowNode FromFunction(global::RetellAI.FunctionNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
         /// 
@@ -551,6 +571,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlowNode FromCode(global::RetellAI.CodeNode? value) => new ConversationFlowNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.TransferCallNode value) => new ConversationFlowNode((global::RetellAI.TransferCallNode?)value);
 
         /// <summary>
@@ -565,6 +590,11 @@ namespace RetellAI
         {
             TransferCall = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationFlowNode FromTransferCall(global::RetellAI.TransferCallNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
         /// 
@@ -587,6 +617,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlowNode FromPressDigit(global::RetellAI.PressDigitNode? value) => new ConversationFlowNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.BranchNode value) => new ConversationFlowNode((global::RetellAI.BranchNode?)value);
 
         /// <summary>
@@ -601,6 +636,11 @@ namespace RetellAI
         {
             Branch = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationFlowNode FromBranch(global::RetellAI.BranchNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
         /// 
@@ -623,6 +663,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlowNode FromSms(global::RetellAI.SmsNode? value) => new ConversationFlowNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.ExtractDynamicVariablesNode value) => new ConversationFlowNode((global::RetellAI.ExtractDynamicVariablesNode?)value);
 
         /// <summary>
@@ -637,6 +682,11 @@ namespace RetellAI
         {
             ExtractDynamicVariables = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationFlowNode FromExtractDynamicVariables(global::RetellAI.ExtractDynamicVariablesNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
         /// 
@@ -659,6 +709,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlowNode FromAgentSwap(global::RetellAI.AgentSwapNode? value) => new ConversationFlowNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.MCPNode value) => new ConversationFlowNode((global::RetellAI.MCPNode?)value);
 
         /// <summary>
@@ -673,6 +728,11 @@ namespace RetellAI
         {
             Mcp = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationFlowNode FromMcp(global::RetellAI.MCPNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
         /// 
@@ -695,6 +755,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlowNode FromComponent(global::RetellAI.ComponentNode? value) => new ConversationFlowNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.BridgeTransferNode value) => new ConversationFlowNode((global::RetellAI.BridgeTransferNode?)value);
 
         /// <summary>
@@ -713,6 +778,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlowNode FromBridgeTransfer(global::RetellAI.BridgeTransferNode? value) => new ConversationFlowNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.CancelTransferNode value) => new ConversationFlowNode((global::RetellAI.CancelTransferNode?)value);
 
         /// <summary>
@@ -727,6 +797,11 @@ namespace RetellAI
         {
             CancelTransfer = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationFlowNode FromCancelTransfer(global::RetellAI.CancelTransferNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
         /// 

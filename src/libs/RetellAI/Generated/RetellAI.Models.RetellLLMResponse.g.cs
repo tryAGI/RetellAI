@@ -119,6 +119,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static RetellLLMResponse FromRetellLLMResponseVariant1(global::RetellAI.RetellLLMResponseVariant1? value) => new RetellLLMResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator RetellLLMResponse(global::RetellAI.RetellLlmRequest value) => new RetellLLMResponse((global::RetellAI.RetellLlmRequest?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static RetellLLMResponse FromLlmRequest(global::RetellAI.RetellLlmRequest? value) => new RetellLLMResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator RetellLLMResponse(global::RetellAI.RetellLLMResponseVariant3 value) => new RetellLLMResponse((global::RetellAI.RetellLLMResponseVariant3?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace RetellAI
         {
             RetellLLMResponseVariant3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RetellLLMResponse FromRetellLLMResponseVariant3(global::RetellAI.RetellLLMResponseVariant3? value) => new RetellLLMResponse(value);
 
         /// <summary>
         /// 

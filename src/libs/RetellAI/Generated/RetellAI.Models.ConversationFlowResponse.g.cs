@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlowResponse FromConversationFlow(global::RetellAI.ConversationFlow? value) => new ConversationFlowResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlowResponse(global::RetellAI.ConversationFlowResponseVariant2 value) => new ConversationFlowResponse((global::RetellAI.ConversationFlowResponseVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             ConversationFlowResponseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationFlowResponse FromConversationFlowResponseVariant2(global::RetellAI.ConversationFlowResponseVariant2? value) => new ConversationFlowResponse(value);
 
         /// <summary>
         /// 

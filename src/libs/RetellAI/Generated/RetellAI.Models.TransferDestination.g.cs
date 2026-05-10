@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static TransferDestination FromPredefined(global::RetellAI.TransferDestinationPredefined? value) => new TransferDestination(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TransferDestination(global::RetellAI.TransferDestinationInferred value) => new TransferDestination((global::RetellAI.TransferDestinationInferred?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             Inferred = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TransferDestination FromInferred(global::RetellAI.TransferDestinationInferred? value) => new TransferDestination(value);
 
         /// <summary>
         /// 

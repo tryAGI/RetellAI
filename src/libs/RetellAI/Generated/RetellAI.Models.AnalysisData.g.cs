@@ -149,6 +149,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AnalysisData FromString(global::RetellAI.StringAnalysisData? value) => new AnalysisData(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AnalysisData(global::RetellAI.EnumAnalysisData value) => new AnalysisData((global::RetellAI.EnumAnalysisData?)value);
 
         /// <summary>
@@ -163,6 +168,11 @@ namespace RetellAI
         {
             Enum = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AnalysisData FromEnum(global::RetellAI.EnumAnalysisData? value) => new AnalysisData(value);
 
         /// <summary>
         /// 
@@ -185,6 +195,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AnalysisData FromBoolean(global::RetellAI.BooleanAnalysisData? value) => new AnalysisData(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AnalysisData(global::RetellAI.NumberAnalysisData value) => new AnalysisData((global::RetellAI.NumberAnalysisData?)value);
 
         /// <summary>
@@ -199,6 +214,11 @@ namespace RetellAI
         {
             Number = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AnalysisData FromNumber(global::RetellAI.NumberAnalysisData? value) => new AnalysisData(value);
 
         /// <summary>
         /// 

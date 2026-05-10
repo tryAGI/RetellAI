@@ -209,6 +209,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ValueFilter FromString(global::RetellAI.StringFilter? value) => new ValueFilter(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.NumberFilter value) => new ValueFilter((global::RetellAI.NumberFilter?)value);
 
         /// <summary>
@@ -223,6 +228,11 @@ namespace RetellAI
         {
             Number = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ValueFilter FromNumber(global::RetellAI.NumberFilter? value) => new ValueFilter(value);
 
         /// <summary>
         /// 
@@ -245,6 +255,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ValueFilter FromBoolean(global::RetellAI.BooleanFilter? value) => new ValueFilter(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.RangeFilter value) => new ValueFilter((global::RetellAI.RangeFilter?)value);
 
         /// <summary>
@@ -259,6 +274,11 @@ namespace RetellAI
         {
             Range = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ValueFilter FromRange(global::RetellAI.RangeFilter? value) => new ValueFilter(value);
 
         /// <summary>
         /// 
@@ -281,6 +301,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ValueFilter FromEnum(global::RetellAI.EnumFilter? value) => new ValueFilter(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.PresentFilter value) => new ValueFilter((global::RetellAI.PresentFilter?)value);
 
         /// <summary>
@@ -295,6 +320,11 @@ namespace RetellAI
         {
             Present = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ValueFilter FromPresent(global::RetellAI.PresentFilter? value) => new ValueFilter(value);
 
         /// <summary>
         /// 

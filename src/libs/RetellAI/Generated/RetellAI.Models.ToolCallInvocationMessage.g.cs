@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ToolCallInvocationMessage FromBase(global::RetellAI.ToolCallInvocationMessageBase? value) => new ToolCallInvocationMessage(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ToolCallInvocationMessage(
             global::RetellAI.ToolCallInvocationMessageBase? @base,
             object? toolCallInvocationMessageVariant2

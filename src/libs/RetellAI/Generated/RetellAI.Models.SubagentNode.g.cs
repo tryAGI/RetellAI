@@ -119,6 +119,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SubagentNode FromBase(global::RetellAI.NodeBase? value) => new SubagentNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SubagentNode(global::RetellAI.AgentOverrideConfig value) => new SubagentNode((global::RetellAI.AgentOverrideConfig?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SubagentNode FromAgentOverrideConfig(global::RetellAI.AgentOverrideConfig? value) => new SubagentNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SubagentNode(global::RetellAI.SubagentNodeVariant3 value) => new SubagentNode((global::RetellAI.SubagentNodeVariant3?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace RetellAI
         {
             SubagentNodeVariant3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SubagentNode FromSubagentNodeVariant3(global::RetellAI.SubagentNodeVariant3? value) => new SubagentNode(value);
 
         /// <summary>
         /// 

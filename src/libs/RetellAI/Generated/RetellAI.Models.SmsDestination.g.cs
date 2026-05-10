@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsDestination FromSmsDestinationVariant1(global::RetellAI.SmsDestinationVariant1? value) => new SmsDestination(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsDestination(global::RetellAI.SmsDestinationVariant2 value) => new SmsDestination((global::RetellAI.SmsDestinationVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             SmsDestinationVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsDestination FromSmsDestinationVariant2(global::RetellAI.SmsDestinationVariant2? value) => new SmsDestination(value);
 
         /// <summary>
         /// 

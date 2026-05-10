@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static UpdateOrganizationRequest FromCreate(global::RetellAI.CreateOrganizationRequest? value) => new UpdateOrganizationRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator UpdateOrganizationRequest(global::RetellAI.UpdateOrganizationRequestVariant2 value) => new UpdateOrganizationRequest((global::RetellAI.UpdateOrganizationRequestVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             UpdateOrganizationRequestVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static UpdateOrganizationRequest FromUpdateOrganizationRequestVariant2(global::RetellAI.UpdateOrganizationRequestVariant2? value) => new UpdateOrganizationRequest(value);
 
         /// <summary>
         /// 

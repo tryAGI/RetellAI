@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static NodeTool FromNodeToolVariant1(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? value) => new NodeTool(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator NodeTool(global::RetellAI.NodeToolVariant2 value) => new NodeTool((global::RetellAI.NodeToolVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             NodeToolVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static NodeTool FromNodeToolVariant2(global::RetellAI.NodeToolVariant2? value) => new NodeTool(value);
 
         /// <summary>
         /// 

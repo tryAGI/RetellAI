@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static V2PhoneCallResponse FromV2PhoneCallResponseVariant1(global::RetellAI.V2PhoneCallResponseVariant1? value) => new V2PhoneCallResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator V2PhoneCallResponse(global::RetellAI.V2CallBase value) => new V2PhoneCallResponse((global::RetellAI.V2CallBase?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             Base = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static V2PhoneCallResponse FromBase(global::RetellAI.V2CallBase? value) => new V2PhoneCallResponse(value);
 
         /// <summary>
         /// 

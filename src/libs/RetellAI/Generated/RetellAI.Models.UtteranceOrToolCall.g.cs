@@ -179,6 +179,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static UtteranceOrToolCall FromUtterance(global::RetellAI.Utterance? value) => new UtteranceOrToolCall(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.ToolCallInvocationUtterance value) => new UtteranceOrToolCall((global::RetellAI.ToolCallInvocationUtterance?)value);
 
         /// <summary>
@@ -193,6 +198,11 @@ namespace RetellAI
         {
             Invocation = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static UtteranceOrToolCall FromInvocation(global::RetellAI.ToolCallInvocationUtterance? value) => new UtteranceOrToolCall(value);
 
         /// <summary>
         /// 
@@ -215,6 +225,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static UtteranceOrToolCall FromResult(global::RetellAI.ToolCallResultUtterance? value) => new UtteranceOrToolCall(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.NodeTransitionUtterance value) => new UtteranceOrToolCall((global::RetellAI.NodeTransitionUtterance?)value);
 
         /// <summary>
@@ -233,6 +248,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static UtteranceOrToolCall FromNodeTransition(global::RetellAI.NodeTransitionUtterance? value) => new UtteranceOrToolCall(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.DTMFUtterance value) => new UtteranceOrToolCall((global::RetellAI.DTMFUtterance?)value);
 
         /// <summary>
@@ -247,6 +267,11 @@ namespace RetellAI
         {
             Dtmf = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static UtteranceOrToolCall FromDtmf(global::RetellAI.DTMFUtterance? value) => new UtteranceOrToolCall(value);
 
         /// <summary>
         /// 

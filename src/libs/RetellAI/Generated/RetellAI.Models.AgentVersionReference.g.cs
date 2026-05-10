@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AgentVersionReference FromAgentVersionReferenceVariant1(int? value) => new AgentVersionReference(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AgentVersionReference(string value) => new AgentVersionReference((string?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             AgentVersionReferenceVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AgentVersionReference FromAgentVersionReferenceVariant2(string? value) => new AgentVersionReference(value);
 
         /// <summary>
         /// 

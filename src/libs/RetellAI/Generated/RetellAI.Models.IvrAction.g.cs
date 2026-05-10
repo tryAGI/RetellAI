@@ -59,6 +59,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static IvrAction FromHangup(global::RetellAI.IvrActionHangup? value) => new IvrAction(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             Hangup as object 
             ;

@@ -119,6 +119,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AgentResponse FromAgentResponseVariant1(global::RetellAI.AgentResponseVariant1? value) => new AgentResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AgentResponse(global::RetellAI.AgentRequest value) => new AgentResponse((global::RetellAI.AgentRequest?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AgentResponse FromRequest(global::RetellAI.AgentRequest? value) => new AgentResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AgentResponse(global::RetellAI.AgentResponseVariant3 value) => new AgentResponse((global::RetellAI.AgentResponseVariant3?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace RetellAI
         {
             AgentResponseVariant3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AgentResponse FromAgentResponseVariant3(global::RetellAI.AgentResponseVariant3? value) => new AgentResponse(value);
 
         /// <summary>
         /// 

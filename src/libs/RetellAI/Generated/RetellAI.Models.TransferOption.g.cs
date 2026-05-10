@@ -119,6 +119,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static TransferOption FromColdTransfer(global::RetellAI.TransferOptionColdTransfer? value) => new TransferOption(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TransferOption(global::RetellAI.TransferOptionWarmTransfer value) => new TransferOption((global::RetellAI.TransferOptionWarmTransfer?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static TransferOption FromWarmTransfer(global::RetellAI.TransferOptionWarmTransfer? value) => new TransferOption(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TransferOption(global::RetellAI.TransferOptionAgenticWarmTransfer value) => new TransferOption((global::RetellAI.TransferOptionAgenticWarmTransfer?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace RetellAI
         {
             AgenticWarmTransfer = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TransferOption FromAgenticWarmTransfer(global::RetellAI.TransferOptionAgenticWarmTransfer? value) => new TransferOption(value);
 
         /// <summary>
         /// 

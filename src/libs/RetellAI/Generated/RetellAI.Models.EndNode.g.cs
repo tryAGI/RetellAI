@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static EndNode FromBase(global::RetellAI.NodeBase? value) => new EndNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator EndNode(global::RetellAI.EndNodeVariant2 value) => new EndNode((global::RetellAI.EndNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             EndNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static EndNode FromEndNodeVariant2(global::RetellAI.EndNodeVariant2? value) => new EndNode(value);
 
         /// <summary>
         /// 

@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static NodeBase FromCommon(global::RetellAI.NodeBaseCommon? value) => new NodeBase(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator NodeBase(global::RetellAI.NodeBaseVariant2 value) => new NodeBase((global::RetellAI.NodeBaseVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             NodeBaseVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static NodeBase FromNodeBaseVariant2(global::RetellAI.NodeBaseVariant2? value) => new NodeBase(value);
 
         /// <summary>
         /// 

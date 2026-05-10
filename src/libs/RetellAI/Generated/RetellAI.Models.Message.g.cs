@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static Message FromBase(global::RetellAI.MessageBase? value) => new Message(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public Message(
             global::RetellAI.MessageBase? @base,
             object? messageVariant2

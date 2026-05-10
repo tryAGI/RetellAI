@@ -119,6 +119,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationNode FromBase(global::RetellAI.NodeBase? value) => new ConversationNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationNode(global::RetellAI.AgentOverrideConfig value) => new ConversationNode((global::RetellAI.AgentOverrideConfig?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationNode FromAgentOverrideConfig(global::RetellAI.AgentOverrideConfig? value) => new ConversationNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationNode(global::RetellAI.ConversationNodeVariant3 value) => new ConversationNode((global::RetellAI.ConversationNodeVariant3?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace RetellAI
         {
             ConversationNodeVariant3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationNode FromConversationNodeVariant3(global::RetellAI.ConversationNodeVariant3? value) => new ConversationNode(value);
 
         /// <summary>
         /// 

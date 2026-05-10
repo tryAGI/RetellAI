@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static PostChatAnalysisData FromAnalysisData(global::RetellAI.AnalysisData? value) => new PostChatAnalysisData(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PostChatAnalysisData(global::RetellAI.ChatPresetAnalysisData value) => new PostChatAnalysisData((global::RetellAI.ChatPresetAnalysisData?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             Preset = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PostChatAnalysisData FromPreset(global::RetellAI.ChatPresetAnalysisData? value) => new PostChatAnalysisData(value);
 
         /// <summary>
         /// 

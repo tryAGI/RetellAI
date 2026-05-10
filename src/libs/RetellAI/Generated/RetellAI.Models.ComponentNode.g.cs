@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ComponentNode FromBaseCommon(global::RetellAI.NodeBaseCommon? value) => new ComponentNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ComponentNode(global::RetellAI.ComponentNodeVariant2 value) => new ComponentNode((global::RetellAI.ComponentNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             ComponentNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ComponentNode FromComponentNodeVariant2(global::RetellAI.ComponentNodeVariant2? value) => new ComponentNode(value);
 
         /// <summary>
         /// 

@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static NodeInstruction FromPrompt(global::RetellAI.NodeInstructionPrompt? value) => new NodeInstruction(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator NodeInstruction(global::RetellAI.NodeInstructionStaticText value) => new NodeInstruction((global::RetellAI.NodeInstructionStaticText?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             StaticText = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static NodeInstruction FromStaticText(global::RetellAI.NodeInstructionStaticText? value) => new NodeInstruction(value);
 
         /// <summary>
         /// 

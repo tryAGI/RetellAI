@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AgentSwapNode FromBase(global::RetellAI.NodeBase? value) => new AgentSwapNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AgentSwapNode(global::RetellAI.AgentSwapNodeVariant2 value) => new AgentSwapNode((global::RetellAI.AgentSwapNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             AgentSwapNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AgentSwapNode FromAgentSwapNodeVariant2(global::RetellAI.AgentSwapNodeVariant2? value) => new AgentSwapNode(value);
 
         /// <summary>
         /// 

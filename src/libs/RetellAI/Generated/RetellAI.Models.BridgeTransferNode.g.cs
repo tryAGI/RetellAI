@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static BridgeTransferNode FromBase(global::RetellAI.NodeBase? value) => new BridgeTransferNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator BridgeTransferNode(global::RetellAI.BridgeTransferNodeVariant2 value) => new BridgeTransferNode((global::RetellAI.BridgeTransferNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             BridgeTransferNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static BridgeTransferNode FromBridgeTransferNodeVariant2(global::RetellAI.BridgeTransferNodeVariant2? value) => new BridgeTransferNode(value);
 
         /// <summary>
         /// 

@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SkipResponseEdge FromNode(global::RetellAI.NodeEdge? value) => new SkipResponseEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SkipResponseEdge(global::RetellAI.SkipResponseEdgeVariant2 value) => new SkipResponseEdge((global::RetellAI.SkipResponseEdgeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             SkipResponseEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SkipResponseEdge FromSkipResponseEdgeVariant2(global::RetellAI.SkipResponseEdgeVariant2? value) => new SkipResponseEdge(value);
 
         /// <summary>
         /// 

@@ -119,6 +119,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ResponseEngine FromRetellLm(global::RetellAI.ResponseEngineRetellLm? value) => new ResponseEngine(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ResponseEngine(global::RetellAI.ResponseEngineCustomLm value) => new ResponseEngine((global::RetellAI.ResponseEngineCustomLm?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ResponseEngine FromCustomLm(global::RetellAI.ResponseEngineCustomLm? value) => new ResponseEngine(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ResponseEngine(global::RetellAI.ResponseEngineConversationFlow value) => new ResponseEngine((global::RetellAI.ResponseEngineConversationFlow?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace RetellAI
         {
             ConversationFlow = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ResponseEngine FromConversationFlow(global::RetellAI.ResponseEngineConversationFlow? value) => new ResponseEngine(value);
 
         /// <summary>
         /// 
