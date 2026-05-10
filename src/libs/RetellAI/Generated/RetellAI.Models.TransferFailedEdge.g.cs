@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static TransferFailedEdge FromNode(global::RetellAI.NodeEdge? value) => new TransferFailedEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TransferFailedEdge(global::RetellAI.TransferFailedEdgeVariant2 value) => new TransferFailedEdge((global::RetellAI.TransferFailedEdgeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             TransferFailedEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TransferFailedEdge FromTransferFailedEdgeVariant2(global::RetellAI.TransferFailedEdgeVariant2? value) => new TransferFailedEdge(value);
 
         /// <summary>
         /// 

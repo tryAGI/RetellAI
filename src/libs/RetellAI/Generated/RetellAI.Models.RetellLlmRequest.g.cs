@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static RetellLlmRequest FromOverride(global::RetellAI.RetellLlmOverride? value) => new RetellLlmRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator RetellLlmRequest(global::RetellAI.RetellLlmRequestVariant2 value) => new RetellLlmRequest((global::RetellAI.RetellLlmRequestVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             RetellLlmRequestVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static RetellLlmRequest FromRetellLlmRequestVariant2(global::RetellAI.RetellLlmRequestVariant2? value) => new RetellLlmRequest(value);
 
         /// <summary>
         /// 

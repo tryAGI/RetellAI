@@ -179,6 +179,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static MessageOrToolCall FromMessage(global::RetellAI.Message? value) => new MessageOrToolCall(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MessageOrToolCall(global::RetellAI.ToolCallInvocationMessage value) => new MessageOrToolCall((global::RetellAI.ToolCallInvocationMessage?)value);
 
         /// <summary>
@@ -193,6 +198,11 @@ namespace RetellAI
         {
             Invocation = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MessageOrToolCall FromInvocation(global::RetellAI.ToolCallInvocationMessage? value) => new MessageOrToolCall(value);
 
         /// <summary>
         /// 
@@ -215,6 +225,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static MessageOrToolCall FromResult(global::RetellAI.ToolCallResultMessage? value) => new MessageOrToolCall(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MessageOrToolCall(global::RetellAI.NodeTransitionMessage value) => new MessageOrToolCall((global::RetellAI.NodeTransitionMessage?)value);
 
         /// <summary>
@@ -233,6 +248,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static MessageOrToolCall FromNodeTransition(global::RetellAI.NodeTransitionMessage? value) => new MessageOrToolCall(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MessageOrToolCall(global::RetellAI.StateTransitionMessage value) => new MessageOrToolCall((global::RetellAI.StateTransitionMessage?)value);
 
         /// <summary>
@@ -247,6 +267,11 @@ namespace RetellAI
         {
             StateTransition = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MessageOrToolCall FromStateTransition(global::RetellAI.StateTransitionMessage? value) => new MessageOrToolCall(value);
 
         /// <summary>
         /// 

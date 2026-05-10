@@ -59,6 +59,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ModelChoice FromCascading(global::RetellAI.ModelChoiceCascading? value) => new ModelChoice(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public object? Object =>
             Cascading as object 
             ;

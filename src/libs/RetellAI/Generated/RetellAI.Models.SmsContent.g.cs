@@ -119,6 +119,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsContent FromPredefined(global::RetellAI.SmsContentPredefined? value) => new SmsContent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsContent(global::RetellAI.SmsContentInferred value) => new SmsContent((global::RetellAI.SmsContentInferred?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsContent FromInferred(global::RetellAI.SmsContentInferred? value) => new SmsContent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsContent(global::RetellAI.SmsContentTemplate value) => new SmsContent((global::RetellAI.SmsContentTemplate?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace RetellAI
         {
             Template = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsContent FromTemplate(global::RetellAI.SmsContentTemplate? value) => new SmsContent(value);
 
         /// <summary>
         /// 

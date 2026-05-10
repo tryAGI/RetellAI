@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static MCPNode FromBase(global::RetellAI.NodeBase? value) => new MCPNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MCPNode(global::RetellAI.MCPNodeVariant2 value) => new MCPNode((global::RetellAI.MCPNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             MCPNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MCPNode FromMCPNodeVariant2(global::RetellAI.MCPNodeVariant2? value) => new MCPNode(value);
 
         /// <summary>
         /// 

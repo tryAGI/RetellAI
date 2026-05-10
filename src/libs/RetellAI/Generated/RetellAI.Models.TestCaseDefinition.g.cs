@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static TestCaseDefinition FromInput(global::RetellAI.TestCaseDefinitionInput? value) => new TestCaseDefinition(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TestCaseDefinition(global::RetellAI.TestCaseDefinitionVariant2 value) => new TestCaseDefinition((global::RetellAI.TestCaseDefinitionVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             TestCaseDefinitionVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TestCaseDefinition FromTestCaseDefinitionVariant2(global::RetellAI.TestCaseDefinitionVariant2? value) => new TestCaseDefinition(value);
 
         /// <summary>
         /// 

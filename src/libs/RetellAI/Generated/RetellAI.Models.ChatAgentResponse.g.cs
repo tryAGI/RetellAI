@@ -119,6 +119,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ChatAgentResponse FromChatAgentResponseVariant1(global::RetellAI.ChatAgentResponseVariant1? value) => new ChatAgentResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ChatAgentResponse(global::RetellAI.ChatAgentRequest value) => new ChatAgentResponse((global::RetellAI.ChatAgentRequest?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ChatAgentResponse FromRequest(global::RetellAI.ChatAgentRequest? value) => new ChatAgentResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ChatAgentResponse(global::RetellAI.ChatAgentResponseVariant3 value) => new ChatAgentResponse((global::RetellAI.ChatAgentResponseVariant3?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace RetellAI
         {
             ChatAgentResponseVariant3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatAgentResponse FromChatAgentResponseVariant3(global::RetellAI.ChatAgentResponseVariant3? value) => new ChatAgentResponse(value);
 
         /// <summary>
         /// 

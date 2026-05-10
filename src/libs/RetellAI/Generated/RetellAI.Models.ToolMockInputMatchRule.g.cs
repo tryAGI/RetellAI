@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ToolMockInputMatchRule FromToolMockInputMatchRuleVariant1(global::RetellAI.ToolMockInputMatchRuleVariant1? value) => new ToolMockInputMatchRule(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ToolMockInputMatchRule(global::RetellAI.ToolMockInputMatchRuleVariant2 value) => new ToolMockInputMatchRule((global::RetellAI.ToolMockInputMatchRuleVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             ToolMockInputMatchRuleVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ToolMockInputMatchRule FromToolMockInputMatchRuleVariant2(global::RetellAI.ToolMockInputMatchRuleVariant2? value) => new ToolMockInputMatchRule(value);
 
         /// <summary>
         /// 

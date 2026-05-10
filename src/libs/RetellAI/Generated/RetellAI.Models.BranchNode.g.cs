@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static BranchNode FromBase(global::RetellAI.NodeBase? value) => new BranchNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator BranchNode(global::RetellAI.BranchNodeVariant2 value) => new BranchNode((global::RetellAI.BranchNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             BranchNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static BranchNode FromBranchNodeVariant2(global::RetellAI.BranchNodeVariant2? value) => new BranchNode(value);
 
         /// <summary>
         /// 

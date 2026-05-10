@@ -91,6 +91,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static LanguageLegacy FromLanguage3(global::RetellAI.Language3? value) => new LanguageLegacy(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator LanguageLegacy(global::RetellAI.LanguageLegacyEnum value) => new LanguageLegacy((global::RetellAI.LanguageLegacyEnum?)value);
 
         /// <summary>
@@ -105,6 +110,11 @@ namespace RetellAI
         {
             Enum = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static LanguageLegacy FromEnum(global::RetellAI.LanguageLegacyEnum? value) => new LanguageLegacy(value);
 
         /// <summary>
         /// 

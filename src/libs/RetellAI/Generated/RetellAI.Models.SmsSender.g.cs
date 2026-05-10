@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsSender FromSmsSenderVariant1(global::RetellAI.SmsSenderVariant1? value) => new SmsSender(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsSender(global::RetellAI.SmsSenderVariant2 value) => new SmsSender((global::RetellAI.SmsSenderVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             SmsSenderVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsSender FromSmsSenderVariant2(global::RetellAI.SmsSenderVariant2? value) => new SmsSender(value);
 
         /// <summary>
         /// 

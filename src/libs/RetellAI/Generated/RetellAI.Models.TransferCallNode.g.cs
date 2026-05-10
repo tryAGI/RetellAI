@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static TransferCallNode FromBase(global::RetellAI.NodeBase? value) => new TransferCallNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TransferCallNode(global::RetellAI.TransferCallNodeVariant2 value) => new TransferCallNode((global::RetellAI.TransferCallNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             TransferCallNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TransferCallNode FromTransferCallNodeVariant2(global::RetellAI.TransferCallNodeVariant2? value) => new TransferCallNode(value);
 
         /// <summary>
         /// 

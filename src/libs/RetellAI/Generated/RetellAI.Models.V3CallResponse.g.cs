@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static V3CallResponse FromV2(global::RetellAI.V2CallResponse? value) => new V3CallResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public V3CallResponse(
             global::RetellAI.V2CallResponse? v2,
             object? v3CallResponseVariant2

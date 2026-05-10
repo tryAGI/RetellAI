@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ElseEdge FromNode(global::RetellAI.NodeEdge? value) => new ElseEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ElseEdge(global::RetellAI.ElseEdgeVariant2 value) => new ElseEdge((global::RetellAI.ElseEdgeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             ElseEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ElseEdge FromElseEdgeVariant2(global::RetellAI.ElseEdgeVariant2? value) => new ElseEdge(value);
 
         /// <summary>
         /// 

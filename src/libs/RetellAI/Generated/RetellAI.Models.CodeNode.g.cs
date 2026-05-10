@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static CodeNode FromBase(global::RetellAI.NodeBase? value) => new CodeNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CodeNode(global::RetellAI.CodeNodeVariant2 value) => new CodeNode((global::RetellAI.CodeNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             CodeNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CodeNode FromCodeNodeVariant2(global::RetellAI.CodeNodeVariant2? value) => new CodeNode(value);
 
         /// <summary>
         /// 

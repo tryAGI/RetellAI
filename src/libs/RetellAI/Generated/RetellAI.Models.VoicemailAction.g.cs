@@ -149,6 +149,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static VoicemailAction FromPrompt(global::RetellAI.VoicemailActionPrompt? value) => new VoicemailAction(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator VoicemailAction(global::RetellAI.VoicemailActionStaticText value) => new VoicemailAction((global::RetellAI.VoicemailActionStaticText?)value);
 
         /// <summary>
@@ -163,6 +168,11 @@ namespace RetellAI
         {
             StaticText = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static VoicemailAction FromStaticText(global::RetellAI.VoicemailActionStaticText? value) => new VoicemailAction(value);
 
         /// <summary>
         /// 
@@ -185,6 +195,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static VoicemailAction FromHangup(global::RetellAI.VoicemailActionHangup? value) => new VoicemailAction(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator VoicemailAction(global::RetellAI.VoicemailActionBridgeTransfer value) => new VoicemailAction((global::RetellAI.VoicemailActionBridgeTransfer?)value);
 
         /// <summary>
@@ -199,6 +214,11 @@ namespace RetellAI
         {
             BridgeTransfer = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static VoicemailAction FromBridgeTransfer(global::RetellAI.VoicemailActionBridgeTransfer? value) => new VoicemailAction(value);
 
         /// <summary>
         /// 

@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static NodeTransitionMessage FromBase(global::RetellAI.NodeTransitionMessageBase? value) => new NodeTransitionMessage(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public NodeTransitionMessage(
             global::RetellAI.NodeTransitionMessageBase? @base,
             object? nodeTransitionMessageVariant2

@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static CustomFieldFilter FromValue(global::RetellAI.ValueFilter? value) => new CustomFieldFilter(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CustomFieldFilter(global::RetellAI.CustomFieldFilterVariant2 value) => new CustomFieldFilter((global::RetellAI.CustomFieldFilterVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             CustomFieldFilterVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CustomFieldFilter FromCustomFieldFilterVariant2(global::RetellAI.CustomFieldFilterVariant2? value) => new CustomFieldFilter(value);
 
         /// <summary>
         /// 

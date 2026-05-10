@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static PostCallAnalysisData FromAnalysisData(global::RetellAI.AnalysisData? value) => new PostCallAnalysisData(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PostCallAnalysisData(global::RetellAI.CallPresetAnalysisData value) => new PostCallAnalysisData((global::RetellAI.CallPresetAnalysisData?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             Preset = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PostCallAnalysisData FromPreset(global::RetellAI.CallPresetAnalysisData? value) => new PostCallAnalysisData(value);
 
         /// <summary>
         /// 

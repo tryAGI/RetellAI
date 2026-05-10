@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static CreateConversationFlowRequest FromConversationFlow(global::RetellAI.ConversationFlow? value) => new CreateConversationFlowRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public CreateConversationFlowRequest(
             global::RetellAI.ConversationFlow? conversationFlow,
             object? createConversationFlowRequestVariant2

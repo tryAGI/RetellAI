@@ -179,6 +179,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ChatMessageInput FromBase(global::RetellAI.MessageBase? value) => new ChatMessageInput(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.ToolCallInvocationMessageBase value) => new ChatMessageInput((global::RetellAI.ToolCallInvocationMessageBase?)value);
 
         /// <summary>
@@ -193,6 +198,11 @@ namespace RetellAI
         {
             ToolCallInvocationBase = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatMessageInput FromToolCallInvocationBase(global::RetellAI.ToolCallInvocationMessageBase? value) => new ChatMessageInput(value);
 
         /// <summary>
         /// 
@@ -215,6 +225,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ChatMessageInput FromToolCallResultBase(global::RetellAI.ToolCallResultMessageBase? value) => new ChatMessageInput(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.NodeTransitionMessageBase value) => new ChatMessageInput((global::RetellAI.NodeTransitionMessageBase?)value);
 
         /// <summary>
@@ -233,6 +248,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ChatMessageInput FromNodeTransitionBase(global::RetellAI.NodeTransitionMessageBase? value) => new ChatMessageInput(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.StateTransitionMessageBase value) => new ChatMessageInput((global::RetellAI.StateTransitionMessageBase?)value);
 
         /// <summary>
@@ -247,6 +267,11 @@ namespace RetellAI
         {
             StateTransitionBase = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatMessageInput FromStateTransitionBase(global::RetellAI.StateTransitionMessageBase? value) => new ChatMessageInput(value);
 
         /// <summary>
         /// 

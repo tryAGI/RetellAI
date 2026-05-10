@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static FunctionNode FromBase(global::RetellAI.NodeBase? value) => new FunctionNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator FunctionNode(global::RetellAI.FunctionNodeVariant2 value) => new FunctionNode((global::RetellAI.FunctionNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             FunctionNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static FunctionNode FromFunctionNodeVariant2(global::RetellAI.FunctionNodeVariant2? value) => new FunctionNode(value);
 
         /// <summary>
         /// 

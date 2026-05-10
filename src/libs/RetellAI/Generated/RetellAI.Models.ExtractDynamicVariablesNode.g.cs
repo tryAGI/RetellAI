@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ExtractDynamicVariablesNode FromBase(global::RetellAI.NodeBase? value) => new ExtractDynamicVariablesNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ExtractDynamicVariablesNode(global::RetellAI.ExtractDynamicVariablesNodeVariant2 value) => new ExtractDynamicVariablesNode((global::RetellAI.ExtractDynamicVariablesNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             ExtractDynamicVariablesNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ExtractDynamicVariablesNode FromExtractDynamicVariablesNodeVariant2(global::RetellAI.ExtractDynamicVariablesNodeVariant2? value) => new ExtractDynamicVariablesNode(value);
 
         /// <summary>
         /// 

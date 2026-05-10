@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsNode FromBase(global::RetellAI.NodeBase? value) => new SmsNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsNode(global::RetellAI.SmsNodeVariant2 value) => new SmsNode((global::RetellAI.SmsNodeVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             SmsNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsNode FromSmsNodeVariant2(global::RetellAI.SmsNodeVariant2? value) => new SmsNode(value);
 
         /// <summary>
         /// 

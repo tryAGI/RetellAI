@@ -119,6 +119,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static FinetuneExampleUtterance FromFinetuneExampleUtteranceVariant1(global::RetellAI.FinetuneExampleUtteranceVariant1? value) => new FinetuneExampleUtterance(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator FinetuneExampleUtterance(global::RetellAI.FinetuneExampleUtteranceVariant2 value) => new FinetuneExampleUtterance((global::RetellAI.FinetuneExampleUtteranceVariant2?)value);
 
         /// <summary>
@@ -137,6 +142,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static FinetuneExampleUtterance FromFinetuneExampleUtteranceVariant2(global::RetellAI.FinetuneExampleUtteranceVariant2? value) => new FinetuneExampleUtterance(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator FinetuneExampleUtterance(global::RetellAI.FinetuneExampleUtteranceVariant3 value) => new FinetuneExampleUtterance((global::RetellAI.FinetuneExampleUtteranceVariant3?)value);
 
         /// <summary>
@@ -151,6 +161,11 @@ namespace RetellAI
         {
             FinetuneExampleUtteranceVariant3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static FinetuneExampleUtterance FromFinetuneExampleUtteranceVariant3(global::RetellAI.FinetuneExampleUtteranceVariant3? value) => new FinetuneExampleUtterance(value);
 
         /// <summary>
         /// 

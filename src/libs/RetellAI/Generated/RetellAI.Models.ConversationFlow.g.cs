@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ConversationFlow FromOverride(global::RetellAI.ConversationFlowOverride? value) => new ConversationFlow(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ConversationFlow(global::RetellAI.ConversationFlowVariant2 value) => new ConversationFlow((global::RetellAI.ConversationFlowVariant2?)value);
 
         /// <summary>
@@ -103,6 +108,11 @@ namespace RetellAI
         {
             ConversationFlowVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ConversationFlow FromConversationFlowVariant2(global::RetellAI.ConversationFlowVariant2? value) => new ConversationFlow(value);
 
         /// <summary>
         /// 

@@ -89,6 +89,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static V3ChatResponse FromChatResponse(global::RetellAI.ChatResponse? value) => new V3ChatResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public V3ChatResponse(
             global::RetellAI.ChatResponse? chatResponse,
             object? v3ChatResponseVariant2
