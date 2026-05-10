@@ -44,6 +44,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.Language3 PickLanguage3() => IsLanguage3
+            ? Language3!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Language3' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.LanguageLegacyEnum? Enum { get; init; }
 #else
@@ -70,6 +77,13 @@ namespace RetellAI
             value = Enum;
             return IsEnum;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.LanguageLegacyEnum PickEnum() => IsEnum
+            ? Enum!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

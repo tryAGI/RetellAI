@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.Utterance PickUtterance() => IsUtterance
+            ? Utterance!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Utterance' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallInvocationUtterance? Invocation { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = Invocation;
             return IsInvocation;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ToolCallInvocationUtterance PickInvocation() => IsInvocation
+            ? Invocation!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Invocation' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -102,6 +116,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.ToolCallResultUtterance PickResult() => IsResult
+            ? Result!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Result' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeTransitionUtterance? NodeTransition { get; init; }
 #else
@@ -132,6 +153,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.NodeTransitionUtterance PickNodeTransition() => IsNodeTransition
+            ? NodeTransition!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'NodeTransition' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.DTMFUtterance? Dtmf { get; init; }
 #else
@@ -158,6 +186,13 @@ namespace RetellAI
             value = Dtmf;
             return IsDtmf;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.DTMFUtterance PickDtmf() => IsDtmf
+            ? Dtmf!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Dtmf' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

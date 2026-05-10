@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.VoicemailActionPrompt PickPrompt() => IsPrompt
+            ? Prompt!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Prompt' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.VoicemailActionStaticText? StaticText { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = StaticText;
             return IsStaticText;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.VoicemailActionStaticText PickStaticText() => IsStaticText
+            ? StaticText!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StaticText' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -102,6 +116,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.VoicemailActionHangup PickHangup() => IsHangup
+            ? Hangup!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Hangup' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.VoicemailActionBridgeTransfer? BridgeTransfer { get; init; }
 #else
@@ -128,6 +149,13 @@ namespace RetellAI
             value = BridgeTransfer;
             return IsBridgeTransfer;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.VoicemailActionBridgeTransfer PickBridgeTransfer() => IsBridgeTransfer
+            ? BridgeTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BridgeTransfer' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

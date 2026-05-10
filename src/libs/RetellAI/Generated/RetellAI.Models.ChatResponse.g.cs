@@ -252,5 +252,6 @@ namespace RetellAI
         public ChatResponse()
         {
         }
+
     }
 }

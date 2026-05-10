@@ -60,5 +60,6 @@ namespace RetellAI
         public V2WebCallResponseVariant1()
         {
         }
+
     }
 }

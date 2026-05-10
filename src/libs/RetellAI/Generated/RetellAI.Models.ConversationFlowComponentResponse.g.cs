@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.CreateConversationFlowComponentRequest PickCreateRequest() => IsCreateRequest
+            ? CreateRequest!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CreateRequest' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ConversationFlowComponentResponseVariant2? ConversationFlowComponentResponseVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = ConversationFlowComponentResponseVariant2;
             return IsConversationFlowComponentResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ConversationFlowComponentResponseVariant2 PickConversationFlowComponentResponseVariant2() => IsConversationFlowComponentResponseVariant2
+            ? ConversationFlowComponentResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationFlowComponentResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

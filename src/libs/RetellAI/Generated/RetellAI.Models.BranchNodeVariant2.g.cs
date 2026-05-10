@@ -71,5 +71,6 @@ namespace RetellAI
         public BranchNodeVariant2()
         {
         }
+
     }
 }

@@ -40,6 +40,13 @@ namespace RetellAI
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.V2CallResponse PickV2() => IsV2
+            ? V2!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'V2' but the value was {ToString()}.");
+
+        /// <summary>
         /// V3 list calls response. Transcript fields are intentionally omitted.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -68,6 +75,13 @@ namespace RetellAI
             value = V3CallResponseVariant2;
             return IsV3CallResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickV3CallResponseVariant2() => IsV3CallResponseVariant2
+            ? V3CallResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'V3CallResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

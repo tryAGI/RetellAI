@@ -38,6 +38,13 @@ namespace RetellAI
             value = Cascading;
             return IsCascading;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ModelChoiceCascading PickCascading() => IsCascading
+            ? Cascading!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Cascading' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

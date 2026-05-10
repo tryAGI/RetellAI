@@ -52,5 +52,6 @@ namespace RetellAI
         public ListBatchTestsV2Response4()
         {
         }
+
     }
 }

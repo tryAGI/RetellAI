@@ -98,5 +98,6 @@ namespace RetellAI
         public CallAnalysis()
         {
         }
+
     }
 }

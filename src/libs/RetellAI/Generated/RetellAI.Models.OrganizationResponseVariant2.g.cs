@@ -41,5 +41,6 @@ namespace RetellAI
         public OrganizationResponseVariant2()
         {
         }
+
     }
 }

@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.TransferDestinationPredefined PickPredefined() => IsPredefined
+            ? Predefined!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Predefined' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferDestinationInferred? Inferred { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = Inferred;
             return IsInferred;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.TransferDestinationInferred PickInferred() => IsInferred
+            ? Inferred!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Inferred' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

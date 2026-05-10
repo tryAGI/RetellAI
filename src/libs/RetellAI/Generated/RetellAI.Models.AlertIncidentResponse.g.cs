@@ -222,5 +222,6 @@ namespace RetellAI
         public AlertIncidentResponse()
         {
         }
+
     }
 }

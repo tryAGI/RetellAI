@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.SmsContentPredefined PickPredefined() => IsPredefined
+            ? Predefined!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Predefined' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsContentInferred? Inferred { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.SmsContentInferred PickInferred() => IsInferred
+            ? Inferred!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Inferred' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsContentTemplate? Template { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace RetellAI
             value = Template;
             return IsTemplate;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SmsContentTemplate PickTemplate() => IsTemplate
+            ? Template!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Template' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

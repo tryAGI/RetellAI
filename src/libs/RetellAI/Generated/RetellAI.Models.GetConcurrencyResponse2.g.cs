@@ -52,5 +52,6 @@ namespace RetellAI
         public GetConcurrencyResponse2()
         {
         }
+
     }
 }

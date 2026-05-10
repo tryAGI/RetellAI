@@ -111,5 +111,6 @@ namespace RetellAI
         public StringAnalysisData()
         {
         }
+
     }
 }

@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.TransferOptionColdTransfer PickColdTransfer() => IsColdTransfer
+            ? ColdTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ColdTransfer' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferOptionWarmTransfer? WarmTransfer { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.TransferOptionWarmTransfer PickWarmTransfer() => IsWarmTransfer
+            ? WarmTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'WarmTransfer' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferOptionAgenticWarmTransfer? AgenticWarmTransfer { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace RetellAI
             value = AgenticWarmTransfer;
             return IsAgenticWarmTransfer;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.TransferOptionAgenticWarmTransfer PickAgenticWarmTransfer() => IsAgenticWarmTransfer
+            ? AgenticWarmTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AgenticWarmTransfer' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

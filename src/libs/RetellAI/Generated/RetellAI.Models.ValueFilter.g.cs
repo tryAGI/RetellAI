@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.StringFilter PickString() => IsString
+            ? String!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NumberFilter? Number { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = Number;
             return IsNumber;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NumberFilter PickNumber() => IsNumber
+            ? Number!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -102,6 +116,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.BooleanFilter PickBoolean() => IsBoolean
+            ? Boolean!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RangeFilter? Range { get; init; }
 #else
@@ -128,6 +149,13 @@ namespace RetellAI
             value = Range;
             return IsRange;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.RangeFilter PickRange() => IsRange
+            ? Range!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Range' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -162,6 +190,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.EnumFilter PickEnum() => IsEnum
+            ? Enum!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.PresentFilter? Present { get; init; }
 #else
@@ -188,6 +223,13 @@ namespace RetellAI
             value = Present;
             return IsPresent;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.PresentFilter PickPresent() => IsPresent
+            ? Present!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Present' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

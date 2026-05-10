@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.NodeBase PickBase() => IsBase
+            ? Base!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CancelTransferNodeVariant2? CancelTransferNodeVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = CancelTransferNodeVariant2;
             return IsCancelTransferNodeVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.CancelTransferNodeVariant2 PickCancelTransferNodeVariant2() => IsCancelTransferNodeVariant2
+            ? CancelTransferNodeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CancelTransferNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

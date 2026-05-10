@@ -52,5 +52,6 @@ namespace RetellAI
         public GetChatAgentResponse2()
         {
         }
+
     }
 }

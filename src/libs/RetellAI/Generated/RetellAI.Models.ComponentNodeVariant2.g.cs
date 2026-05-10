@@ -102,5 +102,6 @@ namespace RetellAI
         public ComponentNodeVariant2()
         {
         }
+
     }
 }

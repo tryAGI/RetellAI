@@ -66,5 +66,6 @@ namespace RetellAI
         public MetricResult()
         {
         }
+
     }
 }

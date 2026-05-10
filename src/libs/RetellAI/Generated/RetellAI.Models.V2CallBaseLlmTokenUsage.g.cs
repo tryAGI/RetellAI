@@ -66,5 +66,6 @@ namespace RetellAI
         public V2CallBaseLlmTokenUsage()
         {
         }
+
     }
 }

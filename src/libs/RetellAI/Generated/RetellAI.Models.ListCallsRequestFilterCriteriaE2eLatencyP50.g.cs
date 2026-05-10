@@ -48,5 +48,6 @@ namespace RetellAI
         public ListCallsRequestFilterCriteriaE2eLatencyP50()
         {
         }
+
     }
 }

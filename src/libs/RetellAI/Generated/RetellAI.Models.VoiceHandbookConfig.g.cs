@@ -129,5 +129,6 @@ namespace RetellAI
         public VoiceHandbookConfig()
         {
         }
+
     }
 }

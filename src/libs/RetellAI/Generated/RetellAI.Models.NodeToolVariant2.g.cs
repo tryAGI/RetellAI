@@ -42,5 +42,6 @@ namespace RetellAI
         public NodeToolVariant2()
         {
         }
+
     }
 }

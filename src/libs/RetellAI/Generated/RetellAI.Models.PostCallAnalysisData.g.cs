@@ -40,6 +40,13 @@ namespace RetellAI
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.AnalysisData PickAnalysisData() => IsAnalysisData
+            ? AnalysisData!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AnalysisData' but the value was {ToString()}.");
+
+        /// <summary>
         /// System preset for post-call analysis (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -68,6 +75,13 @@ namespace RetellAI
             value = Preset;
             return IsPreset;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.CallPresetAnalysisData PickPreset() => IsPreset
+            ? Preset!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Preset' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

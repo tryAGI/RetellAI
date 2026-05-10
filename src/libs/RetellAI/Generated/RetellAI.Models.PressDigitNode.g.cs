@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.NodeBase PickBase() => IsBase
+            ? Base!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.PressDigitNodeVariant2? PressDigitNodeVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = PressDigitNodeVariant2;
             return IsPressDigitNodeVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.PressDigitNodeVariant2 PickPressDigitNodeVariant2() => IsPressDigitNodeVariant2
+            ? PressDigitNodeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PressDigitNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

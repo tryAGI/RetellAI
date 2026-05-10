@@ -60,5 +60,6 @@ namespace RetellAI
         public MistranscribedImportantEntitiesAnalysis()
         {
         }
+
     }
 }

@@ -50,5 +50,6 @@ namespace RetellAI
         public CohortAggregatedResultTopRecommendation()
         {
         }
+
     }
 }

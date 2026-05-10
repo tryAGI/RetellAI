@@ -144,5 +144,6 @@ namespace RetellAI
         public GetConcurrencyResponse()
         {
         }
+
     }
 }

@@ -40,6 +40,13 @@ namespace RetellAI
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public int PickAgentVersionReferenceVariant1() => IsAgentVersionReferenceVariant1
+            ? AgentVersionReferenceVariant1!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AgentVersionReferenceVariant1' but the value was {ToString()}.");
+
+        /// <summary>
         /// Example: prod
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -68,6 +75,13 @@ namespace RetellAI
             value = AgentVersionReferenceVariant2;
             return IsAgentVersionReferenceVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string PickAgentVersionReferenceVariant2() => IsAgentVersionReferenceVariant2
+            ? AgentVersionReferenceVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AgentVersionReferenceVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

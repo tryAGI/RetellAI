@@ -92,5 +92,6 @@ namespace RetellAI
         public PresetAnalysisData()
         {
         }
+
     }
 }

@@ -228,5 +228,6 @@ namespace RetellAI
         public Organization()
         {
         }
+
     }
 }
