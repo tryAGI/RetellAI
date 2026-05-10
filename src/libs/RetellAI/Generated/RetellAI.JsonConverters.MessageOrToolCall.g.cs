@@ -198,7 +198,10 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (message == null && invocation == null && result == null && nodeTransition == null && stateTransition == null)
+            {
                 try
                 {
 
@@ -212,7 +215,10 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (message == null && invocation == null && result == null && nodeTransition == null && stateTransition == null)
+            {
                 try
                 {
 
@@ -226,7 +232,10 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (message == null && invocation == null && result == null && nodeTransition == null && stateTransition == null)
+            {
                 try
                 {
 
@@ -240,7 +249,10 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (message == null && invocation == null && result == null && nodeTransition == null && stateTransition == null)
+            {
                 try
                 {
 

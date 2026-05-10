@@ -85,6 +85,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TestCaseDefinitionInput), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TestCaseDefinitionInput> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TestCaseDefinitionInput).Name}");
                     input = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -95,9 +96,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (input == null && testCaseDefinitionVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TestCaseDefinitionVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TestCaseDefinitionVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TestCaseDefinitionVariant2).Name}");
                     testCaseDefinitionVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

@@ -158,6 +158,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.MessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.MessageBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.MessageBase).Name}");
                     @base = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -168,9 +169,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ToolCallInvocationMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ToolCallInvocationMessageBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ToolCallInvocationMessageBase).Name}");
                     toolCallInvocationBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -181,9 +186,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ToolCallResultMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ToolCallResultMessageBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ToolCallResultMessageBase).Name}");
                     toolCallResultBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -194,9 +203,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NodeTransitionMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NodeTransitionMessageBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NodeTransitionMessageBase).Name}");
                     nodeTransitionBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -207,9 +220,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.StateTransitionMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.StateTransitionMessageBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.StateTransitionMessageBase).Name}");
                     stateTransitionBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

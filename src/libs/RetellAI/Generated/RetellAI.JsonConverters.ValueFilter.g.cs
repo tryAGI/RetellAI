@@ -163,6 +163,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.StringFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.StringFilter> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.StringFilter).Name}");
                     @string = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -173,9 +174,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@string == null && number == null && boolean == null && range == null && @enum == null && present == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NumberFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NumberFilter> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NumberFilter).Name}");
                     number = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -186,9 +191,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@string == null && number == null && boolean == null && range == null && @enum == null && present == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BooleanFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BooleanFilter> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BooleanFilter).Name}");
                     boolean = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -199,9 +208,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@string == null && number == null && boolean == null && range == null && @enum == null && present == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.RangeFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.RangeFilter> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.RangeFilter).Name}");
                     range = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -212,9 +225,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@string == null && number == null && boolean == null && range == null && @enum == null && present == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EnumFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EnumFilter> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EnumFilter).Name}");
                     @enum = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -225,9 +242,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@string == null && number == null && boolean == null && range == null && @enum == null && present == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.PresentFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.PresentFilter> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.PresentFilter).Name}");
                     present = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

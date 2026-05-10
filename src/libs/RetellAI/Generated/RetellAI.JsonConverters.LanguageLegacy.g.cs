@@ -108,7 +108,10 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (language3 == null && @enum == null)
+            {
                 try
                 {
 

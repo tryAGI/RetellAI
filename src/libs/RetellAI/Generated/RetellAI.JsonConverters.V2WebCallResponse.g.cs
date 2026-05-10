@@ -133,6 +133,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2WebCallResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2WebCallResponseVariant1> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2WebCallResponseVariant1).Name}");
                     v2WebCallResponseVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -143,9 +144,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (v2WebCallResponseVariant1 == null && @base == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.V2CallBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.V2CallBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.V2CallBase).Name}");
                     @base = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

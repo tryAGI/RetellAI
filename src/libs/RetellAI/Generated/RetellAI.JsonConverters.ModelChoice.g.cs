@@ -59,6 +59,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ModelChoiceCascading), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ModelChoiceCascading> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ModelChoiceCascading).Name}");
                     cascading = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

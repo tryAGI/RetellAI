@@ -93,6 +93,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NodeBaseCommon), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NodeBaseCommon> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NodeBaseCommon).Name}");
                     common = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -103,9 +104,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (common == null && nodeBaseVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NodeBaseVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NodeBaseVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NodeBaseVariant2).Name}");
                     nodeBaseVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
