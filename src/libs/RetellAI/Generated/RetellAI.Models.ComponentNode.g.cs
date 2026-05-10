@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.NodeBaseCommon PickBaseCommon() => IsBaseCommon
+            ? BaseCommon!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BaseCommon' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ComponentNodeVariant2? ComponentNodeVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = ComponentNodeVariant2;
             return IsComponentNodeVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ComponentNodeVariant2 PickComponentNodeVariant2() => IsComponentNodeVariant2
+            ? ComponentNodeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ComponentNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

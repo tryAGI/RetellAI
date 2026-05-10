@@ -40,6 +40,13 @@ namespace RetellAI
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ChatResponse PickChatResponse() => IsChatResponse
+            ? ChatResponse!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ChatResponse' but the value was {ToString()}.");
+
+        /// <summary>
         /// V3 list chats response. Transcript fields are intentionally omitted.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -68,6 +75,13 @@ namespace RetellAI
             value = V3ChatResponseVariant2;
             return IsV3ChatResponseVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickV3ChatResponseVariant2() => IsV3ChatResponseVariant2
+            ? V3ChatResponseVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'V3ChatResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

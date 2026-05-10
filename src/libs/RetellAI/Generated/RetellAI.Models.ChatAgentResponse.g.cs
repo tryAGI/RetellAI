@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.ChatAgentResponseVariant1 PickChatAgentResponseVariant1() => IsChatAgentResponseVariant1
+            ? ChatAgentResponseVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ChatAgentResponseVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChatAgentRequest? Request { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.ChatAgentRequest PickRequest() => IsRequest
+            ? Request!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Request' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChatAgentResponseVariant3? ChatAgentResponseVariant3 { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace RetellAI
             value = ChatAgentResponseVariant3;
             return IsChatAgentResponseVariant3;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ChatAgentResponseVariant3 PickChatAgentResponseVariant3() => IsChatAgentResponseVariant3
+            ? ChatAgentResponseVariant3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ChatAgentResponseVariant3' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

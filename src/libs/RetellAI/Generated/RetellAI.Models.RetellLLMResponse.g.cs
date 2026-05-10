@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.RetellLLMResponseVariant1 PickRetellLLMResponseVariant1() => IsRetellLLMResponseVariant1
+            ? RetellLLMResponseVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLLMResponseVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RetellLlmRequest? LlmRequest { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.RetellLlmRequest PickLlmRequest() => IsLlmRequest
+            ? LlmRequest!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'LlmRequest' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RetellLLMResponseVariant3? RetellLLMResponseVariant3 { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace RetellAI
             value = RetellLLMResponseVariant3;
             return IsRetellLLMResponseVariant3;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.RetellLLMResponseVariant3 PickRetellLLMResponseVariant3() => IsRetellLLMResponseVariant3
+            ? RetellLLMResponseVariant3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLLMResponseVariant3' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

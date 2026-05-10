@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.NodeEdge PickNode() => IsNode
+            ? Node!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ElseEdgeVariant2? ElseEdgeVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = ElseEdgeVariant2;
             return IsElseEdgeVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ElseEdgeVariant2 PickElseEdgeVariant2() => IsElseEdgeVariant2
+            ? ElseEdgeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ElseEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

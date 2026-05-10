@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.CreateOrganizationRequestNew PickNew() => IsNew
+            ? New!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'New' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CreateOrganizationRequestOld? Old { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = Old;
             return IsOld;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.CreateOrganizationRequestOld PickOld() => IsOld
+            ? Old!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Old' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

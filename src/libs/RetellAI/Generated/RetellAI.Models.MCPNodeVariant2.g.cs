@@ -149,5 +149,6 @@ namespace RetellAI
         public MCPNodeVariant2()
         {
         }
+
     }
 }

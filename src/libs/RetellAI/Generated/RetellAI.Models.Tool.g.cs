@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.EndCallTool PickEndCall() => IsEndCall
+            ? EndCall!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'EndCall' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferCallTool? TransferCall { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = TransferCall;
             return IsTransferCall;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.TransferCallTool PickTransferCall() => IsTransferCall
+            ? TransferCall!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TransferCall' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -102,6 +116,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.CheckAvailabilityCalTool PickCheckAvailabilityCal() => IsCheckAvailabilityCal
+            ? CheckAvailabilityCal!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CheckAvailabilityCal' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BookAppointmentCalTool? BookAppointmentCal { get; init; }
 #else
@@ -128,6 +149,13 @@ namespace RetellAI
             value = BookAppointmentCal;
             return IsBookAppointmentCal;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.BookAppointmentCalTool PickBookAppointmentCal() => IsBookAppointmentCal
+            ? BookAppointmentCal!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BookAppointmentCal' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -162,6 +190,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.AgentSwapTool PickAgentSwap() => IsAgentSwap
+            ? AgentSwap!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AgentSwap' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.PressDigitTool? PressDigit { get; init; }
 #else
@@ -188,6 +223,13 @@ namespace RetellAI
             value = PressDigit;
             return IsPressDigit;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.PressDigitTool PickPressDigit() => IsPressDigit
+            ? PressDigit!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PressDigit' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -222,6 +264,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.SendSMSTool PickSendSM() => IsSendSM
+            ? SendSM!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SendSM' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CustomTool? Custom { get; init; }
 #else
@@ -248,6 +297,13 @@ namespace RetellAI
             value = Custom;
             return IsCustom;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.CustomTool PickCustom() => IsCustom
+            ? Custom!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -282,6 +338,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.CodeTool PickCode() => IsCode
+            ? Code!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Code' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ExtractDynamicVariableTool? ExtractDynamicVariable { get; init; }
 #else
@@ -308,6 +371,13 @@ namespace RetellAI
             value = ExtractDynamicVariable;
             return IsExtractDynamicVariable;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ExtractDynamicVariableTool PickExtractDynamicVariable() => IsExtractDynamicVariable
+            ? ExtractDynamicVariable!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ExtractDynamicVariable' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -342,6 +412,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.BridgeTransferTool PickBridgeTransfer() => IsBridgeTransfer
+            ? BridgeTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BridgeTransfer' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CancelTransferTool? CancelTransfer { get; init; }
 #else
@@ -372,6 +449,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.CancelTransferTool PickCancelTransfer() => IsCancelTransfer
+            ? CancelTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CancelTransfer' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.MCPTool? Mcp { get; init; }
 #else
@@ -398,6 +482,13 @@ namespace RetellAI
             value = Mcp;
             return IsMcp;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.MCPTool PickMcp() => IsMcp
+            ? Mcp!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Mcp' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

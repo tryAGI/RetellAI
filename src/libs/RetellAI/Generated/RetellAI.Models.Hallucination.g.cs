@@ -62,5 +62,6 @@ namespace RetellAI
         public Hallucination()
         {
         }
+
     }
 }

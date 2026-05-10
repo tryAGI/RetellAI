@@ -55,5 +55,6 @@ namespace RetellAI
         public AgentRequestCustomSttConfig()
         {
         }
+
     }
 }

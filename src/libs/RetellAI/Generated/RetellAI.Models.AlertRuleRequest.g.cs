@@ -152,5 +152,6 @@ namespace RetellAI
         public AlertRuleRequest()
         {
         }
+
     }
 }

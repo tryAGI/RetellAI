@@ -61,5 +61,6 @@ namespace RetellAI
         public EquationCondition()
         {
         }
+
     }
 }

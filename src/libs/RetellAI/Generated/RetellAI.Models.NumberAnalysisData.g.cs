@@ -97,5 +97,6 @@ namespace RetellAI
         public NumberAnalysisData()
         {
         }
+
     }
 }

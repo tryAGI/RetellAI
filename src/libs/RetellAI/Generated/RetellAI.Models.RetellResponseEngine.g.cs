@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.ResponseEngineRetellLm PickLm() => IsLm
+            ? Lm!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Lm' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ResponseEngineConversationFlow? ConversationFlow { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = ConversationFlow;
             return IsConversationFlow;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ResponseEngineConversationFlow PickConversationFlow() => IsConversationFlow
+            ? ConversationFlow!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationFlow' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

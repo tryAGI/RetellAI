@@ -65,5 +65,6 @@ namespace RetellAI
         public ConversationFlowComponentResponseVariant2()
         {
         }
+
     }
 }

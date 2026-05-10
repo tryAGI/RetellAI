@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool> PickNodeToolVariant1() => IsNodeToolVariant1
+            ? NodeToolVariant1!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'NodeToolVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeToolVariant2? NodeToolVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = NodeToolVariant2;
             return IsNodeToolVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeToolVariant2 PickNodeToolVariant2() => IsNodeToolVariant2
+            ? NodeToolVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'NodeToolVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

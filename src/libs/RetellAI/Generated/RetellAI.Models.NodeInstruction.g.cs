@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.NodeInstructionPrompt PickPrompt() => IsPrompt
+            ? Prompt!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Prompt' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeInstructionStaticText? StaticText { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = StaticText;
             return IsStaticText;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeInstructionStaticText PickStaticText() => IsStaticText
+            ? StaticText!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StaticText' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

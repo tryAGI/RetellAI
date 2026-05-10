@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.NodeBase PickBase() => IsBase
+            ? Base!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ExtractDynamicVariablesNodeVariant2? ExtractDynamicVariablesNodeVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = ExtractDynamicVariablesNodeVariant2;
             return IsExtractDynamicVariablesNodeVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ExtractDynamicVariablesNodeVariant2 PickExtractDynamicVariablesNodeVariant2() => IsExtractDynamicVariablesNodeVariant2
+            ? ExtractDynamicVariablesNodeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ExtractDynamicVariablesNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

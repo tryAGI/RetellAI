@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.NodeBase PickBase() => IsBase
+            ? Base!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AgentOverrideConfig? AgentOverrideConfig { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.AgentOverrideConfig PickAgentOverrideConfig() => IsAgentOverrideConfig
+            ? AgentOverrideConfig!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AgentOverrideConfig' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SubagentNodeVariant3? SubagentNodeVariant3 { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace RetellAI
             value = SubagentNodeVariant3;
             return IsSubagentNodeVariant3;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SubagentNodeVariant3 PickSubagentNodeVariant3() => IsSubagentNodeVariant3
+            ? SubagentNodeVariant3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SubagentNodeVariant3' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

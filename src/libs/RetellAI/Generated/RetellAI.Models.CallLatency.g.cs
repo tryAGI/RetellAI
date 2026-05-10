@@ -139,5 +139,6 @@ namespace RetellAI
         public CallLatency()
         {
         }
+
     }
 }

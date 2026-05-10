@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.TestCaseDefinitionInput PickInput() => IsInput
+            ? Input!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Input' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TestCaseDefinitionVariant2? TestCaseDefinitionVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = TestCaseDefinitionVariant2;
             return IsTestCaseDefinitionVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.TestCaseDefinitionVariant2 PickTestCaseDefinitionVariant2() => IsTestCaseDefinitionVariant2
+            ? TestCaseDefinitionVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TestCaseDefinitionVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

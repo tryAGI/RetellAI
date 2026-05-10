@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.V2WebCallResponseVariant1 PickV2WebCallResponseVariant1() => IsV2WebCallResponseVariant1
+            ? V2WebCallResponseVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'V2WebCallResponseVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.V2CallBase? Base { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = Base;
             return IsBase;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.V2CallBase PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

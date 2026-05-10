@@ -93,5 +93,6 @@ namespace RetellAI
         public V2CallBaseLatency()
         {
         }
+
     }
 }

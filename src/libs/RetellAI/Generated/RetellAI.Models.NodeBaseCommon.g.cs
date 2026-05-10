@@ -73,5 +73,6 @@ namespace RetellAI
         public NodeBaseCommon()
         {
         }
+
     }
 }

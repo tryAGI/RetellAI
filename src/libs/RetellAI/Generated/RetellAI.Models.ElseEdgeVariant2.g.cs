@@ -40,5 +40,6 @@ namespace RetellAI
         public ElseEdgeVariant2()
         {
         }
+
     }
 }

@@ -38,6 +38,13 @@ namespace RetellAI
             value = Hangup;
             return IsHangup;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.IvrActionHangup PickHangup() => IsHangup
+            ? Hangup!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Hangup' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.FinetuneExampleUtteranceVariant1 PickFinetuneExampleUtteranceVariant1() => IsFinetuneExampleUtteranceVariant1
+            ? FinetuneExampleUtteranceVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FinetuneExampleUtteranceVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.FinetuneExampleUtteranceVariant2? FinetuneExampleUtteranceVariant2 { get; init; }
 #else
@@ -72,6 +79,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.FinetuneExampleUtteranceVariant2 PickFinetuneExampleUtteranceVariant2() => IsFinetuneExampleUtteranceVariant2
+            ? FinetuneExampleUtteranceVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FinetuneExampleUtteranceVariant2' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.FinetuneExampleUtteranceVariant3? FinetuneExampleUtteranceVariant3 { get; init; }
 #else
@@ -98,6 +112,13 @@ namespace RetellAI
             value = FinetuneExampleUtteranceVariant3;
             return IsFinetuneExampleUtteranceVariant3;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.FinetuneExampleUtteranceVariant3 PickFinetuneExampleUtteranceVariant3() => IsFinetuneExampleUtteranceVariant3
+            ? FinetuneExampleUtteranceVariant3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'FinetuneExampleUtteranceVariant3' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

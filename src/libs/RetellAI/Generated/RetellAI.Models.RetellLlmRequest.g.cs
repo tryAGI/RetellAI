@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.RetellLlmOverride PickOverride() => IsOverride
+            ? Override!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Override' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RetellLlmRequestVariant2? RetellLlmRequestVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = RetellLlmRequestVariant2;
             return IsRetellLlmRequestVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.RetellLlmRequestVariant2 PickRetellLlmRequestVariant2() => IsRetellLlmRequestVariant2
+            ? RetellLlmRequestVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLlmRequestVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>

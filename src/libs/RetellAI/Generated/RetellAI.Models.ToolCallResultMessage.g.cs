@@ -42,6 +42,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.ToolCallResultMessageBase PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? ToolCallResultMessageVariant2 { get; init; }
 #else
@@ -68,6 +75,13 @@ namespace RetellAI
             value = ToolCallResultMessageVariant2;
             return IsToolCallResultMessageVariant2;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickToolCallResultMessageVariant2() => IsToolCallResultMessageVariant2
+            ? ToolCallResultMessageVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ToolCallResultMessageVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
