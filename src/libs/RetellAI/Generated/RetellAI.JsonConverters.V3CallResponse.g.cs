@@ -108,7 +108,10 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (v2 == null && v3CallResponseVariant2 == null)
+            {
                 try
                 {
 

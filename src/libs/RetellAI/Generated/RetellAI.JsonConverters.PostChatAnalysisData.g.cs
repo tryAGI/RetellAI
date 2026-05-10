@@ -79,6 +79,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AnalysisData), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AnalysisData> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AnalysisData).Name}");
                     analysisData = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -89,9 +90,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (analysisData == null && preset == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatPresetAnalysisData), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatPresetAnalysisData> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatPresetAnalysisData).Name}");
                     preset = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
