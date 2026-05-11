@@ -625,12 +625,14 @@ components:
           - eleven_v3
           - sonic-3
           - sonic-3-latest
+          - sonic-3.5
           - tts-1
           - gpt-4o-mini-tts
           - speech-02-turbo
           - speech-2.8-turbo
           - s1
           - s2-pro
+          - s2.1-pro
           - null
           description: Select the voice model used for the selected voice. Each provider has a set of available voice models. Set to null to remove voice model selection, and default ones will apply. Check
             out dashboard for more details of each voice model.
@@ -5474,6 +5476,7 @@ components:
         s2s_model:
           type: string
           enum:
+          - gpt-realtime-2
           - gpt-realtime-1.5
           - gpt-realtime
           - gpt-realtime-mini
@@ -7116,20 +7119,277 @@ components:
       - $ref: '#/components/schemas/V2WebCallResponse'
       - $ref: '#/components/schemas/V2PhoneCallResponse'
     V3CallResponse:
+      oneOf:
+      - $ref: '#/components/schemas/V3WebCallResponse'
+      - $ref: '#/components/schemas/V3PhoneCallResponse'
+    V3CallBase:
+      type: object
+      required:
+      - call_id
+      - agent_id
+      - agent_version
+      - call_status
+      properties:
+        call_id:
+          type: string
+          example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
+          description: Unique id of the call. Used to identify the call in the LLM websocket and used to authenticate in the audio websocket.
+        agent_id:
+          type: string
+          example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
+          description: Corresponding agent id of this call.
+        agent_name:
+          type: string
+          example: My Agent
+          description: Name of the agent.
+        agent_version:
+          type: integer
+          example: 1
+          description: The version of the agent.
+        call_status:
+          type: string
+          enum:
+          - registered
+          - not_connected
+          - ongoing
+          - ended
+          - error
+          example: registered
+          description: 'Status of call.
+
+
+            - `registered`: Call id issued, starting to make a call using this id.
+
+            - `ongoing`: Call connected and ongoing.
+
+            - `ended`: The underlying websocket has ended for the call. Either user or agent hung up, or call transferred.
+
+            - `error`: Call encountered error.
+
+            '
+        metadata:
+          type: object
+          description: An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the call. Not used for processing. You can later get this field
+            from the call object.
+        retell_llm_dynamic_variables:
+          type: object
+          additionalProperties: {}
+          example:
+            customer_name: John Doe
+          description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
+        collected_dynamic_variables:
+          type: object
+          additionalProperties: {}
+          example:
+            last_node_name: Test node
+          description: Dynamic variables collected from the call. Only available after the call ends.
+        custom_sip_headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom SIP headers to be added to the call.
+          example:
+            X-Custom-Header: Custom Value
+        data_storage_setting:
+          type: string
+          enum:
+          - everything
+          - everything_except_pii
+          - basic_attributes_only
+          example: everything
+          description: Data storage setting for this call's agent. "everything" stores all data, "everything_except_pii" excludes PII when possible, "basic_attributes_only" stores only metadata.
+          nullable: true
+        opt_in_signed_url:
+          type: boolean
+          example: true
+          description: Whether this agent opts in for signed URLs for public logs and recordings. When enabled, the generated URLs will include security signatures that restrict access and automatically
+            expire after 24 hours.
+        start_timestamp:
+          type: integer
+          example: 1703302407333
+          description: Begin timestamp (milliseconds since epoch) of the call. Available after call starts.
+        end_timestamp:
+          type: integer
+          example: 1703302428855
+          description: End timestamp (milliseconds since epoch) of the call. Available after call ends.
+        transfer_end_timestamp:
+          type: integer
+          example: 1703302628855
+          description: Transfer end timestamp (milliseconds since epoch) of the call. Available after transfer call ends.
+        duration_ms:
+          type: integer
+          example: 10000
+          description: Duration of the call in milliseconds. Available after call ends.
+        recording_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording.wav
+          description: Recording of the call. Available after call ends.
+        recording_multi_channel_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording_multichannel.wav
+          description: Recording of the call, with each party's audio stored in a separate channel. Available after the call ends.
+        scrubbed_recording_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording.wav
+          description: Recording of the call without PII. Available after call ends.
+        scrubbed_recording_multi_channel_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording_multichannel.wav
+          description: Recording of the call without PII, with each party's audio stored in a separate channel. Available after the call ends.
+        public_log_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/public_log.txt
+          description: Public log of the call, containing details about all the requests and responses received in LLM WebSocket, latency tracking for each turntaking, helpful for debugging and tracing.
+            Available after call ends.
+        knowledge_base_retrieved_contents_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/kb_retrieved_contents.txt
+          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the respond id and the retrieved contents
+            related to that response. It's already rendered in call history tab of dashboard, and you can also manually download and check against the transcript to view the knowledge base retrieval results.
+        latency:
+          type: object
+          description: Latency tracking of the call, available after call ends. Not all fields here will be available, as it depends on the type of call and feature used.
+          properties:
+            e2e:
+              description: End to end latency (from user stops talking to agent start talking) tracking of the call. This latency does not account for the network trip time from Retell server to user frontend.
+                The latency is tracked every time turn change between user and agent.
+              $ref: '#/components/schemas/CallLatency'
+            asr:
+              description: Transcription latency (diff between the duration of the chunks streamed and the durations of the transcribed part) tracking of the call.
+              $ref: '#/components/schemas/CallLatency'
+            llm:
+              description: LLM latency (from issue of LLM call to first speakable chunk received) tracking of the call. When using custom LLM. this latency includes LLM websocket roundtrip time between
+                user server and Retell server.
+              $ref: '#/components/schemas/CallLatency'
+            llm_websocket_network_rtt:
+              description: LLM websocket roundtrip latency (between user server and Retell server) tracking of the call. Only populated for calls using custom LLM.
+              $ref: '#/components/schemas/CallLatency'
+            tts:
+              description: Text-to-speech latency (from the triggering of TTS to first byte received) tracking of the call.
+              $ref: '#/components/schemas/CallLatency'
+            knowledge_base:
+              description: Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature
+                for the agent of the call.
+              $ref: '#/components/schemas/CallLatency'
+            s2s:
+              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
+              $ref: '#/components/schemas/CallLatency'
+        disconnection_reason:
+          $ref: '#/components/schemas/DisconnectionReason'
+          example: agent_hangup
+          description: The reason for the disconnection of the call. Read detailed description about reasons listed here at [Disconnection Reason Doc](/reliability/debug-call-disconnect#understanding-disconnection-reasons).
+        transfer_destination:
+          type: string
+          example: '+12137771234'
+          description: The destination number or identifier where the call was transferred to. Only populated when the disconnection reason was `call_transfer`. Can be a phone number or a SIP URI. SIP URIs
+            are prefixed with "sip:" and may include a ";transport=..." portion (if transport is known) where the transport type can be "tls", "tcp" or "udp".
+          nullable: true
+        call_analysis:
+          description: Post call analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
+            event type to receive it once ready.
+          $ref: '#/components/schemas/CallAnalysis'
+        call_cost:
+          description: Cost of the call, including all the products and their costs and discount.
+          type: object
+          required:
+          - product_costs
+          - total_duration_seconds
+          - total_duration_unit_price
+          - combined_cost
+          properties:
+            product_costs:
+              type: array
+              description: List of products with their unit prices and costs in cents
+              items:
+                $ref: '#/components/schemas/ProductCost'
+            total_duration_seconds:
+              type: number
+              description: Total duration of the call in seconds
+              example: 60
+            total_duration_unit_price:
+              type: number
+              description: Total unit duration price of all products in cents per second
+              example: 1
+            combined_cost:
+              type: number
+              description: Combined cost of all individual costs in cents
+              example: 70
+        llm_token_usage:
+          type: object
+          description: LLM token usage of the call, available after call ends. Not populated if using custom LLM, realtime API, or no LLM call is made.
+          required:
+          - values
+          - average
+          - num_requests
+          properties:
+            values:
+              type: array
+              items:
+                type: number
+              description: All the token count values in the call.
+            average:
+              type: number
+              description: Average token count of the call.
+            num_requests:
+              type: number
+              description: Number of requests made to the LLM.
+    V3PhoneCallResponse:
       allOf:
-      - $ref: '#/components/schemas/V2CallResponse'
       - type: object
-        description: V3 list calls response. Transcript fields are intentionally omitted.
-        not:
-          anyOf:
-          - required:
-            - transcript
-          - required:
-            - transcript_object
-          - required:
-            - transcript_with_tool_calls
-          - required:
-            - scrubbed_transcript_with_tool_calls
+        required:
+        - call_type
+        - from_number
+        - to_number
+        - direction
+        properties:
+          call_type:
+            type: string
+            enum:
+            - phone_call
+            example: phone_call
+            description: Type of the call. Used to distinguish between web call and phone call.
+          from_number:
+            type: string
+            example: '+12137771234'
+            description: The caller number.
+          to_number:
+            type: string
+            example: '+12137771235'
+            description: The callee number.
+          direction:
+            type: string
+            enum:
+            - inbound
+            - outbound
+            example: inbound
+            description: Direction of the phone call.
+          telephony_identifier:
+            type: object
+            description: Telephony identifier of the call, populated when available. Tracking purposes only.
+            properties:
+              twilio_call_sid:
+                type: string
+                example: CA5d0d0d8047bf685c3f0ff980fe62c123
+                description: Twilio call sid.
+      - $ref: '#/components/schemas/V3CallBase'
+    V3WebCallResponse:
+      allOf:
+      - type: object
+        required:
+        - call_type
+        - access_token
+        properties:
+          call_type:
+            type: string
+            enum:
+            - web_call
+            example: web_call
+            description: Type of the call. Used to distinguish between web call and phone call.
+          access_token:
+            type: string
+            example: eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9p
+            description: Access token to enter the web call room. This needs to be passed to your frontend to join the call.
+      - $ref: '#/components/schemas/V3CallBase'
     V2PhoneCallResponse:
       allOf:
       - type: object

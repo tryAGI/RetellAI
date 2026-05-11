@@ -51,11 +51,19 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        S21Pro,
+        /// <summary>
+        /// 
+        /// </summary>
         Sonic3,
         /// <summary>
         /// 
         /// </summary>
         Sonic3Latest,
+        /// <summary>
+        /// 
+        /// </summary>
+        Sonic35,
         /// <summary>
         /// 
         /// </summary>
@@ -92,8 +100,10 @@ namespace RetellAI
                 AgentRequestVoiceModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
                 AgentRequestVoiceModel.S1 => "s1",
                 AgentRequestVoiceModel.S2Pro => "s2-pro",
+                AgentRequestVoiceModel.S21Pro => "s2.1-pro",
                 AgentRequestVoiceModel.Sonic3 => "sonic-3",
                 AgentRequestVoiceModel.Sonic3Latest => "sonic-3-latest",
+                AgentRequestVoiceModel.Sonic35 => "sonic-3.5",
                 AgentRequestVoiceModel.Speech02Turbo => "speech-02-turbo",
                 AgentRequestVoiceModel.Speech28Turbo => "speech-2.8-turbo",
                 AgentRequestVoiceModel.Tts1 => "tts-1",
@@ -117,8 +127,10 @@ namespace RetellAI
                 "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => AgentRequestVoiceModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
                 "s1" => AgentRequestVoiceModel.S1,
                 "s2-pro" => AgentRequestVoiceModel.S2Pro,
+                "s2.1-pro" => AgentRequestVoiceModel.S21Pro,
                 "sonic-3" => AgentRequestVoiceModel.Sonic3,
                 "sonic-3-latest" => AgentRequestVoiceModel.Sonic3Latest,
+                "sonic-3.5" => AgentRequestVoiceModel.Sonic35,
                 "speech-02-turbo" => AgentRequestVoiceModel.Speech02Turbo,
                 "speech-2.8-turbo" => AgentRequestVoiceModel.Speech28Turbo,
                 "tts-1" => AgentRequestVoiceModel.Tts1,

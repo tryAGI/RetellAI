@@ -4,9 +4,10 @@
 namespace RetellAI
 {
     /// <summary>
-    /// V3 list calls response. Transcript fields are intentionally omitted.
+    /// Dynamic variables collected from the call. Only available after the call ends.<br/>
+    /// Example: {"last_node_name":"Test node"}
     /// </summary>
-    public sealed partial class V3CallResponseVariant2
+    public sealed partial class V3CallBaseCollectedDynamicVariables
     {
 
         /// <summary>
