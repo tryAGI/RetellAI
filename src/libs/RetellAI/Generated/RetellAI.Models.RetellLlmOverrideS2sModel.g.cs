@@ -20,6 +20,10 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        GptRealtime2,
+        /// <summary>
+        /// 
+        /// </summary>
         GptRealtimeMini,
         /// <summary>
         /// 
@@ -41,6 +45,7 @@ namespace RetellAI
             {
                 RetellLlmOverrideS2sModel.GptRealtime => "gpt-realtime",
                 RetellLlmOverrideS2sModel.GptRealtime15 => "gpt-realtime-1.5",
+                RetellLlmOverrideS2sModel.GptRealtime2 => "gpt-realtime-2",
                 RetellLlmOverrideS2sModel.GptRealtimeMini => "gpt-realtime-mini",
                 RetellLlmOverrideS2sModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -55,6 +60,7 @@ namespace RetellAI
             {
                 "gpt-realtime" => RetellLlmOverrideS2sModel.GptRealtime,
                 "gpt-realtime-1.5" => RetellLlmOverrideS2sModel.GptRealtime15,
+                "gpt-realtime-2" => RetellLlmOverrideS2sModel.GptRealtime2,
                 "gpt-realtime-mini" => RetellLlmOverrideS2sModel.GptRealtimeMini,
                 "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => RetellLlmOverrideS2sModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
                 _ => null,
