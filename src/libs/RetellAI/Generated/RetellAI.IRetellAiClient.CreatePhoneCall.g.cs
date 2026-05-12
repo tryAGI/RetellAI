@@ -74,7 +74,7 @@ namespace RetellAI
             global::RetellAI.AgentVersionReference? overrideAgentVersion = default,
             global::RetellAI.AgentOverrideRequest? agentOverride = default,
             object? metadata = default,
-            object? retellLlmDynamicVariables = default,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
             global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders = default,
             bool? ignoreE164Validation = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,

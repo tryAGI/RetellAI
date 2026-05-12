@@ -62,7 +62,7 @@ namespace RetellAI
             string? overrideAgentId = default,
             global::RetellAI.AgentVersionReference? overrideAgentVersion = default,
             object? metadata = default,
-            object? retellLlmDynamicVariables = default,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
