@@ -69,7 +69,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"customer_name":"John Doe"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("retell_llm_dynamic_variables")]
-        public object? RetellLlmDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? RetellLlmDynamicVariables { get; set; }
 
         /// <summary>
         /// Dynamic variables collected from the call. Only available after the call ends.<br/>
@@ -77,7 +77,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"last_node_name":"Test node"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("collected_dynamic_variables")]
-        public object? CollectedDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? CollectedDynamicVariables { get; set; }
 
         /// <summary>
         /// Custom SIP headers to be added to the call.<br/>
@@ -344,8 +344,8 @@ namespace RetellAI
             global::RetellAI.V3CallBaseCallStatus callStatus,
             string? agentName,
             object? metadata,
-            object? retellLlmDynamicVariables,
-            object? collectedDynamicVariables,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
+            global::System.Collections.Generic.Dictionary<string, string>? collectedDynamicVariables,
             global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders,
             global::RetellAI.V3CallBaseDataStorageSetting? dataStorageSetting,
             bool? optInSignedUrl,

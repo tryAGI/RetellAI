@@ -71,7 +71,7 @@ namespace RetellAI
             string? toNumber = default,
             global::RetellAI.RegisterPhoneCallRequestDirection? direction = default,
             object? metadata = default,
-            object? retellLlmDynamicVariables = default,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

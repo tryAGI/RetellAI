@@ -59,7 +59,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"customer_name":"John Doe"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("retell_llm_dynamic_variables")]
-        public object? RetellLlmDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? RetellLlmDynamicVariables { get; set; }
 
         /// <summary>
         /// Add optional custom SIP headers to the call.<br/>
@@ -129,7 +129,7 @@ namespace RetellAI
             global::RetellAI.AgentVersionReference? overrideAgentVersion,
             global::RetellAI.AgentOverrideRequest? agentOverride,
             object? metadata,
-            object? retellLlmDynamicVariables,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
             global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders,
             bool? ignoreE164Validation)
         {

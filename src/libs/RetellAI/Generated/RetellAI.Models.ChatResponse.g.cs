@@ -40,7 +40,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"customer_name":"John Doe"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("retell_llm_dynamic_variables")]
-        public object? RetellLlmDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? RetellLlmDynamicVariables { get; set; }
 
         /// <summary>
         /// Dynamic variables collected from the chat. Only available after the chat ends.<br/>
@@ -48,7 +48,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"last_node_name":"Test node"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("collected_dynamic_variables")]
-        public object? CollectedDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? CollectedDynamicVariables { get; set; }
 
         /// <summary>
         /// Status of chat.<br/>
@@ -217,8 +217,8 @@ namespace RetellAI
             string agentId,
             global::RetellAI.ChatResponseChatStatus chatStatus,
             int? version,
-            object? retellLlmDynamicVariables,
-            object? collectedDynamicVariables,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
+            global::System.Collections.Generic.Dictionary<string, string>? collectedDynamicVariables,
             global::RetellAI.ChatResponseChatType? chatType,
             object? customAttributes,
             long? startTimestamp,

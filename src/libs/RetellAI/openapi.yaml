@@ -1285,7 +1285,8 @@ components:
           description: For this particular call, override agent configuration with these settings. This allows you to customize agent behavior for individual calls without modifying the base agent.
         retell_llm_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             customer_name: John Doe
           description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
@@ -1980,13 +1981,15 @@ components:
           nullable: true
         retell_llm_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             customer_name: John Doe
           description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
         collected_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             last_node_name: Test node
           description: Dynamic variables collected from the chat. Only available after the chat ends.
@@ -4250,7 +4253,6 @@ components:
         inputSchema:
           type: object
           description: JSON schema defining the input parameters for the tool.
-          additionalProperties: true
           example:
             type: object
             properties:
@@ -4914,7 +4916,6 @@ components:
           type: string
         feature_bucket:
           type: object
-          additionalProperties: true
         use_stable_server:
           type: boolean
     OrganizationResponse:
@@ -6197,7 +6198,6 @@ components:
             description: Match only calls with specific arguments
           args:
             type: object
-            additionalProperties: true
             description: Arguments to match. Only provided fields will be checked
     ToolMock:
       type: object
@@ -6397,7 +6397,6 @@ components:
           description: Type must be "object" for a JSON Schema object.
         properties:
           type: object
-          additionalProperties: {}
           description: The value of properties is an object, where each key is the name of a property and each value is a schema used to validate that property.
         required:
           type: array
@@ -6919,13 +6918,15 @@ components:
             from the call object.
         retell_llm_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             customer_name: John Doe
           description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
         collected_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             last_node_name: Test node
           description: Dynamic variables collected from the call. Only available after the call ends.
@@ -7173,13 +7174,15 @@ components:
             from the call object.
         retell_llm_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             customer_name: John Doe
           description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
         collected_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             last_node_name: Test node
           description: Dynamic variables collected from the call. Only available after the call ends.
@@ -8439,7 +8442,8 @@ paths:
                     this field from the chat object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
@@ -8708,7 +8712,8 @@ paths:
                     this field from the chat object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
@@ -9814,7 +9819,6 @@ paths:
                 filter_criteria:
                   type: object
                   description: Filter criteria for chats to retrieve.
-                  additionalProperties: true
                 sort_order:
                   type: string
                   enum:
@@ -10695,7 +10699,8 @@ paths:
                     this field from the call object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
@@ -10760,7 +10765,8 @@ paths:
                     this field from the call object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
@@ -11214,7 +11220,8 @@ paths:
                     this field from the call object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.

@@ -42,7 +42,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"customer_name":"John Doe"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("retell_llm_dynamic_variables")]
-        public object? RetellLlmDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? RetellLlmDynamicVariables { get; set; }
 
         /// <summary>
         /// Start the call at this conversation flow node (stage). Must be a valid node id in the agent's conversation flow. Only applicable when the agent uses conversation flow as the response engine. Ignored for retell-llm agents.<br/>
@@ -102,7 +102,7 @@ namespace RetellAI
             global::RetellAI.AgentVersionReference? agentVersion,
             global::RetellAI.AgentOverrideRequest? agentOverride,
             object? metadata,
-            object? retellLlmDynamicVariables,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
             string? currentNodeId,
             string? currentState)
         {

@@ -53,7 +53,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"customer_name":"John Doe"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("retell_llm_dynamic_variables")]
-        public object? RetellLlmDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? RetellLlmDynamicVariables { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -95,7 +95,7 @@ namespace RetellAI
             string? overrideAgentId,
             global::RetellAI.AgentVersionReference? overrideAgentVersion,
             object? metadata,
-            object? retellLlmDynamicVariables)
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables)
         {
             this.FromNumber = fromNumber ?? throw new global::System.ArgumentNullException(nameof(fromNumber));
             this.ToNumber = toNumber ?? throw new global::System.ArgumentNullException(nameof(toNumber));

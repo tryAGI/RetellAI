@@ -52,7 +52,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"customer_name":"John Doe"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("retell_llm_dynamic_variables")]
-        public object? RetellLlmDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? RetellLlmDynamicVariables { get; set; }
 
         /// <summary>
         /// An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the call. Not used for processing. You can later get this field from the call object.
@@ -115,7 +115,7 @@ namespace RetellAI
             string? overrideAgentId,
             global::RetellAI.AgentVersionReference? overrideAgentVersion,
             global::RetellAI.AgentOverrideRequest? agentOverride,
-            object? retellLlmDynamicVariables,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
             object? metadata,
             global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders)
         {

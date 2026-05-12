@@ -699,7 +699,7 @@ namespace RetellAI
             global::RetellAI.AgentVersionReference? agentVersion = default,
             global::RetellAI.AgentOverrideRequest? agentOverride = default,
             object? metadata = default,
-            object? retellLlmDynamicVariables = default,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
             string? currentNodeId = default,
             string? currentState = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
