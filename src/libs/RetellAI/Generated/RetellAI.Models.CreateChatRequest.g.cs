@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class CreateChatRequest
     {
         /// <summary>
-        /// The chat agent to use for the call.<br/>
+        /// The chat agent to use for the chat.<br/>
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </summary>
         /// <example>oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD</example>
@@ -48,7 +48,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="CreateChatRequest" /> class.
         /// </summary>
         /// <param name="agentId">
-        /// The chat agent to use for the call.<br/>
+        /// The chat agent to use for the chat.<br/>
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
         /// <param name="agentVersion">

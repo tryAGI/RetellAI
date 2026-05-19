@@ -642,6 +642,10 @@ namespace RetellAI
         /// Name of the component<br/>
         /// Example: Customer Information Collector
         /// </param>
+        /// <param name="flexMode">
+        /// If enabled, the whole component will be converted as a Single Prompt agent.<br/>
+        /// Example: false
+        /// </param>
         /// <param name="tools">
         /// Tools available within the component<br/>
         /// Example: [{"type":"custom","name":"get_customer_info","description":"Get customer information from database","tool_id":"tool_001","url":"https://api.example.com/customer","method":"GET"}]
@@ -669,6 +673,7 @@ namespace RetellAI
         public async global::System.Threading.Tasks.Task<global::RetellAI.ConversationFlowComponentResponse> UpdateConversationFlowComponentAsync(
             string conversationFlowComponentId,
             string? name = default,
+            bool? flexMode = default,
             global::System.Collections.Generic.IList<global::RetellAI.NodeTool>? tools = default,
             global::System.Collections.Generic.IList<global::RetellAI.Mcp>? mcps = default,
             global::System.Collections.Generic.IList<global::RetellAI.ConversationFlowNode>? nodes = default,
@@ -681,6 +686,7 @@ namespace RetellAI
             var __request = new global::RetellAI.ConversationFlowComponent
             {
                 Name = name,
+                FlexMode = flexMode,
                 Tools = tools,
                 Mcps = mcps,
                 Nodes = nodes,

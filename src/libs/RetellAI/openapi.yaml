@@ -1053,11 +1053,6 @@ components:
           description: IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.
           example: America/New_York
           nullable: true
-        is_public:
-          type: boolean
-          example: false
-          description: Whether the agent is public. When set to true, the agent is available for public agent preview link.
-          nullable: true
     AgentResponse:
       allOf:
       - type: object
@@ -1891,11 +1886,6 @@ components:
           description: IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.
           example: America/New_York
           nullable: true
-        is_public:
-          type: boolean
-          example: false
-          description: Whether the agent is public. When set to true, the agent is available for public agent preview link.
-          nullable: true
     ChatAgentResponse:
       allOf:
       - type: object
@@ -2502,6 +2492,11 @@ components:
           type: string
           description: Name of the component
           example: Customer Information Collector
+        flex_mode:
+          type: boolean
+          example: false
+          description: If enabled, the whole component will be converted as a Single Prompt agent.
+          nullable: true
         tools:
           type: array
           items:
@@ -2661,6 +2656,11 @@ components:
             type: string
             example: You are a helpful customer service agent.
             description: Global prompt used in every node of the conversation flow.
+            nullable: true
+          flex_mode:
+            type: boolean
+            example: false
+            description: If enabled, the whole conversation flow will be converted as a Single Prompt agent.
             nullable: true
           tools:
             type: array
@@ -3069,6 +3069,40 @@ components:
           type: string
           description: The digit pressed by the user. Will be a single digit string like "1", "2", "3", "*", "#" etc.
           example: '1'
+    SmsUtterance:
+      type: object
+      required:
+      - role
+      - content
+      - time_sec
+      properties:
+        role:
+          type: string
+          enum:
+          - sms
+          description: SMS message received from the user during the call (for example while the agent is leaving a voicemail). Not part of the spoken conversation.
+        content:
+          type: string
+          description: Text content of the SMS message.
+        multimedia:
+          type: array
+          items:
+            $ref: '#/components/schemas/SmsMultimediaItem'
+          description: Multimedia attachments (MMS). Display only; not relayed into the spoken conversation.
+        time_sec:
+          type: number
+          description: Time the SMS was received, in seconds relative to the start of the call.
+    SmsMultimediaItem:
+      type: object
+      required:
+      - url
+      properties:
+        url:
+          type: string
+          description: URL of the multimedia attachment.
+        summary:
+          type: string
+          description: Optional textual summary of the attachment.
     StringFilter:
       type: object
       required:
@@ -4052,6 +4086,9 @@ components:
         file_url:
           type: string
           description: URL of the document stored.
+        file_size:
+          type: number
+          description: File size in bytes.
     KnowledgeBaseSourceText:
       type: object
       required:
@@ -4959,7 +4996,7 @@ components:
             - customer_account_number
           uniqueItems: true
           default: []
-          description: List of PII categories to scrub from transcripts and recordings.
+          description: List of PII categories to scrub from transcripts and recordings. PII redaction is only active when this list is non-empty; an empty array means no PII scrubbing is performed.
     GuardrailConfig:
       type: object
       properties:
@@ -5609,11 +5646,6 @@ components:
               customer_name: John Doe
             description: Default dynamic variables represented as key-value pairs of strings. These are injected into your Retell LLM prompt and tool description when specific values are not provided in
               a request. Only applicable for Retell LLM.
-            nullable: true
-          version:
-            type: integer
-            example: 1
-            description: The version of the LLM.
             nullable: true
           mcps:
             type: array
@@ -6806,6 +6838,7 @@ components:
       - $ref: '#/components/schemas/ToolCallResultUtterance'
       - $ref: '#/components/schemas/NodeTransitionUtterance'
       - $ref: '#/components/schemas/DTMFUtterance'
+      - $ref: '#/components/schemas/SmsUtterance'
     UtteranceToolCallAccuracy:
       type: object
       required:
@@ -8432,7 +8465,7 @@ paths:
                   type: string
                   minLength: 1
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: The chat agent to use for the call.
+                  description: The chat agent to use for the chat.
                 agent_version:
                   $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the chat agent to use for the chat. If not provided, will default to latest version.
@@ -8449,7 +8482,7 @@ paths:
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
       responses:
         '201':
-          description: Successfully registered a phone call.
+          description: Successfully created a chat.
           content:
             application/json:
               schema:
@@ -9137,7 +9170,7 @@ paths:
       operationId: getConcurrency
       responses:
         '200':
-          description: Successfully retrieved a voice.
+          description: Successfully retrieved concurrency information.
           content:
             application/json:
               schema:
@@ -9839,6 +9872,11 @@ paths:
                 pagination_key:
                   type: string
                   description: Opaque pagination cursor from a previous response.
+                include_total:
+                  type: boolean
+                  default: false
+                  description: Whether to include `total` (count of all chats matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request
+                    triggers an additional aggregate query, so opt in only when the total is needed.
               not:
                 required:
                 - skip
@@ -9857,6 +9895,9 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/V3ChatResponse'
+                    total:
+                      type: integer
+                      description: Total number of chats matching `filter_criteria`. Only present when `include_total` is true.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -11096,6 +11137,11 @@ paths:
                 pagination_key:
                   type: string
                   description: Opaque pagination cursor from a previous response.
+                include_total:
+                  type: boolean
+                  default: false
+                  description: Whether to include `total` (count of all calls matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request
+                    triggers an additional aggregate query, so opt in only when the total is needed.
               not:
                 required:
                 - skip
@@ -11114,6 +11160,9 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/V3CallResponse'
+                    total:
+                      type: integer
+                      description: Total number of calls matching `filter_criteria`. Only present when `include_total` is true.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':

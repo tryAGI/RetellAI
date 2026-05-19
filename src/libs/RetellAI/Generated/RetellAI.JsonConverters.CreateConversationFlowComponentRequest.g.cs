@@ -38,6 +38,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("begin_tag_display_position")) __score0++;
             if (__jsonProps.Contains("begin_tag_display_position.x")) __score0++;
             if (__jsonProps.Contains("begin_tag_display_position.y")) __score0++;
+            if (__jsonProps.Contains("flex_mode")) __score0++;
             if (__jsonProps.Contains("mcps")) __score0++;
             if (__jsonProps.Contains("name")) __score0++;
             if (__jsonProps.Contains("nodes")) __score0++;

@@ -733,10 +733,6 @@ namespace RetellAI
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
         /// Example: America/New_York
         /// </param>
-        /// <param name="isPublic">
-        /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
-        /// Example: false
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -764,7 +760,6 @@ namespace RetellAI
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
             global::RetellAI.ChatHandbookConfig? handbookConfig = default,
             string? timezone = default,
-            bool? isPublic = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -791,7 +786,6 @@ namespace RetellAI
                 GuardrailConfig = guardrailConfig,
                 HandbookConfig = handbookConfig,
                 Timezone = timezone,
-                IsPublic = isPublic,
             };
 
             return await UpdateChatAgentAsync(
