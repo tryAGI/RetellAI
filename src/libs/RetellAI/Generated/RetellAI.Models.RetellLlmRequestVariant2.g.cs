@@ -53,14 +53,6 @@ namespace RetellAI
         public global::System.Collections.Generic.Dictionary<string, string>? DefaultDynamicVariables { get; set; }
 
         /// <summary>
-        /// The version of the LLM.<br/>
-        /// Example: 1
-        /// </summary>
-        /// <example>1</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("version")]
-        public int? Version { get; set; }
-
-        /// <summary>
         /// A list of MCPs to use for this LLM.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("mcps")]
@@ -99,10 +91,6 @@ namespace RetellAI
         /// Default dynamic variables represented as key-value pairs of strings. These are injected into your Retell LLM prompt and tool description when specific values are not provided in a request. Only applicable for Retell LLM.<br/>
         /// Example: {"customer_name":"John Doe"}
         /// </param>
-        /// <param name="version">
-        /// The version of the LLM.<br/>
-        /// Example: 1
-        /// </param>
         /// <param name="mcps">
         /// A list of MCPs to use for this LLM.
         /// </param>
@@ -115,7 +103,6 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.State>? states,
             string? startingState,
             global::System.Collections.Generic.Dictionary<string, string>? defaultDynamicVariables,
-            int? version,
             global::System.Collections.Generic.IList<global::RetellAI.Mcp>? mcps)
         {
             this.GeneralPrompt = generalPrompt;
@@ -123,7 +110,6 @@ namespace RetellAI
             this.States = states;
             this.StartingState = startingState;
             this.DefaultDynamicVariables = defaultDynamicVariables;
-            this.Version = version;
             this.Mcps = mcps;
         }
 

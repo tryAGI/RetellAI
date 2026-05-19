@@ -451,14 +451,6 @@ namespace RetellAI
         public string? Timezone { get; set; }
 
         /// <summary>
-        /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
-        /// Example: false
-        /// </summary>
-        /// <example>false</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("is_public")]
-        public bool? IsPublic { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -681,10 +673,6 @@ namespace RetellAI
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
         /// Example: America/New_York
         /// </param>
-        /// <param name="isPublic">
-        /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
-        /// Example: false
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -744,8 +732,7 @@ namespace RetellAI
             global::RetellAI.PIIConfig? piiConfig,
             global::RetellAI.GuardrailConfig? guardrailConfig,
             global::RetellAI.VoiceHandbookConfig? handbookConfig,
-            string? timezone,
-            bool? isPublic)
+            string? timezone)
         {
             this.ResponseEngine = responseEngine;
             this.AgentName = agentName;
@@ -803,7 +790,6 @@ namespace RetellAI
             this.GuardrailConfig = guardrailConfig;
             this.HandbookConfig = handbookConfig;
             this.Timezone = timezone;
-            this.IsPublic = isPublic;
         }
 
         /// <summary>

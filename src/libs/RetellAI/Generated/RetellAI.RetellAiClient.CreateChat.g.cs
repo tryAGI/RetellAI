@@ -667,7 +667,7 @@ namespace RetellAI
         /// Create a chat session
         /// </summary>
         /// <param name="agentId">
-        /// The chat agent to use for the call.<br/>
+        /// The chat agent to use for the chat.<br/>
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
         /// <param name="agentVersion">

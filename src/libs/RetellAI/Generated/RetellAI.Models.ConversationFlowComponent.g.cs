@@ -17,6 +17,14 @@ namespace RetellAI
         public string? Name { get; set; }
 
         /// <summary>
+        /// If enabled, the whole component will be converted as a Single Prompt agent.<br/>
+        /// Example: false
+        /// </summary>
+        /// <example>false</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("flex_mode")]
+        public bool? FlexMode { get; set; }
+
+        /// <summary>
         /// Tools available within the component<br/>
         /// Example: [{"type":"custom","name":"get_customer_info","description":"Get customer information from database","tool_id":"tool_001","url":"https://api.example.com/customer","method":"GET"}]
         /// </summary>
@@ -71,6 +79,10 @@ namespace RetellAI
         /// Name of the component<br/>
         /// Example: Customer Information Collector
         /// </param>
+        /// <param name="flexMode">
+        /// If enabled, the whole component will be converted as a Single Prompt agent.<br/>
+        /// Example: false
+        /// </param>
         /// <param name="tools">
         /// Tools available within the component<br/>
         /// Example: [{"type":"custom","name":"get_customer_info","description":"Get customer information from database","tool_id":"tool_001","url":"https://api.example.com/customer","method":"GET"}]
@@ -97,6 +109,7 @@ namespace RetellAI
 #endif
         public ConversationFlowComponent(
             string? name,
+            bool? flexMode,
             global::System.Collections.Generic.IList<global::RetellAI.NodeTool>? tools,
             global::System.Collections.Generic.IList<global::RetellAI.Mcp>? mcps,
             global::System.Collections.Generic.IList<global::RetellAI.ConversationFlowNode>? nodes,
@@ -105,6 +118,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.Note>? notes)
         {
             this.Name = name;
+            this.FlexMode = flexMode;
             this.Tools = tools;
             this.Mcps = mcps;
             this.Nodes = nodes;

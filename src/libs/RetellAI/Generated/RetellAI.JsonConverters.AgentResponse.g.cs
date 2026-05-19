@@ -81,7 +81,6 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("handbook_config.smart_matching")) __score1++;
             if (__jsonProps.Contains("handbook_config.speech_normalization")) __score1++;
             if (__jsonProps.Contains("interruption_sensitivity")) __score1++;
-            if (__jsonProps.Contains("is_public")) __score1++;
             if (__jsonProps.Contains("ivr_option")) __score1++;
             if (__jsonProps.Contains("ivr_option.action")) __score1++;
             if (__jsonProps.Contains("ivr_option.detection_prompt")) __score1++;

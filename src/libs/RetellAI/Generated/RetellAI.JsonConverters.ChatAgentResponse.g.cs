@@ -57,7 +57,6 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("handbook_config.default_personality")) __score1++;
             if (__jsonProps.Contains("handbook_config.high_empathy")) __score1++;
             if (__jsonProps.Contains("handbook_config.scope_boundaries")) __score1++;
-            if (__jsonProps.Contains("is_public")) __score1++;
             if (__jsonProps.Contains("language")) __score1++;
             if (__jsonProps.Contains("opt_in_signed_url")) __score1++;
             if (__jsonProps.Contains("pii_config")) __score1++;

@@ -50,6 +50,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("begin_tag_display_position.y")) __score1++;
             if (__jsonProps.Contains("components")) __score1++;
             if (__jsonProps.Contains("default_dynamic_variables")) __score1++;
+            if (__jsonProps.Contains("flex_mode")) __score1++;
             if (__jsonProps.Contains("global_prompt")) __score1++;
             if (__jsonProps.Contains("is_transfer_llm")) __score1++;
             if (__jsonProps.Contains("mcps")) __score1++;
