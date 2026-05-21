@@ -108,10 +108,7 @@ public static class RetellAiToolExtensions
                     limit: limit,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
-                return FormatCallList(calls.Value2?.Items?
-                    .Where(static call => call.V2.HasValue)
-                    .Select(static call => call.V2!.Value)
-                    .ToList() ?? new List<V2CallResponse>());
+                return FormatCallList(calls.Value2?.Items ?? new List<V3CallResponse>());
             },
             name: "ListRetellCalls",
             description: "Lists recent Retell AI voice calls. Returns call IDs, statuses, agent info, durations, and timestamps.");
@@ -212,12 +209,12 @@ public static class RetellAiToolExtensions
         };
     }
 
-    private static object FormatCallList(IList<V2CallResponse> calls)
+    private static object FormatCallList(IList<V3CallResponse> calls)
     {
         return calls.Select(c =>
         {
-            var callBase = c.Phone?.Value2 ?? c.Web?.Value2;
-            var phoneInfo = c.Phone?.Value1;
+            var callBase = c.Phone?.Base ?? c.Web?.Base;
+            var phoneInfo = c.Phone?.V3PhoneCallResponseVariant1;
 
             return new
             {
