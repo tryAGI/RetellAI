@@ -64,6 +64,12 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<string>? KnowledgeBaseIds { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kb_config")]
+        public global::RetellAI.KBConfig? KbConfig { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -85,6 +91,7 @@ namespace RetellAI
         /// Knowledge base IDs for RAG (Retrieval-Augmented Generation).<br/>
         /// Example: [kb_001, kb_002]
         /// </param>
+        /// <param name="kbConfig"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -96,7 +103,8 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneConversationExample>? finetuneConversationExamples,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples,
-            global::System.Collections.Generic.IList<string>? knowledgeBaseIds)
+            global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
+            global::RetellAI.KBConfig? kbConfig)
         {
             this.Type = type;
             this.Instruction = instruction;
@@ -106,6 +114,7 @@ namespace RetellAI
             this.FinetuneConversationExamples = finetuneConversationExamples;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
             this.KnowledgeBaseIds = knowledgeBaseIds;
+            this.KbConfig = kbConfig;
         }
 
         /// <summary>
@@ -114,5 +123,6 @@ namespace RetellAI
         public ConversationNodeVariant3()
         {
         }
+
     }
 }

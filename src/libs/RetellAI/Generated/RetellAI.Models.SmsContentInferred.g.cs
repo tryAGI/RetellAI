@@ -51,5 +51,6 @@ namespace RetellAI
         public SmsContentInferred()
         {
         }
+
     }
 }

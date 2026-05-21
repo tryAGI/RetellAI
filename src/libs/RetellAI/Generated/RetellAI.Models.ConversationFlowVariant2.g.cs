@@ -17,6 +17,14 @@ namespace RetellAI
         public string? GlobalPrompt { get; set; }
 
         /// <summary>
+        /// If enabled, the whole conversation flow will be converted as a Single Prompt agent.<br/>
+        /// Example: false
+        /// </summary>
+        /// <example>false</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("flex_mode")]
+        public bool? FlexMode { get; set; }
+
+        /// <summary>
         /// Tools available in the conversation flow.<br/>
         /// Example: [{"type":"custom","name":"get_customer_info","description":"Get customer information from database","tool_id":"tool_001","url":"https://api.example.com/customer","method":"GET"}]
         /// </summary>
@@ -93,6 +101,10 @@ namespace RetellAI
         /// Global prompt used in every node of the conversation flow.<br/>
         /// Example: You are a helpful customer service agent.
         /// </param>
+        /// <param name="flexMode">
+        /// If enabled, the whole conversation flow will be converted as a Single Prompt agent.<br/>
+        /// Example: false
+        /// </param>
         /// <param name="tools">
         /// Tools available in the conversation flow.<br/>
         /// Example: [{"type":"custom","name":"get_customer_info","description":"Get customer information from database","tool_id":"tool_001","url":"https://api.example.com/customer","method":"GET"}]
@@ -130,6 +142,7 @@ namespace RetellAI
 #endif
         public ConversationFlowVariant2(
             string? globalPrompt,
+            bool? flexMode,
             global::System.Collections.Generic.IList<global::RetellAI.NodeTool>? tools,
             global::System.Collections.Generic.IList<global::RetellAI.CreateConversationFlowComponentRequest>? components,
             string? startNodeId,
@@ -141,6 +154,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.ConversationFlowNode>? nodes)
         {
             this.GlobalPrompt = globalPrompt;
+            this.FlexMode = flexMode;
             this.Tools = tools;
             this.Components = components;
             this.StartNodeId = startNodeId;
@@ -158,5 +172,6 @@ namespace RetellAI
         public ConversationFlowVariant2()
         {
         }
+
     }
 }

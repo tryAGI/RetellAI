@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickNode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeEdge? value)
+        {
+            value = Node;
+            return IsNode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeEdge PickNode() => IsNode
+            ? Node!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsFailedEdgeVariant2? SmsFailedEdgeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SmsFailedEdgeVariant2))]
 #endif
         public bool IsSmsFailedEdgeVariant2 => SmsFailedEdgeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSmsFailedEdgeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SmsFailedEdgeVariant2? value)
+        {
+            value = SmsFailedEdgeVariant2;
+            return IsSmsFailedEdgeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SmsFailedEdgeVariant2 PickSmsFailedEdgeVariant2() => IsSmsFailedEdgeVariant2
+            ? SmsFailedEdgeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SmsFailedEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsFailedEdge FromNode(global::RetellAI.NodeEdge? value) => new SmsFailedEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsFailedEdge(global::RetellAI.SmsFailedEdgeVariant2 value) => new SmsFailedEdge((global::RetellAI.SmsFailedEdgeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             SmsFailedEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsFailedEdge FromSmsFailedEdgeVariant2(global::RetellAI.SmsFailedEdgeVariant2? value) => new SmsFailedEdge(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeEdge?, TResult>? node = null,
-            global::System.Func<global::RetellAI.SmsFailedEdgeVariant2?, TResult>? smsFailedEdgeVariant2 = null,
+            global::System.Func<global::RetellAI.NodeEdge, TResult>? node = null,
+            global::System.Func<global::RetellAI.SmsFailedEdgeVariant2, TResult>? smsFailedEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeEdge?>? node = null,
-            global::System.Action<global::RetellAI.SmsFailedEdgeVariant2?>? smsFailedEdgeVariant2 = null,
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+
+            global::System.Action<global::RetellAI.SmsFailedEdgeVariant2>? smsFailedEdgeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsNode)
+            {
+                node?.Invoke(Node!);
+            }
+            else if (IsSmsFailedEdgeVariant2)
+            {
+                smsFailedEdgeVariant2?.Invoke(SmsFailedEdgeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+            global::System.Action<global::RetellAI.SmsFailedEdgeVariant2>? smsFailedEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)

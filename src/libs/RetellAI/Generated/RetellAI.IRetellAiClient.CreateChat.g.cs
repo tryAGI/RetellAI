@@ -32,12 +32,11 @@ namespace RetellAI
         /// Create a chat session
         /// </summary>
         /// <param name="agentId">
-        /// The chat agent to use for the call.<br/>
+        /// The chat agent to use for the chat.<br/>
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
         /// <param name="agentVersion">
-        /// The version of the chat agent to use for the chat. If not provided, will default to latest version.<br/>
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="metadata">
         /// An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the chat. Not used for processing. You can later get this field from the chat object.
@@ -51,9 +50,9 @@ namespace RetellAI
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.ChatResponse> CreateChatAsync(
             string agentId,
-            int? agentVersion = default,
+            global::RetellAI.AgentVersionReference? agentVersion = default,
             object? metadata = default,
-            object? retellLlmDynamicVariables = default,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

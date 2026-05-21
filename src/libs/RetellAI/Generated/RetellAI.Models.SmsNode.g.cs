@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeBase PickBase() => IsBase
+            ? Base!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsNodeVariant2? SmsNodeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SmsNodeVariant2))]
 #endif
         public bool IsSmsNodeVariant2 => SmsNodeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSmsNodeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SmsNodeVariant2? value)
+        {
+            value = SmsNodeVariant2;
+            return IsSmsNodeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SmsNodeVariant2 PickSmsNodeVariant2() => IsSmsNodeVariant2
+            ? SmsNodeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SmsNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsNode FromBase(global::RetellAI.NodeBase? value) => new SmsNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsNode(global::RetellAI.SmsNodeVariant2 value) => new SmsNode((global::RetellAI.SmsNodeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             SmsNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsNode FromSmsNodeVariant2(global::RetellAI.SmsNodeVariant2? value) => new SmsNode(value);
 
         /// <summary>
         /// 
@@ -119,7 +169,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeBase?, TResult>? @base = null,
-            global::System.Func<global::RetellAI.SmsNodeVariant2?, TResult>? smsNodeVariant2 = null,
+            global::System.Func<global::RetellAI.SmsNodeVariant2, TResult>? smsNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +194,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeBase?>? @base = null,
-            global::System.Action<global::RetellAI.SmsNodeVariant2?>? smsNodeVariant2 = null,
+
+            global::System.Action<global::RetellAI.SmsNodeVariant2>? smsNodeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsSmsNodeVariant2)
+            {
+                smsNodeVariant2?.Invoke(SmsNodeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeBase?>? @base = null,
+            global::System.Action<global::RetellAI.SmsNodeVariant2>? smsNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)

@@ -38,6 +38,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("begin_tag_display_position")) __score0++;
             if (__jsonProps.Contains("begin_tag_display_position.x")) __score0++;
             if (__jsonProps.Contains("begin_tag_display_position.y")) __score0++;
+            if (__jsonProps.Contains("flex_mode")) __score0++;
             if (__jsonProps.Contains("mcps")) __score0++;
             if (__jsonProps.Contains("name")) __score0++;
             if (__jsonProps.Contains("nodes")) __score0++;
@@ -90,6 +91,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConversationFlowComponent), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConversationFlowComponent> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConversationFlowComponent).Name}");
                     conversationFlowComponent = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -100,9 +102,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (conversationFlowComponent == null && createConversationFlowComponentRequestVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(object), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<object> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(object).Name}");
                     createConversationFlowComponentRequestVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

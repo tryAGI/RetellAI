@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeBase PickBase() => IsBase
+            ? Base!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CancelTransferNodeVariant2? CancelTransferNodeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CancelTransferNodeVariant2))]
 #endif
         public bool IsCancelTransferNodeVariant2 => CancelTransferNodeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCancelTransferNodeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CancelTransferNodeVariant2? value)
+        {
+            value = CancelTransferNodeVariant2;
+            return IsCancelTransferNodeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.CancelTransferNodeVariant2 PickCancelTransferNodeVariant2() => IsCancelTransferNodeVariant2
+            ? CancelTransferNodeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CancelTransferNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static CancelTransferNode FromBase(global::RetellAI.NodeBase? value) => new CancelTransferNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator CancelTransferNode(global::RetellAI.CancelTransferNodeVariant2 value) => new CancelTransferNode((global::RetellAI.CancelTransferNodeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             CancelTransferNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CancelTransferNode FromCancelTransferNodeVariant2(global::RetellAI.CancelTransferNodeVariant2? value) => new CancelTransferNode(value);
 
         /// <summary>
         /// 
@@ -119,7 +169,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeBase?, TResult>? @base = null,
-            global::System.Func<global::RetellAI.CancelTransferNodeVariant2?, TResult>? cancelTransferNodeVariant2 = null,
+            global::System.Func<global::RetellAI.CancelTransferNodeVariant2, TResult>? cancelTransferNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +194,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeBase?>? @base = null,
-            global::System.Action<global::RetellAI.CancelTransferNodeVariant2?>? cancelTransferNodeVariant2 = null,
+
+            global::System.Action<global::RetellAI.CancelTransferNodeVariant2>? cancelTransferNodeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsCancelTransferNodeVariant2)
+            {
+                cancelTransferNodeVariant2?.Invoke(CancelTransferNodeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeBase?>? @base = null,
+            global::System.Action<global::RetellAI.CancelTransferNodeVariant2>? cancelTransferNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)

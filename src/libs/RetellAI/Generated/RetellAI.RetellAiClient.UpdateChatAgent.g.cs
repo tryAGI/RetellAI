@@ -28,13 +28,13 @@ namespace RetellAI
         partial void PrepareUpdateChatAgentArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string agentId,
-            ref int? version,
+            ref global::RetellAI.AgentVersionReference? version,
             global::RetellAI.ChatAgentRequest request);
         partial void PrepareUpdateChatAgentRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string agentId,
-            int? version,
+            global::RetellAI.AgentVersionReference? version,
             global::RetellAI.ChatAgentRequest request);
         partial void ProcessUpdateChatAgentResponse(
             global::System.Net.Http.HttpClient httpClient,
@@ -52,7 +52,7 @@ namespace RetellAI
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -62,7 +62,7 @@ namespace RetellAI
             string agentId,
 
             global::RetellAI.ChatAgentRequest request,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -84,7 +84,7 @@ namespace RetellAI
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -94,7 +94,7 @@ namespace RetellAI
             string agentId,
 
             global::RetellAI.ChatAgentRequest request,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -478,24 +478,62 @@ namespace RetellAI
                                         h => h.Value),
                                 };
                             }
+                            // Precondition Failed
+                            if ((int)__response.StatusCode == 412)
+                            {
+                                string? __content_412 = null;
+                                global::System.Exception? __exception_412 = null;
+                                global::RetellAI.UpdateChatAgentResponse4? __value_412 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_412 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_412, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_412 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_412, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_412 = __ex;
+                                }
+
+                                throw new global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse4>(
+                                    message: __content_412 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_412,
+                                    statusCode: __response.StatusCode)
+                                {
+                                    ResponseBody = __content_412,
+                                    ResponseObject = __value_412,
+                                    ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value),
+                                };
+                            }
                             // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.UpdateChatAgentResponse4? __value_500 = null;
+                                global::RetellAI.UpdateChatAgentResponse5? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.UpdateChatAgentResponse5.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.UpdateChatAgentResponse5.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -503,7 +541,7 @@ namespace RetellAI
                                     __exception_500 = __ex;
                                 }
 
-                                throw new global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse4>(
+                                throw new global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse5>(
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
                                     statusCode: __response.StatusCode)
@@ -623,7 +661,7 @@ namespace RetellAI
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="responseEngine"></param>
         /// <param name="agentName">
@@ -695,16 +733,12 @@ namespace RetellAI
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
         /// Example: America/New_York
         /// </param>
-        /// <param name="isPublic">
-        /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
-        /// Example: false
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.ChatAgentResponse> UpdateChatAgentAsync(
             string agentId,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.ResponseEngine? responseEngine = default,
             string? agentName = default,
             string? autoCloseMessage = default,
@@ -726,7 +760,6 @@ namespace RetellAI
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
             global::RetellAI.ChatHandbookConfig? handbookConfig = default,
             string? timezone = default,
-            bool? isPublic = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -753,7 +786,6 @@ namespace RetellAI
                 GuardrailConfig = guardrailConfig,
                 HandbookConfig = handbookConfig,
                 Timezone = timezone,
-                IsPublic = isPublic,
             };
 
             return await UpdateChatAgentAsync(

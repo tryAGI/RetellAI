@@ -44,8 +44,7 @@ namespace RetellAI
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
         /// <param name="overrideAgentVersion">
-        /// For this particular call, override the agent version used with this version. This does not bind the agent version to this number, this is for one time override.<br/>
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="agentOverride">
         /// Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
@@ -72,10 +71,10 @@ namespace RetellAI
             string fromNumber,
             string toNumber,
             string? overrideAgentId = default,
-            int? overrideAgentVersion = default,
+            global::RetellAI.AgentVersionReference? overrideAgentVersion = default,
             global::RetellAI.AgentOverrideRequest? agentOverride = default,
             object? metadata = default,
-            object? retellLlmDynamicVariables = default,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
             global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders = default,
             bool? ignoreE164Validation = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,

@@ -241,5 +241,6 @@ namespace RetellAI
         public CohortAggregatedResult()
         {
         }
+
     }
 }

@@ -48,5 +48,6 @@ namespace RetellAI
         public ListCallsRequestFilterCriteriaDurationMs()
         {
         }
+
     }
 }

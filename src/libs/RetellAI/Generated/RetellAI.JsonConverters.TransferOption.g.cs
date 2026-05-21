@@ -125,6 +125,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferOptionColdTransfer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferOptionColdTransfer> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferOptionColdTransfer).Name}");
                     coldTransfer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -135,9 +136,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (coldTransfer == null && warmTransfer == null && agenticWarmTransfer == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferOptionWarmTransfer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferOptionWarmTransfer> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferOptionWarmTransfer).Name}");
                     warmTransfer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -148,9 +153,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (coldTransfer == null && warmTransfer == null && agenticWarmTransfer == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferOptionAgenticWarmTransfer), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferOptionAgenticWarmTransfer> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferOptionAgenticWarmTransfer).Name}");
                     agenticWarmTransfer = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

@@ -6,7 +6,7 @@
       "Slug": "updateagent",
       "Description": "Update an existing agent\u0027s latest draft version",
       "Language": "http",
-      "Code": "### Update an existing agent\u0027s latest draft version\n# @name updateAgent\nPATCH {{host}}/update-agent/{{agent_id}}?version={{version}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022agent_name\u0022: \u0022Jarvis\u0022\n}\n\n## Responses\n# 200\n# Description: Successfully updated an agent.\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
+      "Code": "### Update an existing agent\u0027s latest draft version\n# @name updateAgent\nPATCH {{host}}/update-agent/{{agent_id}}?version={{version}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022agent_name\u0022: \u0022Jarvis\u0022\n}\n\n## Responses\n# 200\n# Description: Successfully updated an agent.\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 412\n# Description: Precondition Failed\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "updateAgent",
       "Setup": null

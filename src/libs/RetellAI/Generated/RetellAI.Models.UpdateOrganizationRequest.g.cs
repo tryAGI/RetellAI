@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickCreate(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CreateOrganizationRequest? value)
+        {
+            value = Create;
+            return IsCreate;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.CreateOrganizationRequest PickCreate() => IsCreate
+            ? Create!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Create' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.UpdateOrganizationRequestVariant2? UpdateOrganizationRequestVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UpdateOrganizationRequestVariant2))]
 #endif
         public bool IsUpdateOrganizationRequestVariant2 => UpdateOrganizationRequestVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickUpdateOrganizationRequestVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.UpdateOrganizationRequestVariant2? value)
+        {
+            value = UpdateOrganizationRequestVariant2;
+            return IsUpdateOrganizationRequestVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.UpdateOrganizationRequestVariant2 PickUpdateOrganizationRequestVariant2() => IsUpdateOrganizationRequestVariant2
+            ? UpdateOrganizationRequestVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'UpdateOrganizationRequestVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static UpdateOrganizationRequest FromCreate(global::RetellAI.CreateOrganizationRequest? value) => new UpdateOrganizationRequest(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator UpdateOrganizationRequest(global::RetellAI.UpdateOrganizationRequestVariant2 value) => new UpdateOrganizationRequest((global::RetellAI.UpdateOrganizationRequestVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             UpdateOrganizationRequestVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static UpdateOrganizationRequest FromUpdateOrganizationRequestVariant2(global::RetellAI.UpdateOrganizationRequestVariant2? value) => new UpdateOrganizationRequest(value);
 
         /// <summary>
         /// 
@@ -119,7 +169,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.CreateOrganizationRequest?, TResult>? create = null,
-            global::System.Func<global::RetellAI.UpdateOrganizationRequestVariant2?, TResult>? updateOrganizationRequestVariant2 = null,
+            global::System.Func<global::RetellAI.UpdateOrganizationRequestVariant2, TResult>? updateOrganizationRequestVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +194,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.CreateOrganizationRequest?>? create = null,
-            global::System.Action<global::RetellAI.UpdateOrganizationRequestVariant2?>? updateOrganizationRequestVariant2 = null,
+
+            global::System.Action<global::RetellAI.UpdateOrganizationRequestVariant2>? updateOrganizationRequestVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsCreate)
+            {
+                create?.Invoke(Create!);
+            }
+            else if (IsUpdateOrganizationRequestVariant2)
+            {
+                updateOrganizationRequestVariant2?.Invoke(UpdateOrganizationRequestVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.CreateOrganizationRequest?>? create = null,
+            global::System.Action<global::RetellAI.UpdateOrganizationRequestVariant2>? updateOrganizationRequestVariant2 = null,
             bool validate = true)
         {
             if (validate)

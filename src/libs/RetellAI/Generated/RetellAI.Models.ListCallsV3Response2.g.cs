@@ -15,6 +15,12 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.V3CallResponse>? Items { get; set; }
 
         /// <summary>
+        /// Total number of calls matching `filter_criteria`. Only present when `include_total` is true.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total")]
+        public int? Total { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -24,13 +30,18 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ListCallsV3Response2" /> class.
         /// </summary>
         /// <param name="items"></param>
+        /// <param name="total">
+        /// Total number of calls matching `filter_criteria`. Only present when `include_total` is true.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListCallsV3Response2(
-            global::System.Collections.Generic.IList<global::RetellAI.V3CallResponse>? items)
+            global::System.Collections.Generic.IList<global::RetellAI.V3CallResponse>? items,
+            int? total)
         {
             this.Items = items;
+            this.Total = total;
         }
 
         /// <summary>
@@ -39,5 +50,6 @@ namespace RetellAI
         public ListCallsV3Response2()
         {
         }
+
     }
 }

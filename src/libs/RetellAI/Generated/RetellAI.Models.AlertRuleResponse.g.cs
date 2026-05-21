@@ -189,5 +189,6 @@ namespace RetellAI
         public AlertRuleResponse()
         {
         }
+
     }
 }

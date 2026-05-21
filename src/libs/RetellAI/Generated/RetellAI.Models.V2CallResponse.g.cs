@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickWeb(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.V2WebCallResponse? value)
+        {
+            value = Web;
+            return IsWeb;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.V2WebCallResponse PickWeb() => IsWeb
+            ? Web!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Web' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.V2PhoneCallResponse? Phone { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Phone))]
 #endif
         public bool IsPhone => Phone != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPhone(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.V2PhoneCallResponse? value)
+        {
+            value = Phone;
+            return IsPhone;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.V2PhoneCallResponse PickPhone() => IsPhone
+            ? Phone!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Phone' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static V2CallResponse FromWeb(global::RetellAI.V2WebCallResponse? value) => new V2CallResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator V2CallResponse(global::RetellAI.V2PhoneCallResponse value) => new V2CallResponse((global::RetellAI.V2PhoneCallResponse?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             Phone = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static V2CallResponse FromPhone(global::RetellAI.V2PhoneCallResponse? value) => new V2CallResponse(value);
 
         /// <summary>
         /// 
@@ -143,6 +193,30 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::RetellAI.V2WebCallResponse?>? web = null,
+
+            global::System.Action<global::RetellAI.V2PhoneCallResponse?>? phone = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsWeb)
+            {
+                web?.Invoke(Web!);
+            }
+            else if (IsPhone)
+            {
+                phone?.Invoke(Phone!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::RetellAI.V2WebCallResponse?>? web = null,
             global::System.Action<global::RetellAI.V2PhoneCallResponse?>? phone = null,
             bool validate = true)

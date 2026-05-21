@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeBase PickBase() => IsBase
+            ? Base!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.PressDigitNodeVariant2? PressDigitNodeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PressDigitNodeVariant2))]
 #endif
         public bool IsPressDigitNodeVariant2 => PressDigitNodeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPressDigitNodeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.PressDigitNodeVariant2? value)
+        {
+            value = PressDigitNodeVariant2;
+            return IsPressDigitNodeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.PressDigitNodeVariant2 PickPressDigitNodeVariant2() => IsPressDigitNodeVariant2
+            ? PressDigitNodeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'PressDigitNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static PressDigitNode FromBase(global::RetellAI.NodeBase? value) => new PressDigitNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PressDigitNode(global::RetellAI.PressDigitNodeVariant2 value) => new PressDigitNode((global::RetellAI.PressDigitNodeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             PressDigitNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PressDigitNode FromPressDigitNodeVariant2(global::RetellAI.PressDigitNodeVariant2? value) => new PressDigitNode(value);
 
         /// <summary>
         /// 
@@ -119,7 +169,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeBase?, TResult>? @base = null,
-            global::System.Func<global::RetellAI.PressDigitNodeVariant2?, TResult>? pressDigitNodeVariant2 = null,
+            global::System.Func<global::RetellAI.PressDigitNodeVariant2, TResult>? pressDigitNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +194,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeBase?>? @base = null,
-            global::System.Action<global::RetellAI.PressDigitNodeVariant2?>? pressDigitNodeVariant2 = null,
+
+            global::System.Action<global::RetellAI.PressDigitNodeVariant2>? pressDigitNodeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsPressDigitNodeVariant2)
+            {
+                pressDigitNodeVariant2?.Invoke(PressDigitNodeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeBase?>? @base = null,
+            global::System.Action<global::RetellAI.PressDigitNodeVariant2>? pressDigitNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)

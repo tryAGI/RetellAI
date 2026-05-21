@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickChatAgentResponseVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ChatAgentResponseVariant1? value)
+        {
+            value = ChatAgentResponseVariant1;
+            return IsChatAgentResponseVariant1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ChatAgentResponseVariant1 PickChatAgentResponseVariant1() => IsChatAgentResponseVariant1
+            ? ChatAgentResponseVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ChatAgentResponseVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChatAgentRequest? Request { get; init; }
 #else
@@ -46,6 +66,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickRequest(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ChatAgentRequest? value)
+        {
+            value = Request;
+            return IsRequest;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ChatAgentRequest PickRequest() => IsRequest
+            ? Request!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Request' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChatAgentResponseVariant3? ChatAgentResponseVariant3 { get; init; }
 #else
@@ -59,6 +99,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChatAgentResponseVariant3))]
 #endif
         public bool IsChatAgentResponseVariant3 => ChatAgentResponseVariant3 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickChatAgentResponseVariant3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ChatAgentResponseVariant3? value)
+        {
+            value = ChatAgentResponseVariant3;
+            return IsChatAgentResponseVariant3;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ChatAgentResponseVariant3 PickChatAgentResponseVariant3() => IsChatAgentResponseVariant3
+            ? ChatAgentResponseVariant3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ChatAgentResponseVariant3' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -76,6 +136,11 @@ namespace RetellAI
         {
             ChatAgentResponseVariant1 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatAgentResponse FromChatAgentResponseVariant1(global::RetellAI.ChatAgentResponseVariant1? value) => new ChatAgentResponse(value);
 
         /// <summary>
         /// 
@@ -98,6 +163,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ChatAgentResponse FromRequest(global::RetellAI.ChatAgentRequest? value) => new ChatAgentResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ChatAgentResponse(global::RetellAI.ChatAgentResponseVariant3 value) => new ChatAgentResponse((global::RetellAI.ChatAgentResponseVariant3?)value);
 
         /// <summary>
@@ -112,6 +182,11 @@ namespace RetellAI
         {
             ChatAgentResponseVariant3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatAgentResponse FromChatAgentResponseVariant3(global::RetellAI.ChatAgentResponseVariant3? value) => new ChatAgentResponse(value);
 
         /// <summary>
         /// 
@@ -157,9 +232,9 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ChatAgentResponseVariant1?, TResult>? chatAgentResponseVariant1 = null,
-            global::System.Func<global::RetellAI.ChatAgentRequest?, TResult>? request = null,
-            global::System.Func<global::RetellAI.ChatAgentResponseVariant3?, TResult>? chatAgentResponseVariant3 = null,
+            global::System.Func<global::RetellAI.ChatAgentResponseVariant1, TResult>? chatAgentResponseVariant1 = null,
+            global::System.Func<global::RetellAI.ChatAgentRequest, TResult>? request = null,
+            global::System.Func<global::RetellAI.ChatAgentResponseVariant3, TResult>? chatAgentResponseVariant3 = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +262,39 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ChatAgentResponseVariant1?>? chatAgentResponseVariant1 = null,
-            global::System.Action<global::RetellAI.ChatAgentRequest?>? request = null,
-            global::System.Action<global::RetellAI.ChatAgentResponseVariant3?>? chatAgentResponseVariant3 = null,
+            global::System.Action<global::RetellAI.ChatAgentResponseVariant1>? chatAgentResponseVariant1 = null,
+
+            global::System.Action<global::RetellAI.ChatAgentRequest>? request = null,
+
+            global::System.Action<global::RetellAI.ChatAgentResponseVariant3>? chatAgentResponseVariant3 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsChatAgentResponseVariant1)
+            {
+                chatAgentResponseVariant1?.Invoke(ChatAgentResponseVariant1!);
+            }
+            else if (IsRequest)
+            {
+                request?.Invoke(Request!);
+            }
+            else if (IsChatAgentResponseVariant3)
+            {
+                chatAgentResponseVariant3?.Invoke(ChatAgentResponseVariant3!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ChatAgentResponseVariant1>? chatAgentResponseVariant1 = null,
+            global::System.Action<global::RetellAI.ChatAgentRequest>? request = null,
+            global::System.Action<global::RetellAI.ChatAgentResponseVariant3>? chatAgentResponseVariant3 = null,
             bool validate = true)
         {
             if (validate)

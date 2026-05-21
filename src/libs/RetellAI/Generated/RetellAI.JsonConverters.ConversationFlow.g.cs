@@ -50,6 +50,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("begin_tag_display_position.y")) __score1++;
             if (__jsonProps.Contains("components")) __score1++;
             if (__jsonProps.Contains("default_dynamic_variables")) __score1++;
+            if (__jsonProps.Contains("flex_mode")) __score1++;
             if (__jsonProps.Contains("global_prompt")) __score1++;
             if (__jsonProps.Contains("is_transfer_llm")) __score1++;
             if (__jsonProps.Contains("mcps")) __score1++;
@@ -102,6 +103,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConversationFlowOverride), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConversationFlowOverride> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConversationFlowOverride).Name}");
                     @override = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -112,9 +114,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@override == null && conversationFlowVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConversationFlowVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConversationFlowVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConversationFlowVariant2).Name}");
                     conversationFlowVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

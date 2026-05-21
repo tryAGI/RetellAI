@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallInvocationMessageBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ToolCallInvocationMessageBase PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? ToolCallInvocationMessageVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolCallInvocationMessageVariant2))]
 #endif
         public bool IsToolCallInvocationMessageVariant2 => ToolCallInvocationMessageVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickToolCallInvocationMessageVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = ToolCallInvocationMessageVariant2;
+            return IsToolCallInvocationMessageVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickToolCallInvocationMessageVariant2() => IsToolCallInvocationMessageVariant2
+            ? ToolCallInvocationMessageVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ToolCallInvocationMessageVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -59,6 +99,11 @@ namespace RetellAI
         {
             Base = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ToolCallInvocationMessage FromBase(global::RetellAI.ToolCallInvocationMessageBase? value) => new ToolCallInvocationMessage(value);
 
         /// <summary>
         /// 
@@ -100,8 +145,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ToolCallInvocationMessageBase?, TResult>? @base = null,
-            global::System.Func<object?, TResult>? toolCallInvocationMessageVariant2 = null,
+            global::System.Func<global::RetellAI.ToolCallInvocationMessageBase, TResult>? @base = null,
+            global::System.Func<object, TResult>? toolCallInvocationMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -125,8 +170,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase?>? @base = null,
-            global::System.Action<object?>? toolCallInvocationMessageVariant2 = null,
+            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase>? @base = null,
+
+            global::System.Action<object>? toolCallInvocationMessageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsToolCallInvocationMessageVariant2)
+            {
+                toolCallInvocationMessageVariant2?.Invoke(ToolCallInvocationMessageVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ToolCallInvocationMessageBase>? @base = null,
+            global::System.Action<object>? toolCallInvocationMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)

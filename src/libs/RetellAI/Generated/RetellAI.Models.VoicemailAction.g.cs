@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickPrompt(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.VoicemailActionPrompt? value)
+        {
+            value = Prompt;
+            return IsPrompt;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.VoicemailActionPrompt PickPrompt() => IsPrompt
+            ? Prompt!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Prompt' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.VoicemailActionStaticText? StaticText { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StaticText))]
 #endif
         public bool IsStaticText => StaticText != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStaticText(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.VoicemailActionStaticText? value)
+        {
+            value = StaticText;
+            return IsStaticText;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.VoicemailActionStaticText PickStaticText() => IsStaticText
+            ? StaticText!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StaticText' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -63,6 +103,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickHangup(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.VoicemailActionHangup? value)
+        {
+            value = Hangup;
+            return IsHangup;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.VoicemailActionHangup PickHangup() => IsHangup
+            ? Hangup!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Hangup' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.VoicemailActionBridgeTransfer? BridgeTransfer { get; init; }
 #else
@@ -76,6 +136,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BridgeTransfer))]
 #endif
         public bool IsBridgeTransfer => BridgeTransfer != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickBridgeTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.VoicemailActionBridgeTransfer? value)
+        {
+            value = BridgeTransfer;
+            return IsBridgeTransfer;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.VoicemailActionBridgeTransfer PickBridgeTransfer() => IsBridgeTransfer
+            ? BridgeTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BridgeTransfer' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -93,6 +173,11 @@ namespace RetellAI
         {
             Prompt = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static VoicemailAction FromPrompt(global::RetellAI.VoicemailActionPrompt? value) => new VoicemailAction(value);
 
         /// <summary>
         /// 
@@ -115,6 +200,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static VoicemailAction FromStaticText(global::RetellAI.VoicemailActionStaticText? value) => new VoicemailAction(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator VoicemailAction(global::RetellAI.VoicemailActionHangup value) => new VoicemailAction((global::RetellAI.VoicemailActionHangup?)value);
 
         /// <summary>
@@ -133,6 +223,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static VoicemailAction FromHangup(global::RetellAI.VoicemailActionHangup? value) => new VoicemailAction(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator VoicemailAction(global::RetellAI.VoicemailActionBridgeTransfer value) => new VoicemailAction((global::RetellAI.VoicemailActionBridgeTransfer?)value);
 
         /// <summary>
@@ -147,6 +242,11 @@ namespace RetellAI
         {
             BridgeTransfer = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static VoicemailAction FromBridgeTransfer(global::RetellAI.VoicemailActionBridgeTransfer? value) => new VoicemailAction(value);
 
         /// <summary>
         /// 
@@ -196,10 +296,10 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.VoicemailActionPrompt?, TResult>? prompt = null,
-            global::System.Func<global::RetellAI.VoicemailActionStaticText?, TResult>? staticText = null,
-            global::System.Func<global::RetellAI.VoicemailActionHangup?, TResult>? hangup = null,
-            global::System.Func<global::RetellAI.VoicemailActionBridgeTransfer?, TResult>? bridgeTransfer = null,
+            global::System.Func<global::RetellAI.VoicemailActionPrompt, TResult>? prompt = null,
+            global::System.Func<global::RetellAI.VoicemailActionStaticText, TResult>? staticText = null,
+            global::System.Func<global::RetellAI.VoicemailActionHangup, TResult>? hangup = null,
+            global::System.Func<global::RetellAI.VoicemailActionBridgeTransfer, TResult>? bridgeTransfer = null,
             bool validate = true)
         {
             if (validate)
@@ -231,10 +331,46 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.VoicemailActionPrompt?>? prompt = null,
-            global::System.Action<global::RetellAI.VoicemailActionStaticText?>? staticText = null,
-            global::System.Action<global::RetellAI.VoicemailActionHangup?>? hangup = null,
-            global::System.Action<global::RetellAI.VoicemailActionBridgeTransfer?>? bridgeTransfer = null,
+            global::System.Action<global::RetellAI.VoicemailActionPrompt>? prompt = null,
+
+            global::System.Action<global::RetellAI.VoicemailActionStaticText>? staticText = null,
+
+            global::System.Action<global::RetellAI.VoicemailActionHangup>? hangup = null,
+
+            global::System.Action<global::RetellAI.VoicemailActionBridgeTransfer>? bridgeTransfer = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsPrompt)
+            {
+                prompt?.Invoke(Prompt!);
+            }
+            else if (IsStaticText)
+            {
+                staticText?.Invoke(StaticText!);
+            }
+            else if (IsHangup)
+            {
+                hangup?.Invoke(Hangup!);
+            }
+            else if (IsBridgeTransfer)
+            {
+                bridgeTransfer?.Invoke(BridgeTransfer!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.VoicemailActionPrompt>? prompt = null,
+            global::System.Action<global::RetellAI.VoicemailActionStaticText>? staticText = null,
+            global::System.Action<global::RetellAI.VoicemailActionHangup>? hangup = null,
+            global::System.Action<global::RetellAI.VoicemailActionBridgeTransfer>? bridgeTransfer = null,
             bool validate = true)
         {
             if (validate)

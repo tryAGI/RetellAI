@@ -28,14 +28,14 @@ namespace RetellAI
         partial void PrepareGetMCPToolsArguments(
             global::System.Net.Http.HttpClient httpClient,
             ref string agentId,
-            ref int? version,
+            ref global::RetellAI.AgentVersionReference? version,
             ref string mcpId,
             ref string? componentId);
         partial void PrepareGetMCPToolsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
             string agentId,
-            int? version,
+            global::RetellAI.AgentVersionReference? version,
             string mcpId,
             string? componentId);
         partial void ProcessGetMCPToolsResponse(
@@ -54,7 +54,7 @@ namespace RetellAI
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="mcpId">
         /// Example: mcp-server-1
@@ -68,7 +68,7 @@ namespace RetellAI
         public async global::System.Threading.Tasks.Task<global::System.Collections.Generic.IList<global::RetellAI.MCPToolDefinition>> GetMCPToolsAsync(
             string agentId,
             string mcpId,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             string? componentId = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -91,7 +91,7 @@ namespace RetellAI
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="mcpId">
         /// Example: mcp-server-1
@@ -105,7 +105,7 @@ namespace RetellAI
         public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::System.Collections.Generic.IList<global::RetellAI.MCPToolDefinition>>> GetMCPToolsAsResponseAsync(
             string agentId,
             string mcpId,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             string? componentId = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)

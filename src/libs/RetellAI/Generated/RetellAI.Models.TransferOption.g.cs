@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickColdTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferOptionColdTransfer? value)
+        {
+            value = ColdTransfer;
+            return IsColdTransfer;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.TransferOptionColdTransfer PickColdTransfer() => IsColdTransfer
+            ? ColdTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ColdTransfer' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferOptionWarmTransfer? WarmTransfer { get; init; }
 #else
@@ -46,6 +66,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickWarmTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferOptionWarmTransfer? value)
+        {
+            value = WarmTransfer;
+            return IsWarmTransfer;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.TransferOptionWarmTransfer PickWarmTransfer() => IsWarmTransfer
+            ? WarmTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'WarmTransfer' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferOptionAgenticWarmTransfer? AgenticWarmTransfer { get; init; }
 #else
@@ -59,6 +99,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgenticWarmTransfer))]
 #endif
         public bool IsAgenticWarmTransfer => AgenticWarmTransfer != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAgenticWarmTransfer(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferOptionAgenticWarmTransfer? value)
+        {
+            value = AgenticWarmTransfer;
+            return IsAgenticWarmTransfer;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.TransferOptionAgenticWarmTransfer PickAgenticWarmTransfer() => IsAgenticWarmTransfer
+            ? AgenticWarmTransfer!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AgenticWarmTransfer' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -76,6 +136,11 @@ namespace RetellAI
         {
             ColdTransfer = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TransferOption FromColdTransfer(global::RetellAI.TransferOptionColdTransfer? value) => new TransferOption(value);
 
         /// <summary>
         /// 
@@ -98,6 +163,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static TransferOption FromWarmTransfer(global::RetellAI.TransferOptionWarmTransfer? value) => new TransferOption(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TransferOption(global::RetellAI.TransferOptionAgenticWarmTransfer value) => new TransferOption((global::RetellAI.TransferOptionAgenticWarmTransfer?)value);
 
         /// <summary>
@@ -112,6 +182,11 @@ namespace RetellAI
         {
             AgenticWarmTransfer = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TransferOption FromAgenticWarmTransfer(global::RetellAI.TransferOptionAgenticWarmTransfer? value) => new TransferOption(value);
 
         /// <summary>
         /// 
@@ -157,9 +232,9 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.TransferOptionColdTransfer?, TResult>? coldTransfer = null,
-            global::System.Func<global::RetellAI.TransferOptionWarmTransfer?, TResult>? warmTransfer = null,
-            global::System.Func<global::RetellAI.TransferOptionAgenticWarmTransfer?, TResult>? agenticWarmTransfer = null,
+            global::System.Func<global::RetellAI.TransferOptionColdTransfer, TResult>? coldTransfer = null,
+            global::System.Func<global::RetellAI.TransferOptionWarmTransfer, TResult>? warmTransfer = null,
+            global::System.Func<global::RetellAI.TransferOptionAgenticWarmTransfer, TResult>? agenticWarmTransfer = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +262,39 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.TransferOptionColdTransfer?>? coldTransfer = null,
-            global::System.Action<global::RetellAI.TransferOptionWarmTransfer?>? warmTransfer = null,
-            global::System.Action<global::RetellAI.TransferOptionAgenticWarmTransfer?>? agenticWarmTransfer = null,
+            global::System.Action<global::RetellAI.TransferOptionColdTransfer>? coldTransfer = null,
+
+            global::System.Action<global::RetellAI.TransferOptionWarmTransfer>? warmTransfer = null,
+
+            global::System.Action<global::RetellAI.TransferOptionAgenticWarmTransfer>? agenticWarmTransfer = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsColdTransfer)
+            {
+                coldTransfer?.Invoke(ColdTransfer!);
+            }
+            else if (IsWarmTransfer)
+            {
+                warmTransfer?.Invoke(WarmTransfer!);
+            }
+            else if (IsAgenticWarmTransfer)
+            {
+                agenticWarmTransfer?.Invoke(AgenticWarmTransfer!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.TransferOptionColdTransfer>? coldTransfer = null,
+            global::System.Action<global::RetellAI.TransferOptionWarmTransfer>? warmTransfer = null,
+            global::System.Action<global::RetellAI.TransferOptionAgenticWarmTransfer>? agenticWarmTransfer = null,
             bool validate = true)
         {
             if (validate)

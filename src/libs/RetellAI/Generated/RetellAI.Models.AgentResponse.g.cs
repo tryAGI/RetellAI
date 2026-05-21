@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickAgentResponseVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.AgentResponseVariant1? value)
+        {
+            value = AgentResponseVariant1;
+            return IsAgentResponseVariant1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.AgentResponseVariant1 PickAgentResponseVariant1() => IsAgentResponseVariant1
+            ? AgentResponseVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AgentResponseVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AgentRequest? Request { get; init; }
 #else
@@ -46,6 +66,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickRequest(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.AgentRequest? value)
+        {
+            value = Request;
+            return IsRequest;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.AgentRequest PickRequest() => IsRequest
+            ? Request!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Request' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AgentResponseVariant3? AgentResponseVariant3 { get; init; }
 #else
@@ -59,6 +99,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentResponseVariant3))]
 #endif
         public bool IsAgentResponseVariant3 => AgentResponseVariant3 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAgentResponseVariant3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.AgentResponseVariant3? value)
+        {
+            value = AgentResponseVariant3;
+            return IsAgentResponseVariant3;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.AgentResponseVariant3 PickAgentResponseVariant3() => IsAgentResponseVariant3
+            ? AgentResponseVariant3!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AgentResponseVariant3' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -76,6 +136,11 @@ namespace RetellAI
         {
             AgentResponseVariant1 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AgentResponse FromAgentResponseVariant1(global::RetellAI.AgentResponseVariant1? value) => new AgentResponse(value);
 
         /// <summary>
         /// 
@@ -98,6 +163,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AgentResponse FromRequest(global::RetellAI.AgentRequest? value) => new AgentResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AgentResponse(global::RetellAI.AgentResponseVariant3 value) => new AgentResponse((global::RetellAI.AgentResponseVariant3?)value);
 
         /// <summary>
@@ -112,6 +182,11 @@ namespace RetellAI
         {
             AgentResponseVariant3 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AgentResponse FromAgentResponseVariant3(global::RetellAI.AgentResponseVariant3? value) => new AgentResponse(value);
 
         /// <summary>
         /// 
@@ -157,9 +232,9 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.AgentResponseVariant1?, TResult>? agentResponseVariant1 = null,
-            global::System.Func<global::RetellAI.AgentRequest?, TResult>? request = null,
-            global::System.Func<global::RetellAI.AgentResponseVariant3?, TResult>? agentResponseVariant3 = null,
+            global::System.Func<global::RetellAI.AgentResponseVariant1, TResult>? agentResponseVariant1 = null,
+            global::System.Func<global::RetellAI.AgentRequest, TResult>? request = null,
+            global::System.Func<global::RetellAI.AgentResponseVariant3, TResult>? agentResponseVariant3 = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +262,39 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.AgentResponseVariant1?>? agentResponseVariant1 = null,
-            global::System.Action<global::RetellAI.AgentRequest?>? request = null,
-            global::System.Action<global::RetellAI.AgentResponseVariant3?>? agentResponseVariant3 = null,
+            global::System.Action<global::RetellAI.AgentResponseVariant1>? agentResponseVariant1 = null,
+
+            global::System.Action<global::RetellAI.AgentRequest>? request = null,
+
+            global::System.Action<global::RetellAI.AgentResponseVariant3>? agentResponseVariant3 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsAgentResponseVariant1)
+            {
+                agentResponseVariant1?.Invoke(AgentResponseVariant1!);
+            }
+            else if (IsRequest)
+            {
+                request?.Invoke(Request!);
+            }
+            else if (IsAgentResponseVariant3)
+            {
+                agentResponseVariant3?.Invoke(AgentResponseVariant3!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.AgentResponseVariant1>? agentResponseVariant1 = null,
+            global::System.Action<global::RetellAI.AgentRequest>? request = null,
+            global::System.Action<global::RetellAI.AgentResponseVariant3>? agentResponseVariant3 = null,
             bool validate = true)
         {
             if (validate)

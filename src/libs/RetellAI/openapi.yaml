@@ -132,6 +132,34 @@ components:
               message:
                 type: string
                 example: The requested resource was not found.
+    Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                enum:
+                - error
+              message:
+                type: string
+                example: Resource update conflict.
+    PreconditionFailed:
+      description: Precondition Failed
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+                enum:
+                - error
+              message:
+                type: string
+                example: Precondition failed for conditional update.
   parameters:
     LimitParam:
       in: query
@@ -503,8 +531,7 @@ components:
           minLength: 1
           example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         agent_version:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         weight:
           type: number
           example: 0.5
@@ -512,6 +539,42 @@ components:
           exclusiveMinimum: true
           maximum: 1
           description: The weight of the agent. When used in a list of agents, the total weights must add up to 1.
+    AgentVersionReference:
+      oneOf:
+      - type: integer
+        minimum: 0
+        example: 1
+      - type: string
+        minLength: 1
+        maxLength: 20
+        pattern: ^(latest|(?!(?:v\d+)$)[a-z][a-z0-9_-]{0,19})$
+        example: prod
+      description: Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including
+        its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred
+        tag for that resolved version (most recently assigned), if any.
+    CreateAgentVersionRequest:
+      type: object
+      additionalProperties: false
+      required:
+      - base_version
+      properties:
+        base_version:
+          type: integer
+          minimum: 0
+          example: 12
+          description: Existing version used as the base when creating a new draft.
+    PublishAgentVersionRequest:
+      type: object
+      required:
+      - version
+      properties:
+        version:
+          type: integer
+          minimum: 0
+          example: 15
+        version_description:
+          type: string
+          example: Hotfix for transfer timeout
     AgentOverrideRequest:
       type: object
       description: Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
@@ -562,12 +625,14 @@ components:
           - eleven_v3
           - sonic-3
           - sonic-3-latest
+          - sonic-3.5
           - tts-1
           - gpt-4o-mini-tts
           - speech-02-turbo
           - speech-2.8-turbo
           - s1
           - s2-pro
+          - s2.1-pro
           - null
           description: Select the voice model used for the selected voice. Each provider has a set of available voice models. Set to null to remove voice model selection, and default ones will apply. Check
             out dashboard for more details of each voice model.
@@ -833,6 +898,11 @@ components:
           properties:
             action:
               $ref: '#/components/schemas/VoicemailAction'
+            detection_prompt:
+              type: string
+              maxLength: 2000
+              nullable: true
+              description: Optionally describe what should be treated as voicemail. Leave as null to use the default definition.
           required:
           - action
           description: If this option is set, the call will try to detect voicemail in the first 3 minutes of the call. Actions defined (hangup, or leave a message) will be applied when the voicemail is
@@ -847,6 +917,11 @@ components:
           properties:
             action:
               $ref: '#/components/schemas/IvrAction'
+            detection_prompt:
+              type: string
+              maxLength: 2000
+              nullable: true
+              description: Optionally describe what should be treated as an IVR. Leave as null to use the default definition.
           required:
           - action
           description: If this option is set, the call will try to detect IVR in the first 3 minutes of the call. Actions defined will be applied when the IVR is detected. Set this to null to disable IVR
@@ -855,6 +930,8 @@ components:
             action:
               type: hangup
           nullable: true
+        call_screening_option:
+          $ref: '#/components/schemas/CallScreeningOption'
         post_call_analysis_data:
           type: array
           items:
@@ -929,6 +1006,10 @@ components:
           type: boolean
           example: true
           description: If set to true, DTMF input will be accepted and processed. If false, any DTMF input will be ignored. Default to true.
+        allow_dtmf_interruption:
+          type: boolean
+          example: false
+          description: If set to true, DTMF input will interrupt the agent even when interruption_sensitivity is 0. Can be overridden per conversation or subagent node. Default to false.
         user_dtmf_options:
           type: object
           properties:
@@ -972,11 +1053,6 @@ components:
           description: IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.
           example: America/New_York
           nullable: true
-        is_public:
-          type: boolean
-          example: false
-          description: Whether the agent is public. When set to true, the agent is available for public agent preview link.
-          nullable: true
     AgentResponse:
       allOf:
       - type: object
@@ -992,6 +1068,16 @@ components:
             type: integer
             example: 0
             description: Version of the agent.
+          base_version:
+            type: integer
+            nullable: true
+            example: 12
+            description: Version that this draft was based on. Null for initial versions.
+          assigned_tags:
+            type: array
+            items:
+              type: string
+            description: Tags assigned to this agent version. Preferred tag is listed first.
           is_published:
             type: boolean
             example: false
@@ -1027,7 +1113,7 @@ components:
             type: string
             description: The ID of the agent to swap to
           agent_version:
-            type: number
+            $ref: '#/components/schemas/AgentVersionReference'
             description: The version of the agent to swap to. If not specified, will use the latest version
           post_call_analysis_setting:
             $ref: '#/components/schemas/PostCallAnalysisSetting'
@@ -1068,7 +1154,7 @@ components:
           minLength: 1
           description: The id of the agent to swap to.
         agent_version:
-          type: number
+          $ref: '#/components/schemas/AgentVersionReference'
           description: The version of the agent to swap to. If not specified, will use the latest version.
         speak_during_execution:
           type: boolean
@@ -1187,15 +1273,15 @@ components:
           example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
           description: For this particular call, override the agent used with this agent id. This does not bind the agent to this number, this is for one time override.
         override_agent_version:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
           description: For this particular call, override the agent version used with this version. This does not bind the agent to this number, this is for one time override.
         agent_override:
           $ref: '#/components/schemas/AgentOverrideRequest'
           description: For this particular call, override agent configuration with these settings. This allows you to customize agent behavior for individual calls without modifying the base agent.
         retell_llm_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             customer_name: John Doe
           description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
@@ -1727,6 +1813,7 @@ components:
             - chat_started
             - chat_ended
             - chat_analyzed
+            - transcript_updated
           description: Which webhook events this agent should receive. If not set, defaults to chat_started, chat_ended, chat_analyzed.
           nullable: true
         webhook_timeout_ms:
@@ -1799,11 +1886,6 @@ components:
           description: IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.
           example: America/New_York
           nullable: true
-        is_public:
-          type: boolean
-          example: false
-          description: Whether the agent is public. When set to true, the agent is available for public agent preview link.
-          nullable: true
     ChatAgentResponse:
       allOf:
       - type: object
@@ -1818,6 +1900,16 @@ components:
             type: integer
             example: 0
             description: The version of the chat agent.
+          base_version:
+            type: integer
+            nullable: true
+            example: 12
+            description: Version that this draft was based on. Null for initial versions.
+          assigned_tags:
+            type: array
+            items:
+              type: string
+            description: Tags assigned to this chat agent version. Preferred tag is listed first.
           is_published:
             type: boolean
             example: false
@@ -1879,13 +1971,15 @@ components:
           nullable: true
         retell_llm_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             customer_name: John Doe
           description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
         collected_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             last_node_name: Test node
           description: Dynamic variables collected from the chat. Only available after the chat ends.
@@ -2398,6 +2492,11 @@ components:
           type: string
           description: Name of the component
           example: Customer Information Collector
+        flex_mode:
+          type: boolean
+          example: false
+          description: If enabled, the whole component will be converted as a Single Prompt agent.
+          nullable: true
         tools:
           type: array
           items:
@@ -2485,6 +2584,10 @@ components:
           minimum: 0.5
           maximum: 2
           nullable: true
+        allow_dtmf_interruption:
+          type: boolean
+          nullable: true
+          description: If set, overrides the agent-level allow_dtmf_interruption for this node only.
     ConversationFlowOverride:
       type: object
       description: Override properties for conversation flow configuration in agent override requests.
@@ -2553,6 +2656,11 @@ components:
             type: string
             example: You are a helpful customer service agent.
             description: Global prompt used in every node of the conversation flow.
+            nullable: true
+          flex_mode:
+            type: boolean
+            example: false
+            description: If enabled, the whole conversation flow will be converted as a Single Prompt agent.
             nullable: true
           tools:
             type: array
@@ -2673,6 +2781,10 @@ components:
             - kb_002
             description: Knowledge base IDs for RAG (Retrieval-Augmented Generation).
             nullable: true
+          kb_config:
+            type: object
+            $ref: '#/components/schemas/KBConfig'
+            description: Knowledge base configuration for RAG retrieval at the node level. If kb_instruction is set here, it overrides the flow-level kb_instruction.
     SubagentNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'
@@ -2711,6 +2823,10 @@ components:
               type: string
             description: Knowledge base IDs for RAG (Retrieval-Augmented Generation).
             nullable: true
+          kb_config:
+            type: object
+            $ref: '#/components/schemas/KBConfig'
+            description: Knowledge base configuration for RAG retrieval at the node level. If kb_instruction is set here, it overrides the flow-level kb_instruction.
           tool_ids:
             type: array
             items:
@@ -2953,6 +3069,40 @@ components:
           type: string
           description: The digit pressed by the user. Will be a single digit string like "1", "2", "3", "*", "#" etc.
           example: '1'
+    SmsUtterance:
+      type: object
+      required:
+      - role
+      - content
+      - time_sec
+      properties:
+        role:
+          type: string
+          enum:
+          - sms
+          description: SMS message received from the user during the call (for example while the agent is leaving a voicemail). Not part of the spoken conversation.
+        content:
+          type: string
+          description: Text content of the SMS message.
+        multimedia:
+          type: array
+          items:
+            $ref: '#/components/schemas/SmsMultimediaItem'
+          description: Multimedia attachments (MMS). Display only; not relayed into the spoken conversation.
+        time_sec:
+          type: number
+          description: Time the SMS was received, in seconds relative to the start of the call.
+    SmsMultimediaItem:
+      type: object
+      required:
+      - url
+      properties:
+        url:
+          type: string
+          description: URL of the multimedia attachment.
+        summary:
+          type: string
+          description: Optional textual summary of the attachment.
     StringFilter:
       type: object
       required:
@@ -3936,6 +4086,9 @@ components:
         file_url:
           type: string
           description: URL of the document stored.
+        file_size:
+          type: number
+          description: File size in bytes.
     KnowledgeBaseSourceText:
       type: object
       required:
@@ -4071,7 +4224,6 @@ components:
       - claude-4.5-sonnet
       - claude-4.6-sonnet
       - claude-4.5-haiku
-      - gemini-2.5-flash
       - gemini-2.5-flash-lite
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
@@ -4138,7 +4290,6 @@ components:
         inputSchema:
           type: object
           description: JSON schema defining the input parameters for the tool.
-          additionalProperties: true
           example:
             type: object
             properties:
@@ -4602,7 +4753,6 @@ components:
       - claude-4.5-sonnet
       - claude-4.6-sonnet
       - claude-4.5-haiku
-      - gemini-2.5-flash
       - gemini-2.5-flash-lite
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
@@ -4803,7 +4953,6 @@ components:
           type: string
         feature_bucket:
           type: object
-          additionalProperties: true
         use_stable_server:
           type: boolean
     OrganizationResponse:
@@ -4847,7 +4996,7 @@ components:
             - customer_account_number
           uniqueItems: true
           default: []
-          description: List of PII categories to scrub from transcripts and recordings.
+          description: List of PII categories to scrub from transcripts and recordings. PII redaction is only active when this list is non-empty; an empty array means no PII scrubbing is performed.
     GuardrailConfig:
       type: object
       properties:
@@ -5365,6 +5514,7 @@ components:
         s2s_model:
           type: string
           enum:
+          - gpt-realtime-2
           - gpt-realtime-1.5
           - gpt-realtime
           - gpt-realtime-mini
@@ -5496,11 +5646,6 @@ components:
               customer_name: John Doe
             description: Default dynamic variables represented as key-value pairs of strings. These are injected into your Retell LLM prompt and tool description when specific values are not provided in
               a request. Only applicable for Retell LLM.
-            nullable: true
-          version:
-            type: integer
-            example: 1
-            description: The version of the LLM.
             nullable: true
           mcps:
             type: array
@@ -6085,7 +6230,6 @@ components:
             description: Match only calls with specific arguments
           args:
             type: object
-            additionalProperties: true
             description: Arguments to match. Only provided fields will be checked
     ToolMock:
       type: object
@@ -6285,7 +6429,6 @@ components:
           description: Type must be "object" for a JSON Schema object.
         properties:
           type: object
-          additionalProperties: {}
           description: The value of properties is an object, where each key is the name of a property and each value is a schema used to validate that property.
         required:
           type: array
@@ -6501,7 +6644,7 @@ components:
                   description: The agent ID of the transfer agent. This agent must have isTransferAgent set to true and should use bridge_transfer and cancel_transfer tools (for Retell LLM) or BridgeTransferNode
                     and CancelTransferNode (for Conversation Flow).
                 agent_version:
-                  type: number
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the transfer agent to use.
               required:
               - agent_id
@@ -6695,6 +6838,7 @@ components:
       - $ref: '#/components/schemas/ToolCallResultUtterance'
       - $ref: '#/components/schemas/NodeTransitionUtterance'
       - $ref: '#/components/schemas/DTMFUtterance'
+      - $ref: '#/components/schemas/SmsUtterance'
     UtteranceToolCallAccuracy:
       type: object
       required:
@@ -6807,13 +6951,15 @@ components:
             from the call object.
         retell_llm_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             customer_name: John Doe
           description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
         collected_dynamic_variables:
           type: object
-          additionalProperties: {}
+          additionalProperties:
+            type: string
           example:
             last_node_name: Test node
           description: Dynamic variables collected from the call. Only available after the call ends.
@@ -7007,20 +7153,279 @@ components:
       - $ref: '#/components/schemas/V2WebCallResponse'
       - $ref: '#/components/schemas/V2PhoneCallResponse'
     V3CallResponse:
+      oneOf:
+      - $ref: '#/components/schemas/V3WebCallResponse'
+      - $ref: '#/components/schemas/V3PhoneCallResponse'
+    V3CallBase:
+      type: object
+      required:
+      - call_id
+      - agent_id
+      - agent_version
+      - call_status
+      properties:
+        call_id:
+          type: string
+          example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
+          description: Unique id of the call. Used to identify the call in the LLM websocket and used to authenticate in the audio websocket.
+        agent_id:
+          type: string
+          example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
+          description: Corresponding agent id of this call.
+        agent_name:
+          type: string
+          example: My Agent
+          description: Name of the agent.
+        agent_version:
+          type: integer
+          example: 1
+          description: The version of the agent.
+        call_status:
+          type: string
+          enum:
+          - registered
+          - not_connected
+          - ongoing
+          - ended
+          - error
+          example: registered
+          description: 'Status of call.
+
+
+            - `registered`: Call id issued, starting to make a call using this id.
+
+            - `ongoing`: Call connected and ongoing.
+
+            - `ended`: The underlying websocket has ended for the call. Either user or agent hung up, or call transferred.
+
+            - `error`: Call encountered error.
+
+            '
+        metadata:
+          type: object
+          description: An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the call. Not used for processing. You can later get this field
+            from the call object.
+        retell_llm_dynamic_variables:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            customer_name: John Doe
+          description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
+        collected_dynamic_variables:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            last_node_name: Test node
+          description: Dynamic variables collected from the call. Only available after the call ends.
+        custom_sip_headers:
+          type: object
+          additionalProperties:
+            type: string
+          description: Custom SIP headers to be added to the call.
+          example:
+            X-Custom-Header: Custom Value
+        data_storage_setting:
+          type: string
+          enum:
+          - everything
+          - everything_except_pii
+          - basic_attributes_only
+          example: everything
+          description: Data storage setting for this call's agent. "everything" stores all data, "everything_except_pii" excludes PII when possible, "basic_attributes_only" stores only metadata.
+          nullable: true
+        opt_in_signed_url:
+          type: boolean
+          example: true
+          description: Whether this agent opts in for signed URLs for public logs and recordings. When enabled, the generated URLs will include security signatures that restrict access and automatically
+            expire after 24 hours.
+        start_timestamp:
+          type: integer
+          example: 1703302407333
+          description: Begin timestamp (milliseconds since epoch) of the call. Available after call starts.
+        end_timestamp:
+          type: integer
+          example: 1703302428855
+          description: End timestamp (milliseconds since epoch) of the call. Available after call ends.
+        transfer_end_timestamp:
+          type: integer
+          example: 1703302628855
+          description: Transfer end timestamp (milliseconds since epoch) of the call. Available after transfer call ends.
+        duration_ms:
+          type: integer
+          example: 10000
+          description: Duration of the call in milliseconds. Available after call ends.
+        recording_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording.wav
+          description: Recording of the call. Available after call ends.
+        recording_multi_channel_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording_multichannel.wav
+          description: Recording of the call, with each party's audio stored in a separate channel. Available after the call ends.
+        scrubbed_recording_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording.wav
+          description: Recording of the call without PII. Available after call ends.
+        scrubbed_recording_multi_channel_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording_multichannel.wav
+          description: Recording of the call without PII, with each party's audio stored in a separate channel. Available after the call ends.
+        public_log_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/public_log.txt
+          description: Public log of the call, containing details about all the requests and responses received in LLM WebSocket, latency tracking for each turntaking, helpful for debugging and tracing.
+            Available after call ends.
+        knowledge_base_retrieved_contents_url:
+          type: string
+          example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/kb_retrieved_contents.txt
+          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the respond id and the retrieved contents
+            related to that response. It's already rendered in call history tab of dashboard, and you can also manually download and check against the transcript to view the knowledge base retrieval results.
+        latency:
+          type: object
+          description: Latency tracking of the call, available after call ends. Not all fields here will be available, as it depends on the type of call and feature used.
+          properties:
+            e2e:
+              description: End to end latency (from user stops talking to agent start talking) tracking of the call. This latency does not account for the network trip time from Retell server to user frontend.
+                The latency is tracked every time turn change between user and agent.
+              $ref: '#/components/schemas/CallLatency'
+            asr:
+              description: Transcription latency (diff between the duration of the chunks streamed and the durations of the transcribed part) tracking of the call.
+              $ref: '#/components/schemas/CallLatency'
+            llm:
+              description: LLM latency (from issue of LLM call to first speakable chunk received) tracking of the call. When using custom LLM. this latency includes LLM websocket roundtrip time between
+                user server and Retell server.
+              $ref: '#/components/schemas/CallLatency'
+            llm_websocket_network_rtt:
+              description: LLM websocket roundtrip latency (between user server and Retell server) tracking of the call. Only populated for calls using custom LLM.
+              $ref: '#/components/schemas/CallLatency'
+            tts:
+              description: Text-to-speech latency (from the triggering of TTS to first byte received) tracking of the call.
+              $ref: '#/components/schemas/CallLatency'
+            knowledge_base:
+              description: Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature
+                for the agent of the call.
+              $ref: '#/components/schemas/CallLatency'
+            s2s:
+              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
+              $ref: '#/components/schemas/CallLatency'
+        disconnection_reason:
+          $ref: '#/components/schemas/DisconnectionReason'
+          example: agent_hangup
+          description: The reason for the disconnection of the call. Read detailed description about reasons listed here at [Disconnection Reason Doc](/reliability/debug-call-disconnect#understanding-disconnection-reasons).
+        transfer_destination:
+          type: string
+          example: '+12137771234'
+          description: The destination number or identifier where the call was transferred to. Only populated when the disconnection reason was `call_transfer`. Can be a phone number or a SIP URI. SIP URIs
+            are prefixed with "sip:" and may include a ";transport=..." portion (if transport is known) where the transport type can be "tls", "tcp" or "udp".
+          nullable: true
+        call_analysis:
+          description: Post call analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
+            event type to receive it once ready.
+          $ref: '#/components/schemas/CallAnalysis'
+        call_cost:
+          description: Cost of the call, including all the products and their costs and discount.
+          type: object
+          required:
+          - product_costs
+          - total_duration_seconds
+          - total_duration_unit_price
+          - combined_cost
+          properties:
+            product_costs:
+              type: array
+              description: List of products with their unit prices and costs in cents
+              items:
+                $ref: '#/components/schemas/ProductCost'
+            total_duration_seconds:
+              type: number
+              description: Total duration of the call in seconds
+              example: 60
+            total_duration_unit_price:
+              type: number
+              description: Total unit duration price of all products in cents per second
+              example: 1
+            combined_cost:
+              type: number
+              description: Combined cost of all individual costs in cents
+              example: 70
+        llm_token_usage:
+          type: object
+          description: LLM token usage of the call, available after call ends. Not populated if using custom LLM, realtime API, or no LLM call is made.
+          required:
+          - values
+          - average
+          - num_requests
+          properties:
+            values:
+              type: array
+              items:
+                type: number
+              description: All the token count values in the call.
+            average:
+              type: number
+              description: Average token count of the call.
+            num_requests:
+              type: number
+              description: Number of requests made to the LLM.
+    V3PhoneCallResponse:
       allOf:
-      - $ref: '#/components/schemas/V2CallResponse'
       - type: object
-        description: V3 list calls response. Transcript fields are intentionally omitted.
-        not:
-          anyOf:
-          - required:
-            - transcript
-          - required:
-            - transcript_object
-          - required:
-            - transcript_with_tool_calls
-          - required:
-            - scrubbed_transcript_with_tool_calls
+        required:
+        - call_type
+        - from_number
+        - to_number
+        - direction
+        properties:
+          call_type:
+            type: string
+            enum:
+            - phone_call
+            example: phone_call
+            description: Type of the call. Used to distinguish between web call and phone call.
+          from_number:
+            type: string
+            example: '+12137771234'
+            description: The caller number.
+          to_number:
+            type: string
+            example: '+12137771235'
+            description: The callee number.
+          direction:
+            type: string
+            enum:
+            - inbound
+            - outbound
+            example: inbound
+            description: Direction of the phone call.
+          telephony_identifier:
+            type: object
+            description: Telephony identifier of the call, populated when available. Tracking purposes only.
+            properties:
+              twilio_call_sid:
+                type: string
+                example: CA5d0d0d8047bf685c3f0ff980fe62c123
+                description: Twilio call sid.
+      - $ref: '#/components/schemas/V3CallBase'
+    V3WebCallResponse:
+      allOf:
+      - type: object
+        required:
+        - call_type
+        - access_token
+        properties:
+          call_type:
+            type: string
+            enum:
+            - web_call
+            example: web_call
+            description: Type of the call. Used to distinguish between web call and phone call.
+          access_token:
+            type: string
+            example: eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9p
+            description: Access token to enter the web call room. This needs to be passed to your frontend to join the call.
+      - $ref: '#/components/schemas/V3CallBase'
     V2PhoneCallResponse:
       allOf:
       - type: object
@@ -7194,6 +7599,27 @@ components:
     IvrAction:
       oneOf:
       - $ref: '#/components/schemas/IvrActionHangup'
+    CallScreeningOption:
+      type: object
+      properties:
+        agent_identity:
+          type: string
+          minLength: 1
+          maxLength: 100
+          example: Acme Health scheduling team
+          description: Identity the agent should provide when a call screen asks who is calling. Dynamic variables are supported.
+        call_purpose:
+          type: string
+          minLength: 1
+          maxLength: 300
+          example: confirming your appointment for tomorrow
+          description: Purpose the agent should provide when a call screen asks why it is calling. Dynamic variables are supported.
+      required:
+      - agent_identity
+      - call_purpose
+      additionalProperties: false
+      description: If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
+      nullable: true
     WER:
       type: object
       required:
@@ -7872,7 +8298,7 @@ paths:
         in: query
         required: false
         schema:
-          type: integer
+          $ref: '#/components/schemas/AgentVersionReference'
         description: Agent version to use. Defaults to latest.
       requestBody:
         required: true
@@ -8039,10 +8465,9 @@ paths:
                   type: string
                   minLength: 1
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: The chat agent to use for the call.
+                  description: The chat agent to use for the chat.
                 agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the chat agent to use for the chat. If not provided, will default to latest version.
                 metadata:
                   type: object
@@ -8050,13 +8475,14 @@ paths:
                     this field from the chat object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
       responses:
         '201':
-          description: Successfully registered a phone call.
+          description: Successfully created a chat.
           content:
             application/json:
               schema:
@@ -8311,8 +8737,7 @@ paths:
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
                   description: For this particular chat, override the agent used with this agent id. This does not bind the agent to this number, this is for one time override.
                 override_agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: For this particular chat, override the agent version used with this version. This does not bind the agent version to this number, this is for one time override.
                 metadata:
                   type: object
@@ -8320,7 +8745,8 @@ paths:
                     this field from the chat object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
@@ -8356,6 +8782,29 @@ paths:
           example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         required: true
         description: Unique id of the agent to be deleted. Deletes all versions of the agent.
+      responses:
+        '204':
+          description: No Content
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /delete-chat/{chat_id}:
+    delete:
+      description: Delete an existing chat
+      operationId: deleteChat
+      parameters:
+      - in: path
+        name: chat_id
+        schema:
+          type: string
+          example: 16b980523634a6dc504898cda492e939
+        required: true
+        description: Unique id of the chat to be deleted.
       responses:
         '204':
           description: No Content
@@ -8608,8 +9057,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the API to use for this request. If not provided, will default to latest version.
       responses:
@@ -8671,8 +9119,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the API to use for this request. If not provided, will default to latest version.
       responses:
@@ -8723,7 +9170,7 @@ paths:
       operationId: getConcurrency
       responses:
         '200':
-          description: Successfully retrieved a voice.
+          description: Successfully retrieved concurrency information.
           content:
             application/json:
               schema:
@@ -8870,8 +9317,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the agent to use for this request. Default to latest version.
       - in: query
@@ -9394,7 +9840,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /v3/list-chats:
     post:
-      description: List chats with unified cursor pagination response and total count.
+      description: List chats with unified cursor pagination response.
       operationId: listChatsV3
       requestBody:
         required: false
@@ -9406,7 +9852,6 @@ paths:
                 filter_criteria:
                   type: object
                   description: Filter criteria for chats to retrieve.
-                  additionalProperties: true
                 sort_order:
                   type: string
                   enum:
@@ -9427,6 +9872,11 @@ paths:
                 pagination_key:
                   type: string
                   description: Opaque pagination cursor from a previous response.
+                include_total:
+                  type: boolean
+                  default: false
+                  description: Whether to include `total` (count of all chats matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request
+                    triggers an additional aggregate query, so opt in only when the total is needed.
               not:
                 required:
                 - skip
@@ -9445,6 +9895,9 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/V3ChatResponse'
+                    total:
+                      type: integer
+                      description: Total number of chats matching `filter_criteria`. Only present when `include_total` is true.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -9735,22 +10188,34 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /publish-agent/{agent_id}:
+  /create-agent-version/{agent_id}:
     post:
-      description: Publish the latest version of the agent and create a new draft agent with newer version.
-      operationId: publishAgent
+      description: Create a new draft agent version from a base version.
+      operationId: createAgentVersion
       parameters:
       - in: path
         name: agent_id
         schema:
           type: string
           minLength: 1
-          example: 16b980523634a6dc504898cda492e939
+          example: agent_xxx
         required: true
-        description: Unique id of the agent to be published.
+        description: Unique id of the agent.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAgentVersionRequest'
       responses:
-        '200':
-          description: Agent successfully published
+        '201':
+          description: Draft version created successfully.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AgentResponse'
+                - $ref: '#/components/schemas/ChatAgentResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -9761,22 +10226,62 @@ paths:
           $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /publish-chat-agent/{agent_id}:
+  /publish-agent-version/{agent_id}:
     post:
-      description: Publish the latest version of the chat agent and create a new draft chat agent with newer version.
-      operationId: publishChatAgent
+      description: Publish an existing draft version in place.
+      operationId: publishAgentVersion
       parameters:
       - in: path
         name: agent_id
         schema:
           type: string
           minLength: 1
-          example: 16b980523634a6dc504898cda492e939
+          example: agent_xxx
         required: true
-        description: Unique id of the chat agent to be published.
+        description: Unique id of the agent.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishAgentVersionRequest'
       responses:
         '200':
-          description: Chat agent successfully published
+          description: Agent version published successfully.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /delete-agent-version/{agent_id}:
+    delete:
+      description: Delete a specific agent version.
+      operationId: deleteAgentVersion
+      parameters:
+      - in: path
+        name: agent_id
+        schema:
+          type: string
+          minLength: 1
+          example: agent_xxx
+        required: true
+        description: Unique id of the agent.
+      - in: query
+        name: version
+        schema:
+          type: integer
+          minimum: 0
+          example: 1
+        required: true
+        description: Version to delete.
+      responses:
+        '204':
+          description: Version deleted successfully.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -9803,8 +10308,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the API to use for this request. Default to latest version.
       requestBody:
@@ -9828,6 +10332,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /update-chat-agent/{agent_id}:
@@ -9846,8 +10352,7 @@ paths:
       - in: query
         name: version
         schema:
-          type: integer
-          example: 1
+          $ref: '#/components/schemas/AgentVersionReference'
         required: false
         description: Optional version of the API to use for this request. Default to latest version.
       requestBody:
@@ -9869,6 +10374,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /update-chat/{chat_id}:
@@ -10222,8 +10729,7 @@ paths:
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
                   description: For this particular call, override the agent used with this agent id. This does not bind the agent to this number, this is for one time override.
                 override_agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: For this particular call, override the agent version used with this version. This does not bind the agent version to this number, this is for one time override.
                 agent_override:
                   $ref: '#/components/schemas/AgentOverrideRequest'
@@ -10234,7 +10740,8 @@ paths:
                     this field from the call object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
@@ -10288,8 +10795,7 @@ paths:
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
                   description: Unique id of agent used for the call. Your agent would contain the LLM Websocket url used for this call.
                 agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the agent to use for the call.
                 agent_override:
                   $ref: '#/components/schemas/AgentOverrideRequest'
@@ -10300,7 +10806,8 @@ paths:
                     this field from the call object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
@@ -10599,7 +11106,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /v3/list-calls:
     post:
-      description: List calls with unified cursor pagination response and total count.
+      description: List calls with unified cursor pagination response.
       operationId: listCallsV3
       requestBody:
         required: false
@@ -10630,6 +11137,11 @@ paths:
                 pagination_key:
                   type: string
                   description: Opaque pagination cursor from a previous response.
+                include_total:
+                  type: boolean
+                  default: false
+                  description: Whether to include `total` (count of all calls matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request
+                    triggers an additional aggregate query, so opt in only when the total is needed.
               not:
                 required:
                 - skip
@@ -10648,6 +11160,9 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/V3CallResponse'
+                    total:
+                      type: integer
+                      description: Total number of calls matching `filter_criteria`. Only present when `include_total` is true.
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -10726,8 +11241,7 @@ paths:
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
                   description: The agent to use for the call.
                 agent_version:
-                  type: integer
-                  example: 1
+                  $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the agent to use for the call.
                 agent_override:
                   $ref: '#/components/schemas/AgentOverrideRequest'
@@ -10755,7 +11269,8 @@ paths:
                     this field from the call object.
                 retell_llm_dynamic_variables:
                   type: object
-                  additionalProperties: {}
+                  additionalProperties:
+                    type: string
                   example:
                     customer_name: John Doe
                   description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.

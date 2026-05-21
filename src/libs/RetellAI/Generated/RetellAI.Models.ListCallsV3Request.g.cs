@@ -43,6 +43,13 @@ namespace RetellAI
         public string? PaginationKey { get; set; }
 
         /// <summary>
+        /// Whether to include `total` (count of all calls matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request triggers an additional aggregate query, so opt in only when the total is needed.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("include_total")]
+        public bool? IncludeTotal { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -69,6 +76,10 @@ namespace RetellAI
         /// <param name="paginationKey">
         /// Opaque pagination cursor from a previous response.
         /// </param>
+        /// <param name="includeTotal">
+        /// Whether to include `total` (count of all calls matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request triggers an additional aggregate query, so opt in only when the total is needed.<br/>
+        /// Default Value: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -77,13 +88,15 @@ namespace RetellAI
             global::RetellAI.ListCallsV3RequestSortOrder? sortOrder,
             int? limit,
             int? skip,
-            string? paginationKey)
+            string? paginationKey,
+            bool? includeTotal)
         {
             this.FilterCriteria = filterCriteria;
             this.SortOrder = sortOrder;
             this.Limit = limit;
             this.Skip = skip;
             this.PaginationKey = paginationKey;
+            this.IncludeTotal = includeTotal;
         }
 
         /// <summary>
@@ -92,5 +105,6 @@ namespace RetellAI
         public ListCallsV3Request()
         {
         }
+
     }
 }

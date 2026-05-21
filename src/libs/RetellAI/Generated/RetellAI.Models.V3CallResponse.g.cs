@@ -13,79 +13,147 @@ namespace RetellAI
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.V2CallResponse? V2 { get; init; }
+        public global::RetellAI.V3WebCallResponse? Web { get; init; }
 #else
-        public global::RetellAI.V2CallResponse? V2 { get; }
+        public global::RetellAI.V3WebCallResponse? Web { get; }
 #endif
 
         /// <summary>
         /// 
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(V2))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Web))]
 #endif
-        public bool IsV2 => V2 != null;
+        public bool IsWeb => Web != null;
 
         /// <summary>
-        /// V3 list calls response. Transcript fields are intentionally omitted.
+        /// 
         /// </summary>
+        public bool TryPickWeb(
 #if NET6_0_OR_GREATER
-        public object? V3CallResponseVariant2 { get; init; }
-#else
-        public object? V3CallResponseVariant2 { get; }
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(V3CallResponseVariant2))]
-#endif
-        public bool IsV3CallResponseVariant2 => V3CallResponseVariant2 != null;
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator V3CallResponse(global::RetellAI.V2CallResponse value) => new V3CallResponse((global::RetellAI.V2CallResponse?)value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::RetellAI.V2CallResponse?(V3CallResponse @this) => @this.V2;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public V3CallResponse(global::RetellAI.V2CallResponse? value)
+            out global::RetellAI.V3WebCallResponse? value)
         {
-            V2 = value;
+            value = Web;
+            return IsWeb;
         }
 
         /// <summary>
         /// 
         /// </summary>
+        public global::RetellAI.V3WebCallResponse PickWeb() => IsWeb
+            ? Web!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Web' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::RetellAI.V3PhoneCallResponse? Phone { get; init; }
+#else
+        public global::RetellAI.V3PhoneCallResponse? Phone { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Phone))]
+#endif
+        public bool IsPhone => Phone != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPhone(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.V3PhoneCallResponse? value)
+        {
+            value = Phone;
+            return IsPhone;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.V3PhoneCallResponse PickPhone() => IsPhone
+            ? Phone!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Phone' but the value was {ToString()}.");
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator V3CallResponse(global::RetellAI.V3WebCallResponse value) => new V3CallResponse((global::RetellAI.V3WebCallResponse?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::RetellAI.V3WebCallResponse?(V3CallResponse @this) => @this.Web;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public V3CallResponse(global::RetellAI.V3WebCallResponse? value)
+        {
+            Web = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static V3CallResponse FromWeb(global::RetellAI.V3WebCallResponse? value) => new V3CallResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator V3CallResponse(global::RetellAI.V3PhoneCallResponse value) => new V3CallResponse((global::RetellAI.V3PhoneCallResponse?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::RetellAI.V3PhoneCallResponse?(V3CallResponse @this) => @this.Phone;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public V3CallResponse(global::RetellAI.V3PhoneCallResponse? value)
+        {
+            Phone = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static V3CallResponse FromPhone(global::RetellAI.V3PhoneCallResponse? value) => new V3CallResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public V3CallResponse(
-            global::RetellAI.V2CallResponse? v2,
-            object? v3CallResponseVariant2
+            global::RetellAI.V3WebCallResponse? web,
+            global::RetellAI.V3PhoneCallResponse? phone
             )
         {
-            V2 = v2;
-            V3CallResponseVariant2 = v3CallResponseVariant2;
+            Web = web;
+            Phone = phone;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
-            V3CallResponseVariant2 as object ??
-            V2 as object 
+            Phone as object ??
+            Web as object 
             ;
 
         /// <summary>
         /// 
         /// </summary>
         public override string? ToString() =>
-            V2?.ToString() ??
-            V3CallResponseVariant2?.ToString() 
+            Web?.ToString() ??
+            Phone?.ToString() 
             ;
 
         /// <summary>
@@ -93,15 +161,15 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsV2 && IsV3CallResponseVariant2;
+            return IsWeb && !IsPhone || !IsWeb && IsPhone;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.V2CallResponse?, TResult>? v2 = null,
-            global::System.Func<object?, TResult>? v3CallResponseVariant2 = null,
+            global::System.Func<global::RetellAI.V3WebCallResponse?, TResult>? web = null,
+            global::System.Func<global::RetellAI.V3PhoneCallResponse?, TResult>? phone = null,
             bool validate = true)
         {
             if (validate)
@@ -109,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsV2 && v2 != null)
+            if (IsWeb && web != null)
             {
-                return v2(V2!);
+                return web(Web!);
             }
-            else if (IsV3CallResponseVariant2 && v3CallResponseVariant2 != null)
+            else if (IsPhone && phone != null)
             {
-                return v3CallResponseVariant2(V3CallResponseVariant2!);
+                return phone(Phone!);
             }
 
             return default(TResult);
@@ -125,8 +193,9 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.V2CallResponse?>? v2 = null,
-            global::System.Action<object?>? v3CallResponseVariant2 = null,
+            global::System.Action<global::RetellAI.V3WebCallResponse?>? web = null,
+
+            global::System.Action<global::RetellAI.V3PhoneCallResponse?>? phone = null,
             bool validate = true)
         {
             if (validate)
@@ -134,13 +203,36 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsV2)
+            if (IsWeb)
             {
-                v2?.Invoke(V2!);
+                web?.Invoke(Web!);
             }
-            else if (IsV3CallResponseVariant2)
+            else if (IsPhone)
             {
-                v3CallResponseVariant2?.Invoke(V3CallResponseVariant2!);
+                phone?.Invoke(Phone!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.V3WebCallResponse?>? web = null,
+            global::System.Action<global::RetellAI.V3PhoneCallResponse?>? phone = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsWeb)
+            {
+                web?.Invoke(Web!);
+            }
+            else if (IsPhone)
+            {
+                phone?.Invoke(Phone!);
             }
         }
 
@@ -151,10 +243,10 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                V2,
-                typeof(global::RetellAI.V2CallResponse),
-                V3CallResponseVariant2,
-                typeof(object),
+                Web,
+                typeof(global::RetellAI.V3WebCallResponse),
+                Phone,
+                typeof(global::RetellAI.V3PhoneCallResponse),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -171,8 +263,8 @@ namespace RetellAI
         public bool Equals(V3CallResponse other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2CallResponse?>.Default.Equals(V2, other.V2) &&
-                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(V3CallResponseVariant2, other.V3CallResponseVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V3WebCallResponse?>.Default.Equals(Web, other.Web) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V3PhoneCallResponse?>.Default.Equals(Phone, other.Phone) 
                 ;
         }
 

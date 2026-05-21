@@ -80,6 +80,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ResponseEngineRetellLm), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ResponseEngineRetellLm> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ResponseEngineRetellLm).Name}");
                     lm = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -90,9 +91,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (lm == null && conversationFlow == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ResponseEngineConversationFlow), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ResponseEngineConversationFlow> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ResponseEngineConversationFlow).Name}");
                     conversationFlow = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

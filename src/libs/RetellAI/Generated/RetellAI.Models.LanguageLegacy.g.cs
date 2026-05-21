@@ -31,6 +31,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickLanguage3(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.Language3? value)
+        {
+            value = Language3;
+            return IsLanguage3;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.Language3 PickLanguage3() => IsLanguage3
+            ? Language3!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Language3' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.LanguageLegacyEnum? Enum { get; init; }
 #else
@@ -44,6 +64,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Enum))]
 #endif
         public bool IsEnum => Enum != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickEnum(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.LanguageLegacyEnum? value)
+        {
+            value = Enum;
+            return IsEnum;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.LanguageLegacyEnum PickEnum() => IsEnum
+            ? Enum!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -65,6 +105,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static LanguageLegacy FromLanguage3(global::RetellAI.Language3? value) => new LanguageLegacy(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator LanguageLegacy(global::RetellAI.LanguageLegacyEnum value) => new LanguageLegacy((global::RetellAI.LanguageLegacyEnum?)value);
 
         /// <summary>
@@ -79,6 +124,11 @@ namespace RetellAI
         {
             Enum = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static LanguageLegacy FromEnum(global::RetellAI.LanguageLegacyEnum? value) => new LanguageLegacy(value);
 
         /// <summary>
         /// 
@@ -145,6 +195,30 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::RetellAI.Language3?>? language3 = null,
+
+            global::System.Action<global::RetellAI.LanguageLegacyEnum?>? @enum = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsLanguage3)
+            {
+                language3?.Invoke(Language3!);
+            }
+            else if (IsEnum)
+            {
+                @enum?.Invoke(Enum!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::RetellAI.Language3?>? language3 = null,
             global::System.Action<global::RetellAI.LanguageLegacyEnum?>? @enum = null,
             bool validate = true)

@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.MessageBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.MessageBase PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? MessageVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MessageVariant2))]
 #endif
         public bool IsMessageVariant2 => MessageVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickMessageVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = MessageVariant2;
+            return IsMessageVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickMessageVariant2() => IsMessageVariant2
+            ? MessageVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MessageVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -59,6 +99,11 @@ namespace RetellAI
         {
             Base = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static Message FromBase(global::RetellAI.MessageBase? value) => new Message(value);
 
         /// <summary>
         /// 
@@ -100,8 +145,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.MessageBase?, TResult>? @base = null,
-            global::System.Func<object?, TResult>? messageVariant2 = null,
+            global::System.Func<global::RetellAI.MessageBase, TResult>? @base = null,
+            global::System.Func<object, TResult>? messageVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -125,8 +170,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.MessageBase?>? @base = null,
-            global::System.Action<object?>? messageVariant2 = null,
+            global::System.Action<global::RetellAI.MessageBase>? @base = null,
+
+            global::System.Action<object>? messageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsMessageVariant2)
+            {
+                messageVariant2?.Invoke(MessageVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.MessageBase>? @base = null,
+            global::System.Action<object>? messageVariant2 = null,
             bool validate = true)
         {
             if (validate)

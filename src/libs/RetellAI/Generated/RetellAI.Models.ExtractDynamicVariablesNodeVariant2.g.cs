@@ -80,5 +80,6 @@ namespace RetellAI
         public ExtractDynamicVariablesNodeVariant2()
         {
         }
+
     }
 }

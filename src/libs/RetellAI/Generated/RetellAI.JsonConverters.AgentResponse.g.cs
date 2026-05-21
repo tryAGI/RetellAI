@@ -36,10 +36,13 @@ namespace RetellAI.JsonConverters
 
             var __score0 = 0;
             if (__jsonProps.Contains("agent_id")) __score0++;
+            if (__jsonProps.Contains("assigned_tags")) __score0++;
+            if (__jsonProps.Contains("base_version")) __score0++;
             if (__jsonProps.Contains("is_published")) __score0++;
             if (__jsonProps.Contains("version")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("agent_name")) __score1++;
+            if (__jsonProps.Contains("allow_dtmf_interruption")) __score1++;
             if (__jsonProps.Contains("allow_user_dtmf")) __score1++;
             if (__jsonProps.Contains("ambient_sound")) __score1++;
             if (__jsonProps.Contains("ambient_sound_volume")) __score1++;
@@ -50,6 +53,9 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("backchannel_words")) __score1++;
             if (__jsonProps.Contains("begin_message_delay_ms")) __score1++;
             if (__jsonProps.Contains("boosted_keywords")) __score1++;
+            if (__jsonProps.Contains("call_screening_option")) __score1++;
+            if (__jsonProps.Contains("call_screening_option.agent_identity")) __score1++;
+            if (__jsonProps.Contains("call_screening_option.call_purpose")) __score1++;
             if (__jsonProps.Contains("custom_stt_config")) __score1++;
             if (__jsonProps.Contains("custom_stt_config.endpointing_ms")) __score1++;
             if (__jsonProps.Contains("custom_stt_config.provider")) __score1++;
@@ -75,9 +81,9 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("handbook_config.smart_matching")) __score1++;
             if (__jsonProps.Contains("handbook_config.speech_normalization")) __score1++;
             if (__jsonProps.Contains("interruption_sensitivity")) __score1++;
-            if (__jsonProps.Contains("is_public")) __score1++;
             if (__jsonProps.Contains("ivr_option")) __score1++;
             if (__jsonProps.Contains("ivr_option.action")) __score1++;
+            if (__jsonProps.Contains("ivr_option.detection_prompt")) __score1++;
             if (__jsonProps.Contains("language")) __score1++;
             if (__jsonProps.Contains("max_call_duration_ms")) __score1++;
             if (__jsonProps.Contains("opt_in_signed_url")) __score1++;
@@ -110,6 +116,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("voicemail_message")) __score1++;
             if (__jsonProps.Contains("voicemail_option")) __score1++;
             if (__jsonProps.Contains("voicemail_option.action")) __score1++;
+            if (__jsonProps.Contains("voicemail_option.detection_prompt")) __score1++;
             if (__jsonProps.Contains("volume")) __score1++;
             if (__jsonProps.Contains("webhook_events")) __score1++;
             if (__jsonProps.Contains("webhook_timeout_ms")) __score1++;
@@ -178,6 +185,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentResponseVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentResponseVariant1> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentResponseVariant1).Name}");
                     agentResponseVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -188,9 +196,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (agentResponseVariant1 == null && request == null && agentResponseVariant3 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentRequest), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentRequest> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentRequest).Name}");
                     request = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -201,9 +213,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (agentResponseVariant1 == null && request == null && agentResponseVariant3 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentResponseVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentResponseVariant3> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentResponseVariant3).Name}");
                     agentResponseVariant3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

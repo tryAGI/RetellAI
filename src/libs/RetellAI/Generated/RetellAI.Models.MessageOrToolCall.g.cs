@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickMessage(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.Message? value)
+        {
+            value = Message;
+            return IsMessage;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.Message PickMessage() => IsMessage
+            ? Message!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Message' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallInvocationMessage? Invocation { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Invocation))]
 #endif
         public bool IsInvocation => Invocation != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickInvocation(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallInvocationMessage? value)
+        {
+            value = Invocation;
+            return IsInvocation;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ToolCallInvocationMessage PickInvocation() => IsInvocation
+            ? Invocation!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Invocation' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -63,6 +103,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickResult(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallResultMessage? value)
+        {
+            value = Result;
+            return IsResult;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ToolCallResultMessage PickResult() => IsResult
+            ? Result!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Result' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeTransitionMessage? NodeTransition { get; init; }
 #else
@@ -80,6 +140,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickNodeTransition(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeTransitionMessage? value)
+        {
+            value = NodeTransition;
+            return IsNodeTransition;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeTransitionMessage PickNodeTransition() => IsNodeTransition
+            ? NodeTransition!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'NodeTransition' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.StateTransitionMessage? StateTransition { get; init; }
 #else
@@ -93,6 +173,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StateTransition))]
 #endif
         public bool IsStateTransition => StateTransition != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStateTransition(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.StateTransitionMessage? value)
+        {
+            value = StateTransition;
+            return IsStateTransition;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.StateTransitionMessage PickStateTransition() => IsStateTransition
+            ? StateTransition!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StateTransition' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -110,6 +210,11 @@ namespace RetellAI
         {
             Message = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MessageOrToolCall FromMessage(global::RetellAI.Message? value) => new MessageOrToolCall(value);
 
         /// <summary>
         /// 
@@ -132,6 +237,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static MessageOrToolCall FromInvocation(global::RetellAI.ToolCallInvocationMessage? value) => new MessageOrToolCall(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MessageOrToolCall(global::RetellAI.ToolCallResultMessage value) => new MessageOrToolCall((global::RetellAI.ToolCallResultMessage?)value);
 
         /// <summary>
@@ -146,6 +256,11 @@ namespace RetellAI
         {
             Result = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MessageOrToolCall FromResult(global::RetellAI.ToolCallResultMessage? value) => new MessageOrToolCall(value);
 
         /// <summary>
         /// 
@@ -168,6 +283,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static MessageOrToolCall FromNodeTransition(global::RetellAI.NodeTransitionMessage? value) => new MessageOrToolCall(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MessageOrToolCall(global::RetellAI.StateTransitionMessage value) => new MessageOrToolCall((global::RetellAI.StateTransitionMessage?)value);
 
         /// <summary>
@@ -182,6 +302,11 @@ namespace RetellAI
         {
             StateTransition = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MessageOrToolCall FromStateTransition(global::RetellAI.StateTransitionMessage? value) => new MessageOrToolCall(value);
 
         /// <summary>
         /// 
@@ -275,6 +400,48 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
+            global::System.Action<global::RetellAI.Message?>? message = null,
+
+            global::System.Action<global::RetellAI.ToolCallInvocationMessage?>? invocation = null,
+
+            global::System.Action<global::RetellAI.ToolCallResultMessage?>? result = null,
+
+            global::System.Action<global::RetellAI.NodeTransitionMessage?>? nodeTransition = null,
+
+            global::System.Action<global::RetellAI.StateTransitionMessage?>? stateTransition = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsMessage)
+            {
+                message?.Invoke(Message!);
+            }
+            else if (IsInvocation)
+            {
+                invocation?.Invoke(Invocation!);
+            }
+            else if (IsResult)
+            {
+                result?.Invoke(Result!);
+            }
+            else if (IsNodeTransition)
+            {
+                nodeTransition?.Invoke(NodeTransition!);
+            }
+            else if (IsStateTransition)
+            {
+                stateTransition?.Invoke(StateTransition!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
             global::System.Action<global::RetellAI.Message?>? message = null,
             global::System.Action<global::RetellAI.ToolCallInvocationMessage?>? invocation = null,
             global::System.Action<global::RetellAI.ToolCallResultMessage?>? result = null,

@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickPrompt(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeInstructionPrompt? value)
+        {
+            value = Prompt;
+            return IsPrompt;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeInstructionPrompt PickPrompt() => IsPrompt
+            ? Prompt!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Prompt' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeInstructionStaticText? StaticText { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StaticText))]
 #endif
         public bool IsStaticText => StaticText != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickStaticText(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeInstructionStaticText? value)
+        {
+            value = StaticText;
+            return IsStaticText;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeInstructionStaticText PickStaticText() => IsStaticText
+            ? StaticText!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'StaticText' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static NodeInstruction FromPrompt(global::RetellAI.NodeInstructionPrompt? value) => new NodeInstruction(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator NodeInstruction(global::RetellAI.NodeInstructionStaticText value) => new NodeInstruction((global::RetellAI.NodeInstructionStaticText?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             StaticText = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static NodeInstruction FromStaticText(global::RetellAI.NodeInstructionStaticText? value) => new NodeInstruction(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeInstructionPrompt?, TResult>? prompt = null,
-            global::System.Func<global::RetellAI.NodeInstructionStaticText?, TResult>? staticText = null,
+            global::System.Func<global::RetellAI.NodeInstructionPrompt, TResult>? prompt = null,
+            global::System.Func<global::RetellAI.NodeInstructionStaticText, TResult>? staticText = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeInstructionPrompt?>? prompt = null,
-            global::System.Action<global::RetellAI.NodeInstructionStaticText?>? staticText = null,
+            global::System.Action<global::RetellAI.NodeInstructionPrompt>? prompt = null,
+
+            global::System.Action<global::RetellAI.NodeInstructionStaticText>? staticText = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsPrompt)
+            {
+                prompt?.Invoke(Prompt!);
+            }
+            else if (IsStaticText)
+            {
+                staticText?.Invoke(StaticText!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeInstructionPrompt>? prompt = null,
+            global::System.Action<global::RetellAI.NodeInstructionStaticText>? staticText = null,
             bool validate = true)
         {
             if (validate)

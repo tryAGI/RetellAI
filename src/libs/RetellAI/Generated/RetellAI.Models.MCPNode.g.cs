@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeBase PickBase() => IsBase
+            ? Base!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.MCPNodeVariant2? MCPNodeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(MCPNodeVariant2))]
 #endif
         public bool IsMCPNodeVariant2 => MCPNodeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickMCPNodeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.MCPNodeVariant2? value)
+        {
+            value = MCPNodeVariant2;
+            return IsMCPNodeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.MCPNodeVariant2 PickMCPNodeVariant2() => IsMCPNodeVariant2
+            ? MCPNodeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'MCPNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static MCPNode FromBase(global::RetellAI.NodeBase? value) => new MCPNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator MCPNode(global::RetellAI.MCPNodeVariant2 value) => new MCPNode((global::RetellAI.MCPNodeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             MCPNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static MCPNode FromMCPNodeVariant2(global::RetellAI.MCPNodeVariant2? value) => new MCPNode(value);
 
         /// <summary>
         /// 
@@ -119,7 +169,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeBase?, TResult>? @base = null,
-            global::System.Func<global::RetellAI.MCPNodeVariant2?, TResult>? mCPNodeVariant2 = null,
+            global::System.Func<global::RetellAI.MCPNodeVariant2, TResult>? mCPNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +194,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeBase?>? @base = null,
-            global::System.Action<global::RetellAI.MCPNodeVariant2?>? mCPNodeVariant2 = null,
+
+            global::System.Action<global::RetellAI.MCPNodeVariant2>? mCPNodeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsMCPNodeVariant2)
+            {
+                mCPNodeVariant2?.Invoke(MCPNodeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeBase?>? @base = null,
+            global::System.Action<global::RetellAI.MCPNodeVariant2>? mCPNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)

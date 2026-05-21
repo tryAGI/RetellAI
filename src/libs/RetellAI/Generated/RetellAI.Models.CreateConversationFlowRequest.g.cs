@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickConversationFlow(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ConversationFlow? value)
+        {
+            value = ConversationFlow;
+            return IsConversationFlow;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ConversationFlow PickConversationFlow() => IsConversationFlow
+            ? ConversationFlow!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationFlow' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? CreateConversationFlowRequestVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CreateConversationFlowRequestVariant2))]
 #endif
         public bool IsCreateConversationFlowRequestVariant2 => CreateConversationFlowRequestVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCreateConversationFlowRequestVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = CreateConversationFlowRequestVariant2;
+            return IsCreateConversationFlowRequestVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickCreateConversationFlowRequestVariant2() => IsCreateConversationFlowRequestVariant2
+            ? CreateConversationFlowRequestVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CreateConversationFlowRequestVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -59,6 +99,11 @@ namespace RetellAI
         {
             ConversationFlow = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateConversationFlowRequest FromConversationFlow(global::RetellAI.ConversationFlow? value) => new CreateConversationFlowRequest(value);
 
         /// <summary>
         /// 
@@ -101,7 +146,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ConversationFlow?, TResult>? conversationFlow = null,
-            global::System.Func<object?, TResult>? createConversationFlowRequestVariant2 = null,
+            global::System.Func<object, TResult>? createConversationFlowRequestVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -126,7 +171,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ConversationFlow?>? conversationFlow = null,
-            global::System.Action<object?>? createConversationFlowRequestVariant2 = null,
+
+            global::System.Action<object>? createConversationFlowRequestVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsConversationFlow)
+            {
+                conversationFlow?.Invoke(ConversationFlow!);
+            }
+            else if (IsCreateConversationFlowRequestVariant2)
+            {
+                createConversationFlowRequestVariant2?.Invoke(CreateConversationFlowRequestVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ConversationFlow?>? conversationFlow = null,
+            global::System.Action<object>? createConversationFlowRequestVariant2 = null,
             bool validate = true)
         {
             if (validate)

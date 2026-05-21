@@ -35,12 +35,11 @@ namespace RetellAI
         public string? OverrideAgentId { get; set; }
 
         /// <summary>
-        /// For this particular chat, override the agent version used with this version. This does not bind the agent version to this number, this is for one time override.<br/>
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </summary>
-        /// <example>1</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("override_agent_version")]
-        public int? OverrideAgentVersion { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentVersionReferenceJsonConverter))]
+        public global::RetellAI.AgentVersionReference? OverrideAgentVersion { get; set; }
 
         /// <summary>
         /// An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the chat. Not used for processing. You can later get this field from the chat object.
@@ -54,7 +53,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"customer_name":"John Doe"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("retell_llm_dynamic_variables")]
-        public object? RetellLlmDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? RetellLlmDynamicVariables { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -78,8 +77,7 @@ namespace RetellAI
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
         /// <param name="overrideAgentVersion">
-        /// For this particular chat, override the agent version used with this version. This does not bind the agent version to this number, this is for one time override.<br/>
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="metadata">
         /// An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the chat. Not used for processing. You can later get this field from the chat object.
@@ -95,9 +93,9 @@ namespace RetellAI
             string fromNumber,
             string toNumber,
             string? overrideAgentId,
-            int? overrideAgentVersion,
+            global::RetellAI.AgentVersionReference? overrideAgentVersion,
             object? metadata,
-            object? retellLlmDynamicVariables)
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables)
         {
             this.FromNumber = fromNumber ?? throw new global::System.ArgumentNullException(nameof(fromNumber));
             this.ToNumber = toNumber ?? throw new global::System.ArgumentNullException(nameof(toNumber));
@@ -113,5 +111,6 @@ namespace RetellAI
         public CreateSmsChatRequest()
         {
         }
+
     }
 }

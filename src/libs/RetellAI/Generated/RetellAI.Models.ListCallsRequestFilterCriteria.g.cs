@@ -248,5 +248,6 @@ namespace RetellAI
         public ListCallsRequestFilterCriteria()
         {
         }
+
     }
 }

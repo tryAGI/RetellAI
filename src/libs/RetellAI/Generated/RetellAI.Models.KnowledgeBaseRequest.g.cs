@@ -123,5 +123,6 @@ namespace RetellAI
         public KnowledgeBaseRequest()
         {
         }
+
     }
 }

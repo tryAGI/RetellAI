@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeTransitionMessageBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeTransitionMessageBase PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? NodeTransitionMessageVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NodeTransitionMessageVariant2))]
 #endif
         public bool IsNodeTransitionMessageVariant2 => NodeTransitionMessageVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickNodeTransitionMessageVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = NodeTransitionMessageVariant2;
+            return IsNodeTransitionMessageVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickNodeTransitionMessageVariant2() => IsNodeTransitionMessageVariant2
+            ? NodeTransitionMessageVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'NodeTransitionMessageVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -59,6 +99,11 @@ namespace RetellAI
         {
             Base = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static NodeTransitionMessage FromBase(global::RetellAI.NodeTransitionMessageBase? value) => new NodeTransitionMessage(value);
 
         /// <summary>
         /// 
@@ -100,8 +145,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeTransitionMessageBase?, TResult>? @base = null,
-            global::System.Func<object?, TResult>? nodeTransitionMessageVariant2 = null,
+            global::System.Func<global::RetellAI.NodeTransitionMessageBase, TResult>? @base = null,
+            global::System.Func<object, TResult>? nodeTransitionMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -125,8 +170,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeTransitionMessageBase?>? @base = null,
-            global::System.Action<object?>? nodeTransitionMessageVariant2 = null,
+            global::System.Action<global::RetellAI.NodeTransitionMessageBase>? @base = null,
+
+            global::System.Action<object>? nodeTransitionMessageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsNodeTransitionMessageVariant2)
+            {
+                nodeTransitionMessageVariant2?.Invoke(NodeTransitionMessageVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeTransitionMessageBase>? @base = null,
+            global::System.Action<object>? nodeTransitionMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)

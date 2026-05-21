@@ -18,7 +18,7 @@ namespace RetellAI
         public global::RetellAI.PIIConfigMode Mode { get; set; } = global::RetellAI.PIIConfigMode.PostCall;
 
         /// <summary>
-        /// List of PII categories to scrub from transcripts and recordings.<br/>
+        /// List of PII categories to scrub from transcripts and recordings. PII redaction is only active when this list is non-empty; an empty array means no PII scrubbing is performed.<br/>
         /// Default Value: []
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("categories")]
@@ -35,7 +35,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="PIIConfig" /> class.
         /// </summary>
         /// <param name="categories">
-        /// List of PII categories to scrub from transcripts and recordings.<br/>
+        /// List of PII categories to scrub from transcripts and recordings. PII redaction is only active when this list is non-empty; an empty array means no PII scrubbing is performed.<br/>
         /// Default Value: []
         /// </param>
         /// <param name="mode">
@@ -59,5 +59,6 @@ namespace RetellAI
         public PIIConfig()
         {
         }
+
     }
 }

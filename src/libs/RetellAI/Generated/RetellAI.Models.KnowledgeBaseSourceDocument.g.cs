@@ -37,6 +37,13 @@ namespace RetellAI
         public required string FileUrl { get; set; }
 
         /// <summary>
+        /// File size in bytes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("file_size")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required double FileSize { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -54,6 +61,9 @@ namespace RetellAI
         /// <param name="fileUrl">
         /// URL of the document stored.
         /// </param>
+        /// <param name="fileSize">
+        /// File size in bytes.
+        /// </param>
         /// <param name="type">
         /// Type of the knowledge base source.
         /// </param>
@@ -64,12 +74,14 @@ namespace RetellAI
             string sourceId,
             string filename,
             string fileUrl,
+            double fileSize,
             global::RetellAI.KnowledgeBaseSourceDocumentType type)
         {
             this.Type = type;
             this.SourceId = sourceId ?? throw new global::System.ArgumentNullException(nameof(sourceId));
             this.Filename = filename ?? throw new global::System.ArgumentNullException(nameof(filename));
             this.FileUrl = fileUrl ?? throw new global::System.ArgumentNullException(nameof(fileUrl));
+            this.FileSize = fileSize;
         }
 
         /// <summary>
@@ -78,5 +90,6 @@ namespace RetellAI
         public KnowledgeBaseSourceDocument()
         {
         }
+
     }
 }

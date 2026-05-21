@@ -52,5 +52,6 @@ namespace RetellAI
         public AlwaysEdgeVariant2TransitionCondition()
         {
         }
+
     }
 }

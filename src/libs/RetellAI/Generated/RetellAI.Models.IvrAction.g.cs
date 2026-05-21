@@ -25,6 +25,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Hangup))]
 #endif
         public bool IsHangup => Hangup != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickHangup(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.IvrActionHangup? value)
+        {
+            value = Hangup;
+            return IsHangup;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.IvrActionHangup PickHangup() => IsHangup
+            ? Hangup!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Hangup' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -42,6 +62,11 @@ namespace RetellAI
         {
             Hangup = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static IvrAction FromHangup(global::RetellAI.IvrActionHangup? value) => new IvrAction(value);
 
         /// <summary>
         /// 
@@ -69,7 +94,7 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.IvrActionHangup?, TResult>? hangup = null,
+            global::System.Func<global::RetellAI.IvrActionHangup, TResult>? hangup = null,
             bool validate = true)
         {
             if (validate)
@@ -89,7 +114,25 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.IvrActionHangup?>? hangup = null,
+            global::System.Action<global::RetellAI.IvrActionHangup>? hangup = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsHangup)
+            {
+                hangup?.Invoke(Hangup!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.IvrActionHangup>? hangup = null,
             bool validate = true)
         {
             if (validate)

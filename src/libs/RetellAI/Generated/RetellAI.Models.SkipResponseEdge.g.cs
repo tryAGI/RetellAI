@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickNode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeEdge? value)
+        {
+            value = Node;
+            return IsNode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeEdge PickNode() => IsNode
+            ? Node!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SkipResponseEdgeVariant2? SkipResponseEdgeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SkipResponseEdgeVariant2))]
 #endif
         public bool IsSkipResponseEdgeVariant2 => SkipResponseEdgeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSkipResponseEdgeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SkipResponseEdgeVariant2? value)
+        {
+            value = SkipResponseEdgeVariant2;
+            return IsSkipResponseEdgeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SkipResponseEdgeVariant2 PickSkipResponseEdgeVariant2() => IsSkipResponseEdgeVariant2
+            ? SkipResponseEdgeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SkipResponseEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SkipResponseEdge FromNode(global::RetellAI.NodeEdge? value) => new SkipResponseEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SkipResponseEdge(global::RetellAI.SkipResponseEdgeVariant2 value) => new SkipResponseEdge((global::RetellAI.SkipResponseEdgeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             SkipResponseEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SkipResponseEdge FromSkipResponseEdgeVariant2(global::RetellAI.SkipResponseEdgeVariant2? value) => new SkipResponseEdge(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeEdge?, TResult>? node = null,
-            global::System.Func<global::RetellAI.SkipResponseEdgeVariant2?, TResult>? skipResponseEdgeVariant2 = null,
+            global::System.Func<global::RetellAI.NodeEdge, TResult>? node = null,
+            global::System.Func<global::RetellAI.SkipResponseEdgeVariant2, TResult>? skipResponseEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeEdge?>? node = null,
-            global::System.Action<global::RetellAI.SkipResponseEdgeVariant2?>? skipResponseEdgeVariant2 = null,
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+
+            global::System.Action<global::RetellAI.SkipResponseEdgeVariant2>? skipResponseEdgeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsNode)
+            {
+                node?.Invoke(Node!);
+            }
+            else if (IsSkipResponseEdgeVariant2)
+            {
+                skipResponseEdgeVariant2?.Invoke(SkipResponseEdgeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+            global::System.Action<global::RetellAI.SkipResponseEdgeVariant2>? skipResponseEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)

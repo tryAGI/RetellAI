@@ -105,5 +105,6 @@ namespace RetellAI
         public ToolCallResultMessageBase()
         {
         }
+
     }
 }

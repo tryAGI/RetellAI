@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBaseCommon(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeBaseCommon? value)
+        {
+            value = BaseCommon;
+            return IsBaseCommon;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeBaseCommon PickBaseCommon() => IsBaseCommon
+            ? BaseCommon!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'BaseCommon' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ComponentNodeVariant2? ComponentNodeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ComponentNodeVariant2))]
 #endif
         public bool IsComponentNodeVariant2 => ComponentNodeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickComponentNodeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ComponentNodeVariant2? value)
+        {
+            value = ComponentNodeVariant2;
+            return IsComponentNodeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ComponentNodeVariant2 PickComponentNodeVariant2() => IsComponentNodeVariant2
+            ? ComponentNodeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ComponentNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ComponentNode FromBaseCommon(global::RetellAI.NodeBaseCommon? value) => new ComponentNode(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ComponentNode(global::RetellAI.ComponentNodeVariant2 value) => new ComponentNode((global::RetellAI.ComponentNodeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             ComponentNodeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ComponentNode FromComponentNodeVariant2(global::RetellAI.ComponentNodeVariant2? value) => new ComponentNode(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeBaseCommon?, TResult>? baseCommon = null,
-            global::System.Func<global::RetellAI.ComponentNodeVariant2?, TResult>? componentNodeVariant2 = null,
+            global::System.Func<global::RetellAI.NodeBaseCommon, TResult>? baseCommon = null,
+            global::System.Func<global::RetellAI.ComponentNodeVariant2, TResult>? componentNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeBaseCommon?>? baseCommon = null,
-            global::System.Action<global::RetellAI.ComponentNodeVariant2?>? componentNodeVariant2 = null,
+            global::System.Action<global::RetellAI.NodeBaseCommon>? baseCommon = null,
+
+            global::System.Action<global::RetellAI.ComponentNodeVariant2>? componentNodeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBaseCommon)
+            {
+                baseCommon?.Invoke(BaseCommon!);
+            }
+            else if (IsComponentNodeVariant2)
+            {
+                componentNodeVariant2?.Invoke(ComponentNodeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeBaseCommon>? baseCommon = null,
+            global::System.Action<global::RetellAI.ComponentNodeVariant2>? componentNodeVariant2 = null,
             bool validate = true)
         {
             if (validate)

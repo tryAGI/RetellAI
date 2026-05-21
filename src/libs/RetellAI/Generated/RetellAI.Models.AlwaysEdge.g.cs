@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickNode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeEdge? value)
+        {
+            value = Node;
+            return IsNode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeEdge PickNode() => IsNode
+            ? Node!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AlwaysEdgeVariant2? AlwaysEdgeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AlwaysEdgeVariant2))]
 #endif
         public bool IsAlwaysEdgeVariant2 => AlwaysEdgeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAlwaysEdgeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.AlwaysEdgeVariant2? value)
+        {
+            value = AlwaysEdgeVariant2;
+            return IsAlwaysEdgeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.AlwaysEdgeVariant2 PickAlwaysEdgeVariant2() => IsAlwaysEdgeVariant2
+            ? AlwaysEdgeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AlwaysEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AlwaysEdge FromNode(global::RetellAI.NodeEdge? value) => new AlwaysEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AlwaysEdge(global::RetellAI.AlwaysEdgeVariant2 value) => new AlwaysEdge((global::RetellAI.AlwaysEdgeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             AlwaysEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AlwaysEdge FromAlwaysEdgeVariant2(global::RetellAI.AlwaysEdgeVariant2? value) => new AlwaysEdge(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeEdge?, TResult>? node = null,
-            global::System.Func<global::RetellAI.AlwaysEdgeVariant2?, TResult>? alwaysEdgeVariant2 = null,
+            global::System.Func<global::RetellAI.NodeEdge, TResult>? node = null,
+            global::System.Func<global::RetellAI.AlwaysEdgeVariant2, TResult>? alwaysEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeEdge?>? node = null,
-            global::System.Action<global::RetellAI.AlwaysEdgeVariant2?>? alwaysEdgeVariant2 = null,
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+
+            global::System.Action<global::RetellAI.AlwaysEdgeVariant2>? alwaysEdgeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsNode)
+            {
+                node?.Invoke(Node!);
+            }
+            else if (IsAlwaysEdgeVariant2)
+            {
+                alwaysEdgeVariant2?.Invoke(AlwaysEdgeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+            global::System.Action<global::RetellAI.AlwaysEdgeVariant2>? alwaysEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)

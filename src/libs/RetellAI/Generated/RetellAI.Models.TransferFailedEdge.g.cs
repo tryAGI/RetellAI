@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickNode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeEdge? value)
+        {
+            value = Node;
+            return IsNode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeEdge PickNode() => IsNode
+            ? Node!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferFailedEdgeVariant2? TransferFailedEdgeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TransferFailedEdgeVariant2))]
 #endif
         public bool IsTransferFailedEdgeVariant2 => TransferFailedEdgeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTransferFailedEdgeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.TransferFailedEdgeVariant2? value)
+        {
+            value = TransferFailedEdgeVariant2;
+            return IsTransferFailedEdgeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.TransferFailedEdgeVariant2 PickTransferFailedEdgeVariant2() => IsTransferFailedEdgeVariant2
+            ? TransferFailedEdgeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'TransferFailedEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static TransferFailedEdge FromNode(global::RetellAI.NodeEdge? value) => new TransferFailedEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator TransferFailedEdge(global::RetellAI.TransferFailedEdgeVariant2 value) => new TransferFailedEdge((global::RetellAI.TransferFailedEdgeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             TransferFailedEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static TransferFailedEdge FromTransferFailedEdgeVariant2(global::RetellAI.TransferFailedEdgeVariant2? value) => new TransferFailedEdge(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeEdge?, TResult>? node = null,
-            global::System.Func<global::RetellAI.TransferFailedEdgeVariant2?, TResult>? transferFailedEdgeVariant2 = null,
+            global::System.Func<global::RetellAI.NodeEdge, TResult>? node = null,
+            global::System.Func<global::RetellAI.TransferFailedEdgeVariant2, TResult>? transferFailedEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeEdge?>? node = null,
-            global::System.Action<global::RetellAI.TransferFailedEdgeVariant2?>? transferFailedEdgeVariant2 = null,
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+
+            global::System.Action<global::RetellAI.TransferFailedEdgeVariant2>? transferFailedEdgeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsNode)
+            {
+                node?.Invoke(Node!);
+            }
+            else if (IsTransferFailedEdgeVariant2)
+            {
+                transferFailedEdgeVariant2?.Invoke(TransferFailedEdgeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+            global::System.Action<global::RetellAI.TransferFailedEdgeVariant2>? transferFailedEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)

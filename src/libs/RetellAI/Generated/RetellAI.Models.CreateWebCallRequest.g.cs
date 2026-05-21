@@ -18,12 +18,11 @@ namespace RetellAI
         public required string AgentId { get; set; }
 
         /// <summary>
-        /// The version of the agent to use for the call.<br/>
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </summary>
-        /// <example>1</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent_version")]
-        public int? AgentVersion { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentVersionReferenceJsonConverter))]
+        public global::RetellAI.AgentVersionReference? AgentVersion { get; set; }
 
         /// <summary>
         /// Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
@@ -43,7 +42,7 @@ namespace RetellAI
         /// </summary>
         /// <example>{"customer_name":"John Doe"}</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("retell_llm_dynamic_variables")]
-        public object? RetellLlmDynamicVariables { get; set; }
+        public global::System.Collections.Generic.Dictionary<string, string>? RetellLlmDynamicVariables { get; set; }
 
         /// <summary>
         /// Start the call at this conversation flow node (stage). Must be a valid node id in the agent's conversation flow. Only applicable when the agent uses conversation flow as the response engine. Ignored for retell-llm agents.<br/>
@@ -75,8 +74,7 @@ namespace RetellAI
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
         /// <param name="agentVersion">
-        /// The version of the agent to use for the call.<br/>
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="agentOverride">
         /// Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
@@ -101,10 +99,10 @@ namespace RetellAI
 #endif
         public CreateWebCallRequest(
             string agentId,
-            int? agentVersion,
+            global::RetellAI.AgentVersionReference? agentVersion,
             global::RetellAI.AgentOverrideRequest? agentOverride,
             object? metadata,
-            object? retellLlmDynamicVariables,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
             string? currentNodeId,
             string? currentState)
         {
@@ -123,5 +121,6 @@ namespace RetellAI
         public CreateWebCallRequest()
         {
         }
+
     }
 }

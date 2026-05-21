@@ -63,5 +63,6 @@ namespace RetellAI
         public EndNodeVariant2()
         {
         }
+
     }
 }

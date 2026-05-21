@@ -5,7 +5,7 @@ namespace RetellAI
     public partial interface IRetellAiClient
     {
         /// <summary>
-        /// List chats with unified cursor pagination response and total count.
+        /// List chats with unified cursor pagination response.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -17,7 +17,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List chats with unified cursor pagination response and total count.
+        /// List chats with unified cursor pagination response.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -29,7 +29,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List chats with unified cursor pagination response and total count.
+        /// List chats with unified cursor pagination response.
         /// </summary>
         /// <param name="filterCriteria">
         /// Filter criteria for chats to retrieve.
@@ -49,6 +49,10 @@ namespace RetellAI
         /// <param name="paginationKey">
         /// Opaque pagination cursor from a previous response.
         /// </param>
+        /// <param name="includeTotal">
+        /// Whether to include `total` (count of all chats matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request triggers an additional aggregate query, so opt in only when the total is needed.<br/>
+        /// Default Value: false
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -58,6 +62,7 @@ namespace RetellAI
             int? limit = default,
             int? skip = default,
             string? paginationKey = default,
+            bool? includeTotal = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

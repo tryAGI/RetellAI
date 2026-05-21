@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickString(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.StringAnalysisData? value)
+        {
+            value = String;
+            return IsString;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.StringAnalysisData PickString() => IsString
+            ? String!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.EnumAnalysisData? Enum { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Enum))]
 #endif
         public bool IsEnum => Enum != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickEnum(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.EnumAnalysisData? value)
+        {
+            value = Enum;
+            return IsEnum;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.EnumAnalysisData PickEnum() => IsEnum
+            ? Enum!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -63,6 +103,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBoolean(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.BooleanAnalysisData? value)
+        {
+            value = Boolean;
+            return IsBoolean;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.BooleanAnalysisData PickBoolean() => IsBoolean
+            ? Boolean!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NumberAnalysisData? Number { get; init; }
 #else
@@ -76,6 +136,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Number))]
 #endif
         public bool IsNumber => Number != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickNumber(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NumberAnalysisData? value)
+        {
+            value = Number;
+            return IsNumber;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NumberAnalysisData PickNumber() => IsNumber
+            ? Number!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -93,6 +173,11 @@ namespace RetellAI
         {
             String = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AnalysisData FromString(global::RetellAI.StringAnalysisData? value) => new AnalysisData(value);
 
         /// <summary>
         /// 
@@ -115,6 +200,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AnalysisData FromEnum(global::RetellAI.EnumAnalysisData? value) => new AnalysisData(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AnalysisData(global::RetellAI.BooleanAnalysisData value) => new AnalysisData((global::RetellAI.BooleanAnalysisData?)value);
 
         /// <summary>
@@ -133,6 +223,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static AnalysisData FromBoolean(global::RetellAI.BooleanAnalysisData? value) => new AnalysisData(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator AnalysisData(global::RetellAI.NumberAnalysisData value) => new AnalysisData((global::RetellAI.NumberAnalysisData?)value);
 
         /// <summary>
@@ -147,6 +242,11 @@ namespace RetellAI
         {
             Number = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AnalysisData FromNumber(global::RetellAI.NumberAnalysisData? value) => new AnalysisData(value);
 
         /// <summary>
         /// 
@@ -196,10 +296,10 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.StringAnalysisData?, TResult>? @string = null,
-            global::System.Func<global::RetellAI.EnumAnalysisData?, TResult>? @enum = null,
-            global::System.Func<global::RetellAI.BooleanAnalysisData?, TResult>? boolean = null,
-            global::System.Func<global::RetellAI.NumberAnalysisData?, TResult>? number = null,
+            global::System.Func<global::RetellAI.StringAnalysisData, TResult>? @string = null,
+            global::System.Func<global::RetellAI.EnumAnalysisData, TResult>? @enum = null,
+            global::System.Func<global::RetellAI.BooleanAnalysisData, TResult>? boolean = null,
+            global::System.Func<global::RetellAI.NumberAnalysisData, TResult>? number = null,
             bool validate = true)
         {
             if (validate)
@@ -231,10 +331,46 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.StringAnalysisData?>? @string = null,
-            global::System.Action<global::RetellAI.EnumAnalysisData?>? @enum = null,
-            global::System.Action<global::RetellAI.BooleanAnalysisData?>? boolean = null,
-            global::System.Action<global::RetellAI.NumberAnalysisData?>? number = null,
+            global::System.Action<global::RetellAI.StringAnalysisData>? @string = null,
+
+            global::System.Action<global::RetellAI.EnumAnalysisData>? @enum = null,
+
+            global::System.Action<global::RetellAI.BooleanAnalysisData>? boolean = null,
+
+            global::System.Action<global::RetellAI.NumberAnalysisData>? number = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsString)
+            {
+                @string?.Invoke(String!);
+            }
+            else if (IsEnum)
+            {
+                @enum?.Invoke(Enum!);
+            }
+            else if (IsBoolean)
+            {
+                boolean?.Invoke(Boolean!);
+            }
+            else if (IsNumber)
+            {
+                number?.Invoke(Number!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.StringAnalysisData>? @string = null,
+            global::System.Action<global::RetellAI.EnumAnalysisData>? @enum = null,
+            global::System.Action<global::RetellAI.BooleanAnalysisData>? boolean = null,
+            global::System.Action<global::RetellAI.NumberAnalysisData>? number = null,
             bool validate = true)
         {
             if (validate)

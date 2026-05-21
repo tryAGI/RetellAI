@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickConversationFlowComponent(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ConversationFlowComponent? value)
+        {
+            value = ConversationFlowComponent;
+            return IsConversationFlowComponent;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ConversationFlowComponent PickConversationFlowComponent() => IsConversationFlowComponent
+            ? ConversationFlowComponent!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationFlowComponent' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? CreateConversationFlowComponentRequestVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CreateConversationFlowComponentRequestVariant2))]
 #endif
         public bool IsCreateConversationFlowComponentRequestVariant2 => CreateConversationFlowComponentRequestVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickCreateConversationFlowComponentRequestVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = CreateConversationFlowComponentRequestVariant2;
+            return IsCreateConversationFlowComponentRequestVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickCreateConversationFlowComponentRequestVariant2() => IsCreateConversationFlowComponentRequestVariant2
+            ? CreateConversationFlowComponentRequestVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'CreateConversationFlowComponentRequestVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -59,6 +99,11 @@ namespace RetellAI
         {
             ConversationFlowComponent = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static CreateConversationFlowComponentRequest FromConversationFlowComponent(global::RetellAI.ConversationFlowComponent? value) => new CreateConversationFlowComponentRequest(value);
 
         /// <summary>
         /// 
@@ -100,8 +145,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ConversationFlowComponent?, TResult>? conversationFlowComponent = null,
-            global::System.Func<object?, TResult>? createConversationFlowComponentRequestVariant2 = null,
+            global::System.Func<global::RetellAI.ConversationFlowComponent, TResult>? conversationFlowComponent = null,
+            global::System.Func<object, TResult>? createConversationFlowComponentRequestVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -125,8 +170,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ConversationFlowComponent?>? conversationFlowComponent = null,
-            global::System.Action<object?>? createConversationFlowComponentRequestVariant2 = null,
+            global::System.Action<global::RetellAI.ConversationFlowComponent>? conversationFlowComponent = null,
+
+            global::System.Action<object>? createConversationFlowComponentRequestVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsConversationFlowComponent)
+            {
+                conversationFlowComponent?.Invoke(ConversationFlowComponent!);
+            }
+            else if (IsCreateConversationFlowComponentRequestVariant2)
+            {
+                createConversationFlowComponentRequestVariant2?.Invoke(CreateConversationFlowComponentRequestVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ConversationFlowComponent>? conversationFlowComponent = null,
+            global::System.Action<object>? createConversationFlowComponentRequestVariant2 = null,
             bool validate = true)
         {
             if (validate)

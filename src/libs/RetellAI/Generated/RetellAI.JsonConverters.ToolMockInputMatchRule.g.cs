@@ -77,6 +77,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ToolMockInputMatchRuleVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ToolMockInputMatchRuleVariant1> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ToolMockInputMatchRuleVariant1).Name}");
                     toolMockInputMatchRuleVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -87,9 +88,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (toolMockInputMatchRuleVariant1 == null && toolMockInputMatchRuleVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ToolMockInputMatchRuleVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ToolMockInputMatchRuleVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ToolMockInputMatchRuleVariant2).Name}");
                     toolMockInputMatchRuleVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

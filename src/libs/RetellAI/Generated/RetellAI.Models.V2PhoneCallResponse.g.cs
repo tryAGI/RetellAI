@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickV2PhoneCallResponseVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.V2PhoneCallResponseVariant1? value)
+        {
+            value = V2PhoneCallResponseVariant1;
+            return IsV2PhoneCallResponseVariant1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.V2PhoneCallResponseVariant1 PickV2PhoneCallResponseVariant1() => IsV2PhoneCallResponseVariant1
+            ? V2PhoneCallResponseVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'V2PhoneCallResponseVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.V2CallBase? Base { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
 #endif
         public bool IsBase => Base != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.V2CallBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.V2CallBase PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static V2PhoneCallResponse FromV2PhoneCallResponseVariant1(global::RetellAI.V2PhoneCallResponseVariant1? value) => new V2PhoneCallResponse(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator V2PhoneCallResponse(global::RetellAI.V2CallBase value) => new V2PhoneCallResponse((global::RetellAI.V2CallBase?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             Base = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static V2PhoneCallResponse FromBase(global::RetellAI.V2CallBase? value) => new V2PhoneCallResponse(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.V2PhoneCallResponseVariant1?, TResult>? v2PhoneCallResponseVariant1 = null,
-            global::System.Func<global::RetellAI.V2CallBase?, TResult>? @base = null,
+            global::System.Func<global::RetellAI.V2PhoneCallResponseVariant1, TResult>? v2PhoneCallResponseVariant1 = null,
+            global::System.Func<global::RetellAI.V2CallBase, TResult>? @base = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.V2PhoneCallResponseVariant1?>? v2PhoneCallResponseVariant1 = null,
-            global::System.Action<global::RetellAI.V2CallBase?>? @base = null,
+            global::System.Action<global::RetellAI.V2PhoneCallResponseVariant1>? v2PhoneCallResponseVariant1 = null,
+
+            global::System.Action<global::RetellAI.V2CallBase>? @base = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsV2PhoneCallResponseVariant1)
+            {
+                v2PhoneCallResponseVariant1?.Invoke(V2PhoneCallResponseVariant1!);
+            }
+            else if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.V2PhoneCallResponseVariant1>? v2PhoneCallResponseVariant1 = null,
+            global::System.Action<global::RetellAI.V2CallBase>? @base = null,
             bool validate = true)
         {
             if (validate)

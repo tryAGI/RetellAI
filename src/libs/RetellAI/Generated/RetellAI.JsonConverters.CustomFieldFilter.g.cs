@@ -75,6 +75,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ValueFilter), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ValueFilter> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ValueFilter).Name}");
                     value = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -85,9 +86,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (value == null && customFieldFilterVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CustomFieldFilterVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CustomFieldFilterVariant2> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CustomFieldFilterVariant2).Name}");
                     customFieldFilterVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

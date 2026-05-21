@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickSmsDestinationVariant1(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SmsDestinationVariant1? value)
+        {
+            value = SmsDestinationVariant1;
+            return IsSmsDestinationVariant1;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SmsDestinationVariant1 PickSmsDestinationVariant1() => IsSmsDestinationVariant1
+            ? SmsDestinationVariant1!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SmsDestinationVariant1' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsDestinationVariant2? SmsDestinationVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SmsDestinationVariant2))]
 #endif
         public bool IsSmsDestinationVariant2 => SmsDestinationVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSmsDestinationVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SmsDestinationVariant2? value)
+        {
+            value = SmsDestinationVariant2;
+            return IsSmsDestinationVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SmsDestinationVariant2 PickSmsDestinationVariant2() => IsSmsDestinationVariant2
+            ? SmsDestinationVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SmsDestinationVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsDestination FromSmsDestinationVariant1(global::RetellAI.SmsDestinationVariant1? value) => new SmsDestination(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsDestination(global::RetellAI.SmsDestinationVariant2 value) => new SmsDestination((global::RetellAI.SmsDestinationVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             SmsDestinationVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsDestination FromSmsDestinationVariant2(global::RetellAI.SmsDestinationVariant2? value) => new SmsDestination(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.SmsDestinationVariant1?, TResult>? smsDestinationVariant1 = null,
-            global::System.Func<global::RetellAI.SmsDestinationVariant2?, TResult>? smsDestinationVariant2 = null,
+            global::System.Func<global::RetellAI.SmsDestinationVariant1, TResult>? smsDestinationVariant1 = null,
+            global::System.Func<global::RetellAI.SmsDestinationVariant2, TResult>? smsDestinationVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.SmsDestinationVariant1?>? smsDestinationVariant1 = null,
-            global::System.Action<global::RetellAI.SmsDestinationVariant2?>? smsDestinationVariant2 = null,
+            global::System.Action<global::RetellAI.SmsDestinationVariant1>? smsDestinationVariant1 = null,
+
+            global::System.Action<global::RetellAI.SmsDestinationVariant2>? smsDestinationVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsSmsDestinationVariant1)
+            {
+                smsDestinationVariant1?.Invoke(SmsDestinationVariant1!);
+            }
+            else if (IsSmsDestinationVariant2)
+            {
+                smsDestinationVariant2?.Invoke(SmsDestinationVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.SmsDestinationVariant1>? smsDestinationVariant1 = null,
+            global::System.Action<global::RetellAI.SmsDestinationVariant2>? smsDestinationVariant2 = null,
             bool validate = true)
         {
             if (validate)

@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickPredefined(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SmsContentPredefined? value)
+        {
+            value = Predefined;
+            return IsPredefined;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SmsContentPredefined PickPredefined() => IsPredefined
+            ? Predefined!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Predefined' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsContentInferred? Inferred { get; init; }
 #else
@@ -46,6 +66,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickInferred(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SmsContentInferred? value)
+        {
+            value = Inferred;
+            return IsInferred;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SmsContentInferred PickInferred() => IsInferred
+            ? Inferred!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Inferred' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsContentTemplate? Template { get; init; }
 #else
@@ -59,6 +99,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Template))]
 #endif
         public bool IsTemplate => Template != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickTemplate(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SmsContentTemplate? value)
+        {
+            value = Template;
+            return IsTemplate;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SmsContentTemplate PickTemplate() => IsTemplate
+            ? Template!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Template' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -76,6 +136,11 @@ namespace RetellAI
         {
             Predefined = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsContent FromPredefined(global::RetellAI.SmsContentPredefined? value) => new SmsContent(value);
 
         /// <summary>
         /// 
@@ -98,6 +163,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static SmsContent FromInferred(global::RetellAI.SmsContentInferred? value) => new SmsContent(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator SmsContent(global::RetellAI.SmsContentTemplate value) => new SmsContent((global::RetellAI.SmsContentTemplate?)value);
 
         /// <summary>
@@ -112,6 +182,11 @@ namespace RetellAI
         {
             Template = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static SmsContent FromTemplate(global::RetellAI.SmsContentTemplate? value) => new SmsContent(value);
 
         /// <summary>
         /// 
@@ -157,9 +232,9 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.SmsContentPredefined?, TResult>? predefined = null,
-            global::System.Func<global::RetellAI.SmsContentInferred?, TResult>? inferred = null,
-            global::System.Func<global::RetellAI.SmsContentTemplate?, TResult>? template = null,
+            global::System.Func<global::RetellAI.SmsContentPredefined, TResult>? predefined = null,
+            global::System.Func<global::RetellAI.SmsContentInferred, TResult>? inferred = null,
+            global::System.Func<global::RetellAI.SmsContentTemplate, TResult>? template = null,
             bool validate = true)
         {
             if (validate)
@@ -187,9 +262,39 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.SmsContentPredefined?>? predefined = null,
-            global::System.Action<global::RetellAI.SmsContentInferred?>? inferred = null,
-            global::System.Action<global::RetellAI.SmsContentTemplate?>? template = null,
+            global::System.Action<global::RetellAI.SmsContentPredefined>? predefined = null,
+
+            global::System.Action<global::RetellAI.SmsContentInferred>? inferred = null,
+
+            global::System.Action<global::RetellAI.SmsContentTemplate>? template = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsPredefined)
+            {
+                predefined?.Invoke(Predefined!);
+            }
+            else if (IsInferred)
+            {
+                inferred?.Invoke(Inferred!);
+            }
+            else if (IsTemplate)
+            {
+                template?.Invoke(Template!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.SmsContentPredefined>? predefined = null,
+            global::System.Action<global::RetellAI.SmsContentInferred>? inferred = null,
+            global::System.Action<global::RetellAI.SmsContentTemplate>? template = null,
             bool validate = true)
         {
             if (validate)

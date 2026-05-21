@@ -26,6 +26,20 @@ namespace RetellAI
         public int? Version { get; set; }
 
         /// <summary>
+        /// Version that this draft was based on. Null for initial versions.<br/>
+        /// Example: 12
+        /// </summary>
+        /// <example>12</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("base_version")]
+        public int? BaseVersion { get; set; }
+
+        /// <summary>
+        /// Tags assigned to this chat agent version. Preferred tag is listed first.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("assigned_tags")]
+        public global::System.Collections.Generic.IList<string>? AssignedTags { get; set; }
+
+        /// <summary>
         /// Whether the chat agent is published.<br/>
         /// Example: false
         /// </summary>
@@ -50,6 +64,13 @@ namespace RetellAI
         /// The version of the chat agent.<br/>
         /// Example: 0
         /// </param>
+        /// <param name="baseVersion">
+        /// Version that this draft was based on. Null for initial versions.<br/>
+        /// Example: 12
+        /// </param>
+        /// <param name="assignedTags">
+        /// Tags assigned to this chat agent version. Preferred tag is listed first.
+        /// </param>
         /// <param name="isPublished">
         /// Whether the chat agent is published.<br/>
         /// Example: false
@@ -60,10 +81,14 @@ namespace RetellAI
         public ChatAgentResponseVariant1(
             string agentId,
             int? version,
+            int? baseVersion,
+            global::System.Collections.Generic.IList<string>? assignedTags,
             bool? isPublished)
         {
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.Version = version;
+            this.BaseVersion = baseVersion;
+            this.AssignedTags = assignedTags;
             this.IsPublished = isPublished;
         }
 
@@ -73,5 +98,6 @@ namespace RetellAI
         public ChatAgentResponseVariant1()
         {
         }
+
     }
 }

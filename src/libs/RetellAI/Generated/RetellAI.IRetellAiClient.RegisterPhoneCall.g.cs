@@ -36,8 +36,7 @@ namespace RetellAI
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
         /// <param name="agentVersion">
-        /// The version of the agent to use for the call.<br/>
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="agentOverride">
         /// Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
@@ -66,13 +65,13 @@ namespace RetellAI
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.V2PhoneCallResponse> RegisterPhoneCallAsync(
             string agentId,
-            int? agentVersion = default,
+            global::RetellAI.AgentVersionReference? agentVersion = default,
             global::RetellAI.AgentOverrideRequest? agentOverride = default,
             string? fromNumber = default,
             string? toNumber = default,
             global::RetellAI.RegisterPhoneCallRequestDirection? direction = default,
             object? metadata = default,
-            object? retellLlmDynamicVariables = default,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

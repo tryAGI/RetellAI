@@ -11,7 +11,7 @@ namespace RetellAI
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -21,7 +21,7 @@ namespace RetellAI
             string agentId,
 
             global::RetellAI.ChatAgentRequest request,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -31,7 +31,7 @@ namespace RetellAI
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -41,7 +41,7 @@ namespace RetellAI
             string agentId,
 
             global::RetellAI.ChatAgentRequest request,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -51,7 +51,7 @@ namespace RetellAI
         /// Example: 16b980523634a6dc504898cda492e939
         /// </param>
         /// <param name="version">
-        /// Example: 1
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
         /// </param>
         /// <param name="responseEngine"></param>
         /// <param name="agentName">
@@ -123,16 +123,12 @@ namespace RetellAI
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
         /// Example: America/New_York
         /// </param>
-        /// <param name="isPublic">
-        /// Whether the agent is public. When set to true, the agent is available for public agent preview link.<br/>
-        /// Example: false
-        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.ChatAgentResponse> UpdateChatAgentAsync(
             string agentId,
-            int? version = default,
+            global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.ResponseEngine? responseEngine = default,
             string? agentName = default,
             string? autoCloseMessage = default,
@@ -154,7 +150,6 @@ namespace RetellAI
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
             global::RetellAI.ChatHandbookConfig? handbookConfig = default,
             string? timezone = default,
-            bool? isPublic = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -44,5 +44,6 @@ namespace RetellAI
         public V2PhoneCallResponseVariant1TelephonyIdentifier()
         {
         }
+
     }
 }

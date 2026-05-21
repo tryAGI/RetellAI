@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ToolCallResultMessageBase? value)
+        {
+            value = Base;
+            return IsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ToolCallResultMessageBase PickBase() => IsBase
+            ? Base!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public object? ToolCallResultMessageVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolCallResultMessageVariant2))]
 #endif
         public bool IsToolCallResultMessageVariant2 => ToolCallResultMessageVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickToolCallResultMessageVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out object? value)
+        {
+            value = ToolCallResultMessageVariant2;
+            return IsToolCallResultMessageVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object PickToolCallResultMessageVariant2() => IsToolCallResultMessageVariant2
+            ? ToolCallResultMessageVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ToolCallResultMessageVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -59,6 +99,11 @@ namespace RetellAI
         {
             Base = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ToolCallResultMessage FromBase(global::RetellAI.ToolCallResultMessageBase? value) => new ToolCallResultMessage(value);
 
         /// <summary>
         /// 
@@ -100,8 +145,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.ToolCallResultMessageBase?, TResult>? @base = null,
-            global::System.Func<object?, TResult>? toolCallResultMessageVariant2 = null,
+            global::System.Func<global::RetellAI.ToolCallResultMessageBase, TResult>? @base = null,
+            global::System.Func<object, TResult>? toolCallResultMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -125,8 +170,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.ToolCallResultMessageBase?>? @base = null,
-            global::System.Action<object?>? toolCallResultMessageVariant2 = null,
+            global::System.Action<global::RetellAI.ToolCallResultMessageBase>? @base = null,
+
+            global::System.Action<object>? toolCallResultMessageVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsBase)
+            {
+                @base?.Invoke(Base!);
+            }
+            else if (IsToolCallResultMessageVariant2)
+            {
+                toolCallResultMessageVariant2?.Invoke(ToolCallResultMessageVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.ToolCallResultMessageBase>? @base = null,
+            global::System.Action<object>? toolCallResultMessageVariant2 = null,
             bool validate = true)
         {
             if (validate)

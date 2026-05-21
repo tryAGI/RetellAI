@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickNode(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NodeEdge? value)
+        {
+            value = Node;
+            return IsNode;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NodeEdge PickNode() => IsNode
+            ? Node!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ElseEdgeVariant2? ElseEdgeVariant2 { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ElseEdgeVariant2))]
 #endif
         public bool IsElseEdgeVariant2 => ElseEdgeVariant2 != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickElseEdgeVariant2(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ElseEdgeVariant2? value)
+        {
+            value = ElseEdgeVariant2;
+            return IsElseEdgeVariant2;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.ElseEdgeVariant2 PickElseEdgeVariant2() => IsElseEdgeVariant2
+            ? ElseEdgeVariant2!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'ElseEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ElseEdge FromNode(global::RetellAI.NodeEdge? value) => new ElseEdge(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ElseEdge(global::RetellAI.ElseEdgeVariant2 value) => new ElseEdge((global::RetellAI.ElseEdgeVariant2?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             ElseEdgeVariant2 = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ElseEdge FromElseEdgeVariant2(global::RetellAI.ElseEdgeVariant2? value) => new ElseEdge(value);
 
         /// <summary>
         /// 
@@ -118,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.NodeEdge?, TResult>? node = null,
-            global::System.Func<global::RetellAI.ElseEdgeVariant2?, TResult>? elseEdgeVariant2 = null,
+            global::System.Func<global::RetellAI.NodeEdge, TResult>? node = null,
+            global::System.Func<global::RetellAI.ElseEdgeVariant2, TResult>? elseEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -143,8 +193,32 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.NodeEdge?>? node = null,
-            global::System.Action<global::RetellAI.ElseEdgeVariant2?>? elseEdgeVariant2 = null,
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+
+            global::System.Action<global::RetellAI.ElseEdgeVariant2>? elseEdgeVariant2 = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsNode)
+            {
+                node?.Invoke(Node!);
+            }
+            else if (IsElseEdgeVariant2)
+            {
+                elseEdgeVariant2?.Invoke(ElseEdgeVariant2!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.NodeEdge>? node = null,
+            global::System.Action<global::RetellAI.ElseEdgeVariant2>? elseEdgeVariant2 = null,
             bool validate = true)
         {
             if (validate)

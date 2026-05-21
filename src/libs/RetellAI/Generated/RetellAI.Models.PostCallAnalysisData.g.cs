@@ -27,6 +27,26 @@ namespace RetellAI
         public bool IsAnalysisData => AnalysisData != null;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickAnalysisData(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.AnalysisData? value)
+        {
+            value = AnalysisData;
+            return IsAnalysisData;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.AnalysisData PickAnalysisData() => IsAnalysisData
+            ? AnalysisData!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AnalysisData' but the value was {ToString()}.");
+
+        /// <summary>
         /// System preset for post-call analysis (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
         /// </summary>
 #if NET6_0_OR_GREATER
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Preset))]
 #endif
         public bool IsPreset => Preset != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPreset(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.CallPresetAnalysisData? value)
+        {
+            value = Preset;
+            return IsPreset;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.CallPresetAnalysisData PickPreset() => IsPreset
+            ? Preset!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Preset' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -63,6 +103,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static PostCallAnalysisData FromAnalysisData(global::RetellAI.AnalysisData? value) => new PostCallAnalysisData(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator PostCallAnalysisData(global::RetellAI.CallPresetAnalysisData value) => new PostCallAnalysisData((global::RetellAI.CallPresetAnalysisData?)value);
 
         /// <summary>
@@ -77,6 +122,11 @@ namespace RetellAI
         {
             Preset = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static PostCallAnalysisData FromPreset(global::RetellAI.CallPresetAnalysisData? value) => new PostCallAnalysisData(value);
 
         /// <summary>
         /// 
@@ -119,7 +169,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.AnalysisData?, TResult>? analysisData = null,
-            global::System.Func<global::RetellAI.CallPresetAnalysisData?, TResult>? preset = null,
+            global::System.Func<global::RetellAI.CallPresetAnalysisData, TResult>? preset = null,
             bool validate = true)
         {
             if (validate)
@@ -144,7 +194,31 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.AnalysisData?>? analysisData = null,
-            global::System.Action<global::RetellAI.CallPresetAnalysisData?>? preset = null,
+
+            global::System.Action<global::RetellAI.CallPresetAnalysisData>? preset = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsAnalysisData)
+            {
+                analysisData?.Invoke(AnalysisData!);
+            }
+            else if (IsPreset)
+            {
+                preset?.Invoke(Preset!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.AnalysisData?>? analysisData = null,
+            global::System.Action<global::RetellAI.CallPresetAnalysisData>? preset = null,
             bool validate = true)
         {
             if (validate)

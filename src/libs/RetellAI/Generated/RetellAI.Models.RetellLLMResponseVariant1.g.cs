@@ -73,5 +73,6 @@ namespace RetellAI
         public RetellLLMResponseVariant1()
         {
         }
+
     }
 }

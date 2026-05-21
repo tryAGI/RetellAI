@@ -29,6 +29,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickString(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.StringFilter? value)
+        {
+            value = String;
+            return IsString;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.StringFilter PickString() => IsString
+            ? String!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NumberFilter? Number { get; init; }
 #else
@@ -42,6 +62,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Number))]
 #endif
         public bool IsNumber => Number != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickNumber(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.NumberFilter? value)
+        {
+            value = Number;
+            return IsNumber;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.NumberFilter PickNumber() => IsNumber
+            ? Number!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -63,6 +103,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickBoolean(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.BooleanFilter? value)
+        {
+            value = Boolean;
+            return IsBoolean;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.BooleanFilter PickBoolean() => IsBoolean
+            ? Boolean!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RangeFilter? Range { get; init; }
 #else
@@ -76,6 +136,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Range))]
 #endif
         public bool IsRange => Range != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickRange(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.RangeFilter? value)
+        {
+            value = Range;
+            return IsRange;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.RangeFilter PickRange() => IsRange
+            ? Range!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Range' but the value was {ToString()}.");
 
         /// <summary>
         /// 
@@ -97,6 +177,26 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public bool TryPickEnum(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.EnumFilter? value)
+        {
+            value = Enum;
+            return IsEnum;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.EnumFilter PickEnum() => IsEnum
+            ? Enum!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.PresentFilter? Present { get; init; }
 #else
@@ -110,6 +210,26 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Present))]
 #endif
         public bool IsPresent => Present != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickPresent(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.PresentFilter? value)
+        {
+            value = Present;
+            return IsPresent;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.PresentFilter PickPresent() => IsPresent
+            ? Present!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Present' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -127,6 +247,11 @@ namespace RetellAI
         {
             String = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ValueFilter FromString(global::RetellAI.StringFilter? value) => new ValueFilter(value);
 
         /// <summary>
         /// 
@@ -149,6 +274,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ValueFilter FromNumber(global::RetellAI.NumberFilter? value) => new ValueFilter(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.BooleanFilter value) => new ValueFilter((global::RetellAI.BooleanFilter?)value);
 
         /// <summary>
@@ -163,6 +293,11 @@ namespace RetellAI
         {
             Boolean = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ValueFilter FromBoolean(global::RetellAI.BooleanFilter? value) => new ValueFilter(value);
 
         /// <summary>
         /// 
@@ -185,6 +320,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ValueFilter FromRange(global::RetellAI.RangeFilter? value) => new ValueFilter(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.EnumFilter value) => new ValueFilter((global::RetellAI.EnumFilter?)value);
 
         /// <summary>
@@ -203,6 +343,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static ValueFilter FromEnum(global::RetellAI.EnumFilter? value) => new ValueFilter(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.PresentFilter value) => new ValueFilter((global::RetellAI.PresentFilter?)value);
 
         /// <summary>
@@ -217,6 +362,11 @@ namespace RetellAI
         {
             Present = value;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ValueFilter FromPresent(global::RetellAI.PresentFilter? value) => new ValueFilter(value);
 
         /// <summary>
         /// 
@@ -274,12 +424,12 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.StringFilter?, TResult>? @string = null,
-            global::System.Func<global::RetellAI.NumberFilter?, TResult>? number = null,
-            global::System.Func<global::RetellAI.BooleanFilter?, TResult>? boolean = null,
-            global::System.Func<global::RetellAI.RangeFilter?, TResult>? range = null,
-            global::System.Func<global::RetellAI.EnumFilter?, TResult>? @enum = null,
-            global::System.Func<global::RetellAI.PresentFilter?, TResult>? present = null,
+            global::System.Func<global::RetellAI.StringFilter, TResult>? @string = null,
+            global::System.Func<global::RetellAI.NumberFilter, TResult>? number = null,
+            global::System.Func<global::RetellAI.BooleanFilter, TResult>? boolean = null,
+            global::System.Func<global::RetellAI.RangeFilter, TResult>? range = null,
+            global::System.Func<global::RetellAI.EnumFilter, TResult>? @enum = null,
+            global::System.Func<global::RetellAI.PresentFilter, TResult>? present = null,
             bool validate = true)
         {
             if (validate)
@@ -319,12 +469,60 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.StringFilter?>? @string = null,
-            global::System.Action<global::RetellAI.NumberFilter?>? number = null,
-            global::System.Action<global::RetellAI.BooleanFilter?>? boolean = null,
-            global::System.Action<global::RetellAI.RangeFilter?>? range = null,
-            global::System.Action<global::RetellAI.EnumFilter?>? @enum = null,
-            global::System.Action<global::RetellAI.PresentFilter?>? present = null,
+            global::System.Action<global::RetellAI.StringFilter>? @string = null,
+
+            global::System.Action<global::RetellAI.NumberFilter>? number = null,
+
+            global::System.Action<global::RetellAI.BooleanFilter>? boolean = null,
+
+            global::System.Action<global::RetellAI.RangeFilter>? range = null,
+
+            global::System.Action<global::RetellAI.EnumFilter>? @enum = null,
+
+            global::System.Action<global::RetellAI.PresentFilter>? present = null,
+            bool validate = true)
+        {
+            if (validate)
+            {
+                Validate();
+            }
+
+            if (IsString)
+            {
+                @string?.Invoke(String!);
+            }
+            else if (IsNumber)
+            {
+                number?.Invoke(Number!);
+            }
+            else if (IsBoolean)
+            {
+                boolean?.Invoke(Boolean!);
+            }
+            else if (IsRange)
+            {
+                range?.Invoke(Range!);
+            }
+            else if (IsEnum)
+            {
+                @enum?.Invoke(Enum!);
+            }
+            else if (IsPresent)
+            {
+                present?.Invoke(Present!);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Switch(
+            global::System.Action<global::RetellAI.StringFilter>? @string = null,
+            global::System.Action<global::RetellAI.NumberFilter>? number = null,
+            global::System.Action<global::RetellAI.BooleanFilter>? boolean = null,
+            global::System.Action<global::RetellAI.RangeFilter>? range = null,
+            global::System.Action<global::RetellAI.EnumFilter>? @enum = null,
+            global::System.Action<global::RetellAI.PresentFilter>? present = null,
             bool validate = true)
         {
             if (validate)

@@ -78,6 +78,7 @@ namespace RetellAI.JsonConverters
             {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.MessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.MessageBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.MessageBase).Name}");
                     @base = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -88,9 +89,13 @@ namespace RetellAI.JsonConverters
                 catch (global::System.InvalidOperationException)
                 {
                 }
+            }
 
+            if (@base == null && messageVariant2 == null)
+            {
                 try
                 {
+
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(object), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<object> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(object).Name}");
                     messageVariant2 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);

@@ -52,5 +52,6 @@ namespace RetellAI
         public TransferFailedEdgeVariant2TransitionCondition()
         {
         }
+
     }
 }

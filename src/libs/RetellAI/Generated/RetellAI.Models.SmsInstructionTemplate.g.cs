@@ -54,5 +54,6 @@ namespace RetellAI
         public SmsInstructionTemplate()
         {
         }
+
     }
 }

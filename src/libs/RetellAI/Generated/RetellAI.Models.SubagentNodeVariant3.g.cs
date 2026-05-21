@@ -61,6 +61,12 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<string>? KnowledgeBaseIds { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("kb_config")]
+        public global::RetellAI.KBConfig? KbConfig { get; set; }
+
+        /// <summary>
         /// The tool ids of the tools defined in main conversation flow or component that can be used in this subagent node.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_ids")]
@@ -93,6 +99,7 @@ namespace RetellAI
         /// <param name="knowledgeBaseIds">
         /// Knowledge base IDs for RAG (Retrieval-Augmented Generation).
         /// </param>
+        /// <param name="kbConfig"></param>
         /// <param name="toolIds">
         /// The tool ids of the tools defined in main conversation flow or component that can be used in this subagent node.
         /// </param>
@@ -111,6 +118,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneConversationExample>? finetuneConversationExamples,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples,
             global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
+            global::RetellAI.KBConfig? kbConfig,
             global::System.Collections.Generic.IList<string>? toolIds,
             global::System.Collections.Generic.IList<global::RetellAI.Tool>? tools)
         {
@@ -122,6 +130,7 @@ namespace RetellAI
             this.FinetuneConversationExamples = finetuneConversationExamples;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
             this.KnowledgeBaseIds = knowledgeBaseIds;
+            this.KbConfig = kbConfig;
             this.ToolIds = toolIds;
             this.Tools = tools;
         }
@@ -132,5 +141,6 @@ namespace RetellAI
         public SubagentNodeVariant3()
         {
         }
+
     }
 }
