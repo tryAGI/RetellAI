@@ -547,11 +547,12 @@ components:
       - type: string
         minLength: 1
         maxLength: 20
-        pattern: ^(latest|(?!(?:v\d+)$)[a-z][a-z0-9_-]{0,19})$
+        pattern: ^(latest|latest_published|(?!(?:latest|latest_published|v\d+)$)[a-z][a-z0-9_-]{0,19})$
         example: prod
-      description: Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). When a tag is provided, resolution uses that exact tag assignment (including
-        its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version (or latest) is provided, resolution applies dynamic variables from the preferred
-        tag for that resolved version (most recently assigned), if any.
+      description: Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). The string "latest" resolves to the most recently created version (the
+        largest version number), and "latest_published" resolves to the most recently published version. When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables).
+        If the tag exists but is currently unassigned, it resolves to latest. When a numeric version, latest, or latest_published is provided, resolution applies dynamic variables from the preferred tag
+        for that resolved version (most recently assigned), if any.
     CreateAgentVersionRequest:
       type: object
       additionalProperties: false
@@ -808,7 +809,8 @@ components:
           example:
           - retell
           - kroger
-          description: Provide a customized list of keywords to bias the transcriber model, so that these words are more likely to get transcribed. Commonly used for names, brands, street, etc.
+          description: Provide a customized list of keywords to bias the transcriber model, so that these words are more likely to get transcribed. Commonly used for names, brands, street, etc. Entries
+            may reference dynamic variables with `{{variable}}` syntax.
           nullable: true
         data_storage_setting:
           type: string
@@ -2846,17 +2848,23 @@ components:
         twilio:
           type: integer
           nullable: true
+          minimum: 1
+          maximum: 5
           description: CPS limit for Twilio provider (1-5)
           example: 3
         telnyx:
           type: integer
           nullable: true
+          minimum: 1
+          maximum: 16
           description: CPS limit for Telnyx provider (1-16)
           example: 10
         custom:
           type: integer
           nullable: true
-          description: CPS limit for custom provider 1 to concurrency / 20
+          minimum: 1
+          maximum: 150
+          description: CPS limit for custom provider (1-150). Check your custom telephony provider for CPS limits; Retell will smooth outbound dialing to fit the configured limit.
           example: 2
     CreateConversationFlowComponentRequest:
       allOf:
@@ -3092,6 +3100,24 @@ components:
         time_sec:
           type: number
           description: Time the SMS was received, in seconds relative to the start of the call.
+    InjectedUtterance:
+      type: object
+      required:
+      - role
+      - content
+      - time_sec
+      properties:
+        role:
+          type: string
+          enum:
+          - injected
+          description: External context injected into the conversation via the update-live-call API. Not spoken by either party.
+        content:
+          type: string
+          description: The injected context text.
+        time_sec:
+          type: number
+          description: Time the context was injected, in seconds relative to the start of the call.
     SmsMultimediaItem:
       type: object
       required:
@@ -3421,6 +3447,82 @@ components:
                   type: string
                   description: The dynamic variable name to filter on.
           description: Filter by dynamic variables.
+    ChatFilter:
+      type: object
+      description: Filter criteria for chats. All conditions are implicitly connected with AND.
+      properties:
+        agent:
+          type: array
+          items:
+            $ref: '#/components/schemas/AgentFilter'
+          description: Filter by agent(s). Agent filters are connected by OR.
+        chat_id:
+          $ref: '#/components/schemas/StringFilter'
+          description: Filter by chat ID.
+        chat_status:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by chat status.
+            properties:
+              value:
+                items:
+                  enum:
+                  - ongoing
+                  - ended
+                  - error
+        disconnection_reason:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by disconnection reason.
+            properties:
+              value:
+                items:
+                  $ref: '#/components/schemas/DisconnectionReason'
+        user_sentiment:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by user sentiment.
+            properties:
+              value:
+                items:
+                  enum:
+                  - Negative
+                  - Positive
+                  - Neutral
+                  - Unknown
+        chat_successful:
+          $ref: '#/components/schemas/BooleanFilter'
+          description: Filter by whether the chat was successful.
+        start_timestamp:
+          oneOf:
+          - $ref: '#/components/schemas/NumberFilter'
+          - $ref: '#/components/schemas/RangeFilter'
+          description: Filter by chat start timestamp (epoch ms).
+        end_timestamp:
+          oneOf:
+          - $ref: '#/components/schemas/NumberFilter'
+          - $ref: '#/components/schemas/RangeFilter'
+          description: Filter by chat end timestamp (epoch ms).
+        duration_ms:
+          oneOf:
+          - $ref: '#/components/schemas/NumberFilter'
+          - $ref: '#/components/schemas/RangeFilter'
+          description: Filter by chat duration in milliseconds.
+        combined_cost:
+          oneOf:
+          - $ref: '#/components/schemas/NumberFilter'
+          - $ref: '#/components/schemas/RangeFilter'
+          description: Filter by combined cost of the chat.
+        custom_analysis_data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldFilter'
+          description: Filter by custom analysis data fields.
+        custom_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldFilter'
+          description: Filter by custom attributes fields.
     DateRange:
       type: object
       required:
@@ -3452,6 +3554,7 @@ components:
       - inactivity
       - max_duration_reached
       - concurrency_limit_reached
+      - no_concurrency_fallback
       - no_valid_payment
       - scam_detected
       - dial_busy
@@ -3659,6 +3762,9 @@ components:
           items:
             $ref: '#/components/schemas/AnalysisData'
           description: The variables to be extracted.
+        enable_typing_sound:
+          type: boolean
+          description: If true, play a typing sound on the agent audio track while this tool is executing.
       required:
       - type
       - name
@@ -3681,6 +3787,9 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/AnalysisData'
+          enable_typing_sound:
+            type: boolean
+            description: If true, play a typing sound while this extract step executes.
           edges:
             type: array
             items:
@@ -4914,6 +5023,11 @@ components:
         concurrency:
           type: integer
           description: Maximum concurrent calls allowed
+        reserved_inbound_concurrency:
+          type: integer
+          minimum: 0
+          description: Number of concurrency slots reserved for inbound calls. Outbound calls can use at most the remaining concurrency; inbound calls can still use the full org concurrency limit when capacity
+            is available.
         concurrency_burst_enabled:
           type: boolean
           description: Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge
@@ -6769,6 +6883,10 @@ components:
             type: boolean
             description: Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge
               on burst calls.
+          reserved_inbound_concurrency:
+            type: integer
+            minimum: 0
+            description: Number of concurrency slots reserved for inbound calls. Must be less than total normal concurrency.
           use_stable_server:
             type: boolean
             description: Whether to route calls and API requests from this organization to the stable server cluster (enterprise only). When enabled, a $0.02/min additional charge will be applied.
@@ -6839,6 +6957,7 @@ components:
       - $ref: '#/components/schemas/NodeTransitionUtterance'
       - $ref: '#/components/schemas/DTMFUtterance'
       - $ref: '#/components/schemas/SmsUtterance'
+      - $ref: '#/components/schemas/InjectedUtterance'
     UtteranceToolCallAccuracy:
       type: object
       required:
@@ -7426,6 +7545,40 @@ components:
             example: eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9p
             description: Access token to enter the web call room. This needs to be passed to your frontend to join the call.
       - $ref: '#/components/schemas/V3CallBase'
+    V3ListCallsRequest:
+      type: object
+      properties:
+        filter_criteria:
+          $ref: '#/components/schemas/CallFilter'
+        sort_order:
+          type: string
+          enum:
+          - ascending
+          - descending
+          default: descending
+          description: Sort calls by `start_timestamp` in ascending or descending order.
+        limit:
+          type: integer
+          default: 50
+          maximum: 1000
+          description: Maximum number of calls to return.
+        skip:
+          type: integer
+          minimum: 0
+          default: 0
+          description: Number of records to skip for pagination.
+        pagination_key:
+          type: string
+          description: Opaque pagination cursor from a previous response.
+        include_total:
+          type: boolean
+          default: false
+          description: Whether to include `total` (count of all calls matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request triggers
+            an additional aggregate query, so opt in only when the total is needed.
+      not:
+        required:
+        - skip
+        - pagination_key
     V2PhoneCallResponse:
       allOf:
       - type: object
@@ -7504,7 +7657,6 @@ components:
           enum:
           - elevenlabs
           - openai
-          - deepgram
           - cartesia
           - minimax
           - fish_audio
@@ -9200,6 +9352,10 @@ paths:
                     type: integer
                     example: 20
                     description: The remaining amount of concurrency that the org can purchase. This is the difference between `concurrency_purchase_limit` and `purchased_concurrency`.
+                  reserved_inbound_concurrency:
+                    type: integer
+                    example: 10
+                    description: Number of normal concurrency slots reserved for inbound calls.
                   concurrency_burst_enabled:
                     type: boolean
                     example: true
@@ -9850,7 +10006,7 @@ paths:
               type: object
               properties:
                 filter_criteria:
-                  type: object
+                  $ref: '#/components/schemas/ChatFilter'
                   description: Filter criteria for chats to retrieve.
                 sort_order:
                   type: string
@@ -10415,7 +10571,7 @@ paths:
                     type: string
                   example:
                     additional_discount: 15%
-                  description: Override dynamic varaibles represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to
+                  description: Override dynamic variables represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to
                     set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.
                   nullable: true
                 custom_attributes:
@@ -11113,39 +11269,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                filter_criteria:
-                  $ref: '#/components/schemas/CallFilter'
-                sort_order:
-                  type: string
-                  enum:
-                  - ascending
-                  - descending
-                  default: descending
-                  description: Sort calls by `start_timestamp` in ascending or descending order.
-                limit:
-                  type: integer
-                  default: 50
-                  maximum: 1000
-                  description: Maximum number of calls to return.
-                skip:
-                  type: integer
-                  minimum: 0
-                  default: 0
-                  description: Number of records to skip for pagination.
-                pagination_key:
-                  type: string
-                  description: Opaque pagination cursor from a previous response.
-                include_total:
-                  type: boolean
-                  default: false
-                  description: Whether to include `total` (count of all calls matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request
-                    triggers an additional aggregate query, so opt in only when the total is needed.
-              not:
-                required:
-                - skip
-                - pagination_key
+              $ref: '#/components/schemas/V3ListCallsRequest'
       responses:
         '200':
           description: Successfully retrieved calls.
@@ -11334,7 +11458,7 @@ paths:
                     type: string
                   example:
                     additional_discount: 15%
-                  description: Override dynamic varaibles represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to
+                  description: Override dynamic variables represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to
                     set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.
                   nullable: true
                 custom_attributes:

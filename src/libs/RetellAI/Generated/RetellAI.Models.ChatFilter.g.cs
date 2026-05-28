@@ -1,0 +1,164 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// Filter criteria for chats. All conditions are implicitly connected with AND.
+    /// </summary>
+    public sealed partial class ChatFilter
+    {
+        /// <summary>
+        /// Filter by agent(s). Agent filters are connected by OR.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
+        public global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? Agent { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chat_id")]
+        public global::RetellAI.StringFilter? ChatId { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chat_status")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatStatus>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatStatus>? ChatStatus { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("disconnection_reason")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDisconnectionReason>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDisconnectionReason>? DisconnectionReason { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_sentiment")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterUserSentiment>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterUserSentiment>? UserSentiment { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chat_successful")]
+        public global::RetellAI.BooleanFilter? ChatSuccessful { get; set; }
+
+        /// <summary>
+        /// Filter by chat start timestamp (epoch ms).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("start_timestamp")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>))]
+        public global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? StartTimestamp { get; set; }
+
+        /// <summary>
+        /// Filter by chat end timestamp (epoch ms).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("end_timestamp")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>))]
+        public global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? EndTimestamp { get; set; }
+
+        /// <summary>
+        /// Filter by chat duration in milliseconds.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>))]
+        public global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? DurationMs { get; set; }
+
+        /// <summary>
+        /// Filter by combined cost of the chat.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("combined_cost")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>))]
+        public global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? CombinedCost { get; set; }
+
+        /// <summary>
+        /// Filter by custom analysis data fields.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_analysis_data")]
+        public global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? CustomAnalysisData { get; set; }
+
+        /// <summary>
+        /// Filter by custom attributes fields.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_attributes")]
+        public global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? CustomAttributes { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChatFilter" /> class.
+        /// </summary>
+        /// <param name="agent">
+        /// Filter by agent(s). Agent filters are connected by OR.
+        /// </param>
+        /// <param name="chatId"></param>
+        /// <param name="chatStatus"></param>
+        /// <param name="disconnectionReason"></param>
+        /// <param name="userSentiment"></param>
+        /// <param name="chatSuccessful"></param>
+        /// <param name="startTimestamp">
+        /// Filter by chat start timestamp (epoch ms).
+        /// </param>
+        /// <param name="endTimestamp">
+        /// Filter by chat end timestamp (epoch ms).
+        /// </param>
+        /// <param name="durationMs">
+        /// Filter by chat duration in milliseconds.
+        /// </param>
+        /// <param name="combinedCost">
+        /// Filter by combined cost of the chat.
+        /// </param>
+        /// <param name="customAnalysisData">
+        /// Filter by custom analysis data fields.
+        /// </param>
+        /// <param name="customAttributes">
+        /// Filter by custom attributes fields.
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public ChatFilter(
+            global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? agent,
+            global::RetellAI.StringFilter? chatId,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatStatus>? chatStatus,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDisconnectionReason>? disconnectionReason,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterUserSentiment>? userSentiment,
+            global::RetellAI.BooleanFilter? chatSuccessful,
+            global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? startTimestamp,
+            global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? endTimestamp,
+            global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? durationMs,
+            global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? combinedCost,
+            global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? customAnalysisData,
+            global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? customAttributes)
+        {
+            this.Agent = agent;
+            this.ChatId = chatId;
+            this.ChatStatus = chatStatus;
+            this.DisconnectionReason = disconnectionReason;
+            this.UserSentiment = userSentiment;
+            this.ChatSuccessful = chatSuccessful;
+            this.StartTimestamp = startTimestamp;
+            this.EndTimestamp = endTimestamp;
+            this.DurationMs = durationMs;
+            this.CombinedCost = combinedCost;
+            this.CustomAnalysisData = customAnalysisData;
+            this.CustomAttributes = customAttributes;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChatFilter" /> class.
+        /// </summary>
+        public ChatFilter()
+        {
+        }
+
+    }
+}

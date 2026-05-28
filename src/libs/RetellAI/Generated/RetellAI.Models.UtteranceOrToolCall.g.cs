@@ -230,6 +230,43 @@ namespace RetellAI
         public global::RetellAI.SmsUtterance PickSms() => IsSms
             ? Sms!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Sms' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::RetellAI.InjectedUtterance? Injected { get; init; }
+#else
+        public global::RetellAI.InjectedUtterance? Injected { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Injected))]
+#endif
+        public bool IsInjected => Injected != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickInjected(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.InjectedUtterance? value)
+        {
+            value = Injected;
+            return IsInjected;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.InjectedUtterance PickInjected() => IsInjected
+            ? Injected!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Injected' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -371,13 +408,37 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator UtteranceOrToolCall(global::RetellAI.InjectedUtterance value) => new UtteranceOrToolCall((global::RetellAI.InjectedUtterance?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::RetellAI.InjectedUtterance?(UtteranceOrToolCall @this) => @this.Injected;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public UtteranceOrToolCall(global::RetellAI.InjectedUtterance? value)
+        {
+            Injected = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static UtteranceOrToolCall FromInjected(global::RetellAI.InjectedUtterance? value) => new UtteranceOrToolCall(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public UtteranceOrToolCall(
             global::RetellAI.Utterance? utterance,
             global::RetellAI.ToolCallInvocationUtterance? invocation,
             global::RetellAI.ToolCallResultUtterance? result,
             global::RetellAI.NodeTransitionUtterance? nodeTransition,
             global::RetellAI.DTMFUtterance? dtmf,
-            global::RetellAI.SmsUtterance? sms
+            global::RetellAI.SmsUtterance? sms,
+            global::RetellAI.InjectedUtterance? injected
             )
         {
             Utterance = utterance;
@@ -386,12 +447,14 @@ namespace RetellAI
             NodeTransition = nodeTransition;
             Dtmf = dtmf;
             Sms = sms;
+            Injected = injected;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
+            Injected as object ??
             Sms as object ??
             Dtmf as object ??
             NodeTransition as object ??
@@ -409,7 +472,8 @@ namespace RetellAI
             Result?.ToString() ??
             NodeTransition?.ToString() ??
             Dtmf?.ToString() ??
-            Sms?.ToString() 
+            Sms?.ToString() ??
+            Injected?.ToString() 
             ;
 
         /// <summary>
@@ -417,7 +481,7 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsUtterance && !IsInvocation && !IsResult && !IsNodeTransition && !IsDtmf && !IsSms || !IsUtterance && IsInvocation && !IsResult && !IsNodeTransition && !IsDtmf && !IsSms || !IsUtterance && !IsInvocation && IsResult && !IsNodeTransition && !IsDtmf && !IsSms || !IsUtterance && !IsInvocation && !IsResult && IsNodeTransition && !IsDtmf && !IsSms || !IsUtterance && !IsInvocation && !IsResult && !IsNodeTransition && IsDtmf && !IsSms || !IsUtterance && !IsInvocation && !IsResult && !IsNodeTransition && !IsDtmf && IsSms;
+            return IsUtterance && !IsInvocation && !IsResult && !IsNodeTransition && !IsDtmf && !IsSms && !IsInjected || !IsUtterance && IsInvocation && !IsResult && !IsNodeTransition && !IsDtmf && !IsSms && !IsInjected || !IsUtterance && !IsInvocation && IsResult && !IsNodeTransition && !IsDtmf && !IsSms && !IsInjected || !IsUtterance && !IsInvocation && !IsResult && IsNodeTransition && !IsDtmf && !IsSms && !IsInjected || !IsUtterance && !IsInvocation && !IsResult && !IsNodeTransition && IsDtmf && !IsSms && !IsInjected || !IsUtterance && !IsInvocation && !IsResult && !IsNodeTransition && !IsDtmf && IsSms && !IsInjected || !IsUtterance && !IsInvocation && !IsResult && !IsNodeTransition && !IsDtmf && !IsSms && IsInjected;
         }
 
         /// <summary>
@@ -430,6 +494,7 @@ namespace RetellAI
             global::System.Func<global::RetellAI.NodeTransitionUtterance, TResult>? nodeTransition = null,
             global::System.Func<global::RetellAI.DTMFUtterance, TResult>? dtmf = null,
             global::System.Func<global::RetellAI.SmsUtterance, TResult>? sms = null,
+            global::System.Func<global::RetellAI.InjectedUtterance, TResult>? injected = null,
             bool validate = true)
         {
             if (validate)
@@ -461,6 +526,10 @@ namespace RetellAI
             {
                 return sms(Sms!);
             }
+            else if (IsInjected && injected != null)
+            {
+                return injected(Injected!);
+            }
 
             return default(TResult);
         }
@@ -480,6 +549,8 @@ namespace RetellAI
             global::System.Action<global::RetellAI.DTMFUtterance>? dtmf = null,
 
             global::System.Action<global::RetellAI.SmsUtterance>? sms = null,
+
+            global::System.Action<global::RetellAI.InjectedUtterance>? injected = null,
             bool validate = true)
         {
             if (validate)
@@ -510,6 +581,10 @@ namespace RetellAI
             else if (IsSms)
             {
                 sms?.Invoke(Sms!);
+            }
+            else if (IsInjected)
+            {
+                injected?.Invoke(Injected!);
             }
         }
 
@@ -523,6 +598,7 @@ namespace RetellAI
             global::System.Action<global::RetellAI.NodeTransitionUtterance>? nodeTransition = null,
             global::System.Action<global::RetellAI.DTMFUtterance>? dtmf = null,
             global::System.Action<global::RetellAI.SmsUtterance>? sms = null,
+            global::System.Action<global::RetellAI.InjectedUtterance>? injected = null,
             bool validate = true)
         {
             if (validate)
@@ -553,6 +629,10 @@ namespace RetellAI
             else if (IsSms)
             {
                 sms?.Invoke(Sms!);
+            }
+            else if (IsInjected)
+            {
+                injected?.Invoke(Injected!);
             }
         }
 
@@ -575,6 +655,8 @@ namespace RetellAI
                 typeof(global::RetellAI.DTMFUtterance),
                 Sms,
                 typeof(global::RetellAI.SmsUtterance),
+                Injected,
+                typeof(global::RetellAI.InjectedUtterance),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -596,7 +678,8 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ToolCallResultUtterance?>.Default.Equals(Result, other.Result) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeTransitionUtterance?>.Default.Equals(NodeTransition, other.NodeTransition) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.DTMFUtterance?>.Default.Equals(Dtmf, other.Dtmf) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsUtterance?>.Default.Equals(Sms, other.Sms) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsUtterance?>.Default.Equals(Sms, other.Sms) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.InjectedUtterance?>.Default.Equals(Injected, other.Injected) 
                 ;
         }
 

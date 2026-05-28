@@ -24,7 +24,7 @@ namespace RetellAI
         public global::RetellAI.UpdateChatMetadataRequestDataStorageSetting? DataStorageSetting { get; set; }
 
         /// <summary>
-        /// Override dynamic varaibles represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.<br/>
+        /// Override dynamic variables represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.<br/>
         /// Example: {"additional_discount":"15%"}
         /// </summary>
         /// <example>{"additional_discount":"15%"}</example>
@@ -56,7 +56,7 @@ namespace RetellAI
         /// Example: everything
         /// </param>
         /// <param name="overrideDynamicVariables">
-        /// Override dynamic varaibles represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.<br/>
+        /// Override dynamic variables represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.<br/>
         /// Example: {"additional_discount":"15%"}
         /// </param>
         /// <param name="customAttributes">

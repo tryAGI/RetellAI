@@ -48,7 +48,7 @@ namespace RetellAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disconnection_reasons")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason4>? DisconnectionReasons { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason5>? DisconnectionReasons { get; set; }
 
         /// <summary>
         /// Deprecated: use 'status_code' instead. API error codes to filter on (for API Error Count metrics).

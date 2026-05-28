@@ -49,6 +49,12 @@ namespace RetellAI
         public int? Concurrency { get; set; }
 
         /// <summary>
+        /// Number of concurrency slots reserved for inbound calls. Outbound calls can use at most the remaining concurrency; inbound calls can still use the full org concurrency limit when capacity is available.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reserved_inbound_concurrency")]
+        public int? ReservedInboundConcurrency { get; set; }
+
+        /// <summary>
         /// Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge on burst calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("concurrency_burst_enabled")]
@@ -154,6 +160,9 @@ namespace RetellAI
         /// <param name="concurrency">
         /// Maximum concurrent calls allowed
         /// </param>
+        /// <param name="reservedInboundConcurrency">
+        /// Number of concurrency slots reserved for inbound calls. Outbound calls can use at most the remaining concurrency; inbound calls can still use the full org concurrency limit when capacity is available.
+        /// </param>
         /// <param name="concurrencyBurstEnabled">
         /// Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge on burst calls.
         /// </param>
@@ -187,6 +196,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.OrganizationWebhookUrl>? webhookUrls,
             string? webhookKey,
             int? concurrency,
+            int? reservedInboundConcurrency,
             bool? concurrencyBurstEnabled,
             int? maxTokenLength,
             int? maxCallDurationMs,
@@ -207,6 +217,7 @@ namespace RetellAI
             this.WebhookUrls = webhookUrls;
             this.WebhookKey = webhookKey;
             this.Concurrency = concurrency;
+            this.ReservedInboundConcurrency = reservedInboundConcurrency;
             this.ConcurrencyBurstEnabled = concurrencyBurstEnabled;
             this.MaxTokenLength = maxTokenLength;
             this.MaxCallDurationMs = maxCallDurationMs;

@@ -43,7 +43,7 @@ namespace RetellAI
         /// Only retrieve calls with specific disconnection reason(s).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disconnection_reason")]
-        public global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason4>? DisconnectionReason { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason5>? DisconnectionReason { get; set; }
 
         /// <summary>
         /// Only retrieve calls with specific from number(s).
@@ -206,7 +206,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<int>? version,
             global::System.Collections.Generic.IList<global::RetellAI.ListCallsRequestFilterCriteriaCallStatu>? callStatus,
             global::System.Collections.Generic.IList<bool>? inVoicemail,
-            global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason4>? disconnectionReason,
+            global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason5>? disconnectionReason,
             global::System.Collections.Generic.IList<string>? fromNumber,
             global::System.Collections.Generic.IList<string>? toNumber,
             global::System.Collections.Generic.IList<string>? batchCallId,

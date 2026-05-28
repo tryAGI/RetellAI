@@ -16,10 +16,6 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        Deepgram,
-        /// <summary>
-        /// 
-        /// </summary>
         Elevenlabs,
         /// <summary>
         /// 
@@ -52,7 +48,6 @@ namespace RetellAI
             return value switch
             {
                 VoiceResponseProvider.Cartesia => "cartesia",
-                VoiceResponseProvider.Deepgram => "deepgram",
                 VoiceResponseProvider.Elevenlabs => "elevenlabs",
                 VoiceResponseProvider.FishAudio => "fish_audio",
                 VoiceResponseProvider.Minimax => "minimax",
@@ -69,7 +64,6 @@ namespace RetellAI
             return value switch
             {
                 "cartesia" => VoiceResponseProvider.Cartesia,
-                "deepgram" => VoiceResponseProvider.Deepgram,
                 "elevenlabs" => VoiceResponseProvider.Elevenlabs,
                 "fish_audio" => VoiceResponseProvider.FishAudio,
                 "minimax" => VoiceResponseProvider.Minimax,

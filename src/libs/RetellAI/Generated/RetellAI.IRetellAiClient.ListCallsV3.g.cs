@@ -13,7 +13,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListCallsV3Response2>> ListCallsV3Async(
 
-            global::RetellAI.ListCallsV3Request request,
+            global::RetellAI.V3ListCallsRequest request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -25,7 +25,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListCallsV3Response2>>> ListCallsV3AsResponseAsync(
 
-            global::RetellAI.ListCallsV3Request request,
+            global::RetellAI.V3ListCallsRequest request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -58,7 +58,7 @@ namespace RetellAI
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListCallsV3Response2>> ListCallsV3Async(
             global::RetellAI.CallFilter? filterCriteria = default,
-            global::RetellAI.ListCallsV3RequestSortOrder? sortOrder = default,
+            global::RetellAI.V3ListCallsRequestSortOrder? sortOrder = default,
             int? limit = default,
             int? skip = default,
             string? paginationKey = default,

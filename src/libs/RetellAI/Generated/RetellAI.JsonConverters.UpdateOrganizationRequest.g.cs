@@ -31,6 +31,7 @@ namespace RetellAI.JsonConverters
             var __score1 = 0;
             if (__jsonProps.Contains("concurrency_burst_enabled")) __score1++;
             if (__jsonProps.Contains("outage_mode_enabled")) __score1++;
+            if (__jsonProps.Contains("reserved_inbound_concurrency")) __score1++;
             if (__jsonProps.Contains("use_stable_server")) __score1++;
             var __bestScore = 0;
             var __bestIndex = -1;
