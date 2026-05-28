@@ -51,6 +51,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("orgName")) __score0++;
             if (__jsonProps.Contains("org_name")) __score0++;
             if (__jsonProps.Contains("outage_mode_enabled")) __score0++;
+            if (__jsonProps.Contains("reserved_inbound_concurrency")) __score0++;
             if (__jsonProps.Contains("review_provided")) __score0++;
             if (__jsonProps.Contains("skip_audit")) __score0++;
             if (__jsonProps.Contains("twilio_subaccount_sid")) __score0++;

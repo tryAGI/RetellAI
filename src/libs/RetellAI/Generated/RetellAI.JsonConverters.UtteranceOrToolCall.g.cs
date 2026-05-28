@@ -57,6 +57,10 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("multimedia")) __score5++;
             if (__jsonProps.Contains("role")) __score5++;
             if (__jsonProps.Contains("time_sec")) __score5++;
+            var __score6 = 0;
+            if (__jsonProps.Contains("content")) __score6++;
+            if (__jsonProps.Contains("role")) __score6++;
+            if (__jsonProps.Contains("time_sec")) __score6++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
@@ -65,6 +69,7 @@ namespace RetellAI.JsonConverters
             if (__score3 > __bestScore) { __bestScore = __score3; __bestIndex = 3; }
             if (__score4 > __bestScore) { __bestScore = __score4; __bestIndex = 4; }
             if (__score5 > __bestScore) { __bestScore = __score5; __bestIndex = 5; }
+            if (__score6 > __bestScore) { __bestScore = __score6; __bestIndex = 6; }
 
             global::RetellAI.Utterance? utterance = default;
             global::RetellAI.ToolCallInvocationUtterance? invocation = default;
@@ -72,6 +77,7 @@ namespace RetellAI.JsonConverters
             global::RetellAI.NodeTransitionUtterance? nodeTransition = default;
             global::RetellAI.DTMFUtterance? dtmf = default;
             global::RetellAI.SmsUtterance? sms = default;
+            global::RetellAI.InjectedUtterance? injected = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -164,9 +170,24 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
+                else if (__bestIndex == 6)
+                {
+                    try
+                    {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.InjectedUtterance), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.InjectedUtterance> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.InjectedUtterance).Name}");
+                        injected = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                }
             }
 
-            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null)
+            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null && injected == null)
             {
                 try
                 {
@@ -183,7 +204,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null)
+            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null && injected == null)
             {
                 try
                 {
@@ -200,7 +221,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null)
+            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null && injected == null)
             {
                 try
                 {
@@ -217,7 +238,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null)
+            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null && injected == null)
             {
                 try
                 {
@@ -234,7 +255,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null)
+            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null && injected == null)
             {
                 try
                 {
@@ -251,7 +272,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null)
+            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null && injected == null)
             {
                 try
                 {
@@ -259,6 +280,23 @@ namespace RetellAI.JsonConverters
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsUtterance), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsUtterance> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsUtterance).Name}");
                     sms = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+            }
+
+            if (utterance == null && invocation == null && result == null && nodeTransition == null && dtmf == null && sms == null && injected == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.InjectedUtterance), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.InjectedUtterance> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.InjectedUtterance).Name}");
+                    injected = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -279,7 +317,9 @@ namespace RetellAI.JsonConverters
 
                 dtmf,
 
-                sms
+                sms,
+
+                injected
                 );
 
             return __value;
@@ -329,6 +369,12 @@ namespace RetellAI.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsUtterance), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsUtterance?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsUtterance).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.Sms!, typeInfo);
+            }
+            else if (value.IsInjected)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.InjectedUtterance), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.InjectedUtterance?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.InjectedUtterance).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Injected!, typeInfo);
             }
         }
     }

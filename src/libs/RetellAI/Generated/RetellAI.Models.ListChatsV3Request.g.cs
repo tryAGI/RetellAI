@@ -9,10 +9,10 @@ namespace RetellAI
     public sealed partial class ListChatsV3Request
     {
         /// <summary>
-        /// Filter criteria for chats to retrieve.
+        /// Filter criteria for chats. All conditions are implicitly connected with AND.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filter_criteria")]
-        public object? FilterCriteria { get; set; }
+        public global::RetellAI.ChatFilter? FilterCriteria { get; set; }
 
         /// <summary>
         /// Sort chats by `start_timestamp` in ascending or descending order.<br/>
@@ -59,7 +59,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ListChatsV3Request" /> class.
         /// </summary>
         /// <param name="filterCriteria">
-        /// Filter criteria for chats to retrieve.
+        /// Filter criteria for chats. All conditions are implicitly connected with AND.
         /// </param>
         /// <param name="sortOrder">
         /// Sort chats by `start_timestamp` in ascending or descending order.<br/>
@@ -84,7 +84,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListChatsV3Request(
-            object? filterCriteria,
+            global::RetellAI.ChatFilter? filterCriteria,
             global::RetellAI.ListChatsV3RequestSortOrder? sortOrder,
             int? limit,
             int? skip,

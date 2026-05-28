@@ -21,6 +21,12 @@ namespace RetellAI
         public bool? ConcurrencyBurstEnabled { get; set; }
 
         /// <summary>
+        /// Number of concurrency slots reserved for inbound calls. Must be less than total normal concurrency.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reserved_inbound_concurrency")]
+        public int? ReservedInboundConcurrency { get; set; }
+
+        /// <summary>
         /// Whether to route calls and API requests from this organization to the stable server cluster (enterprise only). When enabled, a $0.02/min additional charge will be applied.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("use_stable_server")]
@@ -41,6 +47,9 @@ namespace RetellAI
         /// <param name="concurrencyBurstEnabled">
         /// Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge on burst calls.
         /// </param>
+        /// <param name="reservedInboundConcurrency">
+        /// Number of concurrency slots reserved for inbound calls. Must be less than total normal concurrency.
+        /// </param>
         /// <param name="useStableServer">
         /// Whether to route calls and API requests from this organization to the stable server cluster (enterprise only). When enabled, a $0.02/min additional charge will be applied.
         /// </param>
@@ -50,10 +59,12 @@ namespace RetellAI
         public UpdateOrganizationRequestVariant2(
             bool? outageModeEnabled,
             bool? concurrencyBurstEnabled,
+            int? reservedInboundConcurrency,
             bool? useStableServer)
         {
             this.OutageModeEnabled = outageModeEnabled;
             this.ConcurrencyBurstEnabled = concurrencyBurstEnabled;
+            this.ReservedInboundConcurrency = reservedInboundConcurrency;
             this.UseStableServer = useStableServer;
         }
 

@@ -75,7 +75,7 @@ namespace RetellAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disconnection_reasons")]
         [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason4>? DisconnectionReasons { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason5>? DisconnectionReasons { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

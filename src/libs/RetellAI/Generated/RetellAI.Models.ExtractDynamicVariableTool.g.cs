@@ -37,6 +37,12 @@ namespace RetellAI
         public required global::System.Collections.Generic.IList<global::RetellAI.AnalysisData> Variables { get; set; }
 
         /// <summary>
+        /// If true, play a typing sound on the agent audio track while this tool is executing.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_typing_sound")]
+        public bool? EnableTypingSound { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -55,6 +61,9 @@ namespace RetellAI
         /// The variables to be extracted.
         /// </param>
         /// <param name="type"></param>
+        /// <param name="enableTypingSound">
+        /// If true, play a typing sound on the agent audio track while this tool is executing.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -62,12 +71,14 @@ namespace RetellAI
             string name,
             string description,
             global::System.Collections.Generic.IList<global::RetellAI.AnalysisData> variables,
-            global::RetellAI.ExtractDynamicVariableToolType type)
+            global::RetellAI.ExtractDynamicVariableToolType type,
+            bool? enableTypingSound)
         {
             this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description ?? throw new global::System.ArgumentNullException(nameof(description));
             this.Variables = variables ?? throw new global::System.ArgumentNullException(nameof(variables));
+            this.EnableTypingSound = enableTypingSound;
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace RetellAI
         public int? Telnyx { get; set; }
 
         /// <summary>
-        /// CPS limit for custom provider 1 to concurrency / 20<br/>
+        /// CPS limit for custom provider (1-150). Check your custom telephony provider for CPS limits; Retell will smooth outbound dialing to fit the configured limit.<br/>
         /// Example: 2
         /// </summary>
         /// <example>2</example>
@@ -50,7 +50,7 @@ namespace RetellAI
         /// Example: 10
         /// </param>
         /// <param name="custom">
-        /// CPS limit for custom provider 1 to concurrency / 20<br/>
+        /// CPS limit for custom provider (1-150). Check your custom telephony provider for CPS limits; Retell will smooth outbound dialing to fit the configured limit.<br/>
         /// Example: 2
         /// </param>
 #if NET7_0_OR_GREATER

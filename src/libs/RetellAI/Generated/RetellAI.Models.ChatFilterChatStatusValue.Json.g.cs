@@ -2,7 +2,7 @@
 
 namespace RetellAI
 {
-    public sealed partial class ListChatsV3RequestFilterCriteria
+    public sealed partial class ChatFilterChatStatusValue
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -34,14 +34,14 @@ namespace RetellAI
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::RetellAI.ListChatsV3RequestFilterCriteria? FromJson(
+        public static global::RetellAI.ChatFilterChatStatusValue? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::RetellAI.ListChatsV3RequestFilterCriteria),
-                jsonSerializerContext) as global::RetellAI.ListChatsV3RequestFilterCriteria;
+                typeof(global::RetellAI.ChatFilterChatStatusValue),
+                jsonSerializerContext) as global::RetellAI.ChatFilterChatStatusValue;
         }
 
         /// <summary>
@@ -51,11 +51,11 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::RetellAI.ListChatsV3RequestFilterCriteria? FromJson(
+        public static global::RetellAI.ChatFilterChatStatusValue? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::RetellAI.ListChatsV3RequestFilterCriteria>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::RetellAI.ChatFilterChatStatusValue>(
                 json,
                 jsonSerializerOptions);
         }
@@ -63,14 +63,14 @@ namespace RetellAI
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::RetellAI.ListChatsV3RequestFilterCriteria?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::RetellAI.ChatFilterChatStatusValue?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::RetellAI.ListChatsV3RequestFilterCriteria),
-                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.ListChatsV3RequestFilterCriteria;
+                typeof(global::RetellAI.ChatFilterChatStatusValue),
+                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.ChatFilterChatStatusValue;
         }
 
         /// <summary>
@@ -80,11 +80,11 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.ListChatsV3RequestFilterCriteria?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.ChatFilterChatStatusValue?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::RetellAI.ListChatsV3RequestFilterCriteria?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::RetellAI.ChatFilterChatStatusValue?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

@@ -57,6 +57,14 @@ namespace RetellAI
         public int? RemainingPurchaseLimit { get; set; }
 
         /// <summary>
+        /// Number of normal concurrency slots reserved for inbound calls.<br/>
+        /// Example: 10
+        /// </summary>
+        /// <example>10</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reserved_inbound_concurrency")]
+        public int? ReservedInboundConcurrency { get; set; }
+
+        /// <summary>
         /// Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit with a surcharge.<br/>
         /// Example: true
         /// </summary>
@@ -106,6 +114,10 @@ namespace RetellAI
         /// The remaining amount of concurrency that the org can purchase. This is the difference between `concurrency_purchase_limit` and `purchased_concurrency`.<br/>
         /// Example: 20
         /// </param>
+        /// <param name="reservedInboundConcurrency">
+        /// Number of normal concurrency slots reserved for inbound calls.<br/>
+        /// Example: 10
+        /// </param>
         /// <param name="concurrencyBurstEnabled">
         /// Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit with a surcharge.<br/>
         /// Example: true
@@ -125,6 +137,7 @@ namespace RetellAI
             int? purchasedConcurrency,
             int? concurrencyPurchaseLimit,
             int? remainingPurchaseLimit,
+            int? reservedInboundConcurrency,
             bool? concurrencyBurstEnabled,
             int? concurrencyBurstLimit)
         {
@@ -134,6 +147,7 @@ namespace RetellAI
             this.PurchasedConcurrency = purchasedConcurrency;
             this.ConcurrencyPurchaseLimit = concurrencyPurchaseLimit;
             this.RemainingPurchaseLimit = remainingPurchaseLimit;
+            this.ReservedInboundConcurrency = reservedInboundConcurrency;
             this.ConcurrencyBurstEnabled = concurrencyBurstEnabled;
             this.ConcurrencyBurstLimit = concurrencyBurstLimit;
         }

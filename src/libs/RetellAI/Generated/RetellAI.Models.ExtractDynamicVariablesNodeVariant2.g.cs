@@ -23,6 +23,12 @@ namespace RetellAI
         public required global::System.Collections.Generic.IList<global::RetellAI.AnalysisData> Variables { get; set; }
 
         /// <summary>
+        /// If true, play a typing sound while this extract step executes.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_typing_sound")]
+        public bool? EnableTypingSound { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("edges")]
@@ -54,6 +60,9 @@ namespace RetellAI
         /// <param name="type">
         /// Type of the node
         /// </param>
+        /// <param name="enableTypingSound">
+        /// If true, play a typing sound while this extract step executes.
+        /// </param>
         /// <param name="edges"></param>
         /// <param name="elseEdge"></param>
         /// <param name="finetuneTransitionExamples"></param>
@@ -63,12 +72,14 @@ namespace RetellAI
         public ExtractDynamicVariablesNodeVariant2(
             global::System.Collections.Generic.IList<global::RetellAI.AnalysisData> variables,
             global::RetellAI.ExtractDynamicVariablesNodeVariant2Type type,
+            bool? enableTypingSound,
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
             global::RetellAI.ElseEdge? elseEdge,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
         {
             this.Type = type;
             this.Variables = variables ?? throw new global::System.ArgumentNullException(nameof(variables));
+            this.EnableTypingSound = enableTypingSound;
             this.Edges = edges;
             this.ElseEdge = elseEdge;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
