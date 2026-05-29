@@ -101,7 +101,7 @@ namespace RetellAI
         public string? Transport { get; set; }
 
         /// <summary>
-        /// Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode. Can be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
+        /// Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode or when an inbound call cannot get a concurrency slot before the fallback timeout. Can be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
         /// Example: +14155551234
         /// </summary>
         /// <example>+14155551234</example>
@@ -163,7 +163,7 @@ namespace RetellAI
         /// Example: TCP
         /// </param>
         /// <param name="fallbackNumber">
-        /// Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode. Can be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
+        /// Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode or when an inbound call cannot get a concurrency slot before the fallback timeout. Can be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
         /// Example: +14155551234
         /// </param>
 #if NET7_0_OR_GREATER
