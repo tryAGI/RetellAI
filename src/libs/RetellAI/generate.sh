@@ -1,12 +1,23 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# OpenAPI spec: resolved from RetellAI/retell-python-sdk/.stats.yml (Stainless-hosted)
+install_autosdk_cli() {
+  dotnet tool update --global autosdk.cli --prerelease >/dev/null 2>&1 || \
+    dotnet tool install --global autosdk.cli --prerelease
+}
 
-dotnet tool install --global autosdk.cli --prerelease
+fetch_spec() {
+  curl "$@" \
+    --fail --silent --show-error --location \
+    --retry 5 --retry-delay 10 --retry-all-errors \
+    --connect-timeout 30 --max-time 300
+}
+
+# OpenAPI spec: resolved from RetellAI/retell-python-sdk/.stats.yml (Stainless-hosted)
+install_autosdk_cli
 rm -rf Generated
-SPEC_URL=$(curl --fail --silent --show-error -L https://raw.githubusercontent.com/RetellAI/retell-python-sdk/main/.stats.yml | grep 'openapi_spec_url' | awk '{print $2}' | tr -d '"')
-curl --fail --silent --show-error -L "$SPEC_URL" -o openapi.yaml
+SPEC_URL=$(fetch_spec --fail --silent --show-error -L https://raw.githubusercontent.com/RetellAI/retell-python-sdk/main/.stats.yml | grep 'openapi_spec_url' | awk '{print $2}' | tr -d '"')
+fetch_spec --fail --silent --show-error -L "$SPEC_URL" -o openapi.yaml
 
 # Fix 1: Comparator enum dedup — remove symbol duplicates (>, <, >=, <=) since text
 #         versions (gt, ge, lt, le) already exist in AlertRule*/AlertIncident schemas.
