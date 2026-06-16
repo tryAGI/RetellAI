@@ -583,7 +583,7 @@ namespace RetellAI
         /// List chats with unified cursor pagination response.
         /// </summary>
         /// <param name="filterCriteria">
-        /// Filter criteria for chats to retrieve.
+        /// Filter criteria for chats. All conditions are implicitly connected with AND.
         /// </param>
         /// <param name="sortOrder">
         /// Sort chats by `start_timestamp` in ascending or descending order.<br/>
@@ -608,7 +608,7 @@ namespace RetellAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListChatsV3Response2>> ListChatsV3Async(
-            object? filterCriteria = default,
+            global::RetellAI.ChatFilter? filterCriteria = default,
             global::RetellAI.ListChatsV3RequestSortOrder? sortOrder = default,
             int? limit = default,
             int? skip = default,

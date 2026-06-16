@@ -12,7 +12,7 @@ namespace RetellAI
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
-        public global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason4>? Value { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason5>? Value { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,7 +28,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CallFilterDisconnectionReason(
-            global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason4>? value)
+            global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason5>? value)
         {
             this.Value = value;
         }

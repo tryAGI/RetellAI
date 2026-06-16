@@ -4,9 +4,9 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Filter criteria for chats to retrieve.
+    /// 
     /// </summary>
-    public sealed partial class ListChatsV3RequestFilterCriteria
+    public sealed partial class ChatFilterDisconnectionReasonValue
     {
 
         /// <summary>

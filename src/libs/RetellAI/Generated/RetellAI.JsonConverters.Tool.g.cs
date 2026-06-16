@@ -126,6 +126,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("type")) __score8++;
             var __score9 = 0;
             if (__jsonProps.Contains("description")) __score9++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score9++;
             if (__jsonProps.Contains("name")) __score9++;
             if (__jsonProps.Contains("type")) __score9++;
             if (__jsonProps.Contains("variables")) __score9++;

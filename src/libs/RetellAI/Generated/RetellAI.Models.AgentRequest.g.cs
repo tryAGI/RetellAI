@@ -211,7 +211,7 @@ namespace RetellAI
         public int? WebhookTimeoutMs { get; set; }
 
         /// <summary>
-        /// Provide a customized list of keywords to bias the transcriber model, so that these words are more likely to get transcribed. Commonly used for names, brands, street, etc.<br/>
+        /// Provide a customized list of keywords to bias the transcriber model, so that these words are more likely to get transcribed. Commonly used for names, brands, street, etc. Entries may reference dynamic variables with `{{variable}}` syntax.<br/>
         /// Example: [retell, kroger]
         /// </summary>
         /// <example>[retell, kroger]</example>
@@ -560,7 +560,7 @@ namespace RetellAI
         /// Example: 10000
         /// </param>
         /// <param name="boostedKeywords">
-        /// Provide a customized list of keywords to bias the transcriber model, so that these words are more likely to get transcribed. Commonly used for names, brands, street, etc.<br/>
+        /// Provide a customized list of keywords to bias the transcriber model, so that these words are more likely to get transcribed. Commonly used for names, brands, street, etc. Entries may reference dynamic variables with `{{variable}}` syntax.<br/>
         /// Example: [retell, kroger]
         /// </param>
         /// <param name="dataStorageSetting">

@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ListCallsV3RequestSortOrderNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.ListCallsV3RequestSortOrder?>
+    public sealed class V3ListCallsRequestSortOrderJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.V3ListCallsRequestSortOrder>
     {
         /// <inheritdoc />
-        public override global::RetellAI.ListCallsV3RequestSortOrder? Read(
+        public override global::RetellAI.V3ListCallsRequestSortOrder Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.ListCallsV3RequestSortOrderExtensions.ToEnum(stringValue);
+                        return global::RetellAI.V3ListCallsRequestSortOrderExtensions.ToEnum(stringValue) ?? default;
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.ListCallsV3RequestSortOrder)numValue;
+                    return (global::RetellAI.V3ListCallsRequestSortOrder)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.ListCallsV3RequestSortOrder?);
+                    return default(global::RetellAI.V3ListCallsRequestSortOrder);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.ListCallsV3RequestSortOrder? value,
+            global::RetellAI.V3ListCallsRequestSortOrder value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::RetellAI.ListCallsV3RequestSortOrderExtensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::RetellAI.V3ListCallsRequestSortOrderExtensions.ToValueString(value));
         }
     }
 }

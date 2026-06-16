@@ -6,7 +6,7 @@ namespace RetellAI
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class ListCallsV3Request
+    public sealed partial class V3ListCallsRequest
     {
         /// <summary>
         /// Filter criteria for calls. All conditions are implicitly connected with AND.
@@ -19,8 +19,8 @@ namespace RetellAI
         /// Default Value: descending
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sort_order")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListCallsV3RequestSortOrderJsonConverter))]
-        public global::RetellAI.ListCallsV3RequestSortOrder? SortOrder { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.V3ListCallsRequestSortOrderJsonConverter))]
+        public global::RetellAI.V3ListCallsRequestSortOrder? SortOrder { get; set; }
 
         /// <summary>
         /// Maximum number of calls to return.<br/>
@@ -56,7 +56,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListCallsV3Request" /> class.
+        /// Initializes a new instance of the <see cref="V3ListCallsRequest" /> class.
         /// </summary>
         /// <param name="filterCriteria">
         /// Filter criteria for calls. All conditions are implicitly connected with AND.
@@ -83,9 +83,9 @@ namespace RetellAI
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public ListCallsV3Request(
+        public V3ListCallsRequest(
             global::RetellAI.CallFilter? filterCriteria,
-            global::RetellAI.ListCallsV3RequestSortOrder? sortOrder,
+            global::RetellAI.V3ListCallsRequestSortOrder? sortOrder,
             int? limit,
             int? skip,
             string? paginationKey,
@@ -100,9 +100,9 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListCallsV3Request" /> class.
+        /// Initializes a new instance of the <see cref="V3ListCallsRequest" /> class.
         /// </summary>
-        public ListCallsV3Request()
+        public V3ListCallsRequest()
         {
         }
 
