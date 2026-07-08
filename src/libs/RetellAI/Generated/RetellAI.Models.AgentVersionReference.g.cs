@@ -10,12 +10,12 @@ namespace RetellAI
     public readonly partial struct AgentVersionReference : global::System.IEquatable<AgentVersionReference>
     {
         /// <summary>
-        /// Example: 1
+        /// Example: latest_published
         /// </summary>
 #if NET6_0_OR_GREATER
-        public int? AgentVersionReferenceVariant1 { get; init; }
+        public string? AgentVersionReferenceVariant1 { get; init; }
 #else
-        public int? AgentVersionReferenceVariant1 { get; }
+        public string? AgentVersionReferenceVariant1 { get; }
 #endif
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace RetellAI
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out int? value)
+            out string? value)
         {
             value = AgentVersionReferenceVariant1;
             return IsAgentVersionReferenceVariant1;
@@ -42,17 +42,17 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public int PickAgentVersionReferenceVariant1() => IsAgentVersionReferenceVariant1
-            ? AgentVersionReferenceVariant1!.Value
+        public string PickAgentVersionReferenceVariant1() => IsAgentVersionReferenceVariant1
+            ? AgentVersionReferenceVariant1!
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentVersionReferenceVariant1' but the value was {ToString()}.");
 
         /// <summary>
-        /// Example: prod
+        /// Example: 1
         /// </summary>
 #if NET6_0_OR_GREATER
-        public string? AgentVersionReferenceVariant2 { get; init; }
+        public int? AgentVersionReferenceVariant2 { get; init; }
 #else
-        public string? AgentVersionReferenceVariant2 { get; }
+        public int? AgentVersionReferenceVariant2 { get; }
 #endif
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace RetellAI
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out string? value)
+            out int? value)
         {
             value = AgentVersionReferenceVariant2;
             return IsAgentVersionReferenceVariant2;
@@ -79,32 +79,9 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public string PickAgentVersionReferenceVariant2() => IsAgentVersionReferenceVariant2
-            ? AgentVersionReferenceVariant2!
+        public int PickAgentVersionReferenceVariant2() => IsAgentVersionReferenceVariant2
+            ? AgentVersionReferenceVariant2!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentVersionReferenceVariant2' but the value was {ToString()}.");
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator AgentVersionReference(int value) => new AgentVersionReference((int?)value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator int?(AgentVersionReference @this) => @this.AgentVersionReferenceVariant1;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public AgentVersionReference(int? value)
-        {
-            AgentVersionReferenceVariant1 = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static AgentVersionReference FromAgentVersionReferenceVariant1(int? value) => new AgentVersionReference(value);
-
         /// <summary>
         /// 
         /// </summary>
@@ -113,12 +90,35 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static implicit operator string?(AgentVersionReference @this) => @this.AgentVersionReferenceVariant2;
+        public static implicit operator string?(AgentVersionReference @this) => @this.AgentVersionReferenceVariant1;
 
         /// <summary>
         /// 
         /// </summary>
         public AgentVersionReference(string? value)
+        {
+            AgentVersionReferenceVariant1 = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static AgentVersionReference FromAgentVersionReferenceVariant1(string? value) => new AgentVersionReference(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator AgentVersionReference(int value) => new AgentVersionReference((int?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator int?(AgentVersionReference @this) => @this.AgentVersionReferenceVariant2;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public AgentVersionReference(int? value)
         {
             AgentVersionReferenceVariant2 = value;
         }
@@ -126,14 +126,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public static AgentVersionReference FromAgentVersionReferenceVariant2(string? value) => new AgentVersionReference(value);
+        public static AgentVersionReference FromAgentVersionReferenceVariant2(int? value) => new AgentVersionReference(value);
 
         /// <summary>
         /// 
         /// </summary>
         public AgentVersionReference(
-            int? agentVersionReferenceVariant1,
-            string? agentVersionReferenceVariant2
+            string? agentVersionReferenceVariant1,
+            int? agentVersionReferenceVariant2
             )
         {
             AgentVersionReferenceVariant1 = agentVersionReferenceVariant1;
@@ -168,8 +168,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<int?, TResult>? agentVersionReferenceVariant1 = null,
-            global::System.Func<string, TResult>? agentVersionReferenceVariant2 = null,
+            global::System.Func<string, TResult>? agentVersionReferenceVariant1 = null,
+            global::System.Func<int?, TResult>? agentVersionReferenceVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -193,9 +193,9 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Match(
-            global::System.Action<int?>? agentVersionReferenceVariant1 = null,
+            global::System.Action<string>? agentVersionReferenceVariant1 = null,
 
-            global::System.Action<string>? agentVersionReferenceVariant2 = null,
+            global::System.Action<int?>? agentVersionReferenceVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -217,8 +217,8 @@ namespace RetellAI
         /// 
         /// </summary>
         public void Switch(
-            global::System.Action<int?>? agentVersionReferenceVariant1 = null,
-            global::System.Action<string>? agentVersionReferenceVariant2 = null,
+            global::System.Action<string>? agentVersionReferenceVariant1 = null,
+            global::System.Action<int?>? agentVersionReferenceVariant2 = null,
             bool validate = true)
         {
             if (validate)
@@ -244,9 +244,9 @@ namespace RetellAI
             var fields = new object?[]
             {
                 AgentVersionReferenceVariant1,
-                typeof(int),
-                AgentVersionReferenceVariant2,
                 typeof(string),
+                AgentVersionReferenceVariant2,
+                typeof(int),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -263,8 +263,8 @@ namespace RetellAI
         public bool Equals(AgentVersionReference other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<int?>.Default.Equals(AgentVersionReferenceVariant1, other.AgentVersionReferenceVariant1) &&
-                global::System.Collections.Generic.EqualityComparer<string?>.Default.Equals(AgentVersionReferenceVariant2, other.AgentVersionReferenceVariant2) 
+                global::System.Collections.Generic.EqualityComparer<string?>.Default.Equals(AgentVersionReferenceVariant1, other.AgentVersionReferenceVariant1) &&
+                global::System.Collections.Generic.EqualityComparer<int?>.Default.Equals(AgentVersionReferenceVariant2, other.AgentVersionReferenceVariant2) 
                 ;
         }
 

@@ -58,6 +58,10 @@ namespace RetellAI
         /// The name of the chat agent. Only used for your own reference.<br/>
         /// Example: Jarvis
         /// </param>
+        /// <param name="versionTitle">
+        /// Optional title of the chat agent version. Used for your own reference.<br/>
+        /// Example: Production hotfix
+        /// </param>
         /// <param name="autoCloseMessage">
         /// Message to display when the chat is automatically closed.<br/>
         /// Example: Thank you for chatting. The conversation has ended.
@@ -102,18 +106,6 @@ namespace RetellAI
         /// <param name="postChatAnalysisModel">
         /// Available LLM models for agents.
         /// </param>
-        /// <param name="analysisSuccessfulPrompt">
-        /// The prompt to use for post call analysis to evaluate whether the call is successful. Set to null to use the default prompt.<br/>
-        /// Example: The agent finished the task and the call was complete without being cutoff.
-        /// </param>
-        /// <param name="analysisSummaryPrompt">
-        /// The prompt to use for post call analysis to summarize the call. Set to null to use the default prompt.<br/>
-        /// Example: Summarize the call in a few sentences.
-        /// </param>
-        /// <param name="analysisUserSentimentPrompt">
-        /// Prompt to guide how the post chat analysis should evaluate user sentiment. When unset, the default system prompt is used. Set to null to use the default prompt.<br/>
-        /// Example: Evaluate the user's sentiment based on their tone and satisfaction level.
-        /// </param>
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
         /// <param name="handbookConfig">
@@ -131,6 +123,7 @@ namespace RetellAI
             global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.ResponseEngine? responseEngine = default,
             string? agentName = default,
+            string? versionTitle = default,
             string? autoCloseMessage = default,
             int? endChatAfterSilenceMs = default,
             global::RetellAI.OneOf<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? language = default,
@@ -143,9 +136,6 @@ namespace RetellAI
             int? signedUrlExpirationMs = default,
             global::System.Collections.Generic.IList<global::RetellAI.PostChatAnalysisData>? postChatAnalysisData = default,
             global::RetellAI.NullableLLMModel? postChatAnalysisModel = default,
-            string? analysisSuccessfulPrompt = default,
-            string? analysisSummaryPrompt = default,
-            string? analysisUserSentimentPrompt = default,
             global::RetellAI.PIIConfig? piiConfig = default,
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
             global::RetellAI.ChatHandbookConfig? handbookConfig = default,

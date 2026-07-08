@@ -12,8 +12,13 @@ namespace RetellAI
         /// The tool call name to filter on.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Name { get; set; }
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// The tool call type to filter on.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
 
         /// <summary>
         /// Filter by tool call latency in milliseconds.
@@ -40,6 +45,9 @@ namespace RetellAI
         /// <param name="name">
         /// The tool call name to filter on.
         /// </param>
+        /// <param name="type">
+        /// The tool call type to filter on.
+        /// </param>
         /// <param name="latencyMs">
         /// Filter by tool call latency in milliseconds.
         /// </param>
@@ -48,11 +56,13 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolCallFilter(
-            string name,
+            string? name,
+            string? type,
             global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? latencyMs,
             global::RetellAI.BooleanFilter? success)
         {
-            this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Name = name;
+            this.Type = type;
             this.LatencyMs = latencyMs;
             this.Success = success;
         }

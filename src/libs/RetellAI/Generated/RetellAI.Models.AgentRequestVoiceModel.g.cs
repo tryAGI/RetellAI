@@ -23,14 +23,6 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        ElevenTurboV2,
-        /// <summary>
-        /// 
-        /// </summary>
-        ElevenTurboV25,
-        /// <summary>
-        /// 
-        /// </summary>
         ElevenV3,
         /// <summary>
         /// 
@@ -93,8 +85,6 @@ namespace RetellAI
                 AgentRequestVoiceModel.ElevenFlashV2 => "eleven_flash_v2",
                 AgentRequestVoiceModel.ElevenFlashV25 => "eleven_flash_v2_5",
                 AgentRequestVoiceModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
-                AgentRequestVoiceModel.ElevenTurboV2 => "eleven_turbo_v2",
-                AgentRequestVoiceModel.ElevenTurboV25 => "eleven_turbo_v2_5",
                 AgentRequestVoiceModel.ElevenV3 => "eleven_v3",
                 AgentRequestVoiceModel.Gpt4oMiniTts => "gpt-4o-mini-tts",
                 AgentRequestVoiceModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
@@ -120,8 +110,6 @@ namespace RetellAI
                 "eleven_flash_v2" => AgentRequestVoiceModel.ElevenFlashV2,
                 "eleven_flash_v2_5" => AgentRequestVoiceModel.ElevenFlashV25,
                 "eleven_multilingual_v2" => AgentRequestVoiceModel.ElevenMultilingualV2,
-                "eleven_turbo_v2" => AgentRequestVoiceModel.ElevenTurboV2,
-                "eleven_turbo_v2_5" => AgentRequestVoiceModel.ElevenTurboV25,
                 "eleven_v3" => AgentRequestVoiceModel.ElevenV3,
                 "gpt-4o-mini-tts" => AgentRequestVoiceModel.Gpt4oMiniTts,
                 "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => AgentRequestVoiceModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,

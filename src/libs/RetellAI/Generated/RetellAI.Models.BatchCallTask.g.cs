@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class BatchCallTask
     {
         /// <summary>
-        /// The The number you want to call, in E.164 format. If using a number purchased from Retell, only US numbers are supported as destination.<br/>
+        /// The number you want to call, in E.164 format. If using a number purchased from Retell, only US numbers are supported as destination.<br/>
         /// Example: +12137774445
         /// </summary>
         /// <example>+12137774445</example>
@@ -78,7 +78,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="BatchCallTask" /> class.
         /// </summary>
         /// <param name="toNumber">
-        /// The The number you want to call, in E.164 format. If using a number purchased from Retell, only US numbers are supported as destination.<br/>
+        /// The number you want to call, in E.164 format. If using a number purchased from Retell, only US numbers are supported as destination.<br/>
         /// Example: +12137774445
         /// </param>
         /// <param name="ignoreE164Validation">

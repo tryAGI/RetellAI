@@ -23,7 +23,7 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        Gemini25FlashLite,
+        Claude5Sonnet,
         /// <summary>
         /// 
         /// </summary>
@@ -32,6 +32,10 @@ namespace RetellAI
         /// 
         /// </summary>
         Gemini31FlashLite,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gemini35Flash,
         /// <summary>
         /// 
         /// </summary>
@@ -97,9 +101,10 @@ namespace RetellAI
                 LLMModel.Claude45Haiku => "claude-4.5-haiku",
                 LLMModel.Claude45Sonnet => "claude-4.5-sonnet",
                 LLMModel.Claude46Sonnet => "claude-4.6-sonnet",
-                LLMModel.Gemini25FlashLite => "gemini-2.5-flash-lite",
+                LLMModel.Claude5Sonnet => "claude-5-sonnet",
                 LLMModel.Gemini30Flash => "gemini-3.0-flash",
                 LLMModel.Gemini31FlashLite => "gemini-3.1-flash-lite",
+                LLMModel.Gemini35Flash => "gemini-3.5-flash",
                 LLMModel.Gpt41 => "gpt-4.1",
                 LLMModel.Gpt41Mini => "gpt-4.1-mini",
                 LLMModel.Gpt41Nano => "gpt-4.1-nano",
@@ -125,9 +130,10 @@ namespace RetellAI
                 "claude-4.5-haiku" => LLMModel.Claude45Haiku,
                 "claude-4.5-sonnet" => LLMModel.Claude45Sonnet,
                 "claude-4.6-sonnet" => LLMModel.Claude46Sonnet,
-                "gemini-2.5-flash-lite" => LLMModel.Gemini25FlashLite,
+                "claude-5-sonnet" => LLMModel.Claude5Sonnet,
                 "gemini-3.0-flash" => LLMModel.Gemini30Flash,
                 "gemini-3.1-flash-lite" => LLMModel.Gemini31FlashLite,
+                "gemini-3.5-flash" => LLMModel.Gemini35Flash,
                 "gpt-4.1" => LLMModel.Gpt41,
                 "gpt-4.1-mini" => LLMModel.Gpt41Mini,
                 "gpt-4.1-nano" => LLMModel.Gpt41Nano,

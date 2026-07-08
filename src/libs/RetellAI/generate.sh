@@ -13,11 +13,10 @@ fetch_spec() {
     --connect-timeout 30 --max-time 300
 }
 
-# OpenAPI spec: resolved from RetellAI/retell-python-sdk/.stats.yml (Stainless-hosted)
+# OpenAPI spec: published by Retell documentation.
 install_autosdk_cli
 rm -rf Generated
-SPEC_URL=$(fetch_spec --fail --silent --show-error -L https://raw.githubusercontent.com/RetellAI/retell-python-sdk/main/.stats.yml | grep 'openapi_spec_url' | awk '{print $2}' | tr -d '"')
-fetch_spec --fail --silent --show-error -L "$SPEC_URL" -o openapi.yaml
+fetch_spec https://docs.retellai.com/openapi.yaml -o openapi.yaml
 
 # Fix 1: Comparator enum dedup — remove symbol duplicates (>, <, >=, <=) since text
 #         versions (gt, ge, lt, le) already exist in AlertRule*/AlertIncident schemas.

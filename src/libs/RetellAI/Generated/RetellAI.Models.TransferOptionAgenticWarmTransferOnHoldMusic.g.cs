@@ -4,10 +4,14 @@
 namespace RetellAI
 {
     /// <summary>
-    /// The music to play while the caller is being transferred.
+    /// The music to play while the caller is being transferred. Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
     /// </summary>
     public enum TransferOptionAgenticWarmTransferOnHoldMusic
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        Custom,
         /// <summary>
         /// 
         /// </summary>
@@ -38,6 +42,7 @@ namespace RetellAI
         {
             return value switch
             {
+                TransferOptionAgenticWarmTransferOnHoldMusic.Custom => "custom",
                 TransferOptionAgenticWarmTransferOnHoldMusic.None => "none",
                 TransferOptionAgenticWarmTransferOnHoldMusic.RelaxingSound => "relaxing_sound",
                 TransferOptionAgenticWarmTransferOnHoldMusic.Ringtone => "ringtone",
@@ -52,6 +57,7 @@ namespace RetellAI
         {
             return value switch
             {
+                "custom" => TransferOptionAgenticWarmTransferOnHoldMusic.Custom,
                 "none" => TransferOptionAgenticWarmTransferOnHoldMusic.None,
                 "relaxing_sound" => TransferOptionAgenticWarmTransferOnHoldMusic.RelaxingSound,
                 "ringtone" => TransferOptionAgenticWarmTransferOnHoldMusic.Ringtone,

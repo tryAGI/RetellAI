@@ -16,9 +16,9 @@ namespace RetellAI
         public global::RetellAI.UpdateAgentResponseStatus3? Status { get; set; }
 
         /// <summary>
-        /// Example: Cannot find requested asset under given api key.
+        /// Example: Precondition failed for conditional update.
         /// </summary>
-        /// <example>Cannot find requested asset under given api key.</example>
+        /// <example>Precondition failed for conditional update.</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }
 
@@ -33,7 +33,7 @@ namespace RetellAI
         /// </summary>
         /// <param name="status"></param>
         /// <param name="message">
-        /// Example: Cannot find requested asset under given api key.
+        /// Example: Precondition failed for conditional update.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

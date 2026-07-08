@@ -16,9 +16,9 @@ namespace RetellAI
         public global::RetellAI.UpdateConversationFlowResponseStatus5? Status { get; set; }
 
         /// <summary>
-        /// Example: An unexpected server error occurred.
+        /// Example: Account rate limited, please throttle your requests.
         /// </summary>
-        /// <example>An unexpected server error occurred.</example>
+        /// <example>Account rate limited, please throttle your requests.</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }
 
@@ -33,7 +33,7 @@ namespace RetellAI
         /// </summary>
         /// <param name="status"></param>
         /// <param name="message">
-        /// Example: An unexpected server error occurred.
+        /// Example: Account rate limited, please throttle your requests.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

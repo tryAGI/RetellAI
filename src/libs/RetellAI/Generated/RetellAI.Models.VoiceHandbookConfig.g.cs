@@ -15,6 +15,12 @@ namespace RetellAI
         public bool? DefaultPersonality { get; set; }
 
         /// <summary>
+        /// Enables Conversational Personality. When true, the agent uses the Conversational Personality handbook preset, skips Professional Rep Personality during prompt assembly, and enables internal colloquial rewrite behavior.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conversational_personality")]
+        public bool? ConversationalPersonality { get; set; }
+
+        /// <summary>
         /// Sprinkle natural speech fillers like "um", "you know" for a more human, conversational tone.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("natural_filler_words")]
@@ -74,6 +80,9 @@ namespace RetellAI
         /// <param name="defaultPersonality">
         /// Professional call center rep baseline.
         /// </param>
+        /// <param name="conversationalPersonality">
+        /// Enables Conversational Personality. When true, the agent uses the Conversational Personality handbook preset, skips Professional Rep Personality during prompt assembly, and enables internal colloquial rewrite behavior.
+        /// </param>
         /// <param name="naturalFillerWords">
         /// Sprinkle natural speech fillers like "um", "you know" for a more human, conversational tone.
         /// </param>
@@ -103,6 +112,7 @@ namespace RetellAI
 #endif
         public VoiceHandbookConfig(
             bool? defaultPersonality,
+            bool? conversationalPersonality,
             bool? naturalFillerWords,
             bool? highEmpathy,
             bool? echoVerification,
@@ -113,6 +123,7 @@ namespace RetellAI
             bool? scopeBoundaries)
         {
             this.DefaultPersonality = defaultPersonality;
+            this.ConversationalPersonality = conversationalPersonality;
             this.NaturalFillerWords = naturalFillerWords;
             this.HighEmpathy = highEmpathy;
             this.EchoVerification = echoVerification;

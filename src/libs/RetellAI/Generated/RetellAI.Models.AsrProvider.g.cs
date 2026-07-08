@@ -11,6 +11,10 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        Assemblyai,
+        /// <summary>
+        /// 
+        /// </summary>
         Azure,
         /// <summary>
         /// 
@@ -34,6 +38,7 @@ namespace RetellAI
         {
             return value switch
             {
+                AsrProvider.Assemblyai => "assemblyai",
                 AsrProvider.Azure => "azure",
                 AsrProvider.Deepgram => "deepgram",
                 AsrProvider.Soniox => "soniox",
@@ -47,6 +52,7 @@ namespace RetellAI
         {
             return value switch
             {
+                "assemblyai" => AsrProvider.Assemblyai,
                 "azure" => AsrProvider.Azure,
                 "deepgram" => AsrProvider.Deepgram,
                 "soniox" => AsrProvider.Soniox,

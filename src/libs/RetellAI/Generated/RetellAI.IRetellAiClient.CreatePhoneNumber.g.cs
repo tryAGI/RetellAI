@@ -46,7 +46,7 @@ namespace RetellAI
         /// Example: Frontdesk Number
         /// </param>
         /// <param name="inboundWebhookUrl">
-        /// If set, will send a webhook for inbound calls, where you can to override agent id, set dynamic variables and other fields specific to that call.<br/>
+        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.<br/>
         /// Example: https://example.com/inbound-webhook
         /// </param>
         /// <param name="allowedInboundCountryList">
@@ -77,7 +77,7 @@ namespace RetellAI
         /// Example: TCP
         /// </param>
         /// <param name="fallbackNumber">
-        /// Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode or when an inbound call cannot get a concurrency slot before the fallback timeout. Can be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
+        /// When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
         /// Example: +14155551234
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

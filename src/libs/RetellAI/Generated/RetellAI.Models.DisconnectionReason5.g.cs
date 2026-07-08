@@ -15,6 +15,10 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        CallTakeOver,
+        /// <summary>
+        /// 
+        /// </summary>
         CallTransfer,
         /// <summary>
         /// 
@@ -155,6 +159,7 @@ namespace RetellAI
             return value switch
             {
                 DisconnectionReason5.AgentHangup => "agent_hangup",
+                DisconnectionReason5.CallTakeOver => "call_take_over",
                 DisconnectionReason5.CallTransfer => "call_transfer",
                 DisconnectionReason5.ConcurrencyLimitReached => "concurrency_limit_reached",
                 DisconnectionReason5.DialBusy => "dial_busy",
@@ -198,6 +203,7 @@ namespace RetellAI
             return value switch
             {
                 "agent_hangup" => DisconnectionReason5.AgentHangup,
+                "call_take_over" => DisconnectionReason5.CallTakeOver,
                 "call_transfer" => DisconnectionReason5.CallTransfer,
                 "concurrency_limit_reached" => DisconnectionReason5.ConcurrencyLimitReached,
                 "dial_busy" => DisconnectionReason5.DialBusy,

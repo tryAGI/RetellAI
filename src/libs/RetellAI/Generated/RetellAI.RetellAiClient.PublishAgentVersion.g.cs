@@ -618,6 +618,10 @@ namespace RetellAI
         /// <param name="versionDescription">
         /// Example: Hotfix for transfer timeout
         /// </param>
+        /// <param name="versionTitle">
+        /// Optional title of the agent version. Used for your own reference.<br/>
+        /// Example: Hotfix
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -625,6 +629,7 @@ namespace RetellAI
             string agentId,
             int version,
             string? versionDescription = default,
+            string? versionTitle = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -632,6 +637,7 @@ namespace RetellAI
             {
                 Version = version,
                 VersionDescription = versionDescription,
+                VersionTitle = versionTitle,
             };
 
             await PublishAgentVersionAsync(

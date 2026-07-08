@@ -16,9 +16,9 @@ namespace RetellAI
         public global::RetellAI.UpdateRetellLLMResponseStatus4? Status { get; set; }
 
         /// <summary>
-        /// Example: An unexpected server error occurred.
+        /// Example: Cannot find requested asset under given api key.
         /// </summary>
-        /// <example>An unexpected server error occurred.</example>
+        /// <example>Cannot find requested asset under given api key.</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }
 
@@ -33,7 +33,7 @@ namespace RetellAI
         /// </summary>
         /// <param name="status"></param>
         /// <param name="message">
-        /// Example: An unexpected server error occurred.
+        /// Example: Cannot find requested asset under given api key.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

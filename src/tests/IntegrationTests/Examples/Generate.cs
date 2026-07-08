@@ -17,7 +17,7 @@ public partial class Tests
         using var client = GetAuthenticatedClient();
 
         //// List all agents in your account.
-        var agents = await client.ListAgentsAsync();
+        var agents = await client.ListAgentsV2Async();
 
         agents.Should().NotBeNull();
     }

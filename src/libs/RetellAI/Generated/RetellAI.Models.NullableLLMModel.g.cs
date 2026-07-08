@@ -23,7 +23,7 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        Gemini25FlashLite,
+        Claude5Sonnet,
         /// <summary>
         /// 
         /// </summary>
@@ -32,6 +32,10 @@ namespace RetellAI
         /// 
         /// </summary>
         Gemini31FlashLite,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gemini35Flash,
         /// <summary>
         /// 
         /// </summary>
@@ -101,9 +105,10 @@ namespace RetellAI
                 NullableLLMModel.Claude45Haiku => "claude-4.5-haiku",
                 NullableLLMModel.Claude45Sonnet => "claude-4.5-sonnet",
                 NullableLLMModel.Claude46Sonnet => "claude-4.6-sonnet",
-                NullableLLMModel.Gemini25FlashLite => "gemini-2.5-flash-lite",
+                NullableLLMModel.Claude5Sonnet => "claude-5-sonnet",
                 NullableLLMModel.Gemini30Flash => "gemini-3.0-flash",
                 NullableLLMModel.Gemini31FlashLite => "gemini-3.1-flash-lite",
+                NullableLLMModel.Gemini35Flash => "gemini-3.5-flash",
                 NullableLLMModel.Gpt41 => "gpt-4.1",
                 NullableLLMModel.Gpt41Mini => "gpt-4.1-mini",
                 NullableLLMModel.Gpt41Nano => "gpt-4.1-nano",
@@ -130,9 +135,10 @@ namespace RetellAI
                 "claude-4.5-haiku" => NullableLLMModel.Claude45Haiku,
                 "claude-4.5-sonnet" => NullableLLMModel.Claude45Sonnet,
                 "claude-4.6-sonnet" => NullableLLMModel.Claude46Sonnet,
-                "gemini-2.5-flash-lite" => NullableLLMModel.Gemini25FlashLite,
+                "claude-5-sonnet" => NullableLLMModel.Claude5Sonnet,
                 "gemini-3.0-flash" => NullableLLMModel.Gemini30Flash,
                 "gemini-3.1-flash-lite" => NullableLLMModel.Gemini31FlashLite,
+                "gemini-3.5-flash" => NullableLLMModel.Gemini35Flash,
                 "gpt-4.1" => NullableLLMModel.Gpt41,
                 "gpt-4.1-mini" => NullableLLMModel.Gpt41Mini,
                 "gpt-4.1-nano" => NullableLLMModel.Gpt41Nano,

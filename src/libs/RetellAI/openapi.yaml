@@ -205,7 +205,37 @@ components:
       - azure
       - deepgram
       - soniox
+      - assemblyai
       description: ASR provider name.
+    AsrProviderModeRouting:
+      type: object
+      description: Routing for one mode (fast or accurate). `provider` is the dominant provider (what most calls hit). When traffic is split across a chance gate, `split` is present and lists every provider
+        with its explicit traffic `fraction` (dominant first); otherwise all calls hit `provider`.
+      required:
+      - provider
+      - endpointing_ms
+      properties:
+        provider:
+          $ref: '#/components/schemas/AsrProvider'
+        endpointing_ms:
+          type: integer
+        split:
+          type: array
+          description: Present only when traffic is split across a chance gate. Each entry is a provider and the `fraction` (0–1) of calls routed to it, stably bucketed by call id; fractions sum to 1. Sorted
+            by `fraction` descending, so the first entry matches the top-level `provider`.
+          items:
+            type: object
+            required:
+            - provider
+            - endpointing_ms
+            - fraction
+            properties:
+              provider:
+                $ref: '#/components/schemas/AsrProvider'
+              endpointing_ms:
+                type: integer
+              fraction:
+                type: number
     PaginatedResponseBase:
       type: object
       properties:
@@ -225,6 +255,10 @@ components:
             $ref: '#/components/schemas/AgentFilter'
           maxItems: 100
           description: Agent filters, connected by OR.
+        agent_tag:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Agent environment tag(s) to filter on (e.g. "prod", "staging").
         disconnection_reason:
           allOf:
           - $ref: '#/components/schemas/EnumFilter'
@@ -541,14 +575,14 @@ components:
           description: The weight of the agent. When used in a list of agents, the total weights must add up to 1.
     AgentVersionReference:
       oneOf:
-      - type: integer
-        minimum: 0
-        example: 1
       - type: string
         minLength: 1
         maxLength: 20
         pattern: ^(latest|latest_published|(?!(?:latest|latest_published|v\d+)$)[a-z][a-z0-9_-]{0,19})$
-        example: prod
+        example: latest_published
+      - type: integer
+        minimum: 0
+        example: 1
       description: Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). The string "latest" resolves to the most recently created version (the
         largest version number), and "latest_published" resolves to the most recently published version. When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables).
         If the tag exists but is currently unassigned, it resolves to latest. When a numeric version, latest, or latest_published is provided, resolution applies dynamic variables from the preferred tag
@@ -576,6 +610,21 @@ components:
         version_description:
           type: string
           example: Hotfix for transfer timeout
+        version_title:
+          type: string
+          example: Hotfix
+          description: Optional title of the agent version. Used for your own reference.
+    AgentRootTagState:
+      type: object
+      properties:
+        version:
+          type: integer
+          minimum: 0
+          example: 15
+        dynamic_variables:
+          type: object
+          additionalProperties:
+            type: string
     AgentOverrideRequest:
       type: object
       description: Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
@@ -611,6 +660,11 @@ components:
           example: Customer support agent for handling product inquiries
           description: Optional description of the agent version. Used for your own reference and documentation.
           nullable: true
+        version_title:
+          type: string
+          example: Production hotfix
+          description: Optional title of the agent version. Used for your own reference.
+          nullable: true
         voice_id:
           type: string
           example: retell-Cimo
@@ -618,9 +672,7 @@ components:
         voice_model:
           type: string
           enum:
-          - eleven_turbo_v2
           - eleven_flash_v2
-          - eleven_turbo_v2_5
           - eleven_flash_v2_5
           - eleven_multilingual_v2
           - eleven_v3
@@ -689,6 +741,40 @@ components:
           description: 'Controls the emotional tone of the agent''s voice. Currently supported for Cartesia and Minimax TTS providers. If unset, no emotion will be used.
 
             '
+        enable_expressive_mode:
+          type: boolean
+          example: true
+          description: Master toggle for expressive mode. When true, the agent may add expressive voice tags to the audio it generates. Only applicable for platform voices. If unset, defaults to false.
+        expressive_emotion_tags:
+          type: array
+          uniqueItems: true
+          items:
+            type: string
+            enum:
+            - empathetic
+            - excited
+            - happy
+            - curious
+            - surprised
+            - sigh
+            - clear throat
+            - pause
+            - long pause
+            - emphasis
+          example:
+          - empathetic
+          - excited
+          - sigh
+          - clear throat
+          - emphasis
+          description: The expressive voice tags Retell pre-teaches the model to use when enable_expressive_mode is true. Custom tags defined in the system prompt are still allowed. If empty, the agent
+            follows general expressive guidance without a fixed tag set.
+        expressive_mode_prompt:
+          type: string
+          nullable: true
+          example: Use [sigh] for thoughtful pauses and [excited] for good news.
+          description: Custom expressive voice guidance to use instead of the default Retell expressive prompt when enable_expressive_mode is true. If omitted or blank, the default expressive prompt will
+            be used.
         responsiveness:
           type: number
           minimum: 0
@@ -885,16 +971,6 @@ components:
           example: 3600000
           description: Maximum allowed length for the call, will force end the call if reached. The minimum value allowed is 60,000 ms (1 min), and maximum value allowed is 7,200,000 (2 hours). By default,
             this is set to 3,600,000 (1 hour).
-        voicemail_message:
-          type: string
-          example: Hi, please give us a callback.
-          description: The message to be played when the call enters a voicemail. Note that this feature is only available for phone calls. If you want to hangup after hitting voicemail, set this to empty
-            string.
-        voicemail_detection_timeout_ms:
-          type: integer
-          example: 30000
-          description: Configures when to stop running voicemail detection, as it becomes unlikely to hit voicemail after a couple minutes, and keep running it will only have negative impact. The minimum
-            value allowed is 5,000 ms (5 s), and maximum value allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).
         voicemail_option:
           type: object
           properties:
@@ -944,24 +1020,6 @@ components:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
           description: The model to use for post call analysis. Default to gpt-4.1.
-        analysis_successful_prompt:
-          type: string
-          maxLength: 2000
-          example: The agent finished the task and the call was complete without being cutoff.
-          description: Prompt to determine whether the post call or chat analysis should mark the interaction as successful. Set to null to use the default prompt.
-          nullable: true
-        analysis_summary_prompt:
-          type: string
-          maxLength: 2000
-          example: Summarize the outcome of the conversation in two sentences.
-          description: Prompt to guide how the post call or chat analysis summary should be generated. When unset, the default system prompt is used. Set to null to use the default prompt.
-          nullable: true
-        analysis_user_sentiment_prompt:
-          type: string
-          maxLength: 2000
-          example: Evaluate the user's sentiment based on their tone and satisfaction level.
-          description: Prompt to guide how the post call or chat analysis should evaluate user sentiment. When unset, the default system prompt is used. Set to null to use the default prompt.
-          nullable: true
         begin_message_delay_ms:
           type: integer
           example: 1000
@@ -992,7 +1050,7 @@ components:
               description: The STT provider to use.
             endpointing_ms:
               type: integer
-              description: Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox
+              description: Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI.
           required:
           - provider
           - endpointing_ms
@@ -1096,6 +1154,58 @@ components:
             type: integer
             example: 1703413636133
             description: Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.
+    AgentListFilter:
+      type: object
+      description: Filters for listing agents. All provided filters are connected with AND.
+      properties:
+        channel:
+          allOf:
+          - $ref: '#/components/schemas/StringFilter'
+          - description: 'Filter by agent channel. Use `op: eq`.'
+            properties:
+              op:
+                enum:
+                - eq
+              value:
+                enum:
+                - voice
+                - chat
+        query:
+          type: string
+          description: Case-insensitive substring search over agent name, plus substring search over agent id.
+    AgentListItemResponse:
+      type: object
+      required:
+      - agent_id
+      - agent_name
+      - channel
+      - user_modified_timestamp
+      - tags
+      properties:
+        agent_id:
+          type: string
+          example: agent_1ffdb9717444d0e77346838911
+          description: Unique id of agent.
+        agent_name:
+          type: string
+          example: Jarvis
+          description: The name of the agent. Only used for your own reference.
+        channel:
+          type: string
+          enum:
+          - voice
+          - chat
+          example: voice
+        user_modified_timestamp:
+          type: integer
+          format: int64
+          example: 1703413636133
+          description: User modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.
+        tags:
+          type: object
+          description: Authoritative root tags for this agent, keyed by tag name.
+          additionalProperties:
+            $ref: '#/components/schemas/AgentRootTagState'
     AgentSwapNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'
@@ -1263,7 +1373,7 @@ components:
           type: string
           minLength: 1
           example: '+12137774445'
-          description: The The number you want to call, in E.164 format. If using a number purchased from Retell, only US numbers are supported as destination.
+          description: The number you want to call, in E.164 format. If using a number purchased from Retell, only US numbers are supported as destination.
         ignore_e164_validation:
           type: boolean
           description: If true, the e.164 validation will be ignored for the from_number. This can be useful when you want to dial to internal pseudo numbers. This only applies when you are using custom
@@ -1781,6 +1891,11 @@ components:
           example: Jarvis
           description: The name of the chat agent. Only used for your own reference.
           nullable: true
+        version_title:
+          type: string
+          example: Production hotfix
+          description: Optional title of the chat agent version. Used for your own reference.
+          nullable: true
         auto_close_message:
           type: string
           example: Thank you for chatting. The conversation has ended.
@@ -1858,22 +1973,6 @@ components:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
           description: The model to use for post chat analysis. Default to gpt-4.1.
-        analysis_successful_prompt:
-          type: string
-          example: The agent finished the task and the call was complete without being cutoff.
-          description: The prompt to use for post call analysis to evaluate whether the call is successful. Set to null to use the default prompt.
-          nullable: true
-        analysis_summary_prompt:
-          type: string
-          example: Summarize the call in a few sentences.
-          description: The prompt to use for post call analysis to summarize the call. Set to null to use the default prompt.
-          nullable: true
-        analysis_user_sentiment_prompt:
-          type: string
-          maxLength: 2000
-          example: Evaluate the user's sentiment based on their tone and satisfaction level.
-          description: Prompt to guide how the post chat analysis should evaluate user sentiment. When unset, the default system prompt is used. Set to null to use the default prompt.
-          nullable: true
         pii_config:
           $ref: '#/components/schemas/PIIConfig'
           description: Configuration for PII scrubbing from transcripts and recordings.
@@ -2082,6 +2181,14 @@ components:
             - message_with_tool_calls
           - required:
             - scrubbed_message_with_tool_calls
+          - required:
+            - pre_session_message_with_tool_calls
+          - required:
+            - scrubbed_pre_session_message_with_tool_calls
+          - required:
+            - post_session_message_with_tool_calls
+          - required:
+            - scrubbed_post_session_message_with_tool_calls
     CheckAvailabilityCalTool:
       type: object
       properties:
@@ -2264,6 +2371,10 @@ components:
               value:
                 items:
                   $ref: '#/components/schemas/DisconnectionReason'
+        agent_tag:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by agent environment tag(s) (e.g. "prod", "staging").
         duration_ms:
           oneOf:
           - $ref: '#/components/schemas/NumberFilter'
@@ -2642,6 +2753,7 @@ components:
         required:
         - conversation_flow_id
         - version
+        - last_modification_timestamp
         properties:
           conversation_flow_id:
             type: string
@@ -2649,6 +2761,10 @@ components:
           version:
             type: integer
             description: Version number of the conversation flow
+          last_modification_timestamp:
+            type: integer
+            example: 1703413636133
+            description: Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.
     ConversationFlow:
       allOf:
       - $ref: '#/components/schemas/ConversationFlowOverride'
@@ -2766,6 +2882,8 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/NodeEdge'
+          else_edge:
+            $ref: '#/components/schemas/ElseEdge'
           finetune_conversation_examples:
             type: array
             items:
@@ -2811,6 +2929,8 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/NodeEdge'
+          else_edge:
+            $ref: '#/components/schemas/ElseEdge'
           finetune_conversation_examples:
             type: array
             items:
@@ -2885,6 +3005,73 @@ components:
       oneOf:
       - $ref: '#/components/schemas/CreateOrganizationRequestNew'
       - $ref: '#/components/schemas/CreateOrganizationRequestOld'
+    CreateCreditTopupInvoiceRequest:
+      type: object
+      required:
+      - amount_in_cents
+      - idempotency_key
+      properties:
+        amount_in_cents:
+          type: integer
+          description: Top-up amount in cents. Must be between 1000 ($10) and 1000000 ($10,000).
+          minimum: 1000
+          maximum: 1000000
+          example: 5000
+        idempotency_key:
+          type: string
+          description: Client-generated idempotency key for duplicate request protection.
+          minLength: 1
+          maxLength: 32
+          pattern: .*\S.*
+          example: c0f595c6-bb6a-4f82-bf7f-923f832af7b4
+    CreateCreditTopupInvoiceResponse:
+      type: object
+      required:
+      - invoice_id
+      - invoice_status
+      properties:
+        invoice_id:
+          type: string
+          description: Stripe invoice id.
+          example: in_1234567890
+        invoice_status:
+          type: string
+          description: Current Stripe invoice status.
+          example: open
+        invoice_url:
+          type: string
+          nullable: true
+          description: Hosted Stripe invoice URL when available.
+          example: https://invoice.stripe.com/i/acct_123/invst_123
+    OptInBillingV2Request:
+      type: object
+      required:
+      - starting_credits
+      properties:
+        starting_credits:
+          type: integer
+          description: Initial prepaid credit purchase when migrating from Billing V1 to V2, in cents (same bounds as amount_in_cents on credit top-up). Charged via a one-time Stripe invoice before the
+            migration completes.
+          minimum: 1000
+          maximum: 1000000
+          example: 5000
+    OptInBillingV2Response:
+      type: object
+      required:
+      - billing_profile_id
+      - cadence_id
+      - pricing_plan_subscription_id
+      - starting_credits_cents
+      properties:
+        billing_profile_id:
+          type: string
+        cadence_id:
+          type: string
+        pricing_plan_subscription_id:
+          type: string
+        starting_credits_cents:
+          type: integer
+          description: Echo of starting_credits from the request (cents).
     CreateOrganizationRequestNew:
       type: object
       required:
@@ -3001,6 +3188,13 @@ components:
         args_at_root:
           type: boolean
           description: If set to true, the parameters will be passed as root level JSON object instead of nested under "args".
+        parameter_type:
+          type: string
+          enum:
+          - json
+          - form
+          description: How the tool's `parameters` are authored and shown in the dashboard editor — "form" for the visual parameter builder, "json" for a raw JSON Schema. Both produce the same `parameters`
+            schema; this does not change how the request body is encoded (see `args_at_root`).
         enable_typing_sound:
           type: boolean
           description: If true, play a typing sound on the agent audio track while this tool is executing. Useful when the tool takes a noticeable amount of time to prevent silence on the call.
@@ -3285,12 +3479,14 @@ components:
           description: Specific versions to filter on. If not provided, all versions are included.
     ToolCallFilter:
       type: object
-      required:
-      - name
+      minProperties: 1
       properties:
         name:
           type: string
           description: The tool call name to filter on.
+        type:
+          type: string
+          description: The tool call type to filter on.
         latency_ms:
           oneOf:
           - $ref: '#/components/schemas/NumberFilter'
@@ -3308,8 +3504,14 @@ components:
           items:
             $ref: '#/components/schemas/AgentFilter'
           description: Filter by agent(s). Agent filters are connected by OR.
+        agent_tag:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by agent environment tag(s) (e.g. "prod", "staging").
         call_id:
-          $ref: '#/components/schemas/StringFilter'
+          oneOf:
+          - $ref: '#/components/schemas/StringFilter'
+          - $ref: '#/components/schemas/EnumFilter'
           description: Filter by call ID.
         batch_call_id:
           $ref: '#/components/schemas/StringFilter'
@@ -3579,6 +3781,7 @@ components:
       - transfer_bridged
       - transfer_cancelled
       - manual_stopped
+      - call_take_over
     Duration:
       type: object
       required:
@@ -4332,10 +4535,11 @@ components:
       - gpt-5.5
       - claude-4.5-sonnet
       - claude-4.6-sonnet
+      - claude-5-sonnet
       - claude-4.5-haiku
-      - gemini-2.5-flash-lite
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
+      - gemini-3.5-flash
       description: Available LLM models for agents.
     MCPNode:
       allOf:
@@ -4499,6 +4703,8 @@ components:
       - $ref: '#/components/schemas/ToolCallResultMessage'
       - $ref: '#/components/schemas/NodeTransitionMessage'
       - $ref: '#/components/schemas/StateTransitionMessage'
+      - $ref: '#/components/schemas/InjectedMessage'
+      - $ref: '#/components/schemas/SmsMessage'
     ChatMessageInput:
       description: Same shape as chat completion messages. message_id and created_timestamp are optional — server generates them if omitted.
       oneOf:
@@ -4507,6 +4713,8 @@ components:
       - $ref: '#/components/schemas/ToolCallResultMessageBase'
       - $ref: '#/components/schemas/NodeTransitionMessageBase'
       - $ref: '#/components/schemas/StateTransitionMessageBase'
+      - $ref: '#/components/schemas/InjectedMessageBase'
+      - $ref: '#/components/schemas/SmsMessageBase'
     MessageBase:
       type: object
       required:
@@ -4535,6 +4743,69 @@ components:
     Message:
       allOf:
       - $ref: '#/components/schemas/MessageBase'
+      - required:
+        - message_id
+        - created_timestamp
+    InjectedMessageBase:
+      type: object
+      required:
+      - role
+      - content
+      properties:
+        message_id:
+          type: string
+          example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
+          description: Unique id of the message
+        role:
+          type: string
+          enum:
+          - injected
+          description: External context injected into the conversation via the update-live-call API. Not spoken by either party.
+        content:
+          type: string
+          description: The injected context text.
+          example: Customer just opened a support ticket about billing.
+        created_timestamp:
+          type: integer
+          description: Create timestamp of the message
+          example: 1703302428855
+    InjectedMessage:
+      allOf:
+      - $ref: '#/components/schemas/InjectedMessageBase'
+      - required:
+        - message_id
+        - created_timestamp
+    SmsMessageBase:
+      type: object
+      required:
+      - role
+      - content
+      properties:
+        message_id:
+          type: string
+          example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
+          description: Unique id of the message
+        role:
+          type: string
+          enum:
+          - sms
+          description: SMS message exchanged during the call (for example received from the user). Woven into the transcript and shown to the agent, but not part of the spoken conversation.
+        content:
+          type: string
+          description: Text content of the SMS message.
+          example: Here is the photo you asked for.
+        multimedia:
+          type: array
+          items:
+            $ref: '#/components/schemas/SmsMultimediaItem'
+          description: Multimedia attachments (MMS). Display only; not relayed into the spoken conversation.
+        created_timestamp:
+          type: integer
+          description: Create timestamp of the message
+          example: 1703302428855
+    SmsMessage:
+      allOf:
+      - $ref: '#/components/schemas/SmsMessageBase'
       - required:
         - message_id
         - created_timestamp
@@ -4861,10 +5132,11 @@ components:
       - gpt-5.5
       - claude-4.5-sonnet
       - claude-4.6-sonnet
+      - claude-5-sonnet
       - claude-4.5-haiku
-      - gemini-2.5-flash-lite
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
+      - gemini-3.5-flash
       - null
       nullable: true
       description: Available LLM models for agents.
@@ -5063,6 +5335,8 @@ components:
               type: number
             custom:
               type: number
+        auto_credit_reload_config:
+          $ref: '#/components/schemas/AutoCreditReloadConfig'
         enterprise_id:
           type: string
         feature_bucket:
@@ -5077,6 +5351,27 @@ components:
           org_id:
             type: string
             description: Unique identifier of the organization
+    AutoCreditReloadConfig:
+      type: object
+      description: Both values are in cents. `target_amount` must be strictly greater than `threshold`, and the gap must be at least 1000 cents ($10).
+      required:
+      - threshold
+      - target_amount
+      properties:
+        threshold:
+          type: number
+          description: Trigger auto reload when balance is <= threshold (in cents). Must be a positive number.
+          minimum: 0
+          exclusiveMinimum: true
+        target_amount:
+          type: number
+          description: Target balance to reach after auto reload (in cents). Must be a positive number, strictly greater than `threshold`, and at least 1000 cents ($10) above `threshold`.
+          minimum: 1000
+          maximum: 5000000
+          exclusiveMinimum: true
+      example:
+        threshold: 10000
+        target_amount: 25000
     PIIConfig:
       type: object
       required:
@@ -5147,6 +5442,10 @@ components:
         default_personality:
           type: boolean
           description: Professional call center rep baseline.
+        conversational_personality:
+          type: boolean
+          description: Enables Conversational Personality. When true, the agent uses the Conversational Personality handbook preset, skips Professional Rep Personality during prompt assembly, and enables
+            internal colloquial rewrite behavior.
         natural_filler_words:
           type: boolean
           description: Sprinkle natural speech fillers like "um", "you know" for a more human, conversational tone.
@@ -5282,14 +5581,14 @@ components:
           items:
             $ref: '#/components/schemas/AgentWeight'
           description: Inbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound SMS, with probability proportional to the weight. Total
-            weights must add up to 1. If not set or empty, fallback to inbound_sms_agent_id.
+            weights must add up to 1.
           nullable: true
         outbound_sms_agents:
           type: array
           items:
             $ref: '#/components/schemas/AgentWeight'
           description: Outbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound SMS, with probability proportional to the weight.
-            Total weights must add up to 1. If not set or empty, fallback to outbound_sms_agent_id.
+            Total weights must add up to 1.
           nullable: true
         nickname:
           type: string
@@ -5299,12 +5598,12 @@ components:
         inbound_webhook_url:
           type: string
           example: https://example.com/inbound-webhook
-          description: If set, will send a webhook for inbound calls, where you can to override agent id, set dynamic variables and other fields specific to that call.
+          description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.
           nullable: true
         inbound_sms_webhook_url:
           type: string
           example: https://example.com/inbound-sms-webhook
-          description: If set, will send a webhook for inbound SMS, where you can override agent id, set dynamic variables and other fields specific to that chat.
+          description: If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, and configure other fields specific to that chat.
           nullable: true
         last_modification_timestamp:
           type: integer
@@ -5332,8 +5631,8 @@ components:
         fallback_number:
           type: string
           example: '+14155551234'
-          description: Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode or when an inbound call cannot get a concurrency slot before the fallback timeout. Can
-            be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).
+          description: When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or an external
+            number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).
           nullable: true
     PostCallAnalysisSetting:
       type: string
@@ -5362,6 +5661,8 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/NodeEdge'
+          else_edge:
+            $ref: '#/components/schemas/ElseEdge'
           finetune_transition_examples:
             type: array
             items:
@@ -5437,7 +5738,9 @@ components:
           - $ref: '#/components/schemas/RangeFilter'
           description: Start timestamp filter (epoch ms).
         call_id:
-          $ref: '#/components/schemas/StringFilter'
+          oneOf:
+          - $ref: '#/components/schemas/StringFilter'
+          - $ref: '#/components/schemas/EnumFilter'
           description: Filter by call ID.
         score:
           $ref: '#/components/schemas/NumberFilter'
@@ -5450,6 +5753,10 @@ components:
               value:
                 items:
                   $ref: '#/components/schemas/DisconnectionReason'
+        agent_tag:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by agent environment tag(s) (e.g. "prod", "staging").
         passed:
           oneOf:
           - type: boolean
@@ -6296,11 +6603,12 @@ components:
         status:
           type: string
           enum:
+          - pending
           - in_progress
           - pass
           - fail
           - error
-          description: Status of the test case job
+          description: Status of the test case job. `pending` means the run is queued but has not started yet; it becomes `in_progress` once a worker picks it up, then resolves to `pass`, `fail`, or `error`.
         test_case_definition_id:
           type: string
           description: ID of the test case definition used
@@ -6731,7 +7039,12 @@ components:
           - relaxing_sound
           - uplifting_beats
           - ringtone
-          description: The music to play while the caller is being transferred.
+          - custom
+          description: The music to play while the caller is being transferred. Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
+        custom_on_hold_music_asset_id:
+          type: string
+          description: Asset ID of the uploaded hold music to play. Required when `on_hold_music` is `custom`. Must reference an audio asset owned by the organization (see create-asset).
+          example: asset_abc123def456
         transfer_ring_duration_ms:
           type: integer
           minimum: 5000
@@ -6837,7 +7150,12 @@ components:
           - relaxing_sound
           - uplifting_beats
           - ringtone
-          description: The music to play while the caller is being transferred.
+          - custom
+          description: The music to play while the caller is being transferred. Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
+        custom_on_hold_music_asset_id:
+          type: string
+          description: Asset ID of the uploaded hold music to play. Required when `on_hold_music` is `custom`. Must reference an audio asset owned by the organization (see create-asset).
+          example: asset_abc123def456
         public_handoff_option:
           type: object
           oneOf:
@@ -6872,24 +7190,98 @@ components:
       - $ref: '#/components/schemas/TransferOptionAgenticWarmTransfer'
       x-mintlify-name: Transfer Options
     UpdateOrganizationRequest:
-      allOf:
-      - $ref: '#/components/schemas/CreateOrganizationRequest'
-      - type: object
+      type: object
+      description: Partial update for PATCH /update-organization. All fields optional.
+      properties:
+        org_name:
+          type: string
+          description: Name of the organization
+          minLength: 1
+          maxLength: 100
+        orgName:
+          type: string
+          description: Name of the organization (legacy field)
+          minLength: 1
+          maxLength: 100
+        outage_mode_enabled:
+          type: boolean
+          description: Whether outage mode is enabled
+        concurrency_burst_enabled:
+          type: boolean
+          description: Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge
+            on burst calls.
+        use_stable_server:
+          type: boolean
+          description: Whether to route calls and API requests from this organization to the stable server cluster (enterprise only). When enabled, a $0.02/min additional charge will be applied.
+        reserved_inbound_concurrency:
+          type: integer
+          minimum: 0
+          description: Number of concurrency slots reserved for inbound calls. Must be less than total normal concurrency.
+        auto_credit_reload_config:
+          type: object
+          nullable: true
+          description: Auto reload configuration. Set to null to clear existing config. Both values are in cents. `target_amount` must be strictly greater than `threshold`, and the gap must be at least
+            1000 cents ($10).
+          properties:
+            threshold:
+              type: number
+              description: Trigger auto reload when balance is <= threshold (in cents). Must be a positive number.
+              minimum: 0
+              exclusiveMinimum: true
+            target_amount:
+              type: number
+              description: Target balance to reach after auto reload (in cents). Must be strictly greater than `threshold` and at least 1000 cents ($10) above `threshold`.
+              minimum: 1000
+              maximum: 5000000
+              exclusiveMinimum: true
+    SpendBudgetCustomAlertRequest:
+      type: object
+      required:
+      - percentage
+      - recipients
+      properties:
+        percentage:
+          type: integer
+          minimum: 1
+          maximum: 99
+        recipients:
+          type: array
+          items:
+            type: string
+    UpdateSpendBudgetRequest:
+      oneOf:
+      - description: Disable spend budget.
+        type: object
+        required:
+        - enabled
         properties:
-          outage_mode_enabled:
+          enabled:
             type: boolean
-            description: Whether outage mode is enabled
-          concurrency_burst_enabled:
+            enum:
+            - false
+        additionalProperties: false
+      - description: Enable spend budget (monthly cap required).
+        type: object
+        required:
+        - enabled
+        - monthly_budget_cents
+        - custom_alerts
+        properties:
+          enabled:
             type: boolean
-            description: Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge
-              on burst calls.
-          reserved_inbound_concurrency:
+            enum:
+            - true
+          monthly_budget_cents:
             type: integer
             minimum: 0
-            description: Number of concurrency slots reserved for inbound calls. Must be less than total normal concurrency.
-          use_stable_server:
-            type: boolean
-            description: Whether to route calls and API requests from this organization to the stable server cluster (enterprise only). When enabled, a $0.02/min additional charge will be applied.
+            exclusiveMinimum: true
+            description: Monthly spend cap in cents (greater than 0).
+          custom_alerts:
+            type: array
+            maxItems: 5
+            items:
+              $ref: '#/components/schemas/SpendBudgetCustomAlertRequest'
+        additionalProperties: false
     UserFormRequest:
       type: object
       required:
@@ -7043,6 +7435,13 @@ components:
           type: integer
           example: 1
           description: The version of the agent.
+        agent_tag:
+          type: string
+          example: prod
+          nullable: true
+          description: Tag pointing at the agent version used for this call, captured at call creation time and frozen thereafter (unaffected by later tag reassignments). Populated whether the caller dispatched
+            by tag, numeric version, "latest", or "latest_published" — when the caller specified a tag, that tag wins; otherwise the most-recently- assigned tag on the resolved version is used. Absent when
+            no tag points at the resolved version (or for calls created before this field was introduced).
         call_status:
           type: string
           enum:
@@ -7299,6 +7698,13 @@ components:
           type: integer
           example: 1
           description: The version of the agent.
+        agent_tag:
+          type: string
+          example: prod
+          nullable: true
+          description: Tag pointing at the agent version used for this call, captured at call creation time and frozen thereafter (unaffected by later tag reassignments). Populated whether the caller dispatched
+            by tag, numeric version, "latest", or "latest_published" — when the caller specified a tag, that tag wins; otherwise the most-recently- assigned tag on the resolved version is used. Absent when
+            no tag points at the resolved version (or for calls created before this field was introduced).
         call_status:
           type: string
           enum:
@@ -8058,48 +8464,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /list-test-case-definitions:
-    get:
-      description: List test case definitions for a response engine
-      operationId: listTestCaseDefinitions
-      deprecated: true
-      parameters:
-      - in: query
-        name: type
-        schema:
-          type: string
-          enum:
-          - retell-llm
-          - conversation-flow
-        required: true
-        description: Type of response engine
-      - in: query
-        name: llm_id
-        schema:
-          type: string
-        description: LLM ID (required when type is retell-llm)
-      - in: query
-        name: conversation_flow_id
-        schema:
-          type: string
-        description: Conversation flow ID (required when type is conversation-flow)
-      responses:
-        '200':
-          description: Test case definitions retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/TestCaseDefinition'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
   /v2/list-test-case-definitions:
     get:
       description: List test case definitions with pagination
@@ -8210,53 +8574,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /list-batch-tests:
-    get:
-      description: List batch test jobs for a response engine
-      operationId: listBatchTests
-      deprecated: true
-      parameters:
-      - in: query
-        name: type
-        schema:
-          type: string
-          enum:
-          - retell-llm
-          - conversation-flow
-        required: true
-        description: Type of response engine
-      - in: query
-        name: llm_id
-        schema:
-          type: string
-        description: LLM ID (required when type is retell-llm)
-      - in: query
-        name: conversation_flow_id
-        schema:
-          type: string
-        description: Conversation flow ID (required when type is conversation-flow)
-      - in: query
-        name: version
-        schema:
-          type: integer
-        description: Version of the response engine (defaults to latest)
-      responses:
-        '200':
-          description: Batch test jobs retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/TestCaseBatchJob'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
   /v2/list-batch-tests:
     get:
       description: List batch test jobs with pagination
@@ -8328,37 +8645,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestCaseJob'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /list-test-runs/{test_case_batch_job_id}:
-    get:
-      description: List all test case jobs (test runs) for a batch test job
-      operationId: listTestRuns
-      deprecated: true
-      parameters:
-      - in: path
-        name: test_case_batch_job_id
-        schema:
-          type: string
-        required: true
-        description: ID of the batch test job
-      responses:
-        '200':
-          description: Test case jobs retrieved successfully
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/TestCaseJob'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -8768,7 +9054,7 @@ paths:
                 inbound_webhook_url:
                   type: string
                   example: https://example.com/inbound-webhook
-                  description: If set, will send a webhook for inbound calls, where you can to override agent id, set dynamic variables and other fields specific to that call.
+                  description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.
                   nullable: true
                 allowed_inbound_country_list:
                   type: array
@@ -8819,9 +9105,8 @@ paths:
                 fallback_number:
                   type: string
                   example: '+14155551234'
-                  description: Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode or when an inbound call cannot get a concurrency slot before the fallback timeout.
-                    Can be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested
-                    forwarding).
+                  description: When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or
+                    an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).
                   nullable: true
       responses:
         '201':
@@ -9304,7 +9589,7 @@ paths:
         description: Unique id of the chat to be retrieved
       responses:
         '200':
-          description: Successfully retrieved an chat.
+          description: Successfully retrieved a chat.
           content:
             application/json:
               schema:
@@ -9413,7 +9698,7 @@ paths:
           type: integer
           example: 1
         required: false
-        description: Optional version of the conversation flow to retrieve. Default to latest version.
+        description: Optional version of the conversation flow to retrieve. Defaults to the latest version.
       responses:
         '200':
           description: Successfully retrieved the conversation flow
@@ -9815,7 +10100,7 @@ paths:
                 inbound_webhook_url:
                   type: string
                   example: https://example.com/inbound-webhook
-                  description: If set, will send a webhook for inbound calls, where you can to override agent id, set dynamic variables and other fields specific to that call.
+                  description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.
                   nullable: true
                 allowed_inbound_country_list:
                   type: array
@@ -9852,6 +10137,45 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v2/list-agents:
+    post:
+      description: List unique agents with pagination.
+      operationId: listAgentsV2
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SortOrderParam'
+      - $ref: '#/components/parameters/PaginationKeyParam'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter_criteria:
+                  $ref: '#/components/schemas/AgentListFilter'
+      responses:
+        '200':
+          description: Successfully retrieved agents.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResponseBase'
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AgentListItemResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /list-agents:
@@ -9904,6 +10228,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      deprecated: true
   /list-chat-agents:
     get:
       description: List all chat agents
@@ -9954,47 +10279,7 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /list-chat:
-    get:
-      description: List all chats
-      operationId: listChat
       deprecated: true
-      parameters:
-      - in: query
-        name: sort_order
-        schema:
-          type: string
-          enum:
-          - ascending
-          - descending
-          default: descending
-        description: The chats will be sorted by `start_timestamp`, whether to return the chats in ascending or descending order.
-      - in: query
-        name: limit
-        schema:
-          type: integer
-          default: 50
-          maximum: 1000
-        description: Limit the number of chats returned. Default 50, Max 1000. To retrieve more than 1000, use pagination_key to continue fetching the next page.
-      - in: query
-        name: pagination_key
-        schema:
-          type: string
-        description: The pagination key to continue fetching the next page of chats. Pagination key is represented by a chat id here, and it's exclusive (not included in the fetched chats). The last chat
-          id from the list chats is usually used as pagination key here. If not set, will start from the beginning.
-      responses:
-        '200':
-          description: Successfully retrieved all chats.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ChatResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
   /v3/list-chats:
     post:
       description: List chats with unified cursor pagination response.
@@ -10093,28 +10378,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /list-conversation-flow-components:
-    get:
-      description: List shared conversation flow components
-      operationId: listConversationFlowComponents
-      deprecated: true
-      responses:
-        '200':
-          description: Successfully listed conversation flow components
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ConversationFlowComponentResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
   /v2/list-conversation-flows:
     get:
       description: List conversation flows with pagination
@@ -10143,48 +10406,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /list-conversation-flows:
-    get:
-      description: List all conversation flows that can be attached to an agent.
-      operationId: listConversationFlows
-      deprecated: true
-      parameters:
-      - in: query
-        name: limit
-        description: Limit the number of conversation flows returned. Default 1000, Max 1000. To retrieve more than 1000, use pagination_key to continue fetching the next page.
-        schema:
-          type: integer
-          default: 1000
-          maximum: 1000
-      - in: query
-        name: pagination_key
-        description: The pagination key to continue fetching the next page of conversation flows. Pagination key is represented by a conversation flow id here, and it's exclusive (not included in the fetched
-          conversation flows). The last conversation flow id from the list conversation flows is usually used as pagination key here. If not set, will start from the beginning.
-        schema:
-          type: string
-      - in: query
-        name: pagination_key_version
-        schema:
-          type: integer
-        description: Specifies the version of the conversation flow associated with the pagination_key. When paginating, both the pagination_key and its version must be provided to ensure consistent ordering
-          and to fetch the next page correctly.
-      responses:
-        '200':
-          description: Successfully retrieved conversation flows
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ConversationFlowResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
         '429':
           $ref: '#/components/responses/TooManyRequests'
         '500':
@@ -10230,68 +10451,6 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/PhoneNumberResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /list-phone-numbers:
-    get:
-      description: List all phone numbers
-      operationId: listPhoneNumbers
-      deprecated: true
-      responses:
-        '200':
-          description: Successfully retrieved all phone numbers.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/PhoneNumberResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /list-retell-llms:
-    get:
-      description: List all Retell LLM Response Engines that can be attached to an agent.
-      operationId: listRetellLLM
-      deprecated: true
-      parameters:
-      - in: query
-        name: limit
-        schema:
-          type: integer
-          example: 50
-        required: false
-        description: A limit on the number of objects to be returned. Limit can range between 1 and 1000, and the default is 1000.
-      - in: query
-        name: pagination_key
-        schema:
-          type: string
-          example: llm_1ffdb9717444d0e77346838911
-        required: false
-        allowEmptyValue: true
-        description: The pagination key to continue fetching the next page of LLMs. Pagination key is represented by a llm id, pagination key and version pair is exclusive (not included in the fetched page).
-          If not set, will start from the beginning.
-      - in: query
-        name: pagination_key_version
-        schema:
-          type: integer
-          example: 0
-        required: false
-        allowEmptyValue: true
-        description: Specifies the version of the llm associated with the pagination_key. When paginating, both the pagination_key and its version must be provided to ensure consistent ordering and to fetch
-          the next page correctly.
-      responses:
-        '200':
-          description: Successfully retrieved all Retell LLM Response Engines.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RetellLLMResponse'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '500':
@@ -10449,6 +10608,132 @@ paths:
           $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /publish-agent/{agent_id}:
+    post:
+      description: Publish the latest version of the agent and create a new draft agent with newer version.
+      operationId: publishAgent
+      parameters:
+      - in: path
+        name: agent_id
+        schema:
+          type: string
+          minLength: 1
+          example: 16b980523634a6dc504898cda492e939
+        required: true
+        description: Unique id of the agent to be published.
+      - in: query
+        name: version
+        schema:
+          $ref: '#/components/schemas/AgentVersionReference'
+        required: false
+        description: Optional version of the API to use for this request.
+      responses:
+        '200':
+          description: Agent successfully published
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      deprecated: true
+  /publish-chat-agent/{agent_id}:
+    post:
+      description: Publish the latest version of the chat agent and create a new draft chat agent with newer version.
+      operationId: publishChatAgent
+      parameters:
+      - in: path
+        name: agent_id
+        schema:
+          type: string
+          minLength: 1
+          example: 16b980523634a6dc504898cda492e939
+        required: true
+        description: Unique id of the chat agent to be published.
+      responses:
+        '200':
+          description: Chat agent successfully published
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+      deprecated: true
+  /rerun-call-analysis/{call_id}:
+    put:
+      description: Rerun post-call analysis for a specific call
+      operationId: rerunCallAnalysis
+      parameters:
+      - in: path
+        name: call_id
+        schema:
+          type: string
+          example: call_119c3f8e47135a29e65947eeb34cf12d
+        required: true
+        description: The call id to rerun analysis for.
+      responses:
+        '201':
+          description: Call analysis rerun successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V2CallResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/PaymentRequired'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /rerun-chat-analysis/{chat_id}:
+    put:
+      description: Rerun post-chat analysis for a specific chat
+      operationId: rerunChatAnalysis
+      parameters:
+      - in: path
+        name: chat_id
+        schema:
+          type: string
+          example: chat_16b980523634a6dc504898cda492e939
+        required: true
+        description: Unique id of the chat to rerun analysis for.
+      responses:
+        '201':
+          description: Chat analysis rerun successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/PaymentRequired'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /update-agent/{agent_id}:
     patch:
       description: Update an existing agent's latest draft version
@@ -10487,10 +10772,10 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-        '422':
-          $ref: '#/components/responses/UnprocessableContent'
         '412':
           $ref: '#/components/responses/PreconditionFailed'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /update-chat-agent/{agent_id}:
@@ -10529,10 +10814,10 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
-        '422':
-          $ref: '#/components/responses/UnprocessableContent'
         '412':
           $ref: '#/components/responses/PreconditionFailed'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /update-chat/{chat_id}:
@@ -10639,6 +10924,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
         '429':
           $ref: '#/components/responses/TooManyRequests'
         '500':
@@ -10678,6 +10965,8 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
         '429':
@@ -10723,14 +11012,14 @@ paths:
                   items:
                     $ref: '#/components/schemas/AgentWeight'
                   description: Inbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound SMS, with probability proportional to the weight.
-                    Total weights must add up to 1. If not set or empty, fallback to inbound_sms_agent_id.
+                    Total weights must add up to 1.
                   nullable: true
                 outbound_sms_agents:
                   type: array
                   items:
                     $ref: '#/components/schemas/AgentWeight'
                   description: Outbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound SMS, with probability proportional to the
-                    weight. Total weights must add up to 1. If not set or empty, fallback to outbound_sms_agent_id.
+                    weight. Total weights must add up to 1.
                   nullable: true
                 nickname:
                   type: string
@@ -10740,12 +11029,12 @@ paths:
                 inbound_webhook_url:
                   type: string
                   example: https://example.com/inbound-webhook
-                  description: If set, will send a webhook for inbound calls, where you can to override agent id, set dynamic variables and other fields specific to that call.
+                  description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.
                   nullable: true
                 inbound_sms_webhook_url:
                   type: string
                   example: https://example.com/inbound-sms-webhook
-                  description: If set, will send a webhook for inbound SMS, where you can override agent id, set dynamic variables and other fields specific to that chat.
+                  description: If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, and configure other fields specific to that chat.
                   nullable: true
                 allowed_inbound_country_list:
                   type: array
@@ -10786,9 +11075,8 @@ paths:
                 fallback_number:
                   type: string
                   example: '+14155551234'
-                  description: Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode or when an inbound call cannot get a concurrency slot before the fallback timeout.
-                    Can be either a Retell phone number or an external number. Set to null to remove. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured
-                    (prevents nested forwarding).
+                  description: When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or
+                    an external number. Set to null to remove. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).
                   nullable: true
             example:
               inbound_agents:
@@ -10853,6 +11141,8 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
         '500':
@@ -11048,218 +11338,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-  /v2/list-calls:
-    post:
-      description: Retrieve call details
-      operationId: listCalls
-      deprecated: true
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                filter_criteria:
-                  type: object
-                  description: Filter criteria for the calls to retrieve.
-                  example:
-                    call_id:
-                    - call_5a82f0a43ea0977566b1104fcfc
-                    agent_id:
-                    - agent_oBeDLoLOeuAbiuaMFXRtDOLriT12345
-                    call_status:
-                    - ended
-                    call_type:
-                    - phone_call
-                    direction:
-                    - inbound
-                    user_sentiment:
-                    - Positive
-                    call_successful:
-                    - true
-                    start_timestamp:
-                      upper_threshold: 1738475421000
-                      lower_threshold: 1738475411000
-                    metadata.customer_id:
-                    - cust_123
-                    dynamic_variables.user_name:
-                    - John
-                  properties:
-                    call_id:
-                      type: array
-                      items:
-                        type: string
-                        minLength: 1
-                      description: Only retrieve calls with specific call id(s).
-                    agent_id:
-                      type: array
-                      items:
-                        type: string
-                        minLength: 1
-                      description: Only retrieve calls that are made with specific agent(s).
-                    version:
-                      type: array
-                      items:
-                        type: integer
-                      description: The version of the agent to use for the call.
-                    call_status:
-                      type: array
-                      items:
-                        type: string
-                        enum:
-                        - not_connected
-                        - ongoing
-                        - ended
-                        - error
-                      description: Only retrieve calls with specific call status(es).
-                    in_voicemail:
-                      type: array
-                      items:
-                        type: boolean
-                      description: Only retrieve calls that are in voicemail or not in voicemail.
-                    disconnection_reason:
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/DisconnectionReason'
-                      description: Only retrieve calls with specific disconnection reason(s).
-                    from_number:
-                      type: array
-                      items:
-                        type: string
-                        minLength: 1
-                      description: Only retrieve calls with specific from number(s).
-                    to_number:
-                      type: array
-                      items:
-                        type: string
-                        minLength: 1
-                      description: Only retrieve calls with specific to number(s).
-                    batch_call_id:
-                      type: array
-                      items:
-                        type: string
-                      description: Only retrieve calls with specific batch call id(s).
-                    call_type:
-                      type: array
-                      items:
-                        type: string
-                        enum:
-                        - web_call
-                        - phone_call
-                      description: Only retrieve calls with specific call type(s).
-                    direction:
-                      type: array
-                      items:
-                        type: string
-                        enum:
-                        - inbound
-                        - outbound
-                      description: Only retrieve calls with specific direction(s).
-                    user_sentiment:
-                      type: array
-                      items:
-                        type: string
-                        enum:
-                        - Negative
-                        - Positive
-                        - Neutral
-                        - Unknown
-                      description: Only retrieve calls with specific user sentiment(s).
-                    call_successful:
-                      type: array
-                      items:
-                        type: boolean
-                      description: Only retrieve calls with specific call successful(s).
-                    start_timestamp:
-                      type: object
-                      properties:
-                        upper_threshold:
-                          type: integer
-                        lower_threshold:
-                          type: integer
-                      description: Only retrieve calls with specific range of start timestamp(s).
-                    end_timestamp:
-                      type: object
-                      properties:
-                        upper_threshold:
-                          type: integer
-                        lower_threshold:
-                          type: integer
-                      description: Only retrieve calls with specific range of end timestamp(s).
-                    duration_ms:
-                      type: object
-                      properties:
-                        upper_threshold:
-                          type: integer
-                        lower_threshold:
-                          type: integer
-                      description: Only retrieve calls with specific range of duration(s).
-                    e2e_latency_p50:
-                      type: object
-                      properties:
-                        upper_threshold:
-                          type: integer
-                        lower_threshold:
-                          type: integer
-                    metadata:
-                      type: object
-                      description: 'Filter by metadata fields using dot notation (e.g., `metadata.customer_id`).
-
-                        Values are matched exactly as strings.
-
-                        '
-                      additionalProperties:
-                        type: array
-                        items:
-                          type: string
-                      example:
-                        metadata.customer_id:
-                        - cust_123
-                    dynamic_variables:
-                      type: object
-                      description: 'Filter by dynamic variables using dot notation (e.g., `dynamic_variables.name`).
-
-                        Values are matched exactly as strings.
-
-                        '
-                      additionalProperties:
-                        type: array
-                        items:
-                          type: string
-                      example:
-                        dynamic_variables.user_name:
-                        - John
-                sort_order:
-                  type: string
-                  enum:
-                  - ascending
-                  - descending
-                  default: descending
-                  description: The calls will be sorted by `start_timestamp`, whether to return the calls in ascending or descending order.
-                limit:
-                  type: integer
-                  default: 50
-                  description: Limit the number of calls returned. Default 50, Max 1000. To retrieve more than 1000, use pagination_key to continue fetching the next page.
-                pagination_key:
-                  type: string
-                  description: The pagination key to continue fetching the next page of calls. Pagination key is represented by a call id here, and it's exclusive (not included in the fetched calls). The
-                    last call id from the list calls is usually used as pagination key here. If not set, will start from the beginning.
-      responses:
-        '200':
-          description: Successfully retrieved calls.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/V2CallResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /v3/list-calls:
@@ -11460,9 +11538,11 @@ paths:
                     type: string
                   example:
                     additional_discount: 15%
-                  description: Override dynamic variables represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to
-                    set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.
+                  description: Deprecated. Use the /v2/update-live-call/{call_id} endpoint to override dynamic variables on an ongoing call. Override dynamic variables represented as key-value pairs of
+                    strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to set the delta where you want to override, no need to set the entire dynamic
+                    variables object. Setting this to null will remove any existing override.
                   nullable: true
+                  deprecated: true
                 custom_attributes:
                   type: object
                   additionalProperties:
@@ -11491,6 +11571,110 @@ paths:
           $ref: '#/components/responses/BadRequest'
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v2/update-live-call/{call_id}:
+    patch:
+      description: Update an ongoing call at runtime. Supports overriding dynamic variables, metadata, and the data storage setting on the running call, and controlling the live agent (inject context, trigger
+        a response). These overrides take effect immediately on the live call; metadata and data storage setting changes are also persisted to the call record. To update a call that is no longer ongoing,
+        use /v2/update-call/{call_id}.
+      operationId: updateLiveCall
+      parameters:
+      - in: path
+        name: call_id
+        schema:
+          type: string
+          example: call_a4441234567890777c4a4a123e6
+        required: true
+        description: The call id of the ongoing call to be updated.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fields_to_override:
+                  type: object
+                  description: 'Call fields to override on the running call. Each field is applied to the live call immediately; omitted fields are left unchanged.
+
+                    '
+                  properties:
+                    override_dynamic_variables:
+                      type: object
+                      additionalProperties:
+                        type: string
+                      example:
+                        additional_discount: 15%
+                      description: Override dynamic variables represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need
+                        to set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.
+                      nullable: true
+                    metadata:
+                      type: object
+                      description: An arbitrary object for storage purpose only. Overrides the metadata on the call. Size limited to 50kB max.
+                      example:
+                        customer_id: cust_123
+                        notes: Follow-up required
+                    data_storage_setting:
+                      type: string
+                      enum:
+                      - everything
+                      - everything_except_pii
+                      - basic_attributes_only
+                      description: Data storage setting for this call. Overrides the agent's default setting. "everything" stores all data, "everything_except_pii" excludes PII when possible, "basic_attributes_only"
+                        stores only metadata. Cannot be downgraded from more restrictive to less restrictive settings.
+                      example: everything_except_pii
+                  additionalProperties: false
+                call_control:
+                  type: object
+                  description: 'Live agent control. At least one of `additional_context` or `trigger_response` should be supplied; an empty object is a no-op.
+
+                    '
+                  properties:
+                    trigger_response:
+                      type: boolean
+                      description: 'Only `true` has an effect. When set, if the agent is currently speaking the response is interrupted and a new one is generated. If the agent has already finished speaking
+                        and is waiting silently for the user, the agent is nudged to produce another response. If the user is currently speaking, this field is a no-op so the agent does not talk over them.
+                        This field respects the agent''s `interruption_sensitivity`: when sensitivity is `0` the agent''s current speech is treated as uninterruptible, so `trigger_response` is a no-op while
+                        the agent is speaking. Omitting or setting `false` leaves the call untouched.
+
+                        '
+                    additional_context:
+                      type: string
+                      minLength: 1
+                      description: 'Free-form text appended to the call transcript with role "injected" and injected into the next agent response context. Must be non-empty.
+
+                        '
+                  additionalProperties: false
+              additionalProperties: false
+            example:
+              fields_to_override:
+                override_dynamic_variables:
+                  additional_discount: 15%
+              call_control:
+                additional_context: Customer just opened a support ticket about billing.
+                trigger_response: true
+      responses:
+        '200':
+          description: Live call updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - success
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
         '500':

@@ -22,11 +22,19 @@ namespace RetellAI
         public bool? ShowTransfereeAsCaller { get; set; }
 
         /// <summary>
-        /// The music to play while the caller is being transferred.
+        /// The music to play while the caller is being transferred. Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("on_hold_music")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.TransferOptionAgenticWarmTransferOnHoldMusicJsonConverter))]
         public global::RetellAI.TransferOptionAgenticWarmTransferOnHoldMusic? OnHoldMusic { get; set; }
+
+        /// <summary>
+        /// Asset ID of the uploaded hold music to play. Required when `on_hold_music` is `custom`. Must reference an audio asset owned by the organization (see create-asset).<br/>
+        /// Example: asset_abc123def456
+        /// </summary>
+        /// <example>asset_abc123def456</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_on_hold_music_asset_id")]
+        public string? CustomOnHoldMusicAssetId { get; set; }
 
         /// <summary>
         /// Override the ring duration for this specific transfer, in milliseconds. If not set, falls back to the agent-level `ring_duration_ms`.
@@ -74,7 +82,11 @@ namespace RetellAI
         /// If set to true, will show transferee (the user, not the AI agent) as caller when transferring, requires the telephony side to support caller id override. Retell Twilio numbers support this option.
         /// </param>
         /// <param name="onHoldMusic">
-        /// The music to play while the caller is being transferred.
+        /// The music to play while the caller is being transferred. Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
+        /// </param>
+        /// <param name="customOnHoldMusicAssetId">
+        /// Asset ID of the uploaded hold music to play. Required when `on_hold_music` is `custom`. Must reference an audio asset owned by the organization (see create-asset).<br/>
+        /// Example: asset_abc123def456
         /// </param>
         /// <param name="transferRingDurationMs">
         /// Override the ring duration for this specific transfer, in milliseconds. If not set, falls back to the agent-level `ring_duration_ms`.
@@ -94,6 +106,7 @@ namespace RetellAI
             global::RetellAI.TransferOptionAgenticWarmTransferType type,
             bool? showTransfereeAsCaller,
             global::RetellAI.TransferOptionAgenticWarmTransferOnHoldMusic? onHoldMusic,
+            string? customOnHoldMusicAssetId,
             int? transferRingDurationMs,
             global::RetellAI.OneOf<global::RetellAI.WarmTransferPrompt, global::RetellAI.WarmTransferStaticMessage>? publicHandoffOption,
             bool? enableBridgeAudioCue)
@@ -101,6 +114,7 @@ namespace RetellAI
             this.Type = type;
             this.ShowTransfereeAsCaller = showTransfereeAsCaller;
             this.OnHoldMusic = onHoldMusic;
+            this.CustomOnHoldMusicAssetId = customOnHoldMusicAssetId;
             this.TransferRingDurationMs = transferRingDurationMs;
             this.PublicHandoffOption = publicHandoffOption;
             this.AgenticTransferConfig = agenticTransferConfig ?? throw new global::System.ArgumentNullException(nameof(agenticTransferConfig));

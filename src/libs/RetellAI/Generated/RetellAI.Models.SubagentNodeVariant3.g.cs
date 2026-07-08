@@ -45,6 +45,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("else_edge")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ElseEdgeJsonConverter))]
+        public global::RetellAI.ElseEdge? ElseEdge { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("finetune_conversation_examples")]
         public global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneConversationExample>? FinetuneConversationExamples { get; set; }
 
@@ -94,6 +101,7 @@ namespace RetellAI
         /// <param name="skipResponseEdge"></param>
         /// <param name="alwaysEdge"></param>
         /// <param name="edges"></param>
+        /// <param name="elseEdge"></param>
         /// <param name="finetuneConversationExamples"></param>
         /// <param name="finetuneTransitionExamples"></param>
         /// <param name="knowledgeBaseIds">
@@ -115,6 +123,7 @@ namespace RetellAI
             global::RetellAI.SkipResponseEdge? skipResponseEdge,
             global::RetellAI.AlwaysEdge? alwaysEdge,
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
+            global::RetellAI.ElseEdge? elseEdge,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneConversationExample>? finetuneConversationExamples,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples,
             global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
@@ -127,6 +136,7 @@ namespace RetellAI
             this.SkipResponseEdge = skipResponseEdge;
             this.AlwaysEdge = alwaysEdge;
             this.Edges = edges;
+            this.ElseEdge = elseEdge;
             this.FinetuneConversationExamples = finetuneConversationExamples;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
             this.KnowledgeBaseIds = knowledgeBaseIds;

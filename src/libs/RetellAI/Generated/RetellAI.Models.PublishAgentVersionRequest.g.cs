@@ -24,6 +24,14 @@ namespace RetellAI
         public string? VersionDescription { get; set; }
 
         /// <summary>
+        /// Optional title of the agent version. Used for your own reference.<br/>
+        /// Example: Hotfix
+        /// </summary>
+        /// <example>Hotfix</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version_title")]
+        public string? VersionTitle { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -38,15 +46,21 @@ namespace RetellAI
         /// <param name="versionDescription">
         /// Example: Hotfix for transfer timeout
         /// </param>
+        /// <param name="versionTitle">
+        /// Optional title of the agent version. Used for your own reference.<br/>
+        /// Example: Hotfix
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PublishAgentVersionRequest(
             int version,
-            string? versionDescription)
+            string? versionDescription,
+            string? versionTitle)
         {
             this.Version = version;
             this.VersionDescription = versionDescription;
+            this.VersionTitle = versionTitle;
         }
 
         /// <summary>

@@ -44,6 +44,14 @@ namespace RetellAI
         public required int AgentVersion { get; set; }
 
         /// <summary>
+        /// Tag pointing at the agent version used for this call, captured at call creation time and frozen thereafter (unaffected by later tag reassignments). Populated whether the caller dispatched by tag, numeric version, "latest", or "latest_published" — when the caller specified a tag, that tag wins; otherwise the most-recently- assigned tag on the resolved version is used. Absent when no tag points at the resolved version (or for calls created before this field was introduced).<br/>
+        /// Example: prod
+        /// </summary>
+        /// <example>prod</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent_tag")]
+        public string? AgentTag { get; set; }
+
+        /// <summary>
         /// Status of call.<br/>
         /// - `registered`: Call id issued, starting to make a call using this id.<br/>
         /// - `ongoing`: Call connected and ongoing.<br/>
@@ -256,6 +264,10 @@ namespace RetellAI
         /// Name of the agent.<br/>
         /// Example: My Agent
         /// </param>
+        /// <param name="agentTag">
+        /// Tag pointing at the agent version used for this call, captured at call creation time and frozen thereafter (unaffected by later tag reassignments). Populated whether the caller dispatched by tag, numeric version, "latest", or "latest_published" — when the caller specified a tag, that tag wins; otherwise the most-recently- assigned tag on the resolved version is used. Absent when no tag points at the resolved version (or for calls created before this field was introduced).<br/>
+        /// Example: prod
+        /// </param>
         /// <param name="metadata">
         /// An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the call. Not used for processing. You can later get this field from the call object.
         /// </param>
@@ -343,6 +355,7 @@ namespace RetellAI
             int agentVersion,
             global::RetellAI.V3CallBaseCallStatus callStatus,
             string? agentName,
+            string? agentTag,
             object? metadata,
             global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
             global::System.Collections.Generic.Dictionary<string, string>? collectedDynamicVariables,
@@ -370,6 +383,7 @@ namespace RetellAI
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.AgentName = agentName;
             this.AgentVersion = agentVersion;
+            this.AgentTag = agentTag;
             this.CallStatus = callStatus;
             this.Metadata = metadata;
             this.RetellLlmDynamicVariables = retellLlmDynamicVariables;

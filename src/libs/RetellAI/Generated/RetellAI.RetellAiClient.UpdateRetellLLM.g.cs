@@ -436,24 +436,61 @@ namespace RetellAI
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Precondition Failed
+                            if ((int)__response.StatusCode == 412)
+                            {
+                                string? __content_412 = null;
+                                global::System.Exception? __exception_412 = null;
+                                global::RetellAI.UpdateRetellLLMResponse3? __value_412 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_412 = global::RetellAI.UpdateRetellLLMResponse3.FromJson(__content_412, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_412 = global::RetellAI.UpdateRetellLLMResponse3.FromJson(__content_412, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_412 = __ex;
+                                }
+
+
+                                throw global::RetellAI.ApiException<global::RetellAI.UpdateRetellLLMResponse3>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_412 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_412,
+                                    responseBody: __content_412,
+                                    responseObject: __value_412,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Unprocessable Content
                             if ((int)__response.StatusCode == 422)
                             {
                                 string? __content_422 = null;
                                 global::System.Exception? __exception_422 = null;
-                                global::RetellAI.UpdateRetellLLMResponse3? __value_422 = null;
+                                global::RetellAI.UpdateRetellLLMResponse4? __value_422 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_422 = global::RetellAI.UpdateRetellLLMResponse3.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::RetellAI.UpdateRetellLLMResponse4.FromJson(__content_422, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_422 = global::RetellAI.UpdateRetellLLMResponse3.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::RetellAI.UpdateRetellLLMResponse4.FromJson(__content_422, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -462,7 +499,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.UpdateRetellLLMResponse3>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.UpdateRetellLLMResponse4>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_422,
@@ -478,19 +515,19 @@ namespace RetellAI
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.UpdateRetellLLMResponse4? __value_500 = null;
+                                global::RetellAI.UpdateRetellLLMResponse5? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.UpdateRetellLLMResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.UpdateRetellLLMResponse5.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.UpdateRetellLLMResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.UpdateRetellLLMResponse5.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -499,7 +536,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.UpdateRetellLLMResponse4>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.UpdateRetellLLMResponse5>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,

@@ -42,9 +42,6 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("version")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("agent_name")) __score1++;
-            if (__jsonProps.Contains("analysis_successful_prompt")) __score1++;
-            if (__jsonProps.Contains("analysis_summary_prompt")) __score1++;
-            if (__jsonProps.Contains("analysis_user_sentiment_prompt")) __score1++;
             if (__jsonProps.Contains("auto_close_message")) __score1++;
             if (__jsonProps.Contains("data_storage_retention_days")) __score1++;
             if (__jsonProps.Contains("data_storage_setting")) __score1++;
@@ -67,6 +64,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("response_engine")) __score1++;
             if (__jsonProps.Contains("signed_url_expiration_ms")) __score1++;
             if (__jsonProps.Contains("timezone")) __score1++;
+            if (__jsonProps.Contains("version_title")) __score1++;
             if (__jsonProps.Contains("webhook_events")) __score1++;
             if (__jsonProps.Contains("webhook_timeout_ms")) __score1++;
             if (__jsonProps.Contains("webhook_url")) __score1++;

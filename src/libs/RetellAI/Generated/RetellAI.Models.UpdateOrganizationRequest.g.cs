@@ -1,295 +1,112 @@
-#pragma warning disable CS0618 // Type or member is obsolete
 
 #nullable enable
 
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Partial update for PATCH /update-organization. All fields optional.
     /// </summary>
-    public readonly partial struct UpdateOrganizationRequest : global::System.IEquatable<UpdateOrganizationRequest>
+    public sealed partial class UpdateOrganizationRequest
     {
         /// <summary>
-        /// 
+        /// Name of the organization
         /// </summary>
-#if NET6_0_OR_GREATER
-        public global::RetellAI.CreateOrganizationRequest? Create { get; init; }
-#else
-        public global::RetellAI.CreateOrganizationRequest? Create { get; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("org_name")]
+        public string? OrgName { get; set; }
+
+        /// <summary>
+        /// Name of the organization (legacy field)
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("orgName")]
+        public string? OrgName2 { get; set; }
+
+        /// <summary>
+        /// Whether outage mode is enabled
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("outage_mode_enabled")]
+        public bool? OutageModeEnabled { get; set; }
+
+        /// <summary>
+        /// Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge on burst calls.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("concurrency_burst_enabled")]
+        public bool? ConcurrencyBurstEnabled { get; set; }
+
+        /// <summary>
+        /// Whether to route calls and API requests from this organization to the stable server cluster (enterprise only). When enabled, a $0.02/min additional charge will be applied.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("use_stable_server")]
+        public bool? UseStableServer { get; set; }
+
+        /// <summary>
+        /// Number of concurrency slots reserved for inbound calls. Must be less than total normal concurrency.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reserved_inbound_concurrency")]
+        public int? ReservedInboundConcurrency { get; set; }
+
+        /// <summary>
+        /// Auto reload configuration. Set to null to clear existing config. Both values are in cents. `target_amount` must be strictly greater than `threshold`, and the gap must be at least 1000 cents ($10).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("auto_credit_reload_config")]
+        public global::RetellAI.UpdateOrganizationRequestAutoCreditReloadConfig? AutoCreditReloadConfig { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UpdateOrganizationRequest" /> class.
+        /// </summary>
+        /// <param name="orgName">
+        /// Name of the organization
+        /// </param>
+        /// <param name="orgName2">
+        /// Name of the organization (legacy field)
+        /// </param>
+        /// <param name="outageModeEnabled">
+        /// Whether outage mode is enabled
+        /// </param>
+        /// <param name="concurrencyBurstEnabled">
+        /// Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge on burst calls.
+        /// </param>
+        /// <param name="useStableServer">
+        /// Whether to route calls and API requests from this organization to the stable server cluster (enterprise only). When enabled, a $0.02/min additional charge will be applied.
+        /// </param>
+        /// <param name="reservedInboundConcurrency">
+        /// Number of concurrency slots reserved for inbound calls. Must be less than total normal concurrency.
+        /// </param>
+        /// <param name="autoCreditReloadConfig">
+        /// Auto reload configuration. Set to null to clear existing config. Both values are in cents. `target_amount` must be strictly greater than `threshold`, and the gap must be at least 1000 cents ($10).
+        /// </param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Create))]
-#endif
-        public bool IsCreate => Create != null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool TryPickCreate(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::RetellAI.CreateOrganizationRequest? value)
-        {
-            value = Create;
-            return IsCreate;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::RetellAI.CreateOrganizationRequest PickCreate() => IsCreate
-            ? Create!.Value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'Create' but the value was {ToString()}.");
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::RetellAI.UpdateOrganizationRequestVariant2? UpdateOrganizationRequestVariant2 { get; init; }
-#else
-        public global::RetellAI.UpdateOrganizationRequestVariant2? UpdateOrganizationRequestVariant2 { get; }
-#endif
-
-        /// <summary>
-        /// 
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UpdateOrganizationRequestVariant2))]
-#endif
-        public bool IsUpdateOrganizationRequestVariant2 => UpdateOrganizationRequestVariant2 != null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool TryPickUpdateOrganizationRequestVariant2(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::RetellAI.UpdateOrganizationRequestVariant2? value)
-        {
-            value = UpdateOrganizationRequestVariant2;
-            return IsUpdateOrganizationRequestVariant2;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public global::RetellAI.UpdateOrganizationRequestVariant2 PickUpdateOrganizationRequestVariant2() => IsUpdateOrganizationRequestVariant2
-            ? UpdateOrganizationRequestVariant2!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'UpdateOrganizationRequestVariant2' but the value was {ToString()}.");
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator UpdateOrganizationRequest(global::RetellAI.CreateOrganizationRequest value) => new UpdateOrganizationRequest((global::RetellAI.CreateOrganizationRequest?)value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::RetellAI.CreateOrganizationRequest?(UpdateOrganizationRequest @this) => @this.Create;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public UpdateOrganizationRequest(global::RetellAI.CreateOrganizationRequest? value)
-        {
-            Create = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static UpdateOrganizationRequest FromCreate(global::RetellAI.CreateOrganizationRequest? value) => new UpdateOrganizationRequest(value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator UpdateOrganizationRequest(global::RetellAI.UpdateOrganizationRequestVariant2 value) => new UpdateOrganizationRequest((global::RetellAI.UpdateOrganizationRequestVariant2?)value);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static implicit operator global::RetellAI.UpdateOrganizationRequestVariant2?(UpdateOrganizationRequest @this) => @this.UpdateOrganizationRequestVariant2;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public UpdateOrganizationRequest(global::RetellAI.UpdateOrganizationRequestVariant2? value)
-        {
-            UpdateOrganizationRequestVariant2 = value;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static UpdateOrganizationRequest FromUpdateOrganizationRequestVariant2(global::RetellAI.UpdateOrganizationRequestVariant2? value) => new UpdateOrganizationRequest(value);
-
-        /// <summary>
-        /// 
-        /// </summary>
         public UpdateOrganizationRequest(
-            global::RetellAI.CreateOrganizationRequest? create,
-            global::RetellAI.UpdateOrganizationRequestVariant2? updateOrganizationRequestVariant2
-            )
+            string? orgName,
+            string? orgName2,
+            bool? outageModeEnabled,
+            bool? concurrencyBurstEnabled,
+            bool? useStableServer,
+            int? reservedInboundConcurrency,
+            global::RetellAI.UpdateOrganizationRequestAutoCreditReloadConfig? autoCreditReloadConfig)
         {
-            Create = create;
-            UpdateOrganizationRequestVariant2 = updateOrganizationRequestVariant2;
+            this.OrgName = orgName;
+            this.OrgName2 = orgName2;
+            this.OutageModeEnabled = outageModeEnabled;
+            this.ConcurrencyBurstEnabled = concurrencyBurstEnabled;
+            this.UseStableServer = useStableServer;
+            this.ReservedInboundConcurrency = reservedInboundConcurrency;
+            this.AutoCreditReloadConfig = autoCreditReloadConfig;
         }
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="UpdateOrganizationRequest" /> class.
         /// </summary>
-        public object? Object =>
-            UpdateOrganizationRequestVariant2 as object ??
-            Create as object 
-            ;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override string? ToString() =>
-            Create?.ToString() ??
-            UpdateOrganizationRequestVariant2?.ToString() 
-            ;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool Validate()
+        public UpdateOrganizationRequest()
         {
-            return IsCreate && IsUpdateOrganizationRequestVariant2;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.CreateOrganizationRequest?, TResult>? create = null,
-            global::System.Func<global::RetellAI.UpdateOrganizationRequestVariant2, TResult>? updateOrganizationRequestVariant2 = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (IsCreate && create != null)
-            {
-                return create(Create!);
-            }
-            else if (IsUpdateOrganizationRequestVariant2 && updateOrganizationRequestVariant2 != null)
-            {
-                return updateOrganizationRequestVariant2(UpdateOrganizationRequestVariant2!);
-            }
-
-            return default(TResult);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Match(
-            global::System.Action<global::RetellAI.CreateOrganizationRequest?>? create = null,
-
-            global::System.Action<global::RetellAI.UpdateOrganizationRequestVariant2>? updateOrganizationRequestVariant2 = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (IsCreate)
-            {
-                create?.Invoke(Create!);
-            }
-            else if (IsUpdateOrganizationRequestVariant2)
-            {
-                updateOrganizationRequestVariant2?.Invoke(UpdateOrganizationRequestVariant2!);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Switch(
-            global::System.Action<global::RetellAI.CreateOrganizationRequest?>? create = null,
-            global::System.Action<global::RetellAI.UpdateOrganizationRequestVariant2>? updateOrganizationRequestVariant2 = null,
-            bool validate = true)
-        {
-            if (validate)
-            {
-                Validate();
-            }
-
-            if (IsCreate)
-            {
-                create?.Invoke(Create!);
-            }
-            else if (IsUpdateOrganizationRequestVariant2)
-            {
-                updateOrganizationRequestVariant2?.Invoke(UpdateOrganizationRequestVariant2!);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override int GetHashCode()
-        {
-            var fields = new object?[]
-            {
-                Create,
-                typeof(global::RetellAI.CreateOrganizationRequest),
-                UpdateOrganizationRequestVariant2,
-                typeof(global::RetellAI.UpdateOrganizationRequestVariant2),
-            };
-            const int offset = unchecked((int)2166136261);
-            const int prime = 16777619;
-            static int HashCodeAggregator(int hashCode, object? value) => value == null
-                ? (hashCode ^ 0) * prime
-                : (hashCode ^ value.GetHashCode()) * prime;
-
-            return global::System.Linq.Enumerable.Aggregate(fields, offset, HashCodeAggregator);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool Equals(UpdateOrganizationRequest other)
-        {
-            return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CreateOrganizationRequest?>.Default.Equals(Create, other.Create) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.UpdateOrganizationRequestVariant2?>.Default.Equals(UpdateOrganizationRequestVariant2, other.UpdateOrganizationRequestVariant2) 
-                ;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static bool operator ==(UpdateOrganizationRequest obj1, UpdateOrganizationRequest obj2)
-        {
-            return global::System.Collections.Generic.EqualityComparer<UpdateOrganizationRequest>.Default.Equals(obj1, obj2);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public static bool operator !=(UpdateOrganizationRequest obj1, UpdateOrganizationRequest obj2)
-        {
-            return !(obj1 == obj2);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override bool Equals(object? obj)
-        {
-            return obj is UpdateOrganizationRequest o && Equals(o);
-        }
     }
 }

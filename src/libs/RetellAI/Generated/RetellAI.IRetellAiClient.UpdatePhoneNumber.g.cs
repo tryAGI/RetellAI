@@ -49,21 +49,21 @@ namespace RetellAI
         /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
         /// <param name="inboundSmsAgents">
-        /// Inbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound SMS, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to inbound_sms_agent_id.
+        /// Inbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound SMS, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
         /// <param name="outboundSmsAgents">
-        /// Outbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound SMS, with probability proportional to the weight. Total weights must add up to 1. If not set or empty, fallback to outbound_sms_agent_id.
+        /// Outbound SMS agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound SMS, with probability proportional to the weight. Total weights must add up to 1.
         /// </param>
         /// <param name="nickname">
         /// Nickname of the number. This is for your reference only.<br/>
         /// Example: Frontdesk Number
         /// </param>
         /// <param name="inboundWebhookUrl">
-        /// If set, will send a webhook for inbound calls, where you can to override agent id, set dynamic variables and other fields specific to that call.<br/>
+        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.<br/>
         /// Example: https://example.com/inbound-webhook
         /// </param>
         /// <param name="inboundSmsWebhookUrl">
-        /// If set, will send a webhook for inbound SMS, where you can override agent id, set dynamic variables and other fields specific to that chat.<br/>
+        /// If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, and configure other fields specific to that chat.<br/>
         /// Example: https://example.com/inbound-sms-webhook
         /// </param>
         /// <param name="allowedInboundCountryList">
@@ -91,7 +91,7 @@ namespace RetellAI
         /// Example: TCP
         /// </param>
         /// <param name="fallbackNumber">
-        /// Enterprise only. Phone number to transfer inbound calls to when organization is in outage mode or when an inbound call cannot get a concurrency slot before the fallback timeout. Can be either a Retell phone number or an external number. Set to null to remove. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
+        /// When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or an external number. Set to null to remove. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
         /// Example: +14155551234
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>

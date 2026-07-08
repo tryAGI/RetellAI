@@ -24,6 +24,14 @@ namespace RetellAI
         public string? AgentName { get; set; }
 
         /// <summary>
+        /// Optional title of the chat agent version. Used for your own reference.<br/>
+        /// Example: Production hotfix
+        /// </summary>
+        /// <example>Production hotfix</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("version_title")]
+        public string? VersionTitle { get; set; }
+
+        /// <summary>
         /// Message to display when the chat is automatically closed.<br/>
         /// Example: Thank you for chatting. The conversation has ended.
         /// </summary>
@@ -115,30 +123,6 @@ namespace RetellAI
         public global::RetellAI.NullableLLMModel? PostChatAnalysisModel { get; set; }
 
         /// <summary>
-        /// The prompt to use for post call analysis to evaluate whether the call is successful. Set to null to use the default prompt.<br/>
-        /// Example: The agent finished the task and the call was complete without being cutoff.
-        /// </summary>
-        /// <example>The agent finished the task and the call was complete without being cutoff.</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("analysis_successful_prompt")]
-        public string? AnalysisSuccessfulPrompt { get; set; }
-
-        /// <summary>
-        /// The prompt to use for post call analysis to summarize the call. Set to null to use the default prompt.<br/>
-        /// Example: Summarize the call in a few sentences.
-        /// </summary>
-        /// <example>Summarize the call in a few sentences.</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("analysis_summary_prompt")]
-        public string? AnalysisSummaryPrompt { get; set; }
-
-        /// <summary>
-        /// Prompt to guide how the post chat analysis should evaluate user sentiment. When unset, the default system prompt is used. Set to null to use the default prompt.<br/>
-        /// Example: Evaluate the user's sentiment based on their tone and satisfaction level.
-        /// </summary>
-        /// <example>Evaluate the user's sentiment based on their tone and satisfaction level.</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("analysis_user_sentiment_prompt")]
-        public string? AnalysisUserSentimentPrompt { get; set; }
-
-        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pii_config")]
@@ -177,6 +161,10 @@ namespace RetellAI
         /// <param name="agentName">
         /// The name of the chat agent. Only used for your own reference.<br/>
         /// Example: Jarvis
+        /// </param>
+        /// <param name="versionTitle">
+        /// Optional title of the chat agent version. Used for your own reference.<br/>
+        /// Example: Production hotfix
         /// </param>
         /// <param name="autoCloseMessage">
         /// Message to display when the chat is automatically closed.<br/>
@@ -222,18 +210,6 @@ namespace RetellAI
         /// <param name="postChatAnalysisModel">
         /// Available LLM models for agents.
         /// </param>
-        /// <param name="analysisSuccessfulPrompt">
-        /// The prompt to use for post call analysis to evaluate whether the call is successful. Set to null to use the default prompt.<br/>
-        /// Example: The agent finished the task and the call was complete without being cutoff.
-        /// </param>
-        /// <param name="analysisSummaryPrompt">
-        /// The prompt to use for post call analysis to summarize the call. Set to null to use the default prompt.<br/>
-        /// Example: Summarize the call in a few sentences.
-        /// </param>
-        /// <param name="analysisUserSentimentPrompt">
-        /// Prompt to guide how the post chat analysis should evaluate user sentiment. When unset, the default system prompt is used. Set to null to use the default prompt.<br/>
-        /// Example: Evaluate the user's sentiment based on their tone and satisfaction level.
-        /// </param>
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
         /// <param name="handbookConfig">
@@ -249,6 +225,7 @@ namespace RetellAI
         public ChatAgentRequest(
             global::RetellAI.ResponseEngine? responseEngine,
             string? agentName,
+            string? versionTitle,
             string? autoCloseMessage,
             int? endChatAfterSilenceMs,
             global::RetellAI.OneOf<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? language,
@@ -261,9 +238,6 @@ namespace RetellAI
             int? signedUrlExpirationMs,
             global::System.Collections.Generic.IList<global::RetellAI.PostChatAnalysisData>? postChatAnalysisData,
             global::RetellAI.NullableLLMModel? postChatAnalysisModel,
-            string? analysisSuccessfulPrompt,
-            string? analysisSummaryPrompt,
-            string? analysisUserSentimentPrompt,
             global::RetellAI.PIIConfig? piiConfig,
             global::RetellAI.GuardrailConfig? guardrailConfig,
             global::RetellAI.ChatHandbookConfig? handbookConfig,
@@ -271,6 +245,7 @@ namespace RetellAI
         {
             this.ResponseEngine = responseEngine;
             this.AgentName = agentName;
+            this.VersionTitle = versionTitle;
             this.AutoCloseMessage = autoCloseMessage;
             this.EndChatAfterSilenceMs = endChatAfterSilenceMs;
             this.Language = language;
@@ -283,9 +258,6 @@ namespace RetellAI
             this.SignedUrlExpirationMs = signedUrlExpirationMs;
             this.PostChatAnalysisData = postChatAnalysisData;
             this.PostChatAnalysisModel = postChatAnalysisModel;
-            this.AnalysisSuccessfulPrompt = analysisSuccessfulPrompt;
-            this.AnalysisSummaryPrompt = analysisSummaryPrompt;
-            this.AnalysisUserSentimentPrompt = analysisUserSentimentPrompt;
             this.PiiConfig = piiConfig;
             this.GuardrailConfig = guardrailConfig;
             this.HandbookConfig = handbookConfig;

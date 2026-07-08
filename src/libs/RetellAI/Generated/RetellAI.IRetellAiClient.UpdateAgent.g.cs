@@ -62,6 +62,10 @@ namespace RetellAI
         /// Optional description of the agent version. Used for your own reference and documentation.<br/>
         /// Example: Customer support agent for handling product inquiries
         /// </param>
+        /// <param name="versionTitle">
+        /// Optional title of the agent version. Used for your own reference.<br/>
+        /// Example: Production hotfix
+        /// </param>
         /// <param name="voiceId">
         /// Unique voice id used for the agent. Find list of available voices and their preview in Dashboard.<br/>
         /// Example: retell-Cimo
@@ -96,6 +100,18 @@ namespace RetellAI
         /// <param name="voiceEmotion">
         /// Controls the emotional tone of the agent's voice. Currently supported for Cartesia and Minimax TTS providers. If unset, no emotion will be used.<br/>
         /// Example: calm
+        /// </param>
+        /// <param name="enableExpressiveMode">
+        /// Master toggle for expressive mode. When true, the agent may add expressive voice tags to the audio it generates. Only applicable for platform voices. If unset, defaults to false.<br/>
+        /// Example: true
+        /// </param>
+        /// <param name="expressiveEmotionTags">
+        /// The expressive voice tags Retell pre-teaches the model to use when enable_expressive_mode is true. Custom tags defined in the system prompt are still allowed. If empty, the agent follows general expressive guidance without a fixed tag set.<br/>
+        /// Example: [empathetic, excited, sigh, clear throat, emphasis]
+        /// </param>
+        /// <param name="expressiveModePrompt">
+        /// Custom expressive voice guidance to use instead of the default Retell expressive prompt when enable_expressive_mode is true. If omitted or blank, the default expressive prompt will be used.<br/>
+        /// Example: Use [sigh] for thoughtful pauses and [excited] for good news.
         /// </param>
         /// <param name="responsiveness">
         /// Controls how responsive is the agent. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond when it can). If unset, default value 1 will apply.<br/>
@@ -189,14 +205,6 @@ namespace RetellAI
         /// Maximum allowed length for the call, will force end the call if reached. The minimum value allowed is 60,000 ms (1 min), and maximum value allowed is 7,200,000 (2 hours). By default, this is set to 3,600,000 (1 hour).<br/>
         /// Example: 3600000
         /// </param>
-        /// <param name="voicemailMessage">
-        /// The message to be played when the call enters a voicemail. Note that this feature is only available for phone calls. If you want to hangup after hitting voicemail, set this to empty string.<br/>
-        /// Example: Hi, please give us a callback.
-        /// </param>
-        /// <param name="voicemailDetectionTimeoutMs">
-        /// Configures when to stop running voicemail detection, as it becomes unlikely to hit voicemail after a couple minutes, and keep running it will only have negative impact. The minimum value allowed is 5,000 ms (5 s), and maximum value allowed is 180,000 (3 minutes). By default, this is set to 30,000 (30 s).<br/>
-        /// Example: 30000
-        /// </param>
         /// <param name="voicemailOption">
         /// If this option is set, the call will try to detect voicemail in the first 3 minutes of the call. Actions defined (hangup, or leave a message) will be applied when the voicemail is detected. Set this to null to disable voicemail detection.<br/>
         /// Example: {"action":{"type":"static_text","text":"Please give us a callback tomorrow at 10am."}}
@@ -213,18 +221,6 @@ namespace RetellAI
         /// </param>
         /// <param name="postCallAnalysisModel">
         /// Available LLM models for agents.
-        /// </param>
-        /// <param name="analysisSuccessfulPrompt">
-        /// Prompt to determine whether the post call or chat analysis should mark the interaction as successful. Set to null to use the default prompt.<br/>
-        /// Example: The agent finished the task and the call was complete without being cutoff.
-        /// </param>
-        /// <param name="analysisSummaryPrompt">
-        /// Prompt to guide how the post call or chat analysis summary should be generated. When unset, the default system prompt is used. Set to null to use the default prompt.<br/>
-        /// Example: Summarize the outcome of the conversation in two sentences.
-        /// </param>
-        /// <param name="analysisUserSentimentPrompt">
-        /// Prompt to guide how the post call or chat analysis should evaluate user sentiment. When unset, the default system prompt is used. Set to null to use the default prompt.<br/>
-        /// Example: Evaluate the user's sentiment based on their tone and satisfaction level.
         /// </param>
         /// <param name="beginMessageDelayMs">
         /// If set, will delay the first message by the specified amount of milliseconds, so that it gives user more time to prepare to take the call. Valid range is [0, 5000]. If not set or set to 0, agent will speak immediately. Only applicable when agent speaks first.<br/>
@@ -276,6 +272,7 @@ namespace RetellAI
             global::RetellAI.ResponseEngine? responseEngine = default,
             string? agentName = default,
             string? versionDescription = default,
+            string? versionTitle = default,
             string? voiceId = default,
             global::RetellAI.AgentRequestVoiceModel? voiceModel = default,
             global::System.Collections.Generic.IList<string>? fallbackVoiceIds = default,
@@ -285,6 +282,9 @@ namespace RetellAI
             bool? enableDynamicResponsiveness = default,
             double? volume = default,
             global::RetellAI.AgentRequestVoiceEmotion? voiceEmotion = default,
+            bool? enableExpressiveMode = default,
+            global::System.Collections.Generic.IList<global::RetellAI.AgentRequestExpressiveEmotionTag>? expressiveEmotionTags = default,
+            string? expressiveModePrompt = default,
             double? responsiveness = default,
             double? interruptionSensitivity = default,
             bool? enableBackchannel = default,
@@ -306,16 +306,11 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.AgentRequestPronunciationDictionaryItem>? pronunciationDictionary = default,
             int? endCallAfterSilenceMs = default,
             int? maxCallDurationMs = default,
-            string? voicemailMessage = default,
-            int? voicemailDetectionTimeoutMs = default,
             global::RetellAI.AgentRequestVoicemailOption? voicemailOption = default,
             global::RetellAI.AgentRequestIvrOption? ivrOption = default,
             global::RetellAI.CallScreeningOption? callScreeningOption = default,
             global::System.Collections.Generic.IList<global::RetellAI.PostCallAnalysisData>? postCallAnalysisData = default,
             global::RetellAI.NullableLLMModel? postCallAnalysisModel = default,
-            string? analysisSuccessfulPrompt = default,
-            string? analysisSummaryPrompt = default,
-            string? analysisUserSentimentPrompt = default,
             int? beginMessageDelayMs = default,
             int? ringDurationMs = default,
             global::RetellAI.AgentRequestSttMode? sttMode = default,

@@ -35,6 +35,9 @@ namespace RetellAI.JsonConverters
             }
 
             var __score0 = 0;
+            if (__jsonProps.Contains("auto_credit_reload_config")) __score0++;
+            if (__jsonProps.Contains("auto_credit_reload_config.target_amount")) __score0++;
+            if (__jsonProps.Contains("auto_credit_reload_config.threshold")) __score0++;
             if (__jsonProps.Contains("concurrency")) __score0++;
             if (__jsonProps.Contains("concurrency_burst_enabled")) __score0++;
             if (__jsonProps.Contains("cps_config")) __score0++;

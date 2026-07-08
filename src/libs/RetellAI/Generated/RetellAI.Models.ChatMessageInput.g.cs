@@ -193,6 +193,80 @@ namespace RetellAI
         public global::RetellAI.StateTransitionMessageBase PickStateTransitionBase() => IsStateTransitionBase
             ? StateTransitionBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'StateTransitionBase' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::RetellAI.InjectedMessageBase? InjectedBase { get; init; }
+#else
+        public global::RetellAI.InjectedMessageBase? InjectedBase { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(InjectedBase))]
+#endif
+        public bool IsInjectedBase => InjectedBase != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickInjectedBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.InjectedMessageBase? value)
+        {
+            value = InjectedBase;
+            return IsInjectedBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.InjectedMessageBase PickInjectedBase() => IsInjectedBase
+            ? InjectedBase!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'InjectedBase' but the value was {ToString()}.");
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::RetellAI.SmsMessageBase? SmsBase { get; init; }
+#else
+        public global::RetellAI.SmsMessageBase? SmsBase { get; }
+#endif
+
+        /// <summary>
+        /// 
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SmsBase))]
+#endif
+        public bool IsSmsBase => SmsBase != null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool TryPickSmsBase(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.SmsMessageBase? value)
+        {
+            value = SmsBase;
+            return IsSmsBase;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::RetellAI.SmsMessageBase PickSmsBase() => IsSmsBase
+            ? SmsBase!
+            : throw new global::System.InvalidOperationException($"Expected union variant 'SmsBase' but the value was {ToString()}.");
         /// <summary>
         /// 
         /// </summary>
@@ -311,12 +385,60 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        public static implicit operator ChatMessageInput(global::RetellAI.InjectedMessageBase value) => new ChatMessageInput((global::RetellAI.InjectedMessageBase?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::RetellAI.InjectedMessageBase?(ChatMessageInput @this) => @this.InjectedBase;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ChatMessageInput(global::RetellAI.InjectedMessageBase? value)
+        {
+            InjectedBase = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatMessageInput FromInjectedBase(global::RetellAI.InjectedMessageBase? value) => new ChatMessageInput(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator ChatMessageInput(global::RetellAI.SmsMessageBase value) => new ChatMessageInput((global::RetellAI.SmsMessageBase?)value);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static implicit operator global::RetellAI.SmsMessageBase?(ChatMessageInput @this) => @this.SmsBase;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ChatMessageInput(global::RetellAI.SmsMessageBase? value)
+        {
+            SmsBase = value;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static ChatMessageInput FromSmsBase(global::RetellAI.SmsMessageBase? value) => new ChatMessageInput(value);
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ChatMessageInput(
             global::RetellAI.MessageBase? @base,
             global::RetellAI.ToolCallInvocationMessageBase? toolCallInvocationBase,
             global::RetellAI.ToolCallResultMessageBase? toolCallResultBase,
             global::RetellAI.NodeTransitionMessageBase? nodeTransitionBase,
-            global::RetellAI.StateTransitionMessageBase? stateTransitionBase
+            global::RetellAI.StateTransitionMessageBase? stateTransitionBase,
+            global::RetellAI.InjectedMessageBase? injectedBase,
+            global::RetellAI.SmsMessageBase? smsBase
             )
         {
             Base = @base;
@@ -324,12 +446,16 @@ namespace RetellAI
             ToolCallResultBase = toolCallResultBase;
             NodeTransitionBase = nodeTransitionBase;
             StateTransitionBase = stateTransitionBase;
+            InjectedBase = injectedBase;
+            SmsBase = smsBase;
         }
 
         /// <summary>
         /// 
         /// </summary>
         public object? Object =>
+            SmsBase as object ??
+            InjectedBase as object ??
             StateTransitionBase as object ??
             NodeTransitionBase as object ??
             ToolCallResultBase as object ??
@@ -345,7 +471,9 @@ namespace RetellAI
             ToolCallInvocationBase?.ToString() ??
             ToolCallResultBase?.ToString() ??
             NodeTransitionBase?.ToString() ??
-            StateTransitionBase?.ToString() 
+            StateTransitionBase?.ToString() ??
+            InjectedBase?.ToString() ??
+            SmsBase?.ToString() 
             ;
 
         /// <summary>
@@ -353,7 +481,7 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsBase && !IsToolCallInvocationBase && !IsToolCallResultBase && !IsNodeTransitionBase && !IsStateTransitionBase || !IsBase && IsToolCallInvocationBase && !IsToolCallResultBase && !IsNodeTransitionBase && !IsStateTransitionBase || !IsBase && !IsToolCallInvocationBase && IsToolCallResultBase && !IsNodeTransitionBase && !IsStateTransitionBase || !IsBase && !IsToolCallInvocationBase && !IsToolCallResultBase && IsNodeTransitionBase && !IsStateTransitionBase || !IsBase && !IsToolCallInvocationBase && !IsToolCallResultBase && !IsNodeTransitionBase && IsStateTransitionBase;
+            return IsBase && !IsToolCallInvocationBase && !IsToolCallResultBase && !IsNodeTransitionBase && !IsStateTransitionBase && !IsInjectedBase && !IsSmsBase || !IsBase && IsToolCallInvocationBase && !IsToolCallResultBase && !IsNodeTransitionBase && !IsStateTransitionBase && !IsInjectedBase && !IsSmsBase || !IsBase && !IsToolCallInvocationBase && IsToolCallResultBase && !IsNodeTransitionBase && !IsStateTransitionBase && !IsInjectedBase && !IsSmsBase || !IsBase && !IsToolCallInvocationBase && !IsToolCallResultBase && IsNodeTransitionBase && !IsStateTransitionBase && !IsInjectedBase && !IsSmsBase || !IsBase && !IsToolCallInvocationBase && !IsToolCallResultBase && !IsNodeTransitionBase && IsStateTransitionBase && !IsInjectedBase && !IsSmsBase || !IsBase && !IsToolCallInvocationBase && !IsToolCallResultBase && !IsNodeTransitionBase && !IsStateTransitionBase && IsInjectedBase && !IsSmsBase || !IsBase && !IsToolCallInvocationBase && !IsToolCallResultBase && !IsNodeTransitionBase && !IsStateTransitionBase && !IsInjectedBase && IsSmsBase;
         }
 
         /// <summary>
@@ -365,6 +493,8 @@ namespace RetellAI
             global::System.Func<global::RetellAI.ToolCallResultMessageBase, TResult>? toolCallResultBase = null,
             global::System.Func<global::RetellAI.NodeTransitionMessageBase, TResult>? nodeTransitionBase = null,
             global::System.Func<global::RetellAI.StateTransitionMessageBase, TResult>? stateTransitionBase = null,
+            global::System.Func<global::RetellAI.InjectedMessageBase, TResult>? injectedBase = null,
+            global::System.Func<global::RetellAI.SmsMessageBase, TResult>? smsBase = null,
             bool validate = true)
         {
             if (validate)
@@ -392,6 +522,14 @@ namespace RetellAI
             {
                 return stateTransitionBase(StateTransitionBase!);
             }
+            else if (IsInjectedBase && injectedBase != null)
+            {
+                return injectedBase(InjectedBase!);
+            }
+            else if (IsSmsBase && smsBase != null)
+            {
+                return smsBase(SmsBase!);
+            }
 
             return default(TResult);
         }
@@ -409,6 +547,10 @@ namespace RetellAI
             global::System.Action<global::RetellAI.NodeTransitionMessageBase>? nodeTransitionBase = null,
 
             global::System.Action<global::RetellAI.StateTransitionMessageBase>? stateTransitionBase = null,
+
+            global::System.Action<global::RetellAI.InjectedMessageBase>? injectedBase = null,
+
+            global::System.Action<global::RetellAI.SmsMessageBase>? smsBase = null,
             bool validate = true)
         {
             if (validate)
@@ -435,6 +577,14 @@ namespace RetellAI
             else if (IsStateTransitionBase)
             {
                 stateTransitionBase?.Invoke(StateTransitionBase!);
+            }
+            else if (IsInjectedBase)
+            {
+                injectedBase?.Invoke(InjectedBase!);
+            }
+            else if (IsSmsBase)
+            {
+                smsBase?.Invoke(SmsBase!);
             }
         }
 
@@ -447,6 +597,8 @@ namespace RetellAI
             global::System.Action<global::RetellAI.ToolCallResultMessageBase>? toolCallResultBase = null,
             global::System.Action<global::RetellAI.NodeTransitionMessageBase>? nodeTransitionBase = null,
             global::System.Action<global::RetellAI.StateTransitionMessageBase>? stateTransitionBase = null,
+            global::System.Action<global::RetellAI.InjectedMessageBase>? injectedBase = null,
+            global::System.Action<global::RetellAI.SmsMessageBase>? smsBase = null,
             bool validate = true)
         {
             if (validate)
@@ -473,6 +625,14 @@ namespace RetellAI
             else if (IsStateTransitionBase)
             {
                 stateTransitionBase?.Invoke(StateTransitionBase!);
+            }
+            else if (IsInjectedBase)
+            {
+                injectedBase?.Invoke(InjectedBase!);
+            }
+            else if (IsSmsBase)
+            {
+                smsBase?.Invoke(SmsBase!);
             }
         }
 
@@ -493,6 +653,10 @@ namespace RetellAI
                 typeof(global::RetellAI.NodeTransitionMessageBase),
                 StateTransitionBase,
                 typeof(global::RetellAI.StateTransitionMessageBase),
+                InjectedBase,
+                typeof(global::RetellAI.InjectedMessageBase),
+                SmsBase,
+                typeof(global::RetellAI.SmsMessageBase),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -513,7 +677,9 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ToolCallInvocationMessageBase?>.Default.Equals(ToolCallInvocationBase, other.ToolCallInvocationBase) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ToolCallResultMessageBase?>.Default.Equals(ToolCallResultBase, other.ToolCallResultBase) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeTransitionMessageBase?>.Default.Equals(NodeTransitionBase, other.NodeTransitionBase) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.StateTransitionMessageBase?>.Default.Equals(StateTransitionBase, other.StateTransitionBase) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.StateTransitionMessageBase?>.Default.Equals(StateTransitionBase, other.StateTransitionBase) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.InjectedMessageBase?>.Default.Equals(InjectedBase, other.InjectedBase) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsMessageBase?>.Default.Equals(SmsBase, other.SmsBase) 
                 ;
         }
 

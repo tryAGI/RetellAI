@@ -16,7 +16,7 @@ namespace RetellAI
         public required string TestCaseJobId { get; set; }
 
         /// <summary>
-        /// Status of the test case job
+        /// Status of the test case job. `pending` means the run is queued but has not started yet; it becomes `in_progress` once a worker picks it up, then resolves to `pass`, `fail`, or `error`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.TestCaseJobStatusJsonConverter))]
@@ -77,7 +77,7 @@ namespace RetellAI
         /// Unique identifier for the test case job
         /// </param>
         /// <param name="status">
-        /// Status of the test case job
+        /// Status of the test case job. `pending` means the run is queued but has not started yet; it becomes `in_progress` once a worker picks it up, then resolves to `pass`, `fail`, or `error`.
         /// </param>
         /// <param name="testCaseDefinitionId">
         /// ID of the test case definition used

@@ -37,6 +37,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("else_edge")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ElseEdgeJsonConverter))]
+        public global::RetellAI.ElseEdge? ElseEdge { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("finetune_transition_examples")]
         public global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? FinetuneTransitionExamples { get; set; }
 
@@ -57,6 +64,7 @@ namespace RetellAI
         /// Delay in milliseconds before pressing the digit
         /// </param>
         /// <param name="edges"></param>
+        /// <param name="elseEdge"></param>
         /// <param name="finetuneTransitionExamples"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -66,12 +74,14 @@ namespace RetellAI
             global::RetellAI.PressDigitNodeVariant2Type type,
             int? delayMs,
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
+            global::RetellAI.ElseEdge? elseEdge,
             global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneTransitionExample>? finetuneTransitionExamples)
         {
             this.Type = type;
             this.Instruction = instruction ?? throw new global::System.ArgumentNullException(nameof(instruction));
             this.DelayMs = delayMs;
             this.Edges = edges;
+            this.ElseEdge = elseEdge;
             this.FinetuneTransitionExamples = finetuneTransitionExamples;
         }
 

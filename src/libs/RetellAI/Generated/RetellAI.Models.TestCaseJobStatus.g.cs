@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Status of the test case job
+    /// Status of the test case job. `pending` means the run is queued but has not started yet; it becomes `in_progress` once a worker picks it up, then resolves to `pass`, `fail`, or `error`.
     /// </summary>
     public enum TestCaseJobStatus
     {
@@ -24,6 +24,10 @@ namespace RetellAI
         /// 
         /// </summary>
         Pass,
+        /// <summary>
+        /// 
+        /// </summary>
+        Pending,
     }
 
     /// <summary>
@@ -42,6 +46,7 @@ namespace RetellAI
                 TestCaseJobStatus.Fail => "fail",
                 TestCaseJobStatus.InProgress => "in_progress",
                 TestCaseJobStatus.Pass => "pass",
+                TestCaseJobStatus.Pending => "pending",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -56,6 +61,7 @@ namespace RetellAI
                 "fail" => TestCaseJobStatus.Fail,
                 "in_progress" => TestCaseJobStatus.InProgress,
                 "pass" => TestCaseJobStatus.Pass,
+                "pending" => TestCaseJobStatus.Pending,
                 _ => null,
             };
         }

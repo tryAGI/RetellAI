@@ -35,6 +35,17 @@
     },
     {
       "Order": 4,
+      "Title": "Update an ongoing call at runtime. Supports overriding dynamic variables, metadata, and the data storage setting on the running call, and controlling the live agent (inject context, trigger a response). These overrides take effect immediately on the live call; metadata and data storage setting changes are also persisted to the call record. To update a call that is no longer ongoing, use /v2/update-call/{call_id}.",
+      "Slug": "updatelivecall",
+      "Description": "Update an ongoing call at runtime. Supports overriding dynamic variables, metadata, and the data storage setting on the running call, and controlling the live agent (inject context, trigger a response). These overrides take effect immediately on the live call; metadata and data storage setting changes are also persisted to the call record. To update a call that is no longer ongoing, use /v2/update-call/{call_id}.",
+      "Language": "http",
+      "Code": "### Update an ongoing call at runtime. Supports overriding dynamic variables, metadata, and the data storage setting on the running call, and controlling the live agent (inject context, trigger a response). These overrides take effect immediately on the live call; metadata and data storage setting changes are also persisted to the call record. To update a call that is no longer ongoing, use /v2/update-call/{call_id}.\n# @name updateLiveCall\nPATCH {{host}}/v2/update-live-call/{{call_id}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022fields_to_override\u0022: {\n    \u0022override_dynamic_variables\u0022: {\n      \u0022additional_discount\u0022: \u002215%\u0022\n    }\n  },\n  \u0022call_control\u0022: {\n    \u0022additional_context\u0022: \u0022Customer just opened a support ticket about billing.\u0022,\n    \u0022trigger_response\u0022: true\n  }\n}\n\n## Responses\n# 200\n# Description: Live call updated successfully\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 404\n# Description: Not Found\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
+      "Format": "http",
+      "OperationId": "updateLiveCall",
+      "Setup": null
+    },
+    {
+      "Order": 5,
       "Title": "Update agent bound to a purchased phone number",
       "Slug": "updatephonenumber",
       "Description": "Update agent bound to a purchased phone number",
@@ -45,12 +56,12 @@
       "Setup": null
     },
     {
-      "Order": 5,
+      "Order": 6,
       "Title": "Update an existing Retell LLM Response Engine",
       "Slug": "updateretellllm",
       "Description": "Update an existing Retell LLM Response Engine",
       "Language": "http",
-      "Code": "### Update an existing Retell LLM Response Engine\n# @name updateRetellLLM\nPATCH {{host}}/update-retell-llm/{{llm_id}}?version={{version}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022begin_message\u0022: \u0022Hey I am a virtual assistant calling from Retell Hospital.\u0022\n}\n\n## Responses\n# 200\n# Description: Successfully updated an Retell LLM Response Engine.\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
+      "Code": "### Update an existing Retell LLM Response Engine\n# @name updateRetellLLM\nPATCH {{host}}/update-retell-llm/{{llm_id}}?version={{version}}\nAuthorization: Bearer {{token}}\nContent-Type: application/json\nAccept: application/json\n\n{\n  \u0022begin_message\u0022: \u0022Hey I am a virtual assistant calling from Retell Hospital.\u0022\n}\n\n## Responses\n# 200\n# Description: Successfully updated an Retell LLM Response Engine.\n# Content-Type: application/json\n# 400\n# Description: Bad Request\n# Content-Type: application/json\n# 401\n# Description: Unauthorized\n# Content-Type: application/json\n# 412\n# Description: Precondition Failed\n# Content-Type: application/json\n# 422\n# Description: Unprocessable Content\n# Content-Type: application/json\n# 500\n# Description: Internal Server Error\n# Content-Type: application/json",
       "Format": "http",
       "OperationId": "updateRetellLLM",
       "Setup": null

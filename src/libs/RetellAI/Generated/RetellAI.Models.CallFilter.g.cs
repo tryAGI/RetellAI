@@ -17,8 +17,16 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent_tag")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, object>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? AgentTag { get; set; }
+
+        /// <summary>
+        /// Filter by call ID.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_id")]
-        public global::RetellAI.StringFilter? CallId { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>))]
+        public global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? CallId { get; set; }
 
         /// <summary>
         /// 
@@ -169,7 +177,10 @@ namespace RetellAI
         /// <param name="agent">
         /// Filter by agent(s). Agent filters are connected by OR.
         /// </param>
-        /// <param name="callId"></param>
+        /// <param name="agentTag"></param>
+        /// <param name="callId">
+        /// Filter by call ID.
+        /// </param>
         /// <param name="batchCallId"></param>
         /// <param name="callStatus"></param>
         /// <param name="inVoicemail"></param>
@@ -216,7 +227,8 @@ namespace RetellAI
 #endif
         public CallFilter(
             global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? agent,
-            global::RetellAI.StringFilter? callId,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? agentTag,
+            global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? callId,
             global::RetellAI.StringFilter? batchCallId,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterCallStatus>? callStatus,
             global::RetellAI.BooleanFilter? inVoicemail,
@@ -240,6 +252,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.AllOf<global::RetellAI.StringFilter, global::RetellAI.CallFilterDynamicVariable>>? dynamicVariables)
         {
             this.Agent = agent;
+            this.AgentTag = agentTag;
             this.CallId = callId;
             this.BatchCallId = batchCallId;
             this.CallStatus = callStatus;

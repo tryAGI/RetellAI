@@ -40,6 +40,7 @@ namespace RetellAI.JsonConverters
             var __score1 = 0;
             if (__jsonProps.Contains("agent_id")) __score1++;
             if (__jsonProps.Contains("agent_name")) __score1++;
+            if (__jsonProps.Contains("agent_tag")) __score1++;
             if (__jsonProps.Contains("agent_version")) __score1++;
             if (__jsonProps.Contains("call_analysis")) __score1++;
             if (__jsonProps.Contains("call_analysis.call_successful")) __score1++;

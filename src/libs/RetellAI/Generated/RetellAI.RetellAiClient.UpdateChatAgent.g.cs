@@ -438,61 +438,24 @@ namespace RetellAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Unprocessable Content
-                            if ((int)__response.StatusCode == 422)
-                            {
-                                string? __content_422 = null;
-                                global::System.Exception? __exception_422 = null;
-                                global::RetellAI.UpdateChatAgentResponse3? __value_422 = null;
-                                try
-                                {
-                                    if (__effectiveReadResponseAsString)
-                                    {
-                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_422 = global::RetellAI.UpdateChatAgentResponse3.FromJson(__content_422, JsonSerializerContext);
-                                    }
-                                    else
-                                    {
-                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-
-                                        __value_422 = global::RetellAI.UpdateChatAgentResponse3.FromJson(__content_422, JsonSerializerContext);
-                                    }
-                                }
-                                catch (global::System.Exception __ex)
-                                {
-                                    __exception_422 = __ex;
-                                }
-
-
-                                throw global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse3>.Create(
-                                    statusCode: __response.StatusCode,
-                                    message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
-                                    innerException: __exception_422,
-                                    responseBody: __content_422,
-                                    responseObject: __value_422,
-                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
-                                        __response.Headers,
-                                        h => h.Key,
-                                        h => h.Value));
-                            }
                             // Precondition Failed
                             if ((int)__response.StatusCode == 412)
                             {
                                 string? __content_412 = null;
                                 global::System.Exception? __exception_412 = null;
-                                global::RetellAI.UpdateChatAgentResponse4? __value_412 = null;
+                                global::RetellAI.UpdateChatAgentResponse3? __value_412 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_412 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_412, JsonSerializerContext);
+                                        __value_412 = global::RetellAI.UpdateChatAgentResponse3.FromJson(__content_412, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_412 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_412 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_412, JsonSerializerContext);
+                                        __value_412 = global::RetellAI.UpdateChatAgentResponse3.FromJson(__content_412, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -501,12 +464,49 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse4>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse3>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_412 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_412,
                                     responseBody: __content_412,
                                     responseObject: __value_412,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Unprocessable Content
+                            if ((int)__response.StatusCode == 422)
+                            {
+                                string? __content_422 = null;
+                                global::System.Exception? __exception_422 = null;
+                                global::RetellAI.UpdateChatAgentResponse4? __value_422 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_422 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_422 = global::RetellAI.UpdateChatAgentResponse4.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_422 = __ex;
+                                }
+
+
+                                throw global::RetellAI.ApiException<global::RetellAI.UpdateChatAgentResponse4>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_422,
+                                    responseBody: __content_422,
+                                    responseObject: __value_422,
                                     responseHeaders: global::System.Linq.Enumerable.ToDictionary(
                                         __response.Headers,
                                         h => h.Key,
@@ -659,6 +659,10 @@ namespace RetellAI
         /// The name of the chat agent. Only used for your own reference.<br/>
         /// Example: Jarvis
         /// </param>
+        /// <param name="versionTitle">
+        /// Optional title of the chat agent version. Used for your own reference.<br/>
+        /// Example: Production hotfix
+        /// </param>
         /// <param name="autoCloseMessage">
         /// Message to display when the chat is automatically closed.<br/>
         /// Example: Thank you for chatting. The conversation has ended.
@@ -703,18 +707,6 @@ namespace RetellAI
         /// <param name="postChatAnalysisModel">
         /// Available LLM models for agents.
         /// </param>
-        /// <param name="analysisSuccessfulPrompt">
-        /// The prompt to use for post call analysis to evaluate whether the call is successful. Set to null to use the default prompt.<br/>
-        /// Example: The agent finished the task and the call was complete without being cutoff.
-        /// </param>
-        /// <param name="analysisSummaryPrompt">
-        /// The prompt to use for post call analysis to summarize the call. Set to null to use the default prompt.<br/>
-        /// Example: Summarize the call in a few sentences.
-        /// </param>
-        /// <param name="analysisUserSentimentPrompt">
-        /// Prompt to guide how the post chat analysis should evaluate user sentiment. When unset, the default system prompt is used. Set to null to use the default prompt.<br/>
-        /// Example: Evaluate the user's sentiment based on their tone and satisfaction level.
-        /// </param>
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
         /// <param name="handbookConfig">
@@ -732,6 +724,7 @@ namespace RetellAI
             global::RetellAI.AgentVersionReference? version = default,
             global::RetellAI.ResponseEngine? responseEngine = default,
             string? agentName = default,
+            string? versionTitle = default,
             string? autoCloseMessage = default,
             int? endChatAfterSilenceMs = default,
             global::RetellAI.OneOf<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? language = default,
@@ -744,9 +737,6 @@ namespace RetellAI
             int? signedUrlExpirationMs = default,
             global::System.Collections.Generic.IList<global::RetellAI.PostChatAnalysisData>? postChatAnalysisData = default,
             global::RetellAI.NullableLLMModel? postChatAnalysisModel = default,
-            string? analysisSuccessfulPrompt = default,
-            string? analysisSummaryPrompt = default,
-            string? analysisUserSentimentPrompt = default,
             global::RetellAI.PIIConfig? piiConfig = default,
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
             global::RetellAI.ChatHandbookConfig? handbookConfig = default,
@@ -758,6 +748,7 @@ namespace RetellAI
             {
                 ResponseEngine = responseEngine,
                 AgentName = agentName,
+                VersionTitle = versionTitle,
                 AutoCloseMessage = autoCloseMessage,
                 EndChatAfterSilenceMs = endChatAfterSilenceMs,
                 Language = language,
@@ -770,9 +761,6 @@ namespace RetellAI
                 SignedUrlExpirationMs = signedUrlExpirationMs,
                 PostChatAnalysisData = postChatAnalysisData,
                 PostChatAnalysisModel = postChatAnalysisModel,
-                AnalysisSuccessfulPrompt = analysisSuccessfulPrompt,
-                AnalysisSummaryPrompt = analysisSummaryPrompt,
-                AnalysisUserSentimentPrompt = analysisUserSentimentPrompt,
                 PiiConfig = piiConfig,
                 GuardrailConfig = guardrailConfig,
                 HandbookConfig = handbookConfig,

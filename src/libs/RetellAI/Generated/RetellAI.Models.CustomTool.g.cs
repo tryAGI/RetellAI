@@ -110,6 +110,13 @@ namespace RetellAI
         public bool? ArgsAtRoot { get; set; }
 
         /// <summary>
+        /// How the tool's `parameters` are authored and shown in the dashboard editor — "form" for the visual parameter builder, "json" for a raw JSON Schema. Both produce the same `parameters` schema; this does not change how the request body is encoded (see `args_at_root`).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("parameter_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.CustomToolParameterTypeJsonConverter))]
+        public global::RetellAI.CustomToolParameterType? ParameterType { get; set; }
+
+        /// <summary>
         /// If true, play a typing sound on the agent audio track while this tool is executing. Useful when the tool takes a noticeable amount of time to prevent silence on the call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enable_typing_sound")]
@@ -170,6 +177,9 @@ namespace RetellAI
         /// <param name="argsAtRoot">
         /// If set to true, the parameters will be passed as root level JSON object instead of nested under "args".
         /// </param>
+        /// <param name="parameterType">
+        /// How the tool's `parameters` are authored and shown in the dashboard editor — "form" for the visual parameter builder, "json" for a raw JSON Schema. Both produce the same `parameters` schema; this does not change how the request body is encoded (see `args_at_root`).
+        /// </param>
         /// <param name="enableTypingSound">
         /// If true, play a typing sound on the agent audio track while this tool is executing. Useful when the tool takes a noticeable amount of time to prevent silence on the call.
         /// </param>
@@ -192,6 +202,7 @@ namespace RetellAI
             global::RetellAI.CustomToolExecutionMessageType? executionMessageType,
             int? timeoutMs,
             bool? argsAtRoot,
+            global::RetellAI.CustomToolParameterType? parameterType,
             bool? enableTypingSound)
         {
             this.Type = type;
@@ -209,6 +220,7 @@ namespace RetellAI
             this.ExecutionMessageType = executionMessageType;
             this.TimeoutMs = timeoutMs;
             this.ArgsAtRoot = argsAtRoot;
+            this.ParameterType = parameterType;
             this.EnableTypingSound = enableTypingSound;
         }
 

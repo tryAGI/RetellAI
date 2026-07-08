@@ -31,6 +31,13 @@ namespace RetellAI
         public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CohortFilterDisconnectionReason>? DisconnectionReason { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent_tag")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, object>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? AgentTag { get; set; }
+
+        /// <summary>
         /// Filter calls by duration in milliseconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration_ms")]
@@ -93,6 +100,7 @@ namespace RetellAI
         /// Start timestamp filter (epoch ms). Required.
         /// </param>
         /// <param name="disconnectionReason"></param>
+        /// <param name="agentTag"></param>
         /// <param name="durationMs">
         /// Filter calls by duration in milliseconds.
         /// </param>
@@ -107,6 +115,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? agent,
             global::RetellAI.OneOf<global::RetellAI.AllOf<global::RetellAI.NumberFilter, global::RetellAI.CohortFilterStartTimestampVariant1>?, global::RetellAI.RangeFilter>? startTimestamp,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CohortFilterDisconnectionReason>? disconnectionReason,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? agentTag,
             global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? durationMs,
             global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? customAnalysisData,
             global::RetellAI.DateRange? dateRange)
@@ -114,6 +123,7 @@ namespace RetellAI
             this.Agent = agent;
             this.StartTimestamp = startTimestamp;
             this.DisconnectionReason = disconnectionReason;
+            this.AgentTag = agentTag;
             this.DurationMs = durationMs;
             this.CustomAnalysisData = customAnalysisData;
             this.DateRange = dateRange;

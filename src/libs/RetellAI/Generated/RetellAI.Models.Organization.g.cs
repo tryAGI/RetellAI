@@ -116,6 +116,14 @@ namespace RetellAI
         public global::RetellAI.OrganizationCpsConfig? CpsConfig { get; set; }
 
         /// <summary>
+        /// Both values are in cents. `target_amount` must be strictly greater than `threshold`, and the gap must be at least 1000 cents ($10).<br/>
+        /// Example: {"threshold":10000,"target_amount":25000}
+        /// </summary>
+        /// <example>{"threshold":10000,"target_amount":25000}</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("auto_credit_reload_config")]
+        public global::RetellAI.AutoCreditReloadConfig? AutoCreditReloadConfig { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enterprise_id")]
@@ -183,6 +191,10 @@ namespace RetellAI
         /// <param name="skipAudit"></param>
         /// <param name="reviewProvided"></param>
         /// <param name="cpsConfig"></param>
+        /// <param name="autoCreditReloadConfig">
+        /// Both values are in cents. `target_amount` must be strictly greater than `threshold`, and the gap must be at least 1000 cents ($10).<br/>
+        /// Example: {"threshold":10000,"target_amount":25000}
+        /// </param>
         /// <param name="enterpriseId"></param>
         /// <param name="featureBucket"></param>
         /// <param name="useStableServer"></param>
@@ -207,6 +219,7 @@ namespace RetellAI
             bool? skipAudit,
             bool? reviewProvided,
             global::RetellAI.OrganizationCpsConfig? cpsConfig,
+            global::RetellAI.AutoCreditReloadConfig? autoCreditReloadConfig,
             string? enterpriseId,
             object? featureBucket,
             bool? useStableServer)
@@ -228,6 +241,7 @@ namespace RetellAI
             this.SkipAudit = skipAudit;
             this.ReviewProvided = reviewProvided;
             this.CpsConfig = cpsConfig;
+            this.AutoCreditReloadConfig = autoCreditReloadConfig;
             this.EnterpriseId = enterpriseId;
             this.FeatureBucket = featureBucket;
             this.UseStableServer = useStableServer;

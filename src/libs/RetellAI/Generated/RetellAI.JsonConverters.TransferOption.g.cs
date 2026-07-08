@@ -41,6 +41,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("type")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("agent_detection_timeout_ms")) __score1++;
+            if (__jsonProps.Contains("custom_on_hold_music_asset_id")) __score1++;
             if (__jsonProps.Contains("enable_bridge_audio_cue")) __score1++;
             if (__jsonProps.Contains("ivr_option")) __score1++;
             if (__jsonProps.Contains("ivr_option.prompt")) __score1++;
@@ -57,6 +58,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("agentic_transfer_config.action_on_timeout")) __score2++;
             if (__jsonProps.Contains("agentic_transfer_config.transfer_agent")) __score2++;
             if (__jsonProps.Contains("agentic_transfer_config.transfer_timeout_ms")) __score2++;
+            if (__jsonProps.Contains("custom_on_hold_music_asset_id")) __score2++;
             if (__jsonProps.Contains("enable_bridge_audio_cue")) __score2++;
             if (__jsonProps.Contains("on_hold_music")) __score2++;
             if (__jsonProps.Contains("public_handoff_option")) __score2++;

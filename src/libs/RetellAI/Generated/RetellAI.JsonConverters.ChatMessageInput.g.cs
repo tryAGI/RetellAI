@@ -62,6 +62,17 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("message_id")) __score4++;
             if (__jsonProps.Contains("new_state_name")) __score4++;
             if (__jsonProps.Contains("role")) __score4++;
+            var __score5 = 0;
+            if (__jsonProps.Contains("content")) __score5++;
+            if (__jsonProps.Contains("created_timestamp")) __score5++;
+            if (__jsonProps.Contains("message_id")) __score5++;
+            if (__jsonProps.Contains("role")) __score5++;
+            var __score6 = 0;
+            if (__jsonProps.Contains("content")) __score6++;
+            if (__jsonProps.Contains("created_timestamp")) __score6++;
+            if (__jsonProps.Contains("message_id")) __score6++;
+            if (__jsonProps.Contains("multimedia")) __score6++;
+            if (__jsonProps.Contains("role")) __score6++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
@@ -69,12 +80,16 @@ namespace RetellAI.JsonConverters
             if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
             if (__score3 > __bestScore) { __bestScore = __score3; __bestIndex = 3; }
             if (__score4 > __bestScore) { __bestScore = __score4; __bestIndex = 4; }
+            if (__score5 > __bestScore) { __bestScore = __score5; __bestIndex = 5; }
+            if (__score6 > __bestScore) { __bestScore = __score6; __bestIndex = 6; }
 
             global::RetellAI.MessageBase? @base = default;
             global::RetellAI.ToolCallInvocationMessageBase? toolCallInvocationBase = default;
             global::RetellAI.ToolCallResultMessageBase? toolCallResultBase = default;
             global::RetellAI.NodeTransitionMessageBase? nodeTransitionBase = default;
             global::RetellAI.StateTransitionMessageBase? stateTransitionBase = default;
+            global::RetellAI.InjectedMessageBase? injectedBase = default;
+            global::RetellAI.SmsMessageBase? smsBase = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -152,9 +167,39 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
+                else if (__bestIndex == 5)
+                {
+                    try
+                    {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.InjectedMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.InjectedMessageBase> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.InjectedMessageBase).Name}");
+                        injectedBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                }
+                else if (__bestIndex == 6)
+                {
+                    try
+                    {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsMessageBase> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsMessageBase).Name}");
+                        smsBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                }
             }
 
-            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null)
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null && injectedBase == null && smsBase == null)
             {
                 try
                 {
@@ -171,7 +216,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null)
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null && injectedBase == null && smsBase == null)
             {
                 try
                 {
@@ -188,7 +233,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null)
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null && injectedBase == null && smsBase == null)
             {
                 try
                 {
@@ -205,7 +250,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null)
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null && injectedBase == null && smsBase == null)
             {
                 try
                 {
@@ -222,7 +267,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null)
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null && injectedBase == null && smsBase == null)
             {
                 try
                 {
@@ -230,6 +275,40 @@ namespace RetellAI.JsonConverters
                     var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.StateTransitionMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.StateTransitionMessageBase> ??
                                    throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.StateTransitionMessageBase).Name}");
                     stateTransitionBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+            }
+
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null && injectedBase == null && smsBase == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.InjectedMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.InjectedMessageBase> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.InjectedMessageBase).Name}");
+                    injectedBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+            }
+
+            if (@base == null && toolCallInvocationBase == null && toolCallResultBase == null && nodeTransitionBase == null && stateTransitionBase == null && injectedBase == null && smsBase == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsMessageBase> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsMessageBase).Name}");
+                    smsBase = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
                 }
                 catch (global::System.Text.Json.JsonException)
                 {
@@ -248,7 +327,11 @@ namespace RetellAI.JsonConverters
 
                 nodeTransitionBase,
 
-                stateTransitionBase
+                stateTransitionBase,
+
+                injectedBase,
+
+                smsBase
                 );
 
             return __value;
@@ -292,6 +375,18 @@ namespace RetellAI.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.StateTransitionMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.StateTransitionMessageBase?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.StateTransitionMessageBase).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.StateTransitionBase!, typeInfo);
+            }
+            else if (value.IsInjectedBase)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.InjectedMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.InjectedMessageBase?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.InjectedMessageBase).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.InjectedBase!, typeInfo);
+            }
+            else if (value.IsSmsBase)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsMessageBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsMessageBase?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsMessageBase).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SmsBase!, typeInfo);
             }
         }
     }

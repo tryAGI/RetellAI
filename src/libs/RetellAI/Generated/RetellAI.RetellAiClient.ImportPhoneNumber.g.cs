@@ -576,7 +576,7 @@ namespace RetellAI
         /// Example: Frontdesk Number
         /// </param>
         /// <param name="inboundWebhookUrl">
-        /// If set, will send a webhook for inbound calls, where you can to override agent id, set dynamic variables and other fields specific to that call.<br/>
+        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.<br/>
         /// Example: https://example.com/inbound-webhook
         /// </param>
         /// <param name="allowedInboundCountryList">

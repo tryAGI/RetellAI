@@ -34,11 +34,19 @@ namespace RetellAI
         public int? TransferRingDurationMs { get; set; }
 
         /// <summary>
-        /// The music to play while the caller is being transferred.
+        /// The music to play while the caller is being transferred. Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("on_hold_music")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.TransferOptionWarmTransferOnHoldMusicJsonConverter))]
         public global::RetellAI.TransferOptionWarmTransferOnHoldMusic? OnHoldMusic { get; set; }
+
+        /// <summary>
+        /// Asset ID of the uploaded hold music to play. Required when `on_hold_music` is `custom`. Must reference an audio asset owned by the organization (see create-asset).<br/>
+        /// Example: asset_abc123def456
+        /// </summary>
+        /// <example>asset_abc123def456</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_on_hold_music_asset_id")]
+        public string? CustomOnHoldMusicAssetId { get; set; }
 
         /// <summary>
         /// If set, when transfer is successful, will say the handoff message to both the transferee and the agent receiving the transfer. Can leave either a static message or a dynamic one based on prompt. Set to null to disable warm handoff.
@@ -95,7 +103,11 @@ namespace RetellAI
         /// Override the ring duration for this specific transfer, in milliseconds. If not set, falls back to the agent-level `ring_duration_ms`.
         /// </param>
         /// <param name="onHoldMusic">
-        /// The music to play while the caller is being transferred.
+        /// The music to play while the caller is being transferred. Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
+        /// </param>
+        /// <param name="customOnHoldMusicAssetId">
+        /// Asset ID of the uploaded hold music to play. Required when `on_hold_music` is `custom`. Must reference an audio asset owned by the organization (see create-asset).<br/>
+        /// Example: asset_abc123def456
         /// </param>
         /// <param name="publicHandoffOption">
         /// If set, when transfer is successful, will say the handoff message to both the transferee and the agent receiving the transfer. Can leave either a static message or a dynamic one based on prompt. Set to null to disable warm handoff.
@@ -120,6 +132,7 @@ namespace RetellAI
             double? agentDetectionTimeoutMs,
             int? transferRingDurationMs,
             global::RetellAI.TransferOptionWarmTransferOnHoldMusic? onHoldMusic,
+            string? customOnHoldMusicAssetId,
             global::RetellAI.OneOf<global::RetellAI.WarmTransferPrompt, global::RetellAI.WarmTransferStaticMessage>? publicHandoffOption,
             global::RetellAI.OneOf<global::RetellAI.WarmTransferPrompt, global::RetellAI.WarmTransferStaticMessage>? privateHandoffOption,
             global::RetellAI.WarmTransferPrompt? ivrOption,
@@ -131,6 +144,7 @@ namespace RetellAI
             this.AgentDetectionTimeoutMs = agentDetectionTimeoutMs;
             this.TransferRingDurationMs = transferRingDurationMs;
             this.OnHoldMusic = onHoldMusic;
+            this.CustomOnHoldMusicAssetId = customOnHoldMusicAssetId;
             this.PublicHandoffOption = publicHandoffOption;
             this.PrivateHandoffOption = privateHandoffOption;
             this.IvrOption = ivrOption;

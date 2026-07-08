@@ -24,10 +24,11 @@ namespace RetellAI
         public global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? StartTimestamp { get; set; }
 
         /// <summary>
-        /// 
+        /// Filter by call ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_id")]
-        public global::RetellAI.StringFilter? CallId { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>))]
+        public global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? CallId { get; set; }
 
         /// <summary>
         /// 
@@ -41,6 +42,13 @@ namespace RetellAI
         [global::System.Text.Json.Serialization.JsonPropertyName("disconnection_reason")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, global::RetellAI.QaViewFilterDisconnectionReason>))]
         public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.QaViewFilterDisconnectionReason>? DisconnectionReason { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent_tag")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, object>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? AgentTag { get; set; }
 
         /// <summary>
         /// 
@@ -98,9 +106,12 @@ namespace RetellAI
         /// <param name="startTimestamp">
         /// Start timestamp filter (epoch ms).
         /// </param>
-        /// <param name="callId"></param>
+        /// <param name="callId">
+        /// Filter by call ID.
+        /// </param>
         /// <param name="score"></param>
         /// <param name="disconnectionReason"></param>
+        /// <param name="agentTag"></param>
         /// <param name="passed"></param>
         /// <param name="calibrated"></param>
         /// <param name="dateRange"></param>
@@ -110,9 +121,10 @@ namespace RetellAI
         public QaViewFilter(
             global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? agent,
             global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? startTimestamp,
-            global::RetellAI.StringFilter? callId,
+            global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? callId,
             global::RetellAI.NumberFilter? score,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.QaViewFilterDisconnectionReason>? disconnectionReason,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? agentTag,
             global::RetellAI.OneOf<bool?, global::RetellAI.BooleanFilter>? passed,
             global::RetellAI.OneOf<bool?, global::RetellAI.BooleanFilter>? calibrated,
             global::RetellAI.DateRange? dateRange)
@@ -122,6 +134,7 @@ namespace RetellAI
             this.CallId = callId;
             this.Score = score;
             this.DisconnectionReason = disconnectionReason;
+            this.AgentTag = agentTag;
             this.Passed = passed;
             this.Calibrated = calibrated;
             this.DateRange = dateRange;

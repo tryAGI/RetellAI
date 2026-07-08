@@ -19,6 +19,13 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent_tag")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, object>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? AgentTag { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disconnection_reason")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, global::RetellAI.AlertFilterDisconnectionReason>))]
         public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.AlertFilterDisconnectionReason>? DisconnectionReason { get; set; }
@@ -69,6 +76,7 @@ namespace RetellAI
         /// <param name="agent">
         /// Agent filters, connected by OR.
         /// </param>
+        /// <param name="agentTag"></param>
         /// <param name="disconnectionReason"></param>
         /// <param name="customAnalysisData">
         /// Filter by custom analysis data fields.
@@ -80,12 +88,14 @@ namespace RetellAI
 #endif
         public AlertFilter(
             global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? agent,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? agentTag,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.AlertFilterDisconnectionReason>? disconnectionReason,
             global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? customAnalysisData,
             global::RetellAI.AllOf<global::RetellAI.StringFilter, object>? cohortId,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.AlertFilterStatusCode>? statusCode)
         {
             this.Agent = agent;
+            this.AgentTag = agentTag;
             this.DisconnectionReason = disconnectionReason;
             this.CustomAnalysisData = customAnalysisData;
             this.CohortId = cohortId;

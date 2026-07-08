@@ -4,9 +4,10 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Override dynamic variables represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.<br/>
+    /// Deprecated. Use the /v2/update-live-call/{call_id} endpoint to override dynamic variables on an ongoing call. Override dynamic variables represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.<br/>
     /// Example: {"additional_discount":"15%"}
     /// </summary>
+    [global::System.Obsolete("This model marked as deprecated.")]
     public sealed partial class UpdateCallMetadataRequestOverrideDynamicVariables
     {
 

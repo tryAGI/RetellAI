@@ -23,14 +23,14 @@ public static class RetellAiToolExtensions
         return AIFunctionFactory.Create(
             async (CancellationToken cancellationToken) =>
             {
-                var agents = await client.ListAgentsAsync(
+                var agents = await client.ListAgentsV2Async(
                     limit: limit,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
-                return FormatAgentList(agents);
+                return FormatAgentList(agents.Value2?.Items ?? new List<AgentListItemResponse>());
             },
             name: "ListRetellAgents",
-            description: "Lists all Retell AI voice agents. Returns agent IDs, names, versions, and published status.");
+            description: "Lists Retell AI agents. Returns agent IDs, names, channels, and modification timestamps.");
     }
 
     /// <summary>
@@ -160,23 +160,16 @@ public static class RetellAiToolExtensions
             description: "Lists all Retell AI phone numbers. Returns phone numbers, types, nicknames, and bound agent configurations.");
     }
 
-    private static object FormatAgentList(IList<AgentResponse> agents)
+    private static object FormatAgentList(IList<AgentListItemResponse> agents)
     {
         return agents.Select(a =>
         {
-            var agentId = a.Value1?.AgentId;
-            var name = a.Value2?.AgentName;
-            var version = a.Value1?.Version;
-            var isPublished = a.Value1?.IsPublished;
-            var voiceId = a.Value2?.VoiceId;
-
             return new
             {
-                agentId,
-                name,
-                version,
-                isPublished,
-                voiceId,
+                agentId = a.AgentId,
+                name = a.AgentName,
+                channel = a.Channel.ToString(),
+                userModifiedTimestamp = a.UserModifiedTimestamp,
             };
         });
     }
