@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Arguments to match. Only provided fields will be checked
+    /// Argument values the call must have to match. Only the fields you list here are checked, and each must equal the value in the actual call. Extra fields in the call are ignored, so this is a subset match.
     /// </summary>
     public sealed partial class ToolMockInputMatchRuleVariant2Args
     {

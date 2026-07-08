@@ -4,19 +4,19 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// A fake response for one tool. During a simulation, when the LLM calls a tool whose name matches `tool_name` and whose arguments satisfy `input_match_rule`, the real tool is not run; `output` is returned to the LLM instead. This keeps runs deterministic and avoids calling live integrations. A tool call that matches no mock falls through to the real tool.
     /// </summary>
     public sealed partial class ToolMock
     {
         /// <summary>
-        /// Name of the tool to mock
+        /// The tool's function name, not the tool ID, i.e. the name the LLM uses when it calls the tool (for example `check_availability_cal`, `book_appointment_cal`, or the name you gave a custom function).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string ToolName { get; set; }
 
         /// <summary>
-        /// 
+        /// Decides which calls to the tool this mock applies to, based on the arguments the LLM passes to the tool.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("input_match_rule")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ToolMockInputMatchRuleJsonConverter))]
@@ -24,7 +24,7 @@ namespace RetellAI
         public required global::RetellAI.ToolMockInputMatchRule InputMatchRule { get; set; }
 
         /// <summary>
-        /// The output of the tool call that will be fed into the LLM. Should be a JSON string.
+        /// The tool result fed back to the LLM in place of the real tool's output. Should be a JSON string, the same shape the real tool would return.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -46,11 +46,13 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ToolMock" /> class.
         /// </summary>
         /// <param name="toolName">
-        /// Name of the tool to mock
+        /// The tool's function name, not the tool ID, i.e. the name the LLM uses when it calls the tool (for example `check_availability_cal`, `book_appointment_cal`, or the name you gave a custom function).
         /// </param>
-        /// <param name="inputMatchRule"></param>
+        /// <param name="inputMatchRule">
+        /// Decides which calls to the tool this mock applies to, based on the arguments the LLM passes to the tool.
+        /// </param>
         /// <param name="output">
-        /// The output of the tool call that will be fed into the LLM. Should be a JSON string.
+        /// The tool result fed back to the LLM in place of the real tool's output. Should be a JSON string, the same shape the real tool would return.
         /// </param>
         /// <param name="result">
         /// For tool calls like transfer_call that require a boolean result. Optional for most tools.

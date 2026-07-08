@@ -5,7 +5,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Decides which calls to the tool this mock applies to, based on the arguments the LLM passes to the tool.
     /// </summary>
     public readonly partial struct ToolMockInputMatchRule : global::System.IEquatable<ToolMockInputMatchRule>
     {

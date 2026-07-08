@@ -4,40 +4,40 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Match every call to the tool, no matter what arguments were passed. Use this for a catch-all mock.
+    /// 
     /// </summary>
-    public enum ToolMockInputMatchRuleVariant1Type
+    public enum ConductorOverageConfigVariant2Mode
     {
         /// <summary>
         /// 
         /// </summary>
-        Any,
+        Unlimited,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class ToolMockInputMatchRuleVariant1TypeExtensions
+    public static class ConductorOverageConfigVariant2ModeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this ToolMockInputMatchRuleVariant1Type value)
+        public static string ToValueString(this ConductorOverageConfigVariant2Mode value)
         {
             return value switch
             {
-                ToolMockInputMatchRuleVariant1Type.Any => "any",
+                ConductorOverageConfigVariant2Mode.Unlimited => "unlimited",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static ToolMockInputMatchRuleVariant1Type? ToEnum(string value)
+        public static ConductorOverageConfigVariant2Mode? ToEnum(string value)
         {
             return value switch
             {
-                "any" => ToolMockInputMatchRuleVariant1Type.Any,
+                "unlimited" => ConductorOverageConfigVariant2Mode.Unlimited,
                 _ => null,
             };
         }

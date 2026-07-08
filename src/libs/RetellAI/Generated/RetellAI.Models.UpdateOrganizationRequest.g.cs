@@ -51,6 +51,13 @@ namespace RetellAI
         public global::RetellAI.UpdateOrganizationRequestAutoCreditReloadConfig? AutoCreditReloadConfig { get; set; }
 
         /// <summary>
+        /// Conductor overage policy applied once the per-user/per-org daily free limits are exhausted. "off" rejects requests past the daily limit; "limited" allows up to `monthly_limit_usd` (USD) of metered overage per month; "unlimited" allows metered overage with no monthly cap.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conductor_overage")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ConductorOverageConfigJsonConverter))]
+        public global::RetellAI.ConductorOverageConfig? ConductorOverage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -80,6 +87,9 @@ namespace RetellAI
         /// <param name="autoCreditReloadConfig">
         /// Auto reload configuration. Set to null to clear existing config. Both values are in cents. `target_amount` must be strictly greater than `threshold`, and the gap must be at least 1000 cents ($10).
         /// </param>
+        /// <param name="conductorOverage">
+        /// Conductor overage policy applied once the per-user/per-org daily free limits are exhausted. "off" rejects requests past the daily limit; "limited" allows up to `monthly_limit_usd` (USD) of metered overage per month; "unlimited" allows metered overage with no monthly cap.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -90,7 +100,8 @@ namespace RetellAI
             bool? concurrencyBurstEnabled,
             bool? useStableServer,
             int? reservedInboundConcurrency,
-            global::RetellAI.UpdateOrganizationRequestAutoCreditReloadConfig? autoCreditReloadConfig)
+            global::RetellAI.UpdateOrganizationRequestAutoCreditReloadConfig? autoCreditReloadConfig,
+            global::RetellAI.ConductorOverageConfig? conductorOverage)
         {
             this.OrgName = orgName;
             this.OrgName2 = orgName2;
@@ -99,6 +110,7 @@ namespace RetellAI
             this.UseStableServer = useStableServer;
             this.ReservedInboundConcurrency = reservedInboundConcurrency;
             this.AutoCreditReloadConfig = autoCreditReloadConfig;
+            this.ConductorOverage = conductorOverage;
         }
 
         /// <summary>
