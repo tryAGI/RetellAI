@@ -142,6 +142,13 @@ namespace RetellAI
         public bool? UseStableServer { get; set; }
 
         /// <summary>
+        /// Conductor overage policy applied once the per-user/per-org daily free limits are exhausted. "off" rejects requests past the daily limit; "limited" allows up to `monthly_limit_usd` (USD) of metered overage per month; "unlimited" allows metered overage with no monthly cap.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("conductor_overage")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ConductorOverageConfigJsonConverter))]
+        public global::RetellAI.ConductorOverageConfig? ConductorOverage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -198,6 +205,9 @@ namespace RetellAI
         /// <param name="enterpriseId"></param>
         /// <param name="featureBucket"></param>
         /// <param name="useStableServer"></param>
+        /// <param name="conductorOverage">
+        /// Conductor overage policy applied once the per-user/per-org daily free limits are exhausted. "off" rejects requests past the daily limit; "limited" allows up to `monthly_limit_usd` (USD) of metered overage per month; "unlimited" allows metered overage with no monthly cap.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -222,7 +232,8 @@ namespace RetellAI
             global::RetellAI.AutoCreditReloadConfig? autoCreditReloadConfig,
             string? enterpriseId,
             object? featureBucket,
-            bool? useStableServer)
+            bool? useStableServer,
+            global::RetellAI.ConductorOverageConfig? conductorOverage)
         {
             this.OrgName = orgName;
             this.OrgName2 = orgName2;
@@ -245,6 +256,7 @@ namespace RetellAI
             this.EnterpriseId = enterpriseId;
             this.FeatureBucket = featureBucket;
             this.UseStableServer = useStableServer;
+            this.ConductorOverage = conductorOverage;
         }
 
         /// <summary>

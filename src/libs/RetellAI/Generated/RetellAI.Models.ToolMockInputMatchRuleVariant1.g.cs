@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ToolMockInputMatchRuleVariant1
     {
         /// <summary>
-        /// Match any input of the tool
+        /// Match every call to the tool, no matter what arguments were passed. Use this for a catch-all mock.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ToolMockInputMatchRuleVariant1TypeJsonConverter))]
@@ -25,7 +25,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ToolMockInputMatchRuleVariant1" /> class.
         /// </summary>
         /// <param name="type">
-        /// Match any input of the tool
+        /// Match every call to the tool, no matter what arguments were passed. Use this for a catch-all mock.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

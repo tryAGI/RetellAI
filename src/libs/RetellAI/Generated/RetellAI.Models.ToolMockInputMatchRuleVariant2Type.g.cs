@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Match only calls with specific arguments
+    /// Match only calls whose arguments contain the values listed in `args`.
     /// </summary>
     public enum ToolMockInputMatchRuleVariant2Type
     {

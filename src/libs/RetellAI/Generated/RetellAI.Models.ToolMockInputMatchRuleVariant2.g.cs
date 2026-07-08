@@ -9,14 +9,14 @@ namespace RetellAI
     public sealed partial class ToolMockInputMatchRuleVariant2
     {
         /// <summary>
-        /// Match only calls with specific arguments
+        /// Match only calls whose arguments contain the values listed in `args`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ToolMockInputMatchRuleVariant2TypeJsonConverter))]
         public global::RetellAI.ToolMockInputMatchRuleVariant2Type Type { get; set; }
 
         /// <summary>
-        /// Arguments to match. Only provided fields will be checked
+        /// Argument values the call must have to match. Only the fields you list here are checked, and each must equal the value in the actual call. Extra fields in the call are ignored, so this is a subset match.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("args")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,10 +32,10 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ToolMockInputMatchRuleVariant2" /> class.
         /// </summary>
         /// <param name="args">
-        /// Arguments to match. Only provided fields will be checked
+        /// Argument values the call must have to match. Only the fields you list here are checked, and each must equal the value in the actual call. Extra fields in the call are ignored, so this is a subset match.
         /// </param>
         /// <param name="type">
-        /// Match only calls with specific arguments
+        /// Match only calls whose arguments contain the values listed in `args`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

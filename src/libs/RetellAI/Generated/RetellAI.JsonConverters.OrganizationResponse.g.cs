@@ -40,6 +40,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("auto_credit_reload_config.threshold")) __score0++;
             if (__jsonProps.Contains("concurrency")) __score0++;
             if (__jsonProps.Contains("concurrency_burst_enabled")) __score0++;
+            if (__jsonProps.Contains("conductor_overage")) __score0++;
             if (__jsonProps.Contains("cps_config")) __score0++;
             if (__jsonProps.Contains("cps_config.custom")) __score0++;
             if (__jsonProps.Contains("cps_config.telnyx")) __score0++;

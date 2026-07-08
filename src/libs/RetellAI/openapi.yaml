@@ -5343,6 +5343,8 @@ components:
           type: object
         use_stable_server:
           type: boolean
+        conductor_overage:
+          $ref: '#/components/schemas/ConductorOverageConfig'
     OrganizationResponse:
       allOf:
       - $ref: '#/components/schemas/Organization'
@@ -6630,6 +6632,7 @@ components:
           type: integer
           description: Timestamp when the test case job was last modified (milliseconds since epoch)
     ToolMockInputMatchRule:
+      description: Decides which calls to the tool this mock applies to, based on the arguments the LLM passes to the tool.
       oneOf:
       - type: object
         required:
@@ -6639,7 +6642,7 @@ components:
             type: string
             enum:
             - any
-            description: Match any input of the tool
+            description: Match every call to the tool, no matter what arguments were passed. Use this for a catch-all mock.
       - type: object
         required:
         - type
@@ -6649,11 +6652,14 @@ components:
             type: string
             enum:
             - partial_match
-            description: Match only calls with specific arguments
+            description: Match only calls whose arguments contain the values listed in `args`.
           args:
             type: object
-            description: Arguments to match. Only provided fields will be checked
+            description: Argument values the call must have to match. Only the fields you list here are checked, and each must equal the value in the actual call. Extra fields in the call are ignored, so
+              this is a subset match.
     ToolMock:
+      description: A fake response for one tool. During a simulation, when the LLM calls a tool whose name matches `tool_name` and whose arguments satisfy `input_match_rule`, the real tool is not run; `output`
+        is returned to the LLM instead. This keeps runs deterministic and avoids calling live integrations. A tool call that matches no mock falls through to the real tool.
       type: object
       required:
       - tool_name
@@ -6662,14 +6668,15 @@ components:
       properties:
         tool_name:
           type: string
-          description: Name of the tool to mock
+          description: The tool's function name, not the tool ID, i.e. the name the LLM uses when it calls the tool (for example `check_availability_cal`, `book_appointment_cal`, or the name you gave a
+            custom function).
         input_match_rule:
           $ref: '#/components/schemas/ToolMockInputMatchRule'
-          description: Rule for matching tool calls
+          description: Decides which calls to this tool the mock applies to.
         output:
           type: string
           maxLength: 15000
-          description: The output of the tool call that will be fed into the LLM. Should be a JSON string.
+          description: The tool result fed back to the LLM in place of the real tool's output. Should be a JSON string, the same shape the real tool would return.
         result:
           type: boolean
           nullable: true
@@ -7234,6 +7241,8 @@ components:
               minimum: 1000
               maximum: 5000000
               exclusiveMinimum: true
+        conductor_overage:
+          $ref: '#/components/schemas/ConductorOverageConfig'
     SpendBudgetCustomAlertRequest:
       type: object
       required:
@@ -8216,6 +8225,45 @@ components:
           type: string
           example: You can take it from here.
           description: The static message to be used for warm handoff. Can contain dynamic variables.
+    ConductorOverageConfig:
+      description: 'Conductor overage policy applied once the per-user/per-org daily free limits are exhausted. "off" rejects requests past the daily limit; "limited" allows up to `monthly_limit_usd` (USD)
+        of metered overage per month; "unlimited" allows metered overage with no monthly cap.
+
+        '
+      oneOf:
+      - type: object
+        additionalProperties: false
+        required:
+        - mode
+        properties:
+          mode:
+            type: string
+            enum:
+            - 'off'
+      - type: object
+        additionalProperties: false
+        required:
+        - mode
+        properties:
+          mode:
+            type: string
+            enum:
+            - unlimited
+      - type: object
+        additionalProperties: false
+        required:
+        - mode
+        - monthly_limit_usd
+        properties:
+          mode:
+            type: string
+            enum:
+            - limited
+          monthly_limit_usd:
+            type: integer
+            minimum: 0
+            maximum: 10000
+            description: Max metered overage per month, in USD (max 10000).
 security:
 - api_key: []
 paths:
