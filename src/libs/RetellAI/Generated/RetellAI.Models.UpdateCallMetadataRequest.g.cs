@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace RetellAI
@@ -26,15 +24,6 @@ namespace RetellAI
         [global::System.Text.Json.Serialization.JsonPropertyName("data_storage_setting")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.UpdateCallMetadataRequestDataStorageSettingJsonConverter))]
         public global::RetellAI.UpdateCallMetadataRequestDataStorageSetting? DataStorageSetting { get; set; }
-
-        /// <summary>
-        /// Deprecated. Use the /v2/update-live-call/{call_id} endpoint to override dynamic variables on an ongoing call. Override dynamic variables represented as key-value pairs of strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to set the delta where you want to override, no need to set the entire dynamic variables object. Setting this to null will remove any existing override.<br/>
-        /// Example: {"additional_discount":"15%"}
-        /// </summary>
-        /// <example>{"additional_discount":"15%"}</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("override_dynamic_variables")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public global::System.Collections.Generic.Dictionary<string, string>? OverrideDynamicVariables { get; set; }
 
         /// <summary>
         /// Custom attributes for the call<br/>

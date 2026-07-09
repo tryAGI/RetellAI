@@ -185,6 +185,12 @@ components:
       schema:
         type: string
       description: Pagination key for fetching the next page.
+    SearchParam:
+      in: query
+      name: search
+      schema:
+        type: string
+      description: Case-insensitive substring match against the item's title.
   schemas:
     AlertMetricType:
       type: string
@@ -10226,108 +10232,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /list-agents:
-    get:
-      description: List all agents
-      operationId: listAgents
-      parameters:
-      - in: query
-        name: limit
-        schema:
-          type: integer
-          example: 50
-        required: false
-        description: A limit on the number of objects to be returned. Limit can range between 1 and 1000, and the default is 1000.
-      - in: query
-        name: pagination_key
-        schema:
-          type: string
-          example: agent_1ffdb9717444d0e77346838911
-        required: false
-        allowEmptyValue: true
-        description: The pagination key to continue fetching the next page of agents. Pagination key is represented by a agent id, pagination key and version pair is exclusive (not included in the fetched
-          page). If not set, will start from the beginning.
-      - in: query
-        name: pagination_key_version
-        schema:
-          type: integer
-          example: 0
-        required: false
-        allowEmptyValue: true
-        description: Specifies the version of the agent associated with the pagination_key. When paginating, both the pagination_key and its version must be provided to ensure consistent ordering and to
-          fetch the next page correctly.
-      - in: query
-        name: is_latest
-        schema:
-          type: boolean
-          example: true
-        required: false
-        description: If true, only return the latest version of each agent.
-      responses:
-        '200':
-          description: Successfully retrieved all agents.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AgentResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      deprecated: true
-  /list-chat-agents:
-    get:
-      description: List all chat agents
-      operationId: listChatAgents
-      parameters:
-      - in: query
-        name: limit
-        schema:
-          type: integer
-          example: 50
-        required: false
-        description: A limit on the number of objects to be returned. Limit can range between 1 and 1000, and the default is 1000.
-      - in: query
-        name: pagination_key
-        schema:
-          type: string
-          example: 16b980523634a6dc504898cda492e939
-        required: false
-        allowEmptyValue: true
-        description: The pagination key to continue fetching the next page of agents. Pagination key is represented by a agent id, pagination key and version pair is exclusive (not included in the fetched
-          page). If not set, will start from the beginning.
-      - in: query
-        name: pagination_key_version
-        schema:
-          type: integer
-          example: 0
-        required: false
-        allowEmptyValue: true
-        description: Specifies the version of the agent associated with the pagination_key. When paginating, both the pagination_key and its version must be provided to ensure consistent ordering and to
-          fetch the next page correctly.
-      - in: query
-        name: is_latest
-        schema:
-          type: boolean
-          example: true
-        required: false
-        description: If true, only return the latest version of each chat agent.
-      responses:
-        '200':
-          description: Successfully retrieved all chat agents.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ChatAgentResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      deprecated: true
   /v3/list-chats:
     post:
       description: List chats with unified cursor pagination response.
@@ -10656,66 +10560,6 @@ paths:
           $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /publish-agent/{agent_id}:
-    post:
-      description: Publish the latest version of the agent and create a new draft agent with newer version.
-      operationId: publishAgent
-      parameters:
-      - in: path
-        name: agent_id
-        schema:
-          type: string
-          minLength: 1
-          example: 16b980523634a6dc504898cda492e939
-        required: true
-        description: Unique id of the agent to be published.
-      - in: query
-        name: version
-        schema:
-          $ref: '#/components/schemas/AgentVersionReference'
-        required: false
-        description: Optional version of the API to use for this request.
-      responses:
-        '200':
-          description: Agent successfully published
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '422':
-          $ref: '#/components/responses/UnprocessableContent'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      deprecated: true
-  /publish-chat-agent/{agent_id}:
-    post:
-      description: Publish the latest version of the chat agent and create a new draft chat agent with newer version.
-      operationId: publishChatAgent
-      parameters:
-      - in: path
-        name: agent_id
-        schema:
-          type: string
-          minLength: 1
-          example: 16b980523634a6dc504898cda492e939
-        required: true
-        description: Unique id of the chat agent to be published.
-      responses:
-        '200':
-          description: Chat agent successfully published
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '404':
-          $ref: '#/components/responses/NotFound'
-        '422':
-          $ref: '#/components/responses/UnprocessableContent'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      deprecated: true
   /rerun-call-analysis/{call_id}:
     put:
       description: Rerun post-call analysis for a specific call
@@ -11580,17 +11424,6 @@ paths:
                   description: Data storage setting for this call. Overrides the agent's default setting. "everything" stores all data, "everything_except_pii" excludes PII when possible, "basic_attributes_only"
                     stores only metadata. Cannot be downgraded from more restrictive to less restrictive settings.
                   example: everything_except_pii
-                override_dynamic_variables:
-                  type: object
-                  additionalProperties:
-                    type: string
-                  example:
-                    additional_discount: 15%
-                  description: Deprecated. Use the /v2/update-live-call/{call_id} endpoint to override dynamic variables on an ongoing call. Override dynamic variables represented as key-value pairs of
-                    strings. Setting this will override or add the dynamic variables set in the agent during the call. Only need to set the delta where you want to override, no need to set the entire dynamic
-                    variables object. Setting this to null will remove any existing override.
-                  nullable: true
-                  deprecated: true
                 custom_attributes:
                   type: object
                   additionalProperties:
