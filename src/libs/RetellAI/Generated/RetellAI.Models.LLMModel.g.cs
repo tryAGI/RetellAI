@@ -84,6 +84,14 @@ namespace RetellAI
         /// 
         /// </summary>
         Gpt55,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gpt56Luna,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gpt56Terra,
     }
 
     /// <summary>
@@ -117,6 +125,8 @@ namespace RetellAI
                 LLMModel.Gpt54Mini => "gpt-5.4-mini",
                 LLMModel.Gpt54Nano => "gpt-5.4-nano",
                 LLMModel.Gpt55 => "gpt-5.5",
+                LLMModel.Gpt56Luna => "gpt-5.6-luna",
+                LLMModel.Gpt56Terra => "gpt-5.6-terra",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -146,6 +156,8 @@ namespace RetellAI
                 "gpt-5.4-mini" => LLMModel.Gpt54Mini,
                 "gpt-5.4-nano" => LLMModel.Gpt54Nano,
                 "gpt-5.5" => LLMModel.Gpt55,
+                "gpt-5.6-luna" => LLMModel.Gpt56Luna,
+                "gpt-5.6-terra" => LLMModel.Gpt56Terra,
                 _ => null,
             };
         }
