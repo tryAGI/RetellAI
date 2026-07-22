@@ -205,6 +205,10 @@ components:
       - qa_not_passed_count
       - total_call_cost
       - api_error_count
+      - chat_count
+      - chat_success_rate
+      - chat_negative_sentiment_rate
+      - total_chat_cost
     AsrProvider:
       type: string
       enum:
@@ -3664,6 +3668,10 @@ components:
           items:
             $ref: '#/components/schemas/AgentFilter'
           description: Filter by agent(s). Agent filters are connected by OR.
+        agent_tag:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by agent environment tag(s) (e.g. "prod", "staging").
         chat_id:
           $ref: '#/components/schemas/StringFilter'
           description: Filter by chat ID.
@@ -4539,6 +4547,8 @@ components:
       - gpt-5.4-mini
       - gpt-5.4-nano
       - gpt-5.5
+      - gpt-5.6-terra
+      - gpt-5.6-luna
       - claude-4.5-sonnet
       - claude-4.6-sonnet
       - claude-5-sonnet
@@ -5136,6 +5146,8 @@ components:
       - gpt-5.4-mini
       - gpt-5.4-nano
       - gpt-5.5
+      - gpt-5.6-terra
+      - gpt-5.6-luna
       - claude-4.5-sonnet
       - claude-4.6-sonnet
       - claude-5-sonnet
@@ -5943,6 +5955,8 @@ components:
         s2s_model:
           type: string
           enum:
+          - gpt-realtime-2.1
+          - gpt-realtime-2.1-mini
           - gpt-realtime-2
           - gpt-realtime-1.5
           - gpt-realtime

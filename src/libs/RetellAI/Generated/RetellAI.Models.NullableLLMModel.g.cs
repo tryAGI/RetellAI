@@ -87,6 +87,14 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        Gpt56Luna,
+        /// <summary>
+        /// 
+        /// </summary>
+        Gpt56Terra,
+        /// <summary>
+        /// 
+        /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
     }
 
@@ -121,6 +129,8 @@ namespace RetellAI
                 NullableLLMModel.Gpt54Mini => "gpt-5.4-mini",
                 NullableLLMModel.Gpt54Nano => "gpt-5.4-nano",
                 NullableLLMModel.Gpt55 => "gpt-5.5",
+                NullableLLMModel.Gpt56Luna => "gpt-5.6-luna",
+                NullableLLMModel.Gpt56Terra => "gpt-5.6-terra",
                 NullableLLMModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -151,6 +161,8 @@ namespace RetellAI
                 "gpt-5.4-mini" => NullableLLMModel.Gpt54Mini,
                 "gpt-5.4-nano" => NullableLLMModel.Gpt54Nano,
                 "gpt-5.5" => NullableLLMModel.Gpt55,
+                "gpt-5.6-luna" => NullableLLMModel.Gpt56Luna,
+                "gpt-5.6-terra" => NullableLLMModel.Gpt56Terra,
                 "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => NullableLLMModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
                 _ => null,
             };
