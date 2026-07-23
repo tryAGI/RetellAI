@@ -2960,15 +2960,15 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2Request? Type733 { get; set; }
+        public global::RetellAI.ListAgentsRequest? Type733 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3Request? Type734 { get; set; }
+        public global::RetellAI.ListChatsRequest? Type734 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3RequestSortOrder? Type735 { get; set; }
+        public global::RetellAI.ListChatsRequestSortOrder? Type735 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -3024,35 +3024,35 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2Type? Type749 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsType? Type749 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2Type? Type750 { get; set; }
+        public global::RetellAI.ListBatchTestsType? Type750 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2SortOrder? Type751 { get; set; }
+        public global::RetellAI.ListAgentsSortOrder? Type751 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2SortOrder? Type752 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsSortOrder? Type752 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2SortOrder? Type753 { get; set; }
+        public global::RetellAI.ListConversationFlowsSortOrder? Type753 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListPhoneNumbersV2SortOrder? Type754 { get; set; }
+        public global::RetellAI.ListPhoneNumbersSortOrder? Type754 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2SortOrder? Type755 { get; set; }
+        public global::RetellAI.ListRetellLLMSortOrder? Type755 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2SortOrder? Type756 { get; set; }
+        public global::RetellAI.ListExportRequestsSortOrder? Type756 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -3320,11 +3320,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListTestCaseDefinitionsV2Response2>? Type823 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListTestCaseDefinitionsResponse2>? Type823 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2Response2? Type824 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsResponse2? Type824 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -3332,35 +3332,35 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2Response3? Type826 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsResponse3? Type826 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2ResponseStatus? Type827 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsResponseStatus? Type827 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2Response4? Type828 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsResponse4? Type828 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2ResponseStatus2? Type829 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsResponseStatus2? Type829 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2Response5? Type830 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsResponse5? Type830 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2ResponseStatus3? Type831 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsResponseStatus3? Type831 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2Response6? Type832 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsResponse6? Type832 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestCaseDefinitionsV2ResponseStatus4? Type833 { get; set; }
+        public global::RetellAI.ListTestCaseDefinitionsResponseStatus4? Type833 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -3444,11 +3444,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListBatchTestsV2Response2>? Type854 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListBatchTestsResponse2>? Type854 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2Response2? Type855 { get; set; }
+        public global::RetellAI.ListBatchTestsResponse2? Type855 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -3456,35 +3456,35 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2Response3? Type857 { get; set; }
+        public global::RetellAI.ListBatchTestsResponse3? Type857 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2ResponseStatus? Type858 { get; set; }
+        public global::RetellAI.ListBatchTestsResponseStatus? Type858 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2Response4? Type859 { get; set; }
+        public global::RetellAI.ListBatchTestsResponse4? Type859 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2ResponseStatus2? Type860 { get; set; }
+        public global::RetellAI.ListBatchTestsResponseStatus2? Type860 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2Response5? Type861 { get; set; }
+        public global::RetellAI.ListBatchTestsResponse5? Type861 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2ResponseStatus3? Type862 { get; set; }
+        public global::RetellAI.ListBatchTestsResponseStatus3? Type862 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2Response6? Type863 { get; set; }
+        public global::RetellAI.ListBatchTestsResponse6? Type863 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListBatchTestsV2ResponseStatus4? Type864 { get; set; }
+        public global::RetellAI.ListBatchTestsResponseStatus4? Type864 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -3528,11 +3528,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListTestRunsV2Response2>? Type875 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListTestRunsResponse2>? Type875 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2Response2? Type876 { get; set; }
+        public global::RetellAI.ListTestRunsResponse2? Type876 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -3540,43 +3540,43 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2Response3? Type878 { get; set; }
+        public global::RetellAI.ListTestRunsResponse3? Type878 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2ResponseStatus? Type879 { get; set; }
+        public global::RetellAI.ListTestRunsResponseStatus? Type879 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2Response4? Type880 { get; set; }
+        public global::RetellAI.ListTestRunsResponse4? Type880 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2ResponseStatus2? Type881 { get; set; }
+        public global::RetellAI.ListTestRunsResponseStatus2? Type881 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2Response5? Type882 { get; set; }
+        public global::RetellAI.ListTestRunsResponse5? Type882 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2ResponseStatus3? Type883 { get; set; }
+        public global::RetellAI.ListTestRunsResponseStatus3? Type883 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2Response6? Type884 { get; set; }
+        public global::RetellAI.ListTestRunsResponse6? Type884 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2ResponseStatus4? Type885 { get; set; }
+        public global::RetellAI.ListTestRunsResponseStatus4? Type885 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2Response7? Type886 { get; set; }
+        public global::RetellAI.ListTestRunsResponse7? Type886 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListTestRunsV2ResponseStatus5? Type887 { get; set; }
+        public global::RetellAI.ListTestRunsResponseStatus5? Type887 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -4856,11 +4856,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAgentsV2Response2>? Type1207 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAgentsResponse2>? Type1207 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2Response2? Type1208 { get; set; }
+        public global::RetellAI.ListAgentsResponse2? Type1208 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -4868,43 +4868,43 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2Response3? Type1210 { get; set; }
+        public global::RetellAI.ListAgentsResponse3? Type1210 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2ResponseStatus? Type1211 { get; set; }
+        public global::RetellAI.ListAgentsResponseStatus? Type1211 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2Response4? Type1212 { get; set; }
+        public global::RetellAI.ListAgentsResponse4? Type1212 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2ResponseStatus2? Type1213 { get; set; }
+        public global::RetellAI.ListAgentsResponseStatus2? Type1213 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2Response5? Type1214 { get; set; }
+        public global::RetellAI.ListAgentsResponse5? Type1214 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2ResponseStatus3? Type1215 { get; set; }
+        public global::RetellAI.ListAgentsResponseStatus3? Type1215 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2Response6? Type1216 { get; set; }
+        public global::RetellAI.ListAgentsResponse6? Type1216 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListAgentsV2ResponseStatus4? Type1217 { get; set; }
+        public global::RetellAI.ListAgentsResponseStatus4? Type1217 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListChatsV3Response2>? Type1218 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListChatsResponse2>? Type1218 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3Response2? Type1219 { get; set; }
+        public global::RetellAI.ListChatsResponse2? Type1219 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -4912,43 +4912,43 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3Response3? Type1221 { get; set; }
+        public global::RetellAI.ListChatsResponse3? Type1221 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3ResponseStatus? Type1222 { get; set; }
+        public global::RetellAI.ListChatsResponseStatus? Type1222 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3Response4? Type1223 { get; set; }
+        public global::RetellAI.ListChatsResponse4? Type1223 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3ResponseStatus2? Type1224 { get; set; }
+        public global::RetellAI.ListChatsResponseStatus2? Type1224 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3Response5? Type1225 { get; set; }
+        public global::RetellAI.ListChatsResponse5? Type1225 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3ResponseStatus3? Type1226 { get; set; }
+        public global::RetellAI.ListChatsResponseStatus3? Type1226 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3Response6? Type1227 { get; set; }
+        public global::RetellAI.ListChatsResponse6? Type1227 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListChatsV3ResponseStatus4? Type1228 { get; set; }
+        public global::RetellAI.ListChatsResponseStatus4? Type1228 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListConversationFlowComponentsV2Response2>? Type1229 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListConversationFlowComponentsResponse2>? Type1229 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2Response2? Type1230 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsResponse2? Type1230 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -4956,43 +4956,43 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2Response3? Type1232 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsResponse3? Type1232 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2ResponseStatus? Type1233 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsResponseStatus? Type1233 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2Response4? Type1234 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsResponse4? Type1234 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2ResponseStatus2? Type1235 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsResponseStatus2? Type1235 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2Response5? Type1236 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsResponse5? Type1236 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2ResponseStatus3? Type1237 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsResponseStatus3? Type1237 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2Response6? Type1238 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsResponse6? Type1238 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowComponentsV2ResponseStatus4? Type1239 { get; set; }
+        public global::RetellAI.ListConversationFlowComponentsResponseStatus4? Type1239 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListConversationFlowsV2Response2>? Type1240 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListConversationFlowsResponse2>? Type1240 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2Response2? Type1241 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponse2? Type1241 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -5000,43 +5000,43 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2Response3? Type1243 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponse3? Type1243 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2ResponseStatus? Type1244 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponseStatus? Type1244 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2Response4? Type1245 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponse4? Type1245 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2ResponseStatus2? Type1246 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponseStatus2? Type1246 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2Response5? Type1247 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponse5? Type1247 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2ResponseStatus3? Type1248 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponseStatus3? Type1248 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2Response6? Type1249 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponse6? Type1249 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2ResponseStatus4? Type1250 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponseStatus4? Type1250 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2Response7? Type1251 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponse7? Type1251 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListConversationFlowsV2ResponseStatus5? Type1252 { get; set; }
+        public global::RetellAI.ListConversationFlowsResponseStatus5? Type1252 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -5068,11 +5068,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListPhoneNumbersV2Response2>? Type1260 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListPhoneNumbersResponse2>? Type1260 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListPhoneNumbersV2Response2? Type1261 { get; set; }
+        public global::RetellAI.ListPhoneNumbersResponse2? Type1261 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -5080,27 +5080,27 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListPhoneNumbersV2Response3? Type1263 { get; set; }
+        public global::RetellAI.ListPhoneNumbersResponse3? Type1263 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListPhoneNumbersV2ResponseStatus? Type1264 { get; set; }
+        public global::RetellAI.ListPhoneNumbersResponseStatus? Type1264 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListPhoneNumbersV2Response4? Type1265 { get; set; }
+        public global::RetellAI.ListPhoneNumbersResponse4? Type1265 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListPhoneNumbersV2ResponseStatus2? Type1266 { get; set; }
+        public global::RetellAI.ListPhoneNumbersResponseStatus2? Type1266 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListRetellLLMV2Response2>? Type1267 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListRetellLLMResponse2>? Type1267 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2Response2? Type1268 { get; set; }
+        public global::RetellAI.ListRetellLLMResponse2? Type1268 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -5108,43 +5108,43 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2Response3? Type1270 { get; set; }
+        public global::RetellAI.ListRetellLLMResponse3? Type1270 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2ResponseStatus? Type1271 { get; set; }
+        public global::RetellAI.ListRetellLLMResponseStatus? Type1271 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2Response4? Type1272 { get; set; }
+        public global::RetellAI.ListRetellLLMResponse4? Type1272 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2ResponseStatus2? Type1273 { get; set; }
+        public global::RetellAI.ListRetellLLMResponseStatus2? Type1273 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2Response5? Type1274 { get; set; }
+        public global::RetellAI.ListRetellLLMResponse5? Type1274 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2ResponseStatus3? Type1275 { get; set; }
+        public global::RetellAI.ListRetellLLMResponseStatus3? Type1275 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2Response6? Type1276 { get; set; }
+        public global::RetellAI.ListRetellLLMResponse6? Type1276 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2ResponseStatus4? Type1277 { get; set; }
+        public global::RetellAI.ListRetellLLMResponseStatus4? Type1277 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2Response7? Type1278 { get; set; }
+        public global::RetellAI.ListRetellLLMResponse7? Type1278 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListRetellLLMV2ResponseStatus5? Type1279 { get; set; }
+        public global::RetellAI.ListRetellLLMResponseStatus5? Type1279 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -5844,11 +5844,11 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListCallsV3Response2>? Type1454 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListCallsResponse2>? Type1454 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListCallsV3Response2? Type1455 { get; set; }
+        public global::RetellAI.ListCallsResponse2? Type1455 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -5856,91 +5856,91 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListCallsV3Response3? Type1457 { get; set; }
+        public global::RetellAI.ListCallsResponse3? Type1457 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListCallsV3ResponseStatus? Type1458 { get; set; }
+        public global::RetellAI.ListCallsResponseStatus? Type1458 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListCallsV3Response4? Type1459 { get; set; }
+        public global::RetellAI.ListCallsResponse4? Type1459 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListCallsV3ResponseStatus2? Type1460 { get; set; }
+        public global::RetellAI.ListCallsResponseStatus2? Type1460 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListCallsV3Response5? Type1461 { get; set; }
+        public global::RetellAI.ListCallsResponse5? Type1461 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListCallsV3ResponseStatus3? Type1462 { get; set; }
+        public global::RetellAI.ListCallsResponseStatus3? Type1462 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListCallsV3Response6? Type1463 { get; set; }
+        public global::RetellAI.ListCallsResponse6? Type1463 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListCallsV3ResponseStatus4? Type1464 { get; set; }
+        public global::RetellAI.ListCallsResponseStatus4? Type1464 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListExportRequestsV2Response2>? Type1465 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListExportRequestsResponse2>? Type1465 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2Response2? Type1466 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse2? Type1466 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.ListExportRequestsV2ResponseItem>? Type1467 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ListExportRequestsResponseItem>? Type1467 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2ResponseItem? Type1468 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseItem? Type1468 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2ResponseItemChannel? Type1469 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseItemChannel? Type1469 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2ResponseItemStatus? Type1470 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseItemStatus? Type1470 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2Response3? Type1471 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse3? Type1471 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2ResponseStatus? Type1472 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseStatus? Type1472 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2Response4? Type1473 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse4? Type1473 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2ResponseStatus2? Type1474 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseStatus2? Type1474 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2Response5? Type1475 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse5? Type1475 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2ResponseStatus3? Type1476 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseStatus3? Type1476 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2Response6? Type1477 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse6? Type1477 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::RetellAI.ListExportRequestsV2ResponseStatus4? Type1478 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseStatus4? Type1478 { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -6485,6 +6485,6 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
-        public global::System.Collections.Generic.List<global::RetellAI.ListExportRequestsV2ResponseItem>? ListType96 { get; set; }
+        public global::System.Collections.Generic.List<global::RetellAI.ListExportRequestsResponseItem>? ListType96 { get; set; }
     }
 }

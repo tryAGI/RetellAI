@@ -32,7 +32,7 @@ namespace RetellAI
         public global::System.Collections.Generic.Dictionary<string, string>? OverrideDynamicVariables { get; set; }
 
         /// <summary>
-        /// Custom attributes for the chat<br/>
+        /// Custom attributes for the chat, as key-value pairs. Each attribute must first be defined for your organization in the Retell dashboard (Chat History → Actions → Custom attributes) before it can be set here. The object key must match the id of an existing organization-level custom attribute; keys that do not match a defined attribute are ignored and will not be saved. Values must be a string, number, or boolean.<br/>
         /// Example: {"custom_attribute_1":"value1","custom_attribute_2":"value2"}
         /// </summary>
         /// <example>{"custom_attribute_1":"value1","custom_attribute_2":"value2"}</example>
@@ -60,7 +60,7 @@ namespace RetellAI
         /// Example: {"additional_discount":"15%"}
         /// </param>
         /// <param name="customAttributes">
-        /// Custom attributes for the chat<br/>
+        /// Custom attributes for the chat, as key-value pairs. Each attribute must first be defined for your organization in the Retell dashboard (Chat History → Actions → Custom attributes) before it can be set here. The object key must match the id of an existing organization-level custom attribute; keys that do not match a defined attribute are ignored and will not be saved. Values must be a string, number, or boolean.<br/>
         /// Example: {"custom_attribute_1":"value1","custom_attribute_2":"value2"}
         /// </param>
 #if NET7_0_OR_GREATER
