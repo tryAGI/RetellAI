@@ -41,7 +41,7 @@ namespace RetellAI
         public string? Nickname { get; set; }
 
         /// <summary>
-        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.<br/>
+        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that call.<br/>
         /// Example: https://example.com/inbound-webhook
         /// </summary>
         /// <example>https://example.com/inbound-webhook</example>
@@ -49,7 +49,7 @@ namespace RetellAI
         public string? InboundWebhookUrl { get; set; }
 
         /// <summary>
-        /// If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, and configure other fields specific to that chat.<br/>
+        /// If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, reject the SMS, and configure other fields specific to that chat.<br/>
         /// Example: https://example.com/inbound-sms-webhook
         /// </summary>
         /// <example>https://example.com/inbound-sms-webhook</example>
@@ -138,11 +138,11 @@ namespace RetellAI
         /// Example: Frontdesk Number
         /// </param>
         /// <param name="inboundWebhookUrl">
-        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.<br/>
+        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that call.<br/>
         /// Example: https://example.com/inbound-webhook
         /// </param>
         /// <param name="inboundSmsWebhookUrl">
-        /// If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, and configure other fields specific to that chat.<br/>
+        /// If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, reject the SMS, and configure other fields specific to that chat.<br/>
         /// Example: https://example.com/inbound-sms-webhook
         /// </param>
         /// <param name="allowedInboundCountryList">

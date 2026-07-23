@@ -5618,12 +5618,12 @@ components:
         inbound_webhook_url:
           type: string
           example: https://example.com/inbound-webhook
-          description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.
+          description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that call.
           nullable: true
         inbound_sms_webhook_url:
           type: string
           example: https://example.com/inbound-sms-webhook
-          description: If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, and configure other fields specific to that chat.
+          description: If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, reject the SMS, and configure other fields specific to that chat.
           nullable: true
         last_modification_timestamp:
           type: integer
@@ -8535,7 +8535,7 @@ paths:
   /v2/list-test-case-definitions:
     get:
       description: List test case definitions with pagination
-      operationId: listTestCaseDefinitionsV2
+      operationId: listTestCaseDefinitions
       parameters:
       - in: query
         name: type
@@ -8645,7 +8645,7 @@ paths:
   /v2/list-batch-tests:
     get:
       description: List batch test jobs with pagination
-      operationId: listBatchTestsV2
+      operationId: listBatchTests
       parameters:
       - in: query
         name: type
@@ -8726,7 +8726,7 @@ paths:
   /v2/list-test-runs/{test_case_batch_job_id}:
     get:
       description: List test case jobs (test runs) for a batch test job with pagination
-      operationId: listTestRunsV2
+      operationId: listTestRuns
       parameters:
       - in: path
         name: test_case_batch_job_id
@@ -9122,7 +9122,8 @@ paths:
                 inbound_webhook_url:
                   type: string
                   example: https://example.com/inbound-webhook
-                  description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.
+                  description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that
+                    call.
                   nullable: true
                 allowed_inbound_country_list:
                   type: array
@@ -10168,7 +10169,8 @@ paths:
                 inbound_webhook_url:
                   type: string
                   example: https://example.com/inbound-webhook
-                  description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.
+                  description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that
+                    call.
                   nullable: true
                 allowed_inbound_country_list:
                   type: array
@@ -10210,7 +10212,7 @@ paths:
   /v2/list-agents:
     post:
       description: List unique agents with pagination.
-      operationId: listAgentsV2
+      operationId: listAgents
       parameters:
       - $ref: '#/components/parameters/LimitParam'
       - $ref: '#/components/parameters/SortOrderParam'
@@ -10249,7 +10251,7 @@ paths:
   /v3/list-chats:
     post:
       description: List chats with unified cursor pagination response.
-      operationId: listChatsV3
+      operationId: listChats
       requestBody:
         required: false
         content:
@@ -10317,7 +10319,7 @@ paths:
   /v2/list-conversation-flow-components:
     get:
       description: List shared conversation flow components with pagination
-      operationId: listConversationFlowComponentsV2
+      operationId: listConversationFlowComponents
       parameters:
       - $ref: '#/components/parameters/LimitParam'
       - $ref: '#/components/parameters/SortOrderParam'
@@ -10347,7 +10349,7 @@ paths:
   /v2/list-conversation-flows:
     get:
       description: List conversation flows with pagination
-      operationId: listConversationFlowsV2
+      operationId: listConversationFlows
       parameters:
       - $ref: '#/components/parameters/LimitParam'
       - $ref: '#/components/parameters/SortOrderParam'
@@ -10398,7 +10400,7 @@ paths:
   /v2/list-phone-numbers:
     get:
       description: List phone numbers with pagination
-      operationId: listPhoneNumbersV2
+      operationId: listPhoneNumbers
       parameters:
       - $ref: '#/components/parameters/LimitParam'
       - $ref: '#/components/parameters/SortOrderParam'
@@ -10424,7 +10426,7 @@ paths:
   /v2/list-retell-llms:
     get:
       description: List Retell LLM Response Engines with pagination
-      operationId: listRetellLLMV2
+      operationId: listRetellLLM
       parameters:
       - $ref: '#/components/parameters/LimitParam'
       - $ref: '#/components/parameters/SortOrderParam'
@@ -10776,7 +10778,9 @@ paths:
                   example:
                     custom_attribute_1: value1
                     custom_attribute_2: value2
-                  description: Custom attributes for the chat
+                  description: Custom attributes for the chat, as key-value pairs. Each attribute must first be defined for your organization in the Retell dashboard (Chat History → Actions → Custom attributes)
+                    before it can be set here. The object key must match the id of an existing organization-level custom attribute; keys that do not match a defined attribute are ignored and will not be
+                    saved. Values must be a string, number, or boolean.
               additionalProperties: false
             example:
               metadata:
@@ -10935,12 +10939,14 @@ paths:
                 inbound_webhook_url:
                   type: string
                   example: https://example.com/inbound-webhook
-                  description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, and configure other fields specific to that call.
+                  description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that
+                    call.
                   nullable: true
                 inbound_sms_webhook_url:
                   type: string
                   example: https://example.com/inbound-sms-webhook
-                  description: If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, and configure other fields specific to that chat.
+                  description: If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, reject the SMS, and configure other fields specific to that
+                    chat.
                   nullable: true
                 allowed_inbound_country_list:
                   type: array
@@ -11249,7 +11255,7 @@ paths:
   /v3/list-calls:
     post:
       description: List calls with unified cursor pagination response.
-      operationId: listCallsV3
+      operationId: listCalls
       requestBody:
         required: false
         content:
@@ -11284,7 +11290,7 @@ paths:
   /v2/list-export-requests:
     get:
       description: List export requests with pagination
-      operationId: listExportRequestsV2
+      operationId: listExportRequests
       parameters:
       - $ref: '#/components/parameters/LimitParam'
       - $ref: '#/components/parameters/SortOrderParam'
@@ -11448,7 +11454,9 @@ paths:
                   example:
                     custom_attribute_1: value1
                     custom_attribute_2: value2
-                  description: Custom attributes for the call
+                  description: Custom attributes for the call, as key-value pairs. Each attribute must first be defined for your organization in the Retell dashboard (Call History → Actions → Custom attributes)
+                    before it can be set here. The object key must match the id of an existing organization-level custom attribute; keys that do not match a defined attribute are ignored and will not be
+                    saved. Values must be a string, number, or boolean.
               additionalProperties: false
             example:
               metadata:

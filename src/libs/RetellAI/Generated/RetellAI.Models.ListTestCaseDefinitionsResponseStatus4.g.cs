@@ -1,0 +1,45 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public enum ListTestCaseDefinitionsResponseStatus4
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        Error,
+    }
+
+    /// <summary>
+    /// Enum extensions to do fast conversions without the reflection.
+    /// </summary>
+    public static class ListTestCaseDefinitionsResponseStatus4Extensions
+    {
+        /// <summary>
+        /// Converts an enum to a string.
+        /// </summary>
+        public static string ToValueString(this ListTestCaseDefinitionsResponseStatus4 value)
+        {
+            return value switch
+            {
+                ListTestCaseDefinitionsResponseStatus4.Error => "error",
+                _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
+            };
+        }
+        /// <summary>
+        /// Converts an string to a enum.
+        /// </summary>
+        public static ListTestCaseDefinitionsResponseStatus4? ToEnum(string value)
+        {
+            return value switch
+            {
+                "error" => ListTestCaseDefinitionsResponseStatus4.Error,
+                _ => null,
+            };
+        }
+    }
+}
