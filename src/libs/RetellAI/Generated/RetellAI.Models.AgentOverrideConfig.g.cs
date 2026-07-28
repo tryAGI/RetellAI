@@ -33,6 +33,18 @@ namespace RetellAI
         public bool? AllowDtmfInterruption { get; set; }
 
         /// <summary>
+        /// If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this node only.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reminder_trigger_ms")]
+        public double? ReminderTriggerMs { get; set; }
+
+        /// <summary>
+        /// If set, overrides the agent-level reminder_max_count for this node only. Set to 0 to disable reminders for this node.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reminder_max_count")]
+        public int? ReminderMaxCount { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,6 +59,12 @@ namespace RetellAI
         /// <param name="allowDtmfInterruption">
         /// If set, overrides the agent-level allow_dtmf_interruption for this node only.
         /// </param>
+        /// <param name="reminderTriggerMs">
+        /// If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this node only.
+        /// </param>
+        /// <param name="reminderMaxCount">
+        /// If set, overrides the agent-level reminder_max_count for this node only. Set to 0 to disable reminders for this node.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -54,12 +72,16 @@ namespace RetellAI
             double? interruptionSensitivity,
             double? responsiveness,
             double? voiceSpeed,
-            bool? allowDtmfInterruption)
+            bool? allowDtmfInterruption,
+            double? reminderTriggerMs,
+            int? reminderMaxCount)
         {
             this.InterruptionSensitivity = interruptionSensitivity;
             this.Responsiveness = responsiveness;
             this.VoiceSpeed = voiceSpeed;
             this.AllowDtmfInterruption = allowDtmfInterruption;
+            this.ReminderTriggerMs = reminderTriggerMs;
+            this.ReminderMaxCount = reminderMaxCount;
         }
 
         /// <summary>
