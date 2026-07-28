@@ -2711,6 +2711,16 @@ components:
           type: boolean
           nullable: true
           description: If set, overrides the agent-level allow_dtmf_interruption for this node only.
+        reminder_trigger_ms:
+          type: number
+          minimum: 1
+          nullable: true
+          description: If set (in milliseconds), overrides the agent-level reminder_trigger_ms for this node only.
+        reminder_max_count:
+          type: integer
+          minimum: 0
+          nullable: true
+          description: If set, overrides the agent-level reminder_max_count for this node only. Set to 0 to disable reminders for this node.
     ConversationFlowOverride:
       type: object
       description: Override properties for conversation flow configuration in agent override requests.
@@ -5821,6 +5831,42 @@ components:
             $ref: '#/components/schemas/DisconnectionReason'
           deprecated: true
           description: 'Deprecated: use ''disconnection_reason'' instead.'
+    CohortQaListArgs:
+      type: object
+      description: Sorting and pagination options for listing a cohort's call QAs.
+      properties:
+        sort_key:
+          type: string
+          enum:
+          - call_id
+          - duration_ms
+          - e2e_latency_p50
+          - score
+          - interruption_count
+          - llm_hallucination_rate
+          - kb_recall
+          - transition_accuracy
+          - user_positive_sentiment_rate
+          - user_negative_sentiment_rate
+          - wer
+          - tool_call_accuracy
+          - natural_tonality_rate
+          description: Field to sort by. Defaults to "score".
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          description: Maximum number of records to return. Defaults to 1000.
+        order:
+          type: string
+          enum:
+          - asc
+          - desc
+          description: Sort order.
+        skip:
+          type: integer
+          minimum: 0
+          description: Number of records to skip for pagination.
     RAGAccuracy:
       type: object
       required:
@@ -8284,6 +8330,39 @@ components:
             minimum: 0
             maximum: 10000
             description: Max metered overage per month, in USD (max 10000).
+    ChartGroupItem:
+      oneOf:
+      - type: object
+        required:
+        - type
+        properties:
+          type:
+            type: string
+            enum:
+            - time
+            - agent_id
+            - batch_call_id
+            - call_successful
+            - call_status
+            - user_sentiment
+            - disconnection_reason
+            - direction
+            - chat_successful
+            - chat_status
+            - call_type
+            - agent_version
+      - type: object
+        required:
+        - type
+        - field
+        properties:
+          type:
+            type: string
+            enum:
+            - custom_analysis_data
+            - custom_attribute
+          field:
+            type: string
 security:
 - api_key: []
 paths:
@@ -10226,6 +10305,12 @@ paths:
               properties:
                 filter_criteria:
                   $ref: '#/components/schemas/AgentListFilter'
+            example:
+              filter_criteria:
+                channel:
+                  type: string
+                  op: eq
+                  value: voice
       responses:
         '200':
           description: Successfully retrieved agents.

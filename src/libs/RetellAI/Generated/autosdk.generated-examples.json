@@ -2,6 +2,17 @@
   "Examples": [
     {
       "Order": 1,
+      "Title": "List unique agents with pagination.",
+      "Slug": "listagents",
+      "Description": "List unique agents with pagination.",
+      "Language": "csharp",
+      "Code": "using var client = new RetellAiClient(apiKey);\n\nvar request = global::System.Text.Json.JsonSerializer.Deserialize\u003Cglobal::RetellAI.ListAgentsRequest\u003E(\n    @\u0022{\n  \u0022\u0022filter_criteria\u0022\u0022: {\n    \u0022\u0022channel\u0022\u0022: {\n      \u0022\u0022type\u0022\u0022: \u0022\u0022string\u0022\u0022,\n      \u0022\u0022op\u0022\u0022: \u0022\u0022eq\u0022\u0022,\n      \u0022\u0022value\u0022\u0022: \u0022\u0022voice\u0022\u0022\n    }\n  }\n}\u0022)!;\n\nvar response = await client.ListAgentsAsync(\n    request: request\n);",
+      "Format": "sdk",
+      "OperationId": "listAgents",
+      "Setup": "This example assumes \u0060using RetellAI;\u0060 is in scope and \u0060apiKey\u0060 contains the required credential."
+    },
+    {
+      "Order": 2,
       "Title": "Update an existing agent\u0027s latest draft version",
       "Slug": "updateagent",
       "Description": "Update an existing agent\u0027s latest draft version",
@@ -12,7 +23,7 @@
       "Setup": null
     },
     {
-      "Order": 2,
+      "Order": 3,
       "Title": "Update metadata and sensitive data storage settings for an existing call.",
       "Slug": "updatecallmetadata",
       "Description": "Update metadata and sensitive data storage settings for an existing call.",
@@ -23,7 +34,7 @@
       "Setup": null
     },
     {
-      "Order": 3,
+      "Order": 4,
       "Title": "Update metadata and sensitive data storage settings for an existing chat.",
       "Slug": "updatechatmetadata",
       "Description": "Update metadata and sensitive data storage settings for an existing chat.",
@@ -34,7 +45,7 @@
       "Setup": null
     },
     {
-      "Order": 4,
+      "Order": 5,
       "Title": "Update an ongoing call at runtime. Supports overriding dynamic variables, metadata, and the data storage setting on the running call, and controlling the live agent (inject context, trigger a response). These overrides take effect immediately on the live call; metadata and data storage setting changes are also persisted to the call record. To update a call that is no longer ongoing, use /v2/update-call/{call_id}.",
       "Slug": "updatelivecall",
       "Description": "Update an ongoing call at runtime. Supports overriding dynamic variables, metadata, and the data storage setting on the running call, and controlling the live agent (inject context, trigger a response). These overrides take effect immediately on the live call; metadata and data storage setting changes are also persisted to the call record. To update a call that is no longer ongoing, use /v2/update-call/{call_id}.",
@@ -45,7 +56,7 @@
       "Setup": null
     },
     {
-      "Order": 5,
+      "Order": 6,
       "Title": "Update agent bound to a purchased phone number",
       "Slug": "updatephonenumber",
       "Description": "Update agent bound to a purchased phone number",
@@ -56,7 +67,7 @@
       "Setup": null
     },
     {
-      "Order": 6,
+      "Order": 7,
       "Title": "Update an existing Retell LLM Response Engine",
       "Slug": "updateretellllm",
       "Description": "Update an existing Retell LLM Response Engine",

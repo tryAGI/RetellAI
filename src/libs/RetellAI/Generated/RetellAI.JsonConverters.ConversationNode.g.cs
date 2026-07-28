@@ -38,6 +38,8 @@ namespace RetellAI.JsonConverters
             var __score1 = 0;
             if (__jsonProps.Contains("allow_dtmf_interruption")) __score1++;
             if (__jsonProps.Contains("interruption_sensitivity")) __score1++;
+            if (__jsonProps.Contains("reminder_max_count")) __score1++;
+            if (__jsonProps.Contains("reminder_trigger_ms")) __score1++;
             if (__jsonProps.Contains("responsiveness")) __score1++;
             if (__jsonProps.Contains("voice_speed")) __score1++;
             var __score2 = 0;
