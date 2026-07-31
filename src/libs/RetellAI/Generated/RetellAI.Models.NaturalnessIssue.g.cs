@@ -11,35 +11,27 @@ namespace RetellAI
         /// <summary>
         /// 
         /// </summary>
+        AudioArtifacts,
+        /// <summary>
+        /// 
+        /// </summary>
+        Mispronunciation,
+        /// <summary>
+        /// 
+        /// </summary>
         Other,
         /// <summary>
         /// 
         /// </summary>
-        RoboticTone,
+        PoorArticulation,
         /// <summary>
         /// 
         /// </summary>
-        TooFast,
+        UnnaturalIntonation,
         /// <summary>
         /// 
         /// </summary>
-        TooLoud,
-        /// <summary>
-        /// 
-        /// </summary>
-        TooQuiet,
-        /// <summary>
-        /// 
-        /// </summary>
-        TooSlow,
-        /// <summary>
-        /// 
-        /// </summary>
-        UnclearPronunciation,
-        /// <summary>
-        /// 
-        /// </summary>
-        UnnaturalPauses,
+        UnnaturalPacing,
     }
 
     /// <summary>
@@ -54,14 +46,12 @@ namespace RetellAI
         {
             return value switch
             {
+                NaturalnessIssue.AudioArtifacts => "AudioArtifacts",
+                NaturalnessIssue.Mispronunciation => "Mispronunciation",
                 NaturalnessIssue.Other => "Other",
-                NaturalnessIssue.RoboticTone => "Robotic Tone",
-                NaturalnessIssue.TooFast => "Too Fast",
-                NaturalnessIssue.TooLoud => "Too Loud",
-                NaturalnessIssue.TooQuiet => "Too Quiet",
-                NaturalnessIssue.TooSlow => "Too Slow",
-                NaturalnessIssue.UnclearPronunciation => "Unclear Pronunciation",
-                NaturalnessIssue.UnnaturalPauses => "Unnatural Pauses",
+                NaturalnessIssue.PoorArticulation => "PoorArticulation",
+                NaturalnessIssue.UnnaturalIntonation => "UnnaturalIntonation",
+                NaturalnessIssue.UnnaturalPacing => "UnnaturalPacing",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -72,14 +62,12 @@ namespace RetellAI
         {
             return value switch
             {
+                "AudioArtifacts" => NaturalnessIssue.AudioArtifacts,
+                "Mispronunciation" => NaturalnessIssue.Mispronunciation,
                 "Other" => NaturalnessIssue.Other,
-                "Robotic Tone" => NaturalnessIssue.RoboticTone,
-                "Too Fast" => NaturalnessIssue.TooFast,
-                "Too Loud" => NaturalnessIssue.TooLoud,
-                "Too Quiet" => NaturalnessIssue.TooQuiet,
-                "Too Slow" => NaturalnessIssue.TooSlow,
-                "Unclear Pronunciation" => NaturalnessIssue.UnclearPronunciation,
-                "Unnatural Pauses" => NaturalnessIssue.UnnaturalPauses,
+                "PoorArticulation" => NaturalnessIssue.PoorArticulation,
+                "UnnaturalIntonation" => NaturalnessIssue.UnnaturalIntonation,
+                "UnnaturalPacing" => NaturalnessIssue.UnnaturalPacing,
                 _ => null,
             };
         }

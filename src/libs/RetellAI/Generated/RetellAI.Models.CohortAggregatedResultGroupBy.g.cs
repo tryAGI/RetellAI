@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Granularity used to bucket the time series.
     /// </summary>
     public enum CohortAggregatedResultGroupBy
     {

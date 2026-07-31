@@ -9,14 +9,14 @@ namespace RetellAI
     public sealed partial class Breakdown
     {
         /// <summary>
-        /// 
+        /// Name of the category.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metric_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string MetricName { get; set; }
 
         /// <summary>
-        /// 
+        /// Number of occurrences in the category.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metric_value")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -31,8 +31,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="Breakdown" /> class.
         /// </summary>
-        /// <param name="metricName"></param>
-        /// <param name="metricValue"></param>
+        /// <param name="metricName">
+        /// Name of the category.
+        /// </param>
+        /// <param name="metricValue">
+        /// Number of occurrences in the category.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

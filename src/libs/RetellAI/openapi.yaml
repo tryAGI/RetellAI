@@ -551,6 +551,7 @@ components:
           description: Unix timestamp of last modification.
     AgentNaturalnessAnalysis:
       type: object
+      description: Analysis of how natural the agent's speech sounds per utterance.
       required:
       - details
       - natural_utterance_count
@@ -560,8 +561,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/UtteranceNaturalnessIssues'
+          description: Per-utterance naturalness issue details.
         natural_utterance_count:
           type: number
+          description: Number of utterances judged to sound natural.
         total_utterance_count:
           type: number
     AgentWeight:
@@ -1337,14 +1340,20 @@ components:
       properties:
         time_averages:
           type: array
+          description: Contains one average per entry in timepoints, in the same order. null indicates no qualifying observations for that metric.
           items:
             type: number
+            nullable: true
         overall_average:
           type: number
+          nullable: true
+          description: Weighted average across all time buckets.
         numerator:
           type: number
+          description: Aggregate numerator used to calculate overall_average.
         denominator:
           type: number
+          description: Aggregate denominator used to calculate overall_average.
     BatchCallResponse:
       type: object
       required:
@@ -1508,10 +1517,12 @@ components:
       properties:
         overall_breakdown:
           type: array
+          description: Aggregate counts for each category across all time buckets.
           items:
             $ref: '#/components/schemas/Breakdown'
         time_breakdown:
           type: array
+          description: Each element contains the category breakdown for the corresponding entry in timepoints, in the same order.
           items:
             type: array
             items:
@@ -1524,8 +1535,10 @@ components:
       properties:
         metric_name:
           type: string
+          description: Name of the category.
         metric_value:
           type: number
+          description: Number of occurrences in the category.
     BridgeTransferNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'
@@ -1641,19 +1654,20 @@ components:
           description: All the latency data points in the call, measured in milliseconds.
     CallQA:
       type: object
+      description: QA result for a single call within a cohort.
       required:
       - call_qa_id
       - call_id
       - cohort_id
       - cohort_version
-      - db_version
-      - deprecated
       - score
       - passed
-      - wer
+      - failed_metrics
+      - passed_metrics
+      - questions
+      - question_resolutions
       - call_start_time_ms
-      - created_at
-      - updated_at
+      - analyzed
       - calibrated
       properties:
         call_qa_id:
@@ -1664,49 +1678,48 @@ components:
           type: string
         cohort_version:
           type: number
-        db_version:
-          type: number
-        deprecated:
-          type: boolean
+          description: Cohort version this QA was created against.
         score:
           type: number
+          description: Sum of score weights for passed metrics, ranging from 0 to 100.
         passed:
           type: boolean
-        wer:
-          $ref: '#/components/schemas/WER'
+          description: Whether the call met the cohort's success criteria.
         interruptions:
           $ref: '#/components/schemas/InterruptionAnalysis'
+          description: Analysis of instances where the agent interrupted the user.
         user_sentiments:
           $ref: '#/components/schemas/SentimentAnalysis'
+          description: Per-utterance user sentiment analysis.
         agent_sentiments:
           $ref: '#/components/schemas/SentimentAnalysis'
-        agent_naturalness_issues:
+          description: Per-utterance agent sentiment analysis.
+        agent_naturalness_analysis:
           $ref: '#/components/schemas/AgentNaturalnessAnalysis'
-        mistranscribed_important_entities:
-          $ref: '#/components/schemas/MistranscribedImportantEntitiesAnalysis'
+          description: Analysis of how natural the agent's speech sounds.
+        transcription_error_analysis:
+          $ref: '#/components/schemas/TranscriptionErrorAnalysis'
+          description: Mistranscribed important entities and overall word error rate for the call.
         rag_analysis:
           $ref: '#/components/schemas/RAGAnalysis'
-        tool_call_invocation_analysis:
-          $ref: '#/components/schemas/ToolCallInvocationAnalysis'
+          description: Knowledge base retrieval accuracy and recall analysis.
+        custom_tool_analysis:
+          $ref: '#/components/schemas/ToolCallMetricAnalysis'
+          description: Latency and success outcomes for custom tool calls.
         tool_call_analysis:
           $ref: '#/components/schemas/ToolCallAccuracyAnalysis'
+          description: Analysis of whether tool calls were made accurately.
         node_transition_analysis:
           $ref: '#/components/schemas/NodeTransitionAnalysis'
         llm_hallucination_analysis:
           $ref: '#/components/schemas/HallucinationAnalysis'
+          description: Analysis of agent hallucinations.
         transfer_call_analysis:
-          type: object
-          properties:
-            latency:
-              type: array
-              items:
-                type: number
-            successful:
-              type: array
-              items:
-                type: boolean
+          $ref: '#/components/schemas/ToolCallMetricAnalysis'
+          description: Latency and success outcomes for transfer calls.
         failure_reason:
           type: string
+          description: Summary of why the call did not pass the cohort's success criteria.
         failed_metrics:
           type: array
           items:
@@ -1715,20 +1728,33 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/MetricResult'
-        recommendations:
+        questions:
           type: array
           items:
             type: string
+          description: Questions asked by the user during the call.
+        question_resolutions:
+          type: array
+          items:
+            type: boolean
+          description: Whether each corresponding question in `questions` was resolved.
         notes:
           type: string
+          description: Notes added by the user during calibration.
+        question_clusters:
+          type: array
+          items:
+            type: string
+          description: Cluster IDs the call's questions were grouped into.
         call_start_time_ms:
           type: number
-        created_at:
-          type: number
-        updated_at:
-          type: number
+          description: Start time of the call (epoch milliseconds).
+        analyzed:
+          type: boolean
+          description: Whether QA analysis has completed for this call.
         calibrated:
           type: boolean
+          description: True if a human reviewed or overrode the automatic scoring; false until a review occurs.
     CallTimeWindow:
       type: object
       description: Allowed calling windows in a specific timezone. Each window is a half-open interval [startMin, endMin) in minutes since 00:00 local time. Cross-midnight windows are NOT allowed (must
@@ -1801,13 +1827,12 @@ components:
       - name
     ChCallQA:
       type: object
+      description: Condensed QA summary returned when listing a cohort's calls.
       required:
       - call_qa_id
       - call_id
       - cohort_id
       - call_start_time_ms
-      - db_version
-      - deprecated
       - score
       - passed
       - calibrated
@@ -1820,72 +1845,63 @@ components:
           type: string
         call_start_time_ms:
           type: number
-        db_version:
-          type: number
-        deprecated:
-          type: boolean
+          description: Call start time in epoch milliseconds.
         score:
           type: number
+          description: Weighted QA score from 0 to 100.
         passed:
           type: boolean
-        word_count:
-          type: number
-        number_deletions:
-          type: number
-        number_insertions:
-          type: number
-        number_substitutions:
-          type: number
+          description: Whether the call met the cohort's success criteria.
         interruption_count:
           type: number
-        llm_inference_count:
+          nullable: true
+          description: Number of times the agent interrupted the user.
+        llm_hallucination_rate:
           type: number
-        llm_hallucination_count:
+          nullable: true
+          description: Fraction of evaluated agent utterances with hallucinations.
+        kb_recall:
           type: number
-        user_positive_sentiment_count:
+          nullable: true
+          description: Fraction of evaluated retrievals with full chunk recall.
+        transition_accuracy:
           type: number
-        user_neutral_sentiment_count:
+          nullable: true
+          description: Fraction of evaluated node transitions that were correct.
+        user_positive_sentiment_rate:
           type: number
-        user_negative_sentiment_count:
+          nullable: true
+          description: Fraction of evaluated user utterances with positive sentiment.
+        user_negative_sentiment_rate:
           type: number
-        agent_positive_sentiment_count:
+          nullable: true
+          description: Fraction of evaluated user utterances with negative sentiment.
+        wer:
           type: number
-        agent_neutral_sentiment_count:
+          nullable: true
+          description: Word error rate of the call transcript.
+        tool_call_accuracy:
           type: number
-        agent_negative_sentiment_count:
+          nullable: true
+          description: Fraction of evaluated tool-call utterances that were accurate.
+        natural_tonality_rate:
           type: number
-        agent_natural_utterance_count:
-          type: number
-        rag_success_count:
-          type: number
-        rag_total_count:
-          type: number
-        transfer_call_success_count:
-          type: number
-        transfer_call_total_count:
-          type: number
-        transfer_call_avg_latency:
-          type: number
-        tool_call_average_latency:
-          type: number
-        tool_call_success_count:
-          type: number
-        tool_call_total_count:
-          type: number
-        tool_call_accurate_utterance_count:
-          type: number
-        tool_call_total_utterance_count:
-          type: number
-        transition_success_count:
-          type: number
-        transition_total_count:
-          type: number
-        agent_total_utterance_count:
-          type: number
-        user_total_utterance_count:
-          type: number
+          nullable: true
+          description: Fraction of evaluated agent utterances judged natural.
         calibrated:
           type: boolean
+          description: Whether the QA was reviewed by a human.
+    PreviewCallQA:
+      description: Condensed call QA summary with the call duration.
+      allOf:
+      - $ref: '#/components/schemas/ChCallQA'
+      - type: object
+        required:
+        - duration_ms
+        properties:
+          duration_ms:
+            type: number
+            description: Call duration in milliseconds.
     ChatAgentRequest:
       type: object
       properties:
@@ -2248,14 +2264,15 @@ components:
             type: number
     CohortAggregatedResult:
       type: object
+      description: Aggregated QA metrics across all scored calls in a cohort, bucketed into a time series.
       required:
+      - total_calls
       - calls_analysed
       - timepoints
       - group_by
       - avg_score
       - call_resolution_rate
       - top_questions
-      - top_recommendations
       - latency
       - llm_hallucination_analysis
       - rag_analysis
@@ -2271,14 +2288,17 @@ components:
       - custom_tool_call_latency
       - custom_tool_call_success_rate
       properties:
+        total_calls:
+          type: number
+          description: Total calls sampled into the cohort over the time series, including those not yet analyzed.
         calls_analysed:
-          type: array
-          items:
-            type: number
+          type: number
+          description: Number of calls that have completed QA analysis.
         timepoints:
           type: array
           items:
             type: number
+          description: Start timestamp of each time bucket in the series, in the requested timezone.
         group_by:
           type: string
           enum:
@@ -2286,12 +2306,16 @@ components:
           - day
           - week
           - month
+          description: Granularity used to bucket the time series.
         avg_score:
           $ref: '#/components/schemas/AverageMetric'
+          description: Average QA score over the time series.
         call_resolution_rate:
           $ref: '#/components/schemas/AverageMetric'
+          description: Pass rate over the time series and in aggregate — the fraction of analyzed calls that met the cohort's success criteria.
         top_questions:
           type: array
+          description: Most common question clusters and their resolution counts.
           items:
             type: object
             required:
@@ -2312,46 +2336,48 @@ components:
               count:
                 type: number
                 description: Total count of occurrences
-        top_recommendations:
-          type: array
-          items:
-            type: object
-            required:
-            - text
-            - count
-            properties:
-              text:
-                type: string
-              count:
-                type: number
         latency:
           $ref: '#/components/schemas/AverageMetric'
+          description: End-to-end agent response latency in milliseconds.
         llm_hallucination_analysis:
           $ref: '#/components/schemas/AverageMetric'
+          description: Agent hallucination rate.
         rag_analysis:
           $ref: '#/components/schemas/AverageMetric'
+          description: Knowledge base retrieval recall rate.
         user_sentiment:
           $ref: '#/components/schemas/BreakdownMetric'
+          description: Breakdown of user sentiment (positive/neutral/negative).
         agent_sentiment:
           $ref: '#/components/schemas/BreakdownMetric'
+          description: Breakdown of agent sentiment (positive/neutral/negative).
         transfer_success_rate:
           $ref: '#/components/schemas/AverageMetric'
+          description: Success rate of transfer calls.
         transfer_wait_time:
           $ref: '#/components/schemas/AverageMetric'
+          description: Average wait time before a transfer connects, in milliseconds.
         wer:
           $ref: '#/components/schemas/AverageMetric'
+          description: Word error rate of the transcription.
         avg_interruption:
           $ref: '#/components/schemas/AverageMetric'
+          description: Average number of agent interruptions per call.
         tool_call_accuracy:
           $ref: '#/components/schemas/AverageMetric'
+          description: Rate at which tool calls were made accurately.
         transition_accuracy:
           $ref: '#/components/schemas/AverageMetric'
+          description: Rate at which conversation flow node transitions were correct.
         natural_tonality_rate:
           $ref: '#/components/schemas/AverageMetric'
+          description: Rate at which the agent's speech sounded natural.
         custom_tool_call_latency:
           $ref: '#/components/schemas/AverageMetric'
+          description: Average latency of custom tool calls, in milliseconds.
         custom_tool_call_success_rate:
           $ref: '#/components/schemas/AverageMetric'
+          description: Success rate of custom tool calls.
     CohortFilter:
       type: object
       description: Call filter criteria to create QA.
@@ -2438,6 +2464,7 @@ components:
           description: 'Deprecated: use ''disconnection_reason'' instead.'
     Cohort:
       type: object
+      description: A QA cohort - a saved set of call filters, sampling, and scoring criteria used to evaluate a group of calls.
       required:
       - cohort_id
       - name
@@ -2445,25 +2472,36 @@ components:
       - sampling_percentage
       - scoring_criteria
       - successful_criteria
+      - total_calls
+      - resolved_calls
+      - analyzed_calls
+      - evaluation_mode
       properties:
         cohort_id:
           type: string
+          description: Unique identifier for the cohort.
         name:
           type: string
           maxLength: 100
+          description: User-provided name of the cohort.
         cohort_filter:
           $ref: '#/components/schemas/CohortFilter'
+          description: Call filter criteria that determine which calls are included in the cohort.
         sampling_percentage:
           type: number
           minimum: 0.01
           maximum: 100
+          description: Percentage of matching calls sampled for QA.
         sampling_weekly_max:
           type: number
           minimum: 0
+          description: Optional cap on the number of calls sampled per week.
         scoring_criteria:
           $ref: '#/components/schemas/ScoringCriteria'
+          description: Metrics and custom conditions used to score each call.
         successful_criteria:
           type: object
+          description: Score threshold a call must meet to be marked successful.
           required:
           - value
           - op
@@ -2472,17 +2510,35 @@ components:
               type: string
               enum:
               - number
-              description: Type of the filter
             value:
               type: number
               minimum: 0
               maximum: 100
+              description: Score threshold value.
             op:
               type: string
               enum:
               - gt
-              - gte
               - ge
+              description: Comparison operator applied against `value`.
+        total_calls:
+          type: number
+          description: Total number of calls matched into the cohort.
+        resolved_calls:
+          type: number
+          description: Number of analyzed calls that passed the cohort's success criteria.
+        analyzed_calls:
+          type: number
+          description: Number of calls that have completed QA analysis.
+        evaluation_mode:
+          type: string
+          enum:
+          - default
+          - weighted
+          description: Scoring mode - "default" weighs metrics equally, "weighted" uses each metric's configured score weight.
+        paused:
+          type: boolean
+          description: Whether QA processing for this cohort is paused.
     ComponentNode:
       allOf:
       - $ref: '#/components/schemas/NodeBaseCommon'
@@ -4207,6 +4263,7 @@ components:
           description: Don't transition to this node
     HallucinationAnalysis:
       type: object
+      description: Analysis of agent hallucinations across utterances.
       required:
       - details
       - hallucination_utterance_count
@@ -4218,27 +4275,13 @@ components:
             $ref: '#/components/schemas/UtteranceHallucination'
         hallucination_utterance_count:
           type: number
+          description: Number of utterances containing a hallucination.
         total_utterance_count:
           type: number
-    Hallucination:
-      type: object
-      required:
-      - type
-      - reason
-      properties:
-        type:
-          type: string
-          enum:
-          - Fabrication
-          - Contradiction
-          - Confusion
-        reason:
-          type: string
-        low_severity:
-          type: boolean
-          description: true = minor hallucination, false/undefined = major hallucination (defaults to major for backward compatibility)
+          description: Total number of agent utterances evaluated.
     InterruptionAnalysis:
       type: object
+      description: Analysis of the agent interrupting the user.
       required:
       - details
       - interruption_count
@@ -4247,8 +4290,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Duration'
+          description: Time spans where the agent interrupted the user.
         interruption_count:
           type: number
+          description: Total number of times the agent interrupted the user.
     KBConfig:
       type: object
       properties:
@@ -4851,24 +4896,70 @@ components:
           - type: number
           - type: boolean
           - type: string
+        reason:
+          type: string
+          description: Explanation of why the metric passed or failed. Set for custom-condition metrics.
         vote:
           type: boolean
           description: An optional vote based on the metric result.
-    MistranscribedImportantEntitiesAnalysis:
+    TranscriptionErrorAnalysis:
       type: object
+      description: Transcription error analysis for a call, covering mistranscribed important entities and the overall word error rate.
       required:
       - details
       - mie_utterance_count
       - total_utterance_count
+      - overall_wer
       properties:
         details:
           type: array
           items:
-            $ref: '#/components/schemas/UtteranceMistranscribedImportantEntities'
+            $ref: '#/components/schemas/UtteranceTranscriptionError'
         mie_utterance_count:
           type: number
+          description: Number of utterances containing a mistranscribed important entity.
         total_utterance_count:
           type: number
+        overall_wer:
+          $ref: '#/components/schemas/WER'
+          description: Word error rate aggregated across the whole call.
+    UtteranceTranscriptionError:
+      type: object
+      description: Transcription error details for a single utterance.
+      required:
+      - duration
+      - mie_details
+      - wer
+      properties:
+        duration:
+          $ref: '#/components/schemas/Duration'
+          description: Time span of the utterance within the call.
+        mie_details:
+          type: array
+          description: Mistranscribed important entities found in the utterance.
+          items:
+            type: object
+            required:
+            - original_transcript
+            - corrected_transcript
+            - start_sec
+            - end_sec
+            properties:
+              original_transcript:
+                type: string
+                description: The original (mistranscribed) transcript segment.
+              corrected_transcript:
+                type: string
+                description: The corrected transcript segment.
+              start_sec:
+                type: number
+                description: Start time of the segment in seconds.
+              end_sec:
+                type: number
+                description: End time of the segment in seconds.
+        wer:
+          $ref: '#/components/schemas/WER'
+          description: Word error rate for this utterance.
     ModelChoiceCascading:
       type: object
       required:
@@ -4892,13 +4983,11 @@ components:
     NaturalnessIssue:
       type: string
       enum:
-      - Too Loud
-      - Too Quiet
-      - Too Fast
-      - Too Slow
-      - Unclear Pronunciation
-      - Unnatural Pauses
-      - Robotic Tone
+      - AudioArtifacts
+      - Mispronunciation
+      - PoorArticulation
+      - UnnaturalPacing
+      - UnnaturalIntonation
       - Other
     NodeBase:
       allOf:
@@ -5038,25 +5127,32 @@ components:
             description: Unique identifier for the tool
     NodeTransitionAnalysis:
       type: object
+      description: Conversation flow node transition accuracy analysis.
       required:
       - details
-      - accuracy
       - correct_count
       - total_count
       properties:
         details:
           type: array
+          description: Per-transition audit results.
           items:
             type: object
+            required:
+            - time_sec
+            - accurate
             properties:
               time_sec:
                 type: number
+                description: Time of the transition relative to the call start.
               accurate:
                 type: boolean
               correct_node_id:
                 type: number
-        accuracy:
-          type: number
+                description: ID of the node that should have been selected.
+              reasoning:
+                type: string
+                description: Explanation of why the transition was inaccurate.
         correct_count:
           type: number
         total_count:
@@ -5541,6 +5637,7 @@ components:
           description: Comparison operator for filtering
         value:
           type: number
+          description: Threshold compared against the performance metric.
         score_weight:
           type: number
           minimum: 1
@@ -5869,28 +5966,43 @@ components:
           description: Number of records to skip for pagination.
     RAGAccuracy:
       type: object
+      description: Knowledge base retrieval accuracy for one agent response.
       required:
-      - response_id
       - false_positive
       - false_negative
       - true_positive
-      - true_negative
       properties:
         response_id:
           type: number
         false_positive:
           type: number
+          description: Number of chunks retrieved during the call but deemed irrelevant.
         false_negative:
           type: number
+          description: Number of relevant chunks that were not retrieved during the call.
         true_positive:
           type: number
-        true_negative:
-          type: number
+          description: Number of chunks retrieved during the call and deemed relevant.
+        missed_chunks:
+          type: array
+          description: Relevant knowledge base chunks that were not retrieved.
+          items:
+            type: object
+            required:
+            - chunk_id
+            properties:
+              chunk_id:
+                type: string
+              chunk:
+                type: string
+                description: Content of the missed chunk.
     RAGAnalysis:
       type: object
+      description: Knowledge base retrieval accuracy and recall analysis.
       required:
       - details
       - rag_accurate_count
+      - rag_full_recall_count
       - rag_total_count
       properties:
         details:
@@ -5899,8 +6011,13 @@ components:
             $ref: '#/components/schemas/RAGAccuracy'
         rag_accurate_count:
           type: number
+          description: Number of responses with accurate retrieval.
+        rag_full_recall_count:
+          type: number
+          description: Number of responses with full chunk recall.
         rag_total_count:
           type: number
+          description: Total number of retrieval events evaluated.
     ResponseEngineConversationFlow:
       type: object
       required:
@@ -6147,6 +6264,7 @@ components:
       properties:
         custom_conditions:
           type: array
+          description: Natural-language conditions evaluated against each call.
           items:
             type: object
             required:
@@ -6155,6 +6273,7 @@ components:
             properties:
               description:
                 type: string
+                description: Natural-language condition to evaluate.
               score_weight:
                 type: number
                 minimum: 1
@@ -6240,6 +6359,7 @@ components:
             description: If true, skip E.164 validation for this phone number (same semantics as transfer_call ignore_e164_validation).
     SentimentAnalysis:
       type: object
+      description: Per-utterance sentiment analysis with aggregate counts.
       required:
       - details
       - positive_count
@@ -6248,6 +6368,7 @@ components:
       properties:
         details:
           type: array
+          description: Per-utterance sentiment results, identified by either a time range or response ID.
           items:
             oneOf:
             - type: object
@@ -6256,20 +6377,23 @@ components:
                   $ref: '#/components/schemas/Duration'
                 sentiment:
                   type: string
+                  description: Sentiment detected during the time range.
                   enum:
-                  - positive
-                  - neutral
-                  - negative
+                  - Positive
+                  - Neutral
+                  - Negative
             - type: object
               properties:
                 response_id:
                   type: number
+                  description: Identifier of the response associated with the evaluated utterance.
                 sentiment:
                   type: string
+                  description: Sentiment detected for the response.
                   enum:
-                  - positive
-                  - neutral
-                  - negative
+                  - Positive
+                  - Neutral
+                  - Negative
         positive_count:
           type: number
         neutral_count:
@@ -6763,6 +6887,7 @@ components:
           description: End time in minutes since local midnight.
     ToolCallAccuracyAnalysis:
       type: object
+      description: Analysis of whether tool calls were made accurately.
       required:
       - details
       - tool_call_accurate_utterance_count
@@ -6776,19 +6901,23 @@ components:
           type: number
         total_utterance_count:
           type: number
-    ToolCallInvocationAnalysis:
+    ToolCallMetricAnalysis:
       type: object
+      description: Per-invocation latency and success outcomes for a group of tool calls (e.g. custom tools or transfer calls).
       required:
-      - tool_call_average_latency
-      - tool_call_success_count
-      - tool_call_total_count
+      - successful
+      - latency
       properties:
-        tool_call_average_latency:
-          type: number
-        tool_call_success_count:
-          type: number
-        tool_call_total_count:
-          type: number
+        successful:
+          type: array
+          items:
+            type: boolean
+          description: Whether each tool call succeeded, in invocation order.
+        latency:
+          type: array
+          items:
+            type: number
+          description: Latency of each tool call in milliseconds, in invocation order.
     ToolCallInvocationMessageBase:
       type: object
       required:
@@ -7377,33 +7506,25 @@ components:
           description: Referrer URL
     UtteranceHallucination:
       type: object
+      description: Hallucination details for a single agent utterance.
       required:
       - response_id
-      - hallucinations
       properties:
         response_id:
           type: number
-        hallucinations:
-          type: array
-          items:
-            $ref: '#/components/schemas/Hallucination'
-    UtteranceMistranscribedImportantEntities:
-      type: object
-      required:
-      - response_id
-      - details
-      properties:
-        response_id:
-          type: number
-        details:
-          type: array
-          items:
-            type: object
-            properties:
-              original_transcript:
-                type: string
-              corrected_transcript:
-                type: string
+        hallucination_type:
+          type: string
+          enum:
+          - Fabrication
+          - Contradiction
+          - Confusion
+          description: Type of hallucination detected.
+        explanation:
+          type: string
+          description: Explanation of the hallucination.
+        low_severity:
+          type: boolean
+          description: True for minor hallucinations; false or omitted for major ones.
     UtteranceNaturalnessIssues:
       type: object
       required:
@@ -7416,6 +7537,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/NaturalnessIssue'
+        reason:
+          type: string
+          description: Explanation of the naturalness issues found in the utterance.
     UtteranceOrToolCall:
       oneOf:
       - $ref: '#/components/schemas/Utterance'
@@ -7447,6 +7571,7 @@ components:
           type: array
           items:
             type: string
+          description: Tool calls made with incorrect arguments.
     Utterance:
       type: object
       required:
@@ -8330,6 +8455,11 @@ components:
             minimum: 0
             maximum: 10000
             description: Max metered overage per month, in USD (max 10000).
+    DashboardSource:
+      type: string
+      enum:
+      - call
+      - chat
     ChartGroupItem:
       oneOf:
       - type: object
@@ -10663,7 +10793,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /rerun-call-analysis/{call_id}:
     put:
-      description: Rerun post-call analysis for a specific call
+      description: Rerun post-call analysis for a specific call. This operation incurs charges.
       operationId: rerunCallAnalysis
       parameters:
       - in: path
@@ -10696,7 +10826,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /rerun-chat-analysis/{chat_id}:
     put:
-      description: Rerun post-chat analysis for a specific chat
+      description: Rerun post-chat analysis for a specific chat. This operation incurs charges.
       operationId: rerunChatAnalysis
       parameters:
       - in: path

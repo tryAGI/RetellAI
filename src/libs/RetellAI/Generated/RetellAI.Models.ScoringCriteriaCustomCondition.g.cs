@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ScoringCriteriaCustomCondition
     {
         /// <summary>
-        /// 
+        /// Natural-language condition to evaluate.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -31,7 +31,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ScoringCriteriaCustomCondition" /> class.
         /// </summary>
-        /// <param name="description"></param>
+        /// <param name="description">
+        /// Natural-language condition to evaluate.
+        /// </param>
         /// <param name="scoreWeight"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

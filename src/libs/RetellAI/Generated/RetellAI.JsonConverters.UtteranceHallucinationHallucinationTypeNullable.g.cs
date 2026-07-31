@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class HallucinationTypeJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.HallucinationType>
+    public sealed class UtteranceHallucinationHallucinationTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.UtteranceHallucinationHallucinationType?>
     {
         /// <inheritdoc />
-        public override global::RetellAI.HallucinationType Read(
+        public override global::RetellAI.UtteranceHallucinationHallucinationType? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.HallucinationTypeExtensions.ToEnum(stringValue) ?? default;
+                        return global::RetellAI.UtteranceHallucinationHallucinationTypeExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.HallucinationType)numValue;
+                    return (global::RetellAI.UtteranceHallucinationHallucinationType)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.HallucinationType);
+                    return default(global::RetellAI.UtteranceHallucinationHallucinationType?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.HallucinationType value,
+            global::RetellAI.UtteranceHallucinationHallucinationType? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::RetellAI.HallucinationTypeExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::RetellAI.UtteranceHallucinationHallucinationTypeExtensions.ToValueString(value.Value));
+            }
         }
     }
 }

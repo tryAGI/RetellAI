@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Comparison operator applied against `value`.
     /// </summary>
     public enum CohortSuccessfulCriteriaOp
     {
@@ -16,10 +16,6 @@ namespace RetellAI
         /// 
         /// </summary>
         Gt,
-        /// <summary>
-        /// 
-        /// </summary>
-        Gte,
     }
 
     /// <summary>
@@ -36,7 +32,6 @@ namespace RetellAI
             {
                 CohortSuccessfulCriteriaOp.Ge => "ge",
                 CohortSuccessfulCriteriaOp.Gt => "gt",
-                CohortSuccessfulCriteriaOp.Gte => "gte",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -49,7 +44,6 @@ namespace RetellAI
             {
                 "ge" => CohortSuccessfulCriteriaOp.Ge,
                 "gt" => CohortSuccessfulCriteriaOp.Gt,
-                "gte" => CohortSuccessfulCriteriaOp.Gte,
                 _ => null,
             };
         }
