@@ -9,14 +9,14 @@ namespace RetellAI
     public sealed partial class BreakdownMetric
     {
         /// <summary>
-        /// 
+        /// Aggregate counts for each category across all time buckets.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("overall_breakdown")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::RetellAI.Breakdown> OverallBreakdown { get; set; }
 
         /// <summary>
-        /// 
+        /// Each element contains the category breakdown for the corresponding entry in timepoints, in the same order.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("time_breakdown")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -31,8 +31,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="BreakdownMetric" /> class.
         /// </summary>
-        /// <param name="overallBreakdown"></param>
-        /// <param name="timeBreakdown"></param>
+        /// <param name="overallBreakdown">
+        /// Aggregate counts for each category across all time buckets.
+        /// </param>
+        /// <param name="timeBreakdown">
+        /// Each element contains the category breakdown for the corresponding entry in timepoints, in the same order.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

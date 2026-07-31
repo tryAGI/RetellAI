@@ -4,26 +4,33 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Aggregated QA metrics across all scored calls in a cohort, bucketed into a time series.
     /// </summary>
     public sealed partial class CohortAggregatedResult
     {
         /// <summary>
-        /// 
+        /// Total calls sampled into the cohort over the time series, including those not yet analyzed.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("total_calls")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required double TotalCalls { get; set; }
+
+        /// <summary>
+        /// Number of calls that have completed QA analysis.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("calls_analysed")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<double> CallsAnalysed { get; set; }
+        public required double CallsAnalysed { get; set; }
 
         /// <summary>
-        /// 
+        /// Start timestamp of each time bucket in the series, in the requested timezone.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timepoints")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<double> Timepoints { get; set; }
 
         /// <summary>
-        /// 
+        /// Granularity used to bucket the time series.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group_by")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.CohortAggregatedResultGroupByJsonConverter))]
@@ -45,18 +52,11 @@ namespace RetellAI
         public required global::RetellAI.AverageMetric CallResolutionRate { get; set; }
 
         /// <summary>
-        /// 
+        /// Most common question clusters and their resolution counts.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("top_questions")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::RetellAI.CohortAggregatedResultTopQuestion> TopQuestions { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("top_recommendations")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::RetellAI.CohortAggregatedResultTopRecommendation> TopRecommendations { get; set; }
 
         /// <summary>
         /// 
@@ -165,13 +165,23 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="CohortAggregatedResult" /> class.
         /// </summary>
-        /// <param name="callsAnalysed"></param>
-        /// <param name="timepoints"></param>
-        /// <param name="groupBy"></param>
+        /// <param name="totalCalls">
+        /// Total calls sampled into the cohort over the time series, including those not yet analyzed.
+        /// </param>
+        /// <param name="callsAnalysed">
+        /// Number of calls that have completed QA analysis.
+        /// </param>
+        /// <param name="timepoints">
+        /// Start timestamp of each time bucket in the series, in the requested timezone.
+        /// </param>
+        /// <param name="groupBy">
+        /// Granularity used to bucket the time series.
+        /// </param>
         /// <param name="avgScore"></param>
         /// <param name="callResolutionRate"></param>
-        /// <param name="topQuestions"></param>
-        /// <param name="topRecommendations"></param>
+        /// <param name="topQuestions">
+        /// Most common question clusters and their resolution counts.
+        /// </param>
         /// <param name="latency"></param>
         /// <param name="llmHallucinationAnalysis"></param>
         /// <param name="ragAnalysis"></param>
@@ -190,13 +200,13 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CohortAggregatedResult(
-            global::System.Collections.Generic.IList<double> callsAnalysed,
+            double totalCalls,
+            double callsAnalysed,
             global::System.Collections.Generic.IList<double> timepoints,
             global::RetellAI.CohortAggregatedResultGroupBy groupBy,
             global::RetellAI.AverageMetric avgScore,
             global::RetellAI.AverageMetric callResolutionRate,
             global::System.Collections.Generic.IList<global::RetellAI.CohortAggregatedResultTopQuestion> topQuestions,
-            global::System.Collections.Generic.IList<global::RetellAI.CohortAggregatedResultTopRecommendation> topRecommendations,
             global::RetellAI.AverageMetric latency,
             global::RetellAI.AverageMetric llmHallucinationAnalysis,
             global::RetellAI.AverageMetric ragAnalysis,
@@ -212,13 +222,13 @@ namespace RetellAI
             global::RetellAI.AverageMetric customToolCallLatency,
             global::RetellAI.AverageMetric customToolCallSuccessRate)
         {
-            this.CallsAnalysed = callsAnalysed ?? throw new global::System.ArgumentNullException(nameof(callsAnalysed));
+            this.TotalCalls = totalCalls;
+            this.CallsAnalysed = callsAnalysed;
             this.Timepoints = timepoints ?? throw new global::System.ArgumentNullException(nameof(timepoints));
             this.GroupBy = groupBy;
             this.AvgScore = avgScore ?? throw new global::System.ArgumentNullException(nameof(avgScore));
             this.CallResolutionRate = callResolutionRate ?? throw new global::System.ArgumentNullException(nameof(callResolutionRate));
             this.TopQuestions = topQuestions ?? throw new global::System.ArgumentNullException(nameof(topQuestions));
-            this.TopRecommendations = topRecommendations ?? throw new global::System.ArgumentNullException(nameof(topRecommendations));
             this.Latency = latency ?? throw new global::System.ArgumentNullException(nameof(latency));
             this.LlmHallucinationAnalysis = llmHallucinationAnalysis ?? throw new global::System.ArgumentNullException(nameof(llmHallucinationAnalysis));
             this.RagAnalysis = ragAnalysis ?? throw new global::System.ArgumentNullException(nameof(ragAnalysis));

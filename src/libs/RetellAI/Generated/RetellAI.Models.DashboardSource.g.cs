@@ -6,38 +6,44 @@ namespace RetellAI
     /// <summary>
     /// 
     /// </summary>
-    public enum CohortSuccessfulCriteriaType
+    public enum DashboardSource
     {
         /// <summary>
         /// 
         /// </summary>
-        Number,
+        Call,
+        /// <summary>
+        /// 
+        /// </summary>
+        Chat,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class CohortSuccessfulCriteriaTypeExtensions
+    public static class DashboardSourceExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this CohortSuccessfulCriteriaType value)
+        public static string ToValueString(this DashboardSource value)
         {
             return value switch
             {
-                CohortSuccessfulCriteriaType.Number => "number",
+                DashboardSource.Call => "call",
+                DashboardSource.Chat => "chat",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static CohortSuccessfulCriteriaType? ToEnum(string value)
+        public static DashboardSource? ToEnum(string value)
         {
             return value switch
             {
-                "number" => CohortSuccessfulCriteriaType.Number,
+                "call" => DashboardSource.Call,
+                "chat" => DashboardSource.Chat,
                 _ => null,
             };
         }

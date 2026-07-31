@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class HallucinationTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.HallucinationType?>
+    public sealed class CohortEvaluationModeJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.CohortEvaluationMode>
     {
         /// <inheritdoc />
-        public override global::RetellAI.HallucinationType? Read(
+        public override global::RetellAI.CohortEvaluationMode Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.HallucinationTypeExtensions.ToEnum(stringValue);
+                        return global::RetellAI.CohortEvaluationModeExtensions.ToEnum(stringValue) ?? default;
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.HallucinationType)numValue;
+                    return (global::RetellAI.CohortEvaluationMode)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.HallucinationType?);
+                    return default(global::RetellAI.CohortEvaluationMode);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.HallucinationType? value,
+            global::RetellAI.CohortEvaluationMode value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::RetellAI.HallucinationTypeExtensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::RetellAI.CohortEvaluationModeExtensions.ToValueString(value));
         }
     }
 }

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Sentiment detected during the time range.
     /// </summary>
     public enum SentimentAnalysisDetailVariant1Sentiment
     {
@@ -34,9 +34,9 @@ namespace RetellAI
         {
             return value switch
             {
-                SentimentAnalysisDetailVariant1Sentiment.Negative => "negative",
-                SentimentAnalysisDetailVariant1Sentiment.Neutral => "neutral",
-                SentimentAnalysisDetailVariant1Sentiment.Positive => "positive",
+                SentimentAnalysisDetailVariant1Sentiment.Negative => "Negative",
+                SentimentAnalysisDetailVariant1Sentiment.Neutral => "Neutral",
+                SentimentAnalysisDetailVariant1Sentiment.Positive => "Positive",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -47,9 +47,9 @@ namespace RetellAI
         {
             return value switch
             {
-                "negative" => SentimentAnalysisDetailVariant1Sentiment.Negative,
-                "neutral" => SentimentAnalysisDetailVariant1Sentiment.Neutral,
-                "positive" => SentimentAnalysisDetailVariant1Sentiment.Positive,
+                "Negative" => SentimentAnalysisDetailVariant1Sentiment.Negative,
+                "Neutral" => SentimentAnalysisDetailVariant1Sentiment.Neutral,
+                "Positive" => SentimentAnalysisDetailVariant1Sentiment.Positive,
                 _ => null,
             };
         }

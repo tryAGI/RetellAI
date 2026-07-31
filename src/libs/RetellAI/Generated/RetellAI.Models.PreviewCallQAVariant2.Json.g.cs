@@ -2,7 +2,7 @@
 
 namespace RetellAI
 {
-    public sealed partial class CohortAggregatedResultTopRecommendation
+    public sealed partial class PreviewCallQAVariant2
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -47,20 +47,20 @@ namespace RetellAI
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::RetellAI.CohortAggregatedResultTopRecommendation? FromJson(
+        public static global::RetellAI.PreviewCallQAVariant2? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::RetellAI.CohortAggregatedResultTopRecommendation),
-                jsonSerializerContext) as global::RetellAI.CohortAggregatedResultTopRecommendation;
+                typeof(global::RetellAI.PreviewCallQAVariant2),
+                jsonSerializerContext) as global::RetellAI.PreviewCallQAVariant2;
         }
 
         /// <summary>
         /// Deserializes a JSON string using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::RetellAI.CohortAggregatedResultTopRecommendation? FromJson(
+        public static global::RetellAI.PreviewCallQAVariant2? FromJson(
             string json)
         {
             return FromJson(
@@ -75,7 +75,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::RetellAI.CohortAggregatedResultTopRecommendation? FromJson(
+        public static global::RetellAI.PreviewCallQAVariant2? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -86,7 +86,7 @@ namespace RetellAI
                     global::RetellAI.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::RetellAI.CohortAggregatedResultTopRecommendation>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::RetellAI.PreviewCallQAVariant2>(
                 json,
                 jsonSerializerOptions);
         }
@@ -94,20 +94,20 @@ namespace RetellAI
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::RetellAI.CohortAggregatedResultTopRecommendation?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::RetellAI.PreviewCallQAVariant2?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::RetellAI.CohortAggregatedResultTopRecommendation),
-                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.CohortAggregatedResultTopRecommendation;
+                typeof(global::RetellAI.PreviewCallQAVariant2),
+                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.PreviewCallQAVariant2;
         }
 
         /// <summary>
         /// Deserializes a JSON stream using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.CohortAggregatedResultTopRecommendation?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.PreviewCallQAVariant2?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream)
         {
             return FromJsonStreamAsync(
@@ -122,7 +122,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.CohortAggregatedResultTopRecommendation?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.PreviewCallQAVariant2?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -133,7 +133,7 @@ namespace RetellAI
                     global::RetellAI.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::RetellAI.CohortAggregatedResultTopRecommendation?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::RetellAI.PreviewCallQAVariant2?>(
                 jsonStream,
                 jsonSerializerOptions);
         }

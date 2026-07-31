@@ -4,9 +4,9 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Type of hallucination detected.
     /// </summary>
-    public enum HallucinationType
+    public enum UtteranceHallucinationHallucinationType
     {
         /// <summary>
         /// 
@@ -25,31 +25,31 @@ namespace RetellAI
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class HallucinationTypeExtensions
+    public static class UtteranceHallucinationHallucinationTypeExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this HallucinationType value)
+        public static string ToValueString(this UtteranceHallucinationHallucinationType value)
         {
             return value switch
             {
-                HallucinationType.Confusion => "Confusion",
-                HallucinationType.Contradiction => "Contradiction",
-                HallucinationType.Fabrication => "Fabrication",
+                UtteranceHallucinationHallucinationType.Confusion => "Confusion",
+                UtteranceHallucinationHallucinationType.Contradiction => "Contradiction",
+                UtteranceHallucinationHallucinationType.Fabrication => "Fabrication",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static HallucinationType? ToEnum(string value)
+        public static UtteranceHallucinationHallucinationType? ToEnum(string value)
         {
             return value switch
             {
-                "Confusion" => HallucinationType.Confusion,
-                "Contradiction" => HallucinationType.Contradiction,
-                "Fabrication" => HallucinationType.Fabrication,
+                "Confusion" => UtteranceHallucinationHallucinationType.Confusion,
+                "Contradiction" => UtteranceHallucinationHallucinationType.Contradiction,
+                "Fabrication" => UtteranceHallucinationHallucinationType.Fabrication,
                 _ => null,
             };
         }

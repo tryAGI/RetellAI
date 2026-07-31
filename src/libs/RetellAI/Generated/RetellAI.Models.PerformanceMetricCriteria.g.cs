@@ -24,7 +24,7 @@ namespace RetellAI
         public required global::RetellAI.PerformanceMetricCriteriaOp Op { get; set; }
 
         /// <summary>
-        /// 
+        /// Threshold compared against the performance metric.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -52,7 +52,9 @@ namespace RetellAI
         /// <param name="op">
         /// Comparison operator for filtering
         /// </param>
-        /// <param name="value"></param>
+        /// <param name="value">
+        /// Threshold compared against the performance metric.
+        /// </param>
         /// <param name="scoreWeight">
         /// Weight for scoring (1-100)
         /// </param>

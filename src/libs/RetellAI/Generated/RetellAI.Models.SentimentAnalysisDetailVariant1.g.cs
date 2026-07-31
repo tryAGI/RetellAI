@@ -15,7 +15,7 @@ namespace RetellAI
         public global::RetellAI.Duration? Duration { get; set; }
 
         /// <summary>
-        /// 
+        /// Sentiment detected during the time range.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sentiment")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.SentimentAnalysisDetailVariant1SentimentJsonConverter))]
@@ -31,7 +31,9 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="SentimentAnalysisDetailVariant1" /> class.
         /// </summary>
         /// <param name="duration"></param>
-        /// <param name="sentiment"></param>
+        /// <param name="sentiment">
+        /// Sentiment detected during the time range.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

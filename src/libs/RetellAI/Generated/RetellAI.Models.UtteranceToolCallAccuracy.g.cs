@@ -30,7 +30,7 @@ namespace RetellAI
         public required global::System.Collections.Generic.IList<string> IncorrectlyAddedToolCalls { get; set; }
 
         /// <summary>
-        /// 
+        /// Tool calls made with incorrect arguments.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("wrong_arguments_tool_calls")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -48,7 +48,9 @@ namespace RetellAI
         /// <param name="responseId"></param>
         /// <param name="missedToolCalls"></param>
         /// <param name="incorrectlyAddedToolCalls"></param>
-        /// <param name="wrongArgumentsToolCalls"></param>
+        /// <param name="wrongArgumentsToolCalls">
+        /// Tool calls made with incorrect arguments.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

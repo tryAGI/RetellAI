@@ -4,26 +4,26 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Score threshold a call must meet to be marked successful.
     /// </summary>
     public sealed partial class CohortSuccessfulCriteria
     {
         /// <summary>
-        /// Type of the filter
+        /// 
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.CohortSuccessfulCriteriaTypeJsonConverter))]
         public global::RetellAI.CohortSuccessfulCriteriaType? Type { get; set; }
 
         /// <summary>
-        /// 
+        /// Score threshold value.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double Value { get; set; }
 
         /// <summary>
-        /// 
+        /// Comparison operator applied against `value`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("op")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.CohortSuccessfulCriteriaOpJsonConverter))]
@@ -39,11 +39,13 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="CohortSuccessfulCriteria" /> class.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="op"></param>
-        /// <param name="type">
-        /// Type of the filter
+        /// <param name="value">
+        /// Score threshold value.
         /// </param>
+        /// <param name="op">
+        /// Comparison operator applied against `value`.
+        /// </param>
+        /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

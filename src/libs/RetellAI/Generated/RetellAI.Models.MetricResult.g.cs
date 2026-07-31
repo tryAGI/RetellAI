@@ -24,6 +24,12 @@ namespace RetellAI
         public global::RetellAI.OneOf<double?, bool?, string>? Value { get; set; }
 
         /// <summary>
+        /// Explanation of why the metric passed or failed. Set for custom-condition metrics.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("reason")]
+        public string? Reason { get; set; }
+
+        /// <summary>
         /// An optional vote based on the metric result.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("vote")]
@@ -44,6 +50,9 @@ namespace RetellAI
         /// <param name="value">
         /// The calculated value of the metric. Omittable for custom metric criteria.
         /// </param>
+        /// <param name="reason">
+        /// Explanation of why the metric passed or failed. Set for custom-condition metrics.
+        /// </param>
         /// <param name="vote">
         /// An optional vote based on the metric result.
         /// </param>
@@ -53,10 +62,12 @@ namespace RetellAI
         public MetricResult(
             global::RetellAI.OneOf<global::RetellAI.PerformanceMetricCriteria, global::RetellAI.CustomMetricCriteria> metricCriteria,
             global::RetellAI.OneOf<double?, bool?, string>? value,
+            string? reason,
             bool? vote)
         {
             this.MetricCriteria = metricCriteria;
             this.Value = value;
+            this.Reason = reason;
             this.Vote = vote;
         }
 

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Analysis of agent hallucinations across utterances.
     /// </summary>
     public sealed partial class HallucinationAnalysis
     {
@@ -16,14 +16,14 @@ namespace RetellAI
         public required global::System.Collections.Generic.IList<global::RetellAI.UtteranceHallucination> Details { get; set; }
 
         /// <summary>
-        /// 
+        /// Number of utterances containing a hallucination.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hallucination_utterance_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double HallucinationUtteranceCount { get; set; }
 
         /// <summary>
-        /// 
+        /// Total number of agent utterances evaluated.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_utterance_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -39,8 +39,12 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="HallucinationAnalysis" /> class.
         /// </summary>
         /// <param name="details"></param>
-        /// <param name="hallucinationUtteranceCount"></param>
-        /// <param name="totalUtteranceCount"></param>
+        /// <param name="hallucinationUtteranceCount">
+        /// Number of utterances containing a hallucination.
+        /// </param>
+        /// <param name="totalUtteranceCount">
+        /// Total number of agent utterances evaluated.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

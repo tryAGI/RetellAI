@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Analysis of whether tool calls were made accurately.
     /// </summary>
     public sealed partial class ToolCallAccuracyAnalysis
     {

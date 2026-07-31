@@ -4,23 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Conversation flow node transition accuracy analysis.
     /// </summary>
     public sealed partial class NodeTransitionAnalysis
     {
         /// <summary>
-        /// 
+        /// Per-transition audit results.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("details")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::RetellAI.NodeTransitionAnalysisDetail> Details { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("accuracy")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double Accuracy { get; set; }
 
         /// <summary>
         /// 
@@ -45,8 +38,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="NodeTransitionAnalysis" /> class.
         /// </summary>
-        /// <param name="details"></param>
-        /// <param name="accuracy"></param>
+        /// <param name="details">
+        /// Per-transition audit results.
+        /// </param>
         /// <param name="correctCount"></param>
         /// <param name="totalCount"></param>
 #if NET7_0_OR_GREATER
@@ -54,12 +48,10 @@ namespace RetellAI
 #endif
         public NodeTransitionAnalysis(
             global::System.Collections.Generic.IList<global::RetellAI.NodeTransitionAnalysisDetail> details,
-            double accuracy,
             double correctCount,
             double totalCount)
         {
             this.Details = details ?? throw new global::System.ArgumentNullException(nameof(details));
-            this.Accuracy = accuracy;
             this.CorrectCount = correctCount;
             this.TotalCount = totalCount;
         }

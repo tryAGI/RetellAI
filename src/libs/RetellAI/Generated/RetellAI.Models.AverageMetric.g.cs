@@ -9,27 +9,26 @@ namespace RetellAI
     public sealed partial class AverageMetric
     {
         /// <summary>
-        /// 
+        /// Contains one average per entry in timepoints, in the same order. null indicates no qualifying observations for that metric.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("time_averages")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<double> TimeAverages { get; set; }
 
         /// <summary>
-        /// 
+        /// Weighted average across all time buckets.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("overall_average")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double OverallAverage { get; set; }
+        public double? OverallAverage { get; set; }
 
         /// <summary>
-        /// 
+        /// Aggregate numerator used to calculate overall_average.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("numerator")]
         public double? Numerator { get; set; }
 
         /// <summary>
-        /// 
+        /// Aggregate denominator used to calculate overall_average.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("denominator")]
         public double? Denominator { get; set; }
@@ -43,16 +42,24 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="AverageMetric" /> class.
         /// </summary>
-        /// <param name="timeAverages"></param>
-        /// <param name="overallAverage"></param>
-        /// <param name="numerator"></param>
-        /// <param name="denominator"></param>
+        /// <param name="timeAverages">
+        /// Contains one average per entry in timepoints, in the same order. null indicates no qualifying observations for that metric.
+        /// </param>
+        /// <param name="overallAverage">
+        /// Weighted average across all time buckets.
+        /// </param>
+        /// <param name="numerator">
+        /// Aggregate numerator used to calculate overall_average.
+        /// </param>
+        /// <param name="denominator">
+        /// Aggregate denominator used to calculate overall_average.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AverageMetric(
             global::System.Collections.Generic.IList<double> timeAverages,
-            double overallAverage,
+            double? overallAverage,
             double? numerator,
             double? denominator)
         {

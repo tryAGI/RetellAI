@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Per-utterance sentiment analysis with aggregate counts.
     /// </summary>
     public sealed partial class SentimentAnalysis
     {
         /// <summary>
-        /// 
+        /// Per-utterance sentiment results, identified by either a time range or response ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("details")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -45,7 +45,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="SentimentAnalysis" /> class.
         /// </summary>
-        /// <param name="details"></param>
+        /// <param name="details">
+        /// Per-utterance sentiment results, identified by either a time range or response ID.
+        /// </param>
         /// <param name="positiveCount"></param>
         /// <param name="neutralCount"></param>
         /// <param name="negativeCount"></param>

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Condensed QA summary returned when listing a cohort's calls.
     /// </summary>
     public sealed partial class ChCallQA
     {
@@ -30,210 +30,82 @@ namespace RetellAI
         public required string CohortId { get; set; }
 
         /// <summary>
-        /// 
+        /// Call start time in epoch milliseconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_start_time_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double CallStartTimeMs { get; set; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("db_version")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required double DbVersion { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("deprecated")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool Deprecated { get; set; }
-
-        /// <summary>
-        /// 
+        /// Weighted QA score from 0 to 100.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("score")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double Score { get; set; }
 
         /// <summary>
-        /// 
+        /// Whether the call met the cohort's success criteria.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("passed")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required bool Passed { get; set; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("word_count")]
-        public double? WordCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("number_deletions")]
-        public double? NumberDeletions { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("number_insertions")]
-        public double? NumberInsertions { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("number_substitutions")]
-        public double? NumberSubstitutions { get; set; }
-
-        /// <summary>
-        /// 
+        /// Number of times the agent interrupted the user.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("interruption_count")]
         public double? InterruptionCount { get; set; }
 
         /// <summary>
-        /// 
+        /// Fraction of evaluated agent utterances with hallucinations.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("llm_inference_count")]
-        public double? LlmInferenceCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("llm_hallucination_rate")]
+        public double? LlmHallucinationRate { get; set; }
 
         /// <summary>
-        /// 
+        /// Fraction of evaluated retrievals with full chunk recall.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("llm_hallucination_count")]
-        public double? LlmHallucinationCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("kb_recall")]
+        public double? KbRecall { get; set; }
 
         /// <summary>
-        /// 
+        /// Fraction of evaluated node transitions that were correct.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("user_positive_sentiment_count")]
-        public double? UserPositiveSentimentCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("transition_accuracy")]
+        public double? TransitionAccuracy { get; set; }
 
         /// <summary>
-        /// 
+        /// Fraction of evaluated user utterances with positive sentiment.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("user_neutral_sentiment_count")]
-        public double? UserNeutralSentimentCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_positive_sentiment_rate")]
+        public double? UserPositiveSentimentRate { get; set; }
 
         /// <summary>
-        /// 
+        /// Fraction of evaluated user utterances with negative sentiment.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("user_negative_sentiment_count")]
-        public double? UserNegativeSentimentCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_negative_sentiment_rate")]
+        public double? UserNegativeSentimentRate { get; set; }
 
         /// <summary>
-        /// 
+        /// Word error rate of the call transcript.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("agent_positive_sentiment_count")]
-        public double? AgentPositiveSentimentCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("wer")]
+        public double? Wer { get; set; }
 
         /// <summary>
-        /// 
+        /// Fraction of evaluated tool-call utterances that were accurate.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("agent_neutral_sentiment_count")]
-        public double? AgentNeutralSentimentCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_accuracy")]
+        public double? ToolCallAccuracy { get; set; }
 
         /// <summary>
-        /// 
+        /// Fraction of evaluated agent utterances judged natural.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("agent_negative_sentiment_count")]
-        public double? AgentNegativeSentimentCount { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("natural_tonality_rate")]
+        public double? NaturalTonalityRate { get; set; }
 
         /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("agent_natural_utterance_count")]
-        public double? AgentNaturalUtteranceCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("rag_success_count")]
-        public double? RagSuccessCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("rag_total_count")]
-        public double? RagTotalCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transfer_call_success_count")]
-        public double? TransferCallSuccessCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transfer_call_total_count")]
-        public double? TransferCallTotalCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transfer_call_avg_latency")]
-        public double? TransferCallAvgLatency { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_average_latency")]
-        public double? ToolCallAverageLatency { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_success_count")]
-        public double? ToolCallSuccessCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_total_count")]
-        public double? ToolCallTotalCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_accurate_utterance_count")]
-        public double? ToolCallAccurateUtteranceCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_total_utterance_count")]
-        public double? ToolCallTotalUtteranceCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transition_success_count")]
-        public double? TransitionSuccessCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transition_total_count")]
-        public double? TransitionTotalCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("agent_total_utterance_count")]
-        public double? AgentTotalUtteranceCount { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("user_total_utterance_count")]
-        public double? UserTotalUtteranceCount { get; set; }
-
-        /// <summary>
-        /// 
+        /// Whether the QA was reviewed by a human.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("calibrated")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -251,40 +123,45 @@ namespace RetellAI
         /// <param name="callQaId"></param>
         /// <param name="callId"></param>
         /// <param name="cohortId"></param>
-        /// <param name="callStartTimeMs"></param>
-        /// <param name="dbVersion"></param>
-        /// <param name="deprecated"></param>
-        /// <param name="score"></param>
-        /// <param name="passed"></param>
-        /// <param name="calibrated"></param>
-        /// <param name="wordCount"></param>
-        /// <param name="numberDeletions"></param>
-        /// <param name="numberInsertions"></param>
-        /// <param name="numberSubstitutions"></param>
-        /// <param name="interruptionCount"></param>
-        /// <param name="llmInferenceCount"></param>
-        /// <param name="llmHallucinationCount"></param>
-        /// <param name="userPositiveSentimentCount"></param>
-        /// <param name="userNeutralSentimentCount"></param>
-        /// <param name="userNegativeSentimentCount"></param>
-        /// <param name="agentPositiveSentimentCount"></param>
-        /// <param name="agentNeutralSentimentCount"></param>
-        /// <param name="agentNegativeSentimentCount"></param>
-        /// <param name="agentNaturalUtteranceCount"></param>
-        /// <param name="ragSuccessCount"></param>
-        /// <param name="ragTotalCount"></param>
-        /// <param name="transferCallSuccessCount"></param>
-        /// <param name="transferCallTotalCount"></param>
-        /// <param name="transferCallAvgLatency"></param>
-        /// <param name="toolCallAverageLatency"></param>
-        /// <param name="toolCallSuccessCount"></param>
-        /// <param name="toolCallTotalCount"></param>
-        /// <param name="toolCallAccurateUtteranceCount"></param>
-        /// <param name="toolCallTotalUtteranceCount"></param>
-        /// <param name="transitionSuccessCount"></param>
-        /// <param name="transitionTotalCount"></param>
-        /// <param name="agentTotalUtteranceCount"></param>
-        /// <param name="userTotalUtteranceCount"></param>
+        /// <param name="callStartTimeMs">
+        /// Call start time in epoch milliseconds.
+        /// </param>
+        /// <param name="score">
+        /// Weighted QA score from 0 to 100.
+        /// </param>
+        /// <param name="passed">
+        /// Whether the call met the cohort's success criteria.
+        /// </param>
+        /// <param name="calibrated">
+        /// Whether the QA was reviewed by a human.
+        /// </param>
+        /// <param name="interruptionCount">
+        /// Number of times the agent interrupted the user.
+        /// </param>
+        /// <param name="llmHallucinationRate">
+        /// Fraction of evaluated agent utterances with hallucinations.
+        /// </param>
+        /// <param name="kbRecall">
+        /// Fraction of evaluated retrievals with full chunk recall.
+        /// </param>
+        /// <param name="transitionAccuracy">
+        /// Fraction of evaluated node transitions that were correct.
+        /// </param>
+        /// <param name="userPositiveSentimentRate">
+        /// Fraction of evaluated user utterances with positive sentiment.
+        /// </param>
+        /// <param name="userNegativeSentimentRate">
+        /// Fraction of evaluated user utterances with negative sentiment.
+        /// </param>
+        /// <param name="wer">
+        /// Word error rate of the call transcript.
+        /// </param>
+        /// <param name="toolCallAccuracy">
+        /// Fraction of evaluated tool-call utterances that were accurate.
+        /// </param>
+        /// <param name="naturalTonalityRate">
+        /// Fraction of evaluated agent utterances judged natural.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -293,76 +170,34 @@ namespace RetellAI
             string callId,
             string cohortId,
             double callStartTimeMs,
-            double dbVersion,
-            bool deprecated,
             double score,
             bool passed,
             bool calibrated,
-            double? wordCount,
-            double? numberDeletions,
-            double? numberInsertions,
-            double? numberSubstitutions,
             double? interruptionCount,
-            double? llmInferenceCount,
-            double? llmHallucinationCount,
-            double? userPositiveSentimentCount,
-            double? userNeutralSentimentCount,
-            double? userNegativeSentimentCount,
-            double? agentPositiveSentimentCount,
-            double? agentNeutralSentimentCount,
-            double? agentNegativeSentimentCount,
-            double? agentNaturalUtteranceCount,
-            double? ragSuccessCount,
-            double? ragTotalCount,
-            double? transferCallSuccessCount,
-            double? transferCallTotalCount,
-            double? transferCallAvgLatency,
-            double? toolCallAverageLatency,
-            double? toolCallSuccessCount,
-            double? toolCallTotalCount,
-            double? toolCallAccurateUtteranceCount,
-            double? toolCallTotalUtteranceCount,
-            double? transitionSuccessCount,
-            double? transitionTotalCount,
-            double? agentTotalUtteranceCount,
-            double? userTotalUtteranceCount)
+            double? llmHallucinationRate,
+            double? kbRecall,
+            double? transitionAccuracy,
+            double? userPositiveSentimentRate,
+            double? userNegativeSentimentRate,
+            double? wer,
+            double? toolCallAccuracy,
+            double? naturalTonalityRate)
         {
             this.CallQaId = callQaId ?? throw new global::System.ArgumentNullException(nameof(callQaId));
             this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
             this.CohortId = cohortId ?? throw new global::System.ArgumentNullException(nameof(cohortId));
             this.CallStartTimeMs = callStartTimeMs;
-            this.DbVersion = dbVersion;
-            this.Deprecated = deprecated;
             this.Score = score;
             this.Passed = passed;
-            this.WordCount = wordCount;
-            this.NumberDeletions = numberDeletions;
-            this.NumberInsertions = numberInsertions;
-            this.NumberSubstitutions = numberSubstitutions;
             this.InterruptionCount = interruptionCount;
-            this.LlmInferenceCount = llmInferenceCount;
-            this.LlmHallucinationCount = llmHallucinationCount;
-            this.UserPositiveSentimentCount = userPositiveSentimentCount;
-            this.UserNeutralSentimentCount = userNeutralSentimentCount;
-            this.UserNegativeSentimentCount = userNegativeSentimentCount;
-            this.AgentPositiveSentimentCount = agentPositiveSentimentCount;
-            this.AgentNeutralSentimentCount = agentNeutralSentimentCount;
-            this.AgentNegativeSentimentCount = agentNegativeSentimentCount;
-            this.AgentNaturalUtteranceCount = agentNaturalUtteranceCount;
-            this.RagSuccessCount = ragSuccessCount;
-            this.RagTotalCount = ragTotalCount;
-            this.TransferCallSuccessCount = transferCallSuccessCount;
-            this.TransferCallTotalCount = transferCallTotalCount;
-            this.TransferCallAvgLatency = transferCallAvgLatency;
-            this.ToolCallAverageLatency = toolCallAverageLatency;
-            this.ToolCallSuccessCount = toolCallSuccessCount;
-            this.ToolCallTotalCount = toolCallTotalCount;
-            this.ToolCallAccurateUtteranceCount = toolCallAccurateUtteranceCount;
-            this.ToolCallTotalUtteranceCount = toolCallTotalUtteranceCount;
-            this.TransitionSuccessCount = transitionSuccessCount;
-            this.TransitionTotalCount = transitionTotalCount;
-            this.AgentTotalUtteranceCount = agentTotalUtteranceCount;
-            this.UserTotalUtteranceCount = userTotalUtteranceCount;
+            this.LlmHallucinationRate = llmHallucinationRate;
+            this.KbRecall = kbRecall;
+            this.TransitionAccuracy = transitionAccuracy;
+            this.UserPositiveSentimentRate = userPositiveSentimentRate;
+            this.UserNegativeSentimentRate = userNegativeSentimentRate;
+            this.Wer = wer;
+            this.ToolCallAccuracy = toolCallAccuracy;
+            this.NaturalTonalityRate = naturalTonalityRate;
             this.Calibrated = calibrated;
         }
 

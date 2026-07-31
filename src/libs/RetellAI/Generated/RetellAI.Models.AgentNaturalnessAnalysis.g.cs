@@ -4,19 +4,19 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    /// Analysis of how natural the agent's speech sounds per utterance.
     /// </summary>
     public sealed partial class AgentNaturalnessAnalysis
     {
         /// <summary>
-        /// 
+        /// Per-utterance naturalness issue details.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("details")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::RetellAI.UtteranceNaturalnessIssues> Details { get; set; }
 
         /// <summary>
-        /// 
+        /// Number of utterances judged to sound natural.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("natural_utterance_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -38,8 +38,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="AgentNaturalnessAnalysis" /> class.
         /// </summary>
-        /// <param name="details"></param>
-        /// <param name="naturalUtteranceCount"></param>
+        /// <param name="details">
+        /// Per-utterance naturalness issue details.
+        /// </param>
+        /// <param name="naturalUtteranceCount">
+        /// Number of utterances judged to sound natural.
+        /// </param>
         /// <param name="totalUtteranceCount"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
