@@ -18,8 +18,8 @@ namespace RetellAI
         /// <summary>
         /// The static message to be sent in the SMS. Can contain dynamic variables.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("content")]
-        public string? Content { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("text")]
+        public string? Text { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -31,7 +31,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="SmsContentPredefined" /> class.
         /// </summary>
         /// <param name="type"></param>
-        /// <param name="content">
+        /// <param name="text">
         /// The static message to be sent in the SMS. Can contain dynamic variables.
         /// </param>
 #if NET7_0_OR_GREATER
@@ -39,10 +39,10 @@ namespace RetellAI
 #endif
         public SmsContentPredefined(
             global::RetellAI.SmsContentPredefinedType? type,
-            string? content)
+            string? text)
         {
             this.Type = type;
-            this.Content = content;
+            this.Text = text;
         }
 
         /// <summary>
