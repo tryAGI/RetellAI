@@ -2,6 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
+  x-retell-spec-revision: 2026-08-01-ad84c11
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -6462,7 +6463,7 @@ components:
           type: string
           enum:
           - predefined
-        content:
+        text:
           type: string
           description: The static message to be sent in the SMS. Can contain dynamic variables.
     SmsContentTemplate:
