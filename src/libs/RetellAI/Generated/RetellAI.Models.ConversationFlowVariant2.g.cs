@@ -73,12 +73,12 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.Mcp>? Mcps { get; set; }
 
         /// <summary>
-        /// Whether this conversation flow is used for transfer LLM.<br/>
+        /// Whether this conversation flow is used for warm transfer. Can only be set at creation, and is ignored on update.<br/>
         /// Example: false
         /// </summary>
         /// <example>false</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("is_transfer_llm")]
-        public bool? IsTransferLlm { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_transfer_cf")]
+        public bool? IsTransferCf { get; set; }
 
         /// <summary>
         /// Array of nodes in the conversation flow.<br/>
@@ -129,8 +129,8 @@ namespace RetellAI
         /// <param name="mcps">
         /// A list of MCP server configurations to use for this conversation flow.
         /// </param>
-        /// <param name="isTransferLlm">
-        /// Whether this conversation flow is used for transfer LLM.<br/>
+        /// <param name="isTransferCf">
+        /// Whether this conversation flow is used for warm transfer. Can only be set at creation, and is ignored on update.<br/>
         /// Example: false
         /// </param>
         /// <param name="nodes">
@@ -150,7 +150,7 @@ namespace RetellAI
             global::RetellAI.ConversationFlowVariant2BeginTagDisplayPosition? beginTagDisplayPosition,
             global::System.Collections.Generic.IList<global::RetellAI.Note>? notes,
             global::System.Collections.Generic.IList<global::RetellAI.Mcp>? mcps,
-            bool? isTransferLlm,
+            bool? isTransferCf,
             global::System.Collections.Generic.IList<global::RetellAI.ConversationFlowNode>? nodes)
         {
             this.GlobalPrompt = globalPrompt;
@@ -162,7 +162,7 @@ namespace RetellAI
             this.BeginTagDisplayPosition = beginTagDisplayPosition;
             this.Notes = notes;
             this.Mcps = mcps;
-            this.IsTransferLlm = isTransferLlm;
+            this.IsTransferCf = isTransferCf;
             this.Nodes = nodes;
         }
 

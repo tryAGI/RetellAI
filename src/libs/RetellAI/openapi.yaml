@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-08-01-ad84c11
+  x-retell-spec-revision: 2026-08-10-c6064a4
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -870,13 +870,17 @@ components:
             value 1 will apply.
         language:
           oneOf:
-          - $ref: '#/components/schemas/LanguageLegacy'
+          - $ref: '#/components/schemas/Language'
           - type: array
             items:
               $ref: '#/components/schemas/Language'
-          description: Specifies what language(s) the agent will operate in. Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual support, or an array of
-            concrete locale codes for explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must contain concrete locale codes only — the `multi` value is valid only as the scalar legacy
-            form and must not appear inside an array. Single-element arrays are normalized to the equivalent scalar on output. If unset, defaults to `en-US`.
+          - type: string
+            enum:
+            - multi
+            deprecated: true
+          description: Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The
+            scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale
+            array instead. If unset, defaults to `en-US`.
         webhook_url:
           type: string
           example: https://webhook-url-here
@@ -967,12 +971,15 @@ components:
                 enum:
                 - ipa
                 - cmu
+                - pinyin
+                - jyutping
                 example: ipa
-                description: The phonetic alphabet to be used for pronunciation.
+                description: The phonetic alphabet to use. MiniMax speech-02-turbo supports IPA and Pinyin. MiniMax speech-2.8-turbo also supports Jyutping. Support for other alphabets depends on the selected
+                  voice provider and model.
               phoneme:
                 type: string
                 example: ˈæktʃuəli
-                description: Pronunciation of the word in the format of a IPA / CMU pronunciation.
+                description: Pronunciation of the word in the format of the selected phonetic alphabet.
           description: A list of words / phrases and their pronunciation to be used to guide the audio synthesize for consistent pronunciation. Check the dashboard to see what provider supports this feature.
             Set to null to remove pronunciation dictionary from this agent.
           nullable: true
@@ -1936,13 +1943,17 @@ components:
           nullable: true
         language:
           oneOf:
-          - $ref: '#/components/schemas/LanguageLegacy'
+          - $ref: '#/components/schemas/Language'
           - type: array
             items:
               $ref: '#/components/schemas/Language'
-          description: Specifies what language(s) the agent will operate in. Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual support, or an array of
-            concrete locale codes for explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must contain concrete locale codes only — the `multi` value is valid only as the scalar legacy
-            form and must not appear inside an array. Single-element arrays are normalized to the equivalent scalar on output. If unset, defaults to `en-US`.
+          - type: string
+            enum:
+            - multi
+            deprecated: true
+          description: Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The
+            scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale
+            array instead. If unset, defaults to `en-US`.
         webhook_url:
           type: string
           example: https://webhook-url-here
@@ -2536,7 +2547,7 @@ components:
           enum:
           - default
           - weighted
-          description: Scoring mode - "default" weighs metrics equally, "weighted" uses each metric's configured score weight.
+          description: '"default" requires every condition and metric to pass; "weighted" allows a lower `successful_criteria` threshold, so a call can pass without meeting every one.'
         paused:
           type: boolean
           description: Whether QA processing for this cohort is paused.
@@ -2913,10 +2924,10 @@ components:
               $ref: '#/components/schemas/MCP'
             description: A list of MCP server configurations to use for this conversation flow.
             nullable: true
-          is_transfer_llm:
+          is_transfer_cf:
             type: boolean
             example: false
-            description: Whether this conversation flow is used for transfer LLM.
+            description: Whether this conversation flow is used for warm transfer. Can only be set at creation, and is ignored on update.
             nullable: true
           nodes:
             type: array
@@ -3262,6 +3273,14 @@ components:
           type: integer
           description: The maximum time in milliseconds the tool can run before it's considered timeout. If the tool times out, the agent would have that info. The minimum value allowed is 1000 ms (1 s),
             and maximum value allowed is 600,000 ms (10 min). By default, this is set to 120,000 ms (2 min).
+        max_retry:
+          type: integer
+          minimum: 0
+          maximum: 5
+          description: Maximum number of times to retry the request after a failed attempt, from 0 (no retry) to 5. Retries happen on any failure, with exponential backoff between attempts; the backoff
+            delay is not configurable. `timeout_ms` applies per attempt rather than as a budget across all attempts, so an attempt that times out is still retried and the worst-case total duration is `timeout_ms`
+            multiplied by (`max_retry` + 1) as well as any latency incurred by the exponential backoff + jitter between each retry. Only the final attempt's result is reported to the agent. Because retries
+            repeat the request, only set this above 0 if your endpoint is idempotent — a retried request may be processed more than once. Defaults to 0 (no retry).
         args_at_root:
           type: boolean
           description: If set to true, the parameters will be passed as root level JSON object instead of nested under "args".
@@ -4511,14 +4530,6 @@ components:
         url:
           type: string
           description: URL used to be scraped and added to the knowledge base.
-    LanguageLegacy:
-      oneOf:
-      - $ref: '#/components/schemas/Language'
-      - type: string
-        enum:
-        - multi
-      example: en-US
-      description: Legacy single-string language format. Accepts any concrete locale from `Language`, plus the special scalar value `multi` for multilingual support. If unset, will use default value `en-US`.
     Language:
       type: string
       example: en-US
@@ -4587,7 +4598,7 @@ components:
       - yue-CN
       - uk-UA
       description: Specifies what language (and dialect) the agent will operate in. For instance, selecting `en-GB` optimizes speech recognition for British English and indexes knowledge bases with English.
-        If unset, will use default value `en-US`. This enum does not include the legacy scalar value `multi`.
+        If unset, will use default value `en-US`.
     LLMModel:
       type: string
       enum:
@@ -4612,6 +4623,8 @@ components:
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
       - gemini-3.5-flash
+      - gemini-3.5-flash-lite
+      - gemini-3.6-flash
       description: Available LLM models for agents.
     MCPNode:
       allOf:
@@ -4808,6 +4821,12 @@ components:
           type: string
           description: Content of the message
           example: hi how are you doing?
+        multimedia:
+          type: array
+          items:
+            $ref: '#/components/schemas/SmsMultimediaItem'
+          description: Multimedia attachments received with this message (MMS). Display only; a textual summary of each attachment is already included in content. Response only — supplying it in a request
+            has no effect and is silently ignored. Omitted from PII-scrubbed messages.
         created_timestamp:
           type: integer
           description: Create timestamp of the message
@@ -5262,6 +5281,8 @@ components:
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
       - gemini-3.5-flash
+      - gemini-3.5-flash-lite
+      - gemini-3.6-flash
       - null
       nullable: true
       description: Available LLM models for agents.
@@ -5466,6 +5487,9 @@ components:
           type: string
         feature_bucket:
           type: object
+          description: 'Org feature gates. Includes Dynamo-stored buckets plus computed Redis rollout flags marked exposeToApi; computed flags win on name collision.
+
+            '
         use_stable_server:
           type: boolean
         conductor_overage:
@@ -5478,6 +5502,16 @@ components:
           org_id:
             type: string
             description: Unique identifier of the organization
+          enterprise_plan_end:
+            type: string
+            description: Contract end date (YYYY-MM-DD) of the org's enterprise plan, if it belongs to one.
+          enterprise_plan_status:
+            type: string
+            enum:
+            - active
+            - expired
+            - terminated
+            description: Lifecycle status of the org's enterprise plan, if it belongs to one.
     AutoCreditReloadConfig:
       type: object
       description: Both values are in cents. `target_amount` must be strictly greater than `threshold`, and the gap must be at least 1000 cents ($10).
@@ -5960,7 +5994,7 @@ components:
           enum:
           - asc
           - desc
-          description: Sort order.
+          description: Sort order. Defaults to "desc".
         skip:
           type: integer
           minimum: 0
@@ -6259,6 +6293,11 @@ components:
             items:
               $ref: '#/components/schemas/MCP'
             description: A list of MCPs to use for this LLM.
+            nullable: true
+          is_transfer_llm:
+            type: boolean
+            example: false
+            description: Whether this Retell LLM is used for warm transfer. Can only be set at creation, and is ignored on update.
             nullable: true
     ScoringCriteria:
       type: object
@@ -9934,6 +9973,41 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /get-api-key-info:
+    get:
+      description: Get info about the API key used to authenticate, and the org that owns it.
+      operationId: getApiKeyInfo
+      x-retell-sdk-resource: api_key
+      x-retell-sdk-method: get-info
+      responses:
+        '200':
+          description: Successfully retrieved API key info.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - org_id
+                - org_name
+                - api_key_name
+                properties:
+                  org_id:
+                    type: string
+                    example: org_5cbb51d3cba24c2b8f4ec25b8ded
+                    description: Unique id of the org that owns the API key.
+                  org_name:
+                    type: string
+                    example: Acme Inc
+                    description: Display name of the org.
+                  api_key_name:
+                    type: string
+                    nullable: true
+                    example: My API Key
+                    description: Display name of the API key used, if it has one.
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /get-conversation-flow-component/{conversation_flow_component_id}:
     get:
       description: Get a shared conversation flow component
@@ -10882,7 +10956,8 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AgentRequest'
+              allOf:
+              - $ref: '#/components/schemas/AgentRequest'
             example:
               agent_name: Jarvis
       responses:

@@ -78,7 +78,7 @@ namespace RetellAI
         public required double AnalyzedCalls { get; set; }
 
         /// <summary>
-        /// Scoring mode - "default" weighs metrics equally, "weighted" uses each metric's configured score weight.
+        /// "default" requires every condition and metric to pass; "weighted" allows a lower `successful_criteria` threshold, so a call can pass without meeting every one.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("evaluation_mode")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.CohortEvaluationModeJsonConverter))]
@@ -126,7 +126,7 @@ namespace RetellAI
         /// Number of calls that have completed QA analysis.
         /// </param>
         /// <param name="evaluationMode">
-        /// Scoring mode - "default" weighs metrics equally, "weighted" uses each metric's configured score weight.
+        /// "default" requires every condition and metric to pass; "weighted" allows a lower `successful_criteria` threshold, so a call can pass without meeting every one.
         /// </param>
         /// <param name="samplingWeeklyMax">
         /// Optional cap on the number of calls sampled per week.

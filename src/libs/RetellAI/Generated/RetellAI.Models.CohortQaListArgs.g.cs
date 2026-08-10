@@ -22,7 +22,7 @@ namespace RetellAI
         public int? Limit { get; set; }
 
         /// <summary>
-        /// Sort order.
+        /// Sort order. Defaults to "desc".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("order")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.CohortQaListArgsOrderJsonConverter))]
@@ -50,7 +50,7 @@ namespace RetellAI
         /// Maximum number of records to return. Defaults to 1000.
         /// </param>
         /// <param name="order">
-        /// Sort order.
+        /// Sort order. Defaults to "desc".
         /// </param>
         /// <param name="skip">
         /// Number of records to skip for pagination.

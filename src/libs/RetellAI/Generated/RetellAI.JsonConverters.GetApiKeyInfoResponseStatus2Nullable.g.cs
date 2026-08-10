@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class LanguageLegacyEnumNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.LanguageLegacyEnum?>
+    public sealed class GetApiKeyInfoResponseStatus2NullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.GetApiKeyInfoResponseStatus2?>
     {
         /// <inheritdoc />
-        public override global::RetellAI.LanguageLegacyEnum? Read(
+        public override global::RetellAI.GetApiKeyInfoResponseStatus2? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.LanguageLegacyEnumExtensions.ToEnum(stringValue);
+                        return global::RetellAI.GetApiKeyInfoResponseStatus2Extensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.LanguageLegacyEnum)numValue;
+                    return (global::RetellAI.GetApiKeyInfoResponseStatus2)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.LanguageLegacyEnum?);
+                    return default(global::RetellAI.GetApiKeyInfoResponseStatus2?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.LanguageLegacyEnum? value,
+            global::RetellAI.GetApiKeyInfoResponseStatus2? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace RetellAI.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::RetellAI.LanguageLegacyEnumExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::RetellAI.GetApiKeyInfoResponseStatus2Extensions.ToValueString(value.Value));
             }
         }
     }

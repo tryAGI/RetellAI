@@ -59,6 +59,14 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.Mcp>? Mcps { get; set; }
 
         /// <summary>
+        /// Whether this Retell LLM is used for warm transfer. Can only be set at creation, and is ignored on update.<br/>
+        /// Example: false
+        /// </summary>
+        /// <example>false</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_transfer_llm")]
+        public bool? IsTransferLlm { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -94,6 +102,10 @@ namespace RetellAI
         /// <param name="mcps">
         /// A list of MCPs to use for this LLM.
         /// </param>
+        /// <param name="isTransferLlm">
+        /// Whether this Retell LLM is used for warm transfer. Can only be set at creation, and is ignored on update.<br/>
+        /// Example: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -103,7 +115,8 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.State>? states,
             string? startingState,
             global::System.Collections.Generic.Dictionary<string, string>? defaultDynamicVariables,
-            global::System.Collections.Generic.IList<global::RetellAI.Mcp>? mcps)
+            global::System.Collections.Generic.IList<global::RetellAI.Mcp>? mcps,
+            bool? isTransferLlm)
         {
             this.GeneralPrompt = generalPrompt;
             this.GeneralTools = generalTools;
@@ -111,6 +124,7 @@ namespace RetellAI
             this.StartingState = startingState;
             this.DefaultDynamicVariables = defaultDynamicVariables;
             this.Mcps = mcps;
+            this.IsTransferLlm = isTransferLlm;
         }
 
         /// <summary>

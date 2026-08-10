@@ -31,6 +31,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("content")) __score0++;
             if (__jsonProps.Contains("created_timestamp")) __score0++;
             if (__jsonProps.Contains("message_id")) __score0++;
+            if (__jsonProps.Contains("multimedia")) __score0++;
             if (__jsonProps.Contains("role")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("arguments")) __score1++;

@@ -36,6 +36,12 @@ namespace RetellAI
         public required string Content { get; set; }
 
         /// <summary>
+        /// Multimedia attachments received with this message (MMS). Display only; a textual summary of each attachment is already included in content. Response only — supplying it in a request has no effect and is silently ignored. Omitted from PII-scrubbed messages.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("multimedia")]
+        public global::System.Collections.Generic.IList<global::RetellAI.SmsMultimediaItem>? Multimedia { get; set; }
+
+        /// <summary>
         /// Create timestamp of the message<br/>
         /// Example: 1703302428855
         /// </summary>
@@ -64,6 +70,9 @@ namespace RetellAI
         /// Unique id of the message<br/>
         /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
         /// </param>
+        /// <param name="multimedia">
+        /// Multimedia attachments received with this message (MMS). Display only; a textual summary of each attachment is already included in content. Response only — supplying it in a request has no effect and is silently ignored. Omitted from PII-scrubbed messages.
+        /// </param>
         /// <param name="createdTimestamp">
         /// Create timestamp of the message<br/>
         /// Example: 1703302428855
@@ -75,11 +84,13 @@ namespace RetellAI
             global::RetellAI.MessageBaseRole role,
             string content,
             string? messageId,
+            global::System.Collections.Generic.IList<global::RetellAI.SmsMultimediaItem>? multimedia,
             long? createdTimestamp)
         {
             this.MessageId = messageId;
             this.Role = role;
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
+            this.Multimedia = multimedia;
             this.CreatedTimestamp = createdTimestamp;
         }
 

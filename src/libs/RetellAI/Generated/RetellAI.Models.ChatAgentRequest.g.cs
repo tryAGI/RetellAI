@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace RetellAI
@@ -48,11 +50,11 @@ namespace RetellAI
         public int? EndChatAfterSilenceMs { get; set; }
 
         /// <summary>
-        /// Specifies what language(s) the agent will operate in. Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual support, or an array of concrete locale codes for explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must contain concrete locale codes only — the `multi` value is valid only as the scalar legacy form and must not appear inside an array. Single-element arrays are normalized to the equivalent scalar on output. If unset, defaults to `en-US`.
+        /// Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale array instead. If unset, defaults to `en-US`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>))]
-        public global::RetellAI.OneOf<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? Language { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.Language3?, global::System.Collections.Generic.IList<global::RetellAI.Language3>, global::RetellAI.ChatAgentRequestLanguage?>))]
+        public global::RetellAI.OneOf<global::RetellAI.Language3?, global::System.Collections.Generic.IList<global::RetellAI.Language3>, global::RetellAI.ChatAgentRequestLanguage?>? Language { get; set; }
 
         /// <summary>
         /// The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
@@ -175,7 +177,7 @@ namespace RetellAI
         /// Example: 3600000
         /// </param>
         /// <param name="language">
-        /// Specifies what language(s) the agent will operate in. Accepts either a single scalar locale (e.g. `en-US`), the legacy scalar value `multi` for multilingual support, or an array of concrete locale codes for explicit multi-locale selection (e.g. `["en-US","es-ES"]`). The array form must contain concrete locale codes only — the `multi` value is valid only as the scalar legacy form and must not appear inside an array. Single-element arrays are normalized to the equivalent scalar on output. If unset, defaults to `en-US`.
+        /// Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale array instead. If unset, defaults to `en-US`.
         /// </param>
         /// <param name="webhookUrl">
         /// The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
@@ -228,7 +230,7 @@ namespace RetellAI
             string? versionTitle,
             string? autoCloseMessage,
             int? endChatAfterSilenceMs,
-            global::RetellAI.OneOf<global::RetellAI.LanguageLegacy?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? language,
+            global::RetellAI.OneOf<global::RetellAI.Language3?, global::System.Collections.Generic.IList<global::RetellAI.Language3>, global::RetellAI.ChatAgentRequestLanguage?>? language,
             string? webhookUrl,
             global::System.Collections.Generic.IList<global::RetellAI.ChatAgentRequestWebhookEvent>? webhookEvents,
             int? webhookTimeoutMs,

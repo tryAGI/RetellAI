@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Specifies what language (and dialect) the agent will operate in. For instance, selecting `en-GB` optimizes speech recognition for British English and indexes knowledge bases with English. If unset, will use default value `en-US`. This enum does not include the legacy scalar value `multi`.<br/>
+    /// Specifies what language (and dialect) the agent will operate in. For instance, selecting `en-GB` optimizes speech recognition for British English and indexes knowledge bases with English. If unset, will use default value `en-US`.<br/>
     /// Example: en-US
     /// </summary>
     public enum Language3
