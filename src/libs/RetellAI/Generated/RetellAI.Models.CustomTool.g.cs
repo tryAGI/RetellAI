@@ -104,6 +104,12 @@ namespace RetellAI
         public int? TimeoutMs { get; set; }
 
         /// <summary>
+        /// Maximum number of times to retry the request after a failed attempt, from 0 (no retry) to 5. Retries happen on any failure, with exponential backoff between attempts; the backoff delay is not configurable. `timeout_ms` applies per attempt rather than as a budget across all attempts, so an attempt that times out is still retried and the worst-case total duration is `timeout_ms` multiplied by (`max_retry` + 1) as well as any latency incurred by the exponential backoff + jitter between each retry. Only the final attempt's result is reported to the agent. Because retries repeat the request, only set this above 0 if your endpoint is idempotent — a retried request may be processed more than once. Defaults to 0 (no retry).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("max_retry")]
+        public int? MaxRetry { get; set; }
+
+        /// <summary>
         /// If set to true, the parameters will be passed as root level JSON object instead of nested under "args".
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("args_at_root")]
@@ -174,6 +180,9 @@ namespace RetellAI
         /// <param name="timeoutMs">
         /// The maximum time in milliseconds the tool can run before it's considered timeout. If the tool times out, the agent would have that info. The minimum value allowed is 1000 ms (1 s), and maximum value allowed is 600,000 ms (10 min). By default, this is set to 120,000 ms (2 min).
         /// </param>
+        /// <param name="maxRetry">
+        /// Maximum number of times to retry the request after a failed attempt, from 0 (no retry) to 5. Retries happen on any failure, with exponential backoff between attempts; the backoff delay is not configurable. `timeout_ms` applies per attempt rather than as a budget across all attempts, so an attempt that times out is still retried and the worst-case total duration is `timeout_ms` multiplied by (`max_retry` + 1) as well as any latency incurred by the exponential backoff + jitter between each retry. Only the final attempt's result is reported to the agent. Because retries repeat the request, only set this above 0 if your endpoint is idempotent — a retried request may be processed more than once. Defaults to 0 (no retry).
+        /// </param>
         /// <param name="argsAtRoot">
         /// If set to true, the parameters will be passed as root level JSON object instead of nested under "args".
         /// </param>
@@ -201,6 +210,7 @@ namespace RetellAI
             string? executionMessageDescription,
             global::RetellAI.CustomToolExecutionMessageType? executionMessageType,
             int? timeoutMs,
+            int? maxRetry,
             bool? argsAtRoot,
             global::RetellAI.CustomToolParameterType? parameterType,
             bool? enableTypingSound)
@@ -219,6 +229,7 @@ namespace RetellAI
             this.ExecutionMessageDescription = executionMessageDescription;
             this.ExecutionMessageType = executionMessageType;
             this.TimeoutMs = timeoutMs;
+            this.MaxRetry = maxRetry;
             this.ArgsAtRoot = argsAtRoot;
             this.ParameterType = parameterType;
             this.EnableTypingSound = enableTypingSound;

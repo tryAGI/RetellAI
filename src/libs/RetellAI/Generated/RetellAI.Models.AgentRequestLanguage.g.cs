@@ -4,46 +4,40 @@
 namespace RetellAI
 {
     /// <summary>
-    /// "default" requires every condition and metric to pass; "weighted" allows a lower `successful_criteria` threshold, so a call can pass without meeting every one.
+    /// 
     /// </summary>
-    public enum CohortEvaluationMode
+    public enum AgentRequestLanguage
     {
         /// <summary>
         /// 
         /// </summary>
-        Default,
-        /// <summary>
-        /// 
-        /// </summary>
-        Weighted,
+        Multi,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class CohortEvaluationModeExtensions
+    public static class AgentRequestLanguageExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this CohortEvaluationMode value)
+        public static string ToValueString(this AgentRequestLanguage value)
         {
             return value switch
             {
-                CohortEvaluationMode.Default => "default",
-                CohortEvaluationMode.Weighted => "weighted",
+                AgentRequestLanguage.Multi => "multi",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static CohortEvaluationMode? ToEnum(string value)
+        public static AgentRequestLanguage? ToEnum(string value)
         {
             return value switch
             {
-                "default" => CohortEvaluationMode.Default,
-                "weighted" => CohortEvaluationMode.Weighted,
+                "multi" => AgentRequestLanguage.Multi,
                 _ => null,
             };
         }

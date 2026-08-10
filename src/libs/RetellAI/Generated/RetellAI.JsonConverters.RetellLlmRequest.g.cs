@@ -51,6 +51,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("default_dynamic_variables")) __score1++;
             if (__jsonProps.Contains("general_prompt")) __score1++;
             if (__jsonProps.Contains("general_tools")) __score1++;
+            if (__jsonProps.Contains("is_transfer_llm")) __score1++;
             if (__jsonProps.Contains("mcps")) __score1++;
             if (__jsonProps.Contains("starting_state")) __score1++;
             if (__jsonProps.Contains("states")) __score1++;

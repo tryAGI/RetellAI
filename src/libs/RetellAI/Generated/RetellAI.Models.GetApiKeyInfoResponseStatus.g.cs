@@ -6,38 +6,38 @@ namespace RetellAI
     /// <summary>
     /// 
     /// </summary>
-    public enum LanguageLegacyEnum
+    public enum GetApiKeyInfoResponseStatus
     {
         /// <summary>
         /// 
         /// </summary>
-        Multi,
+        Error,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class LanguageLegacyEnumExtensions
+    public static class GetApiKeyInfoResponseStatusExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this LanguageLegacyEnum value)
+        public static string ToValueString(this GetApiKeyInfoResponseStatus value)
         {
             return value switch
             {
-                LanguageLegacyEnum.Multi => "multi",
+                GetApiKeyInfoResponseStatus.Error => "error",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static LanguageLegacyEnum? ToEnum(string value)
+        public static GetApiKeyInfoResponseStatus? ToEnum(string value)
         {
             return value switch
             {
-                "multi" => LanguageLegacyEnum.Multi,
+                "error" => GetApiKeyInfoResponseStatus.Error,
                 _ => null,
             };
         }

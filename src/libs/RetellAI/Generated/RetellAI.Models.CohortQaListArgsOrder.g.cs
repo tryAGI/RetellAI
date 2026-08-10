@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Sort order.
+    /// Sort order. Defaults to "desc".
     /// </summary>
     public enum CohortQaListArgsOrder
     {

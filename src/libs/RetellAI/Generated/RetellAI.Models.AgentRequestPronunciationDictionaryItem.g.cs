@@ -18,7 +18,7 @@ namespace RetellAI
         public required string Word { get; set; }
 
         /// <summary>
-        /// The phonetic alphabet to be used for pronunciation.<br/>
+        /// The phonetic alphabet to use. MiniMax speech-02-turbo supports IPA and Pinyin. MiniMax speech-2.8-turbo also supports Jyutping. Support for other alphabets depends on the selected voice provider and model.<br/>
         /// Example: ipa
         /// </summary>
         /// <example>ipa</example>
@@ -28,7 +28,7 @@ namespace RetellAI
         public required global::RetellAI.AgentRequestPronunciationDictionaryItemAlphabet Alphabet { get; set; }
 
         /// <summary>
-        /// Pronunciation of the word in the format of a IPA / CMU pronunciation.<br/>
+        /// Pronunciation of the word in the format of the selected phonetic alphabet.<br/>
         /// Example: ˈæktʃuəli
         /// </summary>
         /// <example>ˈæktʃuəli</example>
@@ -50,11 +50,11 @@ namespace RetellAI
         /// Example: actually
         /// </param>
         /// <param name="alphabet">
-        /// The phonetic alphabet to be used for pronunciation.<br/>
+        /// The phonetic alphabet to use. MiniMax speech-02-turbo supports IPA and Pinyin. MiniMax speech-2.8-turbo also supports Jyutping. Support for other alphabets depends on the selected voice provider and model.<br/>
         /// Example: ipa
         /// </param>
         /// <param name="phoneme">
-        /// Pronunciation of the word in the format of a IPA / CMU pronunciation.<br/>
+        /// Pronunciation of the word in the format of the selected phonetic alphabet.<br/>
         /// Example: ˈæktʃuəli
         /// </param>
 #if NET7_0_OR_GREATER

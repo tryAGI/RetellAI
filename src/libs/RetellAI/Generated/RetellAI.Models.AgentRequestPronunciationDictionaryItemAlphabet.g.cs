@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// The phonetic alphabet to be used for pronunciation.<br/>
+    /// The phonetic alphabet to use. MiniMax speech-02-turbo supports IPA and Pinyin. MiniMax speech-2.8-turbo also supports Jyutping. Support for other alphabets depends on the selected voice provider and model.<br/>
     /// Example: ipa
     /// </summary>
     public enum AgentRequestPronunciationDictionaryItemAlphabet
@@ -17,6 +17,14 @@ namespace RetellAI
         /// 
         /// </summary>
         Ipa,
+        /// <summary>
+        /// 
+        /// </summary>
+        Jyutping,
+        /// <summary>
+        /// 
+        /// </summary>
+        Pinyin,
     }
 
     /// <summary>
@@ -33,6 +41,8 @@ namespace RetellAI
             {
                 AgentRequestPronunciationDictionaryItemAlphabet.Cmu => "cmu",
                 AgentRequestPronunciationDictionaryItemAlphabet.Ipa => "ipa",
+                AgentRequestPronunciationDictionaryItemAlphabet.Jyutping => "jyutping",
+                AgentRequestPronunciationDictionaryItemAlphabet.Pinyin => "pinyin",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -45,6 +55,8 @@ namespace RetellAI
             {
                 "cmu" => AgentRequestPronunciationDictionaryItemAlphabet.Cmu,
                 "ipa" => AgentRequestPronunciationDictionaryItemAlphabet.Ipa,
+                "jyutping" => AgentRequestPronunciationDictionaryItemAlphabet.Jyutping,
+                "pinyin" => AgentRequestPronunciationDictionaryItemAlphabet.Pinyin,
                 _ => null,
             };
         }

@@ -4,46 +4,40 @@
 namespace RetellAI
 {
     /// <summary>
-    /// "default" requires every condition and metric to pass; "weighted" allows a lower `successful_criteria` threshold, so a call can pass without meeting every one.
+    /// 
     /// </summary>
-    public enum CohortEvaluationMode
+    public enum GetApiKeyInfoResponseStatus2
     {
         /// <summary>
         /// 
         /// </summary>
-        Default,
-        /// <summary>
-        /// 
-        /// </summary>
-        Weighted,
+        Error,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class CohortEvaluationModeExtensions
+    public static class GetApiKeyInfoResponseStatus2Extensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this CohortEvaluationMode value)
+        public static string ToValueString(this GetApiKeyInfoResponseStatus2 value)
         {
             return value switch
             {
-                CohortEvaluationMode.Default => "default",
-                CohortEvaluationMode.Weighted => "weighted",
+                GetApiKeyInfoResponseStatus2.Error => "error",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static CohortEvaluationMode? ToEnum(string value)
+        public static GetApiKeyInfoResponseStatus2? ToEnum(string value)
         {
             return value switch
             {
-                "default" => CohortEvaluationMode.Default,
-                "weighted" => CohortEvaluationMode.Weighted,
+                "error" => GetApiKeyInfoResponseStatus2.Error,
                 _ => null,
             };
         }

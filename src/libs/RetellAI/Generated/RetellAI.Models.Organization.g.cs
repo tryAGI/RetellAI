@@ -130,7 +130,7 @@ namespace RetellAI
         public string? EnterpriseId { get; set; }
 
         /// <summary>
-        /// 
+        /// Org feature gates. Includes Dynamo-stored buckets plus computed Redis rollout flags marked exposeToApi; computed flags win on name collision.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("feature_bucket")]
         public object? FeatureBucket { get; set; }
@@ -203,7 +203,9 @@ namespace RetellAI
         /// Example: {"threshold":10000,"target_amount":25000}
         /// </param>
         /// <param name="enterpriseId"></param>
-        /// <param name="featureBucket"></param>
+        /// <param name="featureBucket">
+        /// Org feature gates. Includes Dynamo-stored buckets plus computed Redis rollout flags marked exposeToApi; computed flags win on name collision.
+        /// </param>
         /// <param name="useStableServer"></param>
         /// <param name="conductorOverage">
         /// Conductor overage policy applied once the per-user/per-org daily free limits are exhausted. "off" rejects requests past the daily limit; "limited" allows up to `monthly_limit_usd` (USD) of metered overage per month; "unlimited" allows metered overage with no monthly cap.

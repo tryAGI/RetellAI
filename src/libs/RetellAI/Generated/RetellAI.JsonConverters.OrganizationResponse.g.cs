@@ -63,6 +63,8 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("webhook_key")) __score0++;
             if (__jsonProps.Contains("webhook_urls")) __score0++;
             var __score1 = 0;
+            if (__jsonProps.Contains("enterprise_plan_end")) __score1++;
+            if (__jsonProps.Contains("enterprise_plan_status")) __score1++;
             if (__jsonProps.Contains("org_id")) __score1++;
             var __bestScore = 0;
             var __bestIndex = -1;
