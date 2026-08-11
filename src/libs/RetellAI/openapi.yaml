@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-08-10-c6064a4
+  x-retell-spec-revision: 2026-08-11-19a8d06
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -9977,8 +9977,6 @@ paths:
     get:
       description: Get info about the API key used to authenticate, and the org that owns it.
       operationId: getApiKeyInfo
-      x-retell-sdk-resource: api_key
-      x-retell-sdk-method: get-info
       responses:
         '200':
           description: Successfully retrieved API key info.
@@ -9987,14 +9985,9 @@ paths:
               schema:
                 type: object
                 required:
-                - org_id
                 - org_name
                 - api_key_name
                 properties:
-                  org_id:
-                    type: string
-                    example: org_5cbb51d3cba24c2b8f4ec25b8ded
-                    description: Unique id of the org that owns the API key.
                   org_name:
                     type: string
                     example: Acme Inc
