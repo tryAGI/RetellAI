@@ -13,7 +13,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListChatsResponse2>> ListChatsAsync(
 
-            global::RetellAI.ListChatsRequest request,
+            global::RetellAI.V3ListChatsRequest request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -25,7 +25,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListChatsResponse2>>> ListChatsAsResponseAsync(
 
-            global::RetellAI.ListChatsRequest request,
+            global::RetellAI.V3ListChatsRequest request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -58,7 +58,7 @@ namespace RetellAI
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListChatsResponse2>> ListChatsAsync(
             global::RetellAI.ChatFilter? filterCriteria = default,
-            global::RetellAI.ListChatsRequestSortOrder? sortOrder = default,
+            global::RetellAI.V3ListChatsRequestSortOrder? sortOrder = default,
             int? limit = default,
             int? skip = default,
             string? paginationKey = default,

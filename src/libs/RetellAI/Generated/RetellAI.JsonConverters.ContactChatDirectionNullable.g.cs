@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ListChatsRequestSortOrderJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.ListChatsRequestSortOrder>
+    public sealed class ContactChatDirectionNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.ContactChatDirection?>
     {
         /// <inheritdoc />
-        public override global::RetellAI.ListChatsRequestSortOrder Read(
+        public override global::RetellAI.ContactChatDirection? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.ListChatsRequestSortOrderExtensions.ToEnum(stringValue) ?? default;
+                        return global::RetellAI.ContactChatDirectionExtensions.ToEnum(stringValue);
                     }
                     
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.ListChatsRequestSortOrder)numValue;
+                    return (global::RetellAI.ContactChatDirection)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.ListChatsRequestSortOrder);
+                    return default(global::RetellAI.ContactChatDirection?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.ListChatsRequestSortOrder value,
+            global::RetellAI.ContactChatDirection? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::RetellAI.ListChatsRequestSortOrderExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::RetellAI.ContactChatDirectionExtensions.ToValueString(value.Value));
+            }
         }
     }
 }
