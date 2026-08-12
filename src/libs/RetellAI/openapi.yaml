@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-08-11-19a8d06
+  x-retell-spec-revision: 2026-08-12-9e090f0
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -2227,6 +2227,41 @@ components:
             - post_session_message_with_tool_calls
           - required:
             - scrubbed_post_session_message_with_tool_calls
+    V3ListChatsRequest:
+      type: object
+      properties:
+        filter_criteria:
+          $ref: '#/components/schemas/ChatFilter'
+          description: Filter criteria for chats to retrieve.
+        sort_order:
+          type: string
+          enum:
+          - ascending
+          - descending
+          default: descending
+          description: Sort chats by `start_timestamp` in ascending or descending order.
+        limit:
+          type: integer
+          default: 50
+          maximum: 1000
+          description: Maximum number of chats to return.
+        skip:
+          type: integer
+          minimum: 0
+          default: 0
+          description: Number of records to skip for pagination.
+        pagination_key:
+          type: string
+          description: Opaque pagination cursor from a previous response.
+        include_total:
+          type: boolean
+          default: false
+          description: Whether to include `total` (count of all chats matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request triggers
+            an additional aggregate query, so opt in only when the total is needed.
+      not:
+        required:
+        - skip
+        - pagination_key
     CheckAvailabilityCalTool:
       type: object
       properties:
@@ -3825,6 +3860,66 @@ components:
           items:
             $ref: '#/components/schemas/CustomFieldFilter'
           description: Filter by custom attributes fields.
+    ContactFilter:
+      type: object
+      description: Filter criteria for contacts. All conditions are implicitly connected with AND. first_name and last_name are not filterable here; use search_query to match on those.
+      properties:
+        contact_id:
+          $ref: '#/components/schemas/StringFilter'
+        phone_number:
+          $ref: '#/components/schemas/StringFilter'
+          description: Filter by phone number. Stored in E.164, so an `eq` filter needs the full number.
+        external_id:
+          oneOf:
+          - $ref: '#/components/schemas/StringFilter'
+          - $ref: '#/components/schemas/PresentFilter'
+          description: Filter by the record id in the connected CRM. Use a `present` filter to separate synced from unsynced contacts.
+        do_not_call:
+          $ref: '#/components/schemas/BooleanFilter'
+          description: Filter by whether the contact is marked do-not-call.
+        last_conversation_timestamp:
+          oneOf:
+          - $ref: '#/components/schemas/NumberFilter'
+          - $ref: '#/components/schemas/RangeFilter'
+          description: Filter by when the contact was last spoken to, in epoch milliseconds.
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomFieldFilter'
+          description: Filter by custom contact fields defined in CRM config.
+    ListContactsRequest:
+      type: object
+      properties:
+        limit:
+          type: number
+          minimum: 1
+          maximum: 1000
+          default: 50
+          description: Maximum number of contacts to return.
+        skip:
+          type: number
+          minimum: 0
+          default: 0
+          description: Number of records to skip for offset-based pagination.
+        sort_order:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+          description: 'Sort contacts by `last_conversation_timestamp` in ascending or descending order. Contacts that have never been contacted sort as if their timestamp were 0.
+
+            '
+        pagination_key:
+          type: string
+          description: Base64url-encoded pagination key from a previous response.
+        filter_criteria:
+          $ref: '#/components/schemas/ContactFilter'
+        search_query:
+          type: string
+          description: 'Case-insensitive substring match against phone number, first name, last name, external ID, and custom field values. This is the only way to match on a contact''s name.
+
+            '
     DateRange:
       type: object
       required:
@@ -8495,6 +8590,166 @@ components:
             minimum: 0
             maximum: 10000
             description: Max metered overage per month, in USD (max 10000).
+    Contact:
+      type: object
+      properties:
+        contact_id:
+          type: string
+          description: Unique identifier for the contact.
+        org_id:
+          type: string
+          description: Organization this contact belongs to.
+        phone_number:
+          type: string
+          description: Phone number of the contact.
+        first_name:
+          type: string
+          description: First name of the contact.
+        last_name:
+          type: string
+          description: Last name of the contact.
+        do_not_call:
+          type: boolean
+          description: Whether this contact should not be called.
+        external_id:
+          type: string
+          description: CRM record ID from the external provider.
+        custom_fields:
+          type: object
+          description: Custom fields defined in CRM config.
+        conversation_count:
+          type: number
+          description: Number of conversations (calls and chats) associated with this contact.
+        last_conversation_timestamp:
+          type: number
+          description: Epoch milliseconds of the most recent conversation with this contact.
+        created_timestamp:
+          type: number
+          description: Epoch milliseconds when the contact was created.
+        user_modified_timestamp:
+          type: number
+          description: Epoch milliseconds when the contact was last modified.
+      required:
+      - contact_id
+      - org_id
+      - phone_number
+      - created_timestamp
+    ContactListResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        pagination_key:
+          type: string
+          description: Base64url-encoded pagination key for the next page.
+        has_more:
+          type: boolean
+        total:
+          type: number
+          description: Total count of contacts matching the filter.
+    ContactConversation:
+      oneOf:
+      - $ref: '#/components/schemas/ContactCall'
+      - $ref: '#/components/schemas/ContactChat'
+    ContactCall:
+      type: object
+      required:
+      - type
+      - call_id
+      properties:
+        type:
+          type: string
+          enum:
+          - call
+        call_id:
+          type: string
+        start_timestamp:
+          type: number
+          description: Epoch milliseconds when the call started.
+        duration_ms:
+          type: number
+          description: Duration of the call in milliseconds.
+        direction:
+          type: string
+          enum:
+          - inbound
+          - outbound
+          description: Direction of the call.
+        disconnection_reason:
+          type: string
+          description: Reason the call ended.
+        summary:
+          type: string
+          description: Post-call analysis summary.
+        sentiment:
+          type: string
+          enum:
+          - Negative
+          - Positive
+          - Neutral
+          - Unknown
+          description: User sentiment from post-call analysis.
+        successful:
+          type: boolean
+          description: Whether the call was deemed successful by post-call analysis.
+    ContactChat:
+      type: object
+      required:
+      - type
+      - chat_id
+      properties:
+        type:
+          type: string
+          enum:
+          - chat
+        chat_id:
+          type: string
+        start_timestamp:
+          type: number
+          description: Epoch milliseconds when the chat started.
+        duration_ms:
+          type: number
+          description: Duration of the chat in milliseconds.
+        direction:
+          type: string
+          enum:
+          - inbound
+          - outbound
+          description: Direction of the chat.
+        disconnection_reason:
+          type: string
+          description: Reason the chat ended.
+        summary:
+          type: string
+          description: Post-chat analysis summary.
+        sentiment:
+          type: string
+          enum:
+          - Negative
+          - Positive
+          - Neutral
+          - Unknown
+          description: User sentiment from post-chat analysis.
+        successful:
+          type: boolean
+          description: Whether the chat was deemed successful by post-chat analysis.
+    ContactConversationListResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactConversation'
+        pagination_key:
+          type: string
+          description: 'Base64url-encoded pagination key. Pass as `pagination_key` query parameter to fetch the next page.
+
+            '
+        has_more:
+          type: boolean
+          description: Whether more conversations exist beyond the returned window.
     DashboardSource:
       type: string
       enum:
@@ -10540,40 +10795,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                filter_criteria:
-                  $ref: '#/components/schemas/ChatFilter'
-                  description: Filter criteria for chats to retrieve.
-                sort_order:
-                  type: string
-                  enum:
-                  - ascending
-                  - descending
-                  default: descending
-                  description: Sort chats by `start_timestamp` in ascending or descending order.
-                limit:
-                  type: integer
-                  default: 50
-                  maximum: 1000
-                  description: Maximum number of chats to return.
-                skip:
-                  type: integer
-                  minimum: 0
-                  default: 0
-                  description: Number of records to skip for pagination.
-                pagination_key:
-                  type: string
-                  description: Opaque pagination cursor from a previous response.
-                include_total:
-                  type: boolean
-                  default: false
-                  description: Whether to include `total` (count of all chats matching `filter_criteria`, ignoring `limit`/`skip`/`pagination_key`) in the response. Defaults to false. Each enabled request
-                    triggers an additional aggregate query, so opt in only when the total is needed.
-              not:
-                required:
-                - skip
-                - pagination_key
+              $ref: '#/components/schemas/V3ListChatsRequest'
       responses:
         '200':
           description: Successfully retrieved chats.

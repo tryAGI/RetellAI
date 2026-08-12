@@ -27,11 +27,11 @@ namespace RetellAI
             };
         partial void PrepareListChatsArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::RetellAI.ListChatsRequest request);
+            global::RetellAI.V3ListChatsRequest request);
         partial void PrepareListChatsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::RetellAI.ListChatsRequest request);
+            global::RetellAI.V3ListChatsRequest request);
         partial void ProcessListChatsResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -50,7 +50,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListChatsResponse2>> ListChatsAsync(
 
-            global::RetellAI.ListChatsRequest request,
+            global::RetellAI.V3ListChatsRequest request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -72,7 +72,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListChatsResponse2>>> ListChatsAsResponseAsync(
 
-            global::RetellAI.ListChatsRequest request,
+            global::RetellAI.V3ListChatsRequest request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -609,7 +609,7 @@ namespace RetellAI
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListChatsResponse2>> ListChatsAsync(
             global::RetellAI.ChatFilter? filterCriteria = default,
-            global::RetellAI.ListChatsRequestSortOrder? sortOrder = default,
+            global::RetellAI.V3ListChatsRequestSortOrder? sortOrder = default,
             int? limit = default,
             int? skip = default,
             string? paginationKey = default,
@@ -617,7 +617,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::RetellAI.ListChatsRequest
+            var __request = new global::RetellAI.V3ListChatsRequest
             {
                 FilterCriteria = filterCriteria,
                 SortOrder = sortOrder,

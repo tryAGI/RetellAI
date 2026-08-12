@@ -6,7 +6,7 @@ namespace RetellAI
     /// <summary>
     /// 
     /// </summary>
-    public sealed partial class ListChatsRequest
+    public sealed partial class V3ListChatsRequest
     {
         /// <summary>
         /// Filter criteria for chats. All conditions are implicitly connected with AND.
@@ -19,8 +19,8 @@ namespace RetellAI
         /// Default Value: descending
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sort_order")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListChatsRequestSortOrderJsonConverter))]
-        public global::RetellAI.ListChatsRequestSortOrder? SortOrder { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.V3ListChatsRequestSortOrderJsonConverter))]
+        public global::RetellAI.V3ListChatsRequestSortOrder? SortOrder { get; set; }
 
         /// <summary>
         /// Maximum number of chats to return.<br/>
@@ -56,7 +56,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListChatsRequest" /> class.
+        /// Initializes a new instance of the <see cref="V3ListChatsRequest" /> class.
         /// </summary>
         /// <param name="filterCriteria">
         /// Filter criteria for chats. All conditions are implicitly connected with AND.
@@ -83,9 +83,9 @@ namespace RetellAI
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public ListChatsRequest(
+        public V3ListChatsRequest(
             global::RetellAI.ChatFilter? filterCriteria,
-            global::RetellAI.ListChatsRequestSortOrder? sortOrder,
+            global::RetellAI.V3ListChatsRequestSortOrder? sortOrder,
             int? limit,
             int? skip,
             string? paginationKey,
@@ -100,9 +100,9 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListChatsRequest" /> class.
+        /// Initializes a new instance of the <see cref="V3ListChatsRequest" /> class.
         /// </summary>
-        public ListChatsRequest()
+        public V3ListChatsRequest()
         {
         }
 

@@ -4,47 +4,46 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Sort chats by `start_timestamp` in ascending or descending order.<br/>
-    /// Default Value: descending
+    /// Direction of the call.
     /// </summary>
-    public enum ListChatsRequestSortOrder
+    public enum ContactCallDirection
     {
         /// <summary>
         /// 
         /// </summary>
-        Ascending,
+        Inbound,
         /// <summary>
         /// 
         /// </summary>
-        Descending,
+        Outbound,
     }
 
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class ListChatsRequestSortOrderExtensions
+    public static class ContactCallDirectionExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this ListChatsRequestSortOrder value)
+        public static string ToValueString(this ContactCallDirection value)
         {
             return value switch
             {
-                ListChatsRequestSortOrder.Ascending => "ascending",
-                ListChatsRequestSortOrder.Descending => "descending",
+                ContactCallDirection.Inbound => "inbound",
+                ContactCallDirection.Outbound => "outbound",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static ListChatsRequestSortOrder? ToEnum(string value)
+        public static ContactCallDirection? ToEnum(string value)
         {
             return value switch
             {
-                "ascending" => ListChatsRequestSortOrder.Ascending,
-                "descending" => ListChatsRequestSortOrder.Descending,
+                "inbound" => ContactCallDirection.Inbound,
+                "outbound" => ContactCallDirection.Outbound,
                 _ => null,
             };
         }
