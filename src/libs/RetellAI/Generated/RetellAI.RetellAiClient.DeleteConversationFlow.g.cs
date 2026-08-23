@@ -27,11 +27,13 @@ namespace RetellAI
             };
         partial void PrepareDeleteConversationFlowArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string conversationFlowId);
+            ref string conversationFlowId,
+            ref bool? forceDelete);
         partial void PrepareDeleteConversationFlowRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string conversationFlowId);
+            string conversationFlowId,
+            bool? forceDelete);
         partial void ProcessDeleteConversationFlowResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -40,16 +42,19 @@ namespace RetellAI
         /// Delete a conversation flow and all its versions
         /// </summary>
         /// <param name="conversationFlowId"></param>
+        /// <param name="forceDelete"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task DeleteConversationFlowAsync(
             string conversationFlowId,
+            bool? forceDelete = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             await DeleteConversationFlowAsResponseAsync(
                 conversationFlowId: conversationFlowId,
+                forceDelete: forceDelete,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -58,11 +63,13 @@ namespace RetellAI
         /// Delete a conversation flow and all its versions
         /// </summary>
         /// <param name="conversationFlowId"></param>
+        /// <param name="forceDelete"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse> DeleteConversationFlowAsResponseAsync(
             string conversationFlowId,
+            bool? forceDelete = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -70,7 +77,8 @@ namespace RetellAI
                 client: HttpClient);
             PrepareDeleteConversationFlowArguments(
                 httpClient: HttpClient,
-                conversationFlowId: ref conversationFlowId);
+                conversationFlowId: ref conversationFlowId,
+                forceDelete: ref forceDelete);
 
 
             var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
@@ -98,6 +106,9 @@ namespace RetellAI
                             var __pathBuilder = new global::RetellAI.PathBuilder(
                                 path: $"/delete-conversation-flow/{conversationFlowId}",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("force_delete", forceDelete?.ToString().ToLowerInvariant())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::RetellAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -138,7 +149,8 @@ namespace RetellAI
                 PrepareDeleteConversationFlowRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    conversationFlowId: conversationFlowId!);
+                    conversationFlowId: conversationFlowId!,
+                    forceDelete: forceDelete);
 
                 return __httpRequest;
             }

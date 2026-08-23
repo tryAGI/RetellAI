@@ -27,7 +27,19 @@ namespace RetellAI
         public required string KnowledgeBaseName { get; set; }
 
         /// <summary>
-        /// Status of the knowledge base. When it's created and being processed, it's "in_progress". When the processing is done, it's "complete". When there's an error in processing, it's "error". When it is during kb updating, it's "refreshing_in_progress".<br/>
+        /// Current processing state of the knowledge base:<br/>
+        /// - `in_progress`: Initial indexing is running. Source metadata may be<br/>
+        ///   incomplete until indexing finishes.<br/>
+        /// - `complete`: Initial indexing or the latest update or refresh<br/>
+        ///   finished. Individual source failures may still be reported in<br/>
+        ///   `error_messages`.<br/>
+        /// - `error`: Initial indexing failed. Source metadata may be incomplete.<br/>
+        /// - `refreshing_in_progress`: An existing knowledge base is being<br/>
+        ///   updated. This includes indexing newly added sources or running a<br/>
+        ///   manual or automatic refresh that re-indexes URLs, Google Drive<br/>
+        ///   files, and pages from auto-crawling paths. Previously indexed<br/>
+        ///   sources remain available during the update, and the source list<br/>
+        ///   may change when it finishes.<br/>
         /// Example: in_progress
         /// </summary>
         /// <example>in_progress</example>
@@ -92,7 +104,19 @@ namespace RetellAI
         /// Example: Sample KB
         /// </param>
         /// <param name="status">
-        /// Status of the knowledge base. When it's created and being processed, it's "in_progress". When the processing is done, it's "complete". When there's an error in processing, it's "error". When it is during kb updating, it's "refreshing_in_progress".<br/>
+        /// Current processing state of the knowledge base:<br/>
+        /// - `in_progress`: Initial indexing is running. Source metadata may be<br/>
+        ///   incomplete until indexing finishes.<br/>
+        /// - `complete`: Initial indexing or the latest update or refresh<br/>
+        ///   finished. Individual source failures may still be reported in<br/>
+        ///   `error_messages`.<br/>
+        /// - `error`: Initial indexing failed. Source metadata may be incomplete.<br/>
+        /// - `refreshing_in_progress`: An existing knowledge base is being<br/>
+        ///   updated. This includes indexing newly added sources or running a<br/>
+        ///   manual or automatic refresh that re-indexes URLs, Google Drive<br/>
+        ///   files, and pages from auto-crawling paths. Previously indexed<br/>
+        ///   sources remain available during the update, and the source list<br/>
+        ///   may change when it finishes.<br/>
         /// Example: in_progress
         /// </param>
         /// <param name="maxChunkSize">

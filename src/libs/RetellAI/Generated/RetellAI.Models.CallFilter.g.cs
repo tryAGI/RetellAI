@@ -163,7 +163,7 @@ namespace RetellAI
         /// Filter by dynamic variables.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dynamic_variables")]
-        public global::System.Collections.Generic.IList<global::RetellAI.AllOf<global::RetellAI.StringFilter, global::RetellAI.CallFilterDynamicVariable>>? DynamicVariables { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? DynamicVariables { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -249,7 +249,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? customAnalysisData,
             global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? customAttributes,
             global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? metadata,
-            global::System.Collections.Generic.IList<global::RetellAI.AllOf<global::RetellAI.StringFilter, global::RetellAI.CallFilterDynamicVariable>>? dynamicVariables)
+            global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? dynamicVariables)
         {
             this.Agent = agent;
             this.AgentTag = agentTag;

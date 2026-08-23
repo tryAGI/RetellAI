@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-08-12-9e090f0
+  x-retell-spec-revision: 2026-08-22-7679759
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -1134,6 +1134,35 @@ components:
           description: IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.
           example: America/New_York
           nullable: true
+    AgentVersionSummary:
+      type: object
+      required:
+      - version
+      - is_published
+      - last_modification_timestamp
+      properties:
+        version:
+          type: integer
+          example: 3
+          description: Version number of the agent.
+        is_published:
+          type: boolean
+          example: false
+          description: Whether the agent version is published.
+        version_title:
+          type: string
+          description: Optional title of the agent version.
+        version_description:
+          type: string
+          description: Optional description of the agent version.
+        base_version:
+          type: integer
+          example: 2
+          description: Version that this agent version was based on.
+        last_modification_timestamp:
+          type: integer
+          example: 1703413636133
+          description: Last modification timestamp in milliseconds since epoch.
     AgentResponse:
       allOf:
       - type: object
@@ -1256,7 +1285,7 @@ components:
             description: Webhook setting for the agent swap, defaults to only source.
           keep_current_voice:
             type: boolean
-            description: If true, keep the current voice when swapping agents. Defaults to false.
+            description: If true, keep the current voice and ambient sound settings when swapping agents. Otherwise, use the destination agent's voice and ambient sound settings. Defaults to false.
           keep_current_language:
             type: boolean
             description: If true, keep the current language when swapping agents. Defaults to false.
@@ -1309,7 +1338,7 @@ components:
           description: Webhook setting for the agent swap, defaults to only source.
         keep_current_voice:
           type: boolean
-          description: If true, keep the current voice when swapping agents. Defaults to false.
+          description: If true, keep the current voice and ambient sound settings when swapping agents. Otherwise, use the destination agent's voice and ambient sound settings. Defaults to false.
         keep_current_language:
           type: boolean
           description: If true, keep the current language when swapping agents. Defaults to false.
@@ -3306,6 +3335,8 @@ components:
             directly. Defaults to "prompt".
         timeout_ms:
           type: integer
+          minimum: 1000
+          maximum: 600000
           description: The maximum time in milliseconds the tool can run before it's considered timeout. If the tool times out, the agent would have that info. The minimum value allowed is 1000 ms (1 s),
             and maximum value allowed is 600,000 ms (10 min). By default, this is set to 120,000 ms (2 min).
         max_retry:
@@ -3770,16 +3801,22 @@ components:
         dynamic_variables:
           type: array
           items:
-            allOf:
-            - $ref: '#/components/schemas/StringFilter'
-            - type: object
-              required:
-              - key
-              properties:
-                key:
-                  type: string
-                  description: The dynamic variable name to filter on.
+            $ref: '#/components/schemas/CustomFieldFilter'
           description: Filter by dynamic variables.
+    StoredCallFilter:
+      allOf:
+      - $ref: '#/components/schemas/CallFilter'
+      - type: object
+        properties:
+          transfer_agent:
+            type: array
+            items:
+              $ref: '#/components/schemas/AgentFilter'
+            description: The subset of `agent` that was selected as transfer agents. Stored and returned verbatim; it is NOT applied when querying — the dashboard merges its transfer-agent selection into
+              `agent`, which is what filtering resolves on. It exists only so that a saved filter, on being read back, can tell which entries of `agent` belong to the transfer-agent picker; without it they
+              all come back as regular agent selections.
+      description: A `CallFilter` as *persisted* on a dashboard or chart. Identical to `CallFilter` for querying purposes — the extra field records how the selection was made, not what to match. Used only
+        by the dashboard configuration endpoints; query endpoints take a plain `CallFilter`.
     ChatFilter:
       type: object
       description: Filter criteria for chats. All conditions are implicitly connected with AND.
@@ -4533,8 +4570,10 @@ components:
           - error
           - refreshing_in_progress
           example: in_progress
-          description: Status of the knowledge base. When it's created and being processed, it's "in_progress". When the processing is done, it's "complete". When there's an error in processing, it's "error".
-            When it is during kb updating, it's "refreshing_in_progress".
+          description: "Current processing state of the knowledge base:\n\n- `in_progress`: Initial indexing is running. Source metadata may be\n  incomplete until indexing finishes.\n- `complete`: Initial\
+            \ indexing or the latest update or refresh\n  finished. Individual source failures may still be reported in\n  `error_messages`.\n- `error`: Initial indexing failed. Source metadata may be incomplete.\n\
+            - `refreshing_in_progress`: An existing knowledge base is being\n  updated. This includes indexing newly added sources or running a\n  manual or automatic refresh that re-indexes URLs, Google\
+            \ Drive\n  files, and pages from auto-crawling paths. Previously indexed\n  sources remain available during the update, and the source list\n  may change when it finishes.\n"
         max_chunk_size:
           type: integer
           example: 2000
@@ -5110,7 +5149,7 @@ components:
       - type: object
         properties:
           model_choice:
-            $ref: '#/components/schemas/ModelChoice'
+            $ref: '#/components/schemas/ModelChoiceCascading'
     NodeBaseCommon:
       type: object
       required:
@@ -7415,6 +7454,8 @@ components:
               - agent_version
             transfer_timeout_ms:
               type: number
+              minimum: 10000
+              maximum: 300000
               description: The maximum time to wait for the transfer agent to make a decision, in milliseconds. Defaults to 30000 (30 seconds).
               default: 30000
             action_on_timeout:
@@ -7474,6 +7515,8 @@ components:
             this option.
         agent_detection_timeout_ms:
           type: number
+          minimum: 10000
+          maximum: 300000
           description: The time to wait before considering transfer fails.
         transfer_ring_duration_ms:
           type: integer
@@ -8750,6 +8793,388 @@ components:
         has_more:
           type: boolean
           description: Whether more conversations exist beyond the returned window.
+    AppType:
+      type: string
+      enum:
+      - crm
+      - calendar
+      - knowledge_base
+      - support
+      - communication
+      description: App integration category.
+    AppConnectionStatus:
+      type: string
+      enum:
+      - not_connected
+      - connected
+      - error
+      description: Connection health of the App, server-managed. `not_connected` after create or a credential / tenant URL change; `connected` once verified via OAuth connect, an auth test, or a successful
+        live tool call; `error` when the provider rejects the credentials (on connect, an auth test, or a live tool call).
+    AppProvider:
+      type: string
+      description: Provider name. Must be valid for the App's type; the supported providers per type are listed by list-app-templates.
+    OAuthConfigRequest:
+      type: object
+      required:
+      - type
+      - client_id
+      - client_secret
+      properties:
+        type:
+          type: string
+          enum:
+          - oauth2
+        client_id:
+          type: string
+          minLength: 1
+        client_secret:
+          type: string
+          minLength: 1
+          description: Secret credential; stored encrypted at rest.
+    ApiKeyAuthConfigRequest:
+      type: object
+      required:
+      - type
+      - api_key
+      properties:
+        type:
+          type: string
+          enum:
+          - api_key
+        api_key:
+          type: string
+          minLength: 1
+          description: API key credential; stored encrypted at rest.
+    AccessTokenAuthConfigRequest:
+      type: object
+      required:
+      - type
+      - access_token
+      properties:
+        type:
+          type: string
+          enum:
+          - access_token
+        access_token:
+          type: string
+          minLength: 1
+          description: OAuth-obtained access token used directly as a static bearer secret; stored encrypted at rest. An alternative to the OAuth connect flow, which persists the same config.
+    BasicAuthConfigRequest:
+      type: object
+      required:
+      - type
+      - username
+      - password
+      properties:
+        type:
+          type: string
+          enum:
+          - basic
+        username:
+          type: string
+          minLength: 1
+        password:
+          type: string
+          minLength: 1
+          description: Password credential; stored encrypted at rest.
+    RefreshTokenAuthConfigRequest:
+      type: object
+      required:
+      - type
+      - refresh_token
+      properties:
+        type:
+          type: string
+          enum:
+          - refresh_token
+        refresh_token:
+          type: string
+          minLength: 1
+          description: OAuth refresh token; stored encrypted at rest. An alternative to the OAuth connect flow, which persists the same config.
+    AuthConfigRequest:
+      oneOf:
+      - $ref: '#/components/schemas/OAuthConfigRequest'
+      - $ref: '#/components/schemas/ApiKeyAuthConfigRequest'
+      - $ref: '#/components/schemas/AccessTokenAuthConfigRequest'
+      - $ref: '#/components/schemas/BasicAuthConfigRequest'
+      - $ref: '#/components/schemas/RefreshTokenAuthConfigRequest'
+    OAuthConfigResponse:
+      type: object
+      required:
+      - type
+      - client_id
+      properties:
+        type:
+          type: string
+          enum:
+          - oauth2
+        client_id:
+          type: string
+    ApiKeyAuthConfigResponse:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - api_key
+    AccessTokenAuthConfigResponse:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - access_token
+    BasicAuthConfigResponse:
+      type: object
+      required:
+      - type
+      - username
+      properties:
+        type:
+          type: string
+          enum:
+          - basic
+        username:
+          type: string
+    RefreshTokenAuthConfigResponse:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - refresh_token
+    AppAuthConfigResponse:
+      oneOf:
+      - $ref: '#/components/schemas/OAuthConfigResponse'
+      - $ref: '#/components/schemas/ApiKeyAuthConfigResponse'
+      - $ref: '#/components/schemas/AccessTokenAuthConfigResponse'
+      - $ref: '#/components/schemas/BasicAuthConfigResponse'
+      - $ref: '#/components/schemas/RefreshTokenAuthConfigResponse'
+      description: Non-secret auth metadata. Encrypted secret fields are never returned by the API.
+    CRMSyncMapping:
+      type: object
+      required:
+      - field_name
+      - external_field_name
+      properties:
+        field_name:
+          type: string
+          description: Retell contact field, built-in or custom, to map. Types must be compatible with the CRM field on both sides of the sync.
+        external_field_name:
+          type: string
+          description: Field on the CRM's contact object to map to. A name that does not exist there surfaces as an error on the sync job rather than at configuration time.
+    AppCRMConfig:
+      type: object
+      properties:
+        inbound_sync_mappings:
+          type: array
+          maxItems: 200
+          description: Field mappings applied when syncing CRM records into Retell contacts. Must include phone_number, which is the field the two systems are matched on.
+          items:
+            $ref: '#/components/schemas/CRMSyncMapping'
+        outbound_sync_mappings:
+          type: array
+          maxItems: 200
+          description: Field mappings applied when writing Retell contact changes back to the CRM.
+          items:
+            $ref: '#/components/schemas/CRMSyncMapping'
+        sync_conversation_activity:
+          type: boolean
+          description: Whether to push call/chat activity to the external CRM. Opt-in — defaults to false when unset.
+        sync_new_contacts:
+          type: boolean
+          description: Whether to create a CRM record after a conversation when the contact is not yet linked to one.
+    AppResponse:
+      type: object
+      required:
+      - app_id
+      - org_id
+      - type
+      - provider
+      - created_timestamp
+      - user_modified_timestamp
+      properties:
+        app_id:
+          type: string
+        org_id:
+          type: string
+        type:
+          $ref: '#/components/schemas/AppType'
+        provider:
+          $ref: '#/components/schemas/AppProvider'
+        connection_status:
+          $ref: '#/components/schemas/AppConnectionStatus'
+        name:
+          type: string
+        tenant_url:
+          type: string
+          description: Per-tenant API base URL. Set by providers with per-org hosts; omitted by providers on a single global host.
+        tenant_id:
+          type: string
+          description: Sub-account id, for providers that scope requests by a sub-account id on a shared host. Omitted by every other provider.
+        auth_config:
+          $ref: '#/components/schemas/AppAuthConfigResponse'
+        crm_config:
+          $ref: '#/components/schemas/AppCRMConfig'
+        created_timestamp:
+          type: number
+        user_modified_timestamp:
+          type: number
+    AppUsageResponse:
+      oneOf:
+      - $ref: '#/components/schemas/AgentAppUsage'
+      - $ref: '#/components/schemas/KnowledgeBaseAppUsage'
+      description: One agent or knowledge base referencing an app.
+    AgentAppUsage:
+      type: object
+      required:
+      - type
+      - agent_id
+      - agent_versions
+      - configured_timestamp
+      properties:
+        type:
+          type: string
+          enum:
+          - agent
+        agent_id:
+          type: string
+        agent_name:
+          type: string
+          description: Current agent name; omitted if the agent was deleted.
+        agent_versions:
+          type: array
+          items:
+            type: number
+          description: Agent versions referencing this app, largest first.
+        configured_timestamp:
+          type: number
+          description: When this reference was last recorded, in milliseconds.
+    KnowledgeBaseAppUsage:
+      type: object
+      required:
+      - type
+      - knowledge_base_id
+      - configured_timestamp
+      properties:
+        type:
+          type: string
+          enum:
+          - knowledge_base
+        knowledge_base_id:
+          type: string
+        knowledge_base_name:
+          type: string
+          description: Current knowledge base name; omitted if it was deleted.
+        configured_timestamp:
+          type: number
+          description: When this reference was last recorded, in milliseconds.
+    CRMCustomFieldSchema:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+          description: Display label for the field.
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - string
+          - number
+          - boolean
+          - date
+          - datetime
+          - enum
+        options:
+          type: array
+          items:
+            type: string
+          description: Allowed values. Required when `type` is `enum`, where a value is rejected unless it appears here; ignored for every other type.
+      required:
+      - name
+      - type
+    CRMAnalysisDataMapping:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: Contact field to write to. Must be an existing built-in or custom contact field, and cannot be phone_number, which identifies the contact.
+        analysis_data_name:
+          type: string
+          description: Name of the post-call analysis field to read the value from. A value that does not match the contact field's type is skipped rather than failing the conversation.
+        update_mode:
+          type: string
+          description: How to reconcile the new value with what the contact already holds. `overwrite` always replaces it, `fill_if_empty` writes only when the field is empty, and `merge` combines the existing
+            text with the new value. `merge` is available on string fields only.
+          enum:
+          - overwrite
+          - fill_if_empty
+          - merge
+      required:
+      - field_name
+      - analysis_data_name
+      - update_mode
+    CRMConfig:
+      type: object
+      required:
+      - org_id
+      properties:
+        org_id:
+          type: string
+        app_id:
+          type: string
+          description: The connected CRM integration app ID.
+        last_sync_timestamp:
+          type: number
+          description: Epoch milliseconds of the last successful sync.
+        custom_fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/CRMCustomFieldSchema'
+        crm_analysis_data_mappings:
+          type: array
+          items:
+            $ref: '#/components/schemas/CRMAnalysisDataMapping'
+        contact_columns_order:
+          type: array
+          items:
+            type: string
+          description: Preferred display order of contact fields, for clients that render contacts as a table. Not used by the API itself.
+    JobStatus:
+      type: object
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          enum:
+          - queued
+          - running
+          - idle
+        start_timestamp:
+          type: number
+          description: Epoch milliseconds when the job started.
+        succeeded:
+          type: number
+          description: Number of items processed successfully so far.
+        failed:
+          type: number
+          description: Number of items that errored so far.
+        triggered_by:
+          type: string
+          description: Whether the job was started by an explicit API call (`manual`) or by the scheduled sync (`cron`).
+          enum:
+          - manual
+          - cron
     DashboardSource:
       type: string
       enum:
@@ -9884,6 +10309,13 @@ paths:
           type: string
         required: true
         description: Unique id of the conversation flow to be deleted.
+      - in: query
+        name: force_delete
+        required: false
+        schema:
+          type: boolean
+        description: By default the deletion is rejected with a 400 if any agent still uses this conversation flow as its response engine. Set to true to delete it anyway, which leaves those agents pointing
+          at a conversation flow that no longer exists.
       responses:
         '204':
           description: Successfully deleted the conversation flow
@@ -9988,6 +10420,13 @@ paths:
           example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         required: true
         description: Unique id of the Retell LLM Response Engine to be deleted. Deletes all versions of the Retell LLM Response Engine.
+      - in: query
+        name: force_delete
+        required: false
+        schema:
+          type: boolean
+        description: By default the deletion is rejected with a 400 if any agent still uses this Retell LLM as its response engine. Set to true to delete it anyway, which leaves those agents pointing at
+          a Retell LLM that no longer exists.
       responses:
         '204':
           description: No Content
@@ -10022,9 +10461,51 @@ paths:
           $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /list-agent-versions/{agent_id}:
+    get:
+      description: List stored versions of a voice or chat agent with pagination. Root-level data such as assigned tags is not included.
+      operationId: listAgentVersions
+      parameters:
+      - in: path
+        name: agent_id
+        schema:
+          type: string
+          minLength: 1
+          example: 16b980523634a6dc504898cda492e939
+        required: true
+        description: Unique ID of the agent whose versions are being listed.
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SortOrderParam'
+      - $ref: '#/components/parameters/PaginationKeyParam'
+      responses:
+        '200':
+          description: Successfully retrieved a page of agent versions.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResponseBase'
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AgentVersionSummary'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /get-agent-versions/{agent_id}:
     get:
-      description: Get all versions of an agent
+      description: Get agent versions. Large version histories may be truncated.
       operationId: getAgentVersions
       parameters:
       - in: path
@@ -10037,7 +10518,7 @@ paths:
         description: Unique id of the agent versions to be retrieved.
       responses:
         '200':
-          description: Successfully retrieved all versions of an agent.
+          description: Successfully retrieved agent versions.
           content:
             application/json:
               schema:
@@ -10052,6 +10533,7 @@ paths:
           $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      deprecated: true
   /get-agent/{agent_id}:
     get:
       description: Retrieve details of a specific agent
@@ -10088,7 +10570,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /get-chat-agent-versions/{agent_id}:
     get:
-      description: Get all versions of a chat agent
+      description: Get chat agent versions. Large version histories may be truncated.
       operationId: getChatAgentVersions
       parameters:
       - in: path
@@ -10101,7 +10583,7 @@ paths:
         description: Unique id of the chat agent versions to be retrieved.
       responses:
         '200':
-          description: Successfully retrieved all versions of a chat agent.
+          description: Successfully retrieved chat agent versions.
           content:
             application/json:
               schema:
@@ -10114,6 +10596,7 @@ paths:
           $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      deprecated: true
   /get-chat-agent/{agent_id}:
     get:
       description: Retrieve details of a specific chat agent
@@ -12109,5 +12592,724 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /create-contact:
+    post:
+      description: Create a new contact.
+      operationId: createContact
+      x-retell-sdk-resource: contact
+      x-retell-sdk-method: create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - phone_number
+              properties:
+                phone_number:
+                  type: string
+                  description: Phone number of the contact.
+                first_name:
+                  type: string
+                  description: First name of the contact.
+                last_name:
+                  type: string
+                  description: Last name of the contact.
+                do_not_call:
+                  type: boolean
+                custom_fields:
+                  type: object
+                  description: 'Values must match the types defined in CRM config custom fields. Set a value to null to clear it.
+
+                    '
+      responses:
+        '201':
+          description: Contact created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-contact/{contact_id}:
+    get:
+      description: Retrieve a contact by ID.
+      operationId: getContact
+      x-retell-sdk-resource: contact
+      x-retell-sdk-method: get
+      parameters:
+      - in: path
+        name: contact_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Contact found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-contact-by-phone/{phone_number}:
+    get:
+      description: Retrieve a contact by phone number. At most one contact exists per phone number in an organization.
+      operationId: getContactByPhone
+      x-retell-sdk-resource: contact
+      x-retell-sdk-method: get-by-phone
+      parameters:
+      - in: path
+        name: phone_number
+        required: true
+        description: Phone number of the contact, E.164 preferred. Other formats are normalized before the lookup; a number that cannot be parsed is rejected with 400.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Contact found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /update-contact/{contact_id}:
+    patch:
+      description: Update an existing contact.
+      operationId: updateContact
+      x-retell-sdk-resource: contact
+      x-retell-sdk-method: update
+      parameters:
+      - in: path
+        name: contact_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: First name of the contact.
+                last_name:
+                  type: string
+                  description: Last name of the contact.
+                do_not_call:
+                  type: boolean
+                custom_fields:
+                  type: object
+                  description: 'Values must match the types defined in CRM config custom fields. Set a value to null to clear it.
+
+                    '
+      responses:
+        '200':
+          description: Contact updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /delete-contact/{contact_id}:
+    delete:
+      description: Delete a contact. A contact linked to a record in a connected CRM cannot be deleted while two-way sync is active — unlink the CRM app first, otherwise the next sync would recreate it.
+      operationId: deleteContact
+      x-retell-sdk-resource: contact
+      x-retell-sdk-method: delete
+      parameters:
+      - in: path
+        name: contact_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Contact deleted.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /list-contacts:
+    post:
+      description: List contacts, newest conversation first by default, with the total count of matches alongside the page. Page through results with `pagination_key`; `skip` is available for offset-style
+        paging but is slower on large contact sets and can repeat or miss rows as contacts are updated.
+      operationId: listContacts
+      x-retell-sdk-resource: contact
+      x-retell-sdk-method: list
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListContactsRequest'
+      responses:
+        '200':
+          description: Paginated list of contacts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /list-contact-conversations/{contact_id}:
+    get:
+      description: 'List a contact''s conversations (inbound calls, outbound calls, and chats) merged into a single timeline, most recent first. Results are matched by the contact''s phone number. Use the
+        returned `pagination_key` to fetch the next page.
+
+        '
+      operationId: listContactConversations
+      x-retell-sdk-resource: contact
+      x-retell-sdk-method: list-conversations
+      parameters:
+      - in: path
+        name: contact_id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/PaginationKeyParam'
+      responses:
+        '200':
+          description: Merged list of the contact's conversations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactConversationListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /create-app:
+    post:
+      description: 'Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers that authenticate with a key, token,
+        or refresh token can be connected in this one call by passing auth_config; the credential is stored encrypted and never returned. Up to 20 apps per provider.'
+      operationId: createApp
+      x-retell-sdk-resource: app
+      x-retell-sdk-method: create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - type
+              - provider
+              properties:
+                type:
+                  $ref: '#/components/schemas/AppType'
+                provider:
+                  $ref: '#/components/schemas/AppProvider'
+                name:
+                  type: string
+                  description: Display name.
+                tenant_url:
+                  type: string
+                  description: Per-tenant API base URL.
+                tenant_id:
+                  type: string
+                  description: Sub-account id, for providers that scope requests by a sub-account id on a shared host.
+                auth_config:
+                  $ref: '#/components/schemas/AuthConfigRequest'
+                crm_config:
+                  $ref: '#/components/schemas/AppCRMConfig'
+      responses:
+        '201':
+          description: App created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-app/{app_id}:
+    get:
+      description: Get an App by id.
+      operationId: getApp
+      x-retell-sdk-resource: app
+      x-retell-sdk-method: get
+      parameters:
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: App.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /update-app/{app_id}:
+    patch:
+      description: Partially update an App. Omitted fields remain unchanged. Updating auth_config invalidates the cached provider token immediately.
+      operationId: updateApp
+      x-retell-sdk-resource: app
+      x-retell-sdk-method: update
+      parameters:
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                tenant_url:
+                  type: string
+                  description: Per-tenant API base URL.
+                tenant_id:
+                  type: string
+                  description: Sub-account id, for providers that scope requests by a sub-account id on a shared host.
+                auth_config:
+                  $ref: '#/components/schemas/AuthConfigRequest'
+                crm_config:
+                  $ref: '#/components/schemas/AppCRMConfig'
+      responses:
+        '200':
+          description: Updated App.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /delete-app/{app_id}:
+    delete:
+      description: Delete an App. Fails when agents or knowledge bases still reference it, unless force_delete is set. If a CRM config is linked to this App, the link is cleared.
+      operationId: deleteApp
+      x-retell-sdk-resource: app
+      x-retell-sdk-method: delete
+      parameters:
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: force_delete
+        required: false
+        schema:
+          type: boolean
+        description: Delete even when the App is still referenced.
+      responses:
+        '204':
+          description: App deleted.
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /list-apps:
+    get:
+      description: List Apps in the organization (paginated).
+      operationId: listApps
+      x-retell-sdk-resource: app
+      x-retell-sdk-method: list
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SortOrderParam'
+      - $ref: '#/components/parameters/PaginationKeyParam'
+      responses:
+        '200':
+          description: Page of Apps.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResponseBase'
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AppResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /list-app-usages/{app_id}:
+    get:
+      description: List the agents and knowledge bases referencing an App, most recently configured first by default.
+      operationId: listAppUsages
+      x-retell-sdk-resource: app
+      x-retell-sdk-method: list-usages
+      parameters:
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SortOrderParam'
+      - $ref: '#/components/parameters/PaginationKeyParam'
+      responses:
+        '200':
+          description: Page of App references.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResponseBase'
+                - type: object
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AppUsageResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /test-app-auth/{app_id}:
+    post:
+      description: Probe the App's stored credentials by making a minimal authenticated call to the provider. Returns success=true on a successful round-trip, and records the outcome on the App's connection_status
+        either way.
+      operationId: testAppAuth
+      x-retell-sdk-resource: app
+      x-retell-sdk-method: test-auth
+      parameters:
+      - in: path
+        name: app_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Auth probe result.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - success
+                properties:
+                  success:
+                    type: boolean
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-crm-config:
+    get:
+      description: 'Get the organization''s CRM configuration: which CRM app is linked, the custom contact fields defined for it, and how post-call analysis data is written back to contacts. Returns an
+        empty configuration when nothing has been set up yet.'
+      operationId: getCrmConfig
+      x-retell-sdk-resource: crm
+      x-retell-sdk-method: get-config
+      responses:
+        '200':
+          description: CRM config.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CRMConfig'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /update-crm-config:
+    post:
+      description: Update the organization's CRM configuration. Omitted fields stay as they are; a field that is sent replaces its stored value in full.
+      operationId: updateCrmConfig
+      x-retell-sdk-resource: crm
+      x-retell-sdk-method: update-config
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app_id:
+                  type: string
+                  nullable: true
+                  description: ID of the CRM app to link. Pass null to unlink, which stops syncing. Changing it resets the sync cursor, so the next sync re-reads every contact from the new CRM.
+                custom_fields:
+                  type: array
+                  maxItems: 200
+                  description: Replaces the stored list. Names must be snake_case and cannot collide with a built-in contact field or start with `contact`/`external`. Removing a field that an analysis data
+                    mapping still targets is rejected — send crm_analysis_data_mappings in the same request to retarget or drop those mappings.
+                  items:
+                    $ref: '#/components/schemas/CRMCustomFieldSchema'
+                crm_analysis_data_mappings:
+                  type: array
+                  maxItems: 200
+                  description: Replaces the stored list.
+                  items:
+                    $ref: '#/components/schemas/CRMAnalysisDataMapping'
+                contact_columns_order:
+                  type: array
+                  maxItems: 200
+                  description: Preferred display order of contact fields, for clients that render contacts as a table. Not used by the API itself.
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Updated CRM config.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CRMConfig'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /run-sync-job:
+    post:
+      description: 'Start a contact sync with the linked CRM app immediately, instead of waiting for the scheduled sync. One sync runs per organization at a time: starting another while one is in flight
+        is rejected. Poll get-sync-job-status for progress.'
+      operationId: runSyncJob
+      x-retell-sdk-resource: crm
+      x-retell-sdk-method: run-sync-job
+      responses:
+        '201':
+          description: Sync job started.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-sync-job-status:
+    get:
+      description: Get the status of the organization's contact sync, whether it was started manually or by the schedule. Returns status `idle` when no sync is running.
+      operationId: getSyncJobStatus
+      x-retell-sdk-resource: crm
+      x-retell-sdk-method: get-sync-job-status
+      responses:
+        '200':
+          description: Sync job status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /backfill-contact-analysis-data:
+    post:
+      description: Trigger a backfill job that re-applies analysis data mappings to contacts using historical call data. Only one backfill job can run per organization at a time.
+      operationId: backfillContactAnalysisData
+      x-retell-sdk-resource: contact
+      x-retell-sdk-method: backfill-analysis-data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                backfill_call_filter:
+                  type: object
+                  description: Optional call filter to scope which calls are processed. Supports agent and start_timestamp from the standard call filter.
+                  properties:
+                    agent:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/AgentFilter'
+                      description: Filter calls by agent. Agents are OR-connected.
+                    start_timestamp:
+                      oneOf:
+                      - $ref: '#/components/schemas/NumberFilter'
+                      - $ref: '#/components/schemas/RangeFilter'
+                      description: Filter calls by start timestamp (epoch ms).
+                backfill_attributes:
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                  maxItems: 200
+                  description: Contact fields to recompute. Each one must still exist as a contact field and have an analysis data mapping configured, otherwise the request is rejected rather than running
+                    a job that writes nothing.
+              required:
+              - backfill_attributes
+      responses:
+        '201':
+          description: Backfill job started.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-backfill-contact-job-status:
+    get:
+      description: Get the status of the contact analysis data backfill job.
+      operationId: getBackfillContactJobStatus
+      x-retell-sdk-resource: contact
+      x-retell-sdk-method: get-backfill-job-status
+      responses:
+        '200':
+          description: Backfill job status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-crm-schema:
+    get:
+      description: 'Get the contact schema of the connected CRM: the fields available on its contact object, which are the values that sync mappings can reference.'
+      operationId: getCrmSchema
+      x-retell-sdk-resource: crm
+      x-retell-sdk-method: get-schema
+      parameters:
+      - in: query
+        name: app_id
+        schema:
+          type: string
+        description: ID of the CRM app to read the schema from. Defaults to the app linked in the organization's CRM configuration. Naming a different app additionally requires the App.Read scope.
+      responses:
+        '200':
+          description: CRM contact schema.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  provider:
+                    type: string
+                    description: CRM provider name.
+                  fields:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CRMCustomFieldSchema'
+                required:
+                - provider
+                - fields
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'

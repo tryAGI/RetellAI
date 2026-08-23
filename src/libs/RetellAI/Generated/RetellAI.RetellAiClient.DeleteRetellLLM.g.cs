@@ -27,11 +27,13 @@ namespace RetellAI
             };
         partial void PrepareDeleteRetellLLMArguments(
             global::System.Net.Http.HttpClient httpClient,
-            ref string llmId);
+            ref string llmId,
+            ref bool? forceDelete);
         partial void PrepareDeleteRetellLLMRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            string llmId);
+            string llmId,
+            bool? forceDelete);
         partial void ProcessDeleteRetellLLMResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -42,16 +44,19 @@ namespace RetellAI
         /// <param name="llmId">
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
+        /// <param name="forceDelete"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task DeleteRetellLLMAsync(
             string llmId,
+            bool? forceDelete = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             await DeleteRetellLLMAsResponseAsync(
                 llmId: llmId,
+                forceDelete: forceDelete,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -62,11 +67,13 @@ namespace RetellAI
         /// <param name="llmId">
         /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
         /// </param>
+        /// <param name="forceDelete"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse> DeleteRetellLLMAsResponseAsync(
             string llmId,
+            bool? forceDelete = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -74,7 +81,8 @@ namespace RetellAI
                 client: HttpClient);
             PrepareDeleteRetellLLMArguments(
                 httpClient: HttpClient,
-                llmId: ref llmId);
+                llmId: ref llmId,
+                forceDelete: ref forceDelete);
 
 
             var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
@@ -102,6 +110,9 @@ namespace RetellAI
                             var __pathBuilder = new global::RetellAI.PathBuilder(
                                 path: $"/delete-retell-llm/{llmId}",
                                 baseUri: HttpClient.BaseAddress);
+                            __pathBuilder
+                                .AddOptionalParameter("force_delete", forceDelete?.ToString().ToLowerInvariant())
+                                ;
                             var __path = __pathBuilder.ToString();
                 __path = global::RetellAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
                     path: __path,
@@ -142,7 +153,8 @@ namespace RetellAI
                 PrepareDeleteRetellLLMRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    llmId: llmId!);
+                    llmId: llmId!,
+                    forceDelete: forceDelete);
 
                 return __httpRequest;
             }
