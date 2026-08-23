@@ -1,0 +1,53 @@
+#nullable enable
+
+namespace RetellAI.JsonConverters
+{
+    /// <inheritdoc />
+    public sealed class ListAppsResponseStatus3JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.ListAppsResponseStatus3>
+    {
+        /// <inheritdoc />
+        public override global::RetellAI.ListAppsResponseStatus3 Read(
+            ref global::System.Text.Json.Utf8JsonReader reader,
+            global::System.Type typeToConvert,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            switch (reader.TokenType)
+            {
+                case global::System.Text.Json.JsonTokenType.String:
+                {
+                    var stringValue = reader.GetString();
+                    if (stringValue != null)
+                    {
+                        return global::RetellAI.ListAppsResponseStatus3Extensions.ToEnum(stringValue) ?? default;
+                    }
+                    
+                    break;
+                }
+                case global::System.Text.Json.JsonTokenType.Number:
+                {
+                    var numValue = reader.GetInt32();
+                    return (global::RetellAI.ListAppsResponseStatus3)numValue;
+                }
+                case global::System.Text.Json.JsonTokenType.Null:
+                {
+                    return default(global::RetellAI.ListAppsResponseStatus3);
+                }
+                default:
+                    throw new global::System.ArgumentOutOfRangeException(nameof(reader));
+            }
+
+            return default;
+        }
+
+        /// <inheritdoc />
+        public override void Write(
+            global::System.Text.Json.Utf8JsonWriter writer,
+            global::RetellAI.ListAppsResponseStatus3 value,
+            global::System.Text.Json.JsonSerializerOptions options)
+        {
+            writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
+
+            writer.WriteStringValue(global::RetellAI.ListAppsResponseStatus3Extensions.ToValueString(value));
+        }
+    }
+}

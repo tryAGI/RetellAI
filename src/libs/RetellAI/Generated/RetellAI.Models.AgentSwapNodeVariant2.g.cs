@@ -45,7 +45,7 @@ namespace RetellAI
         public global::RetellAI.AgentSwapWebhookSetting? WebhookSetting { get; set; }
 
         /// <summary>
-        /// If true, keep the current voice when swapping agents. Defaults to false.
+        /// If true, keep the current voice and ambient sound settings when swapping agents. Otherwise, use the destination agent's voice and ambient sound settings. Defaults to false.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("keep_current_voice")]
         public bool? KeepCurrentVoice { get; set; }
@@ -99,7 +99,7 @@ namespace RetellAI
         /// </param>
         /// <param name="webhookSetting"></param>
         /// <param name="keepCurrentVoice">
-        /// If true, keep the current voice when swapping agents. Defaults to false.
+        /// If true, keep the current voice and ambient sound settings when swapping agents. Otherwise, use the destination agent's voice and ambient sound settings. Defaults to false.
         /// </param>
         /// <param name="keepCurrentLanguage">
         /// If true, keep the current language when swapping agents. Defaults to false.
