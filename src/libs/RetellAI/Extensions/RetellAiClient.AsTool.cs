@@ -23,7 +23,7 @@ public static class RetellAiToolExtensions
         return AIFunctionFactory.Create(
             async (CancellationToken cancellationToken) =>
             {
-                var agents = await client.ListAgentsV2Async(
+                var agents = await client.ListAgentsAsync(
                     limit: limit,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
@@ -104,7 +104,7 @@ public static class RetellAiToolExtensions
         return AIFunctionFactory.Create(
             async (CancellationToken cancellationToken) =>
             {
-                var calls = await client.ListCallsV3Async(
+                var calls = await client.ListCallsAsync(
                     limit: limit,
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
@@ -151,7 +151,7 @@ public static class RetellAiToolExtensions
         return AIFunctionFactory.Create(
             async (CancellationToken cancellationToken) =>
             {
-                var phoneNumbers = await client.ListPhoneNumbersV2Async(
+                var phoneNumbers = await client.ListPhoneNumbersAsync(
                     cancellationToken: cancellationToken).ConfigureAwait(false);
 
                 return FormatPhoneNumberList(phoneNumbers.Value2?.Items ?? new List<PhoneNumberResponse>());
