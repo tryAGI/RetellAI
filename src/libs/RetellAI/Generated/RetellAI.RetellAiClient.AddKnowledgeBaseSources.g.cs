@@ -153,10 +153,6 @@ namespace RetellAI
             }
 
                             var __httpRequestContent = new global::System.Net.Http.MultipartFormDataContent();
-                            __httpRequestContent.Add(
-                                content: new global::System.Net.Http.StringContent(knowledgeBaseId ?? string.Empty),
-                                name: "\"knowledge_base_id\"");
-
                             if (request.KnowledgeBaseTexts != default)
                             {
 
