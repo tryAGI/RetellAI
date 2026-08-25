@@ -157,7 +157,7 @@ namespace RetellAI
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.KnowledgeBaseTexts, x => x.ToJson(JsonSerializerContext)))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.KnowledgeBaseTexts!, x => x.ToJson(JsonSerializerContext)))}]"),
                                     name: "\"knowledge_base_texts\"");
 
                             }
@@ -183,7 +183,7 @@ namespace RetellAI
                             {
 
                                 __httpRequestContent.Add(
-                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.KnowledgeBaseUrls, x => x))}]"),
+                                    content: new global::System.Net.Http.StringContent($"[{string.Join(",", global::System.Linq.Enumerable.Select(request.KnowledgeBaseUrls!, x => x))}]"),
                                     name: "\"knowledge_base_urls\"");
 
                             }
