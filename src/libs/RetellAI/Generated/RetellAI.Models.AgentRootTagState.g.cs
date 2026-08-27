@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AgentRootTagState
     {
@@ -16,7 +16,7 @@ namespace RetellAI
         public int? Version { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dynamic_variables")]
         public global::System.Collections.Generic.Dictionary<string, string>? DynamicVariables { get; set; }

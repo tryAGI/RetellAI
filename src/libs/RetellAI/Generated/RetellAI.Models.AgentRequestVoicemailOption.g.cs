@@ -10,7 +10,7 @@ namespace RetellAI
     public sealed partial class AgentRequestVoicemailOption
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("action")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.VoicemailActionJsonConverter))]

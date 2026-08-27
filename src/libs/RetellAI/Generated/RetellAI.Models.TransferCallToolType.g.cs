@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum TransferCallToolType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferCall,
     }

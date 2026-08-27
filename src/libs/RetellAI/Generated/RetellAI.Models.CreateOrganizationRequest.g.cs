@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateOrganizationRequest : global::System.IEquatable<CreateOrganizationRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CreateOrganizationRequestNew? New { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(New))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsNew => New != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickNew(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.CreateOrganizationRequestNew PickNew() => IsNew
             ? New!
             : throw new global::System.InvalidOperationException($"Expected union variant 'New' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CreateOrganizationRequestOld? Old { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Old))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsOld => Old != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickOld(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.CreateOrganizationRequestOld PickOld() => IsOld
             ? Old!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Old' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateOrganizationRequest(global::RetellAI.CreateOrganizationRequestNew value) => new CreateOrganizationRequest((global::RetellAI.CreateOrganizationRequestNew?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.CreateOrganizationRequestNew?(CreateOrganizationRequest @this) => @this.New;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateOrganizationRequest(global::RetellAI.CreateOrganizationRequestNew? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateOrganizationRequest FromNew(global::RetellAI.CreateOrganizationRequestNew? value) => new CreateOrganizationRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateOrganizationRequest(global::RetellAI.CreateOrganizationRequestOld value) => new CreateOrganizationRequest((global::RetellAI.CreateOrganizationRequestOld?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.CreateOrganizationRequestOld?(CreateOrganizationRequest @this) => @this.Old;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateOrganizationRequest(global::RetellAI.CreateOrganizationRequestOld? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateOrganizationRequest FromOld(global::RetellAI.CreateOrganizationRequestOld? value) => new CreateOrganizationRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateOrganizationRequest(
             global::RetellAI.CreateOrganizationRequestNew? @new,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Old as object ??
-            New as object 
+            New as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             New?.ToString() ??
-            Old?.ToString() 
+            Old?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.CreateOrganizationRequestNew, TResult>? @new = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.CreateOrganizationRequestNew>? @new = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.CreateOrganizationRequestNew>? @new = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateOrganizationRequest other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.CreateOrganizationRequestNew?>.Default.Equals(New, other.New) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CreateOrganizationRequestOld?>.Default.Equals(Old, other.Old) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CreateOrganizationRequestOld?>.Default.Equals(Old, other.Old)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateOrganizationRequest obj1, CreateOrganizationRequest obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateOrganizationRequest obj1, CreateOrganizationRequest obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

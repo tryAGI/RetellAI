@@ -9,7 +9,7 @@ namespace RetellAI
     public enum FunctionNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Function,
     }

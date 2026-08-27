@@ -9,13 +9,13 @@ namespace RetellAI
     public sealed partial class ContactFilter
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("contact_id")]
         public global::RetellAI.StringFilter? ContactId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("phone_number")]
         public global::RetellAI.StringFilter? PhoneNumber { get; set; }
@@ -28,7 +28,7 @@ namespace RetellAI
         public global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.PresentFilter>? ExternalId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("do_not_call")]
         public global::RetellAI.BooleanFilter? DoNotCall { get; set; }

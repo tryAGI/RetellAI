@@ -10,11 +10,11 @@ namespace RetellAI
     public enum V3ListChatsRequestSortOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ascending,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Descending,
     }

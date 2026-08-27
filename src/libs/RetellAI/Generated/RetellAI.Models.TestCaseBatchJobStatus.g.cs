@@ -9,11 +9,11 @@ namespace RetellAI
     public enum TestCaseBatchJobStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Complete,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InProgress,
     }

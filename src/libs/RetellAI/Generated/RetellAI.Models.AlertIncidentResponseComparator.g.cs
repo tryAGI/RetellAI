@@ -9,19 +9,19 @@ namespace RetellAI
     public enum AlertIncidentResponseComparator
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ge,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Le,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Lt,
     }

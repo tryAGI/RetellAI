@@ -10,7 +10,7 @@ namespace RetellAI
     public enum BooleanAnalysisDataType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Boolean,
     }

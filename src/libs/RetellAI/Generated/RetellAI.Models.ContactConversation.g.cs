@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ContactConversation : global::System.IEquatable<ContactConversation>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ContactCall? Call { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Call))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsCall => Call != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCall(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ContactCall PickCall() => IsCall
             ? Call!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Call' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ContactChat? Chat { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Chat))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsChat => Chat != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChat(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ContactChat PickChat() => IsChat
             ? Chat!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Chat' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ContactConversation(global::RetellAI.ContactCall value) => new ContactConversation((global::RetellAI.ContactCall?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ContactCall?(ContactConversation @this) => @this.Call;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ContactConversation(global::RetellAI.ContactCall? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ContactConversation FromCall(global::RetellAI.ContactCall? value) => new ContactConversation(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ContactConversation(global::RetellAI.ContactChat value) => new ContactConversation((global::RetellAI.ContactChat?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ContactChat?(ContactConversation @this) => @this.Chat;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ContactConversation(global::RetellAI.ContactChat? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ContactConversation FromChat(global::RetellAI.ContactChat? value) => new ContactConversation(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ContactConversation(
             global::RetellAI.ContactCall? call,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Chat as object ??
-            Call as object 
+            Call as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Call?.ToString() ??
-            Chat?.ToString() 
+            Chat?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ContactCall, TResult>? call = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ContactCall>? call = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ContactCall>? call = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ContactConversation other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ContactCall?>.Default.Equals(Call, other.Call) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ContactChat?>.Default.Equals(Chat, other.Chat) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ContactChat?>.Default.Equals(Chat, other.Chat)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ContactConversation obj1, ContactConversation obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ContactConversation obj1, ContactConversation obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

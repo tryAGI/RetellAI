@@ -4,40 +4,40 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AgentRequestWebhookEvent
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallAnalyzed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallEnded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallStarted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TranscriptUpdated,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferBridged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferCancelled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferEnded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferStarted,
     }

@@ -4,33 +4,33 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Wer
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("word_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double WordCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("number_deletions")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double NumberDeletions { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("number_insertions")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double NumberInsertions { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("number_substitutions")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct SmsContent : global::System.IEquatable<SmsContent>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsContentPredefined? Predefined { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Predefined))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsPredefined => Predefined != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPredefined(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SmsContentPredefined PickPredefined() => IsPredefined
             ? Predefined!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Predefined' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsContentInferred? Inferred { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Inferred))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsInferred => Inferred != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickInferred(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SmsContentInferred PickInferred() => IsInferred
             ? Inferred!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Inferred' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsContentTemplate? Template { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Template))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsTemplate => Template != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTemplate(
 #if NET6_0_OR_GREATER
@@ -114,23 +114,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SmsContentTemplate PickTemplate() => IsTemplate
             ? Template!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Template' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SmsContent(global::RetellAI.SmsContentPredefined value) => new SmsContent((global::RetellAI.SmsContentPredefined?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SmsContentPredefined?(SmsContent @this) => @this.Predefined;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SmsContent(global::RetellAI.SmsContentPredefined? value)
         {
@@ -138,22 +138,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SmsContent FromPredefined(global::RetellAI.SmsContentPredefined? value) => new SmsContent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SmsContent(global::RetellAI.SmsContentInferred value) => new SmsContent((global::RetellAI.SmsContentInferred?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SmsContentInferred?(SmsContent @this) => @this.Inferred;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SmsContent(global::RetellAI.SmsContentInferred? value)
         {
@@ -161,22 +161,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SmsContent FromInferred(global::RetellAI.SmsContentInferred? value) => new SmsContent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SmsContent(global::RetellAI.SmsContentTemplate value) => new SmsContent((global::RetellAI.SmsContentTemplate?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SmsContentTemplate?(SmsContent @this) => @this.Template;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SmsContent(global::RetellAI.SmsContentTemplate? value)
         {
@@ -184,12 +184,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SmsContent FromTemplate(global::RetellAI.SmsContentTemplate? value) => new SmsContent(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SmsContent(
             global::RetellAI.SmsContentPredefined? predefined,
@@ -203,25 +203,25 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Template as object ??
             Inferred as object ??
-            Predefined as object 
+            Predefined as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Predefined?.ToString() ??
             Inferred?.ToString() ??
-            Template?.ToString() 
+            Template?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -229,7 +229,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.SmsContentPredefined, TResult>? predefined = null,
@@ -259,7 +259,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.SmsContentPredefined>? predefined = null,
@@ -289,7 +289,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.SmsContentPredefined>? predefined = null,
@@ -317,7 +317,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -340,19 +340,19 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(SmsContent other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsContentPredefined?>.Default.Equals(Predefined, other.Predefined) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsContentInferred?>.Default.Equals(Inferred, other.Inferred) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsContentTemplate?>.Default.Equals(Template, other.Template) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsContentTemplate?>.Default.Equals(Template, other.Template)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(SmsContent obj1, SmsContent obj2)
         {
@@ -360,7 +360,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(SmsContent obj1, SmsContent obj2)
         {
@@ -368,7 +368,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

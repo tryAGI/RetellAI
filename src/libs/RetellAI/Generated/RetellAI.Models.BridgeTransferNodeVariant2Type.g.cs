@@ -9,7 +9,7 @@ namespace RetellAI
     public enum BridgeTransferNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BridgeTransfer,
     }

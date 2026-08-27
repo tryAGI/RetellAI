@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct VoicemailAction : global::System.IEquatable<VoicemailAction>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.VoicemailActionPrompt? Prompt { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Prompt))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsPrompt => Prompt != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPrompt(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.VoicemailActionPrompt PickPrompt() => IsPrompt
             ? Prompt!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Prompt' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.VoicemailActionStaticText? StaticText { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StaticText))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsStaticText => StaticText != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickStaticText(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.VoicemailActionStaticText PickStaticText() => IsStaticText
             ? StaticText!
             : throw new global::System.InvalidOperationException($"Expected union variant 'StaticText' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.VoicemailActionHangup? Hangup { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Hangup))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsHangup => Hangup != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickHangup(
 #if NET6_0_OR_GREATER
@@ -114,14 +114,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.VoicemailActionHangup PickHangup() => IsHangup
             ? Hangup!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Hangup' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.VoicemailActionBridgeTransfer? BridgeTransfer { get; init; }
@@ -130,7 +130,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BridgeTransfer))]
@@ -138,7 +138,7 @@ namespace RetellAI
         public bool IsBridgeTransfer => BridgeTransfer != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBridgeTransfer(
 #if NET6_0_OR_GREATER
@@ -151,23 +151,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.VoicemailActionBridgeTransfer PickBridgeTransfer() => IsBridgeTransfer
             ? BridgeTransfer!
             : throw new global::System.InvalidOperationException($"Expected union variant 'BridgeTransfer' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator VoicemailAction(global::RetellAI.VoicemailActionPrompt value) => new VoicemailAction((global::RetellAI.VoicemailActionPrompt?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.VoicemailActionPrompt?(VoicemailAction @this) => @this.Prompt;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicemailAction(global::RetellAI.VoicemailActionPrompt? value)
         {
@@ -175,22 +175,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static VoicemailAction FromPrompt(global::RetellAI.VoicemailActionPrompt? value) => new VoicemailAction(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator VoicemailAction(global::RetellAI.VoicemailActionStaticText value) => new VoicemailAction((global::RetellAI.VoicemailActionStaticText?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.VoicemailActionStaticText?(VoicemailAction @this) => @this.StaticText;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicemailAction(global::RetellAI.VoicemailActionStaticText? value)
         {
@@ -198,22 +198,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static VoicemailAction FromStaticText(global::RetellAI.VoicemailActionStaticText? value) => new VoicemailAction(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator VoicemailAction(global::RetellAI.VoicemailActionHangup value) => new VoicemailAction((global::RetellAI.VoicemailActionHangup?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.VoicemailActionHangup?(VoicemailAction @this) => @this.Hangup;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicemailAction(global::RetellAI.VoicemailActionHangup? value)
         {
@@ -221,22 +221,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static VoicemailAction FromHangup(global::RetellAI.VoicemailActionHangup? value) => new VoicemailAction(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator VoicemailAction(global::RetellAI.VoicemailActionBridgeTransfer value) => new VoicemailAction((global::RetellAI.VoicemailActionBridgeTransfer?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.VoicemailActionBridgeTransfer?(VoicemailAction @this) => @this.BridgeTransfer;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicemailAction(global::RetellAI.VoicemailActionBridgeTransfer? value)
         {
@@ -244,12 +244,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static VoicemailAction FromBridgeTransfer(global::RetellAI.VoicemailActionBridgeTransfer? value) => new VoicemailAction(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public VoicemailAction(
             global::RetellAI.VoicemailActionPrompt? prompt,
@@ -265,27 +265,27 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             BridgeTransfer as object ??
             Hangup as object ??
             StaticText as object ??
-            Prompt as object 
+            Prompt as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Prompt?.ToString() ??
             StaticText?.ToString() ??
             Hangup?.ToString() ??
-            BridgeTransfer?.ToString() 
+            BridgeTransfer?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -293,7 +293,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.VoicemailActionPrompt, TResult>? prompt = null,
@@ -328,7 +328,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.VoicemailActionPrompt>? prompt = null,
@@ -364,7 +364,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.VoicemailActionPrompt>? prompt = null,
@@ -397,7 +397,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -422,7 +422,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(VoicemailAction other)
         {
@@ -430,12 +430,12 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.VoicemailActionPrompt?>.Default.Equals(Prompt, other.Prompt) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.VoicemailActionStaticText?>.Default.Equals(StaticText, other.StaticText) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.VoicemailActionHangup?>.Default.Equals(Hangup, other.Hangup) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.VoicemailActionBridgeTransfer?>.Default.Equals(BridgeTransfer, other.BridgeTransfer) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.VoicemailActionBridgeTransfer?>.Default.Equals(BridgeTransfer, other.BridgeTransfer)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(VoicemailAction obj1, VoicemailAction obj2)
         {
@@ -443,7 +443,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(VoicemailAction obj1, VoicemailAction obj2)
         {
@@ -451,7 +451,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

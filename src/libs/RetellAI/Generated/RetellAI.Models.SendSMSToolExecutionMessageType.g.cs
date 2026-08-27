@@ -9,11 +9,11 @@ namespace RetellAI
     public enum SendSMSToolExecutionMessageType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Prompt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StaticText,
     }

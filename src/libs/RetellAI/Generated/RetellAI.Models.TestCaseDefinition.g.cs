@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TestCaseDefinition : global::System.IEquatable<TestCaseDefinition>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TestCaseDefinitionInput? Input { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Input))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsInput => Input != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickInput(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.TestCaseDefinitionInput PickInput() => IsInput
             ? Input!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Input' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TestCaseDefinitionVariant2? TestCaseDefinitionVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TestCaseDefinitionVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsTestCaseDefinitionVariant2 => TestCaseDefinitionVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTestCaseDefinitionVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.TestCaseDefinitionVariant2 PickTestCaseDefinitionVariant2() => IsTestCaseDefinitionVariant2
             ? TestCaseDefinitionVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'TestCaseDefinitionVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TestCaseDefinition(global::RetellAI.TestCaseDefinitionInput value) => new TestCaseDefinition((global::RetellAI.TestCaseDefinitionInput?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.TestCaseDefinitionInput?(TestCaseDefinition @this) => @this.Input;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TestCaseDefinition(global::RetellAI.TestCaseDefinitionInput? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TestCaseDefinition FromInput(global::RetellAI.TestCaseDefinitionInput? value) => new TestCaseDefinition(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TestCaseDefinition(global::RetellAI.TestCaseDefinitionVariant2 value) => new TestCaseDefinition((global::RetellAI.TestCaseDefinitionVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.TestCaseDefinitionVariant2?(TestCaseDefinition @this) => @this.TestCaseDefinitionVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TestCaseDefinition(global::RetellAI.TestCaseDefinitionVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TestCaseDefinition FromTestCaseDefinitionVariant2(global::RetellAI.TestCaseDefinitionVariant2? value) => new TestCaseDefinition(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TestCaseDefinition(
             global::RetellAI.TestCaseDefinitionInput? input,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             TestCaseDefinitionVariant2 as object ??
-            Input as object 
+            Input as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Input?.ToString() ??
-            TestCaseDefinitionVariant2?.ToString() 
+            TestCaseDefinitionVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.TestCaseDefinitionInput, TResult>? input = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.TestCaseDefinitionInput>? input = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.TestCaseDefinitionInput>? input = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TestCaseDefinition other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.TestCaseDefinitionInput?>.Default.Equals(Input, other.Input) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.TestCaseDefinitionVariant2?>.Default.Equals(TestCaseDefinitionVariant2, other.TestCaseDefinitionVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.TestCaseDefinitionVariant2?>.Default.Equals(TestCaseDefinitionVariant2, other.TestCaseDefinitionVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TestCaseDefinition obj1, TestCaseDefinition obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TestCaseDefinition obj1, TestCaseDefinition obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -4,16 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ListTestCaseDefinitionsType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConversationFlow,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetellLlm,
     }

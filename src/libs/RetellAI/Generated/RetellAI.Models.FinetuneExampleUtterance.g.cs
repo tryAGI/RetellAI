@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct FinetuneExampleUtterance : global::System.IEquatable<FinetuneExampleUtterance>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.FinetuneExampleUtteranceVariant1? FinetuneExampleUtteranceVariant1 { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FinetuneExampleUtteranceVariant1))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsFinetuneExampleUtteranceVariant1 => FinetuneExampleUtteranceVariant1 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFinetuneExampleUtteranceVariant1(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.FinetuneExampleUtteranceVariant1 PickFinetuneExampleUtteranceVariant1() => IsFinetuneExampleUtteranceVariant1
             ? FinetuneExampleUtteranceVariant1!
             : throw new global::System.InvalidOperationException($"Expected union variant 'FinetuneExampleUtteranceVariant1' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.FinetuneExampleUtteranceVariant2? FinetuneExampleUtteranceVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FinetuneExampleUtteranceVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsFinetuneExampleUtteranceVariant2 => FinetuneExampleUtteranceVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFinetuneExampleUtteranceVariant2(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.FinetuneExampleUtteranceVariant2 PickFinetuneExampleUtteranceVariant2() => IsFinetuneExampleUtteranceVariant2
             ? FinetuneExampleUtteranceVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'FinetuneExampleUtteranceVariant2' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.FinetuneExampleUtteranceVariant3? FinetuneExampleUtteranceVariant3 { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(FinetuneExampleUtteranceVariant3))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsFinetuneExampleUtteranceVariant3 => FinetuneExampleUtteranceVariant3 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFinetuneExampleUtteranceVariant3(
 #if NET6_0_OR_GREATER
@@ -114,23 +114,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.FinetuneExampleUtteranceVariant3 PickFinetuneExampleUtteranceVariant3() => IsFinetuneExampleUtteranceVariant3
             ? FinetuneExampleUtteranceVariant3!
             : throw new global::System.InvalidOperationException($"Expected union variant 'FinetuneExampleUtteranceVariant3' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator FinetuneExampleUtterance(global::RetellAI.FinetuneExampleUtteranceVariant1 value) => new FinetuneExampleUtterance((global::RetellAI.FinetuneExampleUtteranceVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.FinetuneExampleUtteranceVariant1?(FinetuneExampleUtterance @this) => @this.FinetuneExampleUtteranceVariant1;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FinetuneExampleUtterance(global::RetellAI.FinetuneExampleUtteranceVariant1? value)
         {
@@ -138,22 +138,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static FinetuneExampleUtterance FromFinetuneExampleUtteranceVariant1(global::RetellAI.FinetuneExampleUtteranceVariant1? value) => new FinetuneExampleUtterance(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator FinetuneExampleUtterance(global::RetellAI.FinetuneExampleUtteranceVariant2 value) => new FinetuneExampleUtterance((global::RetellAI.FinetuneExampleUtteranceVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.FinetuneExampleUtteranceVariant2?(FinetuneExampleUtterance @this) => @this.FinetuneExampleUtteranceVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FinetuneExampleUtterance(global::RetellAI.FinetuneExampleUtteranceVariant2? value)
         {
@@ -161,22 +161,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static FinetuneExampleUtterance FromFinetuneExampleUtteranceVariant2(global::RetellAI.FinetuneExampleUtteranceVariant2? value) => new FinetuneExampleUtterance(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator FinetuneExampleUtterance(global::RetellAI.FinetuneExampleUtteranceVariant3 value) => new FinetuneExampleUtterance((global::RetellAI.FinetuneExampleUtteranceVariant3?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.FinetuneExampleUtteranceVariant3?(FinetuneExampleUtterance @this) => @this.FinetuneExampleUtteranceVariant3;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FinetuneExampleUtterance(global::RetellAI.FinetuneExampleUtteranceVariant3? value)
         {
@@ -184,12 +184,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static FinetuneExampleUtterance FromFinetuneExampleUtteranceVariant3(global::RetellAI.FinetuneExampleUtteranceVariant3? value) => new FinetuneExampleUtterance(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public FinetuneExampleUtterance(
             global::RetellAI.FinetuneExampleUtteranceVariant1? finetuneExampleUtteranceVariant1,
@@ -203,25 +203,25 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             FinetuneExampleUtteranceVariant3 as object ??
             FinetuneExampleUtteranceVariant2 as object ??
-            FinetuneExampleUtteranceVariant1 as object 
+            FinetuneExampleUtteranceVariant1 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             FinetuneExampleUtteranceVariant1?.ToString() ??
             FinetuneExampleUtteranceVariant2?.ToString() ??
-            FinetuneExampleUtteranceVariant3?.ToString() 
+            FinetuneExampleUtteranceVariant3?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -229,7 +229,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.FinetuneExampleUtteranceVariant1, TResult>? finetuneExampleUtteranceVariant1 = null,
@@ -259,7 +259,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.FinetuneExampleUtteranceVariant1>? finetuneExampleUtteranceVariant1 = null,
@@ -289,7 +289,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.FinetuneExampleUtteranceVariant1>? finetuneExampleUtteranceVariant1 = null,
@@ -317,7 +317,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -340,19 +340,19 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(FinetuneExampleUtterance other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.FinetuneExampleUtteranceVariant1?>.Default.Equals(FinetuneExampleUtteranceVariant1, other.FinetuneExampleUtteranceVariant1) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.FinetuneExampleUtteranceVariant2?>.Default.Equals(FinetuneExampleUtteranceVariant2, other.FinetuneExampleUtteranceVariant2) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.FinetuneExampleUtteranceVariant3?>.Default.Equals(FinetuneExampleUtteranceVariant3, other.FinetuneExampleUtteranceVariant3) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.FinetuneExampleUtteranceVariant3?>.Default.Equals(FinetuneExampleUtteranceVariant3, other.FinetuneExampleUtteranceVariant3)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(FinetuneExampleUtterance obj1, FinetuneExampleUtterance obj2)
         {
@@ -360,7 +360,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(FinetuneExampleUtterance obj1, FinetuneExampleUtterance obj2)
         {
@@ -368,7 +368,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

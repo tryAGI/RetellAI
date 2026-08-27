@@ -9,15 +9,15 @@ namespace RetellAI
     public enum OrganizationResponseVariant2EnterprisePlanStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Active,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Expired,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Terminated,
     }

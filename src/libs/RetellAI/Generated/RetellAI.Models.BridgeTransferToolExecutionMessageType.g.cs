@@ -9,11 +9,11 @@ namespace RetellAI
     public enum BridgeTransferToolExecutionMessageType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Prompt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StaticText,
     }

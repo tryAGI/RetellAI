@@ -9,11 +9,11 @@ namespace RetellAI
     public enum ListAgentVersionsSortOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ascending,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Descending,
     }

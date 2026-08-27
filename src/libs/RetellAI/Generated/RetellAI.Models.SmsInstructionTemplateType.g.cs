@@ -9,7 +9,7 @@ namespace RetellAI
     public enum SmsInstructionTemplateType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Template,
     }

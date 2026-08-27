@@ -10,11 +10,11 @@ namespace RetellAI
     public enum CreatePhoneNumberRequestNumberProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Telnyx,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Twilio,
     }

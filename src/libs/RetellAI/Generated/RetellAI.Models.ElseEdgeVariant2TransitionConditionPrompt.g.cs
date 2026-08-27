@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ElseEdgeVariant2TransitionConditionPrompt
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Else,
     }

@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ComponentNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Component,
     }

@@ -10,15 +10,15 @@ namespace RetellAI
     public enum AgentRequestSttMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Accurate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Custom,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fast,
     }

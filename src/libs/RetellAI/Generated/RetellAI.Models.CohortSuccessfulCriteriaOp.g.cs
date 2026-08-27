@@ -9,11 +9,11 @@ namespace RetellAI
     public enum CohortSuccessfulCriteriaOp
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ge,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gt,
     }

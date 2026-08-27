@@ -10,27 +10,27 @@ namespace RetellAI
     public enum VoiceResponseProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cartesia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Elevenlabs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FishAudio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Minimax,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Openai,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Platform,
     }

@@ -10,15 +10,15 @@ namespace RetellAI
     public enum UpdateCallMetadataRequestDataStorageSetting
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BasicAttributesOnly,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Everything,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EverythingExceptPii,
     }

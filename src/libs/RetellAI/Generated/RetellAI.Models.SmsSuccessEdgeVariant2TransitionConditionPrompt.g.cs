@@ -9,7 +9,7 @@ namespace RetellAI
     public enum SmsSuccessEdgeVariant2TransitionConditionPrompt
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SentSuccessfully,
     }

@@ -9,43 +9,43 @@ namespace RetellAI
     public sealed partial class V2CallBaseLatency
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("e2e")]
         public global::RetellAI.CallLatency? E2e { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("asr")]
         public global::RetellAI.CallLatency? Asr { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("llm")]
         public global::RetellAI.CallLatency? Llm { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("llm_websocket_network_rtt")]
         public global::RetellAI.CallLatency? LlmWebsocketNetworkRtt { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tts")]
         public global::RetellAI.CallLatency? Tts { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("knowledge_base")]
         public global::RetellAI.CallLatency? KnowledgeBase { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("s2s")]
         public global::RetellAI.CallLatency? S2s { get; set; }

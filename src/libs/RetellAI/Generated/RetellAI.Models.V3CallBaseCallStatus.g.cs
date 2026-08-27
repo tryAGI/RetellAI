@@ -22,7 +22,7 @@ namespace RetellAI
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NotConnected,
         /// <summary>

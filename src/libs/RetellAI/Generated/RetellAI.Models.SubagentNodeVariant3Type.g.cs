@@ -9,7 +9,7 @@ namespace RetellAI
     public enum SubagentNodeVariant3Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Subagent,
     }

@@ -10,7 +10,7 @@ namespace RetellAI
     public readonly partial struct AppUsageResponse : global::System.IEquatable<AppUsageResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AgentAppUsage? Agent { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Agent))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsAgent => Agent != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAgent(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.AgentAppUsage PickAgent() => IsAgent
             ? Agent!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Agent' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.KnowledgeBaseAppUsage? KnowledgeBase { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(KnowledgeBase))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsKnowledgeBase => KnowledgeBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickKnowledgeBase(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.KnowledgeBaseAppUsage PickKnowledgeBase() => IsKnowledgeBase
             ? KnowledgeBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'KnowledgeBase' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AppUsageResponse(global::RetellAI.AgentAppUsage value) => new AppUsageResponse((global::RetellAI.AgentAppUsage?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.AgentAppUsage?(AppUsageResponse @this) => @this.Agent;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AppUsageResponse(global::RetellAI.AgentAppUsage? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AppUsageResponse FromAgent(global::RetellAI.AgentAppUsage? value) => new AppUsageResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AppUsageResponse(global::RetellAI.KnowledgeBaseAppUsage value) => new AppUsageResponse((global::RetellAI.KnowledgeBaseAppUsage?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.KnowledgeBaseAppUsage?(AppUsageResponse @this) => @this.KnowledgeBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AppUsageResponse(global::RetellAI.KnowledgeBaseAppUsage? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AppUsageResponse FromKnowledgeBase(global::RetellAI.KnowledgeBaseAppUsage? value) => new AppUsageResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AppUsageResponse(
             global::RetellAI.AgentAppUsage? agent,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             KnowledgeBase as object ??
-            Agent as object 
+            Agent as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Agent?.ToString() ??
-            KnowledgeBase?.ToString() 
+            KnowledgeBase?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.AgentAppUsage, TResult>? agent = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.AgentAppUsage>? agent = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.AgentAppUsage>? agent = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(AppUsageResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentAppUsage?>.Default.Equals(Agent, other.Agent) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.KnowledgeBaseAppUsage?>.Default.Equals(KnowledgeBase, other.KnowledgeBase) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.KnowledgeBaseAppUsage?>.Default.Equals(KnowledgeBase, other.KnowledgeBase)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(AppUsageResponse obj1, AppUsageResponse obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(AppUsageResponse obj1, AppUsageResponse obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

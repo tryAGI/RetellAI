@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class RAGAnalysis
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("details")]
         [global::System.Text.Json.Serialization.JsonRequired]

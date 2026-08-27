@@ -10,15 +10,15 @@ namespace RetellAI
     public enum UtteranceRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Agent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferTarget,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

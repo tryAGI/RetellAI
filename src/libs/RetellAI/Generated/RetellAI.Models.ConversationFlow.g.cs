@@ -5,7 +5,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ConversationFlow : global::System.IEquatable<ConversationFlow>
     {
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Override))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsOverride => Override != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickOverride(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ConversationFlowOverride PickOverride() => IsOverride
             ? Override!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Override' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ConversationFlowVariant2? ConversationFlowVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ConversationFlowVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsConversationFlowVariant2 => ConversationFlowVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickConversationFlowVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ConversationFlowVariant2 PickConversationFlowVariant2() => IsConversationFlowVariant2
             ? ConversationFlowVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationFlowVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlow(global::RetellAI.ConversationFlowOverride value) => new ConversationFlow((global::RetellAI.ConversationFlowOverride?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ConversationFlowOverride?(ConversationFlow @this) => @this.Override;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlow(global::RetellAI.ConversationFlowOverride? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlow FromOverride(global::RetellAI.ConversationFlowOverride? value) => new ConversationFlow(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlow(global::RetellAI.ConversationFlowVariant2 value) => new ConversationFlow((global::RetellAI.ConversationFlowVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ConversationFlowVariant2?(ConversationFlow @this) => @this.ConversationFlowVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlow(global::RetellAI.ConversationFlowVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlow FromConversationFlowVariant2(global::RetellAI.ConversationFlowVariant2? value) => new ConversationFlow(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlow(
             global::RetellAI.ConversationFlowOverride? @override,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ConversationFlowVariant2 as object ??
-            Override as object 
+            Override as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Override?.ToString() ??
-            ConversationFlowVariant2?.ToString() 
+            ConversationFlowVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ConversationFlowOverride, TResult>? @override = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ConversationFlowOverride>? @override = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ConversationFlowOverride>? @override = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ConversationFlow other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationFlowOverride?>.Default.Equals(Override, other.Override) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationFlowVariant2?>.Default.Equals(ConversationFlowVariant2, other.ConversationFlowVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationFlowVariant2?>.Default.Equals(ConversationFlowVariant2, other.ConversationFlowVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ConversationFlow obj1, ConversationFlow obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ConversationFlow obj1, ConversationFlow obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

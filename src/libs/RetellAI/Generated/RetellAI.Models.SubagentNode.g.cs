@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct SubagentNode : global::System.IEquatable<SubagentNode>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeBase? Base { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsBase => Base != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NodeBase PickBase() => IsBase
             ? Base!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AgentOverrideConfig? AgentOverrideConfig { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentOverrideConfig))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsAgentOverrideConfig => AgentOverrideConfig != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAgentOverrideConfig(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.AgentOverrideConfig PickAgentOverrideConfig() => IsAgentOverrideConfig
             ? AgentOverrideConfig!
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentOverrideConfig' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SubagentNodeVariant3? SubagentNodeVariant3 { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SubagentNodeVariant3))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsSubagentNodeVariant3 => SubagentNodeVariant3 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSubagentNodeVariant3(
 #if NET6_0_OR_GREATER
@@ -114,23 +114,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SubagentNodeVariant3 PickSubagentNodeVariant3() => IsSubagentNodeVariant3
             ? SubagentNodeVariant3!
             : throw new global::System.InvalidOperationException($"Expected union variant 'SubagentNodeVariant3' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SubagentNode(global::RetellAI.NodeBase value) => new SubagentNode((global::RetellAI.NodeBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NodeBase?(SubagentNode @this) => @this.Base;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SubagentNode(global::RetellAI.NodeBase? value)
         {
@@ -138,22 +138,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SubagentNode FromBase(global::RetellAI.NodeBase? value) => new SubagentNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SubagentNode(global::RetellAI.AgentOverrideConfig value) => new SubagentNode((global::RetellAI.AgentOverrideConfig?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.AgentOverrideConfig?(SubagentNode @this) => @this.AgentOverrideConfig;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SubagentNode(global::RetellAI.AgentOverrideConfig? value)
         {
@@ -161,22 +161,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SubagentNode FromAgentOverrideConfig(global::RetellAI.AgentOverrideConfig? value) => new SubagentNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SubagentNode(global::RetellAI.SubagentNodeVariant3 value) => new SubagentNode((global::RetellAI.SubagentNodeVariant3?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SubagentNodeVariant3?(SubagentNode @this) => @this.SubagentNodeVariant3;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SubagentNode(global::RetellAI.SubagentNodeVariant3? value)
         {
@@ -184,12 +184,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SubagentNode FromSubagentNodeVariant3(global::RetellAI.SubagentNodeVariant3? value) => new SubagentNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SubagentNode(
             global::RetellAI.NodeBase? @base,
@@ -203,25 +203,25 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             SubagentNodeVariant3 as object ??
             AgentOverrideConfig as object ??
-            Base as object 
+            Base as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Base?.ToString() ??
             AgentOverrideConfig?.ToString() ??
-            SubagentNodeVariant3?.ToString() 
+            SubagentNodeVariant3?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -229,7 +229,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeBase?, TResult>? @base = null,
@@ -259,7 +259,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeBase?>? @base = null,
@@ -289,7 +289,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.NodeBase?>? @base = null,
@@ -317,7 +317,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -340,19 +340,19 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(SubagentNode other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBase?>.Default.Equals(Base, other.Base) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentOverrideConfig?>.Default.Equals(AgentOverrideConfig, other.AgentOverrideConfig) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SubagentNodeVariant3?>.Default.Equals(SubagentNodeVariant3, other.SubagentNodeVariant3) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SubagentNodeVariant3?>.Default.Equals(SubagentNodeVariant3, other.SubagentNodeVariant3)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(SubagentNode obj1, SubagentNode obj2)
         {
@@ -360,7 +360,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(SubagentNode obj1, SubagentNode obj2)
         {
@@ -368,7 +368,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -9,11 +9,11 @@ namespace RetellAI
     public enum ContactChatDirection
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inbound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Outbound,
     }

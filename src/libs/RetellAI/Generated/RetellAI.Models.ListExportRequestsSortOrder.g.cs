@@ -9,11 +9,11 @@ namespace RetellAI
     public enum ListExportRequestsSortOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ascending,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Descending,
     }

@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct TransferDestination : global::System.IEquatable<TransferDestination>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferDestinationPredefined? Predefined { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Predefined))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsPredefined => Predefined != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPredefined(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.TransferDestinationPredefined PickPredefined() => IsPredefined
             ? Predefined!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Predefined' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferDestinationInferred? Inferred { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Inferred))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsInferred => Inferred != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickInferred(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.TransferDestinationInferred PickInferred() => IsInferred
             ? Inferred!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Inferred' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TransferDestination(global::RetellAI.TransferDestinationPredefined value) => new TransferDestination((global::RetellAI.TransferDestinationPredefined?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.TransferDestinationPredefined?(TransferDestination @this) => @this.Predefined;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TransferDestination(global::RetellAI.TransferDestinationPredefined? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TransferDestination FromPredefined(global::RetellAI.TransferDestinationPredefined? value) => new TransferDestination(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator TransferDestination(global::RetellAI.TransferDestinationInferred value) => new TransferDestination((global::RetellAI.TransferDestinationInferred?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.TransferDestinationInferred?(TransferDestination @this) => @this.Inferred;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TransferDestination(global::RetellAI.TransferDestinationInferred? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static TransferDestination FromInferred(global::RetellAI.TransferDestinationInferred? value) => new TransferDestination(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TransferDestination(
             global::RetellAI.TransferDestinationPredefined? predefined,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Inferred as object ??
-            Predefined as object 
+            Predefined as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Predefined?.ToString() ??
-            Inferred?.ToString() 
+            Inferred?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.TransferDestinationPredefined, TResult>? predefined = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.TransferDestinationPredefined>? predefined = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.TransferDestinationPredefined>? predefined = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(TransferDestination other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.TransferDestinationPredefined?>.Default.Equals(Predefined, other.Predefined) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.TransferDestinationInferred?>.Default.Equals(Inferred, other.Inferred) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.TransferDestinationInferred?>.Default.Equals(Inferred, other.Inferred)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(TransferDestination obj1, TransferDestination obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(TransferDestination obj1, TransferDestination obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

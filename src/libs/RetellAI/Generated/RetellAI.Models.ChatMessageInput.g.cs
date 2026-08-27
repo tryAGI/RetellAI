@@ -10,7 +10,7 @@ namespace RetellAI
     public readonly partial struct ChatMessageInput : global::System.IEquatable<ChatMessageInput>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.MessageBase? Base { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsBase => Base != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.MessageBase PickBase() => IsBase
             ? Base!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallInvocationMessageBase? ToolCallInvocationBase { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolCallInvocationBase))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsToolCallInvocationBase => ToolCallInvocationBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickToolCallInvocationBase(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ToolCallInvocationMessageBase PickToolCallInvocationBase() => IsToolCallInvocationBase
             ? ToolCallInvocationBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ToolCallInvocationBase' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallResultMessageBase? ToolCallResultBase { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolCallResultBase))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsToolCallResultBase => ToolCallResultBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickToolCallResultBase(
 #if NET6_0_OR_GREATER
@@ -114,14 +114,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ToolCallResultMessageBase PickToolCallResultBase() => IsToolCallResultBase
             ? ToolCallResultBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ToolCallResultBase' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeTransitionMessageBase? NodeTransitionBase { get; init; }
@@ -130,7 +130,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NodeTransitionBase))]
@@ -138,7 +138,7 @@ namespace RetellAI
         public bool IsNodeTransitionBase => NodeTransitionBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickNodeTransitionBase(
 #if NET6_0_OR_GREATER
@@ -151,14 +151,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NodeTransitionMessageBase PickNodeTransitionBase() => IsNodeTransitionBase
             ? NodeTransitionBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'NodeTransitionBase' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.StateTransitionMessageBase? StateTransitionBase { get; init; }
@@ -167,7 +167,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StateTransitionBase))]
@@ -175,7 +175,7 @@ namespace RetellAI
         public bool IsStateTransitionBase => StateTransitionBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickStateTransitionBase(
 #if NET6_0_OR_GREATER
@@ -188,14 +188,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.StateTransitionMessageBase PickStateTransitionBase() => IsStateTransitionBase
             ? StateTransitionBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'StateTransitionBase' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.InjectedMessageBase? InjectedBase { get; init; }
@@ -204,7 +204,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(InjectedBase))]
@@ -212,7 +212,7 @@ namespace RetellAI
         public bool IsInjectedBase => InjectedBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickInjectedBase(
 #if NET6_0_OR_GREATER
@@ -225,14 +225,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.InjectedMessageBase PickInjectedBase() => IsInjectedBase
             ? InjectedBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'InjectedBase' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsMessageBase? SmsBase { get; init; }
@@ -241,7 +241,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SmsBase))]
@@ -249,7 +249,7 @@ namespace RetellAI
         public bool IsSmsBase => SmsBase != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSmsBase(
 #if NET6_0_OR_GREATER
@@ -262,23 +262,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SmsMessageBase PickSmsBase() => IsSmsBase
             ? SmsBase!
             : throw new global::System.InvalidOperationException($"Expected union variant 'SmsBase' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.MessageBase value) => new ChatMessageInput((global::RetellAI.MessageBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.MessageBase?(ChatMessageInput @this) => @this.Base;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatMessageInput(global::RetellAI.MessageBase? value)
         {
@@ -286,22 +286,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChatMessageInput FromBase(global::RetellAI.MessageBase? value) => new ChatMessageInput(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.ToolCallInvocationMessageBase value) => new ChatMessageInput((global::RetellAI.ToolCallInvocationMessageBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ToolCallInvocationMessageBase?(ChatMessageInput @this) => @this.ToolCallInvocationBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatMessageInput(global::RetellAI.ToolCallInvocationMessageBase? value)
         {
@@ -309,22 +309,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChatMessageInput FromToolCallInvocationBase(global::RetellAI.ToolCallInvocationMessageBase? value) => new ChatMessageInput(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.ToolCallResultMessageBase value) => new ChatMessageInput((global::RetellAI.ToolCallResultMessageBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ToolCallResultMessageBase?(ChatMessageInput @this) => @this.ToolCallResultBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatMessageInput(global::RetellAI.ToolCallResultMessageBase? value)
         {
@@ -332,22 +332,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChatMessageInput FromToolCallResultBase(global::RetellAI.ToolCallResultMessageBase? value) => new ChatMessageInput(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.NodeTransitionMessageBase value) => new ChatMessageInput((global::RetellAI.NodeTransitionMessageBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NodeTransitionMessageBase?(ChatMessageInput @this) => @this.NodeTransitionBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatMessageInput(global::RetellAI.NodeTransitionMessageBase? value)
         {
@@ -355,22 +355,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChatMessageInput FromNodeTransitionBase(global::RetellAI.NodeTransitionMessageBase? value) => new ChatMessageInput(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.StateTransitionMessageBase value) => new ChatMessageInput((global::RetellAI.StateTransitionMessageBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.StateTransitionMessageBase?(ChatMessageInput @this) => @this.StateTransitionBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatMessageInput(global::RetellAI.StateTransitionMessageBase? value)
         {
@@ -378,22 +378,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChatMessageInput FromStateTransitionBase(global::RetellAI.StateTransitionMessageBase? value) => new ChatMessageInput(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.InjectedMessageBase value) => new ChatMessageInput((global::RetellAI.InjectedMessageBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.InjectedMessageBase?(ChatMessageInput @this) => @this.InjectedBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatMessageInput(global::RetellAI.InjectedMessageBase? value)
         {
@@ -401,22 +401,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChatMessageInput FromInjectedBase(global::RetellAI.InjectedMessageBase? value) => new ChatMessageInput(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChatMessageInput(global::RetellAI.SmsMessageBase value) => new ChatMessageInput((global::RetellAI.SmsMessageBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SmsMessageBase?(ChatMessageInput @this) => @this.SmsBase;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatMessageInput(global::RetellAI.SmsMessageBase? value)
         {
@@ -424,12 +424,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChatMessageInput FromSmsBase(global::RetellAI.SmsMessageBase? value) => new ChatMessageInput(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChatMessageInput(
             global::RetellAI.MessageBase? @base,
@@ -451,7 +451,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             SmsBase as object ??
@@ -460,11 +460,11 @@ namespace RetellAI
             NodeTransitionBase as object ??
             ToolCallResultBase as object ??
             ToolCallInvocationBase as object ??
-            Base as object 
+            Base as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Base?.ToString() ??
@@ -473,11 +473,11 @@ namespace RetellAI
             NodeTransitionBase?.ToString() ??
             StateTransitionBase?.ToString() ??
             InjectedBase?.ToString() ??
-            SmsBase?.ToString() 
+            SmsBase?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -485,7 +485,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.MessageBase, TResult>? @base = null,
@@ -535,7 +535,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.MessageBase>? @base = null,
@@ -589,7 +589,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.MessageBase>? @base = null,
@@ -637,7 +637,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -668,7 +668,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ChatMessageInput other)
         {
@@ -679,12 +679,12 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeTransitionMessageBase?>.Default.Equals(NodeTransitionBase, other.NodeTransitionBase) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.StateTransitionMessageBase?>.Default.Equals(StateTransitionBase, other.StateTransitionBase) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.InjectedMessageBase?>.Default.Equals(InjectedBase, other.InjectedBase) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsMessageBase?>.Default.Equals(SmsBase, other.SmsBase) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsMessageBase?>.Default.Equals(SmsBase, other.SmsBase)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ChatMessageInput obj1, ChatMessageInput obj2)
         {
@@ -692,7 +692,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ChatMessageInput obj1, ChatMessageInput obj2)
         {
@@ -700,7 +700,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

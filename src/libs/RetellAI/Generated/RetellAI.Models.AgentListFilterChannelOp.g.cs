@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AgentListFilterChannelOp
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Eq,
     }

@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct AgentResponse : global::System.IEquatable<AgentResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AgentResponseVariant1? AgentResponseVariant1 { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentResponseVariant1))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsAgentResponseVariant1 => AgentResponseVariant1 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAgentResponseVariant1(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.AgentResponseVariant1 PickAgentResponseVariant1() => IsAgentResponseVariant1
             ? AgentResponseVariant1!
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentResponseVariant1' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AgentRequest? Request { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Request))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsRequest => Request != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRequest(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.AgentRequest PickRequest() => IsRequest
             ? Request!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Request' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AgentResponseVariant3? AgentResponseVariant3 { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentResponseVariant3))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsAgentResponseVariant3 => AgentResponseVariant3 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAgentResponseVariant3(
 #if NET6_0_OR_GREATER
@@ -114,23 +114,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.AgentResponseVariant3 PickAgentResponseVariant3() => IsAgentResponseVariant3
             ? AgentResponseVariant3!
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentResponseVariant3' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AgentResponse(global::RetellAI.AgentResponseVariant1 value) => new AgentResponse((global::RetellAI.AgentResponseVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.AgentResponseVariant1?(AgentResponse @this) => @this.AgentResponseVariant1;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentResponse(global::RetellAI.AgentResponseVariant1? value)
         {
@@ -138,22 +138,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AgentResponse FromAgentResponseVariant1(global::RetellAI.AgentResponseVariant1? value) => new AgentResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AgentResponse(global::RetellAI.AgentRequest value) => new AgentResponse((global::RetellAI.AgentRequest?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.AgentRequest?(AgentResponse @this) => @this.Request;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentResponse(global::RetellAI.AgentRequest? value)
         {
@@ -161,22 +161,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AgentResponse FromRequest(global::RetellAI.AgentRequest? value) => new AgentResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AgentResponse(global::RetellAI.AgentResponseVariant3 value) => new AgentResponse((global::RetellAI.AgentResponseVariant3?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.AgentResponseVariant3?(AgentResponse @this) => @this.AgentResponseVariant3;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentResponse(global::RetellAI.AgentResponseVariant3? value)
         {
@@ -184,12 +184,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AgentResponse FromAgentResponseVariant3(global::RetellAI.AgentResponseVariant3? value) => new AgentResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentResponse(
             global::RetellAI.AgentResponseVariant1? agentResponseVariant1,
@@ -203,25 +203,25 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             AgentResponseVariant3 as object ??
             Request as object ??
-            AgentResponseVariant1 as object 
+            AgentResponseVariant1 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             AgentResponseVariant1?.ToString() ??
             Request?.ToString() ??
-            AgentResponseVariant3?.ToString() 
+            AgentResponseVariant3?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -229,7 +229,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.AgentResponseVariant1, TResult>? agentResponseVariant1 = null,
@@ -259,7 +259,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.AgentResponseVariant1>? agentResponseVariant1 = null,
@@ -289,7 +289,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.AgentResponseVariant1>? agentResponseVariant1 = null,
@@ -317,7 +317,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -340,19 +340,19 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(AgentResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentResponseVariant1?>.Default.Equals(AgentResponseVariant1, other.AgentResponseVariant1) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentRequest?>.Default.Equals(Request, other.Request) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentResponseVariant3?>.Default.Equals(AgentResponseVariant3, other.AgentResponseVariant3) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentResponseVariant3?>.Default.Equals(AgentResponseVariant3, other.AgentResponseVariant3)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(AgentResponse obj1, AgentResponse obj2)
         {
@@ -360,7 +360,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(AgentResponse obj1, AgentResponse obj2)
         {
@@ -368,7 +368,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

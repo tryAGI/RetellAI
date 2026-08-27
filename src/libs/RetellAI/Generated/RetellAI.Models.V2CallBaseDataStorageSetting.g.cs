@@ -10,15 +10,15 @@ namespace RetellAI
     public enum V2CallBaseDataStorageSetting
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BasicAttributesOnly,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Everything,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EverythingExceptPii,
     }

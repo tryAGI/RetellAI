@@ -9,19 +9,19 @@ namespace RetellAI
     public enum NodeTransitionMessageBaseTransitionType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Global,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GlobalGoBack,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InterruptGoBack,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Normal,
     }

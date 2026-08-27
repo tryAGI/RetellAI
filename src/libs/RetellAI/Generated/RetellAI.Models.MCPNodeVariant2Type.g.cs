@@ -9,7 +9,7 @@ namespace RetellAI
     public enum MCPNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mcp,
     }

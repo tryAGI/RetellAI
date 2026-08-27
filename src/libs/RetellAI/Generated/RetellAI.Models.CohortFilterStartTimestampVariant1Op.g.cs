@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CohortFilterStartTimestampVariant1Op
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ge,
     }

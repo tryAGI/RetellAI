@@ -4,16 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ListExportRequestsResponseItemChannel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Call,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chat,
     }

@@ -9,7 +9,7 @@ namespace RetellAI
     public enum IvrActionHangupType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hangup,
     }

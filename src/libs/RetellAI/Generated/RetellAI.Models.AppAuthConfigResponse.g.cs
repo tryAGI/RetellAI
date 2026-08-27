@@ -10,7 +10,7 @@ namespace RetellAI
     public readonly partial struct AppAuthConfigResponse : global::System.IEquatable<AppAuthConfigResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.OAuthConfigResponse? O { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(O))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsO => O != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickO(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.OAuthConfigResponse PickO() => IsO
             ? O!
             : throw new global::System.InvalidOperationException($"Expected union variant 'O' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ApiKeyAuthConfigResponse? ApiKey { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ApiKey))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsApiKey => ApiKey != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickApiKey(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ApiKeyAuthConfigResponse PickApiKey() => IsApiKey
             ? ApiKey!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ApiKey' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AccessTokenAuthConfigResponse? AccessToken { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AccessToken))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsAccessToken => AccessToken != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAccessToken(
 #if NET6_0_OR_GREATER
@@ -114,14 +114,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.AccessTokenAuthConfigResponse PickAccessToken() => IsAccessToken
             ? AccessToken!
             : throw new global::System.InvalidOperationException($"Expected union variant 'AccessToken' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BasicAuthConfigResponse? Basic { get; init; }
@@ -130,7 +130,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Basic))]
@@ -138,7 +138,7 @@ namespace RetellAI
         public bool IsBasic => Basic != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBasic(
 #if NET6_0_OR_GREATER
@@ -151,14 +151,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.BasicAuthConfigResponse PickBasic() => IsBasic
             ? Basic!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Basic' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RefreshTokenAuthConfigResponse? RefreshToken { get; init; }
@@ -167,7 +167,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RefreshToken))]
@@ -175,7 +175,7 @@ namespace RetellAI
         public bool IsRefreshToken => RefreshToken != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRefreshToken(
 #if NET6_0_OR_GREATER
@@ -188,23 +188,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.RefreshTokenAuthConfigResponse PickRefreshToken() => IsRefreshToken
             ? RefreshToken!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RefreshToken' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AppAuthConfigResponse(global::RetellAI.OAuthConfigResponse value) => new AppAuthConfigResponse((global::RetellAI.OAuthConfigResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.OAuthConfigResponse?(AppAuthConfigResponse @this) => @this.O;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AppAuthConfigResponse(global::RetellAI.OAuthConfigResponse? value)
         {
@@ -212,22 +212,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AppAuthConfigResponse FromO(global::RetellAI.OAuthConfigResponse? value) => new AppAuthConfigResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AppAuthConfigResponse(global::RetellAI.ApiKeyAuthConfigResponse value) => new AppAuthConfigResponse((global::RetellAI.ApiKeyAuthConfigResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ApiKeyAuthConfigResponse?(AppAuthConfigResponse @this) => @this.ApiKey;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AppAuthConfigResponse(global::RetellAI.ApiKeyAuthConfigResponse? value)
         {
@@ -235,22 +235,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AppAuthConfigResponse FromApiKey(global::RetellAI.ApiKeyAuthConfigResponse? value) => new AppAuthConfigResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AppAuthConfigResponse(global::RetellAI.AccessTokenAuthConfigResponse value) => new AppAuthConfigResponse((global::RetellAI.AccessTokenAuthConfigResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.AccessTokenAuthConfigResponse?(AppAuthConfigResponse @this) => @this.AccessToken;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AppAuthConfigResponse(global::RetellAI.AccessTokenAuthConfigResponse? value)
         {
@@ -258,22 +258,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AppAuthConfigResponse FromAccessToken(global::RetellAI.AccessTokenAuthConfigResponse? value) => new AppAuthConfigResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AppAuthConfigResponse(global::RetellAI.BasicAuthConfigResponse value) => new AppAuthConfigResponse((global::RetellAI.BasicAuthConfigResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.BasicAuthConfigResponse?(AppAuthConfigResponse @this) => @this.Basic;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AppAuthConfigResponse(global::RetellAI.BasicAuthConfigResponse? value)
         {
@@ -281,22 +281,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AppAuthConfigResponse FromBasic(global::RetellAI.BasicAuthConfigResponse? value) => new AppAuthConfigResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AppAuthConfigResponse(global::RetellAI.RefreshTokenAuthConfigResponse value) => new AppAuthConfigResponse((global::RetellAI.RefreshTokenAuthConfigResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.RefreshTokenAuthConfigResponse?(AppAuthConfigResponse @this) => @this.RefreshToken;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AppAuthConfigResponse(global::RetellAI.RefreshTokenAuthConfigResponse? value)
         {
@@ -304,12 +304,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AppAuthConfigResponse FromRefreshToken(global::RetellAI.RefreshTokenAuthConfigResponse? value) => new AppAuthConfigResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AppAuthConfigResponse(
             global::RetellAI.OAuthConfigResponse? o,
@@ -327,29 +327,29 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             RefreshToken as object ??
             Basic as object ??
             AccessToken as object ??
             ApiKey as object ??
-            O as object 
+            O as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             O?.ToString() ??
             ApiKey?.ToString() ??
             AccessToken?.ToString() ??
             Basic?.ToString() ??
-            RefreshToken?.ToString() 
+            RefreshToken?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -357,7 +357,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.OAuthConfigResponse, TResult>? o = null,
@@ -397,7 +397,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.OAuthConfigResponse>? o = null,
@@ -439,7 +439,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.OAuthConfigResponse>? o = null,
@@ -477,7 +477,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -504,7 +504,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(AppAuthConfigResponse other)
         {
@@ -513,12 +513,12 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ApiKeyAuthConfigResponse?>.Default.Equals(ApiKey, other.ApiKey) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.AccessTokenAuthConfigResponse?>.Default.Equals(AccessToken, other.AccessToken) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.BasicAuthConfigResponse?>.Default.Equals(Basic, other.Basic) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.RefreshTokenAuthConfigResponse?>.Default.Equals(RefreshToken, other.RefreshToken) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.RefreshTokenAuthConfigResponse?>.Default.Equals(RefreshToken, other.RefreshToken)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(AppAuthConfigResponse obj1, AppAuthConfigResponse obj2)
         {
@@ -526,7 +526,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(AppAuthConfigResponse obj1, AppAuthConfigResponse obj2)
         {
@@ -534,7 +534,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

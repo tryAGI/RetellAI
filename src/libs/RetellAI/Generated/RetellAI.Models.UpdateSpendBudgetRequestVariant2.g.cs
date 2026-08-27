@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class UpdateSpendBudgetRequestVariant2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enabled")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -23,7 +23,7 @@ namespace RetellAI
         public required int MonthlyBudgetCents { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_alerts")]
         [global::System.Text.Json.Serialization.JsonRequired]

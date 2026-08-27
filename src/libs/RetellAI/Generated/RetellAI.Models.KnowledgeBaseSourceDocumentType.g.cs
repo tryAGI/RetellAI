@@ -9,7 +9,7 @@ namespace RetellAI
     public enum KnowledgeBaseSourceDocumentType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Document,
     }

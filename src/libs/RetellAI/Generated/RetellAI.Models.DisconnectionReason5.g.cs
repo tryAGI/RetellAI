@@ -4,144 +4,144 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum DisconnectionReason5
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentHangup,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallTakeOver,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallTransfer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConcurrencyLimitReached,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DialBusy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DialFailed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DialNoAnswer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ErrorAsr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ErrorLlmWebsocketCorruptPayload,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ErrorLlmWebsocketLostConnection,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ErrorLlmWebsocketOpen,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ErrorLlmWebsocketRuntime,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ErrorNoAudioReceived,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ErrorRetell,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ErrorUnknown,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ErrorUserNotJoined,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inactivity,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InvalidDestination,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IvrReached,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ManualStopped,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MarkedAsSpam,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MaxDurationReached,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoConcurrencyFallback,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoValidPayment,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RegisteredCallTimeout,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ScamDetected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipRoutingError,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TelephonyProviderPermissionDenied,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TelephonyProviderUnavailable,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferBridged,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferCancelled,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserDeclined,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserHangup,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         VoicemailReached,
     }

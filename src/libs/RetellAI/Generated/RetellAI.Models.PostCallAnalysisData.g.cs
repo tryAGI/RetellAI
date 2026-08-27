@@ -10,7 +10,7 @@ namespace RetellAI
     public readonly partial struct PostCallAnalysisData : global::System.IEquatable<PostCallAnalysisData>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AnalysisData? AnalysisData { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AnalysisData))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsAnalysisData => AnalysisData != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAnalysisData(
 #if NET6_0_OR_GREATER
@@ -40,7 +40,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.AnalysisData PickAnalysisData() => IsAnalysisData
             ? AnalysisData!.Value
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Preset))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsPreset => Preset != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPreset(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.CallPresetAnalysisData PickPreset() => IsPreset
             ? Preset!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Preset' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PostCallAnalysisData(global::RetellAI.AnalysisData value) => new PostCallAnalysisData((global::RetellAI.AnalysisData?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.AnalysisData?(PostCallAnalysisData @this) => @this.AnalysisData;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PostCallAnalysisData(global::RetellAI.AnalysisData? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PostCallAnalysisData FromAnalysisData(global::RetellAI.AnalysisData? value) => new PostCallAnalysisData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator PostCallAnalysisData(global::RetellAI.CallPresetAnalysisData value) => new PostCallAnalysisData((global::RetellAI.CallPresetAnalysisData?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.CallPresetAnalysisData?(PostCallAnalysisData @this) => @this.Preset;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PostCallAnalysisData(global::RetellAI.CallPresetAnalysisData? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static PostCallAnalysisData FromPreset(global::RetellAI.CallPresetAnalysisData? value) => new PostCallAnalysisData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public PostCallAnalysisData(
             global::RetellAI.AnalysisData? analysisData,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Preset as object ??
-            AnalysisData as object 
+            AnalysisData as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             AnalysisData?.ToString() ??
-            Preset?.ToString() 
+            Preset?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.AnalysisData?, TResult>? analysisData = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.AnalysisData?>? analysisData = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.AnalysisData?>? analysisData = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(PostCallAnalysisData other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.AnalysisData?>.Default.Equals(AnalysisData, other.AnalysisData) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CallPresetAnalysisData?>.Default.Equals(Preset, other.Preset) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CallPresetAnalysisData?>.Default.Equals(Preset, other.Preset)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(PostCallAnalysisData obj1, PostCallAnalysisData obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(PostCallAnalysisData obj1, PostCallAnalysisData obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

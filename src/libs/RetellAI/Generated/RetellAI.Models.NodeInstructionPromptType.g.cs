@@ -9,7 +9,7 @@ namespace RetellAI
     public enum NodeInstructionPromptType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Prompt,
     }

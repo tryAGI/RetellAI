@@ -9,23 +9,23 @@ namespace RetellAI
     public enum TestCaseJobStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fail,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InProgress,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pass,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pending,
     }

@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum UpdateConversationFlowComponentResponseStatus6
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

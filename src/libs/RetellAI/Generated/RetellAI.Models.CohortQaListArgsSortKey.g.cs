@@ -9,55 +9,55 @@ namespace RetellAI
     public enum CohortQaListArgsSortKey
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DurationMs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         E2eLatencyP50,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         InterruptionCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KbRecall,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LlmHallucinationRate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NaturalTonalityRate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Score,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ToolCallAccuracy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransitionAccuracy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserNegativeSentimentRate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserPositiveSentimentRate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Wer,
     }

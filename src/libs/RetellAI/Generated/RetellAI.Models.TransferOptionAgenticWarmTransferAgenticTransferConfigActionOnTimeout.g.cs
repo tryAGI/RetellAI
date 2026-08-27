@@ -10,11 +10,11 @@ namespace RetellAI
     public enum TransferOptionAgenticWarmTransferAgenticTransferConfigActionOnTimeout
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BridgeTransfer,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CancelTransfer,
     }

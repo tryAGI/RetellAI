@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct AlwaysEdge : global::System.IEquatable<AlwaysEdge>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeEdge? Node { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Node))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsNode => Node != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickNode(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NodeEdge PickNode() => IsNode
             ? Node!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AlwaysEdgeVariant2? AlwaysEdgeVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AlwaysEdgeVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsAlwaysEdgeVariant2 => AlwaysEdgeVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAlwaysEdgeVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.AlwaysEdgeVariant2 PickAlwaysEdgeVariant2() => IsAlwaysEdgeVariant2
             ? AlwaysEdgeVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'AlwaysEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AlwaysEdge(global::RetellAI.NodeEdge value) => new AlwaysEdge((global::RetellAI.NodeEdge?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NodeEdge?(AlwaysEdge @this) => @this.Node;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AlwaysEdge(global::RetellAI.NodeEdge? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AlwaysEdge FromNode(global::RetellAI.NodeEdge? value) => new AlwaysEdge(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AlwaysEdge(global::RetellAI.AlwaysEdgeVariant2 value) => new AlwaysEdge((global::RetellAI.AlwaysEdgeVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.AlwaysEdgeVariant2?(AlwaysEdge @this) => @this.AlwaysEdgeVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AlwaysEdge(global::RetellAI.AlwaysEdgeVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AlwaysEdge FromAlwaysEdgeVariant2(global::RetellAI.AlwaysEdgeVariant2? value) => new AlwaysEdge(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AlwaysEdge(
             global::RetellAI.NodeEdge? node,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             AlwaysEdgeVariant2 as object ??
-            Node as object 
+            Node as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Node?.ToString() ??
-            AlwaysEdgeVariant2?.ToString() 
+            AlwaysEdgeVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeEdge, TResult>? node = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeEdge>? node = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.NodeEdge>? node = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(AlwaysEdge other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeEdge?>.Default.Equals(Node, other.Node) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AlwaysEdgeVariant2?>.Default.Equals(AlwaysEdgeVariant2, other.AlwaysEdgeVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AlwaysEdgeVariant2?>.Default.Equals(AlwaysEdgeVariant2, other.AlwaysEdgeVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(AlwaysEdge obj1, AlwaysEdge obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(AlwaysEdge obj1, AlwaysEdge obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

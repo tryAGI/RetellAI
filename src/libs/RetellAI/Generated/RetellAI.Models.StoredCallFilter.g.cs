@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CallFilter))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsCallFilter => CallFilter != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCallFilter(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.CallFilter PickCallFilter() => IsCallFilter
             ? CallFilter!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CallFilter' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.StoredCallFilterVariant2? StoredCallFilterVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StoredCallFilterVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsStoredCallFilterVariant2 => StoredCallFilterVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickStoredCallFilterVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.StoredCallFilterVariant2 PickStoredCallFilterVariant2() => IsStoredCallFilterVariant2
             ? StoredCallFilterVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'StoredCallFilterVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator StoredCallFilter(global::RetellAI.CallFilter value) => new StoredCallFilter((global::RetellAI.CallFilter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.CallFilter?(StoredCallFilter @this) => @this.CallFilter;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public StoredCallFilter(global::RetellAI.CallFilter? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static StoredCallFilter FromCallFilter(global::RetellAI.CallFilter? value) => new StoredCallFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator StoredCallFilter(global::RetellAI.StoredCallFilterVariant2 value) => new StoredCallFilter((global::RetellAI.StoredCallFilterVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.StoredCallFilterVariant2?(StoredCallFilter @this) => @this.StoredCallFilterVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public StoredCallFilter(global::RetellAI.StoredCallFilterVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static StoredCallFilter FromStoredCallFilterVariant2(global::RetellAI.StoredCallFilterVariant2? value) => new StoredCallFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public StoredCallFilter(
             global::RetellAI.CallFilter? callFilter,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             StoredCallFilterVariant2 as object ??
-            CallFilter as object 
+            CallFilter as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             CallFilter?.ToString() ??
-            StoredCallFilterVariant2?.ToString() 
+            StoredCallFilterVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.CallFilter, TResult>? callFilter = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.CallFilter>? callFilter = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.CallFilter>? callFilter = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(StoredCallFilter other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.CallFilter?>.Default.Equals(CallFilter, other.CallFilter) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.StoredCallFilterVariant2?>.Default.Equals(StoredCallFilterVariant2, other.StoredCallFilterVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.StoredCallFilterVariant2?>.Default.Equals(StoredCallFilterVariant2, other.StoredCallFilterVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(StoredCallFilter obj1, StoredCallFilter obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(StoredCallFilter obj1, StoredCallFilter obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

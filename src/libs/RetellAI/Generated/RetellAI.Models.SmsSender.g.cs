@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct SmsSender : global::System.IEquatable<SmsSender>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsSenderVariant1? SmsSenderVariant1 { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SmsSenderVariant1))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsSmsSenderVariant1 => SmsSenderVariant1 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSmsSenderVariant1(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SmsSenderVariant1 PickSmsSenderVariant1() => IsSmsSenderVariant1
             ? SmsSenderVariant1!
             : throw new global::System.InvalidOperationException($"Expected union variant 'SmsSenderVariant1' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsSenderVariant2? SmsSenderVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(SmsSenderVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsSmsSenderVariant2 => SmsSenderVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSmsSenderVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SmsSenderVariant2 PickSmsSenderVariant2() => IsSmsSenderVariant2
             ? SmsSenderVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'SmsSenderVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SmsSender(global::RetellAI.SmsSenderVariant1 value) => new SmsSender((global::RetellAI.SmsSenderVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SmsSenderVariant1?(SmsSender @this) => @this.SmsSenderVariant1;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SmsSender(global::RetellAI.SmsSenderVariant1? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SmsSender FromSmsSenderVariant1(global::RetellAI.SmsSenderVariant1? value) => new SmsSender(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator SmsSender(global::RetellAI.SmsSenderVariant2 value) => new SmsSender((global::RetellAI.SmsSenderVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SmsSenderVariant2?(SmsSender @this) => @this.SmsSenderVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SmsSender(global::RetellAI.SmsSenderVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static SmsSender FromSmsSenderVariant2(global::RetellAI.SmsSenderVariant2? value) => new SmsSender(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SmsSender(
             global::RetellAI.SmsSenderVariant1? smsSenderVariant1,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             SmsSenderVariant2 as object ??
-            SmsSenderVariant1 as object 
+            SmsSenderVariant1 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             SmsSenderVariant1?.ToString() ??
-            SmsSenderVariant2?.ToString() 
+            SmsSenderVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.SmsSenderVariant1, TResult>? smsSenderVariant1 = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.SmsSenderVariant1>? smsSenderVariant1 = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.SmsSenderVariant1>? smsSenderVariant1 = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(SmsSender other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsSenderVariant1?>.Default.Equals(SmsSenderVariant1, other.SmsSenderVariant1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsSenderVariant2?>.Default.Equals(SmsSenderVariant2, other.SmsSenderVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsSenderVariant2?>.Default.Equals(SmsSenderVariant2, other.SmsSenderVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(SmsSender obj1, SmsSender obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(SmsSender obj1, SmsSender obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

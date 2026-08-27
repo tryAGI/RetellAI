@@ -10,15 +10,15 @@ namespace RetellAI
     public enum ChatPresetAnalysisDataName
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatSuccessful,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatSummary,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserSentiment,
     }

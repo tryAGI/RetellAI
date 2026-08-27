@@ -43,7 +43,7 @@ namespace RetellAI
         public double? SamplingWeeklyMax { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("scoring_criteria")]
         [global::System.Text.Json.Serialization.JsonRequired]

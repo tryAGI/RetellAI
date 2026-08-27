@@ -9,7 +9,7 @@ namespace RetellAI
     public enum TransferOptionColdTransferType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ColdTransfer,
     }

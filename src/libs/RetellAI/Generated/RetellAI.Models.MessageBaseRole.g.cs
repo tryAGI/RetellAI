@@ -10,11 +10,11 @@ namespace RetellAI
     public enum MessageBaseRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Agent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

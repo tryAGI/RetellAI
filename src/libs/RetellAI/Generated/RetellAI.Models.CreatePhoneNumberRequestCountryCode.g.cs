@@ -10,11 +10,11 @@ namespace RetellAI
     public enum CreatePhoneNumberRequestCountryCode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ca,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Us,
     }

@@ -16,21 +16,21 @@ namespace RetellAI
         public required global::System.Collections.Generic.IList<global::RetellAI.OneOf<global::RetellAI.SentimentAnalysisDetailVariant1, global::RetellAI.SentimentAnalysisDetailVariant2>> Details { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("positive_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double PositiveCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("neutral_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double NeutralCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("negative_count")]
         [global::System.Text.Json.Serialization.JsonRequired]

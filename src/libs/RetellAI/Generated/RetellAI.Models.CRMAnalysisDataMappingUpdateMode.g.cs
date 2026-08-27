@@ -9,15 +9,15 @@ namespace RetellAI
     public enum CRMAnalysisDataMappingUpdateMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FillIfEmpty,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Merge,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Overwrite,
     }

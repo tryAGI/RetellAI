@@ -9,23 +9,23 @@ namespace RetellAI
     public enum AppType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Calendar,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Communication,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Crm,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnowledgeBase,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Support,
     }

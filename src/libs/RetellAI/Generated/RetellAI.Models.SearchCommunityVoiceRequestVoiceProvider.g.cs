@@ -9,19 +9,19 @@ namespace RetellAI
     public enum SearchCommunityVoiceRequestVoiceProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cartesia,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Elevenlabs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FishAudio,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Minimax,
     }

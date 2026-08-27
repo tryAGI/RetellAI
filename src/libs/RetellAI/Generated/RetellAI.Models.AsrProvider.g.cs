@@ -9,19 +9,19 @@ namespace RetellAI
     public enum AsrProvider
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Assemblyai,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Azure,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Deepgram,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Soniox,
     }

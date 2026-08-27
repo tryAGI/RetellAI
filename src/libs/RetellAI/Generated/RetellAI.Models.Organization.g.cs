@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Organization
     {
@@ -31,7 +31,7 @@ namespace RetellAI
         public bool? OutageModeEnabled { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_urls")]
         public global::System.Collections.Generic.IList<global::RetellAI.OrganizationWebhookUrl>? WebhookUrls { get; set; }
@@ -73,13 +73,13 @@ namespace RetellAI
         public int? MaxCallDurationMs { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_voice_ids")]
         public global::System.Collections.Generic.IList<string>? CustomVoiceIds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("twilio_subaccount_sid")]
         public string? TwilioSubaccountSid { get; set; }
@@ -98,19 +98,19 @@ namespace RetellAI
         public global::System.DateTimeOffset? CreatedTimestamp { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("skip_audit")]
         public bool? SkipAudit { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("review_provided")]
         public bool? ReviewProvided { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cps_config")]
         public global::RetellAI.OrganizationCpsConfig? CpsConfig { get; set; }
@@ -124,7 +124,7 @@ namespace RetellAI
         public global::RetellAI.AutoCreditReloadConfig? AutoCreditReloadConfig { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enterprise_id")]
         public string? EnterpriseId { get; set; }
@@ -136,7 +136,7 @@ namespace RetellAI
         public object? FeatureBucket { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("use_stable_server")]
         public bool? UseStableServer { get; set; }

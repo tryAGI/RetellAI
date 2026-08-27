@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ChatFilterUserSentiment
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterUserSentimentValueItem>? Value { get; set; }

@@ -4,64 +4,64 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum PIIConfigCategorie
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Address,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BankAccount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CreditCard,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CustomerAccountNumber,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DateOfBirth,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DriverLicense,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Email,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MedicalId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Passport,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Password,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PersonName,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhoneNumber,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pin,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ssn,
     }

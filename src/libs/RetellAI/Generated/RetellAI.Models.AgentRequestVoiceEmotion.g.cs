@@ -10,35 +10,35 @@ namespace RetellAI
     public enum AgentRequestVoiceEmotion
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Angry,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Calm,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fearful,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Happy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sad,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Surprised,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sympathetic,
     }

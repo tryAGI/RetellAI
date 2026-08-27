@@ -9,7 +9,7 @@ namespace RetellAI
     public enum EndNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         End,
     }

@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreatePhoneCallResponseStatus6
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

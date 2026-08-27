@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct CreateConversationFlowComponentRequest : global::System.IEquatable<CreateConversationFlowComponentRequest>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ConversationFlowComponent? ConversationFlowComponent { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ConversationFlowComponent))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsConversationFlowComponent => ConversationFlowComponent != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickConversationFlowComponent(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ConversationFlowComponent PickConversationFlowComponent() => IsConversationFlowComponent
             ? ConversationFlowComponent!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationFlowComponent' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public object? CreateConversationFlowComponentRequestVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CreateConversationFlowComponentRequestVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsCreateConversationFlowComponentRequestVariant2 => CreateConversationFlowComponentRequestVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCreateConversationFlowComponentRequestVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object PickCreateConversationFlowComponentRequestVariant2() => IsCreateConversationFlowComponentRequestVariant2
             ? CreateConversationFlowComponentRequestVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CreateConversationFlowComponentRequestVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CreateConversationFlowComponentRequest(global::RetellAI.ConversationFlowComponent value) => new CreateConversationFlowComponentRequest((global::RetellAI.ConversationFlowComponent?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ConversationFlowComponent?(CreateConversationFlowComponentRequest @this) => @this.ConversationFlowComponent;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateConversationFlowComponentRequest(global::RetellAI.ConversationFlowComponent? value)
         {
@@ -101,12 +101,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CreateConversationFlowComponentRequest FromConversationFlowComponent(global::RetellAI.ConversationFlowComponent? value) => new CreateConversationFlowComponentRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CreateConversationFlowComponentRequest(
             global::RetellAI.ConversationFlowComponent? conversationFlowComponent,
@@ -118,23 +118,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             CreateConversationFlowComponentRequestVariant2 as object ??
-            ConversationFlowComponent as object 
+            ConversationFlowComponent as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             ConversationFlowComponent?.ToString() ??
-            CreateConversationFlowComponentRequestVariant2?.ToString() 
+            CreateConversationFlowComponentRequestVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -142,7 +142,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ConversationFlowComponent, TResult>? conversationFlowComponent = null,
@@ -167,7 +167,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ConversationFlowComponent>? conversationFlowComponent = null,
@@ -191,7 +191,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ConversationFlowComponent>? conversationFlowComponent = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -235,18 +235,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CreateConversationFlowComponentRequest other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ConversationFlowComponent?>.Default.Equals(ConversationFlowComponent, other.ConversationFlowComponent) &&
-                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(CreateConversationFlowComponentRequestVariant2, other.CreateConversationFlowComponentRequestVariant2) 
+                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(CreateConversationFlowComponentRequestVariant2, other.CreateConversationFlowComponentRequestVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CreateConversationFlowComponentRequest obj1, CreateConversationFlowComponentRequest obj2)
         {
@@ -254,7 +254,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CreateConversationFlowComponentRequest obj1, CreateConversationFlowComponentRequest obj2)
         {
@@ -262,7 +262,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

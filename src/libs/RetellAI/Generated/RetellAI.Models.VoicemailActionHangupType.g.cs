@@ -9,7 +9,7 @@ namespace RetellAI
     public enum VoicemailActionHangupType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Hangup,
     }

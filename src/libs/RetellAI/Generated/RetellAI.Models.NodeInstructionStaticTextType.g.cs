@@ -9,7 +9,7 @@ namespace RetellAI
     public enum NodeInstructionStaticTextType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StaticText,
     }

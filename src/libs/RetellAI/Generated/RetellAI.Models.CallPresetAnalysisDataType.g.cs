@@ -9,7 +9,7 @@ namespace RetellAI
     public enum CallPresetAnalysisDataType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SystemPresets,
     }

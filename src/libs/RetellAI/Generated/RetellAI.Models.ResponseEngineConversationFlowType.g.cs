@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ResponseEngineConversationFlowType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConversationFlow,
     }

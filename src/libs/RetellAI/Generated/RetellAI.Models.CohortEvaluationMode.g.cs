@@ -9,11 +9,11 @@ namespace RetellAI
     public enum CohortEvaluationMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Default,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Weighted,
     }

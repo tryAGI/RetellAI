@@ -9,7 +9,7 @@ namespace RetellAI
     public enum CancelTransferNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CancelTransfer,
     }

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AgentSwapTool
     {
@@ -16,7 +16,7 @@ namespace RetellAI
         public required string Name { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentSwapToolTypeJsonConverter))]
@@ -43,7 +43,7 @@ namespace RetellAI
         public global::RetellAI.AgentVersionReference? AgentVersion { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speak_during_execution")]
         public bool? SpeakDuringExecution { get; set; }
@@ -62,7 +62,7 @@ namespace RetellAI
         public global::RetellAI.AgentSwapToolExecutionMessageType? ExecutionMessageType { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("post_call_analysis_setting")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.PostCallAnalysisSettingJsonConverter))]
@@ -70,7 +70,7 @@ namespace RetellAI
         public required global::RetellAI.PostCallAnalysisSetting PostCallAnalysisSetting { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_setting")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentSwapWebhookSettingJsonConverter))]

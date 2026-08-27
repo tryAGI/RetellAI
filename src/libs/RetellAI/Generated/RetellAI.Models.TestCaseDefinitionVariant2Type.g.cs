@@ -9,7 +9,7 @@ namespace RetellAI
     public enum TestCaseDefinitionVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Simulation,
     }

@@ -9,7 +9,7 @@ namespace RetellAI
     public enum BranchNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Branch,
     }

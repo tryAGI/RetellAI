@@ -9,7 +9,7 @@ namespace RetellAI
     public enum SkipResponseEdgeVariant2TransitionConditionPrompt
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SkipResponse,
     }

@@ -9,11 +9,11 @@ namespace RetellAI
     public enum FunctionNodeVariant2ToolType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Local,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Shared,
     }

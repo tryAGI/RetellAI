@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class NodeBaseCommon
     {
@@ -22,7 +22,7 @@ namespace RetellAI
         public string? Name { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("global_node_setting")]
         public global::RetellAI.GlobalNodeSetting? GlobalNodeSetting { get; set; }

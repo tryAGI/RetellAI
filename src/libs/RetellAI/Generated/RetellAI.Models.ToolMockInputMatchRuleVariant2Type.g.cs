@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ToolMockInputMatchRuleVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PartialMatch,
     }

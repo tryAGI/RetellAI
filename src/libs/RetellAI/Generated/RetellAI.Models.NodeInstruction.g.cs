@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct NodeInstruction : global::System.IEquatable<NodeInstruction>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeInstructionPrompt? Prompt { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Prompt))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsPrompt => Prompt != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPrompt(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NodeInstructionPrompt PickPrompt() => IsPrompt
             ? Prompt!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Prompt' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeInstructionStaticText? StaticText { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StaticText))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsStaticText => StaticText != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickStaticText(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NodeInstructionStaticText PickStaticText() => IsStaticText
             ? StaticText!
             : throw new global::System.InvalidOperationException($"Expected union variant 'StaticText' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator NodeInstruction(global::RetellAI.NodeInstructionPrompt value) => new NodeInstruction((global::RetellAI.NodeInstructionPrompt?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NodeInstructionPrompt?(NodeInstruction @this) => @this.Prompt;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeInstruction(global::RetellAI.NodeInstructionPrompt? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static NodeInstruction FromPrompt(global::RetellAI.NodeInstructionPrompt? value) => new NodeInstruction(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator NodeInstruction(global::RetellAI.NodeInstructionStaticText value) => new NodeInstruction((global::RetellAI.NodeInstructionStaticText?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NodeInstructionStaticText?(NodeInstruction @this) => @this.StaticText;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeInstruction(global::RetellAI.NodeInstructionStaticText? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static NodeInstruction FromStaticText(global::RetellAI.NodeInstructionStaticText? value) => new NodeInstruction(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeInstruction(
             global::RetellAI.NodeInstructionPrompt? prompt,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             StaticText as object ??
-            Prompt as object 
+            Prompt as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Prompt?.ToString() ??
-            StaticText?.ToString() 
+            StaticText?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeInstructionPrompt, TResult>? prompt = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeInstructionPrompt>? prompt = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.NodeInstructionPrompt>? prompt = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(NodeInstruction other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeInstructionPrompt?>.Default.Equals(Prompt, other.Prompt) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeInstructionStaticText?>.Default.Equals(StaticText, other.StaticText) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeInstructionStaticText?>.Default.Equals(StaticText, other.StaticText)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(NodeInstruction obj1, NodeInstruction obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(NodeInstruction obj1, NodeInstruction obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

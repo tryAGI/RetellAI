@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct IvrAction : global::System.IEquatable<IvrAction>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.IvrActionHangup? Hangup { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Hangup))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsHangup => Hangup != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickHangup(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.IvrActionHangup PickHangup() => IsHangup
             ? Hangup!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Hangup' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator IvrAction(global::RetellAI.IvrActionHangup value) => new IvrAction((global::RetellAI.IvrActionHangup?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.IvrActionHangup?(IvrAction @this) => @this.Hangup;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public IvrAction(global::RetellAI.IvrActionHangup? value)
         {
@@ -64,26 +64,26 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static IvrAction FromHangup(global::RetellAI.IvrActionHangup? value) => new IvrAction(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            Hangup as object 
+            Hangup as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            Hangup?.ToString() 
+            Hangup?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.IvrActionHangup, TResult>? hangup = null,
@@ -111,7 +111,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.IvrActionHangup>? hangup = null,
@@ -129,7 +129,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.IvrActionHangup>? hangup = null,
@@ -147,7 +147,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(IvrAction other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.IvrActionHangup?>.Default.Equals(Hangup, other.Hangup) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.IvrActionHangup?>.Default.Equals(Hangup, other.Hangup)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(IvrAction obj1, IvrAction obj2)
         {
@@ -184,7 +184,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(IvrAction obj1, IvrAction obj2)
         {
@@ -192,7 +192,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

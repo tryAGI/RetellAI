@@ -4,16 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum DashboardSource
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Call,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chat,
     }

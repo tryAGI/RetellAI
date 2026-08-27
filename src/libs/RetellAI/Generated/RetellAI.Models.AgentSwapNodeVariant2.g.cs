@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AgentSwapNodeVariant2
     {
@@ -30,7 +30,7 @@ namespace RetellAI
         public global::RetellAI.AgentVersionReference? AgentVersion { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("post_call_analysis_setting")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.PostCallAnalysisSettingJsonConverter))]
@@ -38,7 +38,7 @@ namespace RetellAI
         public required global::RetellAI.PostCallAnalysisSetting PostCallAnalysisSetting { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_setting")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentSwapWebhookSettingJsonConverter))]
@@ -57,7 +57,7 @@ namespace RetellAI
         public bool? KeepCurrentLanguage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("edge")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.TransferFailedEdgeJsonConverter))]
@@ -71,7 +71,7 @@ namespace RetellAI
         public bool? SpeakDuringExecution { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("instruction")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NodeInstructionJsonConverter))]

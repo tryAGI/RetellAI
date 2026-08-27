@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ModelChoice : global::System.IEquatable<ModelChoice>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ModelChoiceCascading? Cascading { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Cascading))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsCascading => Cascading != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCascading(
 #if NET6_0_OR_GREATER
@@ -40,23 +40,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ModelChoiceCascading PickCascading() => IsCascading
             ? Cascading!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Cascading' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ModelChoice(global::RetellAI.ModelChoiceCascading value) => new ModelChoice((global::RetellAI.ModelChoiceCascading?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ModelChoiceCascading?(ModelChoice @this) => @this.Cascading;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ModelChoice(global::RetellAI.ModelChoiceCascading? value)
         {
@@ -64,26 +64,26 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ModelChoice FromCascading(global::RetellAI.ModelChoiceCascading? value) => new ModelChoice(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
-            Cascading as object 
+            Cascading as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
-            Cascading?.ToString() 
+            Cascading?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -91,7 +91,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ModelChoiceCascading, TResult>? cascading = null,
@@ -111,7 +111,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ModelChoiceCascading>? cascading = null,
@@ -129,7 +129,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ModelChoiceCascading>? cascading = null,
@@ -147,7 +147,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -166,17 +166,17 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ModelChoice other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ModelChoiceCascading?>.Default.Equals(Cascading, other.Cascading) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ModelChoiceCascading?>.Default.Equals(Cascading, other.Cascading)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ModelChoice obj1, ModelChoice obj2)
         {
@@ -184,7 +184,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ModelChoice obj1, ModelChoice obj2)
         {
@@ -192,7 +192,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

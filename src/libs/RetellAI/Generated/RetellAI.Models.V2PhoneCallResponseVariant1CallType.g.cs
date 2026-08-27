@@ -10,7 +10,7 @@ namespace RetellAI
     public enum V2PhoneCallResponseVariant1CallType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhoneCall,
     }

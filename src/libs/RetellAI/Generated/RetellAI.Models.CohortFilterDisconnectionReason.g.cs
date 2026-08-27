@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class CohortFilterDisconnectionReason
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         public global::System.Collections.Generic.IList<global::RetellAI.DisconnectionReason5>? Value { get; set; }

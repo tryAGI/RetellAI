@@ -10,15 +10,15 @@ namespace RetellAI
     public enum AgentRequestDenoisingMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoDenoise,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoiseAndBackgroundSpeechCancellation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoiseCancellation,
     }

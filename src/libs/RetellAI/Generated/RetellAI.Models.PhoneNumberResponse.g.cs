@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class PhoneNumberResponse
     {
@@ -117,7 +117,7 @@ namespace RetellAI
         public required long LastModificationTimestamp { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sip_outbound_trunk_config")]
         public global::RetellAI.PhoneNumberResponseSipOutboundTrunkConfig? SipOutboundTrunkConfig { get; set; }

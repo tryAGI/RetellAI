@@ -9,11 +9,11 @@ namespace RetellAI
     public enum AlertRuleRequestThresholdType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Absolute,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Relative,
     }

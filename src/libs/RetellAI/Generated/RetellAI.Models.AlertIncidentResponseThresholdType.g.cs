@@ -9,11 +9,11 @@ namespace RetellAI
     public enum AlertIncidentResponseThresholdType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Absolute,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Relative,
     }

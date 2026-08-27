@@ -23,7 +23,7 @@ namespace RetellAI
         public required double NaturalUtteranceCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_utterance_count")]
         [global::System.Text.Json.Serialization.JsonRequired]

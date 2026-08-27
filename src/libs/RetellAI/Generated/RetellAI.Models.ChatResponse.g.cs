@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ChatResponse
     {
@@ -129,13 +129,13 @@ namespace RetellAI
         public object? Metadata { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chat_cost")]
         public global::RetellAI.ChatResponseChatCost? ChatCost { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chat_analysis")]
         public global::RetellAI.ChatAnalysis? ChatAnalysis { get; set; }

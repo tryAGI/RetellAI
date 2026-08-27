@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentVersionReferenceVariant1))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsAgentVersionReferenceVariant1 => AgentVersionReferenceVariant1 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAgentVersionReferenceVariant1(
 #if NET6_0_OR_GREATER
@@ -40,7 +40,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public string PickAgentVersionReferenceVariant1() => IsAgentVersionReferenceVariant1
             ? AgentVersionReferenceVariant1!
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentVersionReferenceVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsAgentVersionReferenceVariant2 => AgentVersionReferenceVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAgentVersionReferenceVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public int PickAgentVersionReferenceVariant2() => IsAgentVersionReferenceVariant2
             ? AgentVersionReferenceVariant2!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentVersionReferenceVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AgentVersionReference(string value) => new AgentVersionReference((string?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator string?(AgentVersionReference @this) => @this.AgentVersionReferenceVariant1;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentVersionReference(string? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AgentVersionReference FromAgentVersionReferenceVariant1(string? value) => new AgentVersionReference(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AgentVersionReference(int value) => new AgentVersionReference((int?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator int?(AgentVersionReference @this) => @this.AgentVersionReferenceVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentVersionReference(int? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AgentVersionReference FromAgentVersionReferenceVariant2(int? value) => new AgentVersionReference(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AgentVersionReference(
             string? agentVersionReferenceVariant1,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             AgentVersionReferenceVariant2 as object ??
-            AgentVersionReferenceVariant1 as object 
+            AgentVersionReferenceVariant1 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             AgentVersionReferenceVariant1?.ToString() ??
-            AgentVersionReferenceVariant2?.ToString() 
+            AgentVersionReferenceVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<string, TResult>? agentVersionReferenceVariant1 = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<string>? agentVersionReferenceVariant1 = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<string>? agentVersionReferenceVariant1 = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(AgentVersionReference other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<string?>.Default.Equals(AgentVersionReferenceVariant1, other.AgentVersionReferenceVariant1) &&
-                global::System.Collections.Generic.EqualityComparer<int?>.Default.Equals(AgentVersionReferenceVariant2, other.AgentVersionReferenceVariant2) 
+                global::System.Collections.Generic.EqualityComparer<int?>.Default.Equals(AgentVersionReferenceVariant2, other.AgentVersionReferenceVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(AgentVersionReference obj1, AgentVersionReference obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(AgentVersionReference obj1, AgentVersionReference obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

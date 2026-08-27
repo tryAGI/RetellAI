@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct V2WebCallResponse : global::System.IEquatable<V2WebCallResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.V2WebCallResponseVariant1? V2WebCallResponseVariant1 { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(V2WebCallResponseVariant1))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsV2WebCallResponseVariant1 => V2WebCallResponseVariant1 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickV2WebCallResponseVariant1(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.V2WebCallResponseVariant1 PickV2WebCallResponseVariant1() => IsV2WebCallResponseVariant1
             ? V2WebCallResponseVariant1!
             : throw new global::System.InvalidOperationException($"Expected union variant 'V2WebCallResponseVariant1' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.V2CallBase? Base { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsBase => Base != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBase(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.V2CallBase PickBase() => IsBase
             ? Base!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator V2WebCallResponse(global::RetellAI.V2WebCallResponseVariant1 value) => new V2WebCallResponse((global::RetellAI.V2WebCallResponseVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.V2WebCallResponseVariant1?(V2WebCallResponse @this) => @this.V2WebCallResponseVariant1;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public V2WebCallResponse(global::RetellAI.V2WebCallResponseVariant1? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static V2WebCallResponse FromV2WebCallResponseVariant1(global::RetellAI.V2WebCallResponseVariant1? value) => new V2WebCallResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator V2WebCallResponse(global::RetellAI.V2CallBase value) => new V2WebCallResponse((global::RetellAI.V2CallBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.V2CallBase?(V2WebCallResponse @this) => @this.Base;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public V2WebCallResponse(global::RetellAI.V2CallBase? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static V2WebCallResponse FromBase(global::RetellAI.V2CallBase? value) => new V2WebCallResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public V2WebCallResponse(
             global::RetellAI.V2WebCallResponseVariant1? v2WebCallResponseVariant1,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Base as object ??
-            V2WebCallResponseVariant1 as object 
+            V2WebCallResponseVariant1 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             V2WebCallResponseVariant1?.ToString() ??
-            Base?.ToString() 
+            Base?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.V2WebCallResponseVariant1, TResult>? v2WebCallResponseVariant1 = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.V2WebCallResponseVariant1>? v2WebCallResponseVariant1 = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.V2WebCallResponseVariant1>? v2WebCallResponseVariant1 = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(V2WebCallResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2WebCallResponseVariant1?>.Default.Equals(V2WebCallResponseVariant1, other.V2WebCallResponseVariant1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2CallBase?>.Default.Equals(Base, other.Base) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2CallBase?>.Default.Equals(Base, other.Base)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(V2WebCallResponse obj1, V2WebCallResponse obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(V2WebCallResponse obj1, V2WebCallResponse obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

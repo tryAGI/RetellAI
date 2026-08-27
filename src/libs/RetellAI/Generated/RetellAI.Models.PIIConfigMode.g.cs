@@ -10,7 +10,7 @@ namespace RetellAI
     public enum PIIConfigMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PostCall,
     }

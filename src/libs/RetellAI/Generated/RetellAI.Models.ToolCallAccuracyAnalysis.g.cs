@@ -9,21 +9,21 @@ namespace RetellAI
     public sealed partial class ToolCallAccuracyAnalysis
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("details")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::RetellAI.UtteranceToolCallAccuracy> Details { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_accurate_utterance_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double ToolCallAccurateUtteranceCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_utterance_count")]
         [global::System.Text.Json.Serialization.JsonRequired]

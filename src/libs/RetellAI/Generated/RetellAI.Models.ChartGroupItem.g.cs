@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ChartGroupItem : global::System.IEquatable<ChartGroupItem>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartGroupItemVariant1? ChartGroupItemVariant1 { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChartGroupItemVariant1))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsChartGroupItemVariant1 => ChartGroupItemVariant1 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChartGroupItemVariant1(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ChartGroupItemVariant1 PickChartGroupItemVariant1() => IsChartGroupItemVariant1
             ? ChartGroupItemVariant1!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartGroupItemVariant1' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartGroupItemVariant2? ChartGroupItemVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ChartGroupItemVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsChartGroupItemVariant2 => ChartGroupItemVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickChartGroupItemVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ChartGroupItemVariant2 PickChartGroupItemVariant2() => IsChartGroupItemVariant2
             ? ChartGroupItemVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartGroupItemVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChartGroupItem(global::RetellAI.ChartGroupItemVariant1 value) => new ChartGroupItem((global::RetellAI.ChartGroupItemVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ChartGroupItemVariant1?(ChartGroupItem @this) => @this.ChartGroupItemVariant1;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChartGroupItem(global::RetellAI.ChartGroupItemVariant1? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChartGroupItem FromChartGroupItemVariant1(global::RetellAI.ChartGroupItemVariant1? value) => new ChartGroupItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ChartGroupItem(global::RetellAI.ChartGroupItemVariant2 value) => new ChartGroupItem((global::RetellAI.ChartGroupItemVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ChartGroupItemVariant2?(ChartGroupItem @this) => @this.ChartGroupItemVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChartGroupItem(global::RetellAI.ChartGroupItemVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ChartGroupItem FromChartGroupItemVariant2(global::RetellAI.ChartGroupItemVariant2? value) => new ChartGroupItem(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ChartGroupItem(
             global::RetellAI.ChartGroupItemVariant1? chartGroupItemVariant1,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ChartGroupItemVariant2 as object ??
-            ChartGroupItemVariant1 as object 
+            ChartGroupItemVariant1 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             ChartGroupItemVariant1?.ToString() ??
-            ChartGroupItemVariant2?.ToString() 
+            ChartGroupItemVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ChartGroupItemVariant1, TResult>? chartGroupItemVariant1 = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ChartGroupItemVariant1>? chartGroupItemVariant1 = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ChartGroupItemVariant1>? chartGroupItemVariant1 = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ChartGroupItem other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ChartGroupItemVariant1?>.Default.Equals(ChartGroupItemVariant1, other.ChartGroupItemVariant1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ChartGroupItemVariant2?>.Default.Equals(ChartGroupItemVariant2, other.ChartGroupItemVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ChartGroupItemVariant2?>.Default.Equals(ChartGroupItemVariant2, other.ChartGroupItemVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ChartGroupItem obj1, ChartGroupItem obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ChartGroupItem obj1, ChartGroupItem obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

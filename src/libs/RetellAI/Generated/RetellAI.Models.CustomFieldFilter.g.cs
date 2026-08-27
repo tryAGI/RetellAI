@@ -10,7 +10,7 @@ namespace RetellAI
     public readonly partial struct CustomFieldFilter : global::System.IEquatable<CustomFieldFilter>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ValueFilter? Value { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Value))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsValue => Value != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickValue(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ValueFilter PickValue() => IsValue
             ? Value!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Value' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CustomFieldFilterVariant2? CustomFieldFilterVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomFieldFilterVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsCustomFieldFilterVariant2 => CustomFieldFilterVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustomFieldFilterVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.CustomFieldFilterVariant2 PickCustomFieldFilterVariant2() => IsCustomFieldFilterVariant2
             ? CustomFieldFilterVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomFieldFilterVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CustomFieldFilter(global::RetellAI.ValueFilter value) => new CustomFieldFilter((global::RetellAI.ValueFilter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ValueFilter?(CustomFieldFilter @this) => @this.Value;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomFieldFilter(global::RetellAI.ValueFilter? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CustomFieldFilter FromValue(global::RetellAI.ValueFilter? value) => new CustomFieldFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator CustomFieldFilter(global::RetellAI.CustomFieldFilterVariant2 value) => new CustomFieldFilter((global::RetellAI.CustomFieldFilterVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.CustomFieldFilterVariant2?(CustomFieldFilter @this) => @this.CustomFieldFilterVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomFieldFilter(global::RetellAI.CustomFieldFilterVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static CustomFieldFilter FromCustomFieldFilterVariant2(global::RetellAI.CustomFieldFilterVariant2? value) => new CustomFieldFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public CustomFieldFilter(
             global::RetellAI.ValueFilter? value,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             CustomFieldFilterVariant2 as object ??
-            Value as object 
+            Value as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Value?.ToString() ??
-            CustomFieldFilterVariant2?.ToString() 
+            CustomFieldFilterVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ValueFilter?, TResult>? value = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ValueFilter?>? value = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ValueFilter?>? value = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(CustomFieldFilter other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ValueFilter?>.Default.Equals(Value, other.Value) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CustomFieldFilterVariant2?>.Default.Equals(CustomFieldFilterVariant2, other.CustomFieldFilterVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CustomFieldFilterVariant2?>.Default.Equals(CustomFieldFilterVariant2, other.CustomFieldFilterVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(CustomFieldFilter obj1, CustomFieldFilter obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(CustomFieldFilter obj1, CustomFieldFilter obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

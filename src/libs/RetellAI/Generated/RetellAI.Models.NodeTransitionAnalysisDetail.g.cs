@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class NodeTransitionAnalysisDetail
     {
@@ -16,7 +16,7 @@ namespace RetellAI
         public required double TimeSec { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("accurate")]
         [global::System.Text.Json.Serialization.JsonRequired]

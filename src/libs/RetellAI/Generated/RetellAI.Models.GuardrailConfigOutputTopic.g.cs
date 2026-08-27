@@ -4,44 +4,44 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GuardrailConfigOutputTopic
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChildSafetyAndExploitation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DefenseAndNationalSecurity,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gambling,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Harassment,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IllicitAndHarmfulActivity,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RegulatedProfessionalAdvice,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SelfHarm,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SexualExploitation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Violence,
     }

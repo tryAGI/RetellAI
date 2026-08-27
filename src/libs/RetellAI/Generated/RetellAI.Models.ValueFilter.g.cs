@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ValueFilter : global::System.IEquatable<ValueFilter>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.StringFilter? String { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(String))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsString => String != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickString(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.StringFilter PickString() => IsString
             ? String!
             : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NumberFilter? Number { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Number))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsNumber => Number != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickNumber(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NumberFilter PickNumber() => IsNumber
             ? Number!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BooleanFilter? Boolean { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Boolean))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsBoolean => Boolean != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBoolean(
 #if NET6_0_OR_GREATER
@@ -114,14 +114,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.BooleanFilter PickBoolean() => IsBoolean
             ? Boolean!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RangeFilter? Range { get; init; }
@@ -130,7 +130,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Range))]
@@ -138,7 +138,7 @@ namespace RetellAI
         public bool IsRange => Range != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRange(
 #if NET6_0_OR_GREATER
@@ -151,14 +151,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.RangeFilter PickRange() => IsRange
             ? Range!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Range' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.EnumFilter? Enum { get; init; }
@@ -167,7 +167,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Enum))]
@@ -175,7 +175,7 @@ namespace RetellAI
         public bool IsEnum => Enum != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEnum(
 #if NET6_0_OR_GREATER
@@ -188,14 +188,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.EnumFilter PickEnum() => IsEnum
             ? Enum!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.PresentFilter? Present { get; init; }
@@ -204,7 +204,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Present))]
@@ -212,7 +212,7 @@ namespace RetellAI
         public bool IsPresent => Present != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPresent(
 #if NET6_0_OR_GREATER
@@ -225,23 +225,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.PresentFilter PickPresent() => IsPresent
             ? Present!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Present' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.StringFilter value) => new ValueFilter((global::RetellAI.StringFilter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.StringFilter?(ValueFilter @this) => @this.String;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ValueFilter(global::RetellAI.StringFilter? value)
         {
@@ -249,22 +249,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ValueFilter FromString(global::RetellAI.StringFilter? value) => new ValueFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.NumberFilter value) => new ValueFilter((global::RetellAI.NumberFilter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NumberFilter?(ValueFilter @this) => @this.Number;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ValueFilter(global::RetellAI.NumberFilter? value)
         {
@@ -272,22 +272,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ValueFilter FromNumber(global::RetellAI.NumberFilter? value) => new ValueFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.BooleanFilter value) => new ValueFilter((global::RetellAI.BooleanFilter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.BooleanFilter?(ValueFilter @this) => @this.Boolean;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ValueFilter(global::RetellAI.BooleanFilter? value)
         {
@@ -295,22 +295,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ValueFilter FromBoolean(global::RetellAI.BooleanFilter? value) => new ValueFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.RangeFilter value) => new ValueFilter((global::RetellAI.RangeFilter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.RangeFilter?(ValueFilter @this) => @this.Range;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ValueFilter(global::RetellAI.RangeFilter? value)
         {
@@ -318,22 +318,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ValueFilter FromRange(global::RetellAI.RangeFilter? value) => new ValueFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.EnumFilter value) => new ValueFilter((global::RetellAI.EnumFilter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.EnumFilter?(ValueFilter @this) => @this.Enum;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ValueFilter(global::RetellAI.EnumFilter? value)
         {
@@ -341,22 +341,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ValueFilter FromEnum(global::RetellAI.EnumFilter? value) => new ValueFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ValueFilter(global::RetellAI.PresentFilter value) => new ValueFilter((global::RetellAI.PresentFilter?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.PresentFilter?(ValueFilter @this) => @this.Present;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ValueFilter(global::RetellAI.PresentFilter? value)
         {
@@ -364,12 +364,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ValueFilter FromPresent(global::RetellAI.PresentFilter? value) => new ValueFilter(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ValueFilter(
             global::RetellAI.StringFilter? @string,
@@ -389,7 +389,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Present as object ??
@@ -397,11 +397,11 @@ namespace RetellAI
             Range as object ??
             Boolean as object ??
             Number as object ??
-            String as object 
+            String as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             String?.ToString() ??
@@ -409,11 +409,11 @@ namespace RetellAI
             Boolean?.ToString() ??
             Range?.ToString() ??
             Enum?.ToString() ??
-            Present?.ToString() 
+            Present?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -421,7 +421,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.StringFilter, TResult>? @string = null,
@@ -466,7 +466,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.StringFilter>? @string = null,
@@ -514,7 +514,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.StringFilter>? @string = null,
@@ -557,7 +557,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -586,7 +586,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ValueFilter other)
         {
@@ -596,12 +596,12 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.BooleanFilter?>.Default.Equals(Boolean, other.Boolean) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.RangeFilter?>.Default.Equals(Range, other.Range) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.EnumFilter?>.Default.Equals(Enum, other.Enum) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.PresentFilter?>.Default.Equals(Present, other.Present) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.PresentFilter?>.Default.Equals(Present, other.Present)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ValueFilter obj1, ValueFilter obj2)
         {
@@ -609,7 +609,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ValueFilter obj1, ValueFilter obj2)
         {
@@ -617,7 +617,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {
