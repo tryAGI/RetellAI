@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AddCommunityVoiceResponseStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

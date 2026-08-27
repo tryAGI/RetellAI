@@ -10,31 +10,31 @@ namespace RetellAI
     public enum RetellLlmOverrideS2sModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GptRealtime,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GptRealtime15,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GptRealtime2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GptRealtime21,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GptRealtime21Mini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GptRealtimeMini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
     }

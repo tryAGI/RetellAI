@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum RerunCallAnalysisResponseStatus6
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

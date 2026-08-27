@@ -10,19 +10,19 @@ namespace RetellAI
     public enum CallAnalysisUserSentiment
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Negative,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Neutral,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Positive,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unknown,
     }

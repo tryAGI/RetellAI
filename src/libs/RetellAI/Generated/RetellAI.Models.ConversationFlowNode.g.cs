@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ConversationFlowNode : global::System.IEquatable<ConversationFlowNode>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ConversationNode? ConversationNode { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ConversationNode))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsConversationNode => ConversationNode != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickConversationNode(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ConversationNode PickConversationNode() => IsConversationNode
             ? ConversationNode!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationNode' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SubagentNode? Subagent { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Subagent))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsSubagent => Subagent != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSubagent(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SubagentNode PickSubagent() => IsSubagent
             ? Subagent!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Subagent' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.EndNode? End { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(End))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsEnd => End != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEnd(
 #if NET6_0_OR_GREATER
@@ -114,14 +114,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.EndNode PickEnd() => IsEnd
             ? End!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'End' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.FunctionNode? Function { get; init; }
@@ -130,7 +130,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Function))]
@@ -138,7 +138,7 @@ namespace RetellAI
         public bool IsFunction => Function != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickFunction(
 #if NET6_0_OR_GREATER
@@ -151,14 +151,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.FunctionNode PickFunction() => IsFunction
             ? Function!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Function' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CodeNode? Code { get; init; }
@@ -167,7 +167,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Code))]
@@ -175,7 +175,7 @@ namespace RetellAI
         public bool IsCode => Code != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCode(
 #if NET6_0_OR_GREATER
@@ -188,14 +188,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.CodeNode PickCode() => IsCode
             ? Code!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Code' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.TransferCallNode? TransferCall { get; init; }
@@ -204,7 +204,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(TransferCall))]
@@ -212,7 +212,7 @@ namespace RetellAI
         public bool IsTransferCall => TransferCall != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickTransferCall(
 #if NET6_0_OR_GREATER
@@ -225,14 +225,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.TransferCallNode PickTransferCall() => IsTransferCall
             ? TransferCall!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TransferCall' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.PressDigitNode? PressDigit { get; init; }
@@ -241,7 +241,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(PressDigit))]
@@ -249,7 +249,7 @@ namespace RetellAI
         public bool IsPressDigit => PressDigit != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPressDigit(
 #if NET6_0_OR_GREATER
@@ -262,14 +262,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.PressDigitNode PickPressDigit() => IsPressDigit
             ? PressDigit!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PressDigit' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BranchNode? Branch { get; init; }
@@ -278,7 +278,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Branch))]
@@ -286,7 +286,7 @@ namespace RetellAI
         public bool IsBranch => Branch != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBranch(
 #if NET6_0_OR_GREATER
@@ -299,14 +299,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.BranchNode PickBranch() => IsBranch
             ? Branch!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Branch' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsNode? Sms { get; init; }
@@ -315,7 +315,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Sms))]
@@ -323,7 +323,7 @@ namespace RetellAI
         public bool IsSms => Sms != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSms(
 #if NET6_0_OR_GREATER
@@ -336,14 +336,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SmsNode PickSms() => IsSms
             ? Sms!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Sms' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ExtractDynamicVariablesNode? ExtractDynamicVariables { get; init; }
@@ -352,7 +352,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ExtractDynamicVariables))]
@@ -360,7 +360,7 @@ namespace RetellAI
         public bool IsExtractDynamicVariables => ExtractDynamicVariables != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickExtractDynamicVariables(
 #if NET6_0_OR_GREATER
@@ -373,14 +373,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ExtractDynamicVariablesNode PickExtractDynamicVariables() => IsExtractDynamicVariables
             ? ExtractDynamicVariables!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ExtractDynamicVariables' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.AgentSwapNode? AgentSwap { get; init; }
@@ -389,7 +389,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AgentSwap))]
@@ -397,7 +397,7 @@ namespace RetellAI
         public bool IsAgentSwap => AgentSwap != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickAgentSwap(
 #if NET6_0_OR_GREATER
@@ -410,14 +410,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.AgentSwapNode PickAgentSwap() => IsAgentSwap
             ? AgentSwap!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentSwap' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.MCPNode? Mcp { get; init; }
@@ -426,7 +426,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Mcp))]
@@ -434,7 +434,7 @@ namespace RetellAI
         public bool IsMcp => Mcp != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickMcp(
 #if NET6_0_OR_GREATER
@@ -447,14 +447,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.MCPNode PickMcp() => IsMcp
             ? Mcp!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Mcp' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ComponentNode? Component { get; init; }
@@ -463,7 +463,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Component))]
@@ -471,7 +471,7 @@ namespace RetellAI
         public bool IsComponent => Component != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickComponent(
 #if NET6_0_OR_GREATER
@@ -484,14 +484,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ComponentNode PickComponent() => IsComponent
             ? Component!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Component' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BridgeTransferNode? BridgeTransfer { get; init; }
@@ -500,7 +500,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BridgeTransfer))]
@@ -508,7 +508,7 @@ namespace RetellAI
         public bool IsBridgeTransfer => BridgeTransfer != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBridgeTransfer(
 #if NET6_0_OR_GREATER
@@ -521,14 +521,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.BridgeTransferNode PickBridgeTransfer() => IsBridgeTransfer
             ? BridgeTransfer!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BridgeTransfer' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CancelTransferNode? CancelTransfer { get; init; }
@@ -537,7 +537,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CancelTransfer))]
@@ -545,7 +545,7 @@ namespace RetellAI
         public bool IsCancelTransfer => CancelTransfer != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCancelTransfer(
 #if NET6_0_OR_GREATER
@@ -558,23 +558,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.CancelTransferNode PickCancelTransfer() => IsCancelTransfer
             ? CancelTransfer!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CancelTransfer' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.ConversationNode value) => new ConversationFlowNode((global::RetellAI.ConversationNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ConversationNode?(ConversationFlowNode @this) => @this.ConversationNode;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.ConversationNode? value)
         {
@@ -582,22 +582,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromConversationNode(global::RetellAI.ConversationNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.SubagentNode value) => new ConversationFlowNode((global::RetellAI.SubagentNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SubagentNode?(ConversationFlowNode @this) => @this.Subagent;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.SubagentNode? value)
         {
@@ -605,22 +605,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromSubagent(global::RetellAI.SubagentNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.EndNode value) => new ConversationFlowNode((global::RetellAI.EndNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.EndNode?(ConversationFlowNode @this) => @this.End;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.EndNode? value)
         {
@@ -628,22 +628,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromEnd(global::RetellAI.EndNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.FunctionNode value) => new ConversationFlowNode((global::RetellAI.FunctionNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.FunctionNode?(ConversationFlowNode @this) => @this.Function;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.FunctionNode? value)
         {
@@ -651,22 +651,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromFunction(global::RetellAI.FunctionNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.CodeNode value) => new ConversationFlowNode((global::RetellAI.CodeNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.CodeNode?(ConversationFlowNode @this) => @this.Code;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.CodeNode? value)
         {
@@ -674,22 +674,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromCode(global::RetellAI.CodeNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.TransferCallNode value) => new ConversationFlowNode((global::RetellAI.TransferCallNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.TransferCallNode?(ConversationFlowNode @this) => @this.TransferCall;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.TransferCallNode? value)
         {
@@ -697,22 +697,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromTransferCall(global::RetellAI.TransferCallNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.PressDigitNode value) => new ConversationFlowNode((global::RetellAI.PressDigitNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.PressDigitNode?(ConversationFlowNode @this) => @this.PressDigit;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.PressDigitNode? value)
         {
@@ -720,22 +720,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromPressDigit(global::RetellAI.PressDigitNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.BranchNode value) => new ConversationFlowNode((global::RetellAI.BranchNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.BranchNode?(ConversationFlowNode @this) => @this.Branch;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.BranchNode? value)
         {
@@ -743,22 +743,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromBranch(global::RetellAI.BranchNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.SmsNode value) => new ConversationFlowNode((global::RetellAI.SmsNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SmsNode?(ConversationFlowNode @this) => @this.Sms;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.SmsNode? value)
         {
@@ -766,22 +766,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromSms(global::RetellAI.SmsNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.ExtractDynamicVariablesNode value) => new ConversationFlowNode((global::RetellAI.ExtractDynamicVariablesNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ExtractDynamicVariablesNode?(ConversationFlowNode @this) => @this.ExtractDynamicVariables;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.ExtractDynamicVariablesNode? value)
         {
@@ -789,22 +789,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromExtractDynamicVariables(global::RetellAI.ExtractDynamicVariablesNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.AgentSwapNode value) => new ConversationFlowNode((global::RetellAI.AgentSwapNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.AgentSwapNode?(ConversationFlowNode @this) => @this.AgentSwap;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.AgentSwapNode? value)
         {
@@ -812,22 +812,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromAgentSwap(global::RetellAI.AgentSwapNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.MCPNode value) => new ConversationFlowNode((global::RetellAI.MCPNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.MCPNode?(ConversationFlowNode @this) => @this.Mcp;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.MCPNode? value)
         {
@@ -835,22 +835,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromMcp(global::RetellAI.MCPNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.ComponentNode value) => new ConversationFlowNode((global::RetellAI.ComponentNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ComponentNode?(ConversationFlowNode @this) => @this.Component;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.ComponentNode? value)
         {
@@ -858,22 +858,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromComponent(global::RetellAI.ComponentNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.BridgeTransferNode value) => new ConversationFlowNode((global::RetellAI.BridgeTransferNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.BridgeTransferNode?(ConversationFlowNode @this) => @this.BridgeTransfer;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.BridgeTransferNode? value)
         {
@@ -881,22 +881,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromBridgeTransfer(global::RetellAI.BridgeTransferNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.CancelTransferNode value) => new ConversationFlowNode((global::RetellAI.CancelTransferNode?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.CancelTransferNode?(ConversationFlowNode @this) => @this.CancelTransfer;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(global::RetellAI.CancelTransferNode? value)
         {
@@ -904,12 +904,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ConversationFlowNode FromCancelTransfer(global::RetellAI.CancelTransferNode? value) => new ConversationFlowNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ConversationFlowNode(
             global::RetellAI.ConversationNode? conversationNode,
@@ -947,7 +947,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             CancelTransfer as object ??
@@ -964,11 +964,11 @@ namespace RetellAI
             Function as object ??
             End as object ??
             Subagent as object ??
-            ConversationNode as object 
+            ConversationNode as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             ConversationNode?.ToString() ??
@@ -985,11 +985,11 @@ namespace RetellAI
             Mcp?.ToString() ??
             Component?.ToString() ??
             BridgeTransfer?.ToString() ??
-            CancelTransfer?.ToString() 
+            CancelTransfer?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -997,7 +997,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ConversationNode?, TResult>? conversationNode = null,
@@ -1087,7 +1087,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ConversationNode?>? conversationNode = null,
@@ -1189,7 +1189,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ConversationNode?>? conversationNode = null,
@@ -1277,7 +1277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -1324,7 +1324,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ConversationFlowNode other)
         {
@@ -1343,12 +1343,12 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.MCPNode?>.Default.Equals(Mcp, other.Mcp) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ComponentNode?>.Default.Equals(Component, other.Component) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.BridgeTransferNode?>.Default.Equals(BridgeTransfer, other.BridgeTransfer) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CancelTransferNode?>.Default.Equals(CancelTransfer, other.CancelTransfer) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CancelTransferNode?>.Default.Equals(CancelTransfer, other.CancelTransfer)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ConversationFlowNode obj1, ConversationFlowNode obj2)
         {
@@ -1356,7 +1356,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ConversationFlowNode obj1, ConversationFlowNode obj2)
         {
@@ -1364,7 +1364,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -9,7 +9,7 @@ namespace RetellAI
     public enum SmsNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sms,
     }

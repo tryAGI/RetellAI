@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CohortSuccessfulCriteriaType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Number,
     }

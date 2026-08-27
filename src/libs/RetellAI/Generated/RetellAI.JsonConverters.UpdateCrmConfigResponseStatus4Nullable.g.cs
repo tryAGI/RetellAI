@@ -20,7 +20,7 @@ namespace RetellAI.JsonConverters
                     {
                         return global::RetellAI.UpdateCrmConfigResponseStatus4Extensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

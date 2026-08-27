@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum UpdateChatAgentResponseStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

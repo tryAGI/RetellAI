@@ -4,20 +4,20 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CallFilterDataStorageSettingValueItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BasicAttributesOnly,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Everything,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EverythingExceptPii,
     }

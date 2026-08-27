@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ListAgentVersionsResponseStatus6
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

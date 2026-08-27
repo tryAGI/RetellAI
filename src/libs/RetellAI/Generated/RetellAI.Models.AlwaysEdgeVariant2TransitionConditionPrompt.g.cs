@@ -9,7 +9,7 @@ namespace RetellAI
     public enum AlwaysEdgeVariant2TransitionConditionPrompt
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Always,
     }

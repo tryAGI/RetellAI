@@ -4,16 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CallFilterCallTypeValueItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PhoneCall,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         WebCall,
     }

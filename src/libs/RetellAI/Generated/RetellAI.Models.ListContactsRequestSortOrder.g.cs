@@ -10,11 +10,11 @@ namespace RetellAI
     public enum ListContactsRequestSortOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Asc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Desc,
     }

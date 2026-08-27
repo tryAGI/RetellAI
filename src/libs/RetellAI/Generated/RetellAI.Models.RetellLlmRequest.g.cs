@@ -5,7 +5,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct RetellLlmRequest : global::System.IEquatable<RetellLlmRequest>
     {
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Override))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsOverride => Override != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickOverride(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.RetellLlmOverride PickOverride() => IsOverride
             ? Override!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Override' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RetellLlmRequestVariant2? RetellLlmRequestVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RetellLlmRequestVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsRetellLlmRequestVariant2 => RetellLlmRequestVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRetellLlmRequestVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.RetellLlmRequestVariant2 PickRetellLlmRequestVariant2() => IsRetellLlmRequestVariant2
             ? RetellLlmRequestVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLlmRequestVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator RetellLlmRequest(global::RetellAI.RetellLlmOverride value) => new RetellLlmRequest((global::RetellAI.RetellLlmOverride?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.RetellLlmOverride?(RetellLlmRequest @this) => @this.Override;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RetellLlmRequest(global::RetellAI.RetellLlmOverride? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static RetellLlmRequest FromOverride(global::RetellAI.RetellLlmOverride? value) => new RetellLlmRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator RetellLlmRequest(global::RetellAI.RetellLlmRequestVariant2 value) => new RetellLlmRequest((global::RetellAI.RetellLlmRequestVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.RetellLlmRequestVariant2?(RetellLlmRequest @this) => @this.RetellLlmRequestVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RetellLlmRequest(global::RetellAI.RetellLlmRequestVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static RetellLlmRequest FromRetellLlmRequestVariant2(global::RetellAI.RetellLlmRequestVariant2? value) => new RetellLlmRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RetellLlmRequest(
             global::RetellAI.RetellLlmOverride? @override,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             RetellLlmRequestVariant2 as object ??
-            Override as object 
+            Override as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Override?.ToString() ??
-            RetellLlmRequestVariant2?.ToString() 
+            RetellLlmRequestVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.RetellLlmOverride, TResult>? @override = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.RetellLlmOverride>? @override = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.RetellLlmOverride>? @override = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(RetellLlmRequest other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.RetellLlmOverride?>.Default.Equals(Override, other.Override) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.RetellLlmRequestVariant2?>.Default.Equals(RetellLlmRequestVariant2, other.RetellLlmRequestVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.RetellLlmRequestVariant2?>.Default.Equals(RetellLlmRequestVariant2, other.RetellLlmRequestVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(RetellLlmRequest obj1, RetellLlmRequest obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(RetellLlmRequest obj1, RetellLlmRequest obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct EndNode : global::System.IEquatable<EndNode>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeBase? Base { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsBase => Base != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NodeBase PickBase() => IsBase
             ? Base!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.EndNodeVariant2? EndNodeVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EndNodeVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsEndNodeVariant2 => EndNodeVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEndNodeVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.EndNodeVariant2 PickEndNodeVariant2() => IsEndNodeVariant2
             ? EndNodeVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'EndNodeVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EndNode(global::RetellAI.NodeBase value) => new EndNode((global::RetellAI.NodeBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NodeBase?(EndNode @this) => @this.Base;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EndNode(global::RetellAI.NodeBase? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EndNode FromBase(global::RetellAI.NodeBase? value) => new EndNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator EndNode(global::RetellAI.EndNodeVariant2 value) => new EndNode((global::RetellAI.EndNodeVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.EndNodeVariant2?(EndNode @this) => @this.EndNodeVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EndNode(global::RetellAI.EndNodeVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static EndNode FromEndNodeVariant2(global::RetellAI.EndNodeVariant2? value) => new EndNode(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public EndNode(
             global::RetellAI.NodeBase? @base,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             EndNodeVariant2 as object ??
-            Base as object 
+            Base as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Base?.ToString() ??
-            EndNodeVariant2?.ToString() 
+            EndNodeVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeBase?, TResult>? @base = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeBase?>? @base = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.NodeBase?>? @base = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(EndNode other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBase?>.Default.Equals(Base, other.Base) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.EndNodeVariant2?>.Default.Equals(EndNodeVariant2, other.EndNodeVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.EndNodeVariant2?>.Default.Equals(EndNodeVariant2, other.EndNodeVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(EndNode obj1, EndNode obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(EndNode obj1, EndNode obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

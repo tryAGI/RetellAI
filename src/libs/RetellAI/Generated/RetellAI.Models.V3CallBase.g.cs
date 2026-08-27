@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class V3CallBase
     {
@@ -199,7 +199,7 @@ namespace RetellAI
         public global::RetellAI.V3CallBaseLatency? Latency { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disconnection_reason")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.DisconnectionReason5JsonConverter))]
@@ -214,7 +214,7 @@ namespace RetellAI
         public string? TransferDestination { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_analysis")]
         public global::RetellAI.CallAnalysis? CallAnalysis { get; set; }

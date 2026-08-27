@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum GetBackfillContactJobStatusResponseStatus3
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

@@ -4,32 +4,32 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum NaturalnessIssue
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AudioArtifacts,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Mispronunciation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Other,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PoorArticulation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnnaturalIntonation,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UnnaturalPacing,
     }

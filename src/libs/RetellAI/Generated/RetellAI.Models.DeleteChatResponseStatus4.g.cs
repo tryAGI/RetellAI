@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum DeleteChatResponseStatus4
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

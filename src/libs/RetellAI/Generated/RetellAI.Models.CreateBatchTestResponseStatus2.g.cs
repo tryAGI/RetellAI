@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CreateBatchTestResponseStatus2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

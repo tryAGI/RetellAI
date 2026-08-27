@@ -9,7 +9,7 @@ namespace RetellAI
     public enum KnowledgeBaseSourceUrlType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Url,
     }

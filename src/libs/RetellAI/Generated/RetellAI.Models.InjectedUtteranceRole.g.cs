@@ -9,7 +9,7 @@ namespace RetellAI
     public enum InjectedUtteranceRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Injected,
     }

@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AgentPlaygroundCompletionResponseStatus2
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

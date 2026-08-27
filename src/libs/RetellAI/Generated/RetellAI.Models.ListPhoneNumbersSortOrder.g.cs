@@ -9,11 +9,11 @@ namespace RetellAI
     public enum ListPhoneNumbersSortOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ascending,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Descending,
     }

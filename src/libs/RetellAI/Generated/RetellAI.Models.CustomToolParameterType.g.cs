@@ -9,11 +9,11 @@ namespace RetellAI
     public enum CustomToolParameterType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Form,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Json,
     }

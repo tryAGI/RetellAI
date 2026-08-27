@@ -9,7 +9,7 @@ namespace RetellAI
     public enum TransferFailedEdgeVariant2TransitionConditionPrompt
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferFailed,
     }

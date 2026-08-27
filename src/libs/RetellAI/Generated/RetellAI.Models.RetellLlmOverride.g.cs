@@ -55,7 +55,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<string>? KnowledgeBaseIds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("kb_config")]
         public global::RetellAI.KBConfig? KbConfig { get; set; }

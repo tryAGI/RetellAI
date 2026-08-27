@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ListRetellLLMResponseStatus5
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

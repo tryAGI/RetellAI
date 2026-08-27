@@ -9,11 +9,11 @@ namespace RetellAI
     public enum CustomToolExecutionMessageType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Prompt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StaticText,
     }

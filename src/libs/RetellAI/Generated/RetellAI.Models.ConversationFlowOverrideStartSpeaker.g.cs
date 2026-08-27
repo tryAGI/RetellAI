@@ -10,11 +10,11 @@ namespace RetellAI
     public enum ConversationFlowOverrideStartSpeaker
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Agent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

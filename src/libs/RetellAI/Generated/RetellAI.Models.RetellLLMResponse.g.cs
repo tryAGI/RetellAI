@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct RetellLLMResponse : global::System.IEquatable<RetellLLMResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RetellLLMResponseVariant1? RetellLLMResponseVariant1 { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RetellLLMResponseVariant1))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsRetellLLMResponseVariant1 => RetellLLMResponseVariant1 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRetellLLMResponseVariant1(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.RetellLLMResponseVariant1 PickRetellLLMResponseVariant1() => IsRetellLLMResponseVariant1
             ? RetellLLMResponseVariant1!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLLMResponseVariant1' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RetellLlmRequest? LlmRequest { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(LlmRequest))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsLlmRequest => LlmRequest != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickLlmRequest(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.RetellLlmRequest PickLlmRequest() => IsLlmRequest
             ? LlmRequest!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'LlmRequest' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.RetellLLMResponseVariant3? RetellLLMResponseVariant3 { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RetellLLMResponseVariant3))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsRetellLLMResponseVariant3 => RetellLLMResponseVariant3 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRetellLLMResponseVariant3(
 #if NET6_0_OR_GREATER
@@ -114,23 +114,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.RetellLLMResponseVariant3 PickRetellLLMResponseVariant3() => IsRetellLLMResponseVariant3
             ? RetellLLMResponseVariant3!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLLMResponseVariant3' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator RetellLLMResponse(global::RetellAI.RetellLLMResponseVariant1 value) => new RetellLLMResponse((global::RetellAI.RetellLLMResponseVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.RetellLLMResponseVariant1?(RetellLLMResponse @this) => @this.RetellLLMResponseVariant1;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RetellLLMResponse(global::RetellAI.RetellLLMResponseVariant1? value)
         {
@@ -138,22 +138,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static RetellLLMResponse FromRetellLLMResponseVariant1(global::RetellAI.RetellLLMResponseVariant1? value) => new RetellLLMResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator RetellLLMResponse(global::RetellAI.RetellLlmRequest value) => new RetellLLMResponse((global::RetellAI.RetellLlmRequest?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.RetellLlmRequest?(RetellLLMResponse @this) => @this.LlmRequest;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RetellLLMResponse(global::RetellAI.RetellLlmRequest? value)
         {
@@ -161,22 +161,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static RetellLLMResponse FromLlmRequest(global::RetellAI.RetellLlmRequest? value) => new RetellLLMResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator RetellLLMResponse(global::RetellAI.RetellLLMResponseVariant3 value) => new RetellLLMResponse((global::RetellAI.RetellLLMResponseVariant3?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.RetellLLMResponseVariant3?(RetellLLMResponse @this) => @this.RetellLLMResponseVariant3;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RetellLLMResponse(global::RetellAI.RetellLLMResponseVariant3? value)
         {
@@ -184,12 +184,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static RetellLLMResponse FromRetellLLMResponseVariant3(global::RetellAI.RetellLLMResponseVariant3? value) => new RetellLLMResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public RetellLLMResponse(
             global::RetellAI.RetellLLMResponseVariant1? retellLLMResponseVariant1,
@@ -203,25 +203,25 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             RetellLLMResponseVariant3 as object ??
             LlmRequest as object ??
-            RetellLLMResponseVariant1 as object 
+            RetellLLMResponseVariant1 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RetellLLMResponseVariant1?.ToString() ??
             LlmRequest?.ToString() ??
-            RetellLLMResponseVariant3?.ToString() 
+            RetellLLMResponseVariant3?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -229,7 +229,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.RetellLLMResponseVariant1, TResult>? retellLLMResponseVariant1 = null,
@@ -259,7 +259,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.RetellLLMResponseVariant1>? retellLLMResponseVariant1 = null,
@@ -289,7 +289,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.RetellLLMResponseVariant1>? retellLLMResponseVariant1 = null,
@@ -317,7 +317,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -340,19 +340,19 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(RetellLLMResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.RetellLLMResponseVariant1?>.Default.Equals(RetellLLMResponseVariant1, other.RetellLLMResponseVariant1) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.RetellLlmRequest?>.Default.Equals(LlmRequest, other.LlmRequest) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.RetellLLMResponseVariant3?>.Default.Equals(RetellLLMResponseVariant3, other.RetellLLMResponseVariant3) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.RetellLLMResponseVariant3?>.Default.Equals(RetellLLMResponseVariant3, other.RetellLLMResponseVariant3)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(RetellLLMResponse obj1, RetellLLMResponse obj2)
         {
@@ -360,7 +360,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(RetellLLMResponse obj1, RetellLLMResponse obj2)
         {
@@ -368,7 +368,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

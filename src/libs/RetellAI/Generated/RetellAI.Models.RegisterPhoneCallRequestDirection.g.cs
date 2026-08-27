@@ -10,11 +10,11 @@ namespace RetellAI
     public enum RegisterPhoneCallRequestDirection
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inbound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Outbound,
     }

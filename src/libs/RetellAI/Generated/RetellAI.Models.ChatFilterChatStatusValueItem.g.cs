@@ -4,20 +4,20 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ChatFilterChatStatusValueItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ended,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ongoing,
     }

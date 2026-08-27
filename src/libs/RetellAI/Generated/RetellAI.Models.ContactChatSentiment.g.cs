@@ -9,19 +9,19 @@ namespace RetellAI
     public enum ContactChatSentiment
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Negative,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Neutral,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Positive,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Unknown,
     }

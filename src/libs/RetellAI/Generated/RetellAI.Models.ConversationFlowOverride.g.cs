@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ConversationFlowOverride
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_choice")]
         public global::RetellAI.ModelChoiceCascading? ModelChoice { get; set; }
@@ -39,7 +39,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<string>? KnowledgeBaseIds { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("kb_config")]
         public global::RetellAI.KBConfig? KbConfig { get; set; }

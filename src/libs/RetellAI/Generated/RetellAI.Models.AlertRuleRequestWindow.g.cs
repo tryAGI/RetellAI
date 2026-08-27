@@ -9,35 +9,35 @@ namespace RetellAI
     public enum AlertRuleRequestWindow
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x12h,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1h,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x24h,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x30m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x3d,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x5m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x7d,
     }

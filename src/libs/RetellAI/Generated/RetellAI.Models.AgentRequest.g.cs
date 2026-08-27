@@ -6,12 +6,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AgentRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_engine")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ResponseEngineJsonConverter))]
@@ -404,7 +404,7 @@ namespace RetellAI
         public bool? AllowDtmfInterruption { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user_dtmf_options")]
         public global::RetellAI.AgentRequestUserDtmfOptions? UserDtmfOptions { get; set; }
@@ -419,13 +419,13 @@ namespace RetellAI
         public global::RetellAI.AgentRequestDenoisingMode? DenoisingMode { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pii_config")]
         public global::RetellAI.PIIConfig? PiiConfig { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("guardrail_config")]
         public global::RetellAI.GuardrailConfig? GuardrailConfig { get; set; }

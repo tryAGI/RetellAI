@@ -9,7 +9,7 @@ namespace RetellAI
     public enum VoicemailActionBridgeTransferType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BridgeTransfer,
     }

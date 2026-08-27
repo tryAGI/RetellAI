@@ -9,14 +9,14 @@ namespace RetellAI
     public sealed partial class AgentListFilterChannel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("op")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentListFilterChannelOpJsonConverter))]
         public global::RetellAI.AgentListFilterChannelOp? Op { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentListFilterChannelValueJsonConverter))]

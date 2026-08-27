@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ScoringCriteriaCustomCondition
     {
@@ -16,7 +16,7 @@ namespace RetellAI
         public required string Description { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("score_weight")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ModelChoiceCascadingType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cascading,
     }

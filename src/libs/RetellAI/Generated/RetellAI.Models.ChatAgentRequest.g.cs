@@ -6,12 +6,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ChatAgentRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_engine")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ResponseEngineJsonConverter))]
@@ -125,13 +125,13 @@ namespace RetellAI
         public global::RetellAI.NullableLLMModel? PostChatAnalysisModel { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pii_config")]
         public global::RetellAI.PIIConfig? PiiConfig { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("guardrail_config")]
         public global::RetellAI.GuardrailConfig? GuardrailConfig { get; set; }

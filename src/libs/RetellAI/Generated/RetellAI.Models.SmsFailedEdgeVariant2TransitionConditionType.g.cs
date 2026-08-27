@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SmsFailedEdgeVariant2TransitionConditionType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Prompt,
     }

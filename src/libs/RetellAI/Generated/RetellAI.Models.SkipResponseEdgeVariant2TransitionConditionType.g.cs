@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SkipResponseEdgeVariant2TransitionConditionType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Prompt,
     }

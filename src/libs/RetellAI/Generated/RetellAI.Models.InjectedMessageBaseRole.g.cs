@@ -9,7 +9,7 @@ namespace RetellAI
     public enum InjectedMessageBaseRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Injected,
     }

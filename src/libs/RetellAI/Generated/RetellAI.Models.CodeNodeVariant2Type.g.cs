@@ -9,7 +9,7 @@ namespace RetellAI
     public enum CodeNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Code,
     }

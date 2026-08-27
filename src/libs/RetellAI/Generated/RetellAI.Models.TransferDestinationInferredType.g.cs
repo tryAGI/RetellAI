@@ -9,7 +9,7 @@ namespace RetellAI
     public enum TransferDestinationInferredType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inferred,
     }

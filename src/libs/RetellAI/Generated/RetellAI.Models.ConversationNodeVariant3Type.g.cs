@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ConversationNodeVariant3Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Conversation,
     }

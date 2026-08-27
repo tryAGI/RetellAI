@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum DeleteAgentVersionResponseStatus5
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

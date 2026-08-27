@@ -9,7 +9,7 @@ namespace RetellAI
     public enum AgentSwapNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentSwap,
     }

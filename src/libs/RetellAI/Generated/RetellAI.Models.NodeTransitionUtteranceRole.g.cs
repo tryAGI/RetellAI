@@ -9,7 +9,7 @@ namespace RetellAI
     public enum NodeTransitionUtteranceRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NodeTransition,
     }

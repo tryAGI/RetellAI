@@ -10,255 +10,255 @@ namespace RetellAI
     public enum Language3
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AfZa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ArSa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AzAz,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BgBg,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BsBa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CaEs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CsCz,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CyGb,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DaDk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DeDe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElGr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnAu,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnGb,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnIn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnNz,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EnUs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Es419,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         EsEs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FaIr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FiFi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FilPh,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FrCa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         FrFr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         GlEs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         HeIl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         HiIn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         HrHr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         HuHu,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         HyAm,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IdId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         IsIs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ItIt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         JaJp,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KkKz,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KnIn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         KoKr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LtLt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LvLv,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MkMk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MrIn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         MsMy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NeNp,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NlBe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NlNl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NoNo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PlPl,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PtBr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         PtPt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RoRo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RuRu,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SkSk,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SlSi,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SrRs,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SvSe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SwKe,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TaIn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ThTh,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TrTr,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UkUa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UrIn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ViVn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         YueCn,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ZhCn,
     }

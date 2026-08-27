@@ -4,48 +4,48 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AgentRequestExpressiveEmotionTag
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ClearThroat,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Curious,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Empathetic,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Emphasis,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Excited,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Happy,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         LongPause,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pause,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sigh,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Surprised,
     }

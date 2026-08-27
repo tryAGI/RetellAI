@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct AnalysisData : global::System.IEquatable<AnalysisData>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.StringAnalysisData? String { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(String))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsString => String != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickString(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.StringAnalysisData PickString() => IsString
             ? String!
             : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.EnumAnalysisData? Enum { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Enum))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsEnum => Enum != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickEnum(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.EnumAnalysisData PickEnum() => IsEnum
             ? Enum!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BooleanAnalysisData? Boolean { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Boolean))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsBoolean => Boolean != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBoolean(
 #if NET6_0_OR_GREATER
@@ -114,14 +114,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.BooleanAnalysisData PickBoolean() => IsBoolean
             ? Boolean!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NumberAnalysisData? Number { get; init; }
@@ -130,7 +130,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Number))]
@@ -138,7 +138,7 @@ namespace RetellAI
         public bool IsNumber => Number != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickNumber(
 #if NET6_0_OR_GREATER
@@ -151,23 +151,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NumberAnalysisData PickNumber() => IsNumber
             ? Number!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AnalysisData(global::RetellAI.StringAnalysisData value) => new AnalysisData((global::RetellAI.StringAnalysisData?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.StringAnalysisData?(AnalysisData @this) => @this.String;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AnalysisData(global::RetellAI.StringAnalysisData? value)
         {
@@ -175,22 +175,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AnalysisData FromString(global::RetellAI.StringAnalysisData? value) => new AnalysisData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AnalysisData(global::RetellAI.EnumAnalysisData value) => new AnalysisData((global::RetellAI.EnumAnalysisData?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.EnumAnalysisData?(AnalysisData @this) => @this.Enum;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AnalysisData(global::RetellAI.EnumAnalysisData? value)
         {
@@ -198,22 +198,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AnalysisData FromEnum(global::RetellAI.EnumAnalysisData? value) => new AnalysisData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AnalysisData(global::RetellAI.BooleanAnalysisData value) => new AnalysisData((global::RetellAI.BooleanAnalysisData?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.BooleanAnalysisData?(AnalysisData @this) => @this.Boolean;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AnalysisData(global::RetellAI.BooleanAnalysisData? value)
         {
@@ -221,22 +221,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AnalysisData FromBoolean(global::RetellAI.BooleanAnalysisData? value) => new AnalysisData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator AnalysisData(global::RetellAI.NumberAnalysisData value) => new AnalysisData((global::RetellAI.NumberAnalysisData?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NumberAnalysisData?(AnalysisData @this) => @this.Number;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AnalysisData(global::RetellAI.NumberAnalysisData? value)
         {
@@ -244,12 +244,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static AnalysisData FromNumber(global::RetellAI.NumberAnalysisData? value) => new AnalysisData(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public AnalysisData(
             global::RetellAI.StringAnalysisData? @string,
@@ -265,27 +265,27 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Number as object ??
             Boolean as object ??
             Enum as object ??
-            String as object 
+            String as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             String?.ToString() ??
             Enum?.ToString() ??
             Boolean?.ToString() ??
-            Number?.ToString() 
+            Number?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -293,7 +293,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.StringAnalysisData, TResult>? @string = null,
@@ -328,7 +328,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.StringAnalysisData>? @string = null,
@@ -364,7 +364,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.StringAnalysisData>? @string = null,
@@ -397,7 +397,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -422,7 +422,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(AnalysisData other)
         {
@@ -430,12 +430,12 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.StringAnalysisData?>.Default.Equals(String, other.String) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.EnumAnalysisData?>.Default.Equals(Enum, other.Enum) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.BooleanAnalysisData?>.Default.Equals(Boolean, other.Boolean) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NumberAnalysisData?>.Default.Equals(Number, other.Number) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NumberAnalysisData?>.Default.Equals(Number, other.Number)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(AnalysisData obj1, AnalysisData obj2)
         {
@@ -443,7 +443,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(AnalysisData obj1, AnalysisData obj2)
         {
@@ -451,7 +451,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class CallFilterCallStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         public global::System.Collections.Generic.IList<global::RetellAI.CallFilterCallStatusValueItem>? Value { get; set; }

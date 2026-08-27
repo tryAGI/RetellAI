@@ -5,7 +5,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct UpdateSpendBudgetRequest : global::System.IEquatable<UpdateSpendBudgetRequest>
     {
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UpdateSpendBudgetRequestVariant1))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsUpdateSpendBudgetRequestVariant1 => UpdateSpendBudgetRequestVariant1 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUpdateSpendBudgetRequestVariant1(
 #if NET6_0_OR_GREATER
@@ -40,7 +40,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.UpdateSpendBudgetRequestVariant1 PickUpdateSpendBudgetRequestVariant1() => IsUpdateSpendBudgetRequestVariant1
             ? UpdateSpendBudgetRequestVariant1!
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(UpdateSpendBudgetRequestVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsUpdateSpendBudgetRequestVariant2 => UpdateSpendBudgetRequestVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUpdateSpendBudgetRequestVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.UpdateSpendBudgetRequestVariant2 PickUpdateSpendBudgetRequestVariant2() => IsUpdateSpendBudgetRequestVariant2
             ? UpdateSpendBudgetRequestVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'UpdateSpendBudgetRequestVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator UpdateSpendBudgetRequest(global::RetellAI.UpdateSpendBudgetRequestVariant1 value) => new UpdateSpendBudgetRequest((global::RetellAI.UpdateSpendBudgetRequestVariant1?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.UpdateSpendBudgetRequestVariant1?(UpdateSpendBudgetRequest @this) => @this.UpdateSpendBudgetRequestVariant1;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UpdateSpendBudgetRequest(global::RetellAI.UpdateSpendBudgetRequestVariant1? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static UpdateSpendBudgetRequest FromUpdateSpendBudgetRequestVariant1(global::RetellAI.UpdateSpendBudgetRequestVariant1? value) => new UpdateSpendBudgetRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator UpdateSpendBudgetRequest(global::RetellAI.UpdateSpendBudgetRequestVariant2 value) => new UpdateSpendBudgetRequest((global::RetellAI.UpdateSpendBudgetRequestVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.UpdateSpendBudgetRequestVariant2?(UpdateSpendBudgetRequest @this) => @this.UpdateSpendBudgetRequestVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UpdateSpendBudgetRequest(global::RetellAI.UpdateSpendBudgetRequestVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static UpdateSpendBudgetRequest FromUpdateSpendBudgetRequestVariant2(global::RetellAI.UpdateSpendBudgetRequestVariant2? value) => new UpdateSpendBudgetRequest(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UpdateSpendBudgetRequest(
             global::RetellAI.UpdateSpendBudgetRequestVariant1? updateSpendBudgetRequestVariant1,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             UpdateSpendBudgetRequestVariant2 as object ??
-            UpdateSpendBudgetRequestVariant1 as object 
+            UpdateSpendBudgetRequestVariant1 as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             UpdateSpendBudgetRequestVariant1?.ToString() ??
-            UpdateSpendBudgetRequestVariant2?.ToString() 
+            UpdateSpendBudgetRequestVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.UpdateSpendBudgetRequestVariant1, TResult>? updateSpendBudgetRequestVariant1 = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.UpdateSpendBudgetRequestVariant1>? updateSpendBudgetRequestVariant1 = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.UpdateSpendBudgetRequestVariant1>? updateSpendBudgetRequestVariant1 = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(UpdateSpendBudgetRequest other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.UpdateSpendBudgetRequestVariant1?>.Default.Equals(UpdateSpendBudgetRequestVariant1, other.UpdateSpendBudgetRequestVariant1) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.UpdateSpendBudgetRequestVariant2?>.Default.Equals(UpdateSpendBudgetRequestVariant2, other.UpdateSpendBudgetRequestVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.UpdateSpendBudgetRequestVariant2?>.Default.Equals(UpdateSpendBudgetRequestVariant2, other.UpdateSpendBudgetRequestVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(UpdateSpendBudgetRequest obj1, UpdateSpendBudgetRequest obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(UpdateSpendBudgetRequest obj1, UpdateSpendBudgetRequest obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

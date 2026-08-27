@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum UpdateCrmConfigResponseStatus5
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
     }

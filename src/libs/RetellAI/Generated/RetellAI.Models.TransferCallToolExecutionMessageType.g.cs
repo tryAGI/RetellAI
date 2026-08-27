@@ -9,11 +9,11 @@ namespace RetellAI
     public enum TransferCallToolExecutionMessageType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Prompt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StaticText,
     }

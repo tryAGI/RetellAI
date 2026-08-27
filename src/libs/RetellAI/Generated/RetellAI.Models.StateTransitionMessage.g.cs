@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct StateTransitionMessage : global::System.IEquatable<StateTransitionMessage>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.StateTransitionMessageBase? Base { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsBase => Base != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.StateTransitionMessageBase PickBase() => IsBase
             ? Base!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public object? StateTransitionMessageVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(StateTransitionMessageVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsStateTransitionMessageVariant2 => StateTransitionMessageVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickStateTransitionMessageVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object PickStateTransitionMessageVariant2() => IsStateTransitionMessageVariant2
             ? StateTransitionMessageVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'StateTransitionMessageVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator StateTransitionMessage(global::RetellAI.StateTransitionMessageBase value) => new StateTransitionMessage((global::RetellAI.StateTransitionMessageBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.StateTransitionMessageBase?(StateTransitionMessage @this) => @this.Base;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public StateTransitionMessage(global::RetellAI.StateTransitionMessageBase? value)
         {
@@ -101,12 +101,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static StateTransitionMessage FromBase(global::RetellAI.StateTransitionMessageBase? value) => new StateTransitionMessage(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public StateTransitionMessage(
             global::RetellAI.StateTransitionMessageBase? @base,
@@ -118,23 +118,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             StateTransitionMessageVariant2 as object ??
-            Base as object 
+            Base as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Base?.ToString() ??
-            StateTransitionMessageVariant2?.ToString() 
+            StateTransitionMessageVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -142,7 +142,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.StateTransitionMessageBase, TResult>? @base = null,
@@ -167,7 +167,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.StateTransitionMessageBase>? @base = null,
@@ -191,7 +191,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.StateTransitionMessageBase>? @base = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -235,18 +235,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(StateTransitionMessage other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.StateTransitionMessageBase?>.Default.Equals(Base, other.Base) &&
-                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(StateTransitionMessageVariant2, other.StateTransitionMessageVariant2) 
+                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(StateTransitionMessageVariant2, other.StateTransitionMessageVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(StateTransitionMessage obj1, StateTransitionMessage obj2)
         {
@@ -254,7 +254,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(StateTransitionMessage obj1, StateTransitionMessage obj2)
         {
@@ -262,7 +262,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

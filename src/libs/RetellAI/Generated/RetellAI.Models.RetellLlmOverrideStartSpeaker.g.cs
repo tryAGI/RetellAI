@@ -9,11 +9,11 @@ namespace RetellAI
     public enum RetellLlmOverrideStartSpeaker
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Agent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         User,
     }

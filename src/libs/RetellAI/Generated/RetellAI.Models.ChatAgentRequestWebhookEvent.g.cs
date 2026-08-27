@@ -4,24 +4,24 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ChatAgentRequestWebhookEvent
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatAnalyzed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatEnded,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatStarted,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TranscriptUpdated,
     }

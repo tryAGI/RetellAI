@@ -9,15 +9,15 @@ namespace RetellAI
     public enum UtteranceHallucinationHallucinationType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Confusion,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Contradiction,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Fabrication,
     }

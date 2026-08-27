@@ -10,7 +10,7 @@ namespace RetellAI
     public enum NumberAnalysisDataType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Number,
     }

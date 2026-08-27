@@ -4,26 +4,26 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class OptInBillingV2Response
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("billing_profile_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string BillingProfileId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cadence_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CadenceId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pricing_plan_subscription_id")]
         [global::System.Text.Json.Serialization.JsonRequired]

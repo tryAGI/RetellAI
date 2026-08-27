@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class TransferOptionWarmTransfer
     {
@@ -63,7 +63,7 @@ namespace RetellAI
         public global::RetellAI.OneOf<global::RetellAI.WarmTransferPrompt, global::RetellAI.WarmTransferStaticMessage>? PrivateHandoffOption { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("ivr_option")]
         public global::RetellAI.WarmTransferPrompt? IvrOption { get; set; }

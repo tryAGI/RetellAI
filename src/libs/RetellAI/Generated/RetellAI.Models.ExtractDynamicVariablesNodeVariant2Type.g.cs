@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ExtractDynamicVariablesNodeVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ExtractDynamicVariables,
     }

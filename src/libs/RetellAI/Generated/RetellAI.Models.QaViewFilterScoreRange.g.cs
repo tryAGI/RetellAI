@@ -10,7 +10,7 @@ namespace RetellAI
     public sealed partial class QaViewFilterScoreRange
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.QaViewFilterScoreRangeTypeJsonConverter))]
@@ -18,7 +18,7 @@ namespace RetellAI
         public global::RetellAI.QaViewFilterScoreRangeType? Type { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -26,7 +26,7 @@ namespace RetellAI
         public required double Value { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("op")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.QaViewFilterScoreRangeOpJsonConverter))]

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class ScoringCriteria
     {
@@ -15,7 +15,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.ScoringCriteriaCustomCondition>? CustomConditions { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("performance_metrics")]
         public global::System.Collections.Generic.IList<global::RetellAI.PerformanceMetricCriteria>? PerformanceMetrics { get; set; }

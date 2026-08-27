@@ -4,16 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum PostCallAnalysisSetting
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BothAgents,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OnlyDestinationAgent,
     }

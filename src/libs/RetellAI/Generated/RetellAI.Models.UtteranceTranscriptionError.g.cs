@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class UtteranceTranscriptionError
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("duration")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -23,7 +23,7 @@ namespace RetellAI
         public required global::System.Collections.Generic.IList<global::RetellAI.UtteranceTranscriptionErrorMieDetail> MieDetails { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("wer")]
         [global::System.Text.Json.Serialization.JsonRequired]

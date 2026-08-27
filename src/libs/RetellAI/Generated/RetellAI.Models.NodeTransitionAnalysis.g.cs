@@ -16,14 +16,14 @@ namespace RetellAI
         public required global::System.Collections.Generic.IList<global::RetellAI.NodeTransitionAnalysisDetail> Details { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("correct_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double CorrectCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_count")]
         [global::System.Text.Json.Serialization.JsonRequired]

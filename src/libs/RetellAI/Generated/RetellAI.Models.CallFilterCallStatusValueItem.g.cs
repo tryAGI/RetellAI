@@ -4,24 +4,24 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum CallFilterCallStatusValueItem
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ended,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NotConnected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ongoing,
     }

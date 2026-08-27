@@ -9,11 +9,11 @@ namespace RetellAI
     public enum JobStatusTriggeredBy
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cron,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Manual,
     }

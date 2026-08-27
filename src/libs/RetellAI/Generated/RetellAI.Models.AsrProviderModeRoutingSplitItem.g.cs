@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class AsrProviderModeRoutingSplitItem
     {
@@ -17,14 +17,14 @@ namespace RetellAI
         public required global::RetellAI.AsrProvider Provider { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endpointing_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int EndpointingMs { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fraction")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -9,11 +9,11 @@ namespace RetellAI
     public enum ListAppUsagesSortOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ascending,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Descending,
     }

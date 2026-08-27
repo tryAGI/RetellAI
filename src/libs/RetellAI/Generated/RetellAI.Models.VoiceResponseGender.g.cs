@@ -10,11 +10,11 @@ namespace RetellAI
     public enum VoiceResponseGender
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Female,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Male,
     }

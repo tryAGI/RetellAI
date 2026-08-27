@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ConductorOverageConfigVariant3Mode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Limited,
     }

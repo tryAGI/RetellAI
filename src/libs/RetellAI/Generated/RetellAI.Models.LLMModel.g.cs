@@ -9,95 +9,95 @@ namespace RetellAI
     public enum LLMModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Claude45Haiku,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Claude45Sonnet,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Claude46Sonnet,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Claude5Sonnet,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini30Flash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini31FlashLite,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini35Flash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini35FlashLite,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gemini36Flash,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt41,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt41Mini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt41Nano,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt5,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt5Mini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt5Nano,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt51,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt52,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt54,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt54Mini,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt54Nano,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt55,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt56Luna,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt56Terra,
     }

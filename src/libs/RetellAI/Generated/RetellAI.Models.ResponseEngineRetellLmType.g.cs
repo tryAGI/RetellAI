@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ResponseEngineRetellLmType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetellLlm,
     }

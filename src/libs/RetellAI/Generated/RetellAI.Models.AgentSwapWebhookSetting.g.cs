@@ -4,20 +4,20 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AgentSwapWebhookSetting
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BothAgents,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OnlyDestinationAgent,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OnlySourceAgent,
     }

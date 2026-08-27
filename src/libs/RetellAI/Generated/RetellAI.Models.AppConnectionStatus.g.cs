@@ -9,15 +9,15 @@ namespace RetellAI
     public enum AppConnectionStatus
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Connected,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Error,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NotConnected,
     }

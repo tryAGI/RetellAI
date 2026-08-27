@@ -10,15 +10,15 @@ namespace RetellAI
     public enum PhoneNumberResponsePhoneNumberType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Custom,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetellTelnyx,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetellTwilio,
     }

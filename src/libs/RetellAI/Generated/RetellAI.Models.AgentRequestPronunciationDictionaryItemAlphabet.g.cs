@@ -10,19 +10,19 @@ namespace RetellAI
     public enum AgentRequestPronunciationDictionaryItemAlphabet
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Cmu,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ipa,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Jyutping,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Pinyin,
     }

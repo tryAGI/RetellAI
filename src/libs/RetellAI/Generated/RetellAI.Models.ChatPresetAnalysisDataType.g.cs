@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ChatPresetAnalysisDataType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SystemPresets,
     }

@@ -9,21 +9,21 @@ namespace RetellAI
     public sealed partial class CallQA
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_qa_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CallQaId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CallId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cohort_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -123,14 +123,14 @@ namespace RetellAI
         public string? FailureReason { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("failed_metrics")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::System.Collections.Generic.IList<global::RetellAI.MetricResult> FailedMetrics { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("passed_metrics")]
         [global::System.Text.Json.Serialization.JsonRequired]

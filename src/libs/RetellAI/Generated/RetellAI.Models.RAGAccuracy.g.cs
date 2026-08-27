@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class RAGAccuracy
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_id")]
         public double? ResponseId { get; set; }

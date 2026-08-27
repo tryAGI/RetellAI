@@ -10,11 +10,11 @@ namespace RetellAI
     public enum UpdateChatMetadataRequestDataStorageSetting
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BasicAttributesOnly,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Everything,
     }

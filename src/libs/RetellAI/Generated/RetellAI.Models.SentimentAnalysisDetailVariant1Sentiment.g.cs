@@ -9,15 +9,15 @@ namespace RetellAI
     public enum SentimentAnalysisDetailVariant1Sentiment
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Negative,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Neutral,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Positive,
     }

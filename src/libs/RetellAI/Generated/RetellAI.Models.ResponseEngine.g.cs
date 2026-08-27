@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ResponseEngine : global::System.IEquatable<ResponseEngine>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ResponseEngineRetellLm? RetellLm { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(RetellLm))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsRetellLm => RetellLm != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickRetellLm(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ResponseEngineRetellLm PickRetellLm() => IsRetellLm
             ? RetellLm!
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLm' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ResponseEngineCustomLm? CustomLm { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CustomLm))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsCustomLm => CustomLm != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCustomLm(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ResponseEngineCustomLm PickCustomLm() => IsCustomLm
             ? CustomLm!
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomLm' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ResponseEngineConversationFlow? ConversationFlow { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ConversationFlow))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsConversationFlow => ConversationFlow != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickConversationFlow(
 #if NET6_0_OR_GREATER
@@ -114,23 +114,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ResponseEngineConversationFlow PickConversationFlow() => IsConversationFlow
             ? ConversationFlow!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationFlow' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseEngine(global::RetellAI.ResponseEngineRetellLm value) => new ResponseEngine((global::RetellAI.ResponseEngineRetellLm?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ResponseEngineRetellLm?(ResponseEngine @this) => @this.RetellLm;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseEngine(global::RetellAI.ResponseEngineRetellLm? value)
         {
@@ -138,22 +138,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseEngine FromRetellLm(global::RetellAI.ResponseEngineRetellLm? value) => new ResponseEngine(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseEngine(global::RetellAI.ResponseEngineCustomLm value) => new ResponseEngine((global::RetellAI.ResponseEngineCustomLm?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ResponseEngineCustomLm?(ResponseEngine @this) => @this.CustomLm;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseEngine(global::RetellAI.ResponseEngineCustomLm? value)
         {
@@ -161,22 +161,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseEngine FromCustomLm(global::RetellAI.ResponseEngineCustomLm? value) => new ResponseEngine(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ResponseEngine(global::RetellAI.ResponseEngineConversationFlow value) => new ResponseEngine((global::RetellAI.ResponseEngineConversationFlow?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ResponseEngineConversationFlow?(ResponseEngine @this) => @this.ConversationFlow;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseEngine(global::RetellAI.ResponseEngineConversationFlow? value)
         {
@@ -184,12 +184,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ResponseEngine FromConversationFlow(global::RetellAI.ResponseEngineConversationFlow? value) => new ResponseEngine(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ResponseEngine(
             global::RetellAI.ResponseEngineRetellLm? retellLm,
@@ -203,25 +203,25 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ConversationFlow as object ??
             CustomLm as object ??
-            RetellLm as object 
+            RetellLm as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             RetellLm?.ToString() ??
             CustomLm?.ToString() ??
-            ConversationFlow?.ToString() 
+            ConversationFlow?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -229,7 +229,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ResponseEngineRetellLm, TResult>? retellLm = null,
@@ -259,7 +259,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ResponseEngineRetellLm>? retellLm = null,
@@ -289,7 +289,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ResponseEngineRetellLm>? retellLm = null,
@@ -317,7 +317,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -340,19 +340,19 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ResponseEngine other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ResponseEngineRetellLm?>.Default.Equals(RetellLm, other.RetellLm) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ResponseEngineCustomLm?>.Default.Equals(CustomLm, other.CustomLm) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ResponseEngineConversationFlow?>.Default.Equals(ConversationFlow, other.ConversationFlow) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ResponseEngineConversationFlow?>.Default.Equals(ConversationFlow, other.ConversationFlow)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ResponseEngine obj1, ResponseEngine obj2)
         {
@@ -360,7 +360,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ResponseEngine obj1, ResponseEngine obj2)
         {
@@ -368,7 +368,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

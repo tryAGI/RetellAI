@@ -9,63 +9,63 @@ namespace RetellAI
     public enum AgentRequestVoiceModel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenFlashV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenFlashV25,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenMultilingualV2,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ElevenV3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Gpt4oMiniTts,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         S1,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         S2Pro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         S21Pro,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic3,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic3Latest,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sonic35,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Speech02Turbo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Speech28Turbo,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Tts1,
     }

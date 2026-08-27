@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CRMConfig
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("org_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -28,13 +28,13 @@ namespace RetellAI
         public double? LastSyncTimestamp { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_fields")]
         public global::System.Collections.Generic.IList<global::RetellAI.CRMCustomFieldSchema>? CustomFields { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("crm_analysis_data_mappings")]
         public global::System.Collections.Generic.IList<global::RetellAI.CRMAnalysisDataMapping>? CrmAnalysisDataMappings { get; set; }

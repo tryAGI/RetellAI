@@ -4,56 +4,56 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ChartGroupItemVariant1Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         AgentVersion,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         BatchCallId,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallStatus,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallSuccessful,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallType,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatStatus,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatSuccessful,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Direction,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         DisconnectionReason,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Time,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserSentiment,
     }

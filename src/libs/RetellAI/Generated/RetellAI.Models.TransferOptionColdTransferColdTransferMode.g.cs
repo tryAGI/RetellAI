@@ -10,11 +10,11 @@ namespace RetellAI
     public enum TransferOptionColdTransferColdTransferMode
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipInvite,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SipRefer,
     }

@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum FinetuneExampleUtteranceVariant2Role
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ToolCallInvocation,
     }

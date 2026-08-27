@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct V2CallResponse : global::System.IEquatable<V2CallResponse>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.V2WebCallResponse? Web { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Web))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsWeb => Web != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickWeb(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.V2WebCallResponse PickWeb() => IsWeb
             ? Web!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Web' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.V2PhoneCallResponse? Phone { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Phone))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsPhone => Phone != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickPhone(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.V2PhoneCallResponse PickPhone() => IsPhone
             ? Phone!.Value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Phone' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator V2CallResponse(global::RetellAI.V2WebCallResponse value) => new V2CallResponse((global::RetellAI.V2WebCallResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.V2WebCallResponse?(V2CallResponse @this) => @this.Web;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public V2CallResponse(global::RetellAI.V2WebCallResponse? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static V2CallResponse FromWeb(global::RetellAI.V2WebCallResponse? value) => new V2CallResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator V2CallResponse(global::RetellAI.V2PhoneCallResponse value) => new V2CallResponse((global::RetellAI.V2PhoneCallResponse?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.V2PhoneCallResponse?(V2CallResponse @this) => @this.Phone;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public V2CallResponse(global::RetellAI.V2PhoneCallResponse? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static V2CallResponse FromPhone(global::RetellAI.V2PhoneCallResponse? value) => new V2CallResponse(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public V2CallResponse(
             global::RetellAI.V2WebCallResponse? web,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Phone as object ??
-            Web as object 
+            Web as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Web?.ToString() ??
-            Phone?.ToString() 
+            Phone?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.V2WebCallResponse?, TResult>? web = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.V2WebCallResponse?>? web = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.V2WebCallResponse?>? web = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(V2CallResponse other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2WebCallResponse?>.Default.Equals(Web, other.Web) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2PhoneCallResponse?>.Default.Equals(Phone, other.Phone) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.V2PhoneCallResponse?>.Default.Equals(Phone, other.Phone)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(V2CallResponse obj1, V2CallResponse obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(V2CallResponse obj1, V2CallResponse obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

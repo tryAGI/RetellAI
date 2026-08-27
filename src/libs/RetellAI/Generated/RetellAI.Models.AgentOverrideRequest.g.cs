@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class AgentOverrideRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
         public global::RetellAI.AgentRequest? Agent { get; set; }

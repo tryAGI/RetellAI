@@ -9,11 +9,11 @@ namespace RetellAI
     public enum ListConversationFlowsSortOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ascending,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Descending,
     }

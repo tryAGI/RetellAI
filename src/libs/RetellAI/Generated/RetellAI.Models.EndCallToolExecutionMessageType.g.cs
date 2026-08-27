@@ -9,11 +9,11 @@ namespace RetellAI
     public enum EndCallToolExecutionMessageType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Prompt,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StaticText,
     }

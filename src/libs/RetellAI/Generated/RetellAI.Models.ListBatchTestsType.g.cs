@@ -4,16 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ListBatchTestsType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConversationFlow,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetellLlm,
     }

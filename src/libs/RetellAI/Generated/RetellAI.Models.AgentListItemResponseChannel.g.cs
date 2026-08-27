@@ -9,11 +9,11 @@ namespace RetellAI
     public enum AgentListItemResponseChannel
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Chat,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Voice,
     }

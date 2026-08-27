@@ -9,7 +9,7 @@ namespace RetellAI
     public enum StateTransitionMessageBaseRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         StateTransition,
     }

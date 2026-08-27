@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct NodeBase : global::System.IEquatable<NodeBase>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeBaseCommon? Common { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Common))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsCommon => Common != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickCommon(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NodeBaseCommon PickCommon() => IsCommon
             ? Common!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Common' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeBaseVariant2? NodeBaseVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NodeBaseVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsNodeBaseVariant2 => NodeBaseVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickNodeBaseVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NodeBaseVariant2 PickNodeBaseVariant2() => IsNodeBaseVariant2
             ? NodeBaseVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'NodeBaseVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator NodeBase(global::RetellAI.NodeBaseCommon value) => new NodeBase((global::RetellAI.NodeBaseCommon?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NodeBaseCommon?(NodeBase @this) => @this.Common;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeBase(global::RetellAI.NodeBaseCommon? value)
         {
@@ -101,22 +101,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static NodeBase FromCommon(global::RetellAI.NodeBaseCommon? value) => new NodeBase(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator NodeBase(global::RetellAI.NodeBaseVariant2 value) => new NodeBase((global::RetellAI.NodeBaseVariant2?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NodeBaseVariant2?(NodeBase @this) => @this.NodeBaseVariant2;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeBase(global::RetellAI.NodeBaseVariant2? value)
         {
@@ -124,12 +124,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static NodeBase FromNodeBaseVariant2(global::RetellAI.NodeBaseVariant2? value) => new NodeBase(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NodeBase(
             global::RetellAI.NodeBaseCommon? common,
@@ -141,23 +141,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             NodeBaseVariant2 as object ??
-            Common as object 
+            Common as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Common?.ToString() ??
-            NodeBaseVariant2?.ToString() 
+            NodeBaseVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -165,7 +165,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.NodeBaseCommon, TResult>? common = null,
@@ -190,7 +190,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.NodeBaseCommon>? common = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.NodeBaseCommon>? common = null,
@@ -237,7 +237,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -258,18 +258,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(NodeBase other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBaseCommon?>.Default.Equals(Common, other.Common) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBaseVariant2?>.Default.Equals(NodeBaseVariant2, other.NodeBaseVariant2) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeBaseVariant2?>.Default.Equals(NodeBaseVariant2, other.NodeBaseVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(NodeBase obj1, NodeBase obj2)
         {
@@ -277,7 +277,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(NodeBase obj1, NodeBase obj2)
         {
@@ -285,7 +285,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

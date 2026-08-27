@@ -10,11 +10,11 @@ namespace RetellAI
     public enum AgentRequestVocabSpecialization
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         General,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Medical,
     }

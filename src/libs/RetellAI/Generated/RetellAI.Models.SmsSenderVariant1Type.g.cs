@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SmsSenderVariant1Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CurrentNumber,
     }

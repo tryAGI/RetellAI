@@ -9,21 +9,21 @@ namespace RetellAI
     public sealed partial class ChCallQA
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_qa_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CallQaId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_id")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string CallId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cohort_id")]
         [global::System.Text.Json.Serialization.JsonRequired]

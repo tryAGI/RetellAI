@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class CreateAppRequest
     {
@@ -42,14 +42,14 @@ namespace RetellAI
         public string? TenantId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auth_config")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AuthConfigRequestJsonConverter))]
         public global::RetellAI.AuthConfigRequest? AuthConfig { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("crm_config")]
         public global::RetellAI.AppCRMConfig? CrmConfig { get; set; }

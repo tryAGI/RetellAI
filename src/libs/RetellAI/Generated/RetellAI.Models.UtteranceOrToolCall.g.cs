@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct UtteranceOrToolCall : global::System.IEquatable<UtteranceOrToolCall>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.Utterance? Utterance { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Utterance))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsUtterance => Utterance != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickUtterance(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.Utterance PickUtterance() => IsUtterance
             ? Utterance!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Utterance' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallInvocationUtterance? Invocation { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Invocation))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsInvocation => Invocation != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickInvocation(
 #if NET6_0_OR_GREATER
@@ -77,14 +77,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ToolCallInvocationUtterance PickInvocation() => IsInvocation
             ? Invocation!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Invocation' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallResultUtterance? Result { get; init; }
@@ -93,7 +93,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Result))]
@@ -101,7 +101,7 @@ namespace RetellAI
         public bool IsResult => Result != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickResult(
 #if NET6_0_OR_GREATER
@@ -114,14 +114,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ToolCallResultUtterance PickResult() => IsResult
             ? Result!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Result' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeTransitionUtterance? NodeTransition { get; init; }
@@ -130,7 +130,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NodeTransition))]
@@ -138,7 +138,7 @@ namespace RetellAI
         public bool IsNodeTransition => NodeTransition != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickNodeTransition(
 #if NET6_0_OR_GREATER
@@ -151,14 +151,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.NodeTransitionUtterance PickNodeTransition() => IsNodeTransition
             ? NodeTransition!
             : throw new global::System.InvalidOperationException($"Expected union variant 'NodeTransition' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.DTMFUtterance? Dtmf { get; init; }
@@ -167,7 +167,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Dtmf))]
@@ -175,7 +175,7 @@ namespace RetellAI
         public bool IsDtmf => Dtmf != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickDtmf(
 #if NET6_0_OR_GREATER
@@ -188,14 +188,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.DTMFUtterance PickDtmf() => IsDtmf
             ? Dtmf!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Dtmf' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.SmsUtterance? Sms { get; init; }
@@ -204,7 +204,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Sms))]
@@ -212,7 +212,7 @@ namespace RetellAI
         public bool IsSms => Sms != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickSms(
 #if NET6_0_OR_GREATER
@@ -225,14 +225,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.SmsUtterance PickSms() => IsSms
             ? Sms!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Sms' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.InjectedUtterance? Injected { get; init; }
@@ -241,7 +241,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Injected))]
@@ -249,7 +249,7 @@ namespace RetellAI
         public bool IsInjected => Injected != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickInjected(
 #if NET6_0_OR_GREATER
@@ -262,23 +262,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.InjectedUtterance PickInjected() => IsInjected
             ? Injected!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Injected' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.Utterance value) => new UtteranceOrToolCall((global::RetellAI.Utterance?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.Utterance?(UtteranceOrToolCall @this) => @this.Utterance;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UtteranceOrToolCall(global::RetellAI.Utterance? value)
         {
@@ -286,22 +286,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static UtteranceOrToolCall FromUtterance(global::RetellAI.Utterance? value) => new UtteranceOrToolCall(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.ToolCallInvocationUtterance value) => new UtteranceOrToolCall((global::RetellAI.ToolCallInvocationUtterance?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ToolCallInvocationUtterance?(UtteranceOrToolCall @this) => @this.Invocation;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UtteranceOrToolCall(global::RetellAI.ToolCallInvocationUtterance? value)
         {
@@ -309,22 +309,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static UtteranceOrToolCall FromInvocation(global::RetellAI.ToolCallInvocationUtterance? value) => new UtteranceOrToolCall(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.ToolCallResultUtterance value) => new UtteranceOrToolCall((global::RetellAI.ToolCallResultUtterance?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ToolCallResultUtterance?(UtteranceOrToolCall @this) => @this.Result;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UtteranceOrToolCall(global::RetellAI.ToolCallResultUtterance? value)
         {
@@ -332,22 +332,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static UtteranceOrToolCall FromResult(global::RetellAI.ToolCallResultUtterance? value) => new UtteranceOrToolCall(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.NodeTransitionUtterance value) => new UtteranceOrToolCall((global::RetellAI.NodeTransitionUtterance?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.NodeTransitionUtterance?(UtteranceOrToolCall @this) => @this.NodeTransition;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UtteranceOrToolCall(global::RetellAI.NodeTransitionUtterance? value)
         {
@@ -355,22 +355,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static UtteranceOrToolCall FromNodeTransition(global::RetellAI.NodeTransitionUtterance? value) => new UtteranceOrToolCall(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.DTMFUtterance value) => new UtteranceOrToolCall((global::RetellAI.DTMFUtterance?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.DTMFUtterance?(UtteranceOrToolCall @this) => @this.Dtmf;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UtteranceOrToolCall(global::RetellAI.DTMFUtterance? value)
         {
@@ -378,22 +378,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static UtteranceOrToolCall FromDtmf(global::RetellAI.DTMFUtterance? value) => new UtteranceOrToolCall(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.SmsUtterance value) => new UtteranceOrToolCall((global::RetellAI.SmsUtterance?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.SmsUtterance?(UtteranceOrToolCall @this) => @this.Sms;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UtteranceOrToolCall(global::RetellAI.SmsUtterance? value)
         {
@@ -401,22 +401,22 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static UtteranceOrToolCall FromSms(global::RetellAI.SmsUtterance? value) => new UtteranceOrToolCall(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator UtteranceOrToolCall(global::RetellAI.InjectedUtterance value) => new UtteranceOrToolCall((global::RetellAI.InjectedUtterance?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.InjectedUtterance?(UtteranceOrToolCall @this) => @this.Injected;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UtteranceOrToolCall(global::RetellAI.InjectedUtterance? value)
         {
@@ -424,12 +424,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static UtteranceOrToolCall FromInjected(global::RetellAI.InjectedUtterance? value) => new UtteranceOrToolCall(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UtteranceOrToolCall(
             global::RetellAI.Utterance? utterance,
@@ -451,7 +451,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             Injected as object ??
@@ -460,11 +460,11 @@ namespace RetellAI
             NodeTransition as object ??
             Result as object ??
             Invocation as object ??
-            Utterance as object 
+            Utterance as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Utterance?.ToString() ??
@@ -473,11 +473,11 @@ namespace RetellAI
             NodeTransition?.ToString() ??
             Dtmf?.ToString() ??
             Sms?.ToString() ??
-            Injected?.ToString() 
+            Injected?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -485,7 +485,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.Utterance, TResult>? utterance = null,
@@ -535,7 +535,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.Utterance>? utterance = null,
@@ -589,7 +589,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.Utterance>? utterance = null,
@@ -637,7 +637,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -668,7 +668,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(UtteranceOrToolCall other)
         {
@@ -679,12 +679,12 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeTransitionUtterance?>.Default.Equals(NodeTransition, other.NodeTransition) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.DTMFUtterance?>.Default.Equals(Dtmf, other.Dtmf) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.SmsUtterance?>.Default.Equals(Sms, other.Sms) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.InjectedUtterance?>.Default.Equals(Injected, other.Injected) 
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.InjectedUtterance?>.Default.Equals(Injected, other.Injected)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(UtteranceOrToolCall obj1, UtteranceOrToolCall obj2)
         {
@@ -692,7 +692,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(UtteranceOrToolCall obj1, UtteranceOrToolCall obj2)
         {
@@ -700,7 +700,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

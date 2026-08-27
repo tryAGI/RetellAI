@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public readonly partial struct ToolCallResultMessage : global::System.IEquatable<ToolCallResultMessage>
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ToolCallResultMessageBase? Base { get; init; }
@@ -19,7 +19,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Base))]
@@ -27,7 +27,7 @@ namespace RetellAI
         public bool IsBase => Base != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickBase(
 #if NET6_0_OR_GREATER
@@ -40,14 +40,14 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::RetellAI.ToolCallResultMessageBase PickBase() => IsBase
             ? Base!
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         public object? ToolCallResultMessageVariant2 { get; init; }
@@ -56,7 +56,7 @@ namespace RetellAI
 #endif
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
 #if NET6_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(ToolCallResultMessageVariant2))]
@@ -64,7 +64,7 @@ namespace RetellAI
         public bool IsToolCallResultMessageVariant2 => ToolCallResultMessageVariant2 != null;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool TryPickToolCallResultMessageVariant2(
 #if NET6_0_OR_GREATER
@@ -77,23 +77,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object PickToolCallResultMessageVariant2() => IsToolCallResultMessageVariant2
             ? ToolCallResultMessageVariant2!
             : throw new global::System.InvalidOperationException($"Expected union variant 'ToolCallResultMessageVariant2' but the value was {ToString()}.");
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator ToolCallResultMessage(global::RetellAI.ToolCallResultMessageBase value) => new ToolCallResultMessage((global::RetellAI.ToolCallResultMessageBase?)value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static implicit operator global::RetellAI.ToolCallResultMessageBase?(ToolCallResultMessage @this) => @this.Base;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ToolCallResultMessage(global::RetellAI.ToolCallResultMessageBase? value)
         {
@@ -101,12 +101,12 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static ToolCallResultMessage FromBase(global::RetellAI.ToolCallResultMessageBase? value) => new ToolCallResultMessage(value);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ToolCallResultMessage(
             global::RetellAI.ToolCallResultMessageBase? @base,
@@ -118,23 +118,23 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public object? Object =>
             ToolCallResultMessageVariant2 as object ??
-            Base as object 
+            Base as object
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override string? ToString() =>
             Base?.ToString() ??
-            ToolCallResultMessageVariant2?.ToString() 
+            ToolCallResultMessageVariant2?.ToString()
             ;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Validate()
         {
@@ -142,7 +142,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ToolCallResultMessageBase, TResult>? @base = null,
@@ -167,7 +167,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ToolCallResultMessageBase>? @base = null,
@@ -191,7 +191,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ToolCallResultMessageBase>? @base = null,
@@ -214,7 +214,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override int GetHashCode()
         {
@@ -235,18 +235,18 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public bool Equals(ToolCallResultMessage other)
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ToolCallResultMessageBase?>.Default.Equals(Base, other.Base) &&
-                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(ToolCallResultMessageVariant2, other.ToolCallResultMessageVariant2) 
+                global::System.Collections.Generic.EqualityComparer<object?>.Default.Equals(ToolCallResultMessageVariant2, other.ToolCallResultMessageVariant2)
                 ;
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator ==(ToolCallResultMessage obj1, ToolCallResultMessage obj2)
         {
@@ -254,7 +254,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public static bool operator !=(ToolCallResultMessage obj1, ToolCallResultMessage obj2)
         {
@@ -262,7 +262,7 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public override bool Equals(object? obj)
         {

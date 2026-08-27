@@ -9,7 +9,7 @@ namespace RetellAI
     public enum TransferDestinationPredefinedType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Predefined,
     }

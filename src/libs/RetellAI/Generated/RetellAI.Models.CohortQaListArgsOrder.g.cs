@@ -9,11 +9,11 @@ namespace RetellAI
     public enum CohortQaListArgsOrder
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Asc,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Desc,
     }

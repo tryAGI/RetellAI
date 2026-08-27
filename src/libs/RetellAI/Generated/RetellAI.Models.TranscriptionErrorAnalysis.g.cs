@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class TranscriptionErrorAnalysis
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("details")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -23,14 +23,14 @@ namespace RetellAI
         public required double MieUtteranceCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_utterance_count")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required double TotalUtteranceCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("overall_wer")]
         [global::System.Text.Json.Serialization.JsonRequired]

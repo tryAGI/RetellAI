@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SmsSenderVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RetellLongCode,
     }

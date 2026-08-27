@@ -10,11 +10,11 @@ namespace RetellAI
     public enum ChatResponseChatType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApiChat,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         SmsChat,
     }

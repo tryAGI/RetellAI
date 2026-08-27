@@ -10,15 +10,15 @@ namespace RetellAI
     public enum CallPresetAnalysisDataName
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallSuccessful,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallSummary,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UserSentiment,
     }

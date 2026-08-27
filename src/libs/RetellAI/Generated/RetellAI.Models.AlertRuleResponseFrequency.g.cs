@@ -9,27 +9,27 @@ namespace RetellAI
     public enum AlertRuleResponseFrequency
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x12h,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1h,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x1m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x24h,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x30m,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         x5m,
     }

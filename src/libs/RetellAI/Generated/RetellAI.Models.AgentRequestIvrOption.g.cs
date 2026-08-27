@@ -10,7 +10,7 @@ namespace RetellAI
     public sealed partial class AgentRequestIvrOption
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("action")]
         [global::System.Text.Json.Serialization.JsonRequired]

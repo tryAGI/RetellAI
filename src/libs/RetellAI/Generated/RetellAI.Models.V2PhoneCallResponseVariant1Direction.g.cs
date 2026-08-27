@@ -10,11 +10,11 @@ namespace RetellAI
     public enum V2PhoneCallResponseVariant1Direction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Inbound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Outbound,
     }

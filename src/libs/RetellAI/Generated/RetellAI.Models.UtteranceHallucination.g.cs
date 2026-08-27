@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class UtteranceHallucination
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_id")]
         [global::System.Text.Json.Serialization.JsonRequired]

@@ -9,7 +9,7 @@ namespace RetellAI
     public enum ToolCallInvocationUtteranceRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ToolCallInvocation,
     }

@@ -4,16 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum ChartGroupItemVariant2Type
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CustomAnalysisData,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CustomAttribute,
     }

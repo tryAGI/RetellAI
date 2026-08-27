@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum SmsContentTemplateType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Template,
     }

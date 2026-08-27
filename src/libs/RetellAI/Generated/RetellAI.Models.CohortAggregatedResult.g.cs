@@ -38,14 +38,14 @@ namespace RetellAI
         public required global::RetellAI.CohortAggregatedResultGroupBy GroupBy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("avg_score")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric AvgScore { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("call_resolution_rate")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -59,98 +59,98 @@ namespace RetellAI
         public required global::System.Collections.Generic.IList<global::RetellAI.CohortAggregatedResultTopQuestion> TopQuestions { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("latency")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric Latency { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("llm_hallucination_analysis")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric LlmHallucinationAnalysis { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rag_analysis")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric RagAnalysis { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("user_sentiment")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.BreakdownMetric UserSentiment { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent_sentiment")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.BreakdownMetric AgentSentiment { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transfer_success_rate")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric TransferSuccessRate { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transfer_wait_time")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric TransferWaitTime { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("wer")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric Wer { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("avg_interruption")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric AvgInterruption { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_accuracy")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric ToolCallAccuracy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transition_accuracy")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric TransitionAccuracy { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("natural_tonality_rate")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric NaturalTonalityRate { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_tool_call_latency")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required global::RetellAI.AverageMetric CustomToolCallLatency { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_tool_call_success_rate")]
         [global::System.Text.Json.Serialization.JsonRequired]

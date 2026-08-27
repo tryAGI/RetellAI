@@ -9,23 +9,23 @@ namespace RetellAI
     public enum TransferOptionWarmTransferOnHoldMusic
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Custom,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         None,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         RelaxingSound,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Ringtone,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         UpliftingBeats,
     }

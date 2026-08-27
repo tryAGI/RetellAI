@@ -9,7 +9,7 @@ namespace RetellAI
     public enum SmsMessageBaseRole
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Sms,
     }

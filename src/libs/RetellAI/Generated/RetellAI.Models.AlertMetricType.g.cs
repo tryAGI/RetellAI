@@ -4,64 +4,64 @@
 namespace RetellAI
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum AlertMetricType
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ApiErrorCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CallSuccessRate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatNegativeSentimentRate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ChatSuccessRate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         ConcurrencyUsed,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CustomFunctionFailureCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         CustomFunctionLatency,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         NegativeSentimentRate,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         QaNotPassedCount,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TotalCallCost,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TotalChatCost,
         /// <summary>
-        /// 
+        ///
         /// </summary>
         TransferCallFailureCount,
     }
