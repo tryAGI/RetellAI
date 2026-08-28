@@ -13,7 +13,7 @@ namespace RetellAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("time_averages")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<double> TimeAverages { get; set; }
+        public required global::System.Collections.Generic.IList<double?> TimeAverages { get; set; }
 
         /// <summary>
         /// Weighted average across all time buckets.
@@ -58,7 +58,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AverageMetric(
-            global::System.Collections.Generic.IList<double> timeAverages,
+            global::System.Collections.Generic.IList<double?> timeAverages,
             double? overallAverage,
             double? numerator,
             double? denominator)
