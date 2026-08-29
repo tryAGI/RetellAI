@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// System preset for post-call or post-chat analysis (summary, success, sentiment). Presets can be included in post_call_analysis_data or post_chat_analysis_data to override prompts or mark fields optional.
+    /// System preset for Post Call or Post Chat Extraction (summary, success, sentiment). Presets can be included in post_call_analysis_data or post_chat_analysis_data to override prompts or mark fields optional.
     /// </summary>
     public sealed partial class PresetAnalysisData
     {
