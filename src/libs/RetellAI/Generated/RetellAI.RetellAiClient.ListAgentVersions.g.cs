@@ -48,7 +48,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// List stored versions of a voice or chat agent with pagination. Root-level data such as assigned tags is not included.
+        /// List stored versions of a voice or chat agent with pagination.
         /// </summary>
         /// <param name="agentId">
         /// Example: 16b980523634a6dc504898cda492e939
@@ -83,7 +83,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// List stored versions of a voice or chat agent with pagination. Root-level data such as assigned tags is not included.
+        /// List stored versions of a voice or chat agent with pagination.
         /// </summary>
         /// <param name="agentId">
         /// Example: 16b980523634a6dc504898cda492e939

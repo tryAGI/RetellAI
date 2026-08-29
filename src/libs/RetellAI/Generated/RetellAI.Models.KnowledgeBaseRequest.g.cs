@@ -38,7 +38,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<string>? KnowledgeBaseUrls { get; set; }
 
         /// <summary>
-        /// Whether to enable auto refresh for the knowledge base urls. If set to true, will retrieve the data from the specified url every 12 hours.<br/>
+        /// Whether to refresh eligible URL and connected-file sources automatically on a daily cadence.<br/>
         /// Example: true
         /// </summary>
         /// <example>true</example>
@@ -85,7 +85,7 @@ namespace RetellAI
         /// Example: [https://www.example.com, https://www.retellai.com]
         /// </param>
         /// <param name="enableAutoRefresh">
-        /// Whether to enable auto refresh for the knowledge base urls. If set to true, will retrieve the data from the specified url every 12 hours.<br/>
+        /// Whether to refresh eligible URL and connected-file sources automatically on a daily cadence.<br/>
         /// Example: true
         /// </param>
         /// <param name="maxChunkSize">

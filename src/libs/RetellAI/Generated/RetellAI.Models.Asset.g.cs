@@ -17,7 +17,7 @@ namespace RetellAI
         public string? AssetId { get; set; }
 
         /// <summary>
-        /// Original file name of the uploaded asset.<br/>
+        /// Stored file name. Uploaded audio is normalized to headerless PCM and uses a `.pcm` extension.<br/>
         /// Example: screenshot.png
         /// </summary>
         /// <example>screenshot.png</example>
@@ -70,7 +70,7 @@ namespace RetellAI
         /// Example: asset_abc123def456
         /// </param>
         /// <param name="fileName">
-        /// Original file name of the uploaded asset.<br/>
+        /// Stored file name. Uploaded audio is normalized to headerless PCM and uses a `.pcm` extension.<br/>
         /// Example: screenshot.png
         /// </param>
         /// <param name="contentType">

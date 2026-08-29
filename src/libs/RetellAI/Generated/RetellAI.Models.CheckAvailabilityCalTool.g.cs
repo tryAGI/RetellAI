@@ -6,6 +6,7 @@ namespace RetellAI
     /// <summary>
     ///
     /// </summary>
+    [global::System.Obsolete("This model marked as deprecated.")]
     public sealed partial class CheckAvailabilityCalTool
     {
         /// <summary>
@@ -13,6 +14,7 @@ namespace RetellAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.CheckAvailabilityCalToolTypeJsonConverter))]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::RetellAI.CheckAvailabilityCalToolType Type { get; set; }
 
         /// <summary>
@@ -20,12 +22,14 @@ namespace RetellAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public required string Name { get; set; }
 
         /// <summary>
         /// Describes what the tool does, sometimes can also include information about when to call the tool.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("description")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public string? Description { get; set; }
 
         /// <summary>
@@ -33,6 +37,7 @@ namespace RetellAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cal_api_key")]
         [global::System.Text.Json.Serialization.JsonRequired]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public required string CalApiKey { get; set; }
 
         /// <summary>
@@ -41,12 +46,14 @@ namespace RetellAI
         [global::System.Text.Json.Serialization.JsonPropertyName("event_type_id")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<double?, string>))]
         [global::System.Text.Json.Serialization.JsonRequired]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public required global::RetellAI.OneOf<double?, string> EventTypeId { get; set; }
 
         /// <summary>
         /// Timezone to be used when checking availability, must be in [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Can also be a dynamic variable in the format `{{variable_name}}` that will be resolved at runtime. If not specified, will check if user specified timezone in call, and if not, will use the timezone of the Retell servers.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public string? Timezone { get; set; }
 
         /// <summary>
