@@ -46,6 +46,12 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<string>? ContactColumnsOrder { get; set; }
 
         /// <summary>
+        /// Tags available to contacts in this organization.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_tags")]
+        public global::System.Collections.Generic.IList<string>? ContactTags { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -66,6 +72,9 @@ namespace RetellAI
         /// <param name="contactColumnsOrder">
         /// Preferred display order of contact fields, for clients that render contacts as a table. Not used by the API itself.
         /// </param>
+        /// <param name="contactTags">
+        /// Tags available to contacts in this organization.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -75,7 +84,8 @@ namespace RetellAI
             double? lastSyncTimestamp,
             global::System.Collections.Generic.IList<global::RetellAI.CRMCustomFieldSchema>? customFields,
             global::System.Collections.Generic.IList<global::RetellAI.CRMAnalysisDataMapping>? crmAnalysisDataMappings,
-            global::System.Collections.Generic.IList<string>? contactColumnsOrder)
+            global::System.Collections.Generic.IList<string>? contactColumnsOrder,
+            global::System.Collections.Generic.IList<string>? contactTags)
         {
             this.OrgId = orgId ?? throw new global::System.ArgumentNullException(nameof(orgId));
             this.AppId = appId;
@@ -83,6 +93,7 @@ namespace RetellAI
             this.CustomFields = customFields;
             this.CrmAnalysisDataMappings = crmAnalysisDataMappings;
             this.ContactColumnsOrder = contactColumnsOrder;
+            this.ContactTags = contactTags;
         }
 
         /// <summary>

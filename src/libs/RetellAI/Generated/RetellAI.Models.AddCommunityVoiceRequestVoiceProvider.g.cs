@@ -23,6 +23,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Inworld,
+        /// <summary>
+        ///
+        /// </summary>
         Minimax,
     }
 
@@ -41,6 +45,7 @@ namespace RetellAI
                 AddCommunityVoiceRequestVoiceProvider.Cartesia => "cartesia",
                 AddCommunityVoiceRequestVoiceProvider.Elevenlabs => "elevenlabs",
                 AddCommunityVoiceRequestVoiceProvider.FishAudio => "fish_audio",
+                AddCommunityVoiceRequestVoiceProvider.Inworld => "inworld",
                 AddCommunityVoiceRequestVoiceProvider.Minimax => "minimax",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -55,6 +60,7 @@ namespace RetellAI
                 "cartesia" => AddCommunityVoiceRequestVoiceProvider.Cartesia,
                 "elevenlabs" => AddCommunityVoiceRequestVoiceProvider.Elevenlabs,
                 "fish_audio" => AddCommunityVoiceRequestVoiceProvider.FishAudio,
+                "inworld" => AddCommunityVoiceRequestVoiceProvider.Inworld,
                 "minimax" => AddCommunityVoiceRequestVoiceProvider.Minimax,
                 _ => null,
             };

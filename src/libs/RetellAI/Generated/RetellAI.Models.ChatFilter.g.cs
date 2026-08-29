@@ -22,10 +22,11 @@ namespace RetellAI
         public global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? AgentTag { get; set; }
 
         /// <summary>
-        ///
+        /// Filter by chat ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chat_id")]
-        public global::RetellAI.StringFilter? ChatId { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>))]
+        public global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? ChatId { get; set; }
 
         /// <summary>
         ///
@@ -107,7 +108,9 @@ namespace RetellAI
         /// Filter by agent(s). Agent filters are connected by OR.
         /// </param>
         /// <param name="agentTag"></param>
-        /// <param name="chatId"></param>
+        /// <param name="chatId">
+        /// Filter by chat ID.
+        /// </param>
         /// <param name="chatStatus"></param>
         /// <param name="disconnectionReason"></param>
         /// <param name="userSentiment"></param>
@@ -136,7 +139,7 @@ namespace RetellAI
         public ChatFilter(
             global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? agent,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? agentTag,
-            global::RetellAI.StringFilter? chatId,
+            global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? chatId,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatStatus>? chatStatus,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDisconnectionReason>? disconnectionReason,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterUserSentiment>? userSentiment,

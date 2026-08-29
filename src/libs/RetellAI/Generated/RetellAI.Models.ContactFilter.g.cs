@@ -34,6 +34,12 @@ namespace RetellAI
         public global::RetellAI.BooleanFilter? DoNotCall { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
+        public global::RetellAI.EnumFilter? Tags { get; set; }
+
+        /// <summary>
         /// Filter by when the contact was last spoken to, in epoch milliseconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("last_conversation_timestamp")]
@@ -61,6 +67,7 @@ namespace RetellAI
         /// Filter by the record id in the connected CRM. Use a `present` filter to separate synced from unsynced contacts.
         /// </param>
         /// <param name="doNotCall"></param>
+        /// <param name="tags"></param>
         /// <param name="lastConversationTimestamp">
         /// Filter by when the contact was last spoken to, in epoch milliseconds.
         /// </param>
@@ -75,6 +82,7 @@ namespace RetellAI
             global::RetellAI.StringFilter? phoneNumber,
             global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.PresentFilter>? externalId,
             global::RetellAI.BooleanFilter? doNotCall,
+            global::RetellAI.EnumFilter? tags,
             global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? lastConversationTimestamp,
             global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? customFields)
         {
@@ -82,6 +90,7 @@ namespace RetellAI
             this.PhoneNumber = phoneNumber;
             this.ExternalId = externalId;
             this.DoNotCall = doNotCall;
+            this.Tags = tags;
             this.LastConversationTimestamp = lastConversationTimestamp;
             this.CustomFields = customFields;
         }

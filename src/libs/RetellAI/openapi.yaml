@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-08-22-7679759
+  x-retell-spec-revision: 2026-08-29-ed55dcf
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -700,6 +700,8 @@ components:
           - s1
           - s2-pro
           - s2.1-pro
+          - inworld-tts-2
+          - inworld-tts-2-flash
           - null
           description: Select the voice model used for the selected voice. Each provider has a set of available voice models. Set to null to remove voice model selection, and default ones will apply. Check
             out dashboard for more details of each voice model.
@@ -1495,6 +1497,7 @@ components:
       - name
       - cal_api_key
       - event_type_id
+      deprecated: true
     BooleanAnalysisData:
       type: object
       required:
@@ -2323,6 +2326,7 @@ components:
       - name
       - cal_api_key
       - event_type_id
+      deprecated: true
     CohortAgent:
       type: object
       required:
@@ -2686,7 +2690,7 @@ components:
           example: asset_abc123def456
         file_name:
           type: string
-          description: Original file name of the uploaded asset.
+          description: Stored file name. Uploaded audio is normalized to headerless PCM and uses a `.pcm` extension.
           example: screenshot.png
         content_type:
           type: string
@@ -3831,7 +3835,9 @@ components:
           - $ref: '#/components/schemas/EnumFilter'
           - description: Filter by agent environment tag(s) (e.g. "prod", "staging").
         chat_id:
-          $ref: '#/components/schemas/StringFilter'
+          oneOf:
+          - $ref: '#/components/schemas/StringFilter'
+          - $ref: '#/components/schemas/EnumFilter'
           description: Filter by chat ID.
         chat_status:
           allOf:
@@ -3914,6 +3920,9 @@ components:
         do_not_call:
           $ref: '#/components/schemas/BooleanFilter'
           description: Filter by whether the contact is marked do-not-call.
+        tags:
+          $ref: '#/components/schemas/EnumFilter'
+          description: Match contacts that have any of the listed tags.
         last_conversation_timestamp:
           oneOf:
           - $ref: '#/components/schemas/NumberFilter'
@@ -4534,7 +4543,7 @@ components:
         enable_auto_refresh:
           type: boolean
           example: true
-          description: Whether to enable auto refresh for the knowledge base urls. If set to true, will retrieve the data from the specified url every 12 hours.
+          description: Whether to refresh eligible URL and connected-file sources automatically on a daily cadence.
         max_chunk_size:
           type: integer
           minimum: 600
@@ -4573,7 +4582,7 @@ components:
           description: "Current processing state of the knowledge base:\n\n- `in_progress`: Initial indexing is running. Source metadata may be\n  incomplete until indexing finishes.\n- `complete`: Initial\
             \ indexing or the latest update or refresh\n  finished. Individual source failures may still be reported in\n  `error_messages`.\n- `error`: Initial indexing failed. Source metadata may be incomplete.\n\
             - `refreshing_in_progress`: An existing knowledge base is being\n  updated. This includes indexing newly added sources or running a\n  manual or automatic refresh that re-indexes URLs, Google\
-            \ Drive\n  files, and pages from auto-crawling paths. Previously indexed\n  sources remain available during the update, and the source list\n  may change when it finishes.\n"
+            \ Drive\n  files, Microsoft OneDrive files, and pages from auto-crawling\n  paths. Previously indexed sources remain available during the\n  update, and the source list may change when it finishes.\n"
         max_chunk_size:
           type: integer
           example: 2000
@@ -4593,7 +4602,7 @@ components:
         enable_auto_refresh:
           type: boolean
           example: true
-          description: Whether to enable auto refresh for the knowledge base urls. If set to true, will retrieve the data from the specified url every 12 hours.
+          description: Whether eligible URL and connected-file sources refresh automatically on a daily cadence.
         last_refreshed_timestamp:
           type: integer
           example: 1703413636133
@@ -6401,12 +6410,11 @@ components:
             - name: appointment_booking
               state_prompt: You will follow the steps below to book an appointment...
               tools:
-              - type: book_appointment_cal
+              - type: custom
                 name: book_appointment
                 description: Book an annual check up.
-                cal_api_key: cal_live_xxxxxxxxxxxx
-                event_type_id: 60444
-                timezone: America/Los_Angeles
+                url: https://api.example.com/book-appointment
+                method: POST
             nullable: true
           starting_state:
             type: string
@@ -8048,6 +8056,30 @@ components:
       oneOf:
       - $ref: '#/components/schemas/V2WebCallResponse'
       - $ref: '#/components/schemas/V2PhoneCallResponse'
+    CallTransport:
+      type: string
+      enum:
+      - livekit
+      - gateway
+      description: Which media stack issued the access_token, and therefore where the client signals. The two tokens are indistinguishable, so a client must read this rather than infer it. `gateway` clients
+        address Retell itself; `livekit` clients connect to the returned `url`. Optional only because a server predating the field omits it during a rollout; treat absent as `livekit`.
+      example: gateway
+    IceServer:
+      type: object
+      required:
+      - urls
+      properties:
+        urls:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          example: stun:stun.l.google.com:19302
+        username:
+          type: string
+        credential:
+          type: string
     V3CallResponse:
       oneOf:
       - $ref: '#/components/schemas/V3WebCallResponse'
@@ -8328,6 +8360,17 @@ components:
             type: string
             example: eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9p
             description: Access token to enter the web call room. This needs to be passed to your frontend to join the call.
+          transport:
+            $ref: '#/components/schemas/CallTransport'
+          gateway_ip:
+            type: string
+            description: Public side of the gateway instance handling this call, for diagnostics only — the client's media address comes from the SDP answer's ICE candidates. `gateway` transport only.
+            example: 54.183.22.7
+          ice_servers:
+            type: array
+            items:
+              $ref: '#/components/schemas/IceServer'
+            description: ICE servers the client must configure before creating its PeerConnection — they cannot be added afterwards. `gateway` transport only.
       - $ref: '#/components/schemas/V3CallBase'
     V3ListCallsRequest:
       type: object
@@ -8419,6 +8462,17 @@ components:
             type: string
             example: eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9p
             description: Access token to enter the web call room. This needs to be passed to your frontend to join the call.
+          transport:
+            $ref: '#/components/schemas/CallTransport'
+          gateway_ip:
+            type: string
+            description: Public side of the gateway instance handling this call, for diagnostics only — the client's media address comes from the SDP answer's ICE candidates. `gateway` transport only.
+            example: 54.183.22.7
+          ice_servers:
+            type: array
+            items:
+              $ref: '#/components/schemas/IceServer'
+            description: ICE servers the client must configure before creating its PeerConnection — they cannot be added afterwards. `gateway` transport only.
       - $ref: '#/components/schemas/V2CallBase'
     VoiceResponse:
       type: object
@@ -8444,6 +8498,7 @@ components:
           - cartesia
           - minimax
           - fish_audio
+          - inworld
           - platform
           example: elevenlabs
           description: Indicates the provider of voice.
@@ -8633,6 +8688,11 @@ components:
             minimum: 0
             maximum: 10000
             description: Max metered overage per month, in USD (max 10000).
+    ContactTag:
+      type: string
+      minLength: 1
+      maxLength: 40
+      pattern: \S
     Contact:
       type: object
       properties:
@@ -8657,6 +8717,13 @@ components:
         external_id:
           type: string
           description: CRM record ID from the external provider.
+        tags:
+          type: array
+          maxItems: 50
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/ContactTag'
+          description: Tags assigned to the contact.
         custom_fields:
           type: object
           description: Custom fields defined in CRM config.
@@ -9149,6 +9216,13 @@ components:
           items:
             type: string
           description: Preferred display order of contact fields, for clients that render contacts as a table. Not used by the API itself.
+        contact_tags:
+          type: array
+          maxItems: 1000
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/ContactTag'
+          description: Tags available to contacts in this organization.
     JobStatus:
       type: object
       required:
@@ -9988,6 +10062,42 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+  /create-asset:
+    post:
+      description: Upload an image or audio asset. Audio is normalized to headerless mono PCM16 at 24 kHz and can be referenced by `custom_on_hold_music_asset_id` on warm and agentic-warm transfer options.
+        Accepted audio formats are MP3, WAV, WebM, OGG, M4A, AAC, and FLAC. The maximum upload size is 10 MB and audio duration is limited to 210 seconds.
+      operationId: createAsset
+      x-retell-sdk-resource: asset
+      x-retell-sdk-method: create
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: Image or audio file to upload. Images support PNG, JPEG, GIF, WebP, and SVG. Audio supports MP3, WAV, WebM, OGG, M4A, AAC, and FLAC. Maximum size is 10 MB; audio is limited
+                    to 210 seconds.
+      responses:
+        '201':
+          description: Successfully created asset.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Asset'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
   /create-knowledge-base:
     post:
       description: Create a new knowledge base
@@ -10463,7 +10573,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /list-agent-versions/{agent_id}:
     get:
-      description: List stored versions of a voice or chat agent with pagination. Root-level data such as assigned tags is not included.
+      description: List stored versions of a voice or chat agent with pagination.
       operationId: listAgentVersions
       parameters:
       - in: path
@@ -11000,6 +11110,7 @@ paths:
                   - minimax
                   - fish_audio
                   - platform
+                  - inworld
                   description: Voice provider to use for cloning.
       responses:
         '201':
@@ -11039,6 +11150,7 @@ paths:
                   - cartesia
                   - minimax
                   - fish_audio
+                  - inworld
                   description: Voice provider to add the voice from.
                 provider_voice_id:
                   type: string
@@ -11086,6 +11198,7 @@ paths:
                   - cartesia
                   - minimax
                   - fish_audio
+                  - inworld
                   description: Voice provider to search.
                 search_query:
                   type: string
@@ -11671,6 +11784,46 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '412':
           $ref: '#/components/responses/PreconditionFailed'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /repair-agent/{agent_id}:
+    post:
+      description: Remove references to resources that no longer exist in your workspace from an agent draft version and its response engine — tools whose app connection has been deleted, unknown knowledge
+        bases, and deleted shared components — and remap voices that are no longer accessible to a default voice. If the agent's response engine version has been published, the engine is left untouched
+        and only agent-level references are repaired. Repairing an agent with nothing to fix is a no-op.
+      operationId: repairAgent
+      parameters:
+      - in: path
+        name: agent_id
+        schema:
+          type: string
+          minLength: 1
+          example: 16b980523634a6dc504898cda492e939
+        required: true
+        description: Unique id of the agent to be repaired.
+      - in: query
+        name: version
+        schema:
+          $ref: '#/components/schemas/AgentVersionReference'
+        required: false
+        description: Optional version of the agent to repair. Default to latest version. Published versions are immutable and cannot be repaired.
+      responses:
+        '200':
+          description: Successfully repaired the agent.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AgentResponse'
+                - $ref: '#/components/schemas/ChatAgentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          $ref: '#/components/responses/Conflict'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
         '500':
@@ -12620,6 +12773,13 @@ paths:
                   description: Last name of the contact.
                 do_not_call:
                   type: boolean
+                tags:
+                  type: array
+                  maxItems: 50
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/ContactTag'
+                  description: Full set of tags for the contact.
                 custom_fields:
                   type: object
                   description: 'Values must match the types defined in CRM config custom fields. Set a value to null to clear it.
@@ -12634,6 +12794,124 @@ paths:
                 $ref: '#/components/schemas/Contact'
         '400':
           $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /upload-contact-import-file:
+    post:
+      description: 'Upload a CSV file for a contact import. The file is stored privately and referenced by the returned upload_id in create-contact-import.
+
+        '
+      operationId: uploadContactImportFile
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '201':
+          description: File uploaded.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  upload_id:
+                    type: string
+                  file_name:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /create-contact-import:
+    post:
+      description: 'Start an incremental contact import from an uploaded CSV: creates new contacts and updates existing ones matched by phone number. Mapped columns overwrite the matched contact''s fields;
+        unmapped columns are ignored. Runs asynchronously — poll get-contact-import for progress.
+
+        '
+      operationId: createContactImport
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - upload_id
+              - column_mapping
+              properties:
+                upload_id:
+                  type: string
+                  pattern: ^upload_[a-f0-9]+$
+                  description: Id returned by upload-contact-import-file.
+                column_mapping:
+                  type: array
+                  minItems: 1
+                  maxItems: 200
+                  items:
+                    $ref: '#/components/schemas/CRMSyncMapping'
+                  description: 'CSV headers mapped to contact fields. field_name is the contact field and external_field_name is the CSV header. Exactly one mapping must target phone_number. Unmapped columns
+                    are ignored.
+
+                    '
+                default_country:
+                  type: string
+                  pattern: ^[A-Za-z]{2}$
+                  description: 'Country for parsing phone numbers without a country code. Defaults to US.
+
+                    '
+                tags:
+                  type: array
+                  maxItems: 50
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/ContactTag'
+                  description: 'Tags added to every contact in this import. Existing tags are preserved. Omit to leave tags unchanged.
+
+                    '
+      responses:
+        '202':
+          description: Import queued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          $ref: '#/components/responses/Conflict'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-contact-import:
+    get:
+      description: Status and counts for the org's current or latest contact import.
+      operationId: getContactImport
+      responses:
+        '200':
+          description: Current import progress.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobStatus'
         '401':
           $ref: '#/components/responses/Unauthorized'
         '429':
@@ -12724,6 +13002,13 @@ paths:
                   description: Last name of the contact.
                 do_not_call:
                   type: boolean
+                tags:
+                  type: array
+                  maxItems: 50
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/ContactTag'
+                  description: Full replacement set of tags for the contact.
                 custom_fields:
                   type: object
                   description: 'Values must match the types defined in CRM config custom fields. Set a value to null to clear it.

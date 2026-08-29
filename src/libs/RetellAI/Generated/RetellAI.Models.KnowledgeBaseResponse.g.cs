@@ -37,9 +37,9 @@ namespace RetellAI
         /// - `refreshing_in_progress`: An existing knowledge base is being<br/>
         ///   updated. This includes indexing newly added sources or running a<br/>
         ///   manual or automatic refresh that re-indexes URLs, Google Drive<br/>
-        ///   files, and pages from auto-crawling paths. Previously indexed<br/>
-        ///   sources remain available during the update, and the source list<br/>
-        ///   may change when it finishes.<br/>
+        ///   files, Microsoft OneDrive files, and pages from auto-crawling<br/>
+        ///   paths. Previously indexed sources remain available during the<br/>
+        ///   update, and the source list may change when it finishes.<br/>
         /// Example: in_progress
         /// </summary>
         /// <example>in_progress</example>
@@ -71,7 +71,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.OneOf<global::RetellAI.KnowledgeBaseSourceDocument, global::RetellAI.KnowledgeBaseSourceText, global::RetellAI.KnowledgeBaseSourceUrl>>? KnowledgeBaseSources { get; set; }
 
         /// <summary>
-        /// Whether to enable auto refresh for the knowledge base urls. If set to true, will retrieve the data from the specified url every 12 hours.<br/>
+        /// Whether eligible URL and connected-file sources refresh automatically on a daily cadence.<br/>
         /// Example: true
         /// </summary>
         /// <example>true</example>
@@ -114,9 +114,9 @@ namespace RetellAI
         /// - `refreshing_in_progress`: An existing knowledge base is being<br/>
         ///   updated. This includes indexing newly added sources or running a<br/>
         ///   manual or automatic refresh that re-indexes URLs, Google Drive<br/>
-        ///   files, and pages from auto-crawling paths. Previously indexed<br/>
-        ///   sources remain available during the update, and the source list<br/>
-        ///   may change when it finishes.<br/>
+        ///   files, Microsoft OneDrive files, and pages from auto-crawling<br/>
+        ///   paths. Previously indexed sources remain available during the<br/>
+        ///   update, and the source list may change when it finishes.<br/>
         /// Example: in_progress
         /// </param>
         /// <param name="maxChunkSize">
@@ -131,7 +131,7 @@ namespace RetellAI
         /// Sources of the knowledge base. Will be populated after the processing is done (when status is "complete").
         /// </param>
         /// <param name="enableAutoRefresh">
-        /// Whether to enable auto refresh for the knowledge base urls. If set to true, will retrieve the data from the specified url every 12 hours.<br/>
+        /// Whether eligible URL and connected-file sources refresh automatically on a daily cadence.<br/>
         /// Example: true
         /// </param>
         /// <param name="lastRefreshedTimestamp">

@@ -24,6 +24,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Inworld,
+        /// <summary>
+        ///
+        /// </summary>
         Minimax,
         /// <summary>
         ///
@@ -50,6 +54,7 @@ namespace RetellAI
                 VoiceResponseProvider.Cartesia => "cartesia",
                 VoiceResponseProvider.Elevenlabs => "elevenlabs",
                 VoiceResponseProvider.FishAudio => "fish_audio",
+                VoiceResponseProvider.Inworld => "inworld",
                 VoiceResponseProvider.Minimax => "minimax",
                 VoiceResponseProvider.Openai => "openai",
                 VoiceResponseProvider.Platform => "platform",
@@ -66,6 +71,7 @@ namespace RetellAI
                 "cartesia" => VoiceResponseProvider.Cartesia,
                 "elevenlabs" => VoiceResponseProvider.Elevenlabs,
                 "fish_audio" => VoiceResponseProvider.FishAudio,
+                "inworld" => VoiceResponseProvider.Inworld,
                 "minimax" => VoiceResponseProvider.Minimax,
                 "openai" => VoiceResponseProvider.Openai,
                 "platform" => VoiceResponseProvider.Platform,

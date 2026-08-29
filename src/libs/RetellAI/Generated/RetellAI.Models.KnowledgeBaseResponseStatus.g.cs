@@ -14,9 +14,9 @@ namespace RetellAI
     /// - `refreshing_in_progress`: An existing knowledge base is being<br/>
     ///   updated. This includes indexing newly added sources or running a<br/>
     ///   manual or automatic refresh that re-indexes URLs, Google Drive<br/>
-    ///   files, and pages from auto-crawling paths. Previously indexed<br/>
-    ///   sources remain available during the update, and the source list<br/>
-    ///   may change when it finishes.<br/>
+    ///   files, Microsoft OneDrive files, and pages from auto-crawling<br/>
+    ///   paths. Previously indexed sources remain available during the<br/>
+    ///   update, and the source list may change when it finishes.<br/>
     /// Example: in_progress
     /// </summary>
     public enum KnowledgeBaseResponseStatus
