@@ -48,20 +48,20 @@ namespace RetellAI
         public string? DisconnectionReason { get; set; }
 
         /// <summary>
-        /// Post-chat analysis summary.
+        /// Post Chat Extraction summary.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("summary")]
         public string? Summary { get; set; }
 
         /// <summary>
-        /// User sentiment from post-chat analysis.
+        /// User sentiment from Post Chat Extraction.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sentiment")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ContactChatSentimentJsonConverter))]
         public global::RetellAI.ContactChatSentiment? Sentiment { get; set; }
 
         /// <summary>
-        /// Whether the chat was deemed successful by post-chat analysis.
+        /// Whether the chat was deemed successful by Post Chat Extraction.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("successful")]
         public bool? Successful { get; set; }
@@ -90,13 +90,13 @@ namespace RetellAI
         /// Reason the chat ended.
         /// </param>
         /// <param name="summary">
-        /// Post-chat analysis summary.
+        /// Post Chat Extraction summary.
         /// </param>
         /// <param name="sentiment">
-        /// User sentiment from post-chat analysis.
+        /// User sentiment from Post Chat Extraction.
         /// </param>
         /// <param name="successful">
-        /// Whether the chat was deemed successful by post-chat analysis.
+        /// Whether the chat was deemed successful by Post Chat Extraction.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

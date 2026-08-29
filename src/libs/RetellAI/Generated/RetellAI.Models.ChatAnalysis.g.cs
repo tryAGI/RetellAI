@@ -34,7 +34,7 @@ namespace RetellAI
         public bool? ChatSuccessful { get; set; }
 
         /// <summary>
-        /// Custom analysis data that was extracted based on the schema defined in chat agent post chat analysis data. Can be empty if nothing is specified.
+        /// Custom analysis data that was extracted based on the schema defined in chat agent Post Chat Extraction data. Can be empty if nothing is specified.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_analysis_data")]
         public object? CustomAnalysisData { get; set; }
@@ -61,7 +61,7 @@ namespace RetellAI
         /// Example: true
         /// </param>
         /// <param name="customAnalysisData">
-        /// Custom analysis data that was extracted based on the schema defined in chat agent post chat analysis data. Can be empty if nothing is specified.
+        /// Custom analysis data that was extracted based on the schema defined in chat agent Post Chat Extraction data. Can be empty if nothing is specified.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

@@ -40,7 +40,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// Get the organization's CRM configuration: which CRM app is linked, the custom contact fields defined for it, and how post-call analysis data is written back to contacts. Returns an empty configuration when nothing has been set up yet.
+        /// Get the organization's CRM configuration: which CRM app is linked, the custom contact fields defined for it, and how Post Call Extraction data is written back to contacts. Returns an empty configuration when nothing has been set up yet.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
@@ -57,7 +57,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// Get the organization's CRM configuration: which CRM app is linked, the custom contact fields defined for it, and how post-call analysis data is written back to contacts. Returns an empty configuration when nothing has been set up yet.
+        /// Get the organization's CRM configuration: which CRM app is linked, the custom contact fields defined for it, and how Post Call Extraction data is written back to contacts. Returns an empty configuration when nothing has been set up yet.
         /// </summary>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

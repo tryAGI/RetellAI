@@ -335,7 +335,7 @@ namespace RetellAI
         public global::RetellAI.CallScreeningOption? CallScreeningOption { get; set; }
 
         /// <summary>
-        /// Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
+        /// Post Call Extraction data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("post_call_analysis_data")]
         public global::System.Collections.Generic.IList<global::RetellAI.PostCallAnalysisData>? PostCallAnalysisData { get; set; }
@@ -617,7 +617,7 @@ namespace RetellAI
         /// If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
         /// </param>
         /// <param name="postCallAnalysisData">
-        /// Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
+        /// Post Call Extraction data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
         /// </param>
         /// <param name="postCallAnalysisModel">
         /// Available LLM models for agents.

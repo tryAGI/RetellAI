@@ -17,157 +17,48 @@ namespace RetellAI.JsonConverters
 
             using var __jsonDocument = global::System.Text.Json.JsonDocument.ParseValue(ref reader);
             var __rawJson = __jsonDocument.RootElement.GetRawText();
-            var __jsonProps = new global::System.Collections.Generic.HashSet<string>();
-            if (__jsonDocument.RootElement.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-            {
-                foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
-                {
-                    __jsonProps.Add(__jsonProp.Name);
-                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-                    {
-                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
-                        {
-                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
-                        }
-                    }
-
-                }
-            }
-
-            var __score0 = 0;
-            var __score1 = 0;
-            if (__jsonProps.Contains("allow_dtmf_interruption")) __score1++;
-            if (__jsonProps.Contains("interruption_sensitivity")) __score1++;
-            if (__jsonProps.Contains("reminder_max_count")) __score1++;
-            if (__jsonProps.Contains("reminder_trigger_ms")) __score1++;
-            if (__jsonProps.Contains("responsiveness")) __score1++;
-            if (__jsonProps.Contains("voice_speed")) __score1++;
-            var __score2 = 0;
-            if (__jsonProps.Contains("always_edge")) __score2++;
-            if (__jsonProps.Contains("edges")) __score2++;
-            if (__jsonProps.Contains("else_edge")) __score2++;
-            if (__jsonProps.Contains("finetune_conversation_examples")) __score2++;
-            if (__jsonProps.Contains("finetune_transition_examples")) __score2++;
-            if (__jsonProps.Contains("instruction")) __score2++;
-            if (__jsonProps.Contains("instruction.text")) __score2++;
-            if (__jsonProps.Contains("instruction.type")) __score2++;
-            if (__jsonProps.Contains("kb_config")) __score2++;
-            if (__jsonProps.Contains("kb_config.filter_score")) __score2++;
-            if (__jsonProps.Contains("kb_config.top_k")) __score2++;
-            if (__jsonProps.Contains("knowledge_base_ids")) __score2++;
-            if (__jsonProps.Contains("skip_response_edge")) __score2++;
-            if (__jsonProps.Contains("tool_ids")) __score2++;
-            if (__jsonProps.Contains("tools")) __score2++;
-            if (__jsonProps.Contains("type")) __score2++;
-            var __bestScore = 0;
-            var __bestIndex = -1;
-            if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
-            if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
-            if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
 
             global::RetellAI.NodeBase? @base = default;
+            try
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NodeBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NodeBase> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NodeBase).Name}");
+                @base = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+            }
+            catch (global::System.Text.Json.JsonException)
+            {
+            }
+            catch (global::System.InvalidOperationException)
+            {
+            }
+
             global::RetellAI.AgentOverrideConfig? agentOverrideConfig = default;
+            try
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentOverrideConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentOverrideConfig> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentOverrideConfig).Name}");
+                agentOverrideConfig = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+            }
+            catch (global::System.Text.Json.JsonException)
+            {
+            }
+            catch (global::System.InvalidOperationException)
+            {
+            }
+
             global::RetellAI.SubagentNodeVariant3? subagentNodeVariant3 = default;
-            if (__bestIndex >= 0)
+            try
             {
-                if (__bestIndex == 0)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NodeBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NodeBase> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NodeBase).Name}");
-                        @base = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 1)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentOverrideConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentOverrideConfig> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentOverrideConfig).Name}");
-                        agentOverrideConfig = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 2)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SubagentNodeVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SubagentNodeVariant3> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SubagentNodeVariant3).Name}");
-                        subagentNodeVariant3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SubagentNodeVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SubagentNodeVariant3> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SubagentNodeVariant3).Name}");
+                subagentNodeVariant3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
             }
-
-            if (@base == null && agentOverrideConfig == null && subagentNodeVariant3 == null)
+            catch (global::System.Text.Json.JsonException)
             {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NodeBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NodeBase> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NodeBase).Name}");
-                    @base = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
             }
-
-            if (@base == null && agentOverrideConfig == null && subagentNodeVariant3 == null)
+            catch (global::System.InvalidOperationException)
             {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentOverrideConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentOverrideConfig> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentOverrideConfig).Name}");
-                    agentOverrideConfig = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
             }
-
-            if (@base == null && agentOverrideConfig == null && subagentNodeVariant3 == null)
-            {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SubagentNodeVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SubagentNodeVariant3> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SubagentNodeVariant3).Name}");
-                    subagentNodeVariant3 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-            }
-
             var __value = new global::RetellAI.SubagentNode(
                 @base,
 
@@ -188,24 +79,64 @@ namespace RetellAI.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
+
+            writer.WriteStartObject();
+            var __writtenPropertyNames = new global::System.Collections.Generic.HashSet<string>(global::System.StringComparer.Ordinal);
             if (value.IsBase)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.NodeBase), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.NodeBase> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.NodeBase).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Base!.Value, typeInfo);
+                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.Base!.Value, typeInfo);
+                if (__element0.ValueKind != global::System.Text.Json.JsonValueKind.Object)
+                {
+                    throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
+                }
+
+                foreach (var __property in __element0.EnumerateObject())
+                {
+                    if (__writtenPropertyNames.Add(__property.Name))
+                    {
+                        __property.WriteTo(writer);
+                    }
+                }
             }
-            else if (value.IsAgentOverrideConfig)
+            if (value.IsAgentOverrideConfig)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentOverrideConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentOverrideConfig?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentOverrideConfig).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AgentOverrideConfig!, typeInfo);
+                var __element1 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.AgentOverrideConfig!, typeInfo);
+                if (__element1.ValueKind != global::System.Text.Json.JsonValueKind.Object)
+                {
+                    throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
+                }
+
+                foreach (var __property in __element1.EnumerateObject())
+                {
+                    if (__writtenPropertyNames.Add(__property.Name))
+                    {
+                        __property.WriteTo(writer);
+                    }
+                }
             }
-            else if (value.IsSubagentNodeVariant3)
+            if (value.IsSubagentNodeVariant3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SubagentNodeVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SubagentNodeVariant3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SubagentNodeVariant3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SubagentNodeVariant3!, typeInfo);
+                var __element2 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.SubagentNodeVariant3!, typeInfo);
+                if (__element2.ValueKind != global::System.Text.Json.JsonValueKind.Object)
+                {
+                    throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");
+                }
+
+                foreach (var __property in __element2.EnumerateObject())
+                {
+                    if (__writtenPropertyNames.Add(__property.Name))
+                    {
+                        __property.WriteTo(writer);
+                    }
+                }
             }
+            writer.WriteEndObject();
         }
     }
 }

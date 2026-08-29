@@ -1035,12 +1035,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PostCallAnalysisData'
-          description: Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
+          description: Post Call Extraction data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
           nullable: true
         post_call_analysis_model:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
-          description: The model to use for post call analysis. Default to gpt-4.1.
+          description: The model to use for Post Call Extraction. Default to gpt-4.1.
         begin_message_delay_ms:
           type: integer
           example: 1000
@@ -1279,7 +1279,7 @@ components:
             description: The version of the agent to swap to. If not specified, will use the latest version
           post_call_analysis_setting:
             $ref: '#/components/schemas/PostCallAnalysisSetting'
-            description: Post call analysis setting for the agent swap
+            description: Post Call Extraction setting for the agent swap
           webhook_setting:
             $ref: '#/components/schemas/AgentSwapWebhookSetting'
             description: Webhook setting for the agent swap, defaults to only source.
@@ -1332,7 +1332,7 @@ components:
             directly. Defaults to "prompt".
         post_call_analysis_setting:
           $ref: '#/components/schemas/PostCallAnalysisSetting'
-          description: Post call analysis setting for the agent swap.
+          description: Post Call Extraction setting for the agent swap.
         webhook_setting:
           $ref: '#/components/schemas/AgentSwapWebhookSetting'
           description: Webhook setting for the agent swap, defaults to only source.
@@ -1363,12 +1363,12 @@ components:
       oneOf:
       - $ref: '#/components/schemas/AnalysisData'
       - $ref: '#/components/schemas/CallPresetAnalysisData'
-      description: Post-call analysis item (custom data or voice preset). Use for voice agent post_call_analysis_data; validates only call presets (call_summary, call_successful, user_sentiment).
+      description: Post Call Extraction item (custom data or voice preset). Use for voice agent post_call_analysis_data; validates only call presets (call_summary, call_successful, user_sentiment).
     PostChatAnalysisData:
       oneOf:
       - $ref: '#/components/schemas/AnalysisData'
       - $ref: '#/components/schemas/ChatPresetAnalysisData'
-      description: Post-chat analysis item (custom data or chat preset). Use for chat agent post_chat_analysis_data; validates only chat presets (chat_summary, chat_successful, user_sentiment).
+      description: Post Chat Extraction item (custom data or chat preset). Use for chat agent post_chat_analysis_data; validates only chat presets (chat_summary, chat_successful, user_sentiment).
     AverageMetric:
       type: object
       required:
@@ -1652,7 +1652,7 @@ components:
           description: Whether the agent seems to have a successful call with the user, where the agent finishes the task, and the call was complete without being cutoff.
         custom_analysis_data:
           type: object
-          description: Custom analysis data that was extracted based on the schema defined in agent post call analysis data. Can be empty if nothing is specified.
+          description: Custom analysis data that was extracted based on the schema defined in agent Post Call Extraction data. Can be empty if nothing is specified.
     CallLatency:
       type: object
       properties:
@@ -2034,12 +2034,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PostChatAnalysisData'
-          description: Post chat analysis data to extract from the chat. This data will augment the pre-defined variables extracted in the chat analysis. This will be available after the chat ends.
+          description: Post Chat Extraction data to extract from the chat. This data will augment the pre-defined variables extracted in the chat analysis. This will be available after the chat ends.
           nullable: true
         post_chat_analysis_model:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
-          description: The model to use for post chat analysis. Default to gpt-4.1.
+          description: The model to use for Post Chat Extraction. Default to gpt-4.1.
         pii_config:
           $ref: '#/components/schemas/PIIConfig'
           description: Configuration for PII scrubbing from transcripts and recordings.
@@ -2116,7 +2116,7 @@ components:
           description: Whether the agent seems to have a successful chat with the user, where the agent finishes the task, and the call was complete without being cutoff.
         custom_analysis_data:
           type: object
-          description: Custom analysis data that was extracted based on the schema defined in chat agent post chat analysis data. Can be empty if nothing is specified.
+          description: Custom analysis data that was extracted based on the schema defined in chat agent Post Chat Extraction data. Can be empty if nothing is specified.
     ChatResponse:
       type: object
       required:
@@ -2232,7 +2232,7 @@ components:
               description: Combined cost of all individual costs in cents
               example: 70
         chat_analysis:
-          description: Post chat analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after chat ends. Subscribe to `chat_analyzed` webhook
+          description: Post Chat Extraction that includes information such as sentiment, status, summary, and custom defined data to extract. Available after chat ends. Subscribe to `chat_analyzed` webhook
             event type to receive it once ready.
           $ref: '#/components/schemas/ChatAnalysis'
     V3ChatResponse:
@@ -5454,8 +5454,8 @@ components:
       - type
       - name
       - description
-      description: System preset for post-call or post-chat analysis (summary, success, sentiment). Presets can be included in post_call_analysis_data or post_chat_analysis_data to override prompts or mark
-        fields optional.
+      description: System preset for Post Call or Post Chat Extraction (summary, success, sentiment). Presets can be included in post_call_analysis_data or post_chat_analysis_data to override prompts or
+        mark fields optional.
       properties:
         type:
           type: string
@@ -5487,7 +5487,7 @@ components:
       required:
       - type
       - name
-      description: System preset for post-call analysis (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
+      description: System preset for Post Call Extraction (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
       properties:
         type:
           type: string
@@ -5517,7 +5517,7 @@ components:
       required:
       - type
       - name
-      description: System preset for post-chat analysis (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
+      description: System preset for Post Chat Extraction (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
       properties:
         type:
           type: string
@@ -7996,7 +7996,7 @@ components:
             are prefixed with "sip:" and may include a ";transport=..." portion (if transport is known) where the transport type can be "tls", "tcp" or "udp".
           nullable: true
         call_analysis:
-          description: Post call analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
+          description: Post Call Extraction that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
             event type to receive it once ready.
           $ref: '#/components/schemas/CallAnalysis'
         call_cost:
@@ -8224,7 +8224,7 @@ components:
             are prefixed with "sip:" and may include a ";transport=..." portion (if transport is known) where the transport type can be "tls", "tcp" or "udp".
           nullable: true
         call_analysis:
-          description: Post call analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
+          description: Post Call Extraction that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
             event type to receive it once ready.
           $ref: '#/components/schemas/CallAnalysis'
         call_cost:
@@ -8725,7 +8725,7 @@ components:
           description: Reason the call ended.
         summary:
           type: string
-          description: Post-call analysis summary.
+          description: Post Call Extraction summary.
         sentiment:
           type: string
           enum:
@@ -8733,10 +8733,10 @@ components:
           - Positive
           - Neutral
           - Unknown
-          description: User sentiment from post-call analysis.
+          description: User sentiment from Post Call Extraction.
         successful:
           type: boolean
-          description: Whether the call was deemed successful by post-call analysis.
+          description: Whether the call was deemed successful by Post Call Extraction.
     ContactChat:
       type: object
       required:
@@ -8766,7 +8766,7 @@ components:
           description: Reason the chat ended.
         summary:
           type: string
-          description: Post-chat analysis summary.
+          description: Post Chat Extraction summary.
         sentiment:
           type: string
           enum:
@@ -8774,10 +8774,10 @@ components:
           - Positive
           - Neutral
           - Unknown
-          description: User sentiment from post-chat analysis.
+          description: User sentiment from Post Chat Extraction.
         successful:
           type: boolean
-          description: Whether the chat was deemed successful by post-chat analysis.
+          description: Whether the chat was deemed successful by Post Chat Extraction.
     ContactConversationListResponse:
       type: object
       properties:
@@ -9110,7 +9110,7 @@ components:
           description: Contact field to write to. Must be an existing built-in or custom contact field, and cannot be phone_number, which identifies the contact.
         analysis_data_name:
           type: string
-          description: Name of the post-call analysis field to read the value from. A value that does not match the contact field's type is skipped rather than failing the conversation.
+          description: Name of the Post Call Extraction field to read the value from. A value that does not match the contact field's type is skipped rather than failing the conversation.
         update_mode:
           type: string
           description: How to reconcile the new value with what the contact already holds. `overwrite` always replaces it, `fill_if_empty` writes only when the field is empty, and `merge` combines the existing
@@ -11566,7 +11566,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /rerun-call-analysis/{call_id}:
     put:
-      description: Rerun post-call analysis for a specific call. This operation incurs charges.
+      description: Rerun Post Call Extraction for a specific call. This operation incurs charges.
       operationId: rerunCallAnalysis
       parameters:
       - in: path
@@ -11599,7 +11599,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /rerun-chat-analysis/{chat_id}:
     put:
-      description: Rerun post-chat analysis for a specific chat. This operation incurs charges.
+      description: Rerun Post Chat Extraction for a specific chat. This operation incurs charges.
       operationId: rerunChatAnalysis
       parameters:
       - in: path
@@ -13088,7 +13088,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /get-crm-config:
     get:
-      description: 'Get the organization''s CRM configuration: which CRM app is linked, the custom contact fields defined for it, and how post-call analysis data is written back to contacts. Returns an
+      description: 'Get the organization''s CRM configuration: which CRM app is linked, the custom contact fields defined for it, and how Post Call Extraction data is written back to contacts. Returns an
         empty configuration when nothing has been set up yet.'
       operationId: getCrmConfig
       x-retell-sdk-resource: crm

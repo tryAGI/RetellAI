@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// System preset for post-chat analysis (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
+    /// System preset for Post Chat Extraction (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
     /// </summary>
     public sealed partial class ChatPresetAnalysisData
     {

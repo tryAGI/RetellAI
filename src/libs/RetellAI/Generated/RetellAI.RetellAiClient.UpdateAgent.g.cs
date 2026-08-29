@@ -100,8 +100,6 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
             PrepareUpdateAgentArguments(
@@ -820,7 +818,7 @@ namespace RetellAI
         /// If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
         /// </param>
         /// <param name="postCallAnalysisData">
-        /// Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
+        /// Post Call Extraction data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
         /// </param>
         /// <param name="postCallAnalysisModel">
         /// Available LLM models for agents.
