@@ -5,7 +5,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Post Chat Extraction item (custom data or chat preset). Use for chat agent post_chat_analysis_data; validates only chat presets (chat_summary, chat_successful, user_sentiment).
+    /// Post-chat analysis item (custom data or chat preset). Use for chat agent post_chat_analysis_data; validates only chat presets (chat_summary, chat_successful, user_sentiment).
     /// </summary>
     public readonly partial struct PostChatAnalysisData : global::System.IEquatable<PostChatAnalysisData>
     {
@@ -47,7 +47,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'AnalysisData' but the value was {ToString()}.");
 
         /// <summary>
-        /// System preset for Post Chat Extraction (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
+        /// System preset for post-chat analysis (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChatPresetAnalysisData? Preset { get; init; }

@@ -16,7 +16,7 @@ namespace RetellAI
         public required string FieldName { get; set; }
 
         /// <summary>
-        /// Name of the Post Call Extraction field to read the value from. A value that does not match the contact field's type is skipped rather than failing the conversation.
+        /// Name of the post-call analysis field to read the value from. A value that does not match the contact field's type is skipped rather than failing the conversation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("analysis_data_name")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -43,7 +43,7 @@ namespace RetellAI
         /// Contact field to write to. Must be an existing built-in or custom contact field, and cannot be phone_number, which identifies the contact.
         /// </param>
         /// <param name="analysisDataName">
-        /// Name of the Post Call Extraction field to read the value from. A value that does not match the contact field's type is skipped rather than failing the conversation.
+        /// Name of the post-call analysis field to read the value from. A value that does not match the contact field's type is skipped rather than failing the conversation.
         /// </param>
         /// <param name="updateMode">
         /// How to reconcile the new value with what the contact already holds. `overwrite` always replaces it, `fill_if_empty` writes only when the field is empty, and `merge` combines the existing text with the new value. `merge` is available on string fields only.

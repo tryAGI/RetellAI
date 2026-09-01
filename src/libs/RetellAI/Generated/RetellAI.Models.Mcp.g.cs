@@ -31,7 +31,7 @@ namespace RetellAI
         public global::System.Collections.Generic.Dictionary<string, string>? Headers { get; set; }
 
         /// <summary>
-        /// Query parameters to append to the  MCP connection request URL.<br/>
+        /// Query parameters to append to the MCP connection request URL.<br/>
         /// Example: {"index":"1","key":"value"}
         /// </summary>
         /// <example>{"index":"1","key":"value"}</example>
@@ -62,7 +62,7 @@ namespace RetellAI
         /// Example: {"Authorization":"Bearer 1234567890"}
         /// </param>
         /// <param name="queryParams">
-        /// Query parameters to append to the  MCP connection request URL.<br/>
+        /// Query parameters to append to the MCP connection request URL.<br/>
         /// Example: {"index":"1","key":"value"}
         /// </param>
         /// <param name="timeoutMs">

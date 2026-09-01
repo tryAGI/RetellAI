@@ -18,7 +18,8 @@ namespace RetellAI
         /// Whether more results are available.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("has_more")]
-        public bool? HasMore { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool HasMore { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -29,18 +30,18 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="PaginatedResponseBase" /> class.
         /// </summary>
-        /// <param name="paginationKey">
-        /// Pagination key for the next page.
-        /// </param>
         /// <param name="hasMore">
         /// Whether more results are available.
+        /// </param>
+        /// <param name="paginationKey">
+        /// Pagination key for the next page.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PaginatedResponseBase(
-            string? paginationKey,
-            bool? hasMore)
+            bool hasMore,
+            string? paginationKey)
         {
             this.PaginationKey = paginationKey;
             this.HasMore = hasMore;

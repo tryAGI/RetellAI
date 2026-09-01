@@ -46,7 +46,7 @@ namespace RetellAI
         public bool? EnableAutoRefresh { get; set; }
 
         /// <summary>
-        /// Maximum number of characters per chunk when splitting knowledge base. Default is 2000. content. Immutable after creation.<br/>
+        /// Maximum number of characters per chunk when splitting knowledge base content. Default is 2000. Immutable after creation.<br/>
         /// Example: 2000
         /// </summary>
         /// <example>2000</example>
@@ -89,7 +89,7 @@ namespace RetellAI
         /// Example: true
         /// </param>
         /// <param name="maxChunkSize">
-        /// Maximum number of characters per chunk when splitting knowledge base. Default is 2000. content. Immutable after creation.<br/>
+        /// Maximum number of characters per chunk when splitting knowledge base content. Default is 2000. Immutable after creation.<br/>
         /// Example: 2000
         /// </param>
         /// <param name="minChunkSize">

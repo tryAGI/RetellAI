@@ -17,7 +17,7 @@ namespace RetellAI
         public string? CallSummary { get; set; }
 
         /// <summary>
-        /// Whether the call is entered voicemail.<br/>
+        /// Whether the call entered voicemail.<br/>
         /// Example: false
         /// </summary>
         /// <example>false</example>
@@ -42,7 +42,7 @@ namespace RetellAI
         public bool? CallSuccessful { get; set; }
 
         /// <summary>
-        /// Custom analysis data that was extracted based on the schema defined in agent Post Call Extraction data. Can be empty if nothing is specified.
+        /// Custom analysis data that was extracted based on the schema defined in agent post call analysis data. Can be empty if nothing is specified.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_analysis_data")]
         public object? CustomAnalysisData { get; set; }
@@ -61,7 +61,7 @@ namespace RetellAI
         /// Example: The agent called the user to ask question about his purchase inquiry. The agent asked several questions regarding his preference and asked if user would like to book an appointment. The user happily agreed and scheduled an appointment next Monday 10am.
         /// </param>
         /// <param name="inVoicemail">
-        /// Whether the call is entered voicemail.<br/>
+        /// Whether the call entered voicemail.<br/>
         /// Example: false
         /// </param>
         /// <param name="userSentiment">
@@ -73,7 +73,7 @@ namespace RetellAI
         /// Example: true
         /// </param>
         /// <param name="customAnalysisData">
-        /// Custom analysis data that was extracted based on the schema defined in agent Post Call Extraction data. Can be empty if nothing is specified.
+        /// Custom analysis data that was extracted based on the schema defined in agent post call analysis data. Can be empty if nothing is specified.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

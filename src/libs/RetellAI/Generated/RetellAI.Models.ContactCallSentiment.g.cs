@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// User sentiment from Post Call Extraction.
+    /// User sentiment from post-call analysis.
     /// </summary>
     public enum ContactCallSentiment
     {

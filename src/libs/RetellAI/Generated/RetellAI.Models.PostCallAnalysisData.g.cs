@@ -5,7 +5,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Post Call Extraction item (custom data or voice preset). Use for voice agent post_call_analysis_data; validates only call presets (call_summary, call_successful, user_sentiment).
+    /// Post-call analysis item (custom data or voice preset). Use for voice agent post_call_analysis_data; validates only call presets (call_summary, call_successful, user_sentiment).
     /// </summary>
     public readonly partial struct PostCallAnalysisData : global::System.IEquatable<PostCallAnalysisData>
     {
@@ -47,7 +47,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'AnalysisData' but the value was {ToString()}.");
 
         /// <summary>
-        /// System preset for Post Call Extraction (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
+        /// System preset for post-call analysis (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.CallPresetAnalysisData? Preset { get; init; }

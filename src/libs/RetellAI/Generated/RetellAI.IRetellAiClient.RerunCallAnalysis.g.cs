@@ -5,7 +5,7 @@ namespace RetellAI
     public partial interface IRetellAiClient
     {
         /// <summary>
-        /// Rerun Post Call Extraction for a specific call. This operation incurs charges.
+        /// Rerun post-call analysis for a specific call. This operation incurs charges.
         /// </summary>
         /// <param name="callId">
         /// Example: call_119c3f8e47135a29e65947eeb34cf12d
@@ -18,7 +18,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Rerun Post Call Extraction for a specific call. This operation incurs charges.
+        /// Rerun post-call analysis for a specific call. This operation incurs charges.
         /// </summary>
         /// <param name="callId">
         /// Example: call_119c3f8e47135a29e65947eeb34cf12d

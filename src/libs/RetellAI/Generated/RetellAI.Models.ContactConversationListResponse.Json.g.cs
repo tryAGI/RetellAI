@@ -2,7 +2,7 @@
 
 namespace RetellAI
 {
-    public sealed partial class ContactConversationListResponse
+    public readonly partial struct ContactConversationListResponse
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -54,7 +54,7 @@ namespace RetellAI
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::RetellAI.ContactConversationListResponse),
-                jsonSerializerContext) as global::RetellAI.ContactConversationListResponse;
+                jsonSerializerContext) as global::RetellAI.ContactConversationListResponse?;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace RetellAI
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::RetellAI.ContactConversationListResponse),
-                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.ContactConversationListResponse;
+                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.ContactConversationListResponse?;
         }
 
         /// <summary>

@@ -12,7 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
-        public global::System.Collections.Generic.IList<global::RetellAI.AgentVersionSummary>? Items { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::RetellAI.AgentVersionSummary> Items { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -28,9 +29,9 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListAgentVersionsResponse2(
-            global::System.Collections.Generic.IList<global::RetellAI.AgentVersionSummary>? items)
+            global::System.Collections.Generic.IList<global::RetellAI.AgentVersionSummary> items)
         {
-            this.Items = items;
+            this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));
         }
 
         /// <summary>

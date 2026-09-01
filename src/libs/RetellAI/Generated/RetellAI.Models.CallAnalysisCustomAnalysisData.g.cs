@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Custom analysis data that was extracted based on the schema defined in agent Post Call Extraction data. Can be empty if nothing is specified.
+    /// Custom analysis data that was extracted based on the schema defined in agent post call analysis data. Can be empty if nothing is specified.
     /// </summary>
     public sealed partial class CallAnalysisCustomAnalysisData
     {

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// This is result of a node transition
+    /// This is the result of a node transition.
     /// </summary>
     public enum NodeTransitionUtteranceRole
     {

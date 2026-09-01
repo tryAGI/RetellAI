@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+    /// The parameters the function accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
     /// </summary>
     public sealed partial class ToolParameter
     {

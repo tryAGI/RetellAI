@@ -138,7 +138,7 @@ namespace RetellAI
         public string? ExpressiveModePrompt { get; set; }
 
         /// <summary>
-        /// Controls how responsive is the agent. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond when it can). If unset, default value 1 will apply.<br/>
+        /// Controls how responsive the agent is. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond when it can). If unset, default value 1 will apply.<br/>
         /// Example: 1
         /// </summary>
         /// <example>1</example>
@@ -223,7 +223,7 @@ namespace RetellAI
         public global::RetellAI.OneOf<global::RetellAI.Language3?, global::System.Collections.Generic.IList<global::RetellAI.Language3>, global::RetellAI.AgentRequestLanguage?>? Language { get; set; }
 
         /// <summary>
-        /// The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
+        /// The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will bind webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
         /// Example: https://webhook-url-here
         /// </summary>
         /// <example>https://webhook-url-here</example>
@@ -335,7 +335,7 @@ namespace RetellAI
         public global::RetellAI.CallScreeningOption? CallScreeningOption { get; set; }
 
         /// <summary>
-        /// Post Call Extraction data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
+        /// Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("post_call_analysis_data")]
         public global::System.Collections.Generic.IList<global::RetellAI.PostCallAnalysisData>? PostCallAnalysisData { get; set; }
@@ -514,7 +514,7 @@ namespace RetellAI
         /// Example: Use [sigh] for thoughtful pauses and [excited] for good news.
         /// </param>
         /// <param name="responsiveness">
-        /// Controls how responsive is the agent. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond when it can). If unset, default value 1 will apply.<br/>
+        /// Controls how responsive the agent is. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond when it can). If unset, default value 1 will apply.<br/>
         /// Example: 1
         /// </param>
         /// <param name="interruptionSensitivity">
@@ -559,7 +559,7 @@ namespace RetellAI
         /// Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale array instead. If unset, defaults to `en-US`.
         /// </param>
         /// <param name="webhookUrl">
-        /// The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
+        /// The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will bind webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
         /// Example: https://webhook-url-here
         /// </param>
         /// <param name="webhookEvents">
@@ -617,7 +617,7 @@ namespace RetellAI
         /// If this option is set, the agent prompt will include call screen handling instructions for identity and call purpose questions. Set this to null to disable call screen prompt instructions.
         /// </param>
         /// <param name="postCallAnalysisData">
-        /// Post Call Extraction data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
+        /// Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
         /// </param>
         /// <param name="postCallAnalysisModel">
         /// Available LLM models for agents.

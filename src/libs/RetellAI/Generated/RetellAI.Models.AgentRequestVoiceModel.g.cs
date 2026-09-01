@@ -67,6 +67,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Sonic36,
+        /// <summary>
+        ///
+        /// </summary>
         Speech02Turbo,
         /// <summary>
         ///
@@ -104,6 +108,7 @@ namespace RetellAI
                 AgentRequestVoiceModel.Sonic3 => "sonic-3",
                 AgentRequestVoiceModel.Sonic3Latest => "sonic-3-latest",
                 AgentRequestVoiceModel.Sonic35 => "sonic-3.5",
+                AgentRequestVoiceModel.Sonic36 => "sonic-3.6",
                 AgentRequestVoiceModel.Speech02Turbo => "speech-02-turbo",
                 AgentRequestVoiceModel.Speech28Turbo => "speech-2.8-turbo",
                 AgentRequestVoiceModel.Tts1 => "tts-1",
@@ -131,6 +136,7 @@ namespace RetellAI
                 "sonic-3" => AgentRequestVoiceModel.Sonic3,
                 "sonic-3-latest" => AgentRequestVoiceModel.Sonic3Latest,
                 "sonic-3.5" => AgentRequestVoiceModel.Sonic35,
+                "sonic-3.6" => AgentRequestVoiceModel.Sonic36,
                 "speech-02-turbo" => AgentRequestVoiceModel.Speech02Turbo,
                 "speech-2.8-turbo" => AgentRequestVoiceModel.Speech28Turbo,
                 "tts-1" => AgentRequestVoiceModel.Tts1,
