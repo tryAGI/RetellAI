@@ -12,7 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("items")]
-        public global::System.Collections.Generic.IList<global::RetellAI.V3CallResponse>? Items { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<global::RetellAI.V3CallResponse> Items { get; set; }
 
         /// <summary>
         /// Total number of calls matching `filter_criteria`. Only present when `include_total` is true.
@@ -37,10 +38,10 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListCallsResponse2(
-            global::System.Collections.Generic.IList<global::RetellAI.V3CallResponse>? items,
+            global::System.Collections.Generic.IList<global::RetellAI.V3CallResponse> items,
             int? total)
         {
-            this.Items = items;
+            this.Items = items ?? throw new global::System.ArgumentNullException(nameof(items));
             this.Total = total;
         }
 

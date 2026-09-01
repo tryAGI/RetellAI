@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-08-29-ed55dcf
+  x-retell-spec-revision: 2026-08-31-8036006
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -249,6 +249,8 @@ components:
                 type: number
     PaginatedResponseBase:
       type: object
+      required:
+      - has_more
       properties:
         pagination_key:
           type: string
@@ -693,6 +695,7 @@ components:
           - sonic-3
           - sonic-3-latest
           - sonic-3.5
+          - sonic-3.6
           - tts-1
           - gpt-4o-mini-tts
           - speech-02-turbo
@@ -796,7 +799,7 @@ components:
           minimum: 0
           maximum: 1
           example: 1
-          description: Controls how responsive is the agent. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond
+          description: Controls how responsive the agent is. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond
             when it can). If unset, default value 1 will apply.
         interruption_sensitivity:
           type: number
@@ -886,7 +889,7 @@ components:
         webhook_url:
           type: string
           example: https://webhook-url-here
-          description: The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified
+          description: The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will bind webhook events for this agent to the specified
             url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.
           nullable: true
         webhook_events:
@@ -1037,12 +1040,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PostCallAnalysisData'
-          description: Post Call Extraction data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
+          description: Post call analysis data to extract from the call. This data will augment the pre-defined variables extracted in the call analysis. This will be available after the call ends.
           nullable: true
         post_call_analysis_model:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
-          description: The model to use for Post Call Extraction. Default to gpt-4.1.
+          description: The model to use for post call analysis. Default to gpt-4.1.
         begin_message_delay_ms:
           type: integer
           example: 1000
@@ -1281,7 +1284,7 @@ components:
             description: The version of the agent to swap to. If not specified, will use the latest version
           post_call_analysis_setting:
             $ref: '#/components/schemas/PostCallAnalysisSetting'
-            description: Post Call Extraction setting for the agent swap
+            description: Post call analysis setting for the agent swap
           webhook_setting:
             $ref: '#/components/schemas/AgentSwapWebhookSetting'
             description: Webhook setting for the agent swap, defaults to only source.
@@ -1334,7 +1337,7 @@ components:
             directly. Defaults to "prompt".
         post_call_analysis_setting:
           $ref: '#/components/schemas/PostCallAnalysisSetting'
-          description: Post Call Extraction setting for the agent swap.
+          description: Post call analysis setting for the agent swap.
         webhook_setting:
           $ref: '#/components/schemas/AgentSwapWebhookSetting'
           description: Webhook setting for the agent swap, defaults to only source.
@@ -1365,12 +1368,12 @@ components:
       oneOf:
       - $ref: '#/components/schemas/AnalysisData'
       - $ref: '#/components/schemas/CallPresetAnalysisData'
-      description: Post Call Extraction item (custom data or voice preset). Use for voice agent post_call_analysis_data; validates only call presets (call_summary, call_successful, user_sentiment).
+      description: Post-call analysis item (custom data or voice preset). Use for voice agent post_call_analysis_data; validates only call presets (call_summary, call_successful, user_sentiment).
     PostChatAnalysisData:
       oneOf:
       - $ref: '#/components/schemas/AnalysisData'
       - $ref: '#/components/schemas/ChatPresetAnalysisData'
-      description: Post Chat Extraction item (custom data or chat preset). Use for chat agent post_chat_analysis_data; validates only chat presets (chat_summary, chat_successful, user_sentiment).
+      description: Post-chat analysis item (custom data or chat preset). Use for chat agent post_chat_analysis_data; validates only chat presets (chat_summary, chat_successful, user_sentiment).
     AverageMetric:
       type: object
       required:
@@ -1475,14 +1478,14 @@ components:
           - book_appointment_cal
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
-            underscores and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
+            and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does, sometimes can also include information about when to call the tool.
         cal_api_key:
           type: string
-          description: Cal.com Api key that have access to the cal.com event you want to book appointment.
+          description: Cal.com Api key that has access to the cal.com event you want to book appointment.
         event_type_id:
           oneOf:
           - type: number
@@ -1606,8 +1609,8 @@ components:
           - bridge_transfer
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
-            underscores and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
+            and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does. This tool is only available to transfer agents (agents with isTransferAgent set to true) in agentic warm transfer mode. When invoked, it bridges the
@@ -1639,7 +1642,7 @@ components:
         in_voicemail:
           type: boolean
           example: false
-          description: Whether the call is entered voicemail.
+          description: Whether the call entered voicemail.
         user_sentiment:
           type: string
           enum:
@@ -1655,7 +1658,7 @@ components:
           description: Whether the agent seems to have a successful call with the user, where the agent finishes the task, and the call was complete without being cutoff.
         custom_analysis_data:
           type: object
-          description: Custom analysis data that was extracted based on the schema defined in agent Post Call Extraction data. Can be empty if nothing is specified.
+          description: Custom analysis data that was extracted based on the schema defined in agent post call analysis data. Can be empty if nothing is specified.
     CallLatency:
       type: object
       properties:
@@ -1843,8 +1846,8 @@ components:
           - cancel_transfer
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
-            underscores and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
+            and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does. This tool is only available to transfer agents (agents with isTransferAgent set to true) in agentic warm transfer mode. When invoked, it cancels the
@@ -1989,7 +1992,7 @@ components:
         webhook_url:
           type: string
           example: https://webhook-url-here
-          description: The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified
+          description: The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will bind webhook events for this agent to the specified
             url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.
           nullable: true
         webhook_events:
@@ -2037,12 +2040,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PostChatAnalysisData'
-          description: Post Chat Extraction data to extract from the chat. This data will augment the pre-defined variables extracted in the chat analysis. This will be available after the chat ends.
+          description: Post chat analysis data to extract from the chat. This data will augment the pre-defined variables extracted in the chat analysis. This will be available after the chat ends.
           nullable: true
         post_chat_analysis_model:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
-          description: The model to use for Post Chat Extraction. Default to gpt-4.1.
+          description: The model to use for post chat analysis. Default to gpt-4.1.
         pii_config:
           $ref: '#/components/schemas/PIIConfig'
           description: Configuration for PII scrubbing from transcripts and recordings.
@@ -2119,7 +2122,7 @@ components:
           description: Whether the agent seems to have a successful chat with the user, where the agent finishes the task, and the call was complete without being cutoff.
         custom_analysis_data:
           type: object
-          description: Custom analysis data that was extracted based on the schema defined in chat agent Post Chat Extraction data. Can be empty if nothing is specified.
+          description: Custom analysis data that was extracted based on the schema defined in chat agent post chat analysis data. Can be empty if nothing is specified.
     ChatResponse:
       type: object
       required:
@@ -2235,7 +2238,7 @@ components:
               description: Combined cost of all individual costs in cents
               example: 70
         chat_analysis:
-          description: Post Chat Extraction that includes information such as sentiment, status, summary, and custom defined data to extract. Available after chat ends. Subscribe to `chat_analyzed` webhook
+          description: Post chat analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after chat ends. Subscribe to `chat_analyzed` webhook
             event type to receive it once ready.
           $ref: '#/components/schemas/ChatAnalysis'
     V3ChatResponse:
@@ -2303,14 +2306,14 @@ components:
           - check_availability_cal
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
-            underscores and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
+            and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does, sometimes can also include information about when to call the tool.
         cal_api_key:
           type: string
-          description: Cal.com Api key that have access to the cal.com event you want to check availability for.
+          description: Cal.com Api key that has access to the cal.com event you want to check availability for.
         event_type_id:
           oneOf:
           - type: number
@@ -3277,7 +3280,7 @@ components:
           - custom
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores
             and dashes, with a maximum length of 64 (no space allowed).
         url:
           type: string
@@ -3377,7 +3380,7 @@ components:
           - code
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores
             and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
@@ -3642,7 +3645,7 @@ components:
           type: array
           items:
             type: number
-          description: Specific versions to filter on. If not provided, all versions are included.
+          description: Specific versions to filter on. If omitted or empty, all versions are included.
     ToolCallFilter:
       type: object
       minProperties: 1
@@ -3819,8 +3822,8 @@ components:
             description: The subset of `agent` that was selected as transfer agents. Stored and returned verbatim; it is NOT applied when querying — the dashboard merges its transfer-agent selection into
               `agent`, which is what filtering resolves on. It exists only so that a saved filter, on being read back, can tell which entries of `agent` belong to the transfer-agent picker; without it they
               all come back as regular agent selections.
-      description: A `CallFilter` as *persisted* on a dashboard or chart. Identical to `CallFilter` for querying purposes — the extra field records how the selection was made, not what to match. Used only
-        by the dashboard configuration endpoints; query endpoints take a plain `CallFilter`.
+      description: A `CallFilter` as persisted on a dashboard or chart. The extra field records how the selection was made, not what to match. Definition-based chart queries use it while merging filters,
+        then query the combined `agent` field.
     ChatFilter:
       type: object
       description: Filter criteria for chats. All conditions are implicitly connected with AND.
@@ -4066,8 +4069,8 @@ components:
           - end_call
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
-            underscores and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
+            and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does, sometimes can also include information about when to call the tool.
@@ -4196,7 +4199,7 @@ components:
           - extract_dynamic_variable
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores
             and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
@@ -4394,7 +4397,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FinetuneExampleUtterance'
-          description: Find tune the transition condition to this global node
+          description: Fine tune the transition condition to this global node
     GlobalNodeSetting:
       type: object
       required:
@@ -4549,7 +4552,7 @@ components:
           minimum: 600
           maximum: 6000
           example: 2000
-          description: Maximum number of characters per chunk when splitting knowledge base. Default is 2000. content. Immutable after creation.
+          description: Maximum number of characters per chunk when splitting knowledge base content. Default is 2000. Immutable after creation.
         min_chunk_size:
           type: integer
           minimum: 200
@@ -4917,7 +4920,7 @@ components:
           example:
             index: '1'
             key: value
-          description: Query parameters to append to the  MCP connection request URL.
+          description: Query parameters to append to the MCP connection request URL.
         timeout_ms:
           type: integer
           description: Maximum time to wait for a connection to be established (in milliseconds). Default to 120,000 ms (2 minutes).
@@ -5378,7 +5381,7 @@ components:
           type: string
           enum:
           - node_transition
-          description: This is result of a node transition
+          description: This is the result of a node transition.
         former_node_id:
           type: string
           description: Former node id
@@ -5463,8 +5466,8 @@ components:
       - type
       - name
       - description
-      description: System preset for Post Call or Post Chat Extraction (summary, success, sentiment). Presets can be included in post_call_analysis_data or post_chat_analysis_data to override prompts or
-        mark fields optional.
+      description: System preset for post-call or post-chat analysis (summary, success, sentiment). Presets can be included in post_call_analysis_data or post_chat_analysis_data to override prompts or mark
+        fields optional.
       properties:
         type:
           type: string
@@ -5496,7 +5499,7 @@ components:
       required:
       - type
       - name
-      description: System preset for Post Call Extraction (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
+      description: System preset for post-call analysis (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
       properties:
         type:
           type: string
@@ -5526,7 +5529,7 @@ components:
       required:
       - type
       - name
-      description: System preset for Post Chat Extraction (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
+      description: System preset for post-chat analysis (chat agents). Use in post_chat_analysis_data to override prompts or mark fields optional.
       properties:
         type:
           type: string
@@ -5981,8 +5984,8 @@ components:
           - press_digit
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
-            underscores and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
+            and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does, sometimes can also include information about when to call the tool.
@@ -6750,8 +6753,8 @@ components:
         parameters:
           $ref: '#/components/schemas/ToolParameter'
           description: Describes what parameters you want to extract out when the transition changes. The parameters extracted here can be referenced in prompts & function descriptions of later states via
-            dynamic variables. The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation
-            about the format.
+            dynamic variables. The parameters the function accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about
+            the format.
     StateTransitionMessageBase:
       type: object
       required:
@@ -6790,7 +6793,7 @@ components:
         name:
           example: information_collection
           type: string
-          description: Name of the state, must be unique for each state. Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the state, must be unique for each state. Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         state_prompt:
           example: '## Task
 
@@ -7222,7 +7225,7 @@ components:
           description: Whether the tool call was successful.
     ToolParameter:
       type: object
-      description: The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+      description: The parameters the function accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
         Omitting parameters defines a function with an empty parameter list.
       required:
       - type
@@ -7963,7 +7966,7 @@ components:
         knowledge_base_retrieved_contents_url:
           type: string
           example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/kb_retrieved_contents.txt
-          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the respond id and the retrieved contents
+          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the response id and the retrieved contents
             related to that response. It's already rendered in call history tab of dashboard, and you can also manually download and check against the transcript to view the knowledge base retrieval results.
         latency:
           type: object
@@ -7987,11 +7990,11 @@ components:
               description: Text-to-speech latency (from the triggering of TTS to first byte received) tracking of the call.
               $ref: '#/components/schemas/CallLatency'
             knowledge_base:
-              description: Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature
+              description: Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature
                 for the agent of the call.
               $ref: '#/components/schemas/CallLatency'
             s2s:
-              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
+              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that use S2S model like Realtime API.
               $ref: '#/components/schemas/CallLatency'
         disconnection_reason:
           $ref: '#/components/schemas/DisconnectionReason'
@@ -8004,7 +8007,7 @@ components:
             are prefixed with "sip:" and may include a ";transport=..." portion (if transport is known) where the transport type can be "tls", "tcp" or "udp".
           nullable: true
         call_analysis:
-          description: Post Call Extraction that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
+          description: Post call analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
             event type to receive it once ready.
           $ref: '#/components/schemas/CallAnalysis'
         call_cost:
@@ -8215,7 +8218,7 @@ components:
         knowledge_base_retrieved_contents_url:
           type: string
           example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/kb_retrieved_contents.txt
-          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the respond id and the retrieved contents
+          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the response id and the retrieved contents
             related to that response. It's already rendered in call history tab of dashboard, and you can also manually download and check against the transcript to view the knowledge base retrieval results.
         latency:
           type: object
@@ -8239,11 +8242,11 @@ components:
               description: Text-to-speech latency (from the triggering of TTS to first byte received) tracking of the call.
               $ref: '#/components/schemas/CallLatency'
             knowledge_base:
-              description: Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature
+              description: Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature
                 for the agent of the call.
               $ref: '#/components/schemas/CallLatency'
             s2s:
-              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
+              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that use S2S model like Realtime API.
               $ref: '#/components/schemas/CallLatency'
         disconnection_reason:
           $ref: '#/components/schemas/DisconnectionReason'
@@ -8256,7 +8259,7 @@ components:
             are prefixed with "sip:" and may include a ";transport=..." portion (if transport is known) where the transport type can be "tls", "tcp" or "udp".
           nullable: true
         call_analysis:
-          description: Post Call Extraction that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
+          description: Post call analysis that includes information such as sentiment, status, summary, and custom defined data to extract. Available after call ends. Subscribe to `call_analyzed` webhook
             event type to receive it once ready.
           $ref: '#/components/schemas/CallAnalysis'
         call_cost:
@@ -8745,20 +8748,19 @@ components:
       - phone_number
       - created_timestamp
     ContactListResponse:
-      type: object
-      properties:
-        items:
-          type: array
+      allOf:
+      - $ref: '#/components/schemas/PaginatedResponseBase'
+      - type: object
+        required:
+        - items
+        properties:
           items:
-            $ref: '#/components/schemas/Contact'
-        pagination_key:
-          type: string
-          description: Base64url-encoded pagination key for the next page.
-        has_more:
-          type: boolean
-        total:
-          type: number
-          description: Total count of contacts matching the filter.
+            type: array
+            items:
+              $ref: '#/components/schemas/Contact'
+          total:
+            type: number
+            description: Total count of contacts matching the filter.
     ContactConversation:
       oneOf:
       - $ref: '#/components/schemas/ContactCall'
@@ -8792,7 +8794,7 @@ components:
           description: Reason the call ended.
         summary:
           type: string
-          description: Post Call Extraction summary.
+          description: Post-call analysis summary.
         sentiment:
           type: string
           enum:
@@ -8800,10 +8802,10 @@ components:
           - Positive
           - Neutral
           - Unknown
-          description: User sentiment from Post Call Extraction.
+          description: User sentiment from post-call analysis.
         successful:
           type: boolean
-          description: Whether the call was deemed successful by Post Call Extraction.
+          description: Whether the call was deemed successful by post-call analysis.
     ContactChat:
       type: object
       required:
@@ -8833,7 +8835,7 @@ components:
           description: Reason the chat ended.
         summary:
           type: string
-          description: Post Chat Extraction summary.
+          description: Post-chat analysis summary.
         sentiment:
           type: string
           enum:
@@ -8841,25 +8843,21 @@ components:
           - Positive
           - Neutral
           - Unknown
-          description: User sentiment from Post Chat Extraction.
+          description: User sentiment from post-chat analysis.
         successful:
           type: boolean
-          description: Whether the chat was deemed successful by Post Chat Extraction.
+          description: Whether the chat was deemed successful by post-chat analysis.
     ContactConversationListResponse:
-      type: object
-      properties:
-        items:
-          type: array
+      allOf:
+      - $ref: '#/components/schemas/PaginatedResponseBase'
+      - type: object
+        required:
+        - items
+        properties:
           items:
-            $ref: '#/components/schemas/ContactConversation'
-        pagination_key:
-          type: string
-          description: 'Base64url-encoded pagination key. Pass as `pagination_key` query parameter to fetch the next page.
-
-            '
-        has_more:
-          type: boolean
-          description: Whether more conversations exist beyond the returned window.
+            type: array
+            items:
+              $ref: '#/components/schemas/ContactConversation'
     AppType:
       type: string
       enum:
@@ -8912,20 +8910,6 @@ components:
           type: string
           minLength: 1
           description: API key credential; stored encrypted at rest.
-    AccessTokenAuthConfigRequest:
-      type: object
-      required:
-      - type
-      - access_token
-      properties:
-        type:
-          type: string
-          enum:
-          - access_token
-        access_token:
-          type: string
-          minLength: 1
-          description: OAuth-obtained access token used directly as a static bearer secret; stored encrypted at rest. An alternative to the OAuth connect flow, which persists the same config.
     BasicAuthConfigRequest:
       type: object
       required:
@@ -8944,27 +8928,12 @@ components:
           type: string
           minLength: 1
           description: Password credential; stored encrypted at rest.
-    RefreshTokenAuthConfigRequest:
-      type: object
-      required:
-      - type
-      - refresh_token
-      properties:
-        type:
-          type: string
-          enum:
-          - refresh_token
-        refresh_token:
-          type: string
-          minLength: 1
-          description: OAuth refresh token; stored encrypted at rest. An alternative to the OAuth connect flow, which persists the same config.
     AuthConfigRequest:
+      description: Caller-managed credentials. Providers using the OAuth callback reject auth_config and must be authorized through connect-app.
       oneOf:
       - $ref: '#/components/schemas/OAuthConfigRequest'
       - $ref: '#/components/schemas/ApiKeyAuthConfigRequest'
-      - $ref: '#/components/schemas/AccessTokenAuthConfigRequest'
       - $ref: '#/components/schemas/BasicAuthConfigRequest'
-      - $ref: '#/components/schemas/RefreshTokenAuthConfigRequest'
     OAuthConfigResponse:
       type: object
       required:
@@ -9081,7 +9050,14 @@ components:
           type: string
         tenant_url:
           type: string
-          description: Per-tenant API base URL. Set by providers with per-org hosts; omitted by providers on a single global host.
+          description: Per-tenant API base URL. Set by providers with per-org hosts; omitted by providers on a single global host. For OneDrive for Business, this is the tenant's -my.sharepoint.com origin
+            used by File Picker v8; personal OneDrive omits it.
+        tenant_type:
+          type: string
+          description: Microsoft OneDrive account type discovered during OAuth.
+          enum:
+          - business
+          - personal
         tenant_id:
           type: string
           description: Sub-account id, for providers that scope requests by a sub-account id on a shared host. Omitted by every other provider.
@@ -9177,7 +9153,7 @@ components:
           description: Contact field to write to. Must be an existing built-in or custom contact field, and cannot be phone_number, which identifies the contact.
         analysis_data_name:
           type: string
-          description: Name of the Post Call Extraction field to read the value from. A value that does not match the contact field's type is skipped rather than failing the conversation.
+          description: Name of the post-call analysis field to read the value from. A value that does not match the contact field's type is skipped rather than failing the conversation.
         update_mode:
           type: string
           description: How to reconcile the new value with what the contact already holds. `overwrite` always replaces it, `fill_if_empty` writes only when the field is empty, and `merge` combines the existing
@@ -9249,6 +9225,23 @@ components:
           enum:
           - manual
           - cron
+    ChartGroupType:
+      type: string
+      enum:
+      - time
+      - agent_id
+      - batch_call_id
+      - call_successful
+      - call_status
+      - user_sentiment
+      - disconnection_reason
+      - direction
+      - custom_analysis_data
+      - custom_attribute
+      - chat_successful
+      - chat_status
+      - call_type
+      - agent_version
     DashboardSource:
       type: string
       enum:
@@ -9287,6 +9280,339 @@ components:
             - custom_attribute
           field:
             type: string
+    ChartShowItem:
+      type: object
+      required:
+      - source
+      - measurement
+      oneOf:
+      - title: KeywordSource
+        description: String/enum sources — count only.
+        required:
+        - source
+        - measurement
+        properties:
+          source:
+            type: object
+            required:
+            - type
+            properties:
+              type:
+                type: string
+                enum:
+                - call_id
+                - disconnection_reason
+                - chat_id
+              group:
+                $ref: '#/components/schemas/ChartGroupType'
+          measurement:
+            type: object
+            required:
+            - type
+            properties:
+              type:
+                type: string
+                enum:
+                - count
+      - title: NumericSource
+        description: Numeric and boolean sources — all measurement types.
+        required:
+        - source
+        - measurement
+        properties:
+          source:
+            type: object
+            required:
+            - type
+            properties:
+              type:
+                type: string
+                enum:
+                - e2e_latency_p50
+                - duration_ms
+                - call_successful
+                - call_picked_up
+                - call_transferred
+                - in_voicemail
+                - chat_successful
+                - combined_cost
+              group:
+                $ref: '#/components/schemas/ChartGroupType'
+          measurement:
+            type: object
+            required:
+            - type
+            properties:
+              type:
+                type: string
+                enum:
+                - count
+                - sum
+                - p90
+                - median
+                - min
+                - avg
+                - max
+      - title: CustomFieldSource
+        description: Custom analysis / attribute sources — field is required.
+        required:
+        - source
+        - measurement
+        properties:
+          source:
+            type: object
+            required:
+            - type
+            - field
+            properties:
+              type:
+                type: string
+                enum:
+                - custom_analysis_data
+                - custom_attribute
+              field:
+                type: string
+              cast:
+                type: string
+                enum:
+                - float
+                - bool
+              group:
+                $ref: '#/components/schemas/ChartGroupType'
+          measurement:
+            type: object
+            required:
+            - type
+            properties:
+              type:
+                type: string
+                enum:
+                - count
+                - sum
+                - p90
+                - median
+                - min
+                - avg
+                - max
+      - title: ConcurrencySource
+        description: Call concurrency — max measurement only.
+        required:
+        - source
+        - measurement
+        properties:
+          source:
+            type: object
+            required:
+            - type
+            properties:
+              type:
+                type: string
+                enum:
+                - call_concurrency
+              group:
+                $ref: '#/components/schemas/ChartGroupType'
+          measurement:
+            type: object
+            required:
+            - type
+            properties:
+              type:
+                type: string
+                enum:
+                - max
+      - title: CustomToolSource
+        description: Custom tool call metrics — avg measurement only.
+        required:
+        - source
+        - measurement
+        properties:
+          source:
+            type: object
+            required:
+            - type
+            properties:
+              type:
+                type: string
+                enum:
+                - custom_tool_latency
+                - custom_tool_success_rate
+              group:
+                $ref: '#/components/schemas/ChartGroupType'
+          measurement:
+            type: object
+            required:
+            - type
+            properties:
+              type:
+                type: string
+                enum:
+                - avg
+    ChartTimeRange:
+      oneOf:
+      - type: object
+        required:
+        - type
+        - window
+        properties:
+          type:
+            type: string
+            enum:
+            - last
+          window:
+            type: object
+            required:
+            - unit
+            - value
+            properties:
+              unit:
+                type: string
+                enum:
+                - day
+                - week
+                - month
+                - year
+              value:
+                type: integer
+                minimum: 0
+      - type: object
+        required:
+        - type
+        - value
+        properties:
+          type:
+            type: string
+            enum:
+            - since
+          value:
+            type: array
+            items:
+              type: integer
+            minItems: 1
+            maxItems: 1
+      - type: object
+        description: The current day, week, month or year so far, resolved per request in the request's timezone. Weeks start Monday.
+        required:
+        - type
+        - unit
+        properties:
+          type:
+            type: string
+            enum:
+            - to_date
+          unit:
+            type: string
+            enum:
+            - day
+            - week
+            - month
+            - year
+      - type: object
+        required:
+        - type
+        - value
+        properties:
+          type:
+            type: string
+            enum:
+            - fixed
+          value:
+            type: array
+            items:
+              type: integer
+            minItems: 2
+            maxItems: 2
+      - type: object
+        required:
+        - type
+        properties:
+          type:
+            type: string
+            enum:
+            - all
+    ChartConfig:
+      type: object
+      required:
+      - type
+      properties:
+        chart_id:
+          type: string
+        title:
+          type: string
+        type:
+          type: string
+          enum:
+          - bar
+          - column
+          - donut
+          - line
+          - number
+        size:
+          oneOf:
+          - type: string
+            enum:
+            - small
+            - medium
+            - large
+          - type: object
+            description: Grid placement and span for the chart in a 24-column layout.
+            properties:
+              col:
+                type: integer
+                minimum: 1
+                maximum: 24
+                description: Starting column.
+              row:
+                type: integer
+                minimum: 1
+                maximum: 500
+                description: Starting row.
+              col_span:
+                type: integer
+                minimum: 1
+                maximum: 24
+                description: Number of columns the chart spans.
+              row_span:
+                type: integer
+                minimum: 1
+                maximum: 6
+                description: Number of rows the chart spans.
+            required:
+            - col
+            - row
+            - col_span
+            - row_span
+        show:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChartShowItem'
+        group_criteria:
+          type: array
+          description: User-selected additional breakdowns saved on the chart.
+          items:
+            $ref: '#/components/schemas/ChartGroupItem'
+        filter_criteria:
+          anyOf:
+          - $ref: '#/components/schemas/StoredCallFilter'
+          - $ref: '#/components/schemas/ChatFilter'
+          description: Filter criteria saved on the chart. Merged with the dashboard-level filter when fetching data.
+        time:
+          $ref: '#/components/schemas/ChartTimeRange'
+        comparison:
+          type: boolean
+        unit:
+          type: string
+          enum:
+          - hour
+          - day
+          - week
+          - month
+    ChartDefinition:
+      allOf:
+      - $ref: '#/components/schemas/ChartConfig'
+      - type: object
+        not:
+          required:
+          - chart_id
 security:
 - api_key: []
 paths:
@@ -9570,6 +9896,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -9685,6 +10013,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -9748,6 +10078,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -10596,6 +10928,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -11036,7 +11370,7 @@ paths:
         description: Optional version of the API to use for this request. Default to latest version.
       responses:
         '200':
-          description: Successfully retrieved an Retell LLM Response Engine.
+          description: Successfully retrieved a Retell LLM Response Engine.
           content:
             application/json:
               schema:
@@ -11267,7 +11601,7 @@ paths:
                 termination_uri:
                   type: string
                   example: someuri.pstn.twilio.com
-                  description: The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always end with ".pstn.twilio.com".
+                  description: The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always ends with ".pstn.twilio.com".
                 sip_trunk_auth_username:
                   type: string
                   example: username
@@ -11369,6 +11703,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -11401,6 +11737,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -11434,6 +11772,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -11464,6 +11804,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -11515,6 +11857,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -11541,6 +11885,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -11679,7 +12025,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /rerun-call-analysis/{call_id}:
     put:
-      description: Rerun Post Call Extraction for a specific call. This operation incurs charges.
+      description: Rerun post-call analysis for a specific call. This operation incurs charges.
       operationId: rerunCallAnalysis
       parameters:
       - in: path
@@ -11712,7 +12058,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /rerun-chat-analysis/{chat_id}:
     put:
-      description: Rerun Post Chat Extraction for a specific chat. This operation incurs charges.
+      description: Rerun post-chat analysis for a specific chat. This operation incurs charges.
       operationId: rerunChatAnalysis
       parameters:
       - in: path
@@ -12144,7 +12490,7 @@ paths:
               nickname: Frontdesk Number
       responses:
         '200':
-          description: Successfully updated an phone number object.
+          description: Successfully updated a phone number object.
           content:
             application/json:
               schema:
@@ -12186,7 +12532,7 @@ paths:
               begin_message: Hey I am a virtual assistant calling from Retell Hospital.
       responses:
         '200':
-          description: Successfully updated an Retell LLM Response Engine.
+          description: Successfully updated a Retell LLM Response Engine.
           content:
             application/json:
               schema:
@@ -12413,6 +12759,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -12446,6 +12794,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -13118,8 +13468,8 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /create-app:
     post:
-      description: 'Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers that authenticate with a key, token,
-        or refresh token can be connected in this one call by passing auth_config; the credential is stored encrypted and never returned. Up to 20 apps per provider.'
+      description: 'Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept
+        auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider.'
       operationId: createApp
       x-retell-sdk-resource: app
       x-retell-sdk-method: create
@@ -13194,7 +13544,8 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /update-app/{app_id}:
     patch:
-      description: Partially update an App. Omitted fields remain unchanged. Updating auth_config invalidates the cached provider token immediately.
+      description: Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. Providers using the OAuth callback
+        reject auth_config and must be reauthorized through connect-app.
       operationId: updateApp
       x-retell-sdk-resource: app
       x-retell-sdk-method: update
@@ -13290,6 +13641,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -13325,6 +13678,8 @@ paths:
                 allOf:
                 - $ref: '#/components/schemas/PaginatedResponseBase'
                 - type: object
+                  required:
+                  - items
                   properties:
                     items:
                       type: array
@@ -13373,7 +13728,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /get-crm-config:
     get:
-      description: 'Get the organization''s CRM configuration: which CRM app is linked, the custom contact fields defined for it, and how Post Call Extraction data is written back to contacts. Returns an
+      description: 'Get the organization''s CRM configuration: which CRM app is linked, the custom contact fields defined for it, and how post-call analysis data is written back to contacts. Returns an
         empty configuration when nothing has been set up yet.'
       operationId: getCrmConfig
       x-retell-sdk-resource: crm

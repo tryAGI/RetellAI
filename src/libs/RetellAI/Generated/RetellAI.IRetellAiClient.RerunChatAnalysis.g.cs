@@ -5,7 +5,7 @@ namespace RetellAI
     public partial interface IRetellAiClient
     {
         /// <summary>
-        /// Rerun Post Chat Extraction for a specific chat. This operation incurs charges.
+        /// Rerun post-chat analysis for a specific chat. This operation incurs charges.
         /// </summary>
         /// <param name="chatId">
         /// Example: chat_16b980523634a6dc504898cda492e939
@@ -18,7 +18,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Rerun Post Chat Extraction for a specific chat. This operation incurs charges.
+        /// Rerun post-chat analysis for a specific chat. This operation incurs charges.
         /// </summary>
         /// <param name="chatId">
         /// Example: chat_16b980523634a6dc504898cda492e939

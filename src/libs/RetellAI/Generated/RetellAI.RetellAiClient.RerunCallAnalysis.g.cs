@@ -42,7 +42,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// Rerun Post Call Extraction for a specific call. This operation incurs charges.
+        /// Rerun post-call analysis for a specific call. This operation incurs charges.
         /// </summary>
         /// <param name="callId">
         /// Example: call_119c3f8e47135a29e65947eeb34cf12d
@@ -64,7 +64,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// Rerun Post Call Extraction for a specific call. This operation incurs charges.
+        /// Rerun post-call analysis for a specific call. This operation incurs charges.
         /// </summary>
         /// <param name="callId">
         /// Example: call_119c3f8e47135a29e65947eeb34cf12d

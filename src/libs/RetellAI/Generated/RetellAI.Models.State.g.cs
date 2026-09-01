@@ -11,7 +11,7 @@ namespace RetellAI
     public sealed partial class State
     {
         /// <summary>
-        /// Name of the state, must be unique for each state. Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).<br/>
+        /// Name of the state, must be unique for each state. Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).<br/>
         /// Example: information_collection
         /// </summary>
         /// <example>information_collection</example>
@@ -55,7 +55,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="State" /> class.
         /// </summary>
         /// <param name="name">
-        /// Name of the state, must be unique for each state. Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).<br/>
+        /// Name of the state, must be unique for each state. Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).<br/>
         /// Example: information_collection
         /// </param>
         /// <param name="statePrompt">

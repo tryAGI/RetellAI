@@ -42,7 +42,7 @@ namespace RetellAI
         public string? TenantId { get; set; }
 
         /// <summary>
-        ///
+        /// Caller-managed credentials. Providers using the OAuth callback reject auth_config and must be authorized through connect-app.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("auth_config")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AuthConfigRequestJsonConverter))]
@@ -78,7 +78,9 @@ namespace RetellAI
         /// <param name="tenantId">
         /// Sub-account id, for providers that scope requests by a sub-account id on a shared host.
         /// </param>
-        /// <param name="authConfig"></param>
+        /// <param name="authConfig">
+        /// Caller-managed credentials. Providers using the OAuth callback reject auth_config and must be authorized through connect-app.
+        /// </param>
         /// <param name="crmConfig"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

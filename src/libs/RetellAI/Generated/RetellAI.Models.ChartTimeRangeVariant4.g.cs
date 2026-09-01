@@ -1,0 +1,55 @@
+
+#nullable enable
+
+namespace RetellAI
+{
+    /// <summary>
+    ///
+    /// </summary>
+    public sealed partial class ChartTimeRangeVariant4
+    {
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartTimeRangeVariant4TypeJsonConverter))]
+        public global::RetellAI.ChartTimeRangeVariant4Type Type { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("value")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::System.Collections.Generic.IList<int> Value { get; set; }
+
+        /// <summary>
+        /// Additional properties that are not explicitly defined in the schema
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonExtensionData]
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChartTimeRangeVariant4" /> class.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="type"></param>
+#if NET7_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
+#endif
+        public ChartTimeRangeVariant4(
+            global::System.Collections.Generic.IList<int> value,
+            global::RetellAI.ChartTimeRangeVariant4Type type)
+        {
+            this.Type = type;
+            this.Value = value ?? throw new global::System.ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ChartTimeRangeVariant4" /> class.
+        /// </summary>
+        public ChartTimeRangeVariant4()
+        {
+        }
+
+    }
+}

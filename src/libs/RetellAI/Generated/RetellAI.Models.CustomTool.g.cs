@@ -16,7 +16,7 @@ namespace RetellAI
         public global::RetellAI.CustomToolType Type { get; set; }
 
         /// <summary>
-        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -59,7 +59,7 @@ namespace RetellAI
         public global::System.Collections.Generic.Dictionary<string, string>? QueryParams { get; set; }
 
         /// <summary>
-        /// The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+        /// The parameters the function accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("parameters")]
         public global::RetellAI.ToolParameter? Parameters { get; set; }
@@ -138,7 +138,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="CustomTool" /> class.
         /// </summary>
         /// <param name="name">
-        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </param>
         /// <param name="url">
         /// Describes what the tool does, sometimes can also include information about when to call the tool.
@@ -159,7 +159,7 @@ namespace RetellAI
         /// Example: {"page":"1","sort":"asc"}
         /// </param>
         /// <param name="parameters">
-        /// The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
+        /// The parameters the function accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
         /// </param>
         /// <param name="responseVariables">
         /// A mapping of variable names to JSON paths in the response body. These values will be extracted from the response and made available as dynamic variables for use.<br/>

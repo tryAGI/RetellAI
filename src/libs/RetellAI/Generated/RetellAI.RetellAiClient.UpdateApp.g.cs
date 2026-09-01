@@ -44,7 +44,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config invalidates the cached provider token immediately.
+        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. Providers using the OAuth callback reject auth_config and must be reauthorized through connect-app.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="request"></param>
@@ -69,7 +69,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config invalidates the cached provider token immediately.
+        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. Providers using the OAuth callback reject auth_config and must be reauthorized through connect-app.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="request"></param>
@@ -626,7 +626,7 @@ namespace RetellAI
             }
         }
         /// <summary>
-        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config invalidates the cached provider token immediately.
+        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. Providers using the OAuth callback reject auth_config and must be reauthorized through connect-app.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="name"></param>
@@ -636,7 +636,9 @@ namespace RetellAI
         /// <param name="tenantId">
         /// Sub-account id, for providers that scope requests by a sub-account id on a shared host.
         /// </param>
-        /// <param name="authConfig"></param>
+        /// <param name="authConfig">
+        /// Caller-managed credentials. Providers using the OAuth callback reject auth_config and must be authorized through connect-app.
+        /// </param>
         /// <param name="crmConfig"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Custom analysis data that was extracted based on the schema defined in chat agent Post Chat Extraction data. Can be empty if nothing is specified.
+    /// Custom analysis data that was extracted based on the schema defined in chat agent post chat analysis data. Can be empty if nothing is specified.
     /// </summary>
     public sealed partial class ChatAnalysisCustomAnalysisData
     {

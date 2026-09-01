@@ -76,7 +76,7 @@ namespace RetellAI
         /// Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale array instead. If unset, defaults to `en-US`.
         /// </param>
         /// <param name="webhookUrl">
-        /// The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
+        /// The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will bind webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
         /// Example: https://webhook-url-here
         /// </param>
         /// <param name="webhookEvents">
@@ -103,7 +103,7 @@ namespace RetellAI
         /// Example: 86400000
         /// </param>
         /// <param name="postChatAnalysisData">
-        /// Post Chat Extraction data to extract from the chat. This data will augment the pre-defined variables extracted in the chat analysis. This will be available after the chat ends.
+        /// Post chat analysis data to extract from the chat. This data will augment the pre-defined variables extracted in the chat analysis. This will be available after the chat ends.
         /// </param>
         /// <param name="postChatAnalysisModel">
         /// Available LLM models for agents.

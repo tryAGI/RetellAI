@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class GlobalNodeFinetuneTransitionExample
     {
         /// <summary>
-        /// Find tune the transition condition to this global node
+        /// Fine tune the transition condition to this global node
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transcript")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -25,7 +25,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="GlobalNodeFinetuneTransitionExample" /> class.
         /// </summary>
         /// <param name="transcript">
-        /// Find tune the transition condition to this global node
+        /// Fine tune the transition condition to this global node
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

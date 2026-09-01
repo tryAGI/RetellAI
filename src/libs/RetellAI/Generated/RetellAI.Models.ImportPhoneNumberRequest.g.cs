@@ -26,7 +26,7 @@ namespace RetellAI
         public bool? IgnoreE164Validation { get; set; }
 
         /// <summary>
-        /// The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always end with ".pstn.twilio.com".<br/>
+        /// The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always ends with ".pstn.twilio.com".<br/>
         /// Example: someuri.pstn.twilio.com
         /// </summary>
         /// <example>someuri.pstn.twilio.com</example>
@@ -116,7 +116,7 @@ namespace RetellAI
         /// Example: +14157774444
         /// </param>
         /// <param name="terminationUri">
-        /// The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always end with ".pstn.twilio.com".<br/>
+        /// The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always ends with ".pstn.twilio.com".<br/>
         /// Example: someuri.pstn.twilio.com
         /// </param>
         /// <param name="ignoreE164Validation">

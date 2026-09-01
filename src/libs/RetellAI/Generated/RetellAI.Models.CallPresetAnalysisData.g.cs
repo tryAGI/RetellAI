@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// System preset for Post Call Extraction (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
+    /// System preset for post-call analysis (voice agents). Use in post_call_analysis_data to override prompts or mark fields optional.
     /// </summary>
     public sealed partial class CallPresetAnalysisData
     {

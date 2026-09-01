@@ -5,7 +5,7 @@ namespace RetellAI
     public partial interface IRetellAiClient
     {
         /// <summary>
-        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers that authenticate with a key, token, or refresh token can be connected in this one call by passing auth_config; the credential is stored encrypted and never returned. Up to 20 apps per provider.
+        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -17,7 +17,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers that authenticate with a key, token, or refresh token can be connected in this one call by passing auth_config; the credential is stored encrypted and never returned. Up to 20 apps per provider.
+        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -29,7 +29,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers that authenticate with a key, token, or refresh token can be connected in this one call by passing auth_config; the credential is stored encrypted and never returned. Up to 20 apps per provider.
+        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider.
         /// </summary>
         /// <param name="type">
         /// App integration category.
@@ -46,7 +46,9 @@ namespace RetellAI
         /// <param name="tenantId">
         /// Sub-account id, for providers that scope requests by a sub-account id on a shared host.
         /// </param>
-        /// <param name="authConfig"></param>
+        /// <param name="authConfig">
+        /// Caller-managed credentials. Providers using the OAuth callback reject auth_config and must be authorized through connect-app.
+        /// </param>
         /// <param name="crmConfig"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

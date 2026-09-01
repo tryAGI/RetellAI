@@ -16,7 +16,7 @@ namespace RetellAI
         public global::RetellAI.BridgeTransferToolType Type { get; set; }
 
         /// <summary>
-        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -57,7 +57,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="BridgeTransferTool" /> class.
         /// </summary>
         /// <param name="name">
-        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </param>
         /// <param name="type"></param>
         /// <param name="description">

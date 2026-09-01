@@ -16,7 +16,7 @@ namespace RetellAI
         public required string AgentId { get; set; }
 
         /// <summary>
-        /// Specific versions to filter on. If not provided, all versions are included.
+        /// Specific versions to filter on. If omitted or empty, all versions are included.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("version")]
         public global::System.Collections.Generic.IList<double>? Version { get; set; }
@@ -34,7 +34,7 @@ namespace RetellAI
         /// The agent ID to filter on.
         /// </param>
         /// <param name="version">
-        /// Specific versions to filter on. If not provided, all versions are included.
+        /// Specific versions to filter on. If omitted or empty, all versions are included.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
