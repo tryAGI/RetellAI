@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Range from `value[0]` through now. Deprecated in `target.chart`.
     /// </summary>
     public sealed partial class ChartTimeRangeVariant2
     {
@@ -16,11 +16,11 @@ namespace RetellAI
         public global::RetellAI.ChartTimeRangeVariant2Type Type { get; set; }
 
         /// <summary>
-        ///
+        /// One start timestamp in Unix milliseconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<int> Value { get; set; }
+        public required global::System.Collections.Generic.IList<long> Value { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -31,13 +31,15 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartTimeRangeVariant2" /> class.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">
+        /// One start timestamp in Unix milliseconds.
+        /// </param>
         /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChartTimeRangeVariant2(
-            global::System.Collections.Generic.IList<int> value,
+            global::System.Collections.Generic.IList<long> value,
             global::RetellAI.ChartTimeRangeVariant2Type type)
         {
             this.Type = type;

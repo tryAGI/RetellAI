@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-08-31-8036006
+  x-retell-spec-revision: 2026-09-02-eca52fe
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -799,7 +799,7 @@ components:
           minimum: 0
           maximum: 1
           example: 1
-          description: Controls how responsive the agent is. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond
+          description: Controls how responsive is the agent. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond
             when it can). If unset, default value 1 will apply.
         interruption_sensitivity:
           type: number
@@ -889,7 +889,7 @@ components:
         webhook_url:
           type: string
           example: https://webhook-url-here
-          description: The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will bind webhook events for this agent to the specified
+          description: The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified
             url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.
           nullable: true
         webhook_events:
@@ -1478,14 +1478,14 @@ components:
           - book_appointment_cal
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
-            and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
+            underscores and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does, sometimes can also include information about when to call the tool.
         cal_api_key:
           type: string
-          description: Cal.com Api key that has access to the cal.com event you want to book appointment.
+          description: Cal.com Api key that have access to the cal.com event you want to book appointment.
         event_type_id:
           oneOf:
           - type: number
@@ -1609,8 +1609,8 @@ components:
           - bridge_transfer
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
-            and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
+            underscores and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does. This tool is only available to transfer agents (agents with isTransferAgent set to true) in agentic warm transfer mode. When invoked, it bridges the
@@ -1642,7 +1642,7 @@ components:
         in_voicemail:
           type: boolean
           example: false
-          description: Whether the call entered voicemail.
+          description: Whether the call is entered voicemail.
         user_sentiment:
           type: string
           enum:
@@ -1846,8 +1846,8 @@ components:
           - cancel_transfer
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
-            and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
+            underscores and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does. This tool is only available to transfer agents (agents with isTransferAgent set to true) in agentic warm transfer mode. When invoked, it cancels the
@@ -1992,7 +1992,7 @@ components:
         webhook_url:
           type: string
           example: https://webhook-url-here
-          description: The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will bind webhook events for this agent to the specified
+          description: The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified
             url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.
           nullable: true
         webhook_events:
@@ -2306,14 +2306,14 @@ components:
           - check_availability_cal
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
-            and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
+            underscores and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does, sometimes can also include information about when to call the tool.
         cal_api_key:
           type: string
-          description: Cal.com Api key that has access to the cal.com event you want to check availability for.
+          description: Cal.com Api key that have access to the cal.com event you want to check availability for.
         event_type_id:
           oneOf:
           - type: number
@@ -3202,6 +3202,18 @@ components:
           nullable: true
           description: Hosted Stripe invoice URL when available.
           example: https://invoice.stripe.com/i/acct_123/invst_123
+    CreateCreditTopupInvoicePendingResponse:
+      type: object
+      required:
+      - payment_status
+      properties:
+        payment_status:
+          type: string
+          description: Returned instead of an invoice for organizations billed through Metronome. The top-up is submitted as a payment-gated commit; final outcome (credited or failed) arrives asynchronously
+            and is not reflected in this response.
+          enum:
+          - pending
+          example: pending
     OptInBillingV2Request:
       type: object
       required:
@@ -3280,7 +3292,7 @@ components:
           - custom
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores
             and dashes, with a maximum length of 64 (no space allowed).
         url:
           type: string
@@ -3380,7 +3392,7 @@ components:
           - code
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores
             and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
@@ -3779,12 +3791,12 @@ components:
           oneOf:
           - $ref: '#/components/schemas/NumberFilter'
           - $ref: '#/components/schemas/RangeFilter'
-          description: Filter by combined cost of the call.
+          description: Filter by total call cost in cents.
         e2e_latency_p50:
           oneOf:
           - $ref: '#/components/schemas/NumberFilter'
           - $ref: '#/components/schemas/RangeFilter'
-          description: Filter by end-to-end latency p50.
+          description: Filter by per-call p50 end-to-end latency in milliseconds.
         tool_calls:
           type: array
           items:
@@ -3794,22 +3806,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomFieldFilter'
-          description: Filter by custom analysis data fields.
+          description: 'Filter by custom post-call analysis outputs. Each filter `key` matches the configured output''s `name`.
+
+            '
         custom_attributes:
           type: array
           items:
             $ref: '#/components/schemas/CustomFieldFilter'
-          description: Filter by custom attributes fields.
+          description: 'Filter by organization-level attributes that attach business context to calls, such as customer tier or campaign, so calls can be organized and filtered consistently in Call History.
+            Use the attribute ID as `key` and the call''s attribute value as `value`.
+
+            '
         metadata:
           type: array
           items:
             $ref: '#/components/schemas/CustomFieldFilter'
-          description: Filter by metadata fields.
+          description: 'Filter by values stored in the call''s `metadata`. Each filter `key` matches a top-level metadata key.
+
+            '
         dynamic_variables:
           type: array
           items:
             $ref: '#/components/schemas/CustomFieldFilter'
-          description: Filter by dynamic variables.
+          description: 'Filter by dynamic variables stored on the call. Each filter `key` matches a dynamic-variable name.
+
+            '
     StoredCallFilter:
       allOf:
       - $ref: '#/components/schemas/CallFilter'
@@ -3819,11 +3840,8 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/AgentFilter'
-            description: The subset of `agent` that was selected as transfer agents. Stored and returned verbatim; it is NOT applied when querying — the dashboard merges its transfer-agent selection into
-              `agent`, which is what filtering resolves on. It exists only so that a saved filter, on being read back, can tell which entries of `agent` belong to the transfer-agent picker; without it they
-              all come back as regular agent selections.
-      description: A `CallFilter` as persisted on a dashboard or chart. The extra field records how the selection was made, not what to match. Definition-based chart queries use it while merging filters,
-        then query the combined `agent` field.
+            description: Agents in `agent` configured to handle agentic warm transfers. Stored separately only so the dashboard can show that subset as transfer agents. They are queried through `agent`,
+              not as a separate condition.
     ChatFilter:
       type: object
       description: Filter criteria for chats. All conditions are implicitly connected with AND.
@@ -3895,17 +3913,22 @@ components:
           oneOf:
           - $ref: '#/components/schemas/NumberFilter'
           - $ref: '#/components/schemas/RangeFilter'
-          description: Filter by combined cost of the chat.
+          description: Filter by total chat cost in cents.
         custom_analysis_data:
           type: array
           items:
             $ref: '#/components/schemas/CustomFieldFilter'
-          description: Filter by custom analysis data fields.
+          description: 'Filter by custom post-chat analysis outputs. Each filter `key` matches the configured output''s `name`.
+
+            '
         custom_attributes:
           type: array
           items:
             $ref: '#/components/schemas/CustomFieldFilter'
-          description: Filter by custom attributes fields.
+          description: 'Filter by organization-level attributes that attach business context to chats, such as customer tier or campaign, so chats can be organized and filtered consistently in Chat History.
+            Use the attribute ID as `key` and the chat''s attribute value as `value`.
+
+            '
     ContactFilter:
       type: object
       description: Filter criteria for contacts. All conditions are implicitly connected with AND. first_name and last_name are not filterable here; use search_query to match on those.
@@ -4069,8 +4092,8 @@ components:
           - end_call
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
-            and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
+            underscores and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does, sometimes can also include information about when to call the tool.
@@ -4199,7 +4222,7 @@ components:
           - extract_dynamic_variable
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores
             and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
@@ -4397,7 +4420,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FinetuneExampleUtterance'
-          description: Fine tune the transition condition to this global node
+          description: Find tune the transition condition to this global node
     GlobalNodeSetting:
       type: object
       required:
@@ -4552,7 +4575,7 @@ components:
           minimum: 600
           maximum: 6000
           example: 2000
-          description: Maximum number of characters per chunk when splitting knowledge base content. Default is 2000. Immutable after creation.
+          description: Maximum number of characters per chunk when splitting knowledge base. Default is 2000. content. Immutable after creation.
         min_chunk_size:
           type: integer
           minimum: 200
@@ -4920,7 +4943,7 @@ components:
           example:
             index: '1'
             key: value
-          description: Query parameters to append to the MCP connection request URL.
+          description: Query parameters to append to the  MCP connection request URL.
         timeout_ms:
           type: integer
           description: Maximum time to wait for a connection to be established (in milliseconds). Default to 120,000 ms (2 minutes).
@@ -5381,7 +5404,7 @@ components:
           type: string
           enum:
           - node_transition
-          description: This is the result of a node transition.
+          description: This is result of a node transition
         former_node_id:
           type: string
           description: Former node id
@@ -5984,8 +6007,8 @@ components:
           - press_digit
         name:
           type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must consist of a-z, A-Z, 0-9, or contain underscores
-            and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
+            underscores and dashes, with a maximum length of 64 (no space allowed).
         description:
           type: string
           description: Describes what the tool does, sometimes can also include information about when to call the tool.
@@ -6753,8 +6776,8 @@ components:
         parameters:
           $ref: '#/components/schemas/ToolParameter'
           description: Describes what parameters you want to extract out when the transition changes. The parameters extracted here can be referenced in prompts & function descriptions of later states via
-            dynamic variables. The parameters the function accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about
-            the format.
+            dynamic variables. The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation
+            about the format.
     StateTransitionMessageBase:
       type: object
       required:
@@ -6793,7 +6816,7 @@ components:
         name:
           example: information_collection
           type: string
-          description: Name of the state, must be unique for each state. Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+          description: Name of the state, must be unique for each state. Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         state_prompt:
           example: '## Task
 
@@ -7225,7 +7248,7 @@ components:
           description: Whether the tool call was successful.
     ToolParameter:
       type: object
-      description: The parameters the function accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
+      description: The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format.
         Omitting parameters defines a function with an empty parameter list.
       required:
       - type
@@ -7631,16 +7654,13 @@ components:
       type: object
       required:
       - percentage
-      - recipients
       properties:
         percentage:
           type: integer
           minimum: 1
-          maximum: 99
-        recipients:
-          type: array
-          items:
-            type: string
+          maximum: 100
+          description: Custom alert threshold (1-99). The automatic 80/100 thresholds are accepted and silently ignored so clients can submit the full displayed list.
+      additionalProperties: false
     UpdateSpendBudgetRequest:
       oneOf:
       - description: Disable spend budget.
@@ -7658,7 +7678,7 @@ components:
         required:
         - enabled
         - monthly_budget_cents
-        - custom_alerts
+        - alerts
         properties:
           enabled:
             type: boolean
@@ -7669,9 +7689,15 @@ components:
             minimum: 0
             exclusiveMinimum: true
             description: Monthly spend cap in cents (greater than 0).
-          custom_alerts:
+          recipients:
             type: array
-            maxItems: 5
+            items:
+              type: string
+            description: Shared recipient list for ALL budget alerts (auto 80/100 and custom). Empty or omitted falls back to the org's billing recipients.
+          alerts:
+            type: array
+            maxItems: 7
+            description: User-configured spend alerts (at most 5); automatic alerts are managed internally, and their 80/100 percentages are ignored if submitted (hence the max of 7 items).
             items:
               $ref: '#/components/schemas/SpendBudgetCustomAlertRequest'
         additionalProperties: false
@@ -7966,7 +7992,7 @@ components:
         knowledge_base_retrieved_contents_url:
           type: string
           example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/kb_retrieved_contents.txt
-          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the response id and the retrieved contents
+          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the respond id and the retrieved contents
             related to that response. It's already rendered in call history tab of dashboard, and you can also manually download and check against the transcript to view the knowledge base retrieval results.
         latency:
           type: object
@@ -7990,11 +8016,11 @@ components:
               description: Text-to-speech latency (from the triggering of TTS to first byte received) tracking of the call.
               $ref: '#/components/schemas/CallLatency'
             knowledge_base:
-              description: Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature
+              description: Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature
                 for the agent of the call.
               $ref: '#/components/schemas/CallLatency'
             s2s:
-              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that use S2S model like Realtime API.
+              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
               $ref: '#/components/schemas/CallLatency'
         disconnection_reason:
           $ref: '#/components/schemas/DisconnectionReason'
@@ -8059,30 +8085,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/V2WebCallResponse'
       - $ref: '#/components/schemas/V2PhoneCallResponse'
-    CallTransport:
-      type: string
-      enum:
-      - livekit
-      - gateway
-      description: Which media stack issued the access_token, and therefore where the client signals. The two tokens are indistinguishable, so a client must read this rather than infer it. `gateway` clients
-        address Retell itself; `livekit` clients connect to the returned `url`. Optional only because a server predating the field omits it during a rollout; treat absent as `livekit`.
-      example: gateway
-    IceServer:
-      type: object
-      required:
-      - urls
-      properties:
-        urls:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-          example: stun:stun.l.google.com:19302
-        username:
-          type: string
-        credential:
-          type: string
     V3CallResponse:
       oneOf:
       - $ref: '#/components/schemas/V3WebCallResponse'
@@ -8218,7 +8220,7 @@ components:
         knowledge_base_retrieved_contents_url:
           type: string
           example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/kb_retrieved_contents.txt
-          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the response id and the retrieved contents
+          description: URL to the knowledge base retrieved contents of the call. Available after call ends if the call utilizes knowledge base feature. It consists of the respond id and the retrieved contents
             related to that response. It's already rendered in call history tab of dashboard, and you can also manually download and check against the transcript to view the knowledge base retrieval results.
         latency:
           type: object
@@ -8242,11 +8244,11 @@ components:
               description: Text-to-speech latency (from the triggering of TTS to first byte received) tracking of the call.
               $ref: '#/components/schemas/CallLatency'
             knowledge_base:
-              description: Knowledge base latency (from the triggering of knowledge base retrieval to all relevant context received) tracking of the call. Only populated when using knowledge base feature
+              description: Knowledge base latency (from the triggering of knowledge base retrival to all relevant context received) tracking of the call. Only populated when using knowledge base feature
                 for the agent of the call.
               $ref: '#/components/schemas/CallLatency'
             s2s:
-              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that use S2S model like Realtime API.
+              description: Speech-to-speech latency (from requesting responses of a S2S model to first byte received) tracking of the call. Only populated for calls that uses S2S model like Realtime API.
               $ref: '#/components/schemas/CallLatency'
         disconnection_reason:
           $ref: '#/components/schemas/DisconnectionReason'
@@ -8363,17 +8365,6 @@ components:
             type: string
             example: eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9p
             description: Access token to enter the web call room. This needs to be passed to your frontend to join the call.
-          transport:
-            $ref: '#/components/schemas/CallTransport'
-          gateway_ip:
-            type: string
-            description: Public side of the gateway instance handling this call, for diagnostics only — the client's media address comes from the SDP answer's ICE candidates. `gateway` transport only.
-            example: 54.183.22.7
-          ice_servers:
-            type: array
-            items:
-              $ref: '#/components/schemas/IceServer'
-            description: ICE servers the client must configure before creating its PeerConnection — they cannot be added afterwards. `gateway` transport only.
       - $ref: '#/components/schemas/V3CallBase'
     V3ListCallsRequest:
       type: object
@@ -8465,17 +8456,6 @@ components:
             type: string
             example: eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9p
             description: Access token to enter the web call room. This needs to be passed to your frontend to join the call.
-          transport:
-            $ref: '#/components/schemas/CallTransport'
-          gateway_ip:
-            type: string
-            description: Public side of the gateway instance handling this call, for diagnostics only — the client's media address comes from the SDP answer's ICE candidates. `gateway` transport only.
-            example: 54.183.22.7
-          ice_servers:
-            type: array
-            items:
-              $ref: '#/components/schemas/IceServer'
-            description: ICE servers the client must configure before creating its PeerConnection — they cannot be added afterwards. `gateway` transport only.
       - $ref: '#/components/schemas/V2CallBase'
     VoiceResponse:
       type: object
@@ -9227,6 +9207,7 @@ components:
           - cron
     ChartGroupType:
       type: string
+      description: Optional chart-wide breakdown shared by every metric. Do not set `time`; time grouping is automatic for `line`, `bar`, and `column`. Use `group_criteria` to name a custom field.
       enum:
       - time
       - agent_id
@@ -9244,10 +9225,14 @@ components:
       - agent_version
     DashboardSource:
       type: string
+      description: 'Dataset queried: call records or chat records. Determines which metrics, groups, and filters are valid.
+
+        '
       enum:
       - call
       - chat
     ChartGroupItem:
+      description: Chart-wide breakdown shared by every metric.
       oneOf:
       - type: object
         required:
@@ -9255,6 +9240,8 @@ components:
         properties:
           type:
             type: string
+            description: Breakdown dimension. Call-only values include `batch_call_id`, `call_successful`, `call_status`, `direction`, and `call_type`; chat-only values are `chat_successful` and `chat_status`.
+              `agent_version` also separates results by `agent_id`. On donut charts, `direction` includes phone calls only. Do not set `time`; it is added automatically for `line`, `bar`, and `column`.
             enum:
             - time
             - agent_id
@@ -9275,19 +9262,28 @@ components:
         properties:
           type:
             type: string
+            description: '`custom_analysis_data` groups by an analysis output; `custom_attribute` groups by a custom attribute.
+
+              '
             enum:
             - custom_analysis_data
             - custom_attribute
           field:
             type: string
+            description: Exact custom field name.
     ChartShowItem:
       type: object
+      description: 'Metric to calculate. `source` selects a value, `measurement` chooses its aggregation, and `source.group` adds a chart-wide breakdown shared by every metric.
+
+        '
       required:
       - source
       - measurement
       oneOf:
       - title: KeywordSource
-        description: String/enum sources — count only.
+        description: '`call_id` counts calls; `chat_id` counts chats. For a disconnection reason breakdown, use `call_id` for calls or `chat_id` for chats and set `group: disconnection_reason`.
+
+          '
         required:
         - source
         - measurement
@@ -9299,6 +9295,7 @@ components:
             properties:
               type:
                 type: string
+                description: '`call_id` is call-only; `chat_id` is chat-only.'
                 enum:
                 - call_id
                 - disconnection_reason
@@ -9312,10 +9309,12 @@ components:
             properties:
               type:
                 type: string
+                description: Count matching records or non-null values.
                 enum:
                 - count
       - title: NumericSource
-        description: Numeric and boolean sources — all measurement types.
+        description: Built-in metric. `e2e_latency_p50`, `call_successful`, `call_picked_up`, `call_transferred`, and `in_voicemail` are call-only; `chat_successful` is chat-only; `duration_ms` and `combined_cost`
+          support both.
         required:
         - source
         - measurement
@@ -9327,6 +9326,7 @@ components:
             properties:
               type:
                 type: string
+                description: Duration and latency are milliseconds; `combined_cost` is cents. Averaging a boolean yields the fraction of populated values that are true, from 0 to 1.
                 enum:
                 - e2e_latency_p50
                 - duration_ms
@@ -9345,6 +9345,9 @@ components:
             properties:
               type:
                 type: string
+                description: '`count` counts non-null values; other options aggregate the values.
+
+                  '
                 enum:
                 - count
                 - sum
@@ -9354,7 +9357,7 @@ components:
                 - avg
                 - max
       - title: CustomFieldSource
-        description: Custom analysis / attribute sources — field is required.
+        description: Aggregate one custom analysis or custom attribute field.
         required:
         - source
         - measurement
@@ -9367,18 +9370,27 @@ components:
             properties:
               type:
                 type: string
+                description: '`custom_analysis_data` reads an analysis output; `custom_attribute` reads a custom attribute.
+
+                  '
                 enum:
                 - custom_analysis_data
                 - custom_attribute
               field:
                 type: string
+                description: Exact custom field name.
               cast:
                 type: string
+                description: 'Convert values before aggregation: `float` to numbers or `bool` to booleans. With `bool`, `avg` returns the fraction of converted values that are true. Omit for `count`.
+
+                  '
                 enum:
                 - float
                 - bool
               group:
-                $ref: '#/components/schemas/ChartGroupType'
+                description: Optional chart-wide breakdown. A custom group uses this source's `field`; use `group_criteria` to group by a different custom field.
+                allOf:
+                - $ref: '#/components/schemas/ChartGroupType'
           measurement:
             type: object
             required:
@@ -9386,6 +9398,9 @@ components:
             properties:
               type:
                 type: string
+                description: '`count` works for any value; other options require numeric or castable values.
+
+                  '
                 enum:
                 - count
                 - sum
@@ -9395,7 +9410,7 @@ components:
                 - avg
                 - max
       - title: ConcurrencySource
-        description: Call concurrency — max measurement only.
+        description: Maximum concurrent calls per time bucket; call-only. Use `line`, `bar`, or `column`. Record filters and categorical groups do not apply.
         required:
         - source
         - measurement
@@ -9407,10 +9422,13 @@ components:
             properties:
               type:
                 type: string
+                description: Number of calls active at the same time.
                 enum:
                 - call_concurrency
               group:
-                $ref: '#/components/schemas/ChartGroupType'
+                description: Do not set; concurrency supports time only.
+                allOf:
+                - $ref: '#/components/schemas/ChartGroupType'
           measurement:
             type: object
             required:
@@ -9418,10 +9436,12 @@ components:
             properties:
               type:
                 type: string
+                description: Maximum concurrency in each time bucket.
                 enum:
                 - max
       - title: CustomToolSource
-        description: Custom tool call metrics — avg measurement only.
+        description: Custom tool-call metrics; call-only. `custom_tool_latency` is the average of each call's recorded custom-tool latencies, then averaged across those calls, in milliseconds. `custom_tool_success_rate`
+          is successful invocations divided by all invocations.
         required:
         - source
         - measurement
@@ -9433,6 +9453,7 @@ components:
             properties:
               type:
                 type: string
+                description: Latency is milliseconds; success rate is a ratio from 0 to 1.
                 enum:
                 - custom_tool_latency
                 - custom_tool_success_rate
@@ -9445,11 +9466,14 @@ components:
             properties:
               type:
                 type: string
+                description: Required aggregation.
                 enum:
                 - avg
     ChartTimeRange:
+      description: Time range evaluated when data is fetched. `to_date` uses the request timezone. Numeric timestamps are Unix milliseconds.
       oneOf:
       - type: object
+        description: Rolling interval ending now.
         required:
         - type
         - window
@@ -9460,12 +9484,14 @@ components:
             - last
           window:
             type: object
+            description: Amount of time to look back.
             required:
             - unit
             - value
             properties:
               unit:
                 type: string
+                description: Lookback interval unit.
                 enum:
                 - day
                 - week
@@ -9473,8 +9499,10 @@ components:
                 - year
               value:
                 type: integer
+                description: Number of units to look back. Use a value greater than zero.
                 minimum: 0
       - type: object
+        description: Range from `value[0]` through now. Deprecated in `target.chart`.
         required:
         - type
         - value
@@ -9485,12 +9513,13 @@ components:
             - since
           value:
             type: array
+            description: One start timestamp in Unix milliseconds.
             items:
               type: integer
             minItems: 1
             maxItems: 1
       - type: object
-        description: The current day, week, month or year so far, resolved per request in the request's timezone. Weeks start Monday.
+        description: Current calendar period so far in the request timezone.
         required:
         - type
         - unit
@@ -9501,12 +9530,14 @@ components:
             - to_date
           unit:
             type: string
+            description: Calendar period; weeks start Monday.
             enum:
             - day
             - week
             - month
             - year
       - type: object
+        description: Explicit inclusive start/end interval.
         required:
         - type
         - value
@@ -9517,11 +9548,15 @@ components:
             - fixed
           value:
             type: array
+            description: '`[start_ms, end_ms]`; start must be earlier than end.
+
+              '
             items:
               type: integer
             minItems: 2
             maxItems: 2
       - type: object
+        description: All available records with no time filter.
         required:
         - type
         properties:
@@ -9531,15 +9566,20 @@ components:
             - all
     ChartConfig:
       type: object
+      description: Chart query and rendering settings. The call or chat dataset is supplied separately in `target.source`.
       required:
       - type
       properties:
         chart_id:
           type: string
+          description: Identifier of a chart stored in a dashboard. Omit from `target.chart`.
         title:
           type: string
+          description: Label shown above the chart.
         type:
           type: string
+          description: Visualization. Use `number` for aggregate values, `donut` for categorical distributions, `line` for trends, `column` for vertical bars, or `bar` for horizontal bars. `line`, `bar`,
+            and `column` automatically group by time; `number` ignores configured groups; `donut` rejects configured time groups. Concurrency always returns time buckets.
           enum:
           - bar
           - column
@@ -9547,35 +9587,37 @@ components:
           - line
           - number
         size:
+          description: Grid placement for a chart stored in a dashboard. Omit from `target.chart`.
           oneOf:
           - type: string
+            description: Older preset format. Use the grid object when placement is needed.
             enum:
             - small
             - medium
             - large
           - type: object
-            description: Grid placement and span for the chart in a 24-column layout.
+            description: Position and span in the dashboard's 24-column grid.
             properties:
               col:
                 type: integer
                 minimum: 1
                 maximum: 24
-                description: Starting column.
+                description: 1-based starting column.
               row:
                 type: integer
                 minimum: 1
                 maximum: 500
-                description: Starting row.
+                description: 1-based starting row.
               col_span:
                 type: integer
                 minimum: 1
                 maximum: 24
-                description: Number of columns the chart spans.
+                description: Grid columns occupied. The chart must not extend beyond column 24.
               row_span:
                 type: integer
                 minimum: 1
                 maximum: 6
-                description: Number of rows the chart spans.
+                description: Grid rows occupied.
             required:
             - col
             - row
@@ -9583,36 +9625,106 @@ components:
             - row_span
         show:
           type: array
+          description: Metrics to calculate, in output order. Provide at least one. Use multiple metrics only when they should share the same breakdowns.
           items:
             $ref: '#/components/schemas/ChartShowItem'
         group_criteria:
           type: array
-          description: User-selected additional breakdowns saved on the chart.
+          description: Chart-wide breakdowns shared by every metric. For a custom-field breakdown, provide the exact custom field name.
           items:
             $ref: '#/components/schemas/ChartGroupItem'
         filter_criteria:
           anyOf:
           - $ref: '#/components/schemas/StoredCallFilter'
           - $ref: '#/components/schemas/ChatFilter'
-          description: Filter criteria saved on the chart. Merged with the dashboard-level filter when fetching data.
+          description: Filters applied before metrics are calculated. Use fields supported by `target.source`. Records must match every populated filter field.
         time:
-          $ref: '#/components/schemas/ChartTimeRange'
+          description: Records included by time. When omitted from `target.chart`, the last week is used.
+          allOf:
+          - $ref: '#/components/schemas/ChartTimeRange'
         comparison:
           type: boolean
+          description: Also query the preceding comparison period. Requires `target.chart.time` with a type other than `all`.
         unit:
           type: string
+          description: Time-bucket size for `line`, `bar`, `column`, and concurrency charts. Defaults to `week` when the calculated range exceeds 30 whole days, `month` for all time, and `day` otherwise.
           enum:
           - hour
           - day
           - week
           - month
     ChartDefinition:
+      description: Chart configuration used in `target.chart`; `chart_id` must be omitted.
       allOf:
       - $ref: '#/components/schemas/ChartConfig'
       - type: object
         not:
           required:
           - chart_id
+    ChartConfigWithId:
+      allOf:
+      - $ref: '#/components/schemas/ChartConfig'
+      - type: object
+        required:
+        - chart_id
+    ChartsMap:
+      type: object
+      description: Map of chart_id to chart. Each entry's chart_id must equal its key. Sent in full on update, not merged per key.
+      additionalProperties:
+        $ref: '#/components/schemas/ChartConfigWithId'
+    ChartUpdate:
+      allOf:
+      - $ref: '#/components/schemas/ChartConfigWithId'
+      - type: object
+        required:
+        - size
+        properties:
+          size:
+            type: object
+            required:
+            - col
+            - row
+            - col_span
+            - row_span
+            properties:
+              col_span:
+                minimum: 2
+    ChartUpdatesMap:
+      type: object
+      description: Partial map of chart_id to chart, merged into the dashboard's stored charts. Each entry's chart_id must equal its key, a null value deletes that chart, and charts left out stay unchanged.
+      minProperties: 1
+      additionalProperties:
+        oneOf:
+        - $ref: '#/components/schemas/ChartUpdate'
+        - type: object
+          nullable: true
+          not:
+            type: object
+    DashboardUpdateRequest:
+      type: object
+      description: Partial dashboard update. Omitted fields remain unchanged.
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        charts_map:
+          $ref: '#/components/schemas/ChartsMap'
+        chart_updates:
+          allOf:
+          - $ref: '#/components/schemas/ChartUpdatesMap'
+          description: Per-chart updates merged into the stored charts, instead of the full replacement charts_map does. Each chart is written on its own key, so concurrent edits to different charts do
+            not conflict. Cannot be combined with charts_map.
+        filter_criteria:
+          anyOf:
+          - $ref: '#/components/schemas/StoredCallFilter'
+          - $ref: '#/components/schemas/ChatFilter'
+          description: Dashboard-level filter criteria applied to all charts.
+        group_criteria:
+          type: array
+          description: Dashboard-level group/breakdown criteria applied to all charts.
+          items:
+            $ref: '#/components/schemas/ChartGroupItem'
 security:
 - api_key: []
 paths:
@@ -11370,7 +11482,7 @@ paths:
         description: Optional version of the API to use for this request. Default to latest version.
       responses:
         '200':
-          description: Successfully retrieved a Retell LLM Response Engine.
+          description: Successfully retrieved an Retell LLM Response Engine.
           content:
             application/json:
               schema:
@@ -11601,7 +11713,7 @@ paths:
                 termination_uri:
                   type: string
                   example: someuri.pstn.twilio.com
-                  description: The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always ends with ".pstn.twilio.com".
+                  description: The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always end with ".pstn.twilio.com".
                 sip_trunk_auth_username:
                   type: string
                   example: username
@@ -12490,7 +12602,7 @@ paths:
               nickname: Frontdesk Number
       responses:
         '200':
-          description: Successfully updated a phone number object.
+          description: Successfully updated an phone number object.
           content:
             application/json:
               schema:
@@ -12532,7 +12644,7 @@ paths:
               begin_message: Hey I am a virtual assistant calling from Retell Hospital.
       responses:
         '200':
-          description: Successfully updated a Retell LLM Response Engine.
+          description: Successfully updated an Retell LLM Response Engine.
           content:
             application/json:
               schema:

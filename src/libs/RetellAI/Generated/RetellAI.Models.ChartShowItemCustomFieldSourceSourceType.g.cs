@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// `custom_analysis_data` reads an analysis output; `custom_attribute` reads a custom attribute.
     /// </summary>
     public enum ChartShowItemCustomFieldSourceSourceType
     {

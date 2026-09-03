@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ChartShowItemKeywordSourceMeasurement
     {
         /// <summary>
-        ///
+        /// Count matching records or non-null values.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartShowItemKeywordSourceMeasurementTypeJsonConverter))]
@@ -24,7 +24,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartShowItemKeywordSourceMeasurement" /> class.
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">
+        /// Count matching records or non-null values.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

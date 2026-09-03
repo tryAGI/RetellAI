@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ChartShowItemCustomFieldSourceMeasurement
     {
         /// <summary>
-        ///
+        /// `count` works for any value; other options require numeric or castable values.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartShowItemCustomFieldSourceMeasurementTypeJsonConverter))]
@@ -25,7 +25,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartShowItemCustomFieldSourceMeasurement" /> class.
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">
+        /// `count` works for any value; other options require numeric or castable values.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

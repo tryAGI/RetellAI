@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Metric to calculate. `source` selects a value, `measurement` chooses its aggregation, and `source.group` adds a chart-wide breakdown shared by every metric.
     /// </summary>
     public readonly partial struct ChartShowItem : global::System.IEquatable<ChartShowItem>
     {
         /// <summary>
-        /// String/enum sources — count only.
+        /// `call_id` counts calls; `chat_id` counts chats. For a disconnection reason breakdown, use `call_id` for calls or `chat_id` for chats and set `group: disconnection_reason`.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartShowItemKeywordSource? KeywordSource { get; init; }
@@ -47,7 +47,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'KeywordSource' but the value was {ToString()}.");
 
         /// <summary>
-        /// Numeric and boolean sources — all measurement types.
+        /// Built-in metric. `e2e_latency_p50`, `call_successful`, `call_picked_up`, `call_transferred`, and `in_voicemail` are call-only; `chat_successful` is chat-only; `duration_ms` and `combined_cost` support both.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartShowItemNumericSource? NumericSource { get; init; }
@@ -84,7 +84,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'NumericSource' but the value was {ToString()}.");
 
         /// <summary>
-        /// Custom analysis / attribute sources — field is required.
+        /// Aggregate one custom analysis or custom attribute field.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartShowItemCustomFieldSource? CustomFieldSource { get; init; }
@@ -121,7 +121,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomFieldSource' but the value was {ToString()}.");
 
         /// <summary>
-        /// Call concurrency — max measurement only.
+        /// Maximum concurrent calls per time bucket; call-only. Use `line`, `bar`, or `column`. Record filters and categorical groups do not apply.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartShowItemConcurrencySource? ConcurrencySource { get; init; }
@@ -158,7 +158,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConcurrencySource' but the value was {ToString()}.");
 
         /// <summary>
-        /// Custom tool call metrics — avg measurement only.
+        /// Custom tool-call metrics; call-only. `custom_tool_latency` is the average of each call's recorded custom-tool latencies, then averaged across those calls, in milliseconds. `custom_tool_success_rate` is successful invocations divided by all invocations.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartShowItemCustomToolSource? CustomToolSource { get; init; }

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Breakdown dimension. Call-only values include `batch_call_id`, `call_successful`, `call_status`, `direction`, and `call_type`; chat-only values are `chat_successful` and `chat_status`. `agent_version` also separates results by `agent_id`. On donut charts, `direction` includes phone calls only. Do not set `time`; it is added automatically for `line`, `bar`, and `column`.
     /// </summary>
     public enum ChartGroupItemVariant1Type
     {

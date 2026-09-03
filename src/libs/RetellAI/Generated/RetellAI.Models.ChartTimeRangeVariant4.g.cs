@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Explicit inclusive start/end interval.
     /// </summary>
     public sealed partial class ChartTimeRangeVariant4
     {
@@ -16,7 +16,7 @@ namespace RetellAI
         public global::RetellAI.ChartTimeRangeVariant4Type Type { get; set; }
 
         /// <summary>
-        ///
+        /// `[start_ms, end_ms]`; start must be earlier than end.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -31,7 +31,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartTimeRangeVariant4" /> class.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">
+        /// `[start_ms, end_ms]`; start must be earlier than end.
+        /// </param>
         /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

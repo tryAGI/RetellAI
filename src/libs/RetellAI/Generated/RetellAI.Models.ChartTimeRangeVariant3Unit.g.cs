@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Calendar period; weeks start Monday.
     /// </summary>
     public enum ChartTimeRangeVariant3Unit
     {

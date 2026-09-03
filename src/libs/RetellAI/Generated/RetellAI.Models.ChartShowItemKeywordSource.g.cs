@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// String/enum sources — count only.
+    /// `call_id` counts calls; `chat_id` counts chats. For a disconnection reason breakdown, use `call_id` for calls or `chat_id` for chats and set `group: disconnection_reason`.
     /// </summary>
     public sealed partial class ChartShowItemKeywordSource
     {

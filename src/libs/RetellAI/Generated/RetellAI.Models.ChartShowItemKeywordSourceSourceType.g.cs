@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// `call_id` is call-only; `chat_id` is chat-only.
     /// </summary>
     public enum ChartShowItemKeywordSourceSourceType
     {

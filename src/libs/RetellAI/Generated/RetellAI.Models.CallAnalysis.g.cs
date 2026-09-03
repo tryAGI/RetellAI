@@ -17,7 +17,7 @@ namespace RetellAI
         public string? CallSummary { get; set; }
 
         /// <summary>
-        /// Whether the call entered voicemail.<br/>
+        /// Whether the call is entered voicemail.<br/>
         /// Example: false
         /// </summary>
         /// <example>false</example>
@@ -61,7 +61,7 @@ namespace RetellAI
         /// Example: The agent called the user to ask question about his purchase inquiry. The agent asked several questions regarding his preference and asked if user would like to book an appointment. The user happily agreed and scheduled an appointment next Monday 10am.
         /// </param>
         /// <param name="inVoicemail">
-        /// Whether the call entered voicemail.<br/>
+        /// Whether the call is entered voicemail.<br/>
         /// Example: false
         /// </param>
         /// <param name="userSentiment">

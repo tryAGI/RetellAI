@@ -116,7 +116,7 @@ namespace RetellAI
         /// Example: Use [sigh] for thoughtful pauses and [excited] for good news.
         /// </param>
         /// <param name="responsiveness">
-        /// Controls how responsive the agent is. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond when it can). If unset, default value 1 will apply.<br/>
+        /// Controls how responsive is the agent. Value ranging from [0,1]. Lower value means less responsive agent (wait more, respond slower), while higher value means faster exchanges (respond when it can). If unset, default value 1 will apply.<br/>
         /// Example: 1
         /// </param>
         /// <param name="interruptionSensitivity">
@@ -161,7 +161,7 @@ namespace RetellAI
         /// Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale array instead. If unset, defaults to `en-US`.
         /// </param>
         /// <param name="webhookUrl">
-        /// The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will bind webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
+        /// The webhook for agent to listen to call events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
         /// Example: https://webhook-url-here
         /// </param>
         /// <param name="webhookEvents">

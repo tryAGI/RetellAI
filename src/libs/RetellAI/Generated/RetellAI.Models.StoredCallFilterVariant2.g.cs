@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class StoredCallFilterVariant2
     {
         /// <summary>
-        /// The subset of `agent` that was selected as transfer agents. Stored and returned verbatim; it is NOT applied when querying — the dashboard merges its transfer-agent selection into `agent`, which is what filtering resolves on. It exists only so that a saved filter, on being read back, can tell which entries of `agent` belong to the transfer-agent picker; without it they all come back as regular agent selections.
+        /// Agents in `agent` configured to handle agentic warm transfers. Stored separately only so the dashboard can show that subset as transfer agents. They are queried through `agent`, not as a separate condition.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transfer_agent")]
         public global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? TransferAgent { get; set; }
@@ -24,7 +24,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="StoredCallFilterVariant2" /> class.
         /// </summary>
         /// <param name="transferAgent">
-        /// The subset of `agent` that was selected as transfer agents. Stored and returned verbatim; it is NOT applied when querying — the dashboard merges its transfer-agent selection into `agent`, which is what filtering resolves on. It exists only so that a saved filter, on being read back, can tell which entries of `agent` belong to the transfer-agent picker; without it they all come back as regular agent selections.
+        /// Agents in `agent` configured to handle agentic warm transfers. Stored separately only so the dashboard can show that subset as transfer agents. They are queried through `agent`, not as a separate condition.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

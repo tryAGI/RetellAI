@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Rolling interval ending now.
     /// </summary>
     public sealed partial class ChartTimeRangeVariant1
     {
@@ -16,7 +16,7 @@ namespace RetellAI
         public global::RetellAI.ChartTimeRangeVariant1Type Type { get; set; }
 
         /// <summary>
-        ///
+        /// Amount of time to look back.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("window")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -31,7 +31,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartTimeRangeVariant1" /> class.
         /// </summary>
-        /// <param name="window"></param>
+        /// <param name="window">
+        /// Amount of time to look back.
+        /// </param>
         /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

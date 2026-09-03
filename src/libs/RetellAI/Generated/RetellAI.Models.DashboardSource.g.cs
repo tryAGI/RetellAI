@@ -4,16 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Dataset queried: call records or chat records. Determines which metrics, groups, and filters are valid.
     /// </summary>
     public enum DashboardSource
     {
         /// <summary>
-        ///
+        /// call records or chat records. Determines which metrics, groups, and filters are valid.
         /// </summary>
         Call,
         /// <summary>
-        ///
+        /// call records or chat records. Determines which metrics, groups, and filters are valid.
         /// </summary>
         Chat,
     }

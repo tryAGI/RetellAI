@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Numeric and boolean sources — all measurement types.
+    /// Built-in metric. `e2e_latency_p50`, `call_successful`, `call_picked_up`, `call_transferred`, and `in_voicemail` are call-only; `chat_successful` is chat-only; `duration_ms` and `combined_cost` support both.
     /// </summary>
     public sealed partial class ChartShowItemNumericSource
     {

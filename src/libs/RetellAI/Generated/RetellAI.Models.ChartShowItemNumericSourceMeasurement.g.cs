@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ChartShowItemNumericSourceMeasurement
     {
         /// <summary>
-        ///
+        /// `count` counts non-null values; other options aggregate the values.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartShowItemNumericSourceMeasurementTypeJsonConverter))]
@@ -25,7 +25,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartShowItemNumericSourceMeasurement" /> class.
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">
+        /// `count` counts non-null values; other options aggregate the values.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

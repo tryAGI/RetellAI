@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// The current day, week, month or year so far, resolved per request in the request's timezone. Weeks start Monday.
+    /// Current calendar period so far in the request timezone.
     /// </summary>
     public sealed partial class ChartTimeRangeVariant3
     {
@@ -16,7 +16,7 @@ namespace RetellAI
         public global::RetellAI.ChartTimeRangeVariant3Type Type { get; set; }
 
         /// <summary>
-        ///
+        /// Calendar period; weeks start Monday.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unit")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartTimeRangeVariant3UnitJsonConverter))]
@@ -32,7 +32,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartTimeRangeVariant3" /> class.
         /// </summary>
-        /// <param name="unit"></param>
+        /// <param name="unit">
+        /// Calendar period; weeks start Monday.
+        /// </param>
         /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

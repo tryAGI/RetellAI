@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// `count` counts non-null values; other options aggregate the values.
     /// </summary>
     public enum ChartShowItemNumericSourceMeasurementType
     {

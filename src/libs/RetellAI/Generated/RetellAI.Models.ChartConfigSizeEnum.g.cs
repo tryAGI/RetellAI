@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Older preset format. Use the grid object when placement is needed.
     /// </summary>
     public enum ChartConfigSizeEnum
     {

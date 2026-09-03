@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// `custom_analysis_data` groups by an analysis output; `custom_attribute` groups by a custom attribute.
     /// </summary>
     public enum ChartGroupItemVariant2Type
     {

@@ -4,16 +4,16 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Convert values before aggregation: `float` to numbers or `bool` to booleans. With `bool`, `avg` returns the fraction of converted values that are true. Omit for `count`.
     /// </summary>
     public enum ChartShowItemCustomFieldSourceSourceCast
     {
         /// <summary>
-        ///
+        /// `float` to numbers or `bool` to booleans. With `bool`, `avg` returns the fraction of converted values that are true. Omit for `count`.
         /// </summary>
         Bool,
         /// <summary>
-        ///
+        /// `float` to numbers or `bool` to booleans. With `bool`, `avg` returns the fraction of converted values that are true. Omit for `count`.
         /// </summary>
         Float,
     }

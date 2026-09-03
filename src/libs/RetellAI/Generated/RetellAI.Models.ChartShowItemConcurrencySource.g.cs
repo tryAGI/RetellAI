@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Call concurrency — max measurement only.
+    /// Maximum concurrent calls per time bucket; call-only. Use `line`, `bar`, or `column`. Record filters and categorical groups do not apply.
     /// </summary>
     public sealed partial class ChartShowItemConcurrencySource
     {

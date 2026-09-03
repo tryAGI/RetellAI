@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Custom analysis / attribute sources — field is required.
+    /// Aggregate one custom analysis or custom attribute field.
     /// </summary>
     public sealed partial class ChartShowItemCustomFieldSource
     {

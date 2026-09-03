@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Latency is milliseconds; success rate is a ratio from 0 to 1.
     /// </summary>
     public enum ChartShowItemCustomToolSourceSourceType
     {
