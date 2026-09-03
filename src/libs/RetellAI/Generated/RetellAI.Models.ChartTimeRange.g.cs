@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Time range evaluated when data is fetched. `to_date` uses the request timezone. Numeric timestamps are Unix milliseconds.
     /// </summary>
     public readonly partial struct ChartTimeRange : global::System.IEquatable<ChartTimeRange>
     {
         /// <summary>
-        ///
+        /// Rolling interval ending now.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartTimeRangeVariant1? ChartTimeRangeVariant1 { get; init; }
@@ -47,7 +47,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartTimeRangeVariant1' but the value was {ToString()}.");
 
         /// <summary>
-        ///
+        /// Range from `value[0]` through now. Deprecated in `target.chart`.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartTimeRangeVariant2? ChartTimeRangeVariant2 { get; init; }
@@ -84,7 +84,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartTimeRangeVariant2' but the value was {ToString()}.");
 
         /// <summary>
-        /// The current day, week, month or year so far, resolved per request in the request's timezone. Weeks start Monday.
+        /// Current calendar period so far in the request timezone.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartTimeRangeVariant3? ChartTimeRangeVariant3 { get; init; }
@@ -121,7 +121,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartTimeRangeVariant3' but the value was {ToString()}.");
 
         /// <summary>
-        ///
+        /// Explicit inclusive start/end interval.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartTimeRangeVariant4? ChartTimeRangeVariant4 { get; init; }
@@ -158,7 +158,7 @@ namespace RetellAI
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartTimeRangeVariant4' but the value was {ToString()}.");
 
         /// <summary>
-        ///
+        /// All available records with no time filter.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartTimeRangeVariant5? ChartTimeRangeVariant5 { get; init; }

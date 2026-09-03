@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Query parameters to append to the MCP connection request URL.<br/>
+    /// Query parameters to append to the  MCP connection request URL.<br/>
     /// Example: {"index":"1","key":"value"}
     /// </summary>
     public sealed partial class McpQueryParams

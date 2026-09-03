@@ -5,7 +5,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// A `CallFilter` as persisted on a dashboard or chart. The extra field records how the selection was made, not what to match. Definition-based chart queries use it while merging filters, then query the combined `agent` field.
+    ///
     /// </summary>
     public readonly partial struct StoredCallFilter : global::System.IEquatable<StoredCallFilter>
     {

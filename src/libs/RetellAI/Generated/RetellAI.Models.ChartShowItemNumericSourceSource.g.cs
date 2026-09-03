@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ChartShowItemNumericSourceSource
     {
         /// <summary>
-        ///
+        /// Duration and latency are milliseconds; `combined_cost` is cents. Averaging a boolean yields the fraction of populated values that are true, from 0 to 1.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartShowItemNumericSourceSourceTypeJsonConverter))]
@@ -17,7 +17,7 @@ namespace RetellAI
         public required global::RetellAI.ChartShowItemNumericSourceSourceType Type { get; set; }
 
         /// <summary>
-        ///
+        /// Optional chart-wide breakdown shared by every metric. Do not set `time`; time grouping is automatic for `line`, `bar`, and `column`. Use `group_criteria` to name a custom field.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartGroupTypeJsonConverter))]
@@ -32,8 +32,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartShowItemNumericSourceSource" /> class.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="group"></param>
+        /// <param name="type">
+        /// Duration and latency are milliseconds; `combined_cost` is cents. Averaging a boolean yields the fraction of populated values that are true, from 0 to 1.
+        /// </param>
+        /// <param name="group">
+        /// Optional chart-wide breakdown shared by every metric. Do not set `time`; time grouping is automatic for `line`, `bar`, and `column`. Use `group_criteria` to name a custom field.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

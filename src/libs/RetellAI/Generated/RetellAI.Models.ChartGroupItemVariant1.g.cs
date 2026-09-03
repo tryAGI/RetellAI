@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ChartGroupItemVariant1
     {
         /// <summary>
-        ///
+        /// Breakdown dimension. Call-only values include `batch_call_id`, `call_successful`, `call_status`, `direction`, and `call_type`; chat-only values are `chat_successful` and `chat_status`. `agent_version` also separates results by `agent_id`. On donut charts, `direction` includes phone calls only. Do not set `time`; it is added automatically for `line`, `bar`, and `column`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartGroupItemVariant1TypeJsonConverter))]
@@ -25,7 +25,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartGroupItemVariant1" /> class.
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">
+        /// Breakdown dimension. Call-only values include `batch_call_id`, `call_successful`, `call_status`, `direction`, and `call_type`; chat-only values are `chat_successful` and `chat_status`. `agent_version` also separates results by `agent_id`. On donut charts, `direction` includes phone calls only. Do not set `time`; it is added automatically for `line`, `bar`, and `column`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

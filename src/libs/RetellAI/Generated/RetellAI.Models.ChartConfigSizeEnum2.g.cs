@@ -4,33 +4,33 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Grid placement and span for the chart in a 24-column layout.
+    /// Position and span in the dashboard's 24-column grid.
     /// </summary>
     public sealed partial class ChartConfigSizeEnum2
     {
         /// <summary>
-        /// Starting column.
+        /// 1-based starting column.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("col")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int Col { get; set; }
 
         /// <summary>
-        /// Starting row.
+        /// 1-based starting row.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("row")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int Row { get; set; }
 
         /// <summary>
-        /// Number of columns the chart spans.
+        /// Grid columns occupied. The chart must not extend beyond column 24.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("col_span")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int ColSpan { get; set; }
 
         /// <summary>
-        /// Number of rows the chart spans.
+        /// Grid rows occupied.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("row_span")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -46,16 +46,16 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ChartConfigSizeEnum2" /> class.
         /// </summary>
         /// <param name="col">
-        /// Starting column.
+        /// 1-based starting column.
         /// </param>
         /// <param name="row">
-        /// Starting row.
+        /// 1-based starting row.
         /// </param>
         /// <param name="colSpan">
-        /// Number of columns the chart spans.
+        /// Grid columns occupied. The chart must not extend beyond column 24.
         /// </param>
         /// <param name="rowSpan">
-        /// Number of rows the chart spans.
+        /// Grid rows occupied.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

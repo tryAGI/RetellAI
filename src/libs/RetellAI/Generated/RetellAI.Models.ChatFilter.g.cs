@@ -77,20 +77,20 @@ namespace RetellAI
         public global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? DurationMs { get; set; }
 
         /// <summary>
-        /// Filter by combined cost of the chat.
+        /// Filter by total chat cost in cents.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("combined_cost")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>))]
         public global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? CombinedCost { get; set; }
 
         /// <summary>
-        /// Filter by custom analysis data fields.
+        /// Filter by custom post-chat analysis outputs. Each filter `key` matches the configured output's `name`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_analysis_data")]
         public global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? CustomAnalysisData { get; set; }
 
         /// <summary>
-        /// Filter by custom attributes fields.
+        /// Filter by organization-level attributes that attach business context to chats, such as customer tier or campaign, so chats can be organized and filtered consistently in Chat History. Use the attribute ID as `key` and the chat's attribute value as `value`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_attributes")]
         public global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? CustomAttributes { get; set; }
@@ -125,13 +125,13 @@ namespace RetellAI
         /// Filter by chat duration in milliseconds.
         /// </param>
         /// <param name="combinedCost">
-        /// Filter by combined cost of the chat.
+        /// Filter by total chat cost in cents.
         /// </param>
         /// <param name="customAnalysisData">
-        /// Filter by custom analysis data fields.
+        /// Filter by custom post-chat analysis outputs. Each filter `key` matches the configured output's `name`.
         /// </param>
         /// <param name="customAttributes">
-        /// Filter by custom attributes fields.
+        /// Filter by organization-level attributes that attach business context to chats, such as customer tier or campaign, so chats can be organized and filtered consistently in Chat History. Use the attribute ID as `key` and the chat's attribute value as `value`.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

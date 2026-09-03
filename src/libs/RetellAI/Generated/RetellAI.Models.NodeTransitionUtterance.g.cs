@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class NodeTransitionUtterance
     {
         /// <summary>
-        /// This is the result of a node transition.
+        /// This is result of a node transition
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("role")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NodeTransitionUtteranceRoleJsonConverter))]
@@ -72,7 +72,7 @@ namespace RetellAI
         /// New node name
         /// </param>
         /// <param name="role">
-        /// This is the result of a node transition.
+        /// This is result of a node transition
         /// </param>
         /// <param name="transitionType">
         /// How this node was reached. "global" means a global node transition, "global_go_back" means returning from a global node, "interrupt_go_back" means going back due to user interruption, and "normal" means a regular edge transition.

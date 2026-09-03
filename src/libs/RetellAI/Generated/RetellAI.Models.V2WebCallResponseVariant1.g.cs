@@ -27,29 +27,6 @@ namespace RetellAI
         public required string AccessToken { get; set; }
 
         /// <summary>
-        /// Which media stack issued the access_token, and therefore where the client signals. The two tokens are indistinguishable, so a client must read this rather than infer it. `gateway` clients address Retell itself; `livekit` clients connect to the returned `url`. Optional only because a server predating the field omits it during a rollout; treat absent as `livekit`.<br/>
-        /// Example: gateway
-        /// </summary>
-        /// <example>gateway</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("transport")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.CallTransportJsonConverter))]
-        public global::RetellAI.CallTransport? Transport { get; set; }
-
-        /// <summary>
-        /// Public side of the gateway instance handling this call, for diagnostics only — the client's media address comes from the SDP answer's ICE candidates. `gateway` transport only.<br/>
-        /// Example: 54.183.22.7
-        /// </summary>
-        /// <example>54.183.22.7</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("gateway_ip")]
-        public string? GatewayIp { get; set; }
-
-        /// <summary>
-        /// ICE servers the client must configure before creating its PeerConnection — they cannot be added afterwards. `gateway` transport only.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("ice_servers")]
-        public global::System.Collections.Generic.IList<global::RetellAI.IceServer>? IceServers { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -66,32 +43,15 @@ namespace RetellAI
         /// Type of the call. Used to distinguish between web call and phone call.<br/>
         /// Example: web_call
         /// </param>
-        /// <param name="transport">
-        /// Which media stack issued the access_token, and therefore where the client signals. The two tokens are indistinguishable, so a client must read this rather than infer it. `gateway` clients address Retell itself; `livekit` clients connect to the returned `url`. Optional only because a server predating the field omits it during a rollout; treat absent as `livekit`.<br/>
-        /// Example: gateway
-        /// </param>
-        /// <param name="gatewayIp">
-        /// Public side of the gateway instance handling this call, for diagnostics only — the client's media address comes from the SDP answer's ICE candidates. `gateway` transport only.<br/>
-        /// Example: 54.183.22.7
-        /// </param>
-        /// <param name="iceServers">
-        /// ICE servers the client must configure before creating its PeerConnection — they cannot be added afterwards. `gateway` transport only.
-        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public V2WebCallResponseVariant1(
             string accessToken,
-            global::RetellAI.V2WebCallResponseVariant1CallType callType,
-            global::RetellAI.CallTransport? transport,
-            string? gatewayIp,
-            global::System.Collections.Generic.IList<global::RetellAI.IceServer>? iceServers)
+            global::RetellAI.V2WebCallResponseVariant1CallType callType)
         {
             this.CallType = callType;
             this.AccessToken = accessToken ?? throw new global::System.ArgumentNullException(nameof(accessToken));
-            this.Transport = transport;
-            this.GatewayIp = gatewayIp;
-            this.IceServers = iceServers;
         }
 
         /// <summary>

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Time-bucket size for `line`, `bar`, `column`, and concurrency charts. Defaults to `week` when the calculated range exceeds 30 whole days, `month` for all time, and `day` otherwise.
     /// </summary>
     public enum ChartConfigUnit
     {

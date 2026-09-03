@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// All available records with no time filter.
     /// </summary>
     public sealed partial class ChartTimeRangeVariant5
     {

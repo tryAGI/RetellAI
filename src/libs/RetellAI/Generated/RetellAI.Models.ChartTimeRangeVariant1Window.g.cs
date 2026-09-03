@@ -4,12 +4,12 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Amount of time to look back.
     /// </summary>
     public sealed partial class ChartTimeRangeVariant1Window
     {
         /// <summary>
-        ///
+        /// Lookback interval unit.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("unit")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartTimeRangeVariant1WindowUnitJsonConverter))]
@@ -17,7 +17,7 @@ namespace RetellAI
         public required global::RetellAI.ChartTimeRangeVariant1WindowUnit Unit { get; set; }
 
         /// <summary>
-        ///
+        /// Number of units to look back. Use a value greater than zero.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("value")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,8 +32,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartTimeRangeVariant1Window" /> class.
         /// </summary>
-        /// <param name="unit"></param>
-        /// <param name="value"></param>
+        /// <param name="unit">
+        /// Lookback interval unit.
+        /// </param>
+        /// <param name="value">
+        /// Number of units to look back. Use a value greater than zero.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

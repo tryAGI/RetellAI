@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// `count` works for any value; other options require numeric or castable values.
     /// </summary>
     public enum ChartShowItemCustomFieldSourceMeasurementType
     {

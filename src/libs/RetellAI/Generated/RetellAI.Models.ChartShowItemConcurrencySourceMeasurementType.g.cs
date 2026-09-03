@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Maximum concurrency in each time bucket.
     /// </summary>
     public enum ChartShowItemConcurrencySourceMeasurementType
     {

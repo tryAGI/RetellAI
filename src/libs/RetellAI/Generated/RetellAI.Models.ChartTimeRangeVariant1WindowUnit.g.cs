@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Lookback interval unit.
     /// </summary>
     public enum ChartTimeRangeVariant1WindowUnit
     {

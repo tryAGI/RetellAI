@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Number of calls active at the same time.
     /// </summary>
     public enum ChartShowItemConcurrencySourceSourceType
     {

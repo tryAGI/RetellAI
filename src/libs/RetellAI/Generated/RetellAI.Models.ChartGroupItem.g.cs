@@ -5,7 +5,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Chart-wide breakdown shared by every metric.
     /// </summary>
     public readonly partial struct ChartGroupItem : global::System.IEquatable<ChartGroupItem>
     {

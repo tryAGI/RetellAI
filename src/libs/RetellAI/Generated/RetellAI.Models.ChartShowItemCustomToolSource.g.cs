@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Custom tool call metrics — avg measurement only.
+    /// Custom tool-call metrics; call-only. `custom_tool_latency` is the average of each call's recorded custom-tool latencies, then averaged across those calls, in milliseconds. `custom_tool_success_rate` is successful invocations divided by all invocations.
     /// </summary>
     public sealed partial class ChartShowItemCustomToolSource
     {

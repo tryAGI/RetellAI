@@ -16,7 +16,7 @@ namespace RetellAI
         public global::RetellAI.ExtractDynamicVariableToolType Type { get; set; }
 
         /// <summary>
-        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -52,7 +52,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ExtractDynamicVariableTool" /> class.
         /// </summary>
         /// <param name="name">
-        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must consist of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
+        /// Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state edges). Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </param>
         /// <param name="description">
         /// Describes what the tool does, sometimes can also include information about when to call the tool.

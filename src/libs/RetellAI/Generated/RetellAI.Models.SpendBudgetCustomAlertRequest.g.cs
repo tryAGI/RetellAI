@@ -9,18 +9,11 @@ namespace RetellAI
     public sealed partial class SpendBudgetCustomAlertRequest
     {
         /// <summary>
-        ///
+        /// Custom alert threshold (1-99). The automatic 80/100 thresholds are accepted and silently ignored so clients can submit the full displayed list.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("percentage")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required int Percentage { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("recipients")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<string> Recipients { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -31,17 +24,16 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="SpendBudgetCustomAlertRequest" /> class.
         /// </summary>
-        /// <param name="percentage"></param>
-        /// <param name="recipients"></param>
+        /// <param name="percentage">
+        /// Custom alert threshold (1-99). The automatic 80/100 thresholds are accepted and silently ignored so clients can submit the full displayed list.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public SpendBudgetCustomAlertRequest(
-            int percentage,
-            global::System.Collections.Generic.IList<string> recipients)
+            int percentage)
         {
             this.Percentage = percentage;
-            this.Recipients = recipients ?? throw new global::System.ArgumentNullException(nameof(recipients));
         }
 
         /// <summary>

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Duration and latency are milliseconds; `combined_cost` is cents. Averaging a boolean yields the fraction of populated values that are true, from 0 to 1.
     /// </summary>
     public enum ChartShowItemNumericSourceSourceType
     {

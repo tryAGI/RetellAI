@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Chart configuration used in `target.chart`; `chart_id` must be omitted.
     /// </summary>
     public readonly partial struct ChartDefinition : global::System.IEquatable<ChartDefinition>
     {
         /// <summary>
-        ///
+        /// Chart query and rendering settings. The call or chat dataset is supplied separately in `target.source`.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.ChartConfig? Config { get; init; }

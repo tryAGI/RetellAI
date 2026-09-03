@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Count matching records or non-null values.
     /// </summary>
     public enum ChartShowItemKeywordSourceMeasurementType
     {

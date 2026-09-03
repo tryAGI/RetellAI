@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ChartGroupItemVariant2
     {
         /// <summary>
-        ///
+        /// `custom_analysis_data` groups by an analysis output; `custom_attribute` groups by a custom attribute.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartGroupItemVariant2TypeJsonConverter))]
@@ -17,7 +17,7 @@ namespace RetellAI
         public required global::RetellAI.ChartGroupItemVariant2Type Type { get; set; }
 
         /// <summary>
-        ///
+        /// Exact custom field name.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("field")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -32,8 +32,12 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartGroupItemVariant2" /> class.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="field"></param>
+        /// <param name="type">
+        /// `custom_analysis_data` groups by an analysis output; `custom_attribute` groups by a custom attribute.
+        /// </param>
+        /// <param name="field">
+        /// Exact custom field name.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

@@ -122,14 +122,14 @@ namespace RetellAI
         public global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? DurationMs { get; set; }
 
         /// <summary>
-        /// Filter by combined cost of the call.
+        /// Filter by total call cost in cents.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("combined_cost")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>))]
         public global::RetellAI.OneOf<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>? CombinedCost { get; set; }
 
         /// <summary>
-        /// Filter by end-to-end latency p50.
+        /// Filter by per-call p50 end-to-end latency in milliseconds.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("e2e_latency_p50")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.NumberFilter, global::RetellAI.RangeFilter>))]
@@ -142,25 +142,25 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.ToolCallFilter>? ToolCalls { get; set; }
 
         /// <summary>
-        /// Filter by custom analysis data fields.
+        /// Filter by custom post-call analysis outputs. Each filter `key` matches the configured output's `name`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_analysis_data")]
         public global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? CustomAnalysisData { get; set; }
 
         /// <summary>
-        /// Filter by custom attributes fields.
+        /// Filter by organization-level attributes that attach business context to calls, such as customer tier or campaign, so calls can be organized and filtered consistently in Call History. Use the attribute ID as `key` and the call's attribute value as `value`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_attributes")]
         public global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? CustomAttributes { get; set; }
 
         /// <summary>
-        /// Filter by metadata fields.
+        /// Filter by values stored in the call's `metadata`. Each filter `key` matches a top-level metadata key.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
         public global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? Metadata { get; set; }
 
         /// <summary>
-        /// Filter by dynamic variables.
+        /// Filter by dynamic variables stored on the call. Each filter `key` matches a dynamic-variable name.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dynamic_variables")]
         public global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? DynamicVariables { get; set; }
@@ -202,25 +202,25 @@ namespace RetellAI
         /// Filter by call duration in milliseconds.
         /// </param>
         /// <param name="combinedCost">
-        /// Filter by combined cost of the call.
+        /// Filter by total call cost in cents.
         /// </param>
         /// <param name="e2eLatencyP50">
-        /// Filter by end-to-end latency p50.
+        /// Filter by per-call p50 end-to-end latency in milliseconds.
         /// </param>
         /// <param name="toolCalls">
         /// Filter by tool call criteria. Tool call filters are connected by AND.
         /// </param>
         /// <param name="customAnalysisData">
-        /// Filter by custom analysis data fields.
+        /// Filter by custom post-call analysis outputs. Each filter `key` matches the configured output's `name`.
         /// </param>
         /// <param name="customAttributes">
-        /// Filter by custom attributes fields.
+        /// Filter by organization-level attributes that attach business context to calls, such as customer tier or campaign, so calls can be organized and filtered consistently in Call History. Use the attribute ID as `key` and the call's attribute value as `value`.
         /// </param>
         /// <param name="metadata">
-        /// Filter by metadata fields.
+        /// Filter by values stored in the call's `metadata`. Each filter `key` matches a top-level metadata key.
         /// </param>
         /// <param name="dynamicVariables">
-        /// Filter by dynamic variables.
+        /// Filter by dynamic variables stored on the call. Each filter `key` matches a dynamic-variable name.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

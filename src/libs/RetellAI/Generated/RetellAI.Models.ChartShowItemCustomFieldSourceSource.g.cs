@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ChartShowItemCustomFieldSourceSource
     {
         /// <summary>
-        ///
+        /// `custom_analysis_data` reads an analysis output; `custom_attribute` reads a custom attribute.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartShowItemCustomFieldSourceSourceTypeJsonConverter))]
@@ -17,21 +17,21 @@ namespace RetellAI
         public required global::RetellAI.ChartShowItemCustomFieldSourceSourceType Type { get; set; }
 
         /// <summary>
-        ///
+        /// Exact custom field name.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("field")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Field { get; set; }
 
         /// <summary>
-        ///
+        /// Convert values before aggregation: `float` to numbers or `bool` to booleans. With `bool`, `avg` returns the fraction of converted values that are true. Omit for `count`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("cast")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartShowItemCustomFieldSourceSourceCastJsonConverter))]
         public global::RetellAI.ChartShowItemCustomFieldSourceSourceCast? Cast { get; set; }
 
         /// <summary>
-        ///
+        /// Optional chart-wide breakdown. A custom group uses this source's `field`; use `group_criteria` to group by a different custom field.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("group")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartGroupTypeJsonConverter))]
@@ -46,10 +46,18 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartShowItemCustomFieldSourceSource" /> class.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="field"></param>
-        /// <param name="cast"></param>
-        /// <param name="group"></param>
+        /// <param name="type">
+        /// `custom_analysis_data` reads an analysis output; `custom_attribute` reads a custom attribute.
+        /// </param>
+        /// <param name="field">
+        /// Exact custom field name.
+        /// </param>
+        /// <param name="cast">
+        /// Convert values before aggregation: `float` to numbers or `bool` to booleans. With `bool`, `avg` returns the fraction of converted values that are true. Omit for `count`.
+        /// </param>
+        /// <param name="group">
+        /// Optional chart-wide breakdown. A custom group uses this source's `field`; use `group_criteria` to group by a different custom field.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

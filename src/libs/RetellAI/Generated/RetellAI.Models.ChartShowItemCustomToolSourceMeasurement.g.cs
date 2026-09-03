@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ChartShowItemCustomToolSourceMeasurement
     {
         /// <summary>
-        ///
+        /// Required aggregation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartShowItemCustomToolSourceMeasurementTypeJsonConverter))]
@@ -24,7 +24,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChartShowItemCustomToolSourceMeasurement" /> class.
         /// </summary>
-        /// <param name="type"></param>
+        /// <param name="type">
+        /// Required aggregation.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif

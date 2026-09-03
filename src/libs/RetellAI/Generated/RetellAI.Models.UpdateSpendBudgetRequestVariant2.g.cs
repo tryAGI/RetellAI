@@ -23,11 +23,17 @@ namespace RetellAI
         public required int MonthlyBudgetCents { get; set; }
 
         /// <summary>
-        ///
+        /// Shared recipient list for ALL budget alerts (auto 80/100 and custom). Empty or omitted falls back to the org's billing recipients.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("custom_alerts")]
+        [global::System.Text.Json.Serialization.JsonPropertyName("recipients")]
+        public global::System.Collections.Generic.IList<string>? Recipients { get; set; }
+
+        /// <summary>
+        /// User-configured spend alerts (at most 5); automatic alerts are managed internally, and their 80/100 percentages are ignored if submitted (hence the max of 7 items).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("alerts")]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required global::System.Collections.Generic.IList<global::RetellAI.SpendBudgetCustomAlertRequest> CustomAlerts { get; set; }
+        public required global::System.Collections.Generic.IList<global::RetellAI.SpendBudgetCustomAlertRequest> Alerts { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -42,18 +48,25 @@ namespace RetellAI
         /// <param name="monthlyBudgetCents">
         /// Monthly spend cap in cents (greater than 0).
         /// </param>
-        /// <param name="customAlerts"></param>
+        /// <param name="alerts">
+        /// User-configured spend alerts (at most 5); automatic alerts are managed internally, and their 80/100 percentages are ignored if submitted (hence the max of 7 items).
+        /// </param>
+        /// <param name="recipients">
+        /// Shared recipient list for ALL budget alerts (auto 80/100 and custom). Empty or omitted falls back to the org's billing recipients.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateSpendBudgetRequestVariant2(
             bool enabled,
             int monthlyBudgetCents,
-            global::System.Collections.Generic.IList<global::RetellAI.SpendBudgetCustomAlertRequest> customAlerts)
+            global::System.Collections.Generic.IList<global::RetellAI.SpendBudgetCustomAlertRequest> alerts,
+            global::System.Collections.Generic.IList<string>? recipients)
         {
             this.Enabled = enabled;
             this.MonthlyBudgetCents = monthlyBudgetCents;
-            this.CustomAlerts = customAlerts ?? throw new global::System.ArgumentNullException(nameof(customAlerts));
+            this.Recipients = recipients;
+            this.Alerts = alerts ?? throw new global::System.ArgumentNullException(nameof(alerts));
         }
 
         /// <summary>
