@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-09-02-eca52fe
+  x-retell-spec-revision: 2026-09-07-f975449
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -2143,6 +2143,11 @@ components:
           example: 1
           description: The version of the agent
           nullable: true
+        agent_tag:
+          type: string
+          example: prod
+          nullable: true
+          description: Tag pointing at the agent version used for this chat
         retell_llm_dynamic_variables:
           type: object
           additionalProperties:
@@ -8085,10 +8090,58 @@ components:
       oneOf:
       - $ref: '#/components/schemas/V2WebCallResponse'
       - $ref: '#/components/schemas/V2PhoneCallResponse'
+    IceServer:
+      type: object
+      required:
+      - urls
+      properties:
+        urls:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          example: stun:stun.l.google.com:19302
+        username:
+          type: string
+        credential:
+          type: string
     V3CallResponse:
       oneOf:
       - $ref: '#/components/schemas/V3WebCallResponse'
       - $ref: '#/components/schemas/V3PhoneCallResponse'
+    V3CreateWebCallResponse:
+      type: object
+      required:
+      - call_id
+      - access_token
+      - transport
+      - ice_servers
+      - expires_at
+      properties:
+        call_id:
+          type: string
+          example: call_Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
+          description: Unique identifier for the web call.
+        access_token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiJ9.eyJ2aWRlbyI6eyJyb29tSm9p
+          description: Token authorizing this browser to join the web call. Pass it to your frontend.
+        transport:
+          type: string
+          enum:
+          - gateway
+          description: Connection transport to select in the web client.
+        ice_servers:
+          type: array
+          items:
+            $ref: '#/components/schemas/IceServer'
+          description: ICE servers to configure before the browser creates its peer connection.
+        expires_at:
+          type: integer
+          format: int64
+          example: 1735689600000
+          description: Unix epoch ms when the access_token expires.
     V3CallBase:
       type: object
       required:
@@ -12790,6 +12843,72 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/V2WebCallResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '402':
+          $ref: '#/components/responses/PaymentRequired'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v3/create-web-call:
+    post:
+      description: Create a new web call and return browser connection details.
+      operationId: createWebCallV3
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - agent_id
+              properties:
+                agent_id:
+                  type: string
+                  minLength: 1
+                  example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
+                  description: Unique id of agent used for the call. Your agent would contain the LLM Websocket url used for this call.
+                agent_version:
+                  $ref: '#/components/schemas/AgentVersionReference'
+                  description: The version of the agent to use for the call.
+                agent_override:
+                  $ref: '#/components/schemas/AgentOverrideRequest'
+                  description: For this particular call, override agent configuration with these settings. This allows you to customize agent behavior for individual calls without modifying the base agent.
+                metadata:
+                  type: object
+                  description: An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the call. Not used for processing. You can later get
+                    this field from the call object.
+                retell_llm_dynamic_variables:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  example:
+                    customer_name: John Doe
+                  description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
+                current_node_id:
+                  type: string
+                  example: collect_info
+                  description: Start the call at this conversation flow node (stage). Must be a valid node id in the agent's conversation flow. Only applicable when the agent uses conversation flow as the
+                    response engine. Ignored for retell-llm agents.
+                  nullable: true
+                current_state:
+                  type: string
+                  example: information_collection
+                  description: Start the conversation in this state (stage). Must be a valid state name in the agent's Retell LLM. Only applicable when the agent uses Retell LLM with states. Ignored for
+                    conversation-flow agents.
+                  nullable: true
+      responses:
+        '201':
+          description: Successfully created a web call.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/V3CreateWebCallResponse'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
