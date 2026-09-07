@@ -35,6 +35,14 @@ namespace RetellAI
         public int? Version { get; set; }
 
         /// <summary>
+        /// Tag pointing at the agent version used for this chat<br/>
+        /// Example: prod
+        /// </summary>
+        /// <example>prod</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent_tag")]
+        public string? AgentTag { get; set; }
+
+        /// <summary>
         /// Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.<br/>
         /// Example: {"customer_name":"John Doe"}
         /// </summary>
@@ -168,6 +176,10 @@ namespace RetellAI
         /// The version of the agent<br/>
         /// Example: 1
         /// </param>
+        /// <param name="agentTag">
+        /// Tag pointing at the agent version used for this chat<br/>
+        /// Example: prod
+        /// </param>
         /// <param name="retellLlmDynamicVariables">
         /// Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.<br/>
         /// Example: {"customer_name":"John Doe"}
@@ -217,6 +229,7 @@ namespace RetellAI
             string agentId,
             global::RetellAI.ChatResponseChatStatus chatStatus,
             int? version,
+            string? agentTag,
             global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
             global::System.Collections.Generic.Dictionary<string, string>? collectedDynamicVariables,
             global::RetellAI.ChatResponseChatType? chatType,
@@ -232,6 +245,7 @@ namespace RetellAI
             this.ChatId = chatId ?? throw new global::System.ArgumentNullException(nameof(chatId));
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.Version = version;
+            this.AgentTag = agentTag;
             this.RetellLlmDynamicVariables = retellLlmDynamicVariables;
             this.CollectedDynamicVariables = collectedDynamicVariables;
             this.ChatStatus = chatStatus;
