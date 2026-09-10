@@ -4,9 +4,9 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Position and span in the dashboard's 24-column grid.
+    /// Position and span in the dashboard's 24-column grid. Omit from `target.chart`.
     /// </summary>
-    public sealed partial class ChartConfigSizeEnum2
+    public sealed partial class ChartConfigSize
     {
         /// <summary>
         /// 1-based starting column.
@@ -43,7 +43,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChartConfigSizeEnum2" /> class.
+        /// Initializes a new instance of the <see cref="ChartConfigSize" /> class.
         /// </summary>
         /// <param name="col">
         /// 1-based starting column.
@@ -60,7 +60,7 @@ namespace RetellAI
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public ChartConfigSizeEnum2(
+        public ChartConfigSize(
             int col,
             int row,
             int colSpan,
@@ -73,9 +73,9 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChartConfigSizeEnum2" /> class.
+        /// Initializes a new instance of the <see cref="ChartConfigSize" /> class.
         /// </summary>
-        public ChartConfigSizeEnum2()
+        public ChartConfigSize()
         {
         }
 

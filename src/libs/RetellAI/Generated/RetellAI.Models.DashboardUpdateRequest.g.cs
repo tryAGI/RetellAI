@@ -15,13 +15,7 @@ namespace RetellAI
         public string? Name { get; set; }
 
         /// <summary>
-        /// Map of chart_id to chart. Each entry's chart_id must equal its key. Sent in full on update, not merged per key.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("charts_map")]
-        public global::RetellAI.ChartsMap? ChartsMap { get; set; }
-
-        /// <summary>
-        /// Per-chart updates merged into the stored charts, instead of the full replacement charts_map does. Each chart is written on its own key, so concurrent edits to different charts do not conflict. Cannot be combined with charts_map.
+        /// Per-chart updates merged into the stored charts. Each chart is written on its own key, so concurrent edits to different charts do not conflict.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chart_updates")]
         public global::RetellAI.ChartUpdatesMap? ChartUpdates { get; set; }
@@ -49,11 +43,8 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="DashboardUpdateRequest" /> class.
         /// </summary>
         /// <param name="name"></param>
-        /// <param name="chartsMap">
-        /// Map of chart_id to chart. Each entry's chart_id must equal its key. Sent in full on update, not merged per key.
-        /// </param>
         /// <param name="chartUpdates">
-        /// Per-chart updates merged into the stored charts, instead of the full replacement charts_map does. Each chart is written on its own key, so concurrent edits to different charts do not conflict. Cannot be combined with charts_map.
+        /// Per-chart updates merged into the stored charts. Each chart is written on its own key, so concurrent edits to different charts do not conflict.
         /// </param>
         /// <param name="filterCriteria">
         /// Dashboard-level filter criteria applied to all charts.
@@ -66,13 +57,11 @@ namespace RetellAI
 #endif
         public DashboardUpdateRequest(
             string? name,
-            global::RetellAI.ChartsMap? chartsMap,
             global::RetellAI.ChartUpdatesMap? chartUpdates,
             global::RetellAI.AnyOf<global::RetellAI.StoredCallFilter?, global::RetellAI.ChatFilter>? filterCriteria,
             global::System.Collections.Generic.IList<global::RetellAI.ChartGroupItem>? groupCriteria)
         {
             this.Name = name;
-            this.ChartsMap = chartsMap;
             this.ChartUpdates = chartUpdates;
             this.FilterCriteria = filterCriteria;
             this.GroupCriteria = groupCriteria;

@@ -29,11 +29,10 @@ namespace RetellAI
         public required global::RetellAI.ChartConfigType Type { get; set; }
 
         /// <summary>
-        /// Grid placement for a chart stored in a dashboard. Omit from `target.chart`.
+        /// Position and span in the dashboard's 24-column grid. Omit from `target.chart`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("size")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.ChartConfigSizeEnum?, global::RetellAI.ChartConfigSizeEnum2>))]
-        public global::RetellAI.OneOf<global::RetellAI.ChartConfigSizeEnum?, global::RetellAI.ChartConfigSizeEnum2>? Size { get; set; }
+        public global::RetellAI.ChartConfigSize? Size { get; set; }
 
         /// <summary>
         /// Metrics to calculate, in output order. Provide at least one. Use multiple metrics only when they should share the same breakdowns.
@@ -93,7 +92,7 @@ namespace RetellAI
         /// Label shown above the chart.
         /// </param>
         /// <param name="size">
-        /// Grid placement for a chart stored in a dashboard. Omit from `target.chart`.
+        /// Position and span in the dashboard's 24-column grid. Omit from `target.chart`.
         /// </param>
         /// <param name="show">
         /// Metrics to calculate, in output order. Provide at least one. Use multiple metrics only when they should share the same breakdowns.
@@ -120,7 +119,7 @@ namespace RetellAI
             global::RetellAI.ChartConfigType type,
             string? chartId,
             string? title,
-            global::RetellAI.OneOf<global::RetellAI.ChartConfigSizeEnum?, global::RetellAI.ChartConfigSizeEnum2>? size,
+            global::RetellAI.ChartConfigSize? size,
             global::System.Collections.Generic.IList<global::RetellAI.ChartShowItem>? show,
             global::System.Collections.Generic.IList<global::RetellAI.ChartGroupItem>? groupCriteria,
             global::RetellAI.AnyOf<global::RetellAI.StoredCallFilter?, global::RetellAI.ChatFilter>? filterCriteria,

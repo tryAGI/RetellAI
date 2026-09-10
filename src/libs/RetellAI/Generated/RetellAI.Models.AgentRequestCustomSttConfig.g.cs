@@ -17,7 +17,7 @@ namespace RetellAI
         public required global::RetellAI.AsrProvider Provider { get; set; }
 
         /// <summary>
-        /// Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI.
+        /// Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI. For AssemblyAI, this sets min_turn_silence (100-3000 ms). max_turn_silence adds half of this value, rounded to the nearest millisecond and bounded to 500-1000 ms, with a total cap of 3000 ms.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("endpointing_ms")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -36,7 +36,7 @@ namespace RetellAI
         /// The STT provider to use.
         /// </param>
         /// <param name="endpointingMs">
-        /// Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI.
+        /// Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI. For AssemblyAI, this sets min_turn_silence (100-3000 ms). max_turn_silence adds half of this value, rounded to the nearest millisecond and bounded to 500-1000 ms, with a total cap of 3000 ms.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

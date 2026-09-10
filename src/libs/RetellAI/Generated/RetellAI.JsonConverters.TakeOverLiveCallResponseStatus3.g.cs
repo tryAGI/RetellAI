@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class ChartConfigSizeEnumJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.ChartConfigSizeEnum>
+    public sealed class TakeOverLiveCallResponseStatus3JsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.TakeOverLiveCallResponseStatus3>
     {
         /// <inheritdoc />
-        public override global::RetellAI.ChartConfigSizeEnum Read(
+        public override global::RetellAI.TakeOverLiveCallResponseStatus3 Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.ChartConfigSizeEnumExtensions.ToEnum(stringValue) ?? default;
+                        return global::RetellAI.TakeOverLiveCallResponseStatus3Extensions.ToEnum(stringValue) ?? default;
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.ChartConfigSizeEnum)numValue;
+                    return (global::RetellAI.TakeOverLiveCallResponseStatus3)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.ChartConfigSizeEnum);
+                    return default(global::RetellAI.TakeOverLiveCallResponseStatus3);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,12 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.ChartConfigSizeEnum value,
+            global::RetellAI.TakeOverLiveCallResponseStatus3 value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::RetellAI.ChartConfigSizeEnumExtensions.ToValueString(value));
+            writer.WriteStringValue(global::RetellAI.TakeOverLiveCallResponseStatus3Extensions.ToValueString(value));
         }
     }
 }
