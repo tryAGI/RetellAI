@@ -615,11 +615,11 @@ namespace RetellAI
         /// Example: Frontdesk Number
         /// </param>
         /// <param name="inboundWebhookUrl">
-        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that call.<br/>
+        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that call. Includes call_inbound.call_id for deduplication across HTTP retries. Early setup failures may not create a call history record.<br/>
         /// Example: https://example.com/inbound-webhook
         /// </param>
         /// <param name="inboundSmsWebhookUrl">
-        /// If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, reject the SMS, and configure other fields specific to that chat.<br/>
+        /// If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, reject the SMS, and configure other fields specific to that chat. Includes chat_inbound.chat_id for deduplication across HTTP retries. Early setup failures may not create a chat history record.<br/>
         /// Example: https://example.com/inbound-sms-webhook
         /// </param>
         /// <param name="allowedInboundCountryList">

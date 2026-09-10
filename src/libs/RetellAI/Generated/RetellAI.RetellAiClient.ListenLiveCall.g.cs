@@ -7,7 +7,7 @@ namespace RetellAI
     {
 
 
-        private static readonly global::RetellAI.EndPointSecurityRequirement s_ImportPhoneNumberSecurityRequirement0 =
+        private static readonly global::RetellAI.EndPointSecurityRequirement s_ListenLiveCallSecurityRequirement0 =
             new global::RetellAI.EndPointSecurityRequirement
             {
                 Authorizations = new global::RetellAI.EndPointAuthorizationRequirement[]
@@ -21,42 +21,42 @@ namespace RetellAI
                     },
                 },
             };
-        private static readonly global::RetellAI.EndPointSecurityRequirement[] s_ImportPhoneNumberSecurityRequirements =
+        private static readonly global::RetellAI.EndPointSecurityRequirement[] s_ListenLiveCallSecurityRequirements =
             new global::RetellAI.EndPointSecurityRequirement[]
-            {                s_ImportPhoneNumberSecurityRequirement0,
+            {                s_ListenLiveCallSecurityRequirement0,
             };
-        partial void PrepareImportPhoneNumberArguments(
+        partial void PrepareListenLiveCallArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::RetellAI.ImportPhoneNumberRequest request);
-        partial void PrepareImportPhoneNumberRequest(
+            ref string callId);
+        partial void PrepareListenLiveCallRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::RetellAI.ImportPhoneNumberRequest request);
-        partial void ProcessImportPhoneNumberResponse(
+            string callId);
+        partial void ProcessListenLiveCallResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessImportPhoneNumberResponseContent(
+        partial void ProcessListenLiveCallResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        /// Import a phone number from custom telephony &amp; Bind agents
+        /// Mint a subscribe-only access token for an in-progress call so a client can listen to live audio. The returned token grants join + subscribe on the call's existing audio room; it cannot publish. The call must be in ONGOING status.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="callId">
+        /// Example: 119c3f8e47135a29e65947eeb34cf12d
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::RetellAI.PhoneNumberResponse> ImportPhoneNumberAsync(
-
-            global::RetellAI.ImportPhoneNumberRequest request,
+        public async global::System.Threading.Tasks.Task<global::RetellAI.ListenLiveCallResponse> ListenLiveCallAsync(
+            string callId,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await ImportPhoneNumberAsResponseAsync(
-
-                request: request,
+            var __response = await ListenLiveCallAsResponseAsync(
+                callId: callId,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken
             ).ConfigureAwait(false);
@@ -64,31 +64,30 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// Import a phone number from custom telephony &amp; Bind agents
+        /// Mint a subscribe-only access token for an in-progress call so a client can listen to live audio. The returned token grants join + subscribe on the call's existing audio room; it cannot publish. The call must be in ONGOING status.
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="callId">
+        /// Example: 119c3f8e47135a29e65947eeb34cf12d
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.PhoneNumberResponse>> ImportPhoneNumberAsResponseAsync(
-
-            global::RetellAI.ImportPhoneNumberRequest request,
+        public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.ListenLiveCallResponse>> ListenLiveCallAsResponseAsync(
+            string callId,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
-
             PrepareArguments(
                 client: HttpClient);
-            PrepareImportPhoneNumberArguments(
+            PrepareListenLiveCallArguments(
                 httpClient: HttpClient,
-                request: request);
+                callId: ref callId);
 
 
             var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_ImportPhoneNumberSecurityRequirements,
-                operationName: "ImportPhoneNumberAsync");
+                securityRequirements: s_ListenLiveCallSecurityRequirements,
+                operationName: "ListenLiveCallAsync");
 
             using var __timeoutCancellationTokenSource = global::RetellAI.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -108,7 +107,7 @@ namespace RetellAI
             {
 
                             var __pathBuilder = new global::RetellAI.PathBuilder(
-                                path: "/import-phone-number",
+                                path: $"/v2/listen-live-call/{callId}",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::RetellAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -139,12 +138,6 @@ namespace RetellAI
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 }
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/json");
-                            __httpRequest.Content = __httpRequestContent;
                 global::RetellAI.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
@@ -153,10 +146,10 @@ namespace RetellAI
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareImportPhoneNumberRequest(
+                PrepareListenLiveCallRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    request: request);
+                    callId: callId!);
 
                 return __httpRequest;
             }
@@ -173,9 +166,9 @@ namespace RetellAI
                     await global::RetellAI.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ImportPhoneNumber",
-                                methodName: "ImportPhoneNumberAsync",
-                                pathTemplate: "\"/import-phone-number\"",
+                                operationId: "ListenLiveCall",
+                                methodName: "ListenLiveCallAsync",
+                                pathTemplate: "$\"/v2/listen-live-call/{callId}\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -207,9 +200,9 @@ namespace RetellAI
                         await global::RetellAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ImportPhoneNumber",
-                                methodName: "ImportPhoneNumberAsync",
-                                pathTemplate: "\"/import-phone-number\"",
+                                operationId: "ListenLiveCall",
+                                methodName: "ListenLiveCallAsync",
+                                pathTemplate: "$\"/v2/listen-live-call/{callId}\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -248,9 +241,9 @@ namespace RetellAI
                         await global::RetellAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ImportPhoneNumber",
-                                methodName: "ImportPhoneNumberAsync",
-                                pathTemplate: "\"/import-phone-number\"",
+                                operationId: "ListenLiveCall",
+                                methodName: "ListenLiveCallAsync",
+                                pathTemplate: "$\"/v2/listen-live-call/{callId}\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -288,7 +281,7 @@ namespace RetellAI
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessImportPhoneNumberResponse(
+                ProcessListenLiveCallResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -296,9 +289,9 @@ namespace RetellAI
                     await global::RetellAI.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ImportPhoneNumber",
-                                methodName: "ImportPhoneNumberAsync",
-                                pathTemplate: "\"/import-phone-number\"",
+                                operationId: "ListenLiveCall",
+                                methodName: "ListenLiveCallAsync",
+                                pathTemplate: "$\"/v2/listen-live-call/{callId}\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -318,9 +311,9 @@ namespace RetellAI
                     await global::RetellAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "ImportPhoneNumber",
-                                methodName: "ImportPhoneNumberAsync",
-                                pathTemplate: "\"/import-phone-number\"",
+                                operationId: "ListenLiveCall",
+                                methodName: "ListenLiveCallAsync",
+                                pathTemplate: "$\"/v2/listen-live-call/{callId}\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -340,19 +333,19 @@ namespace RetellAI
                             {
                                 string? __content_400 = null;
                                 global::System.Exception? __exception_400 = null;
-                                global::RetellAI.ImportPhoneNumberResponse? __value_400 = null;
+                                global::RetellAI.ListenLiveCallResponse2? __value_400 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::RetellAI.ImportPhoneNumberResponse.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::RetellAI.ListenLiveCallResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::RetellAI.ImportPhoneNumberResponse.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::RetellAI.ListenLiveCallResponse2.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -361,7 +354,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.ImportPhoneNumberResponse>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.ListenLiveCallResponse2>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
@@ -377,19 +370,19 @@ namespace RetellAI
                             {
                                 string? __content_401 = null;
                                 global::System.Exception? __exception_401 = null;
-                                global::RetellAI.ImportPhoneNumberResponse2? __value_401 = null;
+                                global::RetellAI.ListenLiveCallResponse3? __value_401 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::RetellAI.ImportPhoneNumberResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.ListenLiveCallResponse3.FromJson(__content_401, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_401 = global::RetellAI.ImportPhoneNumberResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.ListenLiveCallResponse3.FromJson(__content_401, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -398,7 +391,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.ImportPhoneNumberResponse2>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.ListenLiveCallResponse3>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
@@ -409,24 +402,98 @@ namespace RetellAI
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Forbidden
+                            if ((int)__response.StatusCode == 403)
+                            {
+                                string? __content_403 = null;
+                                global::System.Exception? __exception_403 = null;
+                                global::RetellAI.ListenLiveCallResponse4? __value_403 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_403 = global::RetellAI.ListenLiveCallResponse4.FromJson(__content_403, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_403 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_403 = global::RetellAI.ListenLiveCallResponse4.FromJson(__content_403, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_403 = __ex;
+                                }
+
+
+                                throw global::RetellAI.ApiException<global::RetellAI.ListenLiveCallResponse4>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_403 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_403,
+                                    responseBody: __content_403,
+                                    responseObject: __value_403,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Not Found
+                            if ((int)__response.StatusCode == 404)
+                            {
+                                string? __content_404 = null;
+                                global::System.Exception? __exception_404 = null;
+                                global::RetellAI.ListenLiveCallResponse5? __value_404 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_404 = global::RetellAI.ListenLiveCallResponse5.FromJson(__content_404, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_404 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_404 = global::RetellAI.ListenLiveCallResponse5.FromJson(__content_404, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_404 = __ex;
+                                }
+
+
+                                throw global::RetellAI.ApiException<global::RetellAI.ListenLiveCallResponse5>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_404 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_404,
+                                    responseBody: __content_404,
+                                    responseObject: __value_404,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.ImportPhoneNumberResponse3? __value_500 = null;
+                                global::RetellAI.ListenLiveCallResponse6? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.ImportPhoneNumberResponse3.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.ListenLiveCallResponse6.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.ImportPhoneNumberResponse3.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.ListenLiveCallResponse6.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -435,7 +502,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.ImportPhoneNumberResponse3>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.ListenLiveCallResponse6>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
@@ -459,7 +526,7 @@ namespace RetellAI
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessImportPhoneNumberResponseContent(
+                                ProcessListenLiveCallResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -468,9 +535,9 @@ namespace RetellAI
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::RetellAI.PhoneNumberResponse.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::RetellAI.ListenLiveCallResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::RetellAI.AutoSDKHttpResponse<global::RetellAI.PhoneNumberResponse>(
+                                    return new global::RetellAI.AutoSDKHttpResponse<global::RetellAI.ListenLiveCallResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::RetellAI.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -500,9 +567,9 @@ namespace RetellAI
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::RetellAI.PhoneNumberResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::RetellAI.ListenLiveCallResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::RetellAI.AutoSDKHttpResponse<global::RetellAI.PhoneNumberResponse>(
+                                    return new global::RetellAI.AutoSDKHttpResponse<global::RetellAI.ListenLiveCallResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::RetellAI.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -541,95 +608,6 @@ namespace RetellAI
             {
                 __httpRequest?.Dispose();
             }
-        }
-        /// <summary>
-        /// Import a phone number from custom telephony &amp; Bind agents
-        /// </summary>
-        /// <param name="phoneNumber">
-        /// The number you are trying to import in E.164 format of the number (+country code, then number with no space, no special characters), used as the unique identifier for phone number APIs.<br/>
-        /// Example: +14157774444
-        /// </param>
-        /// <param name="ignoreE164Validation">
-        /// If true, E.164 validation for phone_number is skipped. This is useful for internal pseudo numbers when using custom telephony. If omitted, default is true. Must be a boolean literal; string values like "true" or "false" are invalid.<br/>
-        /// Example: true
-        /// </param>
-        /// <param name="terminationUri">
-        /// The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always end with ".pstn.twilio.com".<br/>
-        /// Example: someuri.pstn.twilio.com
-        /// </param>
-        /// <param name="sipTrunkAuthUsername">
-        /// The username used for authentication for the SIP trunk.<br/>
-        /// Example: username
-        /// </param>
-        /// <param name="sipTrunkAuthPassword">
-        /// The password used for authentication for the SIP trunk.<br/>
-        /// Example: 123456
-        /// </param>
-        /// <param name="inboundAgents">
-        /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1.
-        /// </param>
-        /// <param name="outboundAgents">
-        /// Outbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each outbound call, with probability proportional to the weight. Total weights must add up to 1.
-        /// </param>
-        /// <param name="nickname">
-        /// Nickname of the number. This is for your reference only.<br/>
-        /// Example: Frontdesk Number
-        /// </param>
-        /// <param name="inboundWebhookUrl">
-        /// If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that call. Includes call_inbound.call_id for deduplication across HTTP retries. Early setup failures may not create a call history record.<br/>
-        /// Example: https://example.com/inbound-webhook
-        /// </param>
-        /// <param name="allowedInboundCountryList">
-        /// List of ISO 3166-1 alpha-2 country codes from which inbound calls are allowed. If not set or empty, calls from all countries are allowed.<br/>
-        /// Example: [US, CA, GB]
-        /// </param>
-        /// <param name="allowedOutboundCountryList">
-        /// List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed. If not set or empty, calls to all countries are allowed.<br/>
-        /// Example: [US, CA]
-        /// </param>
-        /// <param name="transport">
-        /// Outbound transport protocol to update for the phone number. Valid values are "TLS", "TCP" and "UDP". Default is "TCP".<br/>
-        /// Example: TCP
-        /// </param>
-        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
-        /// <param name="cancellationToken">The token to cancel the operation with</param>
-        /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::RetellAI.PhoneNumberResponse> ImportPhoneNumberAsync(
-            string phoneNumber,
-            string terminationUri,
-            bool? ignoreE164Validation = default,
-            string? sipTrunkAuthUsername = default,
-            string? sipTrunkAuthPassword = default,
-            global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? inboundAgents = default,
-            global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? outboundAgents = default,
-            string? nickname = default,
-            string? inboundWebhookUrl = default,
-            global::System.Collections.Generic.IList<string>? allowedInboundCountryList = default,
-            global::System.Collections.Generic.IList<string>? allowedOutboundCountryList = default,
-            string? transport = default,
-            global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
-            global::System.Threading.CancellationToken cancellationToken = default)
-        {
-            var __request = new global::RetellAI.ImportPhoneNumberRequest
-            {
-                PhoneNumber = phoneNumber,
-                IgnoreE164Validation = ignoreE164Validation,
-                TerminationUri = terminationUri,
-                SipTrunkAuthUsername = sipTrunkAuthUsername,
-                SipTrunkAuthPassword = sipTrunkAuthPassword,
-                InboundAgents = inboundAgents,
-                OutboundAgents = outboundAgents,
-                Nickname = nickname,
-                InboundWebhookUrl = inboundWebhookUrl,
-                AllowedInboundCountryList = allowedInboundCountryList,
-                AllowedOutboundCountryList = allowedOutboundCountryList,
-                Transport = transport,
-            };
-
-            return await ImportPhoneNumberAsync(
-                request: __request,
-                requestOptions: requestOptions,
-                cancellationToken: cancellationToken).ConfigureAwait(false);
         }
     }
 }

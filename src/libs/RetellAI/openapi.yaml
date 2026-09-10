@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-09-07-f975449
+  x-retell-spec-revision: 2026-09-09-6f4e37c
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -1076,7 +1076,8 @@ components:
               description: The STT provider to use.
             endpointing_ms:
               type: integer
-              description: Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI.
+              description: Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI. For AssemblyAI, this sets min_turn_silence (100-3000 ms). max_turn_silence
+                adds half of this value, rounded to the nearest millisecond and bounded to 500-1000 ms, with a total cap of 3000 ms.
           required:
           - provider
           - endpointing_ms
@@ -3219,31 +3220,28 @@ components:
           enum:
           - pending
           example: pending
-    OptInBillingV2Request:
+    OptInCreditBasedRequest:
       type: object
       required:
       - starting_credits
       properties:
         starting_credits:
           type: integer
-          description: Initial prepaid credit purchase when migrating from Billing V1 to V2, in cents (same bounds as amount_in_cents on credit top-up). Charged via a one-time Stripe invoice before the
-            migration completes.
+          description: Initial prepaid credit purchase when migrating from Billing V1 to credit-based billing, in cents (same bounds as amount_in_cents on credit top-up). Charged to the card on file via
+            a one-time Stripe invoice before the migration completes.
           minimum: 1000
           maximum: 1000000
           example: 5000
-    OptInBillingV2Response:
+    OptInCreditBasedResponse:
       type: object
       required:
-      - billing_profile_id
-      - cadence_id
-      - pricing_plan_subscription_id
+      - metronome_customer_id
+      - metronome_contract_id
       - starting_credits_cents
       properties:
-        billing_profile_id:
+        metronome_customer_id:
           type: string
-        cadence_id:
-          type: string
-        pricing_plan_subscription_id:
+        metronome_contract_id:
           type: string
         starting_credits_cents:
           type: integer
@@ -5935,11 +5933,13 @@ components:
           type: string
           example: https://example.com/inbound-webhook
           description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that call.
+            Includes call_inbound.call_id for deduplication across HTTP retries. Early setup failures may not create a call history record.
           nullable: true
         inbound_sms_webhook_url:
           type: string
           example: https://example.com/inbound-sms-webhook
-          description: If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, reject the SMS, and configure other fields specific to that chat.
+          description: If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, reject the SMS, and configure other fields specific to that chat. Includes
+            chat_inbound.chat_id for deduplication across HTTP retries. Early setup failures may not create a chat history record.
           nullable: true
         last_modification_timestamp:
           type: integer
@@ -8090,6 +8090,14 @@ components:
       oneOf:
       - $ref: '#/components/schemas/V2WebCallResponse'
       - $ref: '#/components/schemas/V2PhoneCallResponse'
+    CallTransport:
+      type: string
+      enum:
+      - livekit
+      - gateway
+      description: Which media stack issued the access_token, and therefore where the client signals. The two tokens are indistinguishable, so a client must read this rather than infer it. `gateway` clients
+        address Retell itself; `livekit` clients connect to the returned `url`. Optional only because a server predating the field omits it during a rollout; treat absent as `livekit`.
+      example: gateway
     IceServer:
       type: object
       required:
@@ -8106,6 +8114,47 @@ components:
           type: string
         credential:
           type: string
+    ListenLiveCallResponse:
+      type: object
+      required:
+      - access_token
+      - room_name
+      - participant_id
+      - expires_at
+      properties:
+        transport:
+          $ref: '#/components/schemas/CallTransport'
+        url:
+          type: string
+          format: uri
+          description: Server URL the client should connect to with the access_token. Present only when `transport` is `livekit`; a `gateway` listener signals to Retell and needs no address.
+          example: wss://realtime-host.example.com
+        access_token:
+          type: string
+          description: Subscribe-only JWT scoped to the call's room. Cannot publish. Listener participant is hidden from other participants.
+        room_name:
+          type: string
+          description: Room name to join. Always the call's original room — does not follow warm transfers.
+          example: web_call_119c3f8e47135a29e65947eeb34cf12d
+        gateway_ip:
+          type: string
+          description: Public side of the gateway instance handling this call, for diagnostics only — the client's media address comes from the SDP answer's ICE candidates. `gateway` transport only.
+          example: 54.183.22.7
+        participant_id:
+          type: string
+          description: Identity this listener joins as, and the value to hand back to /v2/take-over-live-call. Returned on both transports; a `livekit` client can equally read it off its own room object,
+            a `gateway` one has no equivalent to read.
+          example: listener_a1b2c3d4e5f6g7h8i9j0
+        ice_servers:
+          type: array
+          items:
+            $ref: '#/components/schemas/IceServer'
+          description: ICE servers the client must configure before creating its PeerConnection — they cannot be added afterwards. `gateway` transport only.
+        expires_at:
+          type: integer
+          format: int64
+          description: Unix epoch ms when the access_token expires.
+          example: 1735689600000
     V3CallResponse:
       oneOf:
       - $ref: '#/components/schemas/V3WebCallResponse'
@@ -9640,42 +9689,34 @@ components:
           - line
           - number
         size:
-          description: Grid placement for a chart stored in a dashboard. Omit from `target.chart`.
-          oneOf:
-          - type: string
-            description: Older preset format. Use the grid object when placement is needed.
-            enum:
-            - small
-            - medium
-            - large
-          - type: object
-            description: Position and span in the dashboard's 24-column grid.
-            properties:
-              col:
-                type: integer
-                minimum: 1
-                maximum: 24
-                description: 1-based starting column.
-              row:
-                type: integer
-                minimum: 1
-                maximum: 500
-                description: 1-based starting row.
-              col_span:
-                type: integer
-                minimum: 1
-                maximum: 24
-                description: Grid columns occupied. The chart must not extend beyond column 24.
-              row_span:
-                type: integer
-                minimum: 1
-                maximum: 6
-                description: Grid rows occupied.
-            required:
-            - col
-            - row
-            - col_span
-            - row_span
+          type: object
+          description: Position and span in the dashboard's 24-column grid. Omit from `target.chart`.
+          properties:
+            col:
+              type: integer
+              minimum: 1
+              maximum: 24
+              description: 1-based starting column.
+            row:
+              type: integer
+              minimum: 1
+              maximum: 500
+              description: 1-based starting row.
+            col_span:
+              type: integer
+              minimum: 1
+              maximum: 24
+              description: Grid columns occupied. The chart must not extend beyond column 24.
+            row_span:
+              type: integer
+              minimum: 1
+              maximum: 6
+              description: Grid rows occupied.
+          required:
+          - col
+          - row
+          - col_span
+          - row_span
         show:
           type: array
           description: Metrics to calculate, in output order. Provide at least one. Use multiple metrics only when they should share the same breakdowns.
@@ -9755,19 +9796,17 @@ components:
             type: object
     DashboardUpdateRequest:
       type: object
+      additionalProperties: false
       description: Partial dashboard update. Omitted fields remain unchanged.
       properties:
         name:
           type: string
           minLength: 1
           maxLength: 200
-        charts_map:
-          $ref: '#/components/schemas/ChartsMap'
         chart_updates:
           allOf:
           - $ref: '#/components/schemas/ChartUpdatesMap'
-          description: Per-chart updates merged into the stored charts, instead of the full replacement charts_map does. Each chart is written on its own key, so concurrent edits to different charts do
-            not conflict. Cannot be combined with charts_map.
+          description: Per-chart updates merged into the stored charts. Each chart is written on its own key, so concurrent edits to different charts do not conflict.
         filter_criteria:
           anyOf:
           - $ref: '#/components/schemas/StoredCallFilter'
@@ -10659,7 +10698,7 @@ paths:
                   type: string
                   example: https://example.com/inbound-webhook
                   description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that
-                    call.
+                    call. Includes call_inbound.call_id for deduplication across HTTP retries. Early setup failures may not create a call history record.
                   nullable: true
                 allowed_inbound_country_list:
                   type: array
@@ -11797,7 +11836,7 @@ paths:
                   type: string
                   example: https://example.com/inbound-webhook
                   description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that
-                    call.
+                    call. Includes call_inbound.call_id for deduplication across HTTP retries. Early setup failures may not create a call history record.
                   nullable: true
                 allowed_inbound_country_list:
                   type: array
@@ -12593,13 +12632,13 @@ paths:
                   type: string
                   example: https://example.com/inbound-webhook
                   description: If set, Retell will send a webhook for inbound calls, where you can override the agent ID, set dynamic variables, reject the call, and configure other fields specific to that
-                    call.
+                    call. Includes call_inbound.call_id for deduplication across HTTP retries. Early setup failures may not create a call history record.
                   nullable: true
                 inbound_sms_webhook_url:
                   type: string
                   example: https://example.com/inbound-sms-webhook
                   description: If set, Retell will send a webhook for inbound SMS, where you can override the agent ID, set dynamic variables, reject the SMS, and configure other fields specific to that
-                    chat.
+                    chat. Includes chat_inbound.chat_id for deduplication across HTTP retries. Early setup failures may not create a chat history record.
                   nullable: true
                 allowed_inbound_country_list:
                   type: array
@@ -12855,6 +12894,7 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
+      deprecated: true
   /v3/create-web-call:
     post:
       description: Create a new web call and return browser connection details.
@@ -12969,6 +13009,86 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v2/listen-live-call/{call_id}:
+    post:
+      description: Mint a subscribe-only access token for an in-progress call so a client can listen to live audio. The returned token grants join + subscribe on the call's existing audio room; it cannot
+        publish. The call must be in ONGOING status.
+      operationId: listenLiveCall
+      parameters:
+      - in: path
+        name: call_id
+        schema:
+          type: string
+          example: 119c3f8e47135a29e65947eeb34cf12d
+        required: true
+        description: The call id to listen to.
+      responses:
+        '200':
+          description: Listener access token issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListenLiveCallResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /v2/take-over-live-call/{call_id}:
+    post:
+      description: Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING
+        status.
+      operationId: takeOverLiveCall
+      parameters:
+      - in: path
+        name: call_id
+        schema:
+          type: string
+          example: 119c3f8e47135a29e65947eeb34cf12d
+        required: true
+        description: The call id to take over.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - participant_id
+              properties:
+                participant_id:
+                  type: string
+                  description: The id of the live-listen participant to upgrade, obtained when joining via /v2/listen-live-call.
+                  example: listener_a1b2c3d4e5f6g7h8i9j0
+              additionalProperties: false
+      responses:
+        '200':
+          description: Call taken over successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - success
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /v3/list-calls:
