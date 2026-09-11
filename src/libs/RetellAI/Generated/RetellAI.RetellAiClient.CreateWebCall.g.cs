@@ -7,7 +7,7 @@ namespace RetellAI
     {
 
 
-        private static readonly global::RetellAI.EndPointSecurityRequirement s_BackfillContactAnalysisDataSecurityRequirement0 =
+        private static readonly global::RetellAI.EndPointSecurityRequirement s_CreateWebCallSecurityRequirement0 =
             new global::RetellAI.EndPointSecurityRequirement
             {
                 Authorizations = new global::RetellAI.EndPointAuthorizationRequirement[]
@@ -21,40 +21,40 @@ namespace RetellAI
                     },
                 },
             };
-        private static readonly global::RetellAI.EndPointSecurityRequirement[] s_BackfillContactAnalysisDataSecurityRequirements =
+        private static readonly global::RetellAI.EndPointSecurityRequirement[] s_CreateWebCallSecurityRequirements =
             new global::RetellAI.EndPointSecurityRequirement[]
-            {                s_BackfillContactAnalysisDataSecurityRequirement0,
+            {                s_CreateWebCallSecurityRequirement0,
             };
-        partial void PrepareBackfillContactAnalysisDataArguments(
+        partial void PrepareCreateWebCallArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::RetellAI.BackfillContactAnalysisDataRequest request);
-        partial void PrepareBackfillContactAnalysisDataRequest(
+            global::RetellAI.CreateWebCallRequest request);
+        partial void PrepareCreateWebCallRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::RetellAI.BackfillContactAnalysisDataRequest request);
-        partial void ProcessBackfillContactAnalysisDataResponse(
+            global::RetellAI.CreateWebCallRequest request);
+        partial void ProcessCreateWebCallResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
-        partial void ProcessBackfillContactAnalysisDataResponseContent(
+        partial void ProcessCreateWebCallResponseContent(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage,
             ref string content);
 
         /// <summary>
-        ///
+        /// Create a new web call and return browser connection details.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::RetellAI.JobStatus> BackfillContactAnalysisDataAsync(
+        public async global::System.Threading.Tasks.Task<global::RetellAI.V3CreateWebCallResponse> CreateWebCallAsync(
 
-            global::RetellAI.BackfillContactAnalysisDataRequest request,
+            global::RetellAI.CreateWebCallRequest request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __response = await BackfillContactAnalysisDataAsResponseAsync(
+            var __response = await CreateWebCallAsResponseAsync(
 
                 request: request,
                 requestOptions: requestOptions,
@@ -64,15 +64,15 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        ///
+        /// Create a new web call and return browser connection details.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
-        public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.JobStatus>> BackfillContactAnalysisDataAsResponseAsync(
+        public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.V3CreateWebCallResponse>> CreateWebCallAsResponseAsync(
 
-            global::RetellAI.BackfillContactAnalysisDataRequest request,
+            global::RetellAI.CreateWebCallRequest request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -80,15 +80,15 @@ namespace RetellAI
 
             PrepareArguments(
                 client: HttpClient);
-            PrepareBackfillContactAnalysisDataArguments(
+            PrepareCreateWebCallArguments(
                 httpClient: HttpClient,
                 request: request);
 
 
             var __authorizations = global::RetellAI.EndPointSecurityResolver.ResolveAuthorizations(
                 availableAuthorizations: Authorizations,
-                securityRequirements: s_BackfillContactAnalysisDataSecurityRequirements,
-                operationName: "BackfillContactAnalysisDataAsync");
+                securityRequirements: s_CreateWebCallSecurityRequirements,
+                operationName: "CreateWebCallAsync");
 
             using var __timeoutCancellationTokenSource = global::RetellAI.AutoSDKRequestOptionsSupport.CreateTimeoutCancellationTokenSource(
                 clientOptions: Options,
@@ -108,7 +108,7 @@ namespace RetellAI
             {
 
                             var __pathBuilder = new global::RetellAI.PathBuilder(
-                                path: "/backfill-contact-analysis-data",
+                                path: "/v3/create-web-call",
                                 baseUri: HttpClient.BaseAddress);
                             var __path = __pathBuilder.ToString();
                 __path = global::RetellAI.AutoSDKRequestOptionsSupport.AppendQueryParameters(
@@ -153,7 +153,7 @@ namespace RetellAI
                 PrepareRequest(
                     client: HttpClient,
                     request: __httpRequest);
-                PrepareBackfillContactAnalysisDataRequest(
+                PrepareCreateWebCallRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
                     request: request);
@@ -173,9 +173,9 @@ namespace RetellAI
                     await global::RetellAI.AutoSDKRequestOptionsSupport.OnBeforeRequestAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "BackfillContactAnalysisData",
-                                methodName: "BackfillContactAnalysisDataAsync",
-                                pathTemplate: "\"/backfill-contact-analysis-data\"",
+                                operationId: "CreateWebCall",
+                                methodName: "CreateWebCallAsync",
+                                pathTemplate: "\"/v3/create-web-call\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -207,9 +207,9 @@ namespace RetellAI
                         await global::RetellAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "BackfillContactAnalysisData",
-                                methodName: "BackfillContactAnalysisDataAsync",
-                                pathTemplate: "\"/backfill-contact-analysis-data\"",
+                                operationId: "CreateWebCall",
+                                methodName: "CreateWebCallAsync",
+                                pathTemplate: "\"/v3/create-web-call\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -248,9 +248,9 @@ namespace RetellAI
                         await global::RetellAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "BackfillContactAnalysisData",
-                                methodName: "BackfillContactAnalysisDataAsync",
-                                pathTemplate: "\"/backfill-contact-analysis-data\"",
+                                operationId: "CreateWebCall",
+                                methodName: "CreateWebCallAsync",
+                                pathTemplate: "\"/v3/create-web-call\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -288,7 +288,7 @@ namespace RetellAI
                 ProcessResponse(
                     client: HttpClient,
                     response: __response);
-                ProcessBackfillContactAnalysisDataResponse(
+                ProcessCreateWebCallResponse(
                     httpClient: HttpClient,
                     httpResponseMessage: __response);
                 if (__response.IsSuccessStatusCode)
@@ -296,9 +296,9 @@ namespace RetellAI
                     await global::RetellAI.AutoSDKRequestOptionsSupport.OnAfterSuccessAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "BackfillContactAnalysisData",
-                                methodName: "BackfillContactAnalysisDataAsync",
-                                pathTemplate: "\"/backfill-contact-analysis-data\"",
+                                operationId: "CreateWebCall",
+                                methodName: "CreateWebCallAsync",
+                                pathTemplate: "\"/v3/create-web-call\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -318,9 +318,9 @@ namespace RetellAI
                     await global::RetellAI.AutoSDKRequestOptionsSupport.OnAfterErrorAsync(
                             clientOptions: Options,
                             context: global::RetellAI.AutoSDKRequestOptionsSupport.CreateHookContext(
-                                operationId: "BackfillContactAnalysisData",
-                                methodName: "BackfillContactAnalysisDataAsync",
-                                pathTemplate: "\"/backfill-contact-analysis-data\"",
+                                operationId: "CreateWebCall",
+                                methodName: "CreateWebCallAsync",
+                                pathTemplate: "\"/v3/create-web-call\"",
                                 httpMethod: "POST",
                                 baseUri: BaseUri,
                                 request: __httpRequest!,
@@ -340,19 +340,19 @@ namespace RetellAI
                             {
                                 string? __content_400 = null;
                                 global::System.Exception? __exception_400 = null;
-                                global::RetellAI.BackfillContactAnalysisDataResponse? __value_400 = null;
+                                global::RetellAI.CreateWebCallResponse? __value_400 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_400 = global::RetellAI.BackfillContactAnalysisDataResponse.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::RetellAI.CreateWebCallResponse.FromJson(__content_400, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_400 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_400 = global::RetellAI.BackfillContactAnalysisDataResponse.FromJson(__content_400, JsonSerializerContext);
+                                        __value_400 = global::RetellAI.CreateWebCallResponse.FromJson(__content_400, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -361,7 +361,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.BackfillContactAnalysisDataResponse>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateWebCallResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_400 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_400,
@@ -377,19 +377,19 @@ namespace RetellAI
                             {
                                 string? __content_401 = null;
                                 global::System.Exception? __exception_401 = null;
-                                global::RetellAI.BackfillContactAnalysisDataResponse2? __value_401 = null;
+                                global::RetellAI.CreateWebCallResponse2? __value_401 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::RetellAI.BackfillContactAnalysisDataResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.CreateWebCallResponse2.FromJson(__content_401, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_401 = global::RetellAI.BackfillContactAnalysisDataResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.CreateWebCallResponse2.FromJson(__content_401, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -398,7 +398,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.BackfillContactAnalysisDataResponse2>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateWebCallResponse2>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
@@ -409,24 +409,98 @@ namespace RetellAI
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Payment Required
+                            if ((int)__response.StatusCode == 402)
+                            {
+                                string? __content_402 = null;
+                                global::System.Exception? __exception_402 = null;
+                                global::RetellAI.CreateWebCallResponse3? __value_402 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_402 = global::RetellAI.CreateWebCallResponse3.FromJson(__content_402, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_402 = global::RetellAI.CreateWebCallResponse3.FromJson(__content_402, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_402 = __ex;
+                                }
+
+
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateWebCallResponse3>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_402 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_402,
+                                    responseBody: __content_402,
+                                    responseObject: __value_402,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
+                            // Unprocessable Content
+                            if ((int)__response.StatusCode == 422)
+                            {
+                                string? __content_422 = null;
+                                global::System.Exception? __exception_422 = null;
+                                global::RetellAI.CreateWebCallResponse4? __value_422 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_422 = global::RetellAI.CreateWebCallResponse4.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_422 = global::RetellAI.CreateWebCallResponse4.FromJson(__content_422, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_422 = __ex;
+                                }
+
+
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateWebCallResponse4>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_422,
+                                    responseBody: __content_422,
+                                    responseObject: __value_422,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Too Many Requests
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::RetellAI.BackfillContactAnalysisDataResponse3? __value_429 = null;
+                                global::RetellAI.CreateWebCallResponse5? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::RetellAI.BackfillContactAnalysisDataResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::RetellAI.CreateWebCallResponse5.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::RetellAI.BackfillContactAnalysisDataResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::RetellAI.CreateWebCallResponse5.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -435,7 +509,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.BackfillContactAnalysisDataResponse3>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateWebCallResponse5>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
@@ -451,19 +525,19 @@ namespace RetellAI
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.BackfillContactAnalysisDataResponse4? __value_500 = null;
+                                global::RetellAI.CreateWebCallResponse6? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.BackfillContactAnalysisDataResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.CreateWebCallResponse6.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.BackfillContactAnalysisDataResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.CreateWebCallResponse6.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -472,7 +546,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.BackfillContactAnalysisDataResponse4>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateWebCallResponse6>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
@@ -496,7 +570,7 @@ namespace RetellAI
                                     client: HttpClient,
                                     response: __response,
                                     content: ref __content);
-                                ProcessBackfillContactAnalysisDataResponseContent(
+                                ProcessCreateWebCallResponseContent(
                                     httpClient: HttpClient,
                                     httpResponseMessage: __response,
                                     content: ref __content);
@@ -505,9 +579,9 @@ namespace RetellAI
                                 {
                                     __response.EnsureSuccessStatusCode();
 
-                                    var __value = global::RetellAI.JobStatus.FromJson(__content, JsonSerializerContext) ??
+                                    var __value = global::RetellAI.V3CreateWebCallResponse.FromJson(__content, JsonSerializerContext) ??
                                         throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
-                                    return new global::RetellAI.AutoSDKHttpResponse<global::RetellAI.JobStatus>(
+                                    return new global::RetellAI.AutoSDKHttpResponse<global::RetellAI.V3CreateWebCallResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::RetellAI.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -537,9 +611,9 @@ namespace RetellAI
                 #endif
                                     ).ConfigureAwait(false);
 
-                                    var __value = await global::RetellAI.JobStatus.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                                    var __value = await global::RetellAI.V3CreateWebCallResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
                                         throw new global::System.InvalidOperationException("Response deserialization failed.");
-                                    return new global::RetellAI.AutoSDKHttpResponse<global::RetellAI.JobStatus>(
+                                    return new global::RetellAI.AutoSDKHttpResponse<global::RetellAI.V3CreateWebCallResponse>(
                                         statusCode: __response.StatusCode,
                                         headers: global::RetellAI.AutoSDKHttpResponse.CreateHeaders(__response),
                                         requestUri: __response.RequestMessage?.RequestUri,
@@ -580,26 +654,59 @@ namespace RetellAI
             }
         }
         /// <summary>
-        ///
+        /// Create a new web call and return browser connection details.
         /// </summary>
-        /// <param name="backfillCallFilter"></param>
-        /// <param name="backfillAttributes"></param>
+        /// <param name="agentId">
+        /// Unique id of agent used for the call. Your agent would contain the LLM Websocket url used for this call.<br/>
+        /// Example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
+        /// </param>
+        /// <param name="agentVersion">
+        /// Agent version reference. Supports a numeric version (for example 3) or a tag/environment name (for example "prod"). The string "latest" resolves to the most recently created version (the largest version number), and "latest_published" resolves to the most recently published version. When a tag is provided, resolution uses that exact tag assignment (including its dynamic variables). If the tag exists but is currently unassigned, it resolves to latest. When a numeric version, latest, or latest_published is provided, resolution applies dynamic variables from the preferred tag for that resolved version (most recently assigned), if any.
+        /// </param>
+        /// <param name="agentOverride">
+        /// Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
+        /// </param>
+        /// <param name="metadata">
+        /// An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the call. Not used for processing. You can later get this field from the call object.
+        /// </param>
+        /// <param name="retellLlmDynamicVariables">
+        /// Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.<br/>
+        /// Example: {"customer_name":"John Doe"}
+        /// </param>
+        /// <param name="currentNodeId">
+        /// Start the call at this conversation flow node (stage). Must be a valid node id in the agent's conversation flow. Only applicable when the agent uses conversation flow as the response engine. Ignored for retell-llm agents.<br/>
+        /// Example: collect_info
+        /// </param>
+        /// <param name="currentState">
+        /// Start the conversation in this state (stage). Must be a valid state name in the agent's Retell LLM. Only applicable when the agent uses Retell LLM with states. Ignored for conversation-flow agents.<br/>
+        /// Example: information_collection
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
-        public async global::System.Threading.Tasks.Task<global::RetellAI.JobStatus> BackfillContactAnalysisDataAsync(
-            global::System.Collections.Generic.IList<string> backfillAttributes,
-            global::RetellAI.BackfillContactAnalysisDataRequestBackfillCallFilter? backfillCallFilter = default,
+        public async global::System.Threading.Tasks.Task<global::RetellAI.V3CreateWebCallResponse> CreateWebCallAsync(
+            string agentId,
+            global::RetellAI.AgentVersionReference? agentVersion = default,
+            global::RetellAI.AgentOverrideRequest? agentOverride = default,
+            object? metadata = default,
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
+            string? currentNodeId = default,
+            string? currentState = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::RetellAI.BackfillContactAnalysisDataRequest
+            var __request = new global::RetellAI.CreateWebCallRequest
             {
-                BackfillCallFilter = backfillCallFilter,
-                BackfillAttributes = backfillAttributes,
+                AgentId = agentId,
+                AgentVersion = agentVersion,
+                AgentOverride = agentOverride,
+                Metadata = metadata,
+                RetellLlmDynamicVariables = retellLlmDynamicVariables,
+                CurrentNodeId = currentNodeId,
+                CurrentState = currentState,
             };
 
-            return await BackfillContactAnalysisDataAsync(
+            return await CreateWebCallAsync(
                 request: __request,
                 requestOptions: requestOptions,
                 cancellationToken: cancellationToken).ConfigureAwait(false);

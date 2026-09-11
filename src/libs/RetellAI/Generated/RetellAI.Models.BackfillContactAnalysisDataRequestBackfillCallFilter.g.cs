@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Optional call filter to scope which calls are processed. Supports agent and start_timestamp from the standard call filter.
+    ///
     /// </summary>
     public sealed partial class BackfillContactAnalysisDataRequestBackfillCallFilter
     {
