@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-09-09-6f4e37c
+  x-retell-spec-revision: 2026-09-10-d230b03
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -2866,6 +2866,29 @@ components:
           minimum: 0
           nullable: true
           description: If set, overrides the agent-level reminder_max_count for this node only. Set to 0 to disable reminders for this node.
+        stt_mode:
+          type: string
+          nullable: true
+          enum:
+          - fast
+          - accurate
+          - custom
+          description: Balance between speed and accuracy. Fast optimizes for speed using the provider configuration, accurate optimizes for accuracy using the provider configuration, and custom uses custom_stt_config.
+        custom_stt_config:
+          type: object
+          nullable: true
+          description: Custom transcription settings. Required when stt_mode is custom.
+          properties:
+            provider:
+              allOf:
+              - $ref: '#/components/schemas/AsrProvider'
+              description: The STT provider to use.
+            endpointing_ms:
+              type: integer
+              description: Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, and 100 for AssemblyAI.
+          required:
+          - provider
+          - endpointing_ms
     ConversationFlowOverride:
       type: object
       description: Override properties for conversation flow configuration in agent override requests.
@@ -12831,7 +12854,6 @@ paths:
   /v2/create-web-call:
     post:
       description: Create a new web call
-      operationId: createWebCall
       requestBody:
         required: true
         content:
@@ -12898,7 +12920,7 @@ paths:
   /v3/create-web-call:
     post:
       description: Create a new web call and return browser connection details.
-      operationId: createWebCallV3
+      operationId: createWebCall
       requestBody:
         required: true
         content:
@@ -14193,7 +14215,6 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /backfill-contact-analysis-data:
     post:
-      description: Trigger a backfill job that re-applies analysis data mappings to contacts using historical call data. Only one backfill job can run per organization at a time.
       operationId: backfillContactAnalysisData
       x-retell-sdk-resource: contact
       x-retell-sdk-method: backfill-analysis-data
@@ -14206,7 +14227,6 @@ paths:
               properties:
                 backfill_call_filter:
                   type: object
-                  description: Optional call filter to scope which calls are processed. Supports agent and start_timestamp from the standard call filter.
                   properties:
                     agent:
                       type: array
@@ -14224,8 +14244,6 @@ paths:
                     type: string
                   minItems: 1
                   maxItems: 200
-                  description: Contact fields to recompute. Each one must still exist as a contact field and have an analysis data mapping configured, otherwise the request is rejected rather than running
-                    a job that writes nothing.
               required:
               - backfill_attributes
       responses:
