@@ -31,8 +31,8 @@ namespace RetellAI
         /// <summary>
         /// Tags added to every contact in this import. Existing tags are preserved. Omit to leave tags unchanged.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
-        public global::System.Collections.Generic.IList<string>? Tags { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_tags")]
+        public global::System.Collections.Generic.IList<string>? ContactTags { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -52,7 +52,7 @@ namespace RetellAI
         /// <param name="defaultCountry">
         /// Country for parsing phone numbers without a country code. Defaults to US.
         /// </param>
-        /// <param name="tags">
+        /// <param name="contactTags">
         /// Tags added to every contact in this import. Existing tags are preserved. Omit to leave tags unchanged.
         /// </param>
 #if NET7_0_OR_GREATER
@@ -62,12 +62,12 @@ namespace RetellAI
             string uploadId,
             global::System.Collections.Generic.IList<global::RetellAI.CRMSyncMapping> columnMapping,
             string? defaultCountry,
-            global::System.Collections.Generic.IList<string>? tags)
+            global::System.Collections.Generic.IList<string>? contactTags)
         {
             this.UploadId = uploadId ?? throw new global::System.ArgumentNullException(nameof(uploadId));
             this.ColumnMapping = columnMapping ?? throw new global::System.ArgumentNullException(nameof(columnMapping));
             this.DefaultCountry = defaultCountry;
-            this.Tags = tags;
+            this.ContactTags = contactTags;
         }
 
         /// <summary>

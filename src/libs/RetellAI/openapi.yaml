@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-09-10-d230b03
+  x-retell-spec-revision: 2026-09-14-b240eb0
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -1045,7 +1045,7 @@ components:
         post_call_analysis_model:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
-          description: The model to use for post call analysis. Default to gpt-4.1.
+          description: The model to use for post call analysis. Default to gpt-5.6-terra.
         begin_message_delay_ms:
           type: integer
           example: 1000
@@ -1470,38 +1470,6 @@ components:
           example:
             X-Custom-Header: Custom Value
           description: Add optional custom SIP headers to the call.
-    BookAppointmentCalTool:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - book_appointment_cal
-        name:
-          type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
-            underscores and dashes, with a maximum length of 64 (no space allowed).
-        description:
-          type: string
-          description: Describes what the tool does, sometimes can also include information about when to call the tool.
-        cal_api_key:
-          type: string
-          description: Cal.com Api key that have access to the cal.com event you want to book appointment.
-        event_type_id:
-          oneOf:
-          - type: number
-          - type: string
-          description: Cal.com event type id number for the cal.com event you want to book appointment. Can be a number or a dynamic variable in the format `{{variable_name}}` that will be resolved at runtime.
-        timezone:
-          type: string
-          description: Timezone to be used when booking appointment, must be in [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Can also be a dynamic variable in
-            the format `{{variable_name}}` that will be resolved at runtime. If not specified, will check if user specified timezone in call, and if not, will use the timezone of the Retell servers.
-      required:
-      - type
-      - name
-      - cal_api_key
-      - event_type_id
-      deprecated: true
     BooleanAnalysisData:
       type: object
       required:
@@ -2046,7 +2014,7 @@ components:
         post_chat_analysis_model:
           $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-4.1-mini
-          description: The model to use for post chat analysis. Default to gpt-4.1.
+          description: The model to use for post chat analysis. Default to gpt-5.6-terra.
         pii_config:
           $ref: '#/components/schemas/PIIConfig'
           description: Configuration for PII scrubbing from transcripts and recordings.
@@ -2303,39 +2271,6 @@ components:
         required:
         - skip
         - pagination_key
-    CheckAvailabilityCalTool:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - check_availability_cal
-        name:
-          type: string
-          description: Name of the tool. Must be unique within all tools available to LLM at any given time (general tools + state tools + state transitions). Must be consisted of a-z, A-Z, 0-9, or contain
-            underscores and dashes, with a maximum length of 64 (no space allowed).
-        description:
-          type: string
-          description: Describes what the tool does, sometimes can also include information about when to call the tool.
-        cal_api_key:
-          type: string
-          description: Cal.com Api key that have access to the cal.com event you want to check availability for.
-        event_type_id:
-          oneOf:
-          - type: number
-          - type: string
-          description: Cal.com event type id number for the cal.com event you want to check availability for. Can be a number or a dynamic variable in the format `{{variable_name}}` that will be resolved
-            at runtime.
-        timezone:
-          type: string
-          description: Timezone to be used when checking availability, must be in [IANA timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). Can also be a dynamic variable in
-            the format `{{variable_name}}` that will be resolved at runtime. If not specified, will check if user specified timezone in call, and if not, will use the timezone of the Retell servers.
-      required:
-      - type
-      - name
-      - cal_api_key
-      - event_type_id
-      deprecated: true
     CohortAgent:
       type: object
       required:
@@ -3886,6 +3821,43 @@ components:
           - $ref: '#/components/schemas/StringFilter'
           - $ref: '#/components/schemas/EnumFilter'
           description: Filter by chat ID.
+        chat_type:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by chat type.
+            properties:
+              value:
+                items:
+                  enum:
+                  - api_chat
+                  - sms_chat
+        direction:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by SMS chat direction.
+            properties:
+              value:
+                items:
+                  enum:
+                  - inbound
+                  - outbound
+        agent_number:
+          $ref: '#/components/schemas/StringFilter'
+          description: Filter by the agent's phone number for SMS chats.
+        user_number:
+          $ref: '#/components/schemas/StringFilter'
+          description: Filter by the user's phone number for SMS chats.
+        data_storage_setting:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - description: Filter by data storage setting.
+            properties:
+              value:
+                items:
+                  enum:
+                  - everything
+                  - everything_except_pii
+                  - basic_attributes_only
         chat_status:
           allOf:
           - $ref: '#/components/schemas/EnumFilter'
@@ -3972,7 +3944,7 @@ components:
         do_not_call:
           $ref: '#/components/schemas/BooleanFilter'
           description: Filter by whether the contact is marked do-not-call.
-        tags:
+        contact_tags:
           $ref: '#/components/schemas/EnumFilter'
           description: Match contacts that have any of the listed tags.
         last_conversation_timestamp:
@@ -4820,6 +4792,8 @@ components:
       - gemini-3.5-flash
       - gemini-3.5-flash-lite
       - gemini-3.6-flash
+      - gemini-3.7-flash
+      - gemini-3.8-flash
       description: Available LLM models for agents.
     MCPNode:
       allOf:
@@ -5331,8 +5305,6 @@ components:
       allOf:
       - oneOf:
         - $ref: '#/components/schemas/CustomTool'
-        - $ref: '#/components/schemas/CheckAvailabilityCalTool'
-        - $ref: '#/components/schemas/BookAppointmentCalTool'
       - type: object
         required:
         - tool_id
@@ -5478,6 +5450,8 @@ components:
       - gemini-3.5-flash
       - gemini-3.5-flash-lite
       - gemini-3.6-flash
+      - gemini-3.7-flash
+      - gemini-3.8-flash
       - null
       nullable: true
       description: Available LLM models for agents.
@@ -6345,8 +6319,8 @@ components:
       properties:
         model:
           $ref: '#/components/schemas/NullableLLMModel'
-          example: gpt-4.1
-          description: Select the underlying text LLM. If not set, would default to gpt-4.1.
+          example: gpt-5.6-terra
+          description: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
         s2s_model:
           type: string
           enum:
@@ -7299,8 +7273,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/EndCallTool'
       - $ref: '#/components/schemas/TransferCallTool'
-      - $ref: '#/components/schemas/CheckAvailabilityCalTool'
-      - $ref: '#/components/schemas/BookAppointmentCalTool'
       - $ref: '#/components/schemas/AgentSwapTool'
       - $ref: '#/components/schemas/PressDigitTool'
       - $ref: '#/components/schemas/SendSMSTool'
@@ -8825,7 +8797,7 @@ components:
         external_id:
           type: string
           description: CRM record ID from the external provider.
-        tags:
+        contact_tags:
           type: array
           maxItems: 50
           uniqueItems: true
@@ -11174,37 +11146,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /get-agent-versions/{agent_id}:
-    get:
-      description: Get agent versions. Large version histories may be truncated.
-      operationId: getAgentVersions
-      parameters:
-      - in: path
-        name: agent_id
-        schema:
-          type: string
-          minLength: 1
-          example: 16b980523634a6dc504898cda492e939
-        required: true
-        description: Unique id of the agent versions to be retrieved.
-      responses:
-        '200':
-          description: Successfully retrieved agent versions.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AgentResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '422':
-          $ref: '#/components/responses/UnprocessableContent'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      deprecated: true
   /get-agent/{agent_id}:
     get:
       description: Retrieve details of a specific agent
@@ -11239,35 +11180,6 @@ paths:
           $ref: '#/components/responses/UnprocessableContent'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /get-chat-agent-versions/{agent_id}:
-    get:
-      description: Get chat agent versions. Large version histories may be truncated.
-      operationId: getChatAgentVersions
-      parameters:
-      - in: path
-        name: agent_id
-        schema:
-          type: string
-          minLength: 1
-          example: 16b980523634a6dc504898cda492e939
-        required: true
-        description: Unique id of the chat agent versions to be retrieved.
-      responses:
-        '200':
-          description: Successfully retrieved chat agent versions.
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ChatAgentResponse'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '422':
-          $ref: '#/components/responses/UnprocessableContent'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      deprecated: true
   /get-chat-agent/{agent_id}:
     get:
       description: Retrieve details of a specific chat agent
@@ -12851,72 +12763,6 @@ paths:
           $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
-  /v2/create-web-call:
-    post:
-      description: Create a new web call
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-              - agent_id
-              properties:
-                agent_id:
-                  type: string
-                  minLength: 1
-                  example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: Unique id of agent used for the call. Your agent would contain the LLM Websocket url used for this call.
-                agent_version:
-                  $ref: '#/components/schemas/AgentVersionReference'
-                  description: The version of the agent to use for the call.
-                agent_override:
-                  $ref: '#/components/schemas/AgentOverrideRequest'
-                  description: For this particular call, override agent configuration with these settings. This allows you to customize agent behavior for individual calls without modifying the base agent.
-                metadata:
-                  type: object
-                  description: An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the call. Not used for processing. You can later get
-                    this field from the call object.
-                retell_llm_dynamic_variables:
-                  type: object
-                  additionalProperties:
-                    type: string
-                  example:
-                    customer_name: John Doe
-                  description: Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.
-                current_node_id:
-                  type: string
-                  example: collect_info
-                  description: Start the call at this conversation flow node (stage). Must be a valid node id in the agent's conversation flow. Only applicable when the agent uses conversation flow as the
-                    response engine. Ignored for retell-llm agents.
-                  nullable: true
-                current_state:
-                  type: string
-                  example: information_collection
-                  description: Start the conversation in this state (stage). Must be a valid state name in the agent's Retell LLM. Only applicable when the agent uses Retell LLM with states. Ignored for
-                    conversation-flow agents.
-                  nullable: true
-      responses:
-        '201':
-          description: Successfully created a web call.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/V2WebCallResponse'
-        '400':
-          $ref: '#/components/responses/BadRequest'
-        '401':
-          $ref: '#/components/responses/Unauthorized'
-        '402':
-          $ref: '#/components/responses/PaymentRequired'
-        '422':
-          $ref: '#/components/responses/UnprocessableContent'
-        '429':
-          $ref: '#/components/responses/TooManyRequests'
-        '500':
-          $ref: '#/components/responses/InternalServerError'
-      deprecated: true
   /v3/create-web-call:
     post:
       description: Create a new web call and return browser connection details.
@@ -13496,7 +13342,7 @@ paths:
                   description: Last name of the contact.
                 do_not_call:
                   type: boolean
-                tags:
+                contact_tags:
                   type: array
                   maxItems: 50
                   uniqueItems: true
@@ -13598,7 +13444,7 @@ paths:
                   description: 'Country for parsing phone numbers without a country code. Defaults to US.
 
                     '
-                tags:
+                contact_tags:
                   type: array
                   maxItems: 50
                   uniqueItems: true
@@ -13725,7 +13571,7 @@ paths:
                   description: Last name of the contact.
                 do_not_call:
                   type: boolean
-                tags:
+                contact_tags:
                   type: array
                   maxItems: 50
                   uniqueItems: true
@@ -14149,6 +13995,15 @@ paths:
                   description: Replaces the stored list.
                   items:
                     $ref: '#/components/schemas/CRMAnalysisDataMapping'
+                contact_tags:
+                  type: array
+                  nullable: true
+                  maxItems: 1000
+                  uniqueItems: true
+                  items:
+                    $ref: '#/components/schemas/ContactTag'
+                  description: Replaces the organization's available contact tags. Tags are trimmed and deduplicated. Omit to leave unchanged, or send null or an empty array to clear the list. Does not
+                    change tags already assigned to contacts.
                 contact_columns_order:
                   type: array
                   maxItems: 200
