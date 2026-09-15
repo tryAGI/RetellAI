@@ -36,8 +36,8 @@ namespace RetellAI
         /// <summary>
         /// Full set of tags for the contact.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
-        public global::System.Collections.Generic.IList<string>? Tags { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_tags")]
+        public global::System.Collections.Generic.IList<string>? ContactTags { get; set; }
 
         /// <summary>
         /// Values must match the types defined in CRM config custom fields. Set a value to null to clear it.
@@ -64,7 +64,7 @@ namespace RetellAI
         /// Last name of the contact.
         /// </param>
         /// <param name="doNotCall"></param>
-        /// <param name="tags">
+        /// <param name="contactTags">
         /// Full set of tags for the contact.
         /// </param>
         /// <param name="customFields">
@@ -78,14 +78,14 @@ namespace RetellAI
             string? firstName,
             string? lastName,
             bool? doNotCall,
-            global::System.Collections.Generic.IList<string>? tags,
+            global::System.Collections.Generic.IList<string>? contactTags,
             object? customFields)
         {
             this.PhoneNumber = phoneNumber ?? throw new global::System.ArgumentNullException(nameof(phoneNumber));
             this.FirstName = firstName;
             this.LastName = lastName;
             this.DoNotCall = doNotCall;
-            this.Tags = tags;
+            this.ContactTags = contactTags;
             this.CustomFields = customFields;
         }
 

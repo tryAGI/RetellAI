@@ -87,80 +87,6 @@ namespace RetellAI
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.CheckAvailabilityCalTool? CheckAvailabilityCal { get; init; }
-#else
-        public global::RetellAI.CheckAvailabilityCalTool? CheckAvailabilityCal { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(CheckAvailabilityCal))]
-#endif
-        public bool IsCheckAvailabilityCal => CheckAvailabilityCal != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickCheckAvailabilityCal(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::RetellAI.CheckAvailabilityCalTool? value)
-        {
-            value = CheckAvailabilityCal;
-            return IsCheckAvailabilityCal;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::RetellAI.CheckAvailabilityCalTool PickCheckAvailabilityCal() => IsCheckAvailabilityCal
-            ? CheckAvailabilityCal!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'CheckAvailabilityCal' but the value was {ToString()}.");
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        public global::RetellAI.BookAppointmentCalTool? BookAppointmentCal { get; init; }
-#else
-        public global::RetellAI.BookAppointmentCalTool? BookAppointmentCal { get; }
-#endif
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(BookAppointmentCal))]
-#endif
-        public bool IsBookAppointmentCal => BookAppointmentCal != null;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public bool TryPickBookAppointmentCal(
-#if NET6_0_OR_GREATER
-            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
-#endif
-            out global::RetellAI.BookAppointmentCalTool? value)
-        {
-            value = BookAppointmentCal;
-            return IsBookAppointmentCal;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public global::RetellAI.BookAppointmentCalTool PickBookAppointmentCal() => IsBookAppointmentCal
-            ? BookAppointmentCal!
-            : throw new global::System.InvalidOperationException($"Expected union variant 'BookAppointmentCal' but the value was {ToString()}.");
-
-        /// <summary>
-        ///
-        /// </summary>
-#if NET6_0_OR_GREATER
         public global::RetellAI.AgentSwapTool? AgentSwap { get; init; }
 #else
         public global::RetellAI.AgentSwapTool? AgentSwap { get; }
@@ -538,52 +464,6 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator Tool(global::RetellAI.CheckAvailabilityCalTool value) => new Tool((global::RetellAI.CheckAvailabilityCalTool?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::RetellAI.CheckAvailabilityCalTool?(Tool @this) => @this.CheckAvailabilityCal;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Tool(global::RetellAI.CheckAvailabilityCalTool? value)
-        {
-            CheckAvailabilityCal = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Tool FromCheckAvailabilityCal(global::RetellAI.CheckAvailabilityCalTool? value) => new Tool(value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator Tool(global::RetellAI.BookAppointmentCalTool value) => new Tool((global::RetellAI.BookAppointmentCalTool?)value);
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static implicit operator global::RetellAI.BookAppointmentCalTool?(Tool @this) => @this.BookAppointmentCal;
-
-        /// <summary>
-        ///
-        /// </summary>
-        public Tool(global::RetellAI.BookAppointmentCalTool? value)
-        {
-            BookAppointmentCal = value;
-        }
-
-        /// <summary>
-        ///
-        /// </summary>
-        public static Tool FromBookAppointmentCal(global::RetellAI.BookAppointmentCalTool? value) => new Tool(value);
-
-        /// <summary>
-        ///
-        /// </summary>
         public static implicit operator Tool(global::RetellAI.AgentSwapTool value) => new Tool((global::RetellAI.AgentSwapTool?)value);
 
         /// <summary>
@@ -794,8 +674,6 @@ namespace RetellAI
         public Tool(
             global::RetellAI.EndCallTool? endCall,
             global::RetellAI.TransferCallTool? transferCall,
-            global::RetellAI.CheckAvailabilityCalTool? checkAvailabilityCal,
-            global::RetellAI.BookAppointmentCalTool? bookAppointmentCal,
             global::RetellAI.AgentSwapTool? agentSwap,
             global::RetellAI.PressDigitTool? pressDigit,
             global::RetellAI.SendSMSTool? sendSM,
@@ -809,8 +687,6 @@ namespace RetellAI
         {
             EndCall = endCall;
             TransferCall = transferCall;
-            CheckAvailabilityCal = checkAvailabilityCal;
-            BookAppointmentCal = bookAppointmentCal;
             AgentSwap = agentSwap;
             PressDigit = pressDigit;
             SendSM = sendSM;
@@ -835,8 +711,6 @@ namespace RetellAI
             SendSM as object ??
             PressDigit as object ??
             AgentSwap as object ??
-            BookAppointmentCal as object ??
-            CheckAvailabilityCal as object ??
             TransferCall as object ??
             EndCall as object
             ;
@@ -847,8 +721,6 @@ namespace RetellAI
         public override string? ToString() =>
             EndCall?.ToString() ??
             TransferCall?.ToString() ??
-            CheckAvailabilityCal?.ToString() ??
-            BookAppointmentCal?.ToString() ??
             AgentSwap?.ToString() ??
             PressDigit?.ToString() ??
             SendSM?.ToString() ??
@@ -865,7 +737,7 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsCheckAvailabilityCal && !IsBookAppointmentCal && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && IsMcp;
+            return IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && IsMcp;
         }
 
         /// <summary>
@@ -874,8 +746,6 @@ namespace RetellAI
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.EndCallTool, TResult>? endCall = null,
             global::System.Func<global::RetellAI.TransferCallTool, TResult>? transferCall = null,
-            global::System.Func<global::RetellAI.CheckAvailabilityCalTool, TResult>? checkAvailabilityCal = null,
-            global::System.Func<global::RetellAI.BookAppointmentCalTool, TResult>? bookAppointmentCal = null,
             global::System.Func<global::RetellAI.AgentSwapTool, TResult>? agentSwap = null,
             global::System.Func<global::RetellAI.PressDigitTool, TResult>? pressDigit = null,
             global::System.Func<global::RetellAI.SendSMSTool, TResult>? sendSM = null,
@@ -899,14 +769,6 @@ namespace RetellAI
             else if (IsTransferCall && transferCall != null)
             {
                 return transferCall(TransferCall!);
-            }
-            else if (IsCheckAvailabilityCal && checkAvailabilityCal != null)
-            {
-                return checkAvailabilityCal(CheckAvailabilityCal!);
-            }
-            else if (IsBookAppointmentCal && bookAppointmentCal != null)
-            {
-                return bookAppointmentCal(BookAppointmentCal!);
             }
             else if (IsAgentSwap && agentSwap != null)
             {
@@ -956,10 +818,6 @@ namespace RetellAI
 
             global::System.Action<global::RetellAI.TransferCallTool>? transferCall = null,
 
-            global::System.Action<global::RetellAI.CheckAvailabilityCalTool>? checkAvailabilityCal = null,
-
-            global::System.Action<global::RetellAI.BookAppointmentCalTool>? bookAppointmentCal = null,
-
             global::System.Action<global::RetellAI.AgentSwapTool>? agentSwap = null,
 
             global::System.Action<global::RetellAI.PressDigitTool>? pressDigit = null,
@@ -991,14 +849,6 @@ namespace RetellAI
             else if (IsTransferCall)
             {
                 transferCall?.Invoke(TransferCall!);
-            }
-            else if (IsCheckAvailabilityCal)
-            {
-                checkAvailabilityCal?.Invoke(CheckAvailabilityCal!);
-            }
-            else if (IsBookAppointmentCal)
-            {
-                bookAppointmentCal?.Invoke(BookAppointmentCal!);
             }
             else if (IsAgentSwap)
             {
@@ -1044,8 +894,6 @@ namespace RetellAI
         public void Switch(
             global::System.Action<global::RetellAI.EndCallTool>? endCall = null,
             global::System.Action<global::RetellAI.TransferCallTool>? transferCall = null,
-            global::System.Action<global::RetellAI.CheckAvailabilityCalTool>? checkAvailabilityCal = null,
-            global::System.Action<global::RetellAI.BookAppointmentCalTool>? bookAppointmentCal = null,
             global::System.Action<global::RetellAI.AgentSwapTool>? agentSwap = null,
             global::System.Action<global::RetellAI.PressDigitTool>? pressDigit = null,
             global::System.Action<global::RetellAI.SendSMSTool>? sendSM = null,
@@ -1069,14 +917,6 @@ namespace RetellAI
             else if (IsTransferCall)
             {
                 transferCall?.Invoke(TransferCall!);
-            }
-            else if (IsCheckAvailabilityCal)
-            {
-                checkAvailabilityCal?.Invoke(CheckAvailabilityCal!);
-            }
-            else if (IsBookAppointmentCal)
-            {
-                bookAppointmentCal?.Invoke(BookAppointmentCal!);
             }
             else if (IsAgentSwap)
             {
@@ -1127,10 +967,6 @@ namespace RetellAI
                 typeof(global::RetellAI.EndCallTool),
                 TransferCall,
                 typeof(global::RetellAI.TransferCallTool),
-                CheckAvailabilityCal,
-                typeof(global::RetellAI.CheckAvailabilityCalTool),
-                BookAppointmentCal,
-                typeof(global::RetellAI.BookAppointmentCalTool),
                 AgentSwap,
                 typeof(global::RetellAI.AgentSwapTool),
                 PressDigit,
@@ -1167,8 +1003,6 @@ namespace RetellAI
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.EndCallTool?>.Default.Equals(EndCall, other.EndCall) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.TransferCallTool?>.Default.Equals(TransferCall, other.TransferCall) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CheckAvailabilityCalTool?>.Default.Equals(CheckAvailabilityCal, other.CheckAvailabilityCal) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.BookAppointmentCalTool?>.Default.Equals(BookAppointmentCal, other.BookAppointmentCal) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentSwapTool?>.Default.Equals(AgentSwap, other.AgentSwap) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.PressDigitTool?>.Default.Equals(PressDigit, other.PressDigit) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.SendSMSTool?>.Default.Equals(SendSM, other.SendSM) &&

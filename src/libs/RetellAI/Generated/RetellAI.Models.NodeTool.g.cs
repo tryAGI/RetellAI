@@ -13,38 +13,38 @@ namespace RetellAI
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? NodeToolVariant1 { get; init; }
+        public global::RetellAI.CustomTool? Custom { get; init; }
 #else
-        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? NodeToolVariant1 { get; }
+        public global::RetellAI.CustomTool? Custom { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NodeToolVariant1))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
 #endif
-        public bool IsNodeToolVariant1 => NodeToolVariant1 != null;
+        public bool IsCustom => Custom != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickNodeToolVariant1(
+        public bool TryPickCustom(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? value)
+            out global::RetellAI.CustomTool? value)
         {
-            value = NodeToolVariant1;
-            return IsNodeToolVariant1;
+            value = Custom;
+            return IsCustom;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool> PickNodeToolVariant1() => IsNodeToolVariant1
-            ? NodeToolVariant1!.Value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'NodeToolVariant1' but the value was {ToString()}.");
+        public global::RetellAI.CustomTool PickCustom() => IsCustom
+            ? Custom!.Value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
 
         /// <summary>
         ///
@@ -85,25 +85,25 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator NodeTool(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool> value) => new NodeTool((global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?)value);
+        public static implicit operator NodeTool(global::RetellAI.CustomTool value) => new NodeTool((global::RetellAI.CustomTool?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?(NodeTool @this) => @this.NodeToolVariant1;
+        public static implicit operator global::RetellAI.CustomTool?(NodeTool @this) => @this.Custom;
 
         /// <summary>
         ///
         /// </summary>
-        public NodeTool(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? value)
+        public NodeTool(global::RetellAI.CustomTool? value)
         {
-            NodeToolVariant1 = value;
+            Custom = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static NodeTool FromNodeToolVariant1(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? value) => new NodeTool(value);
+        public static NodeTool FromCustom(global::RetellAI.CustomTool? value) => new NodeTool(value);
 
         /// <summary>
         ///
@@ -132,11 +132,11 @@ namespace RetellAI
         ///
         /// </summary>
         public NodeTool(
-            global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? nodeToolVariant1,
+            global::RetellAI.CustomTool? custom,
             global::RetellAI.NodeToolVariant2? nodeToolVariant2
             )
         {
-            NodeToolVariant1 = nodeToolVariant1;
+            Custom = custom;
             NodeToolVariant2 = nodeToolVariant2;
         }
 
@@ -145,14 +145,14 @@ namespace RetellAI
         /// </summary>
         public object? Object =>
             NodeToolVariant2 as object ??
-            NodeToolVariant1 as object
+            Custom as object
             ;
 
         /// <summary>
         ///
         /// </summary>
         public override string? ToString() =>
-            NodeToolVariant1?.ToString() ??
+            Custom?.ToString() ??
             NodeToolVariant2?.ToString()
             ;
 
@@ -161,14 +161,14 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsNodeToolVariant1 && IsNodeToolVariant2;
+            return IsCustom && IsNodeToolVariant2;
         }
 
         /// <summary>
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?, TResult>? nodeToolVariant1 = null,
+            global::System.Func<global::RetellAI.CustomTool?, TResult>? custom = null,
             global::System.Func<global::RetellAI.NodeToolVariant2, TResult>? nodeToolVariant2 = null,
             bool validate = true)
         {
@@ -177,9 +177,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNodeToolVariant1 && nodeToolVariant1 != null)
+            if (IsCustom && custom != null)
             {
-                return nodeToolVariant1(NodeToolVariant1!);
+                return custom(Custom!);
             }
             else if (IsNodeToolVariant2 && nodeToolVariant2 != null)
             {
@@ -193,7 +193,7 @@ namespace RetellAI
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?>? nodeToolVariant1 = null,
+            global::System.Action<global::RetellAI.CustomTool?>? custom = null,
 
             global::System.Action<global::RetellAI.NodeToolVariant2>? nodeToolVariant2 = null,
             bool validate = true)
@@ -203,9 +203,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNodeToolVariant1)
+            if (IsCustom)
             {
-                nodeToolVariant1?.Invoke(NodeToolVariant1!);
+                custom?.Invoke(Custom!);
             }
             else if (IsNodeToolVariant2)
             {
@@ -217,7 +217,7 @@ namespace RetellAI
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?>? nodeToolVariant1 = null,
+            global::System.Action<global::RetellAI.CustomTool?>? custom = null,
             global::System.Action<global::RetellAI.NodeToolVariant2>? nodeToolVariant2 = null,
             bool validate = true)
         {
@@ -226,9 +226,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNodeToolVariant1)
+            if (IsCustom)
             {
-                nodeToolVariant1?.Invoke(NodeToolVariant1!);
+                custom?.Invoke(Custom!);
             }
             else if (IsNodeToolVariant2)
             {
@@ -243,8 +243,8 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                NodeToolVariant1,
-                typeof(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>),
+                Custom,
+                typeof(global::RetellAI.CustomTool),
                 NodeToolVariant2,
                 typeof(global::RetellAI.NodeToolVariant2),
             };
@@ -263,7 +263,7 @@ namespace RetellAI
         public bool Equals(NodeTool other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>?>.Default.Equals(NodeToolVariant1, other.NodeToolVariant1) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CustomTool?>.Default.Equals(Custom, other.Custom) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeToolVariant2?>.Default.Equals(NodeToolVariant2, other.NodeToolVariant2)
                 ;
         }

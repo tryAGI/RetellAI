@@ -53,111 +53,97 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("transfer_option")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
             var __score2 = 0;
-            if (__jsonProps.Contains("cal_api_key")) __score2++;
+            if (__jsonProps.Contains("agent_id")) __score2++;
+            if (__jsonProps.Contains("agent_version")) __score2++;
             if (__jsonProps.Contains("description")) __score2++;
-            if (__jsonProps.Contains("event_type_id")) __score2++;
+            if (__jsonProps.Contains("execution_message_description")) __score2++;
+            if (__jsonProps.Contains("execution_message_type")) __score2++;
+            if (__jsonProps.Contains("keep_current_language")) __score2++;
+            if (__jsonProps.Contains("keep_current_voice")) __score2++;
             if (__jsonProps.Contains("name")) __score2++;
-            if (__jsonProps.Contains("timezone")) __score2++;
+            if (__jsonProps.Contains("post_call_analysis_setting")) __score2++;
+            if (__jsonProps.Contains("speak_during_execution")) __score2++;
             if (__jsonProps.Contains("type")) __score2++;
+            if (__jsonProps.Contains("webhook_setting")) __score2++;
             var __score3 = 0;
-            if (__jsonProps.Contains("cal_api_key")) __score3++;
+            if (__jsonProps.Contains("delay_ms")) __score3++;
             if (__jsonProps.Contains("description")) __score3++;
-            if (__jsonProps.Contains("event_type_id")) __score3++;
             if (__jsonProps.Contains("name")) __score3++;
-            if (__jsonProps.Contains("timezone")) __score3++;
             if (__jsonProps.Contains("type")) __score3++;
             var __score4 = 0;
-            if (__jsonProps.Contains("agent_id")) __score4++;
-            if (__jsonProps.Contains("agent_version")) __score4++;
             if (__jsonProps.Contains("description")) __score4++;
             if (__jsonProps.Contains("execution_message_description")) __score4++;
             if (__jsonProps.Contains("execution_message_type")) __score4++;
-            if (__jsonProps.Contains("keep_current_language")) __score4++;
-            if (__jsonProps.Contains("keep_current_voice")) __score4++;
             if (__jsonProps.Contains("name")) __score4++;
-            if (__jsonProps.Contains("post_call_analysis_setting")) __score4++;
+            if (__jsonProps.Contains("sms_content")) __score4++;
             if (__jsonProps.Contains("speak_during_execution")) __score4++;
             if (__jsonProps.Contains("type")) __score4++;
-            if (__jsonProps.Contains("webhook_setting")) __score4++;
             var __score5 = 0;
-            if (__jsonProps.Contains("delay_ms")) __score5++;
+            if (__jsonProps.Contains("args_at_root")) __score5++;
             if (__jsonProps.Contains("description")) __score5++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score5++;
+            if (__jsonProps.Contains("execution_message_description")) __score5++;
+            if (__jsonProps.Contains("execution_message_type")) __score5++;
+            if (__jsonProps.Contains("headers")) __score5++;
+            if (__jsonProps.Contains("max_retry")) __score5++;
+            if (__jsonProps.Contains("method")) __score5++;
             if (__jsonProps.Contains("name")) __score5++;
+            if (__jsonProps.Contains("parameter_type")) __score5++;
+            if (__jsonProps.Contains("parameters")) __score5++;
+            if (__jsonProps.Contains("parameters.properties")) __score5++;
+            if (__jsonProps.Contains("parameters.required")) __score5++;
+            if (__jsonProps.Contains("parameters.type")) __score5++;
+            if (__jsonProps.Contains("query_params")) __score5++;
+            if (__jsonProps.Contains("response_variables")) __score5++;
+            if (__jsonProps.Contains("speak_after_execution")) __score5++;
+            if (__jsonProps.Contains("speak_during_execution")) __score5++;
+            if (__jsonProps.Contains("timeout_ms")) __score5++;
             if (__jsonProps.Contains("type")) __score5++;
+            if (__jsonProps.Contains("url")) __score5++;
             var __score6 = 0;
+            if (__jsonProps.Contains("code")) __score6++;
             if (__jsonProps.Contains("description")) __score6++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score6++;
             if (__jsonProps.Contains("execution_message_description")) __score6++;
             if (__jsonProps.Contains("execution_message_type")) __score6++;
             if (__jsonProps.Contains("name")) __score6++;
-            if (__jsonProps.Contains("sms_content")) __score6++;
+            if (__jsonProps.Contains("response_variables")) __score6++;
+            if (__jsonProps.Contains("speak_after_execution")) __score6++;
             if (__jsonProps.Contains("speak_during_execution")) __score6++;
+            if (__jsonProps.Contains("timeout_ms")) __score6++;
             if (__jsonProps.Contains("type")) __score6++;
             var __score7 = 0;
-            if (__jsonProps.Contains("args_at_root")) __score7++;
             if (__jsonProps.Contains("description")) __score7++;
             if (__jsonProps.Contains("enable_typing_sound")) __score7++;
-            if (__jsonProps.Contains("execution_message_description")) __score7++;
-            if (__jsonProps.Contains("execution_message_type")) __score7++;
-            if (__jsonProps.Contains("headers")) __score7++;
-            if (__jsonProps.Contains("max_retry")) __score7++;
-            if (__jsonProps.Contains("method")) __score7++;
             if (__jsonProps.Contains("name")) __score7++;
-            if (__jsonProps.Contains("parameter_type")) __score7++;
-            if (__jsonProps.Contains("parameters")) __score7++;
-            if (__jsonProps.Contains("parameters.properties")) __score7++;
-            if (__jsonProps.Contains("parameters.required")) __score7++;
-            if (__jsonProps.Contains("parameters.type")) __score7++;
-            if (__jsonProps.Contains("query_params")) __score7++;
-            if (__jsonProps.Contains("response_variables")) __score7++;
-            if (__jsonProps.Contains("speak_after_execution")) __score7++;
-            if (__jsonProps.Contains("speak_during_execution")) __score7++;
-            if (__jsonProps.Contains("timeout_ms")) __score7++;
             if (__jsonProps.Contains("type")) __score7++;
-            if (__jsonProps.Contains("url")) __score7++;
+            if (__jsonProps.Contains("variables")) __score7++;
             var __score8 = 0;
-            if (__jsonProps.Contains("code")) __score8++;
             if (__jsonProps.Contains("description")) __score8++;
-            if (__jsonProps.Contains("enable_typing_sound")) __score8++;
             if (__jsonProps.Contains("execution_message_description")) __score8++;
             if (__jsonProps.Contains("execution_message_type")) __score8++;
             if (__jsonProps.Contains("name")) __score8++;
-            if (__jsonProps.Contains("response_variables")) __score8++;
-            if (__jsonProps.Contains("speak_after_execution")) __score8++;
             if (__jsonProps.Contains("speak_during_execution")) __score8++;
-            if (__jsonProps.Contains("timeout_ms")) __score8++;
             if (__jsonProps.Contains("type")) __score8++;
             var __score9 = 0;
             if (__jsonProps.Contains("description")) __score9++;
-            if (__jsonProps.Contains("enable_typing_sound")) __score9++;
+            if (__jsonProps.Contains("execution_message_description")) __score9++;
+            if (__jsonProps.Contains("execution_message_type")) __score9++;
             if (__jsonProps.Contains("name")) __score9++;
+            if (__jsonProps.Contains("speak_during_execution")) __score9++;
             if (__jsonProps.Contains("type")) __score9++;
-            if (__jsonProps.Contains("variables")) __score9++;
             var __score10 = 0;
             if (__jsonProps.Contains("description")) __score10++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score10++;
             if (__jsonProps.Contains("execution_message_description")) __score10++;
             if (__jsonProps.Contains("execution_message_type")) __score10++;
+            if (__jsonProps.Contains("input_schema")) __score10++;
+            if (__jsonProps.Contains("mcp_id")) __score10++;
             if (__jsonProps.Contains("name")) __score10++;
+            if (__jsonProps.Contains("response_variables")) __score10++;
+            if (__jsonProps.Contains("speak_after_execution")) __score10++;
             if (__jsonProps.Contains("speak_during_execution")) __score10++;
             if (__jsonProps.Contains("type")) __score10++;
-            var __score11 = 0;
-            if (__jsonProps.Contains("description")) __score11++;
-            if (__jsonProps.Contains("execution_message_description")) __score11++;
-            if (__jsonProps.Contains("execution_message_type")) __score11++;
-            if (__jsonProps.Contains("name")) __score11++;
-            if (__jsonProps.Contains("speak_during_execution")) __score11++;
-            if (__jsonProps.Contains("type")) __score11++;
-            var __score12 = 0;
-            if (__jsonProps.Contains("description")) __score12++;
-            if (__jsonProps.Contains("enable_typing_sound")) __score12++;
-            if (__jsonProps.Contains("execution_message_description")) __score12++;
-            if (__jsonProps.Contains("execution_message_type")) __score12++;
-            if (__jsonProps.Contains("input_schema")) __score12++;
-            if (__jsonProps.Contains("mcp_id")) __score12++;
-            if (__jsonProps.Contains("name")) __score12++;
-            if (__jsonProps.Contains("response_variables")) __score12++;
-            if (__jsonProps.Contains("speak_after_execution")) __score12++;
-            if (__jsonProps.Contains("speak_during_execution")) __score12++;
-            if (__jsonProps.Contains("type")) __score12++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
@@ -171,13 +157,9 @@ namespace RetellAI.JsonConverters
             if (__score8 > __bestScore) { __bestScore = __score8; __bestIndex = 8; }
             if (__score9 > __bestScore) { __bestScore = __score9; __bestIndex = 9; }
             if (__score10 > __bestScore) { __bestScore = __score10; __bestIndex = 10; }
-            if (__score11 > __bestScore) { __bestScore = __score11; __bestIndex = 11; }
-            if (__score12 > __bestScore) { __bestScore = __score12; __bestIndex = 12; }
 
             global::RetellAI.EndCallTool? endCall = default;
             global::RetellAI.TransferCallTool? transferCall = default;
-            global::RetellAI.CheckAvailabilityCalTool? checkAvailabilityCal = default;
-            global::RetellAI.BookAppointmentCalTool? bookAppointmentCal = default;
             global::RetellAI.AgentSwapTool? agentSwap = default;
             global::RetellAI.PressDigitTool? pressDigit = default;
             global::RetellAI.SendSMSTool? sendSM = default;
@@ -223,36 +205,6 @@ namespace RetellAI.JsonConverters
                 {
                     try
                     {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CheckAvailabilityCalTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CheckAvailabilityCalTool> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CheckAvailabilityCalTool).Name}");
-                        checkAvailabilityCal = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 3)
-                {
-                    try
-                    {
-                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BookAppointmentCalTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BookAppointmentCalTool> ??
-                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BookAppointmentCalTool).Name}");
-                        bookAppointmentCal = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                    }
-                    catch (global::System.Text.Json.JsonException)
-                    {
-                    }
-                    catch (global::System.InvalidOperationException)
-                    {
-                    }
-                }
-                else if (__bestIndex == 4)
-                {
-                    try
-                    {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentSwapTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentSwapTool> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentSwapTool).Name}");
                         agentSwap = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -264,7 +216,7 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 5)
+                else if (__bestIndex == 3)
                 {
                     try
                     {
@@ -279,7 +231,7 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 6)
+                else if (__bestIndex == 4)
                 {
                     try
                     {
@@ -294,7 +246,7 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 7)
+                else if (__bestIndex == 5)
                 {
                     try
                     {
@@ -309,7 +261,7 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 8)
+                else if (__bestIndex == 6)
                 {
                     try
                     {
@@ -324,7 +276,7 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 9)
+                else if (__bestIndex == 7)
                 {
                     try
                     {
@@ -339,7 +291,7 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 10)
+                else if (__bestIndex == 8)
                 {
                     try
                     {
@@ -354,7 +306,7 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 11)
+                else if (__bestIndex == 9)
                 {
                     try
                     {
@@ -369,7 +321,7 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
-                else if (__bestIndex == 12)
+                else if (__bestIndex == 10)
                 {
                     try
                     {
@@ -386,7 +338,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -403,7 +355,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -420,41 +372,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
-            {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CheckAvailabilityCalTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CheckAvailabilityCalTool> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CheckAvailabilityCalTool).Name}");
-                    checkAvailabilityCal = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-            }
-
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
-            {
-                try
-                {
-
-                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BookAppointmentCalTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BookAppointmentCalTool> ??
-                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BookAppointmentCalTool).Name}");
-                    bookAppointmentCal = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
-                }
-                catch (global::System.Text.Json.JsonException)
-                {
-                }
-                catch (global::System.InvalidOperationException)
-                {
-                }
-            }
-
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -471,7 +389,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -488,7 +406,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -505,7 +423,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -522,7 +440,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -539,7 +457,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -556,7 +474,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -573,7 +491,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -590,7 +508,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && checkAvailabilityCal == null && bookAppointmentCal == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
+            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null)
             {
                 try
                 {
@@ -611,10 +529,6 @@ namespace RetellAI.JsonConverters
                 endCall,
 
                 transferCall,
-
-                checkAvailabilityCal,
-
-                bookAppointmentCal,
 
                 agentSwap,
 
@@ -658,18 +572,6 @@ namespace RetellAI.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferCallTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferCallTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferCallTool).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.TransferCall!, typeInfo);
-            }
-            else if (value.IsCheckAvailabilityCal)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CheckAvailabilityCalTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CheckAvailabilityCalTool?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CheckAvailabilityCalTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CheckAvailabilityCal!, typeInfo);
-            }
-            else if (value.IsBookAppointmentCal)
-            {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BookAppointmentCalTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BookAppointmentCalTool?> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BookAppointmentCalTool).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BookAppointmentCal!, typeInfo);
             }
             else if (value.IsAgentSwap)
             {
