@@ -636,7 +636,7 @@ namespace RetellAI
         /// Last name of the contact.
         /// </param>
         /// <param name="doNotCall"></param>
-        /// <param name="tags">
+        /// <param name="contactTags">
         /// Full replacement set of tags for the contact.
         /// </param>
         /// <param name="customFields">
@@ -650,7 +650,7 @@ namespace RetellAI
             string? firstName = default,
             string? lastName = default,
             bool? doNotCall = default,
-            global::System.Collections.Generic.IList<string>? tags = default,
+            global::System.Collections.Generic.IList<string>? contactTags = default,
             object? customFields = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -660,7 +660,7 @@ namespace RetellAI
                 FirstName = firstName,
                 LastName = lastName,
                 DoNotCall = doNotCall,
-                Tags = tags,
+                ContactTags = contactTags,
                 CustomFields = customFields,
             };
 

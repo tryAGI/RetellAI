@@ -40,6 +40,9 @@ namespace RetellAI
         /// <param name="crmAnalysisDataMappings">
         /// Replaces the stored list.
         /// </param>
+        /// <param name="contactTags">
+        /// Replaces the organization's available contact tags. Tags are trimmed and deduplicated. Omit to leave unchanged, or send null or an empty array to clear the list. Does not change tags already assigned to contacts.
+        /// </param>
         /// <param name="contactColumnsOrder">
         /// Preferred display order of contact fields, for clients that render contacts as a table. Not used by the API itself.
         /// </param>
@@ -50,6 +53,7 @@ namespace RetellAI
             string? appId = default,
             global::System.Collections.Generic.IList<global::RetellAI.CRMCustomFieldSchema>? customFields = default,
             global::System.Collections.Generic.IList<global::RetellAI.CRMAnalysisDataMapping>? crmAnalysisDataMappings = default,
+            global::System.Collections.Generic.IList<string>? contactTags = default,
             global::System.Collections.Generic.IList<string>? contactColumnsOrder = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
