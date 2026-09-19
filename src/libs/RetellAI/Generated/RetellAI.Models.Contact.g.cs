@@ -56,8 +56,8 @@ namespace RetellAI
         /// <summary>
         /// Tags assigned to the contact.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
-        public global::System.Collections.Generic.IList<string>? Tags { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_tags")]
+        public global::System.Collections.Generic.IList<string>? ContactTags { get; set; }
 
         /// <summary>
         /// Custom fields defined in CRM config.
@@ -123,7 +123,7 @@ namespace RetellAI
         /// <param name="externalId">
         /// CRM record ID from the external provider.
         /// </param>
-        /// <param name="tags">
+        /// <param name="contactTags">
         /// Tags assigned to the contact.
         /// </param>
         /// <param name="customFields">
@@ -150,7 +150,7 @@ namespace RetellAI
             string? lastName,
             bool? doNotCall,
             string? externalId,
-            global::System.Collections.Generic.IList<string>? tags,
+            global::System.Collections.Generic.IList<string>? contactTags,
             object? customFields,
             double? conversationCount,
             double? lastConversationTimestamp,
@@ -163,7 +163,7 @@ namespace RetellAI
             this.LastName = lastName;
             this.DoNotCall = doNotCall;
             this.ExternalId = externalId;
-            this.Tags = tags;
+            this.ContactTags = contactTags;
             this.CustomFields = customFields;
             this.ConversationCount = conversationCount;
             this.LastConversationTimestamp = lastConversationTimestamp;
