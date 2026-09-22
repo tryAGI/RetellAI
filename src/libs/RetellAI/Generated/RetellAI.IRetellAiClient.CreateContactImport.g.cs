@@ -40,7 +40,7 @@ namespace RetellAI
         /// <param name="defaultCountry">
         /// Country for parsing phone numbers without a country code. Defaults to US.
         /// </param>
-        /// <param name="tags">
+        /// <param name="contactTags">
         /// Tags added to every contact in this import. Existing tags are preserved. Omit to leave tags unchanged.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -50,7 +50,7 @@ namespace RetellAI
             string uploadId,
             global::System.Collections.Generic.IList<global::RetellAI.CRMSyncMapping> columnMapping,
             string? defaultCountry = default,
-            global::System.Collections.Generic.IList<string>? tags = default,
+            global::System.Collections.Generic.IList<string>? contactTags = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

@@ -27,6 +27,12 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.CRMAnalysisDataMapping>? CrmAnalysisDataMappings { get; set; }
 
         /// <summary>
+        /// Replaces the organization's available contact tags. Tags are trimmed and deduplicated. Omit to leave unchanged, or send null or an empty array to clear the list. Does not change tags already assigned to contacts.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_tags")]
+        public global::System.Collections.Generic.IList<string>? ContactTags { get; set; }
+
+        /// <summary>
         /// Preferred display order of contact fields, for clients that render contacts as a table. Not used by the API itself.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("contact_columns_order")]
@@ -50,6 +56,9 @@ namespace RetellAI
         /// <param name="crmAnalysisDataMappings">
         /// Replaces the stored list.
         /// </param>
+        /// <param name="contactTags">
+        /// Replaces the organization's available contact tags. Tags are trimmed and deduplicated. Omit to leave unchanged, or send null or an empty array to clear the list. Does not change tags already assigned to contacts.
+        /// </param>
         /// <param name="contactColumnsOrder">
         /// Preferred display order of contact fields, for clients that render contacts as a table. Not used by the API itself.
         /// </param>
@@ -60,11 +69,13 @@ namespace RetellAI
             string? appId,
             global::System.Collections.Generic.IList<global::RetellAI.CRMCustomFieldSchema>? customFields,
             global::System.Collections.Generic.IList<global::RetellAI.CRMAnalysisDataMapping>? crmAnalysisDataMappings,
+            global::System.Collections.Generic.IList<string>? contactTags,
             global::System.Collections.Generic.IList<string>? contactColumnsOrder)
         {
             this.AppId = appId;
             this.CustomFields = customFields;
             this.CrmAnalysisDataMappings = crmAnalysisDataMappings;
+            this.ContactTags = contactTags;
             this.ContactColumnsOrder = contactColumnsOrder;
         }
 
