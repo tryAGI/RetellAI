@@ -18,12 +18,12 @@ namespace RetellAI.JsonConverters
             using var __jsonDocument = global::System.Text.Json.JsonDocument.ParseValue(ref reader);
             var __rawJson = __jsonDocument.RootElement.GetRawText();
 
-            global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>? nodeToolVariant1 = default;
+            global::RetellAI.CustomTool? custom = default;
             try
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>).Name}");
-                nodeToolVariant1 = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CustomTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CustomTool> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CustomTool).Name}");
+                custom = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
             }
             catch (global::System.Text.Json.JsonException)
             {
@@ -46,7 +46,7 @@ namespace RetellAI.JsonConverters
             {
             }
             var __value = new global::RetellAI.NodeTool(
-                nodeToolVariant1,
+                custom,
 
                 nodeToolVariant2
                 );
@@ -66,11 +66,11 @@ namespace RetellAI.JsonConverters
 
             writer.WriteStartObject();
             var __writtenPropertyNames = new global::System.Collections.Generic.HashSet<string>(global::System.StringComparer.Ordinal);
-            if (value.IsNodeToolVariant1)
+            if (value.IsCustom)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>> ??
-                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.CheckAvailabilityCalTool, global::RetellAI.BookAppointmentCalTool>).Name}");
-                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.NodeToolVariant1!.Value, typeInfo);
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CustomTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CustomTool> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CustomTool).Name}");
+                var __element0 = global::System.Text.Json.JsonSerializer.SerializeToElement(value.Custom!, typeInfo);
                 if (__element0.ValueKind != global::System.Text.Json.JsonValueKind.Object)
                 {
                     throw new global::System.Text.Json.JsonException("AllOf values must serialize as JSON objects.");

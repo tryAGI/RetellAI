@@ -31,6 +31,39 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("chat_type")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatType>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatType>? ChatType { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("direction")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDirection>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDirection>? Direction { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("agent_number")]
+        public global::RetellAI.StringFilter? AgentNumber { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("user_number")]
+        public global::RetellAI.StringFilter? UserNumber { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("data_storage_setting")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDataStorageSetting>))]
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDataStorageSetting>? DataStorageSetting { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("chat_status")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatStatus>))]
         public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatStatus>? ChatStatus { get; set; }
@@ -111,6 +144,11 @@ namespace RetellAI
         /// <param name="chatId">
         /// Filter by chat ID.
         /// </param>
+        /// <param name="chatType"></param>
+        /// <param name="direction"></param>
+        /// <param name="agentNumber"></param>
+        /// <param name="userNumber"></param>
+        /// <param name="dataStorageSetting"></param>
         /// <param name="chatStatus"></param>
         /// <param name="disconnectionReason"></param>
         /// <param name="userSentiment"></param>
@@ -140,6 +178,11 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? agent,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? agentTag,
             global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? chatId,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatType>? chatType,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDirection>? direction,
+            global::RetellAI.StringFilter? agentNumber,
+            global::RetellAI.StringFilter? userNumber,
+            global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDataStorageSetting>? dataStorageSetting,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatStatus>? chatStatus,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDisconnectionReason>? disconnectionReason,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterUserSentiment>? userSentiment,
@@ -154,6 +197,11 @@ namespace RetellAI
             this.Agent = agent;
             this.AgentTag = agentTag;
             this.ChatId = chatId;
+            this.ChatType = chatType;
+            this.Direction = direction;
+            this.AgentNumber = agentNumber;
+            this.UserNumber = userNumber;
+            this.DataStorageSetting = dataStorageSetting;
             this.ChatStatus = chatStatus;
             this.DisconnectionReason = disconnectionReason;
             this.UserSentiment = userSentiment;
