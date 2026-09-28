@@ -167,19 +167,19 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConductorOverageConfigVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConductorOverageConfigVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConductorOverageConfigVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ConductorOverageConfigVariant1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConductorOverageConfigVariant1(), typeInfo);
             }
             else if (value.IsConductorOverageConfigVariant2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConductorOverageConfigVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConductorOverageConfigVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConductorOverageConfigVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ConductorOverageConfigVariant2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConductorOverageConfigVariant2(), typeInfo);
             }
             else if (value.IsConductorOverageConfigVariant3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConductorOverageConfigVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConductorOverageConfigVariant3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConductorOverageConfigVariant3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ConductorOverageConfigVariant3!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConductorOverageConfigVariant3(), typeInfo);
             }
         }
     }

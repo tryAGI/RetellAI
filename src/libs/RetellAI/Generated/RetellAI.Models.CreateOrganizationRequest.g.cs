@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateOrganizationRequestNew PickNew() => IsNew
-            ? New!
+        public global::RetellAI.CreateOrganizationRequestNew PickNew() => New is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'New' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateOrganizationRequestOld PickOld() => IsOld
-            ? Old!
+        public global::RetellAI.CreateOrganizationRequestOld PickOld() => Old is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Old' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNew && @new != null)
+            if (New is { } __value0 && @new != null)
             {
-                return @new(New!);
+                return @new(__value0);
             }
-            else if (IsOld && old != null)
+            else if (Old is { } __value1 && old != null)
             {
-                return old(Old!);
+                return old(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNew)
+            if (New is { } __value0)
             {
-                @new?.Invoke(New!);
+                @new?.Invoke(__value0);
             }
-            else if (IsOld)
+            else if (Old is { } __value1)
             {
-                old?.Invoke(Old!);
+                old?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNew)
+            if (New is { } __value0)
             {
-                @new?.Invoke(New!);
+                @new?.Invoke(__value0);
             }
-            else if (IsOld)
+            else if (Old is { } __value1)
             {
-                old?.Invoke(Old!);
+                old?.Invoke(__value1);
             }
         }
 

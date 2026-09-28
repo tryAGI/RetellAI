@@ -135,13 +135,13 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentAppUsage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentAppUsage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentAppUsage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Agent!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAgent(), typeInfo);
             }
             else if (value.IsKnowledgeBase)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.KnowledgeBaseAppUsage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.KnowledgeBaseAppUsage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.KnowledgeBaseAppUsage).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.KnowledgeBase!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickKnowledgeBase(), typeInfo);
             }
         }
     }

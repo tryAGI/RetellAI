@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OAuthConfigResponse PickO() => IsO
-            ? O!
+        public global::RetellAI.OAuthConfigResponse PickO() => O is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'O' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ApiKeyAuthConfigResponse PickApiKey() => IsApiKey
-            ? ApiKey!
+        public global::RetellAI.ApiKeyAuthConfigResponse PickApiKey() => ApiKey is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ApiKey' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AccessTokenAuthConfigResponse PickAccessToken() => IsAccessToken
-            ? AccessToken!
+        public global::RetellAI.AccessTokenAuthConfigResponse PickAccessToken() => AccessToken is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AccessToken' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BasicAuthConfigResponse PickBasic() => IsBasic
-            ? Basic!
+        public global::RetellAI.BasicAuthConfigResponse PickBasic() => Basic is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Basic' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RefreshTokenAuthConfigResponse PickRefreshToken() => IsRefreshToken
-            ? RefreshToken!
+        public global::RetellAI.RefreshTokenAuthConfigResponse PickRefreshToken() => RefreshToken is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RefreshToken' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -372,25 +372,25 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsO && o != null)
+            if (O is { } __value0 && o != null)
             {
-                return o(O!);
+                return o(__value0);
             }
-            else if (IsApiKey && apiKey != null)
+            else if (ApiKey is { } __value1 && apiKey != null)
             {
-                return apiKey(ApiKey!);
+                return apiKey(__value1);
             }
-            else if (IsAccessToken && accessToken != null)
+            else if (AccessToken is { } __value2 && accessToken != null)
             {
-                return accessToken(AccessToken!);
+                return accessToken(__value2);
             }
-            else if (IsBasic && basic != null)
+            else if (Basic is { } __value3 && basic != null)
             {
-                return basic(Basic!);
+                return basic(__value3);
             }
-            else if (IsRefreshToken && refreshToken != null)
+            else if (RefreshToken is { } __value4 && refreshToken != null)
             {
-                return refreshToken(RefreshToken!);
+                return refreshToken(__value4);
             }
 
             return default(TResult);
@@ -416,25 +416,25 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsO)
+            if (O is { } __value0)
             {
-                o?.Invoke(O!);
+                o?.Invoke(__value0);
             }
-            else if (IsApiKey)
+            else if (ApiKey is { } __value1)
             {
-                apiKey?.Invoke(ApiKey!);
+                apiKey?.Invoke(__value1);
             }
-            else if (IsAccessToken)
+            else if (AccessToken is { } __value2)
             {
-                accessToken?.Invoke(AccessToken!);
+                accessToken?.Invoke(__value2);
             }
-            else if (IsBasic)
+            else if (Basic is { } __value3)
             {
-                basic?.Invoke(Basic!);
+                basic?.Invoke(__value3);
             }
-            else if (IsRefreshToken)
+            else if (RefreshToken is { } __value4)
             {
-                refreshToken?.Invoke(RefreshToken!);
+                refreshToken?.Invoke(__value4);
             }
         }
 
@@ -454,25 +454,25 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsO)
+            if (O is { } __value0)
             {
-                o?.Invoke(O!);
+                o?.Invoke(__value0);
             }
-            else if (IsApiKey)
+            else if (ApiKey is { } __value1)
             {
-                apiKey?.Invoke(ApiKey!);
+                apiKey?.Invoke(__value1);
             }
-            else if (IsAccessToken)
+            else if (AccessToken is { } __value2)
             {
-                accessToken?.Invoke(AccessToken!);
+                accessToken?.Invoke(__value2);
             }
-            else if (IsBasic)
+            else if (Basic is { } __value3)
             {
-                basic?.Invoke(Basic!);
+                basic?.Invoke(__value3);
             }
-            else if (IsRefreshToken)
+            else if (RefreshToken is { } __value4)
             {
-                refreshToken?.Invoke(RefreshToken!);
+                refreshToken?.Invoke(__value4);
             }
         }
 

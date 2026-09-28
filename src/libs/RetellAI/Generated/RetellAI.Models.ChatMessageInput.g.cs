@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MessageBase PickBase() => IsBase
-            ? Base!
+        public global::RetellAI.MessageBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallInvocationMessageBase PickToolCallInvocationBase() => IsToolCallInvocationBase
-            ? ToolCallInvocationBase!
+        public global::RetellAI.ToolCallInvocationMessageBase PickToolCallInvocationBase() => ToolCallInvocationBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ToolCallInvocationBase' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallResultMessageBase PickToolCallResultBase() => IsToolCallResultBase
-            ? ToolCallResultBase!
+        public global::RetellAI.ToolCallResultMessageBase PickToolCallResultBase() => ToolCallResultBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ToolCallResultBase' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeTransitionMessageBase PickNodeTransitionBase() => IsNodeTransitionBase
-            ? NodeTransitionBase!
+        public global::RetellAI.NodeTransitionMessageBase PickNodeTransitionBase() => NodeTransitionBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'NodeTransitionBase' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StateTransitionMessageBase PickStateTransitionBase() => IsStateTransitionBase
-            ? StateTransitionBase!
+        public global::RetellAI.StateTransitionMessageBase PickStateTransitionBase() => StateTransitionBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'StateTransitionBase' but the value was {ToString()}.");
 
         /// <summary>
@@ -227,8 +227,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.InjectedMessageBase PickInjectedBase() => IsInjectedBase
-            ? InjectedBase!
+        public global::RetellAI.InjectedMessageBase PickInjectedBase() => InjectedBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'InjectedBase' but the value was {ToString()}.");
 
         /// <summary>
@@ -264,8 +264,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsMessageBase PickSmsBase() => IsSmsBase
-            ? SmsBase!
+        public global::RetellAI.SmsMessageBase PickSmsBase() => SmsBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SmsBase' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -502,33 +502,33 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsToolCallInvocationBase && toolCallInvocationBase != null)
+            else if (ToolCallInvocationBase is { } __value1 && toolCallInvocationBase != null)
             {
-                return toolCallInvocationBase(ToolCallInvocationBase!);
+                return toolCallInvocationBase(__value1);
             }
-            else if (IsToolCallResultBase && toolCallResultBase != null)
+            else if (ToolCallResultBase is { } __value2 && toolCallResultBase != null)
             {
-                return toolCallResultBase(ToolCallResultBase!);
+                return toolCallResultBase(__value2);
             }
-            else if (IsNodeTransitionBase && nodeTransitionBase != null)
+            else if (NodeTransitionBase is { } __value3 && nodeTransitionBase != null)
             {
-                return nodeTransitionBase(NodeTransitionBase!);
+                return nodeTransitionBase(__value3);
             }
-            else if (IsStateTransitionBase && stateTransitionBase != null)
+            else if (StateTransitionBase is { } __value4 && stateTransitionBase != null)
             {
-                return stateTransitionBase(StateTransitionBase!);
+                return stateTransitionBase(__value4);
             }
-            else if (IsInjectedBase && injectedBase != null)
+            else if (InjectedBase is { } __value5 && injectedBase != null)
             {
-                return injectedBase(InjectedBase!);
+                return injectedBase(__value5);
             }
-            else if (IsSmsBase && smsBase != null)
+            else if (SmsBase is { } __value6 && smsBase != null)
             {
-                return smsBase(SmsBase!);
+                return smsBase(__value6);
             }
 
             return default(TResult);
@@ -558,33 +558,33 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsToolCallInvocationBase)
+            else if (ToolCallInvocationBase is { } __value1)
             {
-                toolCallInvocationBase?.Invoke(ToolCallInvocationBase!);
+                toolCallInvocationBase?.Invoke(__value1);
             }
-            else if (IsToolCallResultBase)
+            else if (ToolCallResultBase is { } __value2)
             {
-                toolCallResultBase?.Invoke(ToolCallResultBase!);
+                toolCallResultBase?.Invoke(__value2);
             }
-            else if (IsNodeTransitionBase)
+            else if (NodeTransitionBase is { } __value3)
             {
-                nodeTransitionBase?.Invoke(NodeTransitionBase!);
+                nodeTransitionBase?.Invoke(__value3);
             }
-            else if (IsStateTransitionBase)
+            else if (StateTransitionBase is { } __value4)
             {
-                stateTransitionBase?.Invoke(StateTransitionBase!);
+                stateTransitionBase?.Invoke(__value4);
             }
-            else if (IsInjectedBase)
+            else if (InjectedBase is { } __value5)
             {
-                injectedBase?.Invoke(InjectedBase!);
+                injectedBase?.Invoke(__value5);
             }
-            else if (IsSmsBase)
+            else if (SmsBase is { } __value6)
             {
-                smsBase?.Invoke(SmsBase!);
+                smsBase?.Invoke(__value6);
             }
         }
 
@@ -606,33 +606,33 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsToolCallInvocationBase)
+            else if (ToolCallInvocationBase is { } __value1)
             {
-                toolCallInvocationBase?.Invoke(ToolCallInvocationBase!);
+                toolCallInvocationBase?.Invoke(__value1);
             }
-            else if (IsToolCallResultBase)
+            else if (ToolCallResultBase is { } __value2)
             {
-                toolCallResultBase?.Invoke(ToolCallResultBase!);
+                toolCallResultBase?.Invoke(__value2);
             }
-            else if (IsNodeTransitionBase)
+            else if (NodeTransitionBase is { } __value3)
             {
-                nodeTransitionBase?.Invoke(NodeTransitionBase!);
+                nodeTransitionBase?.Invoke(__value3);
             }
-            else if (IsStateTransitionBase)
+            else if (StateTransitionBase is { } __value4)
             {
-                stateTransitionBase?.Invoke(StateTransitionBase!);
+                stateTransitionBase?.Invoke(__value4);
             }
-            else if (IsInjectedBase)
+            else if (InjectedBase is { } __value5)
             {
-                injectedBase?.Invoke(InjectedBase!);
+                injectedBase?.Invoke(__value5);
             }
-            else if (IsSmsBase)
+            else if (SmsBase is { } __value6)
             {
-                smsBase?.Invoke(SmsBase!);
+                smsBase?.Invoke(__value6);
             }
         }
 

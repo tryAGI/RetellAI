@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsMessageBase PickBase() => IsBase
-            ? Base!
+        public global::RetellAI.SmsMessageBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public object PickSmsMessageVariant2() => IsSmsMessageVariant2
-            ? SmsMessageVariant2!
+        public object PickSmsMessageVariant2() => SmsMessageVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SmsMessageVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -154,13 +154,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsSmsMessageVariant2 && smsMessageVariant2 != null)
+            else if (SmsMessageVariant2 is { } __value1 && smsMessageVariant2 != null)
             {
-                return smsMessageVariant2(SmsMessageVariant2!);
+                return smsMessageVariant2(__value1);
             }
 
             return default(TResult);
@@ -180,13 +180,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsSmsMessageVariant2)
+            else if (SmsMessageVariant2 is { } __value1)
             {
-                smsMessageVariant2?.Invoke(SmsMessageVariant2!);
+                smsMessageVariant2?.Invoke(__value1);
             }
         }
 
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsSmsMessageVariant2)
+            else if (SmsMessageVariant2 is { } __value1)
             {
-                smsMessageVariant2?.Invoke(SmsMessageVariant2!);
+                smsMessageVariant2?.Invoke(__value1);
             }
         }
 

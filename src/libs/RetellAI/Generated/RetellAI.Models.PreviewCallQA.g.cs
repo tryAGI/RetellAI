@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChCallQA PickCh() => IsCh
-            ? Ch!
+        public global::RetellAI.ChCallQA PickCh() => Ch is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Ch' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PreviewCallQAVariant2 PickPreviewCallQAVariant2() => IsPreviewCallQAVariant2
-            ? PreviewCallQAVariant2!
+        public global::RetellAI.PreviewCallQAVariant2 PickPreviewCallQAVariant2() => PreviewCallQAVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PreviewCallQAVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCh && ch != null)
+            if (Ch is { } __value0 && ch != null)
             {
-                return ch(Ch!);
+                return ch(__value0);
             }
-            else if (IsPreviewCallQAVariant2 && previewCallQAVariant2 != null)
+            else if (PreviewCallQAVariant2 is { } __value1 && previewCallQAVariant2 != null)
             {
-                return previewCallQAVariant2(PreviewCallQAVariant2!);
+                return previewCallQAVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCh)
+            if (Ch is { } __value0)
             {
-                ch?.Invoke(Ch!);
+                ch?.Invoke(__value0);
             }
-            else if (IsPreviewCallQAVariant2)
+            else if (PreviewCallQAVariant2 is { } __value1)
             {
-                previewCallQAVariant2?.Invoke(PreviewCallQAVariant2!);
+                previewCallQAVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCh)
+            if (Ch is { } __value0)
             {
-                ch?.Invoke(Ch!);
+                ch?.Invoke(__value0);
             }
-            else if (IsPreviewCallQAVariant2)
+            else if (PreviewCallQAVariant2 is { } __value1)
             {
-                previewCallQAVariant2?.Invoke(PreviewCallQAVariant2!);
+                previewCallQAVariant2?.Invoke(__value1);
             }
         }
 

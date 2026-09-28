@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ModelChoiceCascading PickCascading() => IsCascading
-            ? Cascading!
+        public global::RetellAI.ModelChoiceCascading PickCascading() => Cascading is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Cascading' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCascading && cascading != null)
+            if (Cascading is { } __value0 && cascading != null)
             {
-                return cascading(Cascading!);
+                return cascading(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCascading)
+            if (Cascading is { } __value0)
             {
-                cascading?.Invoke(Cascading!);
+                cascading?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCascading)
+            if (Cascading is { } __value0)
             {
-                cascading?.Invoke(Cascading!);
+                cascading?.Invoke(__value0);
             }
         }
 

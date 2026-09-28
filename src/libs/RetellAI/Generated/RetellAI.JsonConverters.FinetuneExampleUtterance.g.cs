@@ -172,19 +172,19 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.FinetuneExampleUtteranceVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.FinetuneExampleUtteranceVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.FinetuneExampleUtteranceVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FinetuneExampleUtteranceVariant1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFinetuneExampleUtteranceVariant1(), typeInfo);
             }
             else if (value.IsFinetuneExampleUtteranceVariant2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.FinetuneExampleUtteranceVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.FinetuneExampleUtteranceVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.FinetuneExampleUtteranceVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FinetuneExampleUtteranceVariant2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFinetuneExampleUtteranceVariant2(), typeInfo);
             }
             else if (value.IsFinetuneExampleUtteranceVariant3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.FinetuneExampleUtteranceVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.FinetuneExampleUtteranceVariant3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.FinetuneExampleUtteranceVariant3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.FinetuneExampleUtteranceVariant3!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFinetuneExampleUtteranceVariant3(), typeInfo);
             }
         }
     }

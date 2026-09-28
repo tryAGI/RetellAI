@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationFlow PickConversationFlow() => IsConversationFlow
-            ? ConversationFlow!.Value
+        public global::RetellAI.ConversationFlow PickConversationFlow() => ConversationFlow is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationFlow' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public object PickCreateConversationFlowRequestVariant2() => IsCreateConversationFlowRequestVariant2
-            ? CreateConversationFlowRequestVariant2!
+        public object PickCreateConversationFlowRequestVariant2() => CreateConversationFlowRequestVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CreateConversationFlowRequestVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -154,13 +154,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConversationFlow && conversationFlow != null)
+            if (ConversationFlow is { } __value0 && conversationFlow != null)
             {
-                return conversationFlow(ConversationFlow!);
+                return conversationFlow(__value0);
             }
-            else if (IsCreateConversationFlowRequestVariant2 && createConversationFlowRequestVariant2 != null)
+            else if (CreateConversationFlowRequestVariant2 is { } __value1 && createConversationFlowRequestVariant2 != null)
             {
-                return createConversationFlowRequestVariant2(CreateConversationFlowRequestVariant2!);
+                return createConversationFlowRequestVariant2(__value1);
             }
 
             return default(TResult);
@@ -180,13 +180,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConversationFlow)
+            if (ConversationFlow is { } __value0)
             {
-                conversationFlow?.Invoke(ConversationFlow!);
+                conversationFlow?.Invoke(__value0);
             }
-            else if (IsCreateConversationFlowRequestVariant2)
+            else if (CreateConversationFlowRequestVariant2 is { } __value1)
             {
-                createConversationFlowRequestVariant2?.Invoke(CreateConversationFlowRequestVariant2!);
+                createConversationFlowRequestVariant2?.Invoke(__value1);
             }
         }
 
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConversationFlow)
+            if (ConversationFlow is { } __value0)
             {
-                conversationFlow?.Invoke(ConversationFlow!);
+                conversationFlow?.Invoke(__value0);
             }
-            else if (IsCreateConversationFlowRequestVariant2)
+            else if (CreateConversationFlowRequestVariant2 is { } __value1)
             {
-                createConversationFlowRequestVariant2?.Invoke(CreateConversationFlowRequestVariant2!);
+                createConversationFlowRequestVariant2?.Invoke(__value1);
             }
         }
 

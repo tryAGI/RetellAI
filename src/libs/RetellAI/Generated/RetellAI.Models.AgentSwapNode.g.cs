@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeBase PickBase() => IsBase
-            ? Base!.Value
+        public global::RetellAI.NodeBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AgentSwapNodeVariant2 PickAgentSwapNodeVariant2() => IsAgentSwapNodeVariant2
-            ? AgentSwapNodeVariant2!
+        public global::RetellAI.AgentSwapNodeVariant2 PickAgentSwapNodeVariant2() => AgentSwapNodeVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentSwapNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsAgentSwapNodeVariant2 && agentSwapNodeVariant2 != null)
+            else if (AgentSwapNodeVariant2 is { } __value1 && agentSwapNodeVariant2 != null)
             {
-                return agentSwapNodeVariant2(AgentSwapNodeVariant2!);
+                return agentSwapNodeVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsAgentSwapNodeVariant2)
+            else if (AgentSwapNodeVariant2 is { } __value1)
             {
-                agentSwapNodeVariant2?.Invoke(AgentSwapNodeVariant2!);
+                agentSwapNodeVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsAgentSwapNodeVariant2)
+            else if (AgentSwapNodeVariant2 is { } __value1)
             {
-                agentSwapNodeVariant2?.Invoke(AgentSwapNodeVariant2!);
+                agentSwapNodeVariant2?.Invoke(__value1);
             }
         }
 

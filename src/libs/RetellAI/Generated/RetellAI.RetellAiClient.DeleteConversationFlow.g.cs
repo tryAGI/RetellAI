@@ -149,7 +149,7 @@ namespace RetellAI
                 PrepareDeleteConversationFlowRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    conversationFlowId: conversationFlowId!,
+                    conversationFlowId: conversationFlowId,
                     forceDelete: forceDelete);
 
                 return __httpRequest;
@@ -172,7 +172,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/delete-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -206,7 +206,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/delete-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -247,7 +247,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/delete-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -295,7 +295,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/delete-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -317,7 +317,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/delete-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "DELETE",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

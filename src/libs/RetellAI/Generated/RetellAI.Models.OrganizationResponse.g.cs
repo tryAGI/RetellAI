@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.Organization PickOrganization() => IsOrganization
-            ? Organization!
+        public global::RetellAI.Organization PickOrganization() => Organization is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Organization' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OrganizationResponseVariant2 PickOrganizationResponseVariant2() => IsOrganizationResponseVariant2
-            ? OrganizationResponseVariant2!
+        public global::RetellAI.OrganizationResponseVariant2 PickOrganizationResponseVariant2() => OrganizationResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'OrganizationResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsOrganization && organization != null)
+            if (Organization is { } __value0 && organization != null)
             {
-                return organization(Organization!);
+                return organization(__value0);
             }
-            else if (IsOrganizationResponseVariant2 && organizationResponseVariant2 != null)
+            else if (OrganizationResponseVariant2 is { } __value1 && organizationResponseVariant2 != null)
             {
-                return organizationResponseVariant2(OrganizationResponseVariant2!);
+                return organizationResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsOrganization)
+            if (Organization is { } __value0)
             {
-                organization?.Invoke(Organization!);
+                organization?.Invoke(__value0);
             }
-            else if (IsOrganizationResponseVariant2)
+            else if (OrganizationResponseVariant2 is { } __value1)
             {
-                organizationResponseVariant2?.Invoke(OrganizationResponseVariant2!);
+                organizationResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsOrganization)
+            if (Organization is { } __value0)
             {
-                organization?.Invoke(Organization!);
+                organization?.Invoke(__value0);
             }
-            else if (IsOrganizationResponseVariant2)
+            else if (OrganizationResponseVariant2 is { } __value1)
             {
-                organizationResponseVariant2?.Invoke(OrganizationResponseVariant2!);
+                organizationResponseVariant2?.Invoke(__value1);
             }
         }
 

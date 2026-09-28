@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartConfig PickConfig() => IsConfig
-            ? Config!
+        public global::RetellAI.ChartConfig PickConfig() => Config is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Config' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public object PickChartDefinitionVariant2() => IsChartDefinitionVariant2
-            ? ChartDefinitionVariant2!
+        public object PickChartDefinitionVariant2() => ChartDefinitionVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartDefinitionVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -154,13 +154,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConfig && config != null)
+            if (Config is { } __value0 && config != null)
             {
-                return config(Config!);
+                return config(__value0);
             }
-            else if (IsChartDefinitionVariant2 && chartDefinitionVariant2 != null)
+            else if (ChartDefinitionVariant2 is { } __value1 && chartDefinitionVariant2 != null)
             {
-                return chartDefinitionVariant2(ChartDefinitionVariant2!);
+                return chartDefinitionVariant2(__value1);
             }
 
             return default(TResult);
@@ -180,13 +180,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConfig)
+            if (Config is { } __value0)
             {
-                config?.Invoke(Config!);
+                config?.Invoke(__value0);
             }
-            else if (IsChartDefinitionVariant2)
+            else if (ChartDefinitionVariant2 is { } __value1)
             {
-                chartDefinitionVariant2?.Invoke(ChartDefinitionVariant2!);
+                chartDefinitionVariant2?.Invoke(__value1);
             }
         }
 
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConfig)
+            if (Config is { } __value0)
             {
-                config?.Invoke(Config!);
+                config?.Invoke(__value0);
             }
-            else if (IsChartDefinitionVariant2)
+            else if (ChartDefinitionVariant2 is { } __value1)
             {
-                chartDefinitionVariant2?.Invoke(ChartDefinitionVariant2!);
+                chartDefinitionVariant2?.Invoke(__value1);
             }
         }
 

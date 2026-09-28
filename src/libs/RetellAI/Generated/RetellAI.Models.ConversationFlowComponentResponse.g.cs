@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateConversationFlowComponentRequest PickCreateRequest() => IsCreateRequest
-            ? CreateRequest!.Value
+        public global::RetellAI.CreateConversationFlowComponentRequest PickCreateRequest() => CreateRequest is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CreateRequest' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationFlowComponentResponseVariant2 PickConversationFlowComponentResponseVariant2() => IsConversationFlowComponentResponseVariant2
-            ? ConversationFlowComponentResponseVariant2!
+        public global::RetellAI.ConversationFlowComponentResponseVariant2 PickConversationFlowComponentResponseVariant2() => ConversationFlowComponentResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationFlowComponentResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCreateRequest && createRequest != null)
+            if (CreateRequest is { } __value0 && createRequest != null)
             {
-                return createRequest(CreateRequest!);
+                return createRequest(__value0);
             }
-            else if (IsConversationFlowComponentResponseVariant2 && conversationFlowComponentResponseVariant2 != null)
+            else if (ConversationFlowComponentResponseVariant2 is { } __value1 && conversationFlowComponentResponseVariant2 != null)
             {
-                return conversationFlowComponentResponseVariant2(ConversationFlowComponentResponseVariant2!);
+                return conversationFlowComponentResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCreateRequest)
+            if (CreateRequest is { } __value0)
             {
-                createRequest?.Invoke(CreateRequest!);
+                createRequest?.Invoke(__value0);
             }
-            else if (IsConversationFlowComponentResponseVariant2)
+            else if (ConversationFlowComponentResponseVariant2 is { } __value1)
             {
-                conversationFlowComponentResponseVariant2?.Invoke(ConversationFlowComponentResponseVariant2!);
+                conversationFlowComponentResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCreateRequest)
+            if (CreateRequest is { } __value0)
             {
-                createRequest?.Invoke(CreateRequest!);
+                createRequest?.Invoke(__value0);
             }
-            else if (IsConversationFlowComponentResponseVariant2)
+            else if (ConversationFlowComponentResponseVariant2 is { } __value1)
             {
-                conversationFlowComponentResponseVariant2?.Invoke(ConversationFlowComponentResponseVariant2!);
+                conversationFlowComponentResponseVariant2?.Invoke(__value1);
             }
         }
 

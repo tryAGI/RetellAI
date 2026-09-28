@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilter PickCallFilter() => IsCallFilter
-            ? CallFilter!
+        public global::RetellAI.CallFilter PickCallFilter() => CallFilter is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CallFilter' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StoredCallFilterVariant2 PickStoredCallFilterVariant2() => IsStoredCallFilterVariant2
-            ? StoredCallFilterVariant2!
+        public global::RetellAI.StoredCallFilterVariant2 PickStoredCallFilterVariant2() => StoredCallFilterVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'StoredCallFilterVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCallFilter && callFilter != null)
+            if (CallFilter is { } __value0 && callFilter != null)
             {
-                return callFilter(CallFilter!);
+                return callFilter(__value0);
             }
-            else if (IsStoredCallFilterVariant2 && storedCallFilterVariant2 != null)
+            else if (StoredCallFilterVariant2 is { } __value1 && storedCallFilterVariant2 != null)
             {
-                return storedCallFilterVariant2(StoredCallFilterVariant2!);
+                return storedCallFilterVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCallFilter)
+            if (CallFilter is { } __value0)
             {
-                callFilter?.Invoke(CallFilter!);
+                callFilter?.Invoke(__value0);
             }
-            else if (IsStoredCallFilterVariant2)
+            else if (StoredCallFilterVariant2 is { } __value1)
             {
-                storedCallFilterVariant2?.Invoke(StoredCallFilterVariant2!);
+                storedCallFilterVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCallFilter)
+            if (CallFilter is { } __value0)
             {
-                callFilter?.Invoke(CallFilter!);
+                callFilter?.Invoke(__value0);
             }
-            else if (IsStoredCallFilterVariant2)
+            else if (StoredCallFilterVariant2 is { } __value1)
             {
-                storedCallFilterVariant2?.Invoke(StoredCallFilterVariant2!);
+                storedCallFilterVariant2?.Invoke(__value1);
             }
         }
 

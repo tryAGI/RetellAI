@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomTool PickCustom() => IsCustom
-            ? Custom!
+        public global::RetellAI.CustomTool PickCustom() => Custom is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeToolVariant2 PickNodeToolVariant2() => IsNodeToolVariant2
-            ? NodeToolVariant2!
+        public global::RetellAI.NodeToolVariant2 PickNodeToolVariant2() => NodeToolVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'NodeToolVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCustom && custom != null)
+            if (Custom is { } __value0 && custom != null)
             {
-                return custom(Custom!);
+                return custom(__value0);
             }
-            else if (IsNodeToolVariant2 && nodeToolVariant2 != null)
+            else if (NodeToolVariant2 is { } __value1 && nodeToolVariant2 != null)
             {
-                return nodeToolVariant2(NodeToolVariant2!);
+                return nodeToolVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCustom)
+            if (Custom is { } __value0)
             {
-                custom?.Invoke(Custom!);
+                custom?.Invoke(__value0);
             }
-            else if (IsNodeToolVariant2)
+            else if (NodeToolVariant2 is { } __value1)
             {
-                nodeToolVariant2?.Invoke(NodeToolVariant2!);
+                nodeToolVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCustom)
+            if (Custom is { } __value0)
             {
-                custom?.Invoke(Custom!);
+                custom?.Invoke(__value0);
             }
-            else if (IsNodeToolVariant2)
+            else if (NodeToolVariant2 is { } __value1)
             {
-                nodeToolVariant2?.Invoke(NodeToolVariant2!);
+                nodeToolVariant2?.Invoke(__value1);
             }
         }
 

@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PaginatedResponseBase PickPaginatedBase() => IsPaginatedBase
-            ? PaginatedBase!
+        public global::RetellAI.PaginatedResponseBase PickPaginatedBase() => PaginatedBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PaginatedBase' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ContactConversationListResponseVariant2 PickContactConversationListResponseVariant2() => IsContactConversationListResponseVariant2
-            ? ContactConversationListResponseVariant2!
+        public global::RetellAI.ContactConversationListResponseVariant2 PickContactConversationListResponseVariant2() => ContactConversationListResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ContactConversationListResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsPaginatedBase && paginatedBase != null)
+            if (PaginatedBase is { } __value0 && paginatedBase != null)
             {
-                return paginatedBase(PaginatedBase!);
+                return paginatedBase(__value0);
             }
-            else if (IsContactConversationListResponseVariant2 && contactConversationListResponseVariant2 != null)
+            else if (ContactConversationListResponseVariant2 is { } __value1 && contactConversationListResponseVariant2 != null)
             {
-                return contactConversationListResponseVariant2(ContactConversationListResponseVariant2!);
+                return contactConversationListResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsPaginatedBase)
+            if (PaginatedBase is { } __value0)
             {
-                paginatedBase?.Invoke(PaginatedBase!);
+                paginatedBase?.Invoke(__value0);
             }
-            else if (IsContactConversationListResponseVariant2)
+            else if (ContactConversationListResponseVariant2 is { } __value1)
             {
-                contactConversationListResponseVariant2?.Invoke(ContactConversationListResponseVariant2!);
+                contactConversationListResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsPaginatedBase)
+            if (PaginatedBase is { } __value0)
             {
-                paginatedBase?.Invoke(PaginatedBase!);
+                paginatedBase?.Invoke(__value0);
             }
-            else if (IsContactConversationListResponseVariant2)
+            else if (ContactConversationListResponseVariant2 is { } __value1)
             {
-                contactConversationListResponseVariant2?.Invoke(ContactConversationListResponseVariant2!);
+                contactConversationListResponseVariant2?.Invoke(__value1);
             }
         }
 

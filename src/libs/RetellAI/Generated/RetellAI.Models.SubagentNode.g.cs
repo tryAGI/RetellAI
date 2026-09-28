@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeBase PickBase() => IsBase
-            ? Base!.Value
+        public global::RetellAI.NodeBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AgentOverrideConfig PickAgentOverrideConfig() => IsAgentOverrideConfig
-            ? AgentOverrideConfig!
+        public global::RetellAI.AgentOverrideConfig PickAgentOverrideConfig() => AgentOverrideConfig is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentOverrideConfig' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SubagentNodeVariant3 PickSubagentNodeVariant3() => IsSubagentNodeVariant3
-            ? SubagentNodeVariant3!
+        public global::RetellAI.SubagentNodeVariant3 PickSubagentNodeVariant3() => SubagentNodeVariant3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SubagentNodeVariant3' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsAgentOverrideConfig && agentOverrideConfig != null)
+            else if (AgentOverrideConfig is { } __value1 && agentOverrideConfig != null)
             {
-                return agentOverrideConfig(AgentOverrideConfig!);
+                return agentOverrideConfig(__value1);
             }
-            else if (IsSubagentNodeVariant3 && subagentNodeVariant3 != null)
+            else if (SubagentNodeVariant3 is { } __value2 && subagentNodeVariant3 != null)
             {
-                return subagentNodeVariant3(SubagentNodeVariant3!);
+                return subagentNodeVariant3(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsAgentOverrideConfig)
+            else if (AgentOverrideConfig is { } __value1)
             {
-                agentOverrideConfig?.Invoke(AgentOverrideConfig!);
+                agentOverrideConfig?.Invoke(__value1);
             }
-            else if (IsSubagentNodeVariant3)
+            else if (SubagentNodeVariant3 is { } __value2)
             {
-                subagentNodeVariant3?.Invoke(SubagentNodeVariant3!);
+                subagentNodeVariant3?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsAgentOverrideConfig)
+            else if (AgentOverrideConfig is { } __value1)
             {
-                agentOverrideConfig?.Invoke(AgentOverrideConfig!);
+                agentOverrideConfig?.Invoke(__value1);
             }
-            else if (IsSubagentNodeVariant3)
+            else if (SubagentNodeVariant3 is { } __value2)
             {
-                subagentNodeVariant3?.Invoke(SubagentNodeVariant3!);
+                subagentNodeVariant3?.Invoke(__value2);
             }
         }
 

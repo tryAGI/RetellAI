@@ -131,13 +131,13 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.UpdateSpendBudgetRequestVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.UpdateSpendBudgetRequestVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.UpdateSpendBudgetRequestVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UpdateSpendBudgetRequestVariant1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickUpdateSpendBudgetRequestVariant1(), typeInfo);
             }
             else if (value.IsUpdateSpendBudgetRequestVariant2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.UpdateSpendBudgetRequestVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.UpdateSpendBudgetRequestVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.UpdateSpendBudgetRequestVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.UpdateSpendBudgetRequestVariant2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickUpdateSpendBudgetRequestVariant2(), typeInfo);
             }
         }
     }

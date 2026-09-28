@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RetellLLMResponseVariant1 PickRetellLLMResponseVariant1() => IsRetellLLMResponseVariant1
-            ? RetellLLMResponseVariant1!
+        public global::RetellAI.RetellLLMResponseVariant1 PickRetellLLMResponseVariant1() => RetellLLMResponseVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLLMResponseVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RetellLlmRequest PickLlmRequest() => IsLlmRequest
-            ? LlmRequest!.Value
+        public global::RetellAI.RetellLlmRequest PickLlmRequest() => LlmRequest is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'LlmRequest' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RetellLLMResponseVariant3 PickRetellLLMResponseVariant3() => IsRetellLLMResponseVariant3
-            ? RetellLLMResponseVariant3!
+        public global::RetellAI.RetellLLMResponseVariant3 PickRetellLLMResponseVariant3() => RetellLLMResponseVariant3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLLMResponseVariant3' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsRetellLLMResponseVariant1 && retellLLMResponseVariant1 != null)
+            if (RetellLLMResponseVariant1 is { } __value0 && retellLLMResponseVariant1 != null)
             {
-                return retellLLMResponseVariant1(RetellLLMResponseVariant1!);
+                return retellLLMResponseVariant1(__value0);
             }
-            else if (IsLlmRequest && llmRequest != null)
+            else if (LlmRequest is { } __value1 && llmRequest != null)
             {
-                return llmRequest(LlmRequest!);
+                return llmRequest(__value1);
             }
-            else if (IsRetellLLMResponseVariant3 && retellLLMResponseVariant3 != null)
+            else if (RetellLLMResponseVariant3 is { } __value2 && retellLLMResponseVariant3 != null)
             {
-                return retellLLMResponseVariant3(RetellLLMResponseVariant3!);
+                return retellLLMResponseVariant3(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsRetellLLMResponseVariant1)
+            if (RetellLLMResponseVariant1 is { } __value0)
             {
-                retellLLMResponseVariant1?.Invoke(RetellLLMResponseVariant1!);
+                retellLLMResponseVariant1?.Invoke(__value0);
             }
-            else if (IsLlmRequest)
+            else if (LlmRequest is { } __value1)
             {
-                llmRequest?.Invoke(LlmRequest!);
+                llmRequest?.Invoke(__value1);
             }
-            else if (IsRetellLLMResponseVariant3)
+            else if (RetellLLMResponseVariant3 is { } __value2)
             {
-                retellLLMResponseVariant3?.Invoke(RetellLLMResponseVariant3!);
+                retellLLMResponseVariant3?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsRetellLLMResponseVariant1)
+            if (RetellLLMResponseVariant1 is { } __value0)
             {
-                retellLLMResponseVariant1?.Invoke(RetellLLMResponseVariant1!);
+                retellLLMResponseVariant1?.Invoke(__value0);
             }
-            else if (IsLlmRequest)
+            else if (LlmRequest is { } __value1)
             {
-                llmRequest?.Invoke(LlmRequest!);
+                llmRequest?.Invoke(__value1);
             }
-            else if (IsRetellLLMResponseVariant3)
+            else if (RetellLLMResponseVariant3 is { } __value2)
             {
-                retellLLMResponseVariant3?.Invoke(RetellLLMResponseVariant3!);
+                retellLLMResponseVariant3?.Invoke(__value2);
             }
         }
 

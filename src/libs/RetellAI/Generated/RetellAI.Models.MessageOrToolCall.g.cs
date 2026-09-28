@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.Message PickMessage() => IsMessage
-            ? Message!.Value
+        public global::RetellAI.Message PickMessage() => Message is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Message' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallInvocationMessage PickInvocation() => IsInvocation
-            ? Invocation!.Value
+        public global::RetellAI.ToolCallInvocationMessage PickInvocation() => Invocation is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Invocation' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallResultMessage PickResult() => IsResult
-            ? Result!.Value
+        public global::RetellAI.ToolCallResultMessage PickResult() => Result is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Result' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeTransitionMessage PickNodeTransition() => IsNodeTransition
-            ? NodeTransition!.Value
+        public global::RetellAI.NodeTransitionMessage PickNodeTransition() => NodeTransition is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'NodeTransition' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StateTransitionMessage PickStateTransition() => IsStateTransition
-            ? StateTransition!.Value
+        public global::RetellAI.StateTransitionMessage PickStateTransition() => StateTransition is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'StateTransition' but the value was {ToString()}.");
 
         /// <summary>
@@ -227,8 +227,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.InjectedMessage PickInjected() => IsInjected
-            ? Injected!.Value
+        public global::RetellAI.InjectedMessage PickInjected() => Injected is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Injected' but the value was {ToString()}.");
 
         /// <summary>
@@ -264,8 +264,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsMessage PickSms() => IsSms
-            ? Sms!.Value
+        public global::RetellAI.SmsMessage PickSms() => Sms is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Sms' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -502,33 +502,33 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsMessage && message != null)
+            if (Message is { } __value0 && message != null)
             {
-                return message(Message!);
+                return message(__value0);
             }
-            else if (IsInvocation && invocation != null)
+            else if (Invocation is { } __value1 && invocation != null)
             {
-                return invocation(Invocation!);
+                return invocation(__value1);
             }
-            else if (IsResult && result != null)
+            else if (Result is { } __value2 && result != null)
             {
-                return result(Result!);
+                return result(__value2);
             }
-            else if (IsNodeTransition && nodeTransition != null)
+            else if (NodeTransition is { } __value3 && nodeTransition != null)
             {
-                return nodeTransition(NodeTransition!);
+                return nodeTransition(__value3);
             }
-            else if (IsStateTransition && stateTransition != null)
+            else if (StateTransition is { } __value4 && stateTransition != null)
             {
-                return stateTransition(StateTransition!);
+                return stateTransition(__value4);
             }
-            else if (IsInjected && injected != null)
+            else if (Injected is { } __value5 && injected != null)
             {
-                return injected(Injected!);
+                return injected(__value5);
             }
-            else if (IsSms && sms != null)
+            else if (Sms is { } __value6 && sms != null)
             {
-                return sms(Sms!);
+                return sms(__value6);
             }
 
             return default(TResult);
@@ -558,33 +558,33 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsMessage)
+            if (Message is { } __value0)
             {
-                message?.Invoke(Message!);
+                message?.Invoke(__value0);
             }
-            else if (IsInvocation)
+            else if (Invocation is { } __value1)
             {
-                invocation?.Invoke(Invocation!);
+                invocation?.Invoke(__value1);
             }
-            else if (IsResult)
+            else if (Result is { } __value2)
             {
-                result?.Invoke(Result!);
+                result?.Invoke(__value2);
             }
-            else if (IsNodeTransition)
+            else if (NodeTransition is { } __value3)
             {
-                nodeTransition?.Invoke(NodeTransition!);
+                nodeTransition?.Invoke(__value3);
             }
-            else if (IsStateTransition)
+            else if (StateTransition is { } __value4)
             {
-                stateTransition?.Invoke(StateTransition!);
+                stateTransition?.Invoke(__value4);
             }
-            else if (IsInjected)
+            else if (Injected is { } __value5)
             {
-                injected?.Invoke(Injected!);
+                injected?.Invoke(__value5);
             }
-            else if (IsSms)
+            else if (Sms is { } __value6)
             {
-                sms?.Invoke(Sms!);
+                sms?.Invoke(__value6);
             }
         }
 
@@ -606,33 +606,33 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsMessage)
+            if (Message is { } __value0)
             {
-                message?.Invoke(Message!);
+                message?.Invoke(__value0);
             }
-            else if (IsInvocation)
+            else if (Invocation is { } __value1)
             {
-                invocation?.Invoke(Invocation!);
+                invocation?.Invoke(__value1);
             }
-            else if (IsResult)
+            else if (Result is { } __value2)
             {
-                result?.Invoke(Result!);
+                result?.Invoke(__value2);
             }
-            else if (IsNodeTransition)
+            else if (NodeTransition is { } __value3)
             {
-                nodeTransition?.Invoke(NodeTransition!);
+                nodeTransition?.Invoke(__value3);
             }
-            else if (IsStateTransition)
+            else if (StateTransition is { } __value4)
             {
-                stateTransition?.Invoke(StateTransition!);
+                stateTransition?.Invoke(__value4);
             }
-            else if (IsInjected)
+            else if (Injected is { } __value5)
             {
-                injected?.Invoke(Injected!);
+                injected?.Invoke(__value5);
             }
-            else if (IsSms)
+            else if (Sms is { } __value6)
             {
-                sms?.Invoke(Sms!);
+                sms?.Invoke(__value6);
             }
         }
 

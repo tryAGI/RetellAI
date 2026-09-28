@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatResponse PickChatResponse() => IsChatResponse
-            ? ChatResponse!
+        public global::RetellAI.ChatResponse PickChatResponse() => ChatResponse is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChatResponse' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public object PickV3ChatResponseVariant2() => IsV3ChatResponseVariant2
-            ? V3ChatResponseVariant2!
+        public object PickV3ChatResponseVariant2() => V3ChatResponseVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'V3ChatResponseVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -154,13 +154,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChatResponse && chatResponse != null)
+            if (ChatResponse is { } __value0 && chatResponse != null)
             {
-                return chatResponse(ChatResponse!);
+                return chatResponse(__value0);
             }
-            else if (IsV3ChatResponseVariant2 && v3ChatResponseVariant2 != null)
+            else if (V3ChatResponseVariant2 is { } __value1 && v3ChatResponseVariant2 != null)
             {
-                return v3ChatResponseVariant2(V3ChatResponseVariant2!);
+                return v3ChatResponseVariant2(__value1);
             }
 
             return default(TResult);
@@ -180,13 +180,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChatResponse)
+            if (ChatResponse is { } __value0)
             {
-                chatResponse?.Invoke(ChatResponse!);
+                chatResponse?.Invoke(__value0);
             }
-            else if (IsV3ChatResponseVariant2)
+            else if (V3ChatResponseVariant2 is { } __value1)
             {
-                v3ChatResponseVariant2?.Invoke(V3ChatResponseVariant2!);
+                v3ChatResponseVariant2?.Invoke(__value1);
             }
         }
 
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChatResponse)
+            if (ChatResponse is { } __value0)
             {
-                chatResponse?.Invoke(ChatResponse!);
+                chatResponse?.Invoke(__value0);
             }
-            else if (IsV3ChatResponseVariant2)
+            else if (V3ChatResponseVariant2 is { } __value1)
             {
-                v3ChatResponseVariant2?.Invoke(V3ChatResponseVariant2!);
+                v3ChatResponseVariant2?.Invoke(__value1);
             }
         }
 

@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public string PickAgentVersionReferenceVariant1() => IsAgentVersionReferenceVariant1
-            ? AgentVersionReferenceVariant1!
+        public string PickAgentVersionReferenceVariant1() => AgentVersionReferenceVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentVersionReferenceVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public int PickAgentVersionReferenceVariant2() => IsAgentVersionReferenceVariant2
-            ? AgentVersionReferenceVariant2!.Value
+        public int PickAgentVersionReferenceVariant2() => AgentVersionReferenceVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentVersionReferenceVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAgentVersionReferenceVariant1 && agentVersionReferenceVariant1 != null)
+            if (AgentVersionReferenceVariant1 is { } __value0 && agentVersionReferenceVariant1 != null)
             {
-                return agentVersionReferenceVariant1(AgentVersionReferenceVariant1!);
+                return agentVersionReferenceVariant1(__value0);
             }
-            else if (IsAgentVersionReferenceVariant2 && agentVersionReferenceVariant2 != null)
+            else if (AgentVersionReferenceVariant2 is { } __value1 && agentVersionReferenceVariant2 != null)
             {
-                return agentVersionReferenceVariant2(AgentVersionReferenceVariant2!);
+                return agentVersionReferenceVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAgentVersionReferenceVariant1)
+            if (AgentVersionReferenceVariant1 is { } __value0)
             {
-                agentVersionReferenceVariant1?.Invoke(AgentVersionReferenceVariant1!);
+                agentVersionReferenceVariant1?.Invoke(__value0);
             }
-            else if (IsAgentVersionReferenceVariant2)
+            else if (AgentVersionReferenceVariant2 is { } __value1)
             {
-                agentVersionReferenceVariant2?.Invoke(AgentVersionReferenceVariant2!);
+                agentVersionReferenceVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAgentVersionReferenceVariant1)
+            if (AgentVersionReferenceVariant1 is { } __value0)
             {
-                agentVersionReferenceVariant1?.Invoke(AgentVersionReferenceVariant1!);
+                agentVersionReferenceVariant1?.Invoke(__value0);
             }
-            else if (IsAgentVersionReferenceVariant2)
+            else if (AgentVersionReferenceVariant2 is { } __value1)
             {
-                agentVersionReferenceVariant2?.Invoke(AgentVersionReferenceVariant2!);
+                agentVersionReferenceVariant2?.Invoke(__value1);
             }
         }
 

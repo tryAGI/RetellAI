@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AgentResponseVariant1 PickAgentResponseVariant1() => IsAgentResponseVariant1
-            ? AgentResponseVariant1!
+        public global::RetellAI.AgentResponseVariant1 PickAgentResponseVariant1() => AgentResponseVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentResponseVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AgentRequest PickRequest() => IsRequest
-            ? Request!
+        public global::RetellAI.AgentRequest PickRequest() => Request is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Request' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AgentResponseVariant3 PickAgentResponseVariant3() => IsAgentResponseVariant3
-            ? AgentResponseVariant3!
+        public global::RetellAI.AgentResponseVariant3 PickAgentResponseVariant3() => AgentResponseVariant3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentResponseVariant3' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAgentResponseVariant1 && agentResponseVariant1 != null)
+            if (AgentResponseVariant1 is { } __value0 && agentResponseVariant1 != null)
             {
-                return agentResponseVariant1(AgentResponseVariant1!);
+                return agentResponseVariant1(__value0);
             }
-            else if (IsRequest && request != null)
+            else if (Request is { } __value1 && request != null)
             {
-                return request(Request!);
+                return request(__value1);
             }
-            else if (IsAgentResponseVariant3 && agentResponseVariant3 != null)
+            else if (AgentResponseVariant3 is { } __value2 && agentResponseVariant3 != null)
             {
-                return agentResponseVariant3(AgentResponseVariant3!);
+                return agentResponseVariant3(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAgentResponseVariant1)
+            if (AgentResponseVariant1 is { } __value0)
             {
-                agentResponseVariant1?.Invoke(AgentResponseVariant1!);
+                agentResponseVariant1?.Invoke(__value0);
             }
-            else if (IsRequest)
+            else if (Request is { } __value1)
             {
-                request?.Invoke(Request!);
+                request?.Invoke(__value1);
             }
-            else if (IsAgentResponseVariant3)
+            else if (AgentResponseVariant3 is { } __value2)
             {
-                agentResponseVariant3?.Invoke(AgentResponseVariant3!);
+                agentResponseVariant3?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAgentResponseVariant1)
+            if (AgentResponseVariant1 is { } __value0)
             {
-                agentResponseVariant1?.Invoke(AgentResponseVariant1!);
+                agentResponseVariant1?.Invoke(__value0);
             }
-            else if (IsRequest)
+            else if (Request is { } __value1)
             {
-                request?.Invoke(Request!);
+                request?.Invoke(__value1);
             }
-            else if (IsAgentResponseVariant3)
+            else if (AgentResponseVariant3 is { } __value2)
             {
-                agentResponseVariant3?.Invoke(AgentResponseVariant3!);
+                agentResponseVariant3?.Invoke(__value2);
             }
         }
 

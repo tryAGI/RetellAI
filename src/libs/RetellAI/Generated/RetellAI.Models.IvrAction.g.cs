@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.IvrActionHangup PickHangup() => IsHangup
-            ? Hangup!
+        public global::RetellAI.IvrActionHangup PickHangup() => Hangup is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Hangup' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -102,9 +102,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsHangup && hangup != null)
+            if (Hangup is { } __value0 && hangup != null)
             {
-                return hangup(Hangup!);
+                return hangup(__value0);
             }
 
             return default(TResult);
@@ -122,9 +122,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsHangup)
+            if (Hangup is { } __value0)
             {
-                hangup?.Invoke(Hangup!);
+                hangup?.Invoke(__value0);
             }
         }
 
@@ -140,9 +140,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsHangup)
+            if (Hangup is { } __value0)
             {
-                hangup?.Invoke(Hangup!);
+                hangup?.Invoke(__value0);
             }
         }
 

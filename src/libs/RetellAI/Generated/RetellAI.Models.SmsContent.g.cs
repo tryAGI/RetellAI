@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsContentPredefined PickPredefined() => IsPredefined
-            ? Predefined!
+        public global::RetellAI.SmsContentPredefined PickPredefined() => Predefined is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Predefined' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsContentInferred PickInferred() => IsInferred
-            ? Inferred!
+        public global::RetellAI.SmsContentInferred PickInferred() => Inferred is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Inferred' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsContentTemplate PickTemplate() => IsTemplate
-            ? Template!
+        public global::RetellAI.SmsContentTemplate PickTemplate() => Template is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Template' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsPredefined && predefined != null)
+            if (Predefined is { } __value0 && predefined != null)
             {
-                return predefined(Predefined!);
+                return predefined(__value0);
             }
-            else if (IsInferred && inferred != null)
+            else if (Inferred is { } __value1 && inferred != null)
             {
-                return inferred(Inferred!);
+                return inferred(__value1);
             }
-            else if (IsTemplate && template != null)
+            else if (Template is { } __value2 && template != null)
             {
-                return template(Template!);
+                return template(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsPredefined)
+            if (Predefined is { } __value0)
             {
-                predefined?.Invoke(Predefined!);
+                predefined?.Invoke(__value0);
             }
-            else if (IsInferred)
+            else if (Inferred is { } __value1)
             {
-                inferred?.Invoke(Inferred!);
+                inferred?.Invoke(__value1);
             }
-            else if (IsTemplate)
+            else if (Template is { } __value2)
             {
-                template?.Invoke(Template!);
+                template?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsPredefined)
+            if (Predefined is { } __value0)
             {
-                predefined?.Invoke(Predefined!);
+                predefined?.Invoke(__value0);
             }
-            else if (IsInferred)
+            else if (Inferred is { } __value1)
             {
-                inferred?.Invoke(Inferred!);
+                inferred?.Invoke(__value1);
             }
-            else if (IsTemplate)
+            else if (Template is { } __value2)
             {
-                template?.Invoke(Template!);
+                template?.Invoke(__value2);
             }
         }
 

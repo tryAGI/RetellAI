@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeEdge PickNode() => IsNode
-            ? Node!
+        public global::RetellAI.NodeEdge PickNode() => Node is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AlwaysEdgeVariant2 PickAlwaysEdgeVariant2() => IsAlwaysEdgeVariant2
-            ? AlwaysEdgeVariant2!
+        public global::RetellAI.AlwaysEdgeVariant2 PickAlwaysEdgeVariant2() => AlwaysEdgeVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AlwaysEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNode && node != null)
+            if (Node is { } __value0 && node != null)
             {
-                return node(Node!);
+                return node(__value0);
             }
-            else if (IsAlwaysEdgeVariant2 && alwaysEdgeVariant2 != null)
+            else if (AlwaysEdgeVariant2 is { } __value1 && alwaysEdgeVariant2 != null)
             {
-                return alwaysEdgeVariant2(AlwaysEdgeVariant2!);
+                return alwaysEdgeVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNode)
+            if (Node is { } __value0)
             {
-                node?.Invoke(Node!);
+                node?.Invoke(__value0);
             }
-            else if (IsAlwaysEdgeVariant2)
+            else if (AlwaysEdgeVariant2 is { } __value1)
             {
-                alwaysEdgeVariant2?.Invoke(AlwaysEdgeVariant2!);
+                alwaysEdgeVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNode)
+            if (Node is { } __value0)
             {
-                node?.Invoke(Node!);
+                node?.Invoke(__value0);
             }
-            else if (IsAlwaysEdgeVariant2)
+            else if (AlwaysEdgeVariant2 is { } __value1)
             {
-                alwaysEdgeVariant2?.Invoke(AlwaysEdgeVariant2!);
+                alwaysEdgeVariant2?.Invoke(__value1);
             }
         }
 

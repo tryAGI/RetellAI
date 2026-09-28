@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsDestinationVariant1 PickSmsDestinationVariant1() => IsSmsDestinationVariant1
-            ? SmsDestinationVariant1!
+        public global::RetellAI.SmsDestinationVariant1 PickSmsDestinationVariant1() => SmsDestinationVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SmsDestinationVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsDestinationVariant2 PickSmsDestinationVariant2() => IsSmsDestinationVariant2
-            ? SmsDestinationVariant2!
+        public global::RetellAI.SmsDestinationVariant2 PickSmsDestinationVariant2() => SmsDestinationVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SmsDestinationVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsSmsDestinationVariant1 && smsDestinationVariant1 != null)
+            if (SmsDestinationVariant1 is { } __value0 && smsDestinationVariant1 != null)
             {
-                return smsDestinationVariant1(SmsDestinationVariant1!);
+                return smsDestinationVariant1(__value0);
             }
-            else if (IsSmsDestinationVariant2 && smsDestinationVariant2 != null)
+            else if (SmsDestinationVariant2 is { } __value1 && smsDestinationVariant2 != null)
             {
-                return smsDestinationVariant2(SmsDestinationVariant2!);
+                return smsDestinationVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsSmsDestinationVariant1)
+            if (SmsDestinationVariant1 is { } __value0)
             {
-                smsDestinationVariant1?.Invoke(SmsDestinationVariant1!);
+                smsDestinationVariant1?.Invoke(__value0);
             }
-            else if (IsSmsDestinationVariant2)
+            else if (SmsDestinationVariant2 is { } __value1)
             {
-                smsDestinationVariant2?.Invoke(SmsDestinationVariant2!);
+                smsDestinationVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsSmsDestinationVariant1)
+            if (SmsDestinationVariant1 is { } __value0)
             {
-                smsDestinationVariant1?.Invoke(SmsDestinationVariant1!);
+                smsDestinationVariant1?.Invoke(__value0);
             }
-            else if (IsSmsDestinationVariant2)
+            else if (SmsDestinationVariant2 is { } __value1)
             {
-                smsDestinationVariant2?.Invoke(SmsDestinationVariant2!);
+                smsDestinationVariant2?.Invoke(__value1);
             }
         }
 

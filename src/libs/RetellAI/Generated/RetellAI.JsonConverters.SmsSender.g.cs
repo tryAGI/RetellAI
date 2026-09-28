@@ -128,13 +128,13 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsSenderVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsSenderVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsSenderVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SmsSenderVariant1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSmsSenderVariant1(), typeInfo);
             }
             else if (value.IsSmsSenderVariant2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsSenderVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsSenderVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsSenderVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.SmsSenderVariant2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSmsSenderVariant2(), typeInfo);
             }
         }
     }

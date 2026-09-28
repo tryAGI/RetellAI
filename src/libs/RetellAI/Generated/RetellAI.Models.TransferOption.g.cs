@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TransferOptionColdTransfer PickColdTransfer() => IsColdTransfer
-            ? ColdTransfer!
+        public global::RetellAI.TransferOptionColdTransfer PickColdTransfer() => ColdTransfer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ColdTransfer' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TransferOptionWarmTransfer PickWarmTransfer() => IsWarmTransfer
-            ? WarmTransfer!
+        public global::RetellAI.TransferOptionWarmTransfer PickWarmTransfer() => WarmTransfer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'WarmTransfer' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TransferOptionAgenticWarmTransfer PickAgenticWarmTransfer() => IsAgenticWarmTransfer
-            ? AgenticWarmTransfer!
+        public global::RetellAI.TransferOptionAgenticWarmTransfer PickAgenticWarmTransfer() => AgenticWarmTransfer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgenticWarmTransfer' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsColdTransfer && coldTransfer != null)
+            if (ColdTransfer is { } __value0 && coldTransfer != null)
             {
-                return coldTransfer(ColdTransfer!);
+                return coldTransfer(__value0);
             }
-            else if (IsWarmTransfer && warmTransfer != null)
+            else if (WarmTransfer is { } __value1 && warmTransfer != null)
             {
-                return warmTransfer(WarmTransfer!);
+                return warmTransfer(__value1);
             }
-            else if (IsAgenticWarmTransfer && agenticWarmTransfer != null)
+            else if (AgenticWarmTransfer is { } __value2 && agenticWarmTransfer != null)
             {
-                return agenticWarmTransfer(AgenticWarmTransfer!);
+                return agenticWarmTransfer(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsColdTransfer)
+            if (ColdTransfer is { } __value0)
             {
-                coldTransfer?.Invoke(ColdTransfer!);
+                coldTransfer?.Invoke(__value0);
             }
-            else if (IsWarmTransfer)
+            else if (WarmTransfer is { } __value1)
             {
-                warmTransfer?.Invoke(WarmTransfer!);
+                warmTransfer?.Invoke(__value1);
             }
-            else if (IsAgenticWarmTransfer)
+            else if (AgenticWarmTransfer is { } __value2)
             {
-                agenticWarmTransfer?.Invoke(AgenticWarmTransfer!);
+                agenticWarmTransfer?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsColdTransfer)
+            if (ColdTransfer is { } __value0)
             {
-                coldTransfer?.Invoke(ColdTransfer!);
+                coldTransfer?.Invoke(__value0);
             }
-            else if (IsWarmTransfer)
+            else if (WarmTransfer is { } __value1)
             {
-                warmTransfer?.Invoke(WarmTransfer!);
+                warmTransfer?.Invoke(__value1);
             }
-            else if (IsAgenticWarmTransfer)
+            else if (AgenticWarmTransfer is { } __value2)
             {
-                agenticWarmTransfer?.Invoke(AgenticWarmTransfer!);
+                agenticWarmTransfer?.Invoke(__value2);
             }
         }
 

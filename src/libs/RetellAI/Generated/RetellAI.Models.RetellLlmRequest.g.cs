@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RetellLlmOverride PickOverride() => IsOverride
-            ? Override!
+        public global::RetellAI.RetellLlmOverride PickOverride() => Override is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Override' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RetellLlmRequestVariant2 PickRetellLlmRequestVariant2() => IsRetellLlmRequestVariant2
-            ? RetellLlmRequestVariant2!
+        public global::RetellAI.RetellLlmRequestVariant2 PickRetellLlmRequestVariant2() => RetellLlmRequestVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'RetellLlmRequestVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsOverride && @override != null)
+            if (Override is { } __value0 && @override != null)
             {
-                return @override(Override!);
+                return @override(__value0);
             }
-            else if (IsRetellLlmRequestVariant2 && retellLlmRequestVariant2 != null)
+            else if (RetellLlmRequestVariant2 is { } __value1 && retellLlmRequestVariant2 != null)
             {
-                return retellLlmRequestVariant2(RetellLlmRequestVariant2!);
+                return retellLlmRequestVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsOverride)
+            if (Override is { } __value0)
             {
-                @override?.Invoke(Override!);
+                @override?.Invoke(__value0);
             }
-            else if (IsRetellLlmRequestVariant2)
+            else if (RetellLlmRequestVariant2 is { } __value1)
             {
-                retellLlmRequestVariant2?.Invoke(RetellLlmRequestVariant2!);
+                retellLlmRequestVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsOverride)
+            if (Override is { } __value0)
             {
-                @override?.Invoke(Override!);
+                @override?.Invoke(__value0);
             }
-            else if (IsRetellLlmRequestVariant2)
+            else if (RetellLlmRequestVariant2 is { } __value1)
             {
-                retellLlmRequestVariant2?.Invoke(RetellLlmRequestVariant2!);
+                retellLlmRequestVariant2?.Invoke(__value1);
             }
         }
 

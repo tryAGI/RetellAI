@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationNode PickConversationNode() => IsConversationNode
-            ? ConversationNode!.Value
+        public global::RetellAI.ConversationNode PickConversationNode() => ConversationNode is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConversationNode' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SubagentNode PickSubagent() => IsSubagent
-            ? Subagent!.Value
+        public global::RetellAI.SubagentNode PickSubagent() => Subagent is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Subagent' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EndNode PickEnd() => IsEnd
-            ? End!.Value
+        public global::RetellAI.EndNode PickEnd() => End is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'End' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FunctionNode PickFunction() => IsFunction
-            ? Function!.Value
+        public global::RetellAI.FunctionNode PickFunction() => Function is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Function' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CodeNode PickCode() => IsCode
-            ? Code!.Value
+        public global::RetellAI.CodeNode PickCode() => Code is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Code' but the value was {ToString()}.");
 
         /// <summary>
@@ -227,8 +227,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TransferCallNode PickTransferCall() => IsTransferCall
-            ? TransferCall!.Value
+        public global::RetellAI.TransferCallNode PickTransferCall() => TransferCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TransferCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -264,8 +264,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PressDigitNode PickPressDigit() => IsPressDigit
-            ? PressDigit!.Value
+        public global::RetellAI.PressDigitNode PickPressDigit() => PressDigit is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PressDigit' but the value was {ToString()}.");
 
         /// <summary>
@@ -301,8 +301,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BranchNode PickBranch() => IsBranch
-            ? Branch!.Value
+        public global::RetellAI.BranchNode PickBranch() => Branch is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Branch' but the value was {ToString()}.");
 
         /// <summary>
@@ -338,8 +338,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsNode PickSms() => IsSms
-            ? Sms!.Value
+        public global::RetellAI.SmsNode PickSms() => Sms is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Sms' but the value was {ToString()}.");
 
         /// <summary>
@@ -375,8 +375,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ExtractDynamicVariablesNode PickExtractDynamicVariables() => IsExtractDynamicVariables
-            ? ExtractDynamicVariables!.Value
+        public global::RetellAI.ExtractDynamicVariablesNode PickExtractDynamicVariables() => ExtractDynamicVariables is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ExtractDynamicVariables' but the value was {ToString()}.");
 
         /// <summary>
@@ -412,8 +412,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AgentSwapNode PickAgentSwap() => IsAgentSwap
-            ? AgentSwap!.Value
+        public global::RetellAI.AgentSwapNode PickAgentSwap() => AgentSwap is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentSwap' but the value was {ToString()}.");
 
         /// <summary>
@@ -449,8 +449,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MCPNode PickMcp() => IsMcp
-            ? Mcp!.Value
+        public global::RetellAI.MCPNode PickMcp() => Mcp is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Mcp' but the value was {ToString()}.");
 
         /// <summary>
@@ -486,8 +486,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ComponentNode PickComponent() => IsComponent
-            ? Component!.Value
+        public global::RetellAI.ComponentNode PickComponent() => Component is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Component' but the value was {ToString()}.");
 
         /// <summary>
@@ -523,8 +523,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BridgeTransferNode PickBridgeTransfer() => IsBridgeTransfer
-            ? BridgeTransfer!.Value
+        public global::RetellAI.BridgeTransferNode PickBridgeTransfer() => BridgeTransfer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BridgeTransfer' but the value was {ToString()}.");
 
         /// <summary>
@@ -560,8 +560,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CancelTransferNode PickCancelTransfer() => IsCancelTransfer
-            ? CancelTransfer!.Value
+        public global::RetellAI.CancelTransferNode PickCancelTransfer() => CancelTransfer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CancelTransfer' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -1022,65 +1022,65 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConversationNode && conversationNode != null)
+            if (ConversationNode is { } __value0 && conversationNode != null)
             {
-                return conversationNode(ConversationNode!);
+                return conversationNode(__value0);
             }
-            else if (IsSubagent && subagent != null)
+            else if (Subagent is { } __value1 && subagent != null)
             {
-                return subagent(Subagent!);
+                return subagent(__value1);
             }
-            else if (IsEnd && end != null)
+            else if (End is { } __value2 && end != null)
             {
-                return end(End!);
+                return end(__value2);
             }
-            else if (IsFunction && function != null)
+            else if (Function is { } __value3 && function != null)
             {
-                return function(Function!);
+                return function(__value3);
             }
-            else if (IsCode && code != null)
+            else if (Code is { } __value4 && code != null)
             {
-                return code(Code!);
+                return code(__value4);
             }
-            else if (IsTransferCall && transferCall != null)
+            else if (TransferCall is { } __value5 && transferCall != null)
             {
-                return transferCall(TransferCall!);
+                return transferCall(__value5);
             }
-            else if (IsPressDigit && pressDigit != null)
+            else if (PressDigit is { } __value6 && pressDigit != null)
             {
-                return pressDigit(PressDigit!);
+                return pressDigit(__value6);
             }
-            else if (IsBranch && branch != null)
+            else if (Branch is { } __value7 && branch != null)
             {
-                return branch(Branch!);
+                return branch(__value7);
             }
-            else if (IsSms && sms != null)
+            else if (Sms is { } __value8 && sms != null)
             {
-                return sms(Sms!);
+                return sms(__value8);
             }
-            else if (IsExtractDynamicVariables && extractDynamicVariables != null)
+            else if (ExtractDynamicVariables is { } __value9 && extractDynamicVariables != null)
             {
-                return extractDynamicVariables(ExtractDynamicVariables!);
+                return extractDynamicVariables(__value9);
             }
-            else if (IsAgentSwap && agentSwap != null)
+            else if (AgentSwap is { } __value10 && agentSwap != null)
             {
-                return agentSwap(AgentSwap!);
+                return agentSwap(__value10);
             }
-            else if (IsMcp && mcp != null)
+            else if (Mcp is { } __value11 && mcp != null)
             {
-                return mcp(Mcp!);
+                return mcp(__value11);
             }
-            else if (IsComponent && component != null)
+            else if (Component is { } __value12 && component != null)
             {
-                return component(Component!);
+                return component(__value12);
             }
-            else if (IsBridgeTransfer && bridgeTransfer != null)
+            else if (BridgeTransfer is { } __value13 && bridgeTransfer != null)
             {
-                return bridgeTransfer(BridgeTransfer!);
+                return bridgeTransfer(__value13);
             }
-            else if (IsCancelTransfer && cancelTransfer != null)
+            else if (CancelTransfer is { } __value14 && cancelTransfer != null)
             {
-                return cancelTransfer(CancelTransfer!);
+                return cancelTransfer(__value14);
             }
 
             return default(TResult);
@@ -1126,65 +1126,65 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConversationNode)
+            if (ConversationNode is { } __value0)
             {
-                conversationNode?.Invoke(ConversationNode!);
+                conversationNode?.Invoke(__value0);
             }
-            else if (IsSubagent)
+            else if (Subagent is { } __value1)
             {
-                subagent?.Invoke(Subagent!);
+                subagent?.Invoke(__value1);
             }
-            else if (IsEnd)
+            else if (End is { } __value2)
             {
-                end?.Invoke(End!);
+                end?.Invoke(__value2);
             }
-            else if (IsFunction)
+            else if (Function is { } __value3)
             {
-                function?.Invoke(Function!);
+                function?.Invoke(__value3);
             }
-            else if (IsCode)
+            else if (Code is { } __value4)
             {
-                code?.Invoke(Code!);
+                code?.Invoke(__value4);
             }
-            else if (IsTransferCall)
+            else if (TransferCall is { } __value5)
             {
-                transferCall?.Invoke(TransferCall!);
+                transferCall?.Invoke(__value5);
             }
-            else if (IsPressDigit)
+            else if (PressDigit is { } __value6)
             {
-                pressDigit?.Invoke(PressDigit!);
+                pressDigit?.Invoke(__value6);
             }
-            else if (IsBranch)
+            else if (Branch is { } __value7)
             {
-                branch?.Invoke(Branch!);
+                branch?.Invoke(__value7);
             }
-            else if (IsSms)
+            else if (Sms is { } __value8)
             {
-                sms?.Invoke(Sms!);
+                sms?.Invoke(__value8);
             }
-            else if (IsExtractDynamicVariables)
+            else if (ExtractDynamicVariables is { } __value9)
             {
-                extractDynamicVariables?.Invoke(ExtractDynamicVariables!);
+                extractDynamicVariables?.Invoke(__value9);
             }
-            else if (IsAgentSwap)
+            else if (AgentSwap is { } __value10)
             {
-                agentSwap?.Invoke(AgentSwap!);
+                agentSwap?.Invoke(__value10);
             }
-            else if (IsMcp)
+            else if (Mcp is { } __value11)
             {
-                mcp?.Invoke(Mcp!);
+                mcp?.Invoke(__value11);
             }
-            else if (IsComponent)
+            else if (Component is { } __value12)
             {
-                component?.Invoke(Component!);
+                component?.Invoke(__value12);
             }
-            else if (IsBridgeTransfer)
+            else if (BridgeTransfer is { } __value13)
             {
-                bridgeTransfer?.Invoke(BridgeTransfer!);
+                bridgeTransfer?.Invoke(__value13);
             }
-            else if (IsCancelTransfer)
+            else if (CancelTransfer is { } __value14)
             {
-                cancelTransfer?.Invoke(CancelTransfer!);
+                cancelTransfer?.Invoke(__value14);
             }
         }
 
@@ -1214,65 +1214,65 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConversationNode)
+            if (ConversationNode is { } __value0)
             {
-                conversationNode?.Invoke(ConversationNode!);
+                conversationNode?.Invoke(__value0);
             }
-            else if (IsSubagent)
+            else if (Subagent is { } __value1)
             {
-                subagent?.Invoke(Subagent!);
+                subagent?.Invoke(__value1);
             }
-            else if (IsEnd)
+            else if (End is { } __value2)
             {
-                end?.Invoke(End!);
+                end?.Invoke(__value2);
             }
-            else if (IsFunction)
+            else if (Function is { } __value3)
             {
-                function?.Invoke(Function!);
+                function?.Invoke(__value3);
             }
-            else if (IsCode)
+            else if (Code is { } __value4)
             {
-                code?.Invoke(Code!);
+                code?.Invoke(__value4);
             }
-            else if (IsTransferCall)
+            else if (TransferCall is { } __value5)
             {
-                transferCall?.Invoke(TransferCall!);
+                transferCall?.Invoke(__value5);
             }
-            else if (IsPressDigit)
+            else if (PressDigit is { } __value6)
             {
-                pressDigit?.Invoke(PressDigit!);
+                pressDigit?.Invoke(__value6);
             }
-            else if (IsBranch)
+            else if (Branch is { } __value7)
             {
-                branch?.Invoke(Branch!);
+                branch?.Invoke(__value7);
             }
-            else if (IsSms)
+            else if (Sms is { } __value8)
             {
-                sms?.Invoke(Sms!);
+                sms?.Invoke(__value8);
             }
-            else if (IsExtractDynamicVariables)
+            else if (ExtractDynamicVariables is { } __value9)
             {
-                extractDynamicVariables?.Invoke(ExtractDynamicVariables!);
+                extractDynamicVariables?.Invoke(__value9);
             }
-            else if (IsAgentSwap)
+            else if (AgentSwap is { } __value10)
             {
-                agentSwap?.Invoke(AgentSwap!);
+                agentSwap?.Invoke(__value10);
             }
-            else if (IsMcp)
+            else if (Mcp is { } __value11)
             {
-                mcp?.Invoke(Mcp!);
+                mcp?.Invoke(__value11);
             }
-            else if (IsComponent)
+            else if (Component is { } __value12)
             {
-                component?.Invoke(Component!);
+                component?.Invoke(__value12);
             }
-            else if (IsBridgeTransfer)
+            else if (BridgeTransfer is { } __value13)
             {
-                bridgeTransfer?.Invoke(BridgeTransfer!);
+                bridgeTransfer?.Invoke(__value13);
             }
-            else if (IsCancelTransfer)
+            else if (CancelTransfer is { } __value14)
             {
-                cancelTransfer?.Invoke(CancelTransfer!);
+                cancelTransfer?.Invoke(__value14);
             }
         }
 

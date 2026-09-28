@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ContactCall PickCall() => IsCall
-            ? Call!
+        public global::RetellAI.ContactCall PickCall() => Call is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Call' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ContactChat PickChat() => IsChat
-            ? Chat!
+        public global::RetellAI.ContactChat PickChat() => Chat is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Chat' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCall && call != null)
+            if (Call is { } __value0 && call != null)
             {
-                return call(Call!);
+                return call(__value0);
             }
-            else if (IsChat && chat != null)
+            else if (Chat is { } __value1 && chat != null)
             {
-                return chat(Chat!);
+                return chat(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCall)
+            if (Call is { } __value0)
             {
-                call?.Invoke(Call!);
+                call?.Invoke(__value0);
             }
-            else if (IsChat)
+            else if (Chat is { } __value1)
             {
-                chat?.Invoke(Chat!);
+                chat?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsCall)
+            if (Call is { } __value0)
             {
-                call?.Invoke(Call!);
+                call?.Invoke(__value0);
             }
-            else if (IsChat)
+            else if (Chat is { } __value1)
             {
-                chat?.Invoke(Chat!);
+                chat?.Invoke(__value1);
             }
         }
 

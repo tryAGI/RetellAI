@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeBase PickBase() => IsBase
-            ? Base!.Value
+        public global::RetellAI.NodeBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BranchNodeVariant2 PickBranchNodeVariant2() => IsBranchNodeVariant2
-            ? BranchNodeVariant2!
+        public global::RetellAI.BranchNodeVariant2 PickBranchNodeVariant2() => BranchNodeVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BranchNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsBranchNodeVariant2 && branchNodeVariant2 != null)
+            else if (BranchNodeVariant2 is { } __value1 && branchNodeVariant2 != null)
             {
-                return branchNodeVariant2(BranchNodeVariant2!);
+                return branchNodeVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsBranchNodeVariant2)
+            else if (BranchNodeVariant2 is { } __value1)
             {
-                branchNodeVariant2?.Invoke(BranchNodeVariant2!);
+                branchNodeVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsBranchNodeVariant2)
+            else if (BranchNodeVariant2 is { } __value1)
             {
-                branchNodeVariant2?.Invoke(BranchNodeVariant2!);
+                branchNodeVariant2?.Invoke(__value1);
             }
         }
 
