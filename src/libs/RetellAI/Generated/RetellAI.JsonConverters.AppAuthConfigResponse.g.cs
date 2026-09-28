@@ -244,31 +244,31 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.OAuthConfigResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.OAuthConfigResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.OAuthConfigResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.O!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickO(), typeInfo);
             }
             else if (value.IsApiKey)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ApiKeyAuthConfigResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ApiKeyAuthConfigResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ApiKeyAuthConfigResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ApiKey!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickApiKey(), typeInfo);
             }
             else if (value.IsAccessToken)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AccessTokenAuthConfigResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AccessTokenAuthConfigResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AccessTokenAuthConfigResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AccessToken!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAccessToken(), typeInfo);
             }
             else if (value.IsBasic)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BasicAuthConfigResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BasicAuthConfigResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BasicAuthConfigResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Basic!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBasic(), typeInfo);
             }
             else if (value.IsRefreshToken)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.RefreshTokenAuthConfigResponse), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.RefreshTokenAuthConfigResponse?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.RefreshTokenAuthConfigResponse).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.RefreshToken!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickRefreshToken(), typeInfo);
             }
         }
     }

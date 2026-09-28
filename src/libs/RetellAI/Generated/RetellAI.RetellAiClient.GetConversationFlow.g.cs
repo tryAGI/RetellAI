@@ -160,7 +160,7 @@ namespace RetellAI
                 PrepareGetConversationFlowRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
-                    conversationFlowId: conversationFlowId!,
+                    conversationFlowId: conversationFlowId,
                     version: version);
 
                 return __httpRequest;
@@ -183,7 +183,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/get-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: null,
                                 clientOptions: Options,
@@ -217,7 +217,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/get-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: null,
                                 exception: __exception,
                                 clientOptions: Options,
@@ -258,7 +258,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/get-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -306,7 +306,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/get-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,
@@ -328,7 +328,7 @@ namespace RetellAI
                                 pathTemplate: "$\"/get-conversation-flow/{conversationFlowId}\"",
                                 httpMethod: "GET",
                                 baseUri: BaseUri,
-                                request: __httpRequest!,
+                                request: __httpRequest ?? throw new global::System.InvalidOperationException("The HTTP request was not created before invoking a request hook."),
                                 response: __response,
                                 exception: null,
                                 clientOptions: Options,

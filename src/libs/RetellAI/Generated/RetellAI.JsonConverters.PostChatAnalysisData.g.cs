@@ -131,13 +131,13 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AnalysisData), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AnalysisData> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AnalysisData).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AnalysisData!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAnalysisData(), typeInfo);
             }
             else if (value.IsPreset)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChatPresetAnalysisData), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChatPresetAnalysisData?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChatPresetAnalysisData).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Preset!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPreset(), typeInfo);
             }
         }
     }

@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OAuthConfigRequest PickO() => IsO
-            ? O!
+        public global::RetellAI.OAuthConfigRequest PickO() => O is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'O' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ApiKeyAuthConfigRequest PickApiKey() => IsApiKey
-            ? ApiKey!
+        public global::RetellAI.ApiKeyAuthConfigRequest PickApiKey() => ApiKey is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ApiKey' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BasicAuthConfigRequest PickBasic() => IsBasic
-            ? Basic!
+        public global::RetellAI.BasicAuthConfigRequest PickBasic() => Basic is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Basic' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsO && o != null)
+            if (O is { } __value0 && o != null)
             {
-                return o(O!);
+                return o(__value0);
             }
-            else if (IsApiKey && apiKey != null)
+            else if (ApiKey is { } __value1 && apiKey != null)
             {
-                return apiKey(ApiKey!);
+                return apiKey(__value1);
             }
-            else if (IsBasic && basic != null)
+            else if (Basic is { } __value2 && basic != null)
             {
-                return basic(Basic!);
+                return basic(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsO)
+            if (O is { } __value0)
             {
-                o?.Invoke(O!);
+                o?.Invoke(__value0);
             }
-            else if (IsApiKey)
+            else if (ApiKey is { } __value1)
             {
-                apiKey?.Invoke(ApiKey!);
+                apiKey?.Invoke(__value1);
             }
-            else if (IsBasic)
+            else if (Basic is { } __value2)
             {
-                basic?.Invoke(Basic!);
+                basic?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsO)
+            if (O is { } __value0)
             {
-                o?.Invoke(O!);
+                o?.Invoke(__value0);
             }
-            else if (IsApiKey)
+            else if (ApiKey is { } __value1)
             {
-                apiKey?.Invoke(ApiKey!);
+                apiKey?.Invoke(__value1);
             }
-            else if (IsBasic)
+            else if (Basic is { } __value2)
             {
-                basic?.Invoke(Basic!);
+                basic?.Invoke(__value2);
             }
         }
 

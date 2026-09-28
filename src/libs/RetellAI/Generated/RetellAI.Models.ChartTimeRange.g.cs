@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartTimeRangeVariant1 PickChartTimeRangeVariant1() => IsChartTimeRangeVariant1
-            ? ChartTimeRangeVariant1!
+        public global::RetellAI.ChartTimeRangeVariant1 PickChartTimeRangeVariant1() => ChartTimeRangeVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartTimeRangeVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartTimeRangeVariant2 PickChartTimeRangeVariant2() => IsChartTimeRangeVariant2
-            ? ChartTimeRangeVariant2!
+        public global::RetellAI.ChartTimeRangeVariant2 PickChartTimeRangeVariant2() => ChartTimeRangeVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartTimeRangeVariant2' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartTimeRangeVariant3 PickChartTimeRangeVariant3() => IsChartTimeRangeVariant3
-            ? ChartTimeRangeVariant3!
+        public global::RetellAI.ChartTimeRangeVariant3 PickChartTimeRangeVariant3() => ChartTimeRangeVariant3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartTimeRangeVariant3' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartTimeRangeVariant4 PickChartTimeRangeVariant4() => IsChartTimeRangeVariant4
-            ? ChartTimeRangeVariant4!
+        public global::RetellAI.ChartTimeRangeVariant4 PickChartTimeRangeVariant4() => ChartTimeRangeVariant4 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartTimeRangeVariant4' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartTimeRangeVariant5 PickChartTimeRangeVariant5() => IsChartTimeRangeVariant5
-            ? ChartTimeRangeVariant5!
+        public global::RetellAI.ChartTimeRangeVariant5 PickChartTimeRangeVariant5() => ChartTimeRangeVariant5 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartTimeRangeVariant5' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -372,25 +372,25 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChartTimeRangeVariant1 && chartTimeRangeVariant1 != null)
+            if (ChartTimeRangeVariant1 is { } __value0 && chartTimeRangeVariant1 != null)
             {
-                return chartTimeRangeVariant1(ChartTimeRangeVariant1!);
+                return chartTimeRangeVariant1(__value0);
             }
-            else if (IsChartTimeRangeVariant2 && chartTimeRangeVariant2 != null)
+            else if (ChartTimeRangeVariant2 is { } __value1 && chartTimeRangeVariant2 != null)
             {
-                return chartTimeRangeVariant2(ChartTimeRangeVariant2!);
+                return chartTimeRangeVariant2(__value1);
             }
-            else if (IsChartTimeRangeVariant3 && chartTimeRangeVariant3 != null)
+            else if (ChartTimeRangeVariant3 is { } __value2 && chartTimeRangeVariant3 != null)
             {
-                return chartTimeRangeVariant3(ChartTimeRangeVariant3!);
+                return chartTimeRangeVariant3(__value2);
             }
-            else if (IsChartTimeRangeVariant4 && chartTimeRangeVariant4 != null)
+            else if (ChartTimeRangeVariant4 is { } __value3 && chartTimeRangeVariant4 != null)
             {
-                return chartTimeRangeVariant4(ChartTimeRangeVariant4!);
+                return chartTimeRangeVariant4(__value3);
             }
-            else if (IsChartTimeRangeVariant5 && chartTimeRangeVariant5 != null)
+            else if (ChartTimeRangeVariant5 is { } __value4 && chartTimeRangeVariant5 != null)
             {
-                return chartTimeRangeVariant5(ChartTimeRangeVariant5!);
+                return chartTimeRangeVariant5(__value4);
             }
 
             return default(TResult);
@@ -416,25 +416,25 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChartTimeRangeVariant1)
+            if (ChartTimeRangeVariant1 is { } __value0)
             {
-                chartTimeRangeVariant1?.Invoke(ChartTimeRangeVariant1!);
+                chartTimeRangeVariant1?.Invoke(__value0);
             }
-            else if (IsChartTimeRangeVariant2)
+            else if (ChartTimeRangeVariant2 is { } __value1)
             {
-                chartTimeRangeVariant2?.Invoke(ChartTimeRangeVariant2!);
+                chartTimeRangeVariant2?.Invoke(__value1);
             }
-            else if (IsChartTimeRangeVariant3)
+            else if (ChartTimeRangeVariant3 is { } __value2)
             {
-                chartTimeRangeVariant3?.Invoke(ChartTimeRangeVariant3!);
+                chartTimeRangeVariant3?.Invoke(__value2);
             }
-            else if (IsChartTimeRangeVariant4)
+            else if (ChartTimeRangeVariant4 is { } __value3)
             {
-                chartTimeRangeVariant4?.Invoke(ChartTimeRangeVariant4!);
+                chartTimeRangeVariant4?.Invoke(__value3);
             }
-            else if (IsChartTimeRangeVariant5)
+            else if (ChartTimeRangeVariant5 is { } __value4)
             {
-                chartTimeRangeVariant5?.Invoke(ChartTimeRangeVariant5!);
+                chartTimeRangeVariant5?.Invoke(__value4);
             }
         }
 
@@ -454,25 +454,25 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChartTimeRangeVariant1)
+            if (ChartTimeRangeVariant1 is { } __value0)
             {
-                chartTimeRangeVariant1?.Invoke(ChartTimeRangeVariant1!);
+                chartTimeRangeVariant1?.Invoke(__value0);
             }
-            else if (IsChartTimeRangeVariant2)
+            else if (ChartTimeRangeVariant2 is { } __value1)
             {
-                chartTimeRangeVariant2?.Invoke(ChartTimeRangeVariant2!);
+                chartTimeRangeVariant2?.Invoke(__value1);
             }
-            else if (IsChartTimeRangeVariant3)
+            else if (ChartTimeRangeVariant3 is { } __value2)
             {
-                chartTimeRangeVariant3?.Invoke(ChartTimeRangeVariant3!);
+                chartTimeRangeVariant3?.Invoke(__value2);
             }
-            else if (IsChartTimeRangeVariant4)
+            else if (ChartTimeRangeVariant4 is { } __value3)
             {
-                chartTimeRangeVariant4?.Invoke(ChartTimeRangeVariant4!);
+                chartTimeRangeVariant4?.Invoke(__value3);
             }
-            else if (IsChartTimeRangeVariant5)
+            else if (ChartTimeRangeVariant5 is { } __value4)
             {
-                chartTimeRangeVariant5?.Invoke(ChartTimeRangeVariant5!);
+                chartTimeRangeVariant5?.Invoke(__value4);
             }
         }
 

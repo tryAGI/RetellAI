@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ValueFilter PickValue() => IsValue
-            ? Value!.Value
+        public global::RetellAI.ValueFilter PickValue() => Value is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Value' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomFieldFilterVariant2 PickCustomFieldFilterVariant2() => IsCustomFieldFilterVariant2
-            ? CustomFieldFilterVariant2!
+        public global::RetellAI.CustomFieldFilterVariant2 PickCustomFieldFilterVariant2() => CustomFieldFilterVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomFieldFilterVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue && value != null)
+            if (Value is { } __value0 && value != null)
             {
-                return value(Value!);
+                return value(__value0);
             }
-            else if (IsCustomFieldFilterVariant2 && customFieldFilterVariant2 != null)
+            else if (CustomFieldFilterVariant2 is { } __value1 && customFieldFilterVariant2 != null)
             {
-                return customFieldFilterVariant2(CustomFieldFilterVariant2!);
+                return customFieldFilterVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue)
+            if (Value is { } __value0)
             {
-                value?.Invoke(Value!);
+                value?.Invoke(__value0);
             }
-            else if (IsCustomFieldFilterVariant2)
+            else if (CustomFieldFilterVariant2 is { } __value1)
             {
-                customFieldFilterVariant2?.Invoke(CustomFieldFilterVariant2!);
+                customFieldFilterVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsValue)
+            if (Value is { } __value0)
             {
-                value?.Invoke(Value!);
+                value?.Invoke(__value0);
             }
-            else if (IsCustomFieldFilterVariant2)
+            else if (CustomFieldFilterVariant2 is { } __value1)
             {
-                customFieldFilterVariant2?.Invoke(CustomFieldFilterVariant2!);
+                customFieldFilterVariant2?.Invoke(__value1);
             }
         }
 

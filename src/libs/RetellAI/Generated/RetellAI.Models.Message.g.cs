@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MessageBase PickBase() => IsBase
-            ? Base!
+        public global::RetellAI.MessageBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public object PickMessageVariant2() => IsMessageVariant2
-            ? MessageVariant2!
+        public object PickMessageVariant2() => MessageVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'MessageVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -154,13 +154,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsMessageVariant2 && messageVariant2 != null)
+            else if (MessageVariant2 is { } __value1 && messageVariant2 != null)
             {
-                return messageVariant2(MessageVariant2!);
+                return messageVariant2(__value1);
             }
 
             return default(TResult);
@@ -180,13 +180,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsMessageVariant2)
+            else if (MessageVariant2 is { } __value1)
             {
-                messageVariant2?.Invoke(MessageVariant2!);
+                messageVariant2?.Invoke(__value1);
             }
         }
 
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsMessageVariant2)
+            else if (MessageVariant2 is { } __value1)
             {
-                messageVariant2?.Invoke(MessageVariant2!);
+                messageVariant2?.Invoke(__value1);
             }
         }
 

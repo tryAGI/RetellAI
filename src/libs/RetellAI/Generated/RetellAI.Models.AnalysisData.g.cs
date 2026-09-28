@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StringAnalysisData PickString() => IsString
-            ? String!
+        public global::RetellAI.StringAnalysisData PickString() => String is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'String' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EnumAnalysisData PickEnum() => IsEnum
-            ? Enum!
+        public global::RetellAI.EnumAnalysisData PickEnum() => Enum is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Enum' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BooleanAnalysisData PickBoolean() => IsBoolean
-            ? Boolean!
+        public global::RetellAI.BooleanAnalysisData PickBoolean() => Boolean is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Boolean' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NumberAnalysisData PickNumber() => IsNumber
-            ? Number!
+        public global::RetellAI.NumberAnalysisData PickNumber() => Number is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Number' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -307,21 +307,21 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsString && @string != null)
+            if (String is { } __value0 && @string != null)
             {
-                return @string(String!);
+                return @string(__value0);
             }
-            else if (IsEnum && @enum != null)
+            else if (Enum is { } __value1 && @enum != null)
             {
-                return @enum(Enum!);
+                return @enum(__value1);
             }
-            else if (IsBoolean && boolean != null)
+            else if (Boolean is { } __value2 && boolean != null)
             {
-                return boolean(Boolean!);
+                return boolean(__value2);
             }
-            else if (IsNumber && number != null)
+            else if (Number is { } __value3 && number != null)
             {
-                return number(Number!);
+                return number(__value3);
             }
 
             return default(TResult);
@@ -345,21 +345,21 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsString)
+            if (String is { } __value0)
             {
-                @string?.Invoke(String!);
+                @string?.Invoke(__value0);
             }
-            else if (IsEnum)
+            else if (Enum is { } __value1)
             {
-                @enum?.Invoke(Enum!);
+                @enum?.Invoke(__value1);
             }
-            else if (IsBoolean)
+            else if (Boolean is { } __value2)
             {
-                boolean?.Invoke(Boolean!);
+                boolean?.Invoke(__value2);
             }
-            else if (IsNumber)
+            else if (Number is { } __value3)
             {
-                number?.Invoke(Number!);
+                number?.Invoke(__value3);
             }
         }
 
@@ -378,21 +378,21 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsString)
+            if (String is { } __value0)
             {
-                @string?.Invoke(String!);
+                @string?.Invoke(__value0);
             }
-            else if (IsEnum)
+            else if (Enum is { } __value1)
             {
-                @enum?.Invoke(Enum!);
+                @enum?.Invoke(__value1);
             }
-            else if (IsBoolean)
+            else if (Boolean is { } __value2)
             {
-                boolean?.Invoke(Boolean!);
+                boolean?.Invoke(__value2);
             }
-            else if (IsNumber)
+            else if (Number is { } __value3)
             {
-                number?.Invoke(Number!);
+                number?.Invoke(__value3);
             }
         }
 

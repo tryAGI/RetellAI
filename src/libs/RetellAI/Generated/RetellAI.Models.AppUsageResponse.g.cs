@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AgentAppUsage PickAgent() => IsAgent
-            ? Agent!
+        public global::RetellAI.AgentAppUsage PickAgent() => Agent is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Agent' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseAppUsage PickKnowledgeBase() => IsKnowledgeBase
-            ? KnowledgeBase!
+        public global::RetellAI.KnowledgeBaseAppUsage PickKnowledgeBase() => KnowledgeBase is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'KnowledgeBase' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAgent && agent != null)
+            if (Agent is { } __value0 && agent != null)
             {
-                return agent(Agent!);
+                return agent(__value0);
             }
-            else if (IsKnowledgeBase && knowledgeBase != null)
+            else if (KnowledgeBase is { } __value1 && knowledgeBase != null)
             {
-                return knowledgeBase(KnowledgeBase!);
+                return knowledgeBase(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAgent)
+            if (Agent is { } __value0)
             {
-                agent?.Invoke(Agent!);
+                agent?.Invoke(__value0);
             }
-            else if (IsKnowledgeBase)
+            else if (KnowledgeBase is { } __value1)
             {
-                knowledgeBase?.Invoke(KnowledgeBase!);
+                knowledgeBase?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAgent)
+            if (Agent is { } __value0)
             {
-                agent?.Invoke(Agent!);
+                agent?.Invoke(__value0);
             }
-            else if (IsKnowledgeBase)
+            else if (KnowledgeBase is { } __value1)
             {
-                knowledgeBase?.Invoke(KnowledgeBase!);
+                knowledgeBase?.Invoke(__value1);
             }
         }
 

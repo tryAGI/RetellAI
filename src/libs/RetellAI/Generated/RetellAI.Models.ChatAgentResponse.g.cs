@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatAgentResponseVariant1 PickChatAgentResponseVariant1() => IsChatAgentResponseVariant1
-            ? ChatAgentResponseVariant1!
+        public global::RetellAI.ChatAgentResponseVariant1 PickChatAgentResponseVariant1() => ChatAgentResponseVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChatAgentResponseVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatAgentRequest PickRequest() => IsRequest
-            ? Request!
+        public global::RetellAI.ChatAgentRequest PickRequest() => Request is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Request' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatAgentResponseVariant3 PickChatAgentResponseVariant3() => IsChatAgentResponseVariant3
-            ? ChatAgentResponseVariant3!
+        public global::RetellAI.ChatAgentResponseVariant3 PickChatAgentResponseVariant3() => ChatAgentResponseVariant3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChatAgentResponseVariant3' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChatAgentResponseVariant1 && chatAgentResponseVariant1 != null)
+            if (ChatAgentResponseVariant1 is { } __value0 && chatAgentResponseVariant1 != null)
             {
-                return chatAgentResponseVariant1(ChatAgentResponseVariant1!);
+                return chatAgentResponseVariant1(__value0);
             }
-            else if (IsRequest && request != null)
+            else if (Request is { } __value1 && request != null)
             {
-                return request(Request!);
+                return request(__value1);
             }
-            else if (IsChatAgentResponseVariant3 && chatAgentResponseVariant3 != null)
+            else if (ChatAgentResponseVariant3 is { } __value2 && chatAgentResponseVariant3 != null)
             {
-                return chatAgentResponseVariant3(ChatAgentResponseVariant3!);
+                return chatAgentResponseVariant3(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChatAgentResponseVariant1)
+            if (ChatAgentResponseVariant1 is { } __value0)
             {
-                chatAgentResponseVariant1?.Invoke(ChatAgentResponseVariant1!);
+                chatAgentResponseVariant1?.Invoke(__value0);
             }
-            else if (IsRequest)
+            else if (Request is { } __value1)
             {
-                request?.Invoke(Request!);
+                request?.Invoke(__value1);
             }
-            else if (IsChatAgentResponseVariant3)
+            else if (ChatAgentResponseVariant3 is { } __value2)
             {
-                chatAgentResponseVariant3?.Invoke(ChatAgentResponseVariant3!);
+                chatAgentResponseVariant3?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChatAgentResponseVariant1)
+            if (ChatAgentResponseVariant1 is { } __value0)
             {
-                chatAgentResponseVariant1?.Invoke(ChatAgentResponseVariant1!);
+                chatAgentResponseVariant1?.Invoke(__value0);
             }
-            else if (IsRequest)
+            else if (Request is { } __value1)
             {
-                request?.Invoke(Request!);
+                request?.Invoke(__value1);
             }
-            else if (IsChatAgentResponseVariant3)
+            else if (ChatAgentResponseVariant3 is { } __value2)
             {
-                chatAgentResponseVariant3?.Invoke(ChatAgentResponseVariant3!);
+                chatAgentResponseVariant3?.Invoke(__value2);
             }
         }
 

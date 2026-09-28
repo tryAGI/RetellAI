@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeBaseCommon PickBaseCommon() => IsBaseCommon
-            ? BaseCommon!
+        public global::RetellAI.NodeBaseCommon PickBaseCommon() => BaseCommon is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BaseCommon' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ComponentNodeVariant2 PickComponentNodeVariant2() => IsComponentNodeVariant2
-            ? ComponentNodeVariant2!
+        public global::RetellAI.ComponentNodeVariant2 PickComponentNodeVariant2() => ComponentNodeVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ComponentNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBaseCommon && baseCommon != null)
+            if (BaseCommon is { } __value0 && baseCommon != null)
             {
-                return baseCommon(BaseCommon!);
+                return baseCommon(__value0);
             }
-            else if (IsComponentNodeVariant2 && componentNodeVariant2 != null)
+            else if (ComponentNodeVariant2 is { } __value1 && componentNodeVariant2 != null)
             {
-                return componentNodeVariant2(ComponentNodeVariant2!);
+                return componentNodeVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBaseCommon)
+            if (BaseCommon is { } __value0)
             {
-                baseCommon?.Invoke(BaseCommon!);
+                baseCommon?.Invoke(__value0);
             }
-            else if (IsComponentNodeVariant2)
+            else if (ComponentNodeVariant2 is { } __value1)
             {
-                componentNodeVariant2?.Invoke(ComponentNodeVariant2!);
+                componentNodeVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBaseCommon)
+            if (BaseCommon is { } __value0)
             {
-                baseCommon?.Invoke(BaseCommon!);
+                baseCommon?.Invoke(__value0);
             }
-            else if (IsComponentNodeVariant2)
+            else if (ComponentNodeVariant2 is { } __value1)
             {
-                componentNodeVariant2?.Invoke(ComponentNodeVariant2!);
+                componentNodeVariant2?.Invoke(__value1);
             }
         }
 

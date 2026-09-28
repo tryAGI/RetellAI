@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.V2WebCallResponse PickWeb() => IsWeb
-            ? Web!.Value
+        public global::RetellAI.V2WebCallResponse PickWeb() => Web is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Web' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.V2PhoneCallResponse PickPhone() => IsPhone
-            ? Phone!.Value
+        public global::RetellAI.V2PhoneCallResponse PickPhone() => Phone is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Phone' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsWeb && web != null)
+            if (Web is { } __value0 && web != null)
             {
-                return web(Web!);
+                return web(__value0);
             }
-            else if (IsPhone && phone != null)
+            else if (Phone is { } __value1 && phone != null)
             {
-                return phone(Phone!);
+                return phone(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsWeb)
+            if (Web is { } __value0)
             {
-                web?.Invoke(Web!);
+                web?.Invoke(__value0);
             }
-            else if (IsPhone)
+            else if (Phone is { } __value1)
             {
-                phone?.Invoke(Phone!);
+                phone?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsWeb)
+            if (Web is { } __value0)
             {
-                web?.Invoke(Web!);
+                web?.Invoke(__value0);
             }
-            else if (IsPhone)
+            else if (Phone is { } __value1)
             {
-                phone?.Invoke(Phone!);
+                phone?.Invoke(__value1);
             }
         }
 

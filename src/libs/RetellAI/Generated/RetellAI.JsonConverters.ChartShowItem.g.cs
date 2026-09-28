@@ -271,31 +271,31 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartShowItemKeywordSource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartShowItemKeywordSource?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartShowItemKeywordSource).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.KeywordSource!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickKeywordSource(), typeInfo);
             }
             else if (value.IsNumericSource)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartShowItemNumericSource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartShowItemNumericSource?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartShowItemNumericSource).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.NumericSource!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickNumericSource(), typeInfo);
             }
             else if (value.IsCustomFieldSource)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartShowItemCustomFieldSource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartShowItemCustomFieldSource?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartShowItemCustomFieldSource).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CustomFieldSource!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustomFieldSource(), typeInfo);
             }
             else if (value.IsConcurrencySource)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartShowItemConcurrencySource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartShowItemConcurrencySource?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartShowItemConcurrencySource).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ConcurrencySource!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConcurrencySource(), typeInfo);
             }
             else if (value.IsCustomToolSource)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartShowItemCustomToolSource), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartShowItemCustomToolSource?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartShowItemCustomToolSource).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CustomToolSource!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCustomToolSource(), typeInfo);
             }
         }
     }

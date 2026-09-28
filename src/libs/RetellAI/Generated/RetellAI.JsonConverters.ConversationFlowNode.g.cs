@@ -786,91 +786,91 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ConversationNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ConversationNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ConversationNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ConversationNode!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickConversationNode(), typeInfo);
             }
             else if (value.IsSubagent)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SubagentNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SubagentNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SubagentNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Subagent!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSubagent(), typeInfo);
             }
             else if (value.IsEnd)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EndNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EndNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EndNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.End!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickEnd(), typeInfo);
             }
             else if (value.IsFunction)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.FunctionNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.FunctionNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.FunctionNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Function!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickFunction(), typeInfo);
             }
             else if (value.IsCode)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CodeNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CodeNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CodeNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Code!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCode(), typeInfo);
             }
             else if (value.IsTransferCall)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferCallNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferCallNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferCallNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.TransferCall!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickTransferCall(), typeInfo);
             }
             else if (value.IsPressDigit)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.PressDigitNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.PressDigitNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.PressDigitNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PressDigit!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickPressDigit(), typeInfo);
             }
             else if (value.IsBranch)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BranchNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BranchNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BranchNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Branch!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBranch(), typeInfo);
             }
             else if (value.IsSms)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.SmsNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.SmsNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Sms!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickSms(), typeInfo);
             }
             else if (value.IsExtractDynamicVariables)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ExtractDynamicVariablesNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ExtractDynamicVariablesNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ExtractDynamicVariablesNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ExtractDynamicVariables!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickExtractDynamicVariables(), typeInfo);
             }
             else if (value.IsAgentSwap)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentSwapNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AgentSwapNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AgentSwapNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.AgentSwap!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAgentSwap(), typeInfo);
             }
             else if (value.IsMcp)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.MCPNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.MCPNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.MCPNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Mcp!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickMcp(), typeInfo);
             }
             else if (value.IsComponent)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ComponentNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ComponentNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ComponentNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.Component!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickComponent(), typeInfo);
             }
             else if (value.IsBridgeTransfer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BridgeTransferNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.BridgeTransferNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.BridgeTransferNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.BridgeTransfer!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickBridgeTransfer(), typeInfo);
             }
             else if (value.IsCancelTransfer)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CancelTransferNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CancelTransferNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CancelTransferNode).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.CancelTransfer!.Value, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCancelTransfer(), typeInfo);
             }
         }
     }

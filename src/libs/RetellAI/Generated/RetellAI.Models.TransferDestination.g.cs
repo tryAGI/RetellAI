@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TransferDestinationPredefined PickPredefined() => IsPredefined
-            ? Predefined!
+        public global::RetellAI.TransferDestinationPredefined PickPredefined() => Predefined is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Predefined' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TransferDestinationInferred PickInferred() => IsInferred
-            ? Inferred!
+        public global::RetellAI.TransferDestinationInferred PickInferred() => Inferred is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Inferred' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsPredefined && predefined != null)
+            if (Predefined is { } __value0 && predefined != null)
             {
-                return predefined(Predefined!);
+                return predefined(__value0);
             }
-            else if (IsInferred && inferred != null)
+            else if (Inferred is { } __value1 && inferred != null)
             {
-                return inferred(Inferred!);
+                return inferred(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsPredefined)
+            if (Predefined is { } __value0)
             {
-                predefined?.Invoke(Predefined!);
+                predefined?.Invoke(__value0);
             }
-            else if (IsInferred)
+            else if (Inferred is { } __value1)
             {
-                inferred?.Invoke(Inferred!);
+                inferred?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsPredefined)
+            if (Predefined is { } __value0)
             {
-                predefined?.Invoke(Predefined!);
+                predefined?.Invoke(__value0);
             }
-            else if (IsInferred)
+            else if (Inferred is { } __value1)
             {
-                inferred?.Invoke(Inferred!);
+                inferred?.Invoke(__value1);
             }
         }
 

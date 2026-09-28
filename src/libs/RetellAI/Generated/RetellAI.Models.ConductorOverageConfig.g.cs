@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConductorOverageConfigVariant1 PickConductorOverageConfigVariant1() => IsConductorOverageConfigVariant1
-            ? ConductorOverageConfigVariant1!
+        public global::RetellAI.ConductorOverageConfigVariant1 PickConductorOverageConfigVariant1() => ConductorOverageConfigVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConductorOverageConfigVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConductorOverageConfigVariant2 PickConductorOverageConfigVariant2() => IsConductorOverageConfigVariant2
-            ? ConductorOverageConfigVariant2!
+        public global::RetellAI.ConductorOverageConfigVariant2 PickConductorOverageConfigVariant2() => ConductorOverageConfigVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConductorOverageConfigVariant2' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConductorOverageConfigVariant3 PickConductorOverageConfigVariant3() => IsConductorOverageConfigVariant3
-            ? ConductorOverageConfigVariant3!
+        public global::RetellAI.ConductorOverageConfigVariant3 PickConductorOverageConfigVariant3() => ConductorOverageConfigVariant3 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConductorOverageConfigVariant3' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -242,17 +242,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConductorOverageConfigVariant1 && conductorOverageConfigVariant1 != null)
+            if (ConductorOverageConfigVariant1 is { } __value0 && conductorOverageConfigVariant1 != null)
             {
-                return conductorOverageConfigVariant1(ConductorOverageConfigVariant1!);
+                return conductorOverageConfigVariant1(__value0);
             }
-            else if (IsConductorOverageConfigVariant2 && conductorOverageConfigVariant2 != null)
+            else if (ConductorOverageConfigVariant2 is { } __value1 && conductorOverageConfigVariant2 != null)
             {
-                return conductorOverageConfigVariant2(ConductorOverageConfigVariant2!);
+                return conductorOverageConfigVariant2(__value1);
             }
-            else if (IsConductorOverageConfigVariant3 && conductorOverageConfigVariant3 != null)
+            else if (ConductorOverageConfigVariant3 is { } __value2 && conductorOverageConfigVariant3 != null)
             {
-                return conductorOverageConfigVariant3(ConductorOverageConfigVariant3!);
+                return conductorOverageConfigVariant3(__value2);
             }
 
             return default(TResult);
@@ -274,17 +274,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConductorOverageConfigVariant1)
+            if (ConductorOverageConfigVariant1 is { } __value0)
             {
-                conductorOverageConfigVariant1?.Invoke(ConductorOverageConfigVariant1!);
+                conductorOverageConfigVariant1?.Invoke(__value0);
             }
-            else if (IsConductorOverageConfigVariant2)
+            else if (ConductorOverageConfigVariant2 is { } __value1)
             {
-                conductorOverageConfigVariant2?.Invoke(ConductorOverageConfigVariant2!);
+                conductorOverageConfigVariant2?.Invoke(__value1);
             }
-            else if (IsConductorOverageConfigVariant3)
+            else if (ConductorOverageConfigVariant3 is { } __value2)
             {
-                conductorOverageConfigVariant3?.Invoke(ConductorOverageConfigVariant3!);
+                conductorOverageConfigVariant3?.Invoke(__value2);
             }
         }
 
@@ -302,17 +302,17 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsConductorOverageConfigVariant1)
+            if (ConductorOverageConfigVariant1 is { } __value0)
             {
-                conductorOverageConfigVariant1?.Invoke(ConductorOverageConfigVariant1!);
+                conductorOverageConfigVariant1?.Invoke(__value0);
             }
-            else if (IsConductorOverageConfigVariant2)
+            else if (ConductorOverageConfigVariant2 is { } __value1)
             {
-                conductorOverageConfigVariant2?.Invoke(ConductorOverageConfigVariant2!);
+                conductorOverageConfigVariant2?.Invoke(__value1);
             }
-            else if (IsConductorOverageConfigVariant3)
+            else if (ConductorOverageConfigVariant3 is { } __value2)
             {
-                conductorOverageConfigVariant3?.Invoke(ConductorOverageConfigVariant3!);
+                conductorOverageConfigVariant3?.Invoke(__value2);
             }
         }
 

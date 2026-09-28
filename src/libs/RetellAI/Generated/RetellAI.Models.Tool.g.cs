@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EndCallTool PickEndCall() => IsEndCall
-            ? EndCall!
+        public global::RetellAI.EndCallTool PickEndCall() => EndCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'EndCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TransferCallTool PickTransferCall() => IsTransferCall
-            ? TransferCall!
+        public global::RetellAI.TransferCallTool PickTransferCall() => TransferCall is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TransferCall' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AgentSwapTool PickAgentSwap() => IsAgentSwap
-            ? AgentSwap!
+        public global::RetellAI.AgentSwapTool PickAgentSwap() => AgentSwap is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AgentSwap' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PressDigitTool PickPressDigit() => IsPressDigit
-            ? PressDigit!
+        public global::RetellAI.PressDigitTool PickPressDigit() => PressDigit is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'PressDigit' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SendSMSTool PickSendSM() => IsSendSM
-            ? SendSM!
+        public global::RetellAI.SendSMSTool PickSendSM() => SendSM is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SendSM' but the value was {ToString()}.");
 
         /// <summary>
@@ -227,8 +227,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomTool PickCustom() => IsCustom
-            ? Custom!
+        public global::RetellAI.CustomTool PickCustom() => Custom is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
 
         /// <summary>
@@ -264,8 +264,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CodeTool PickCode() => IsCode
-            ? Code!
+        public global::RetellAI.CodeTool PickCode() => Code is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Code' but the value was {ToString()}.");
 
         /// <summary>
@@ -301,8 +301,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ExtractDynamicVariableTool PickExtractDynamicVariable() => IsExtractDynamicVariable
-            ? ExtractDynamicVariable!
+        public global::RetellAI.ExtractDynamicVariableTool PickExtractDynamicVariable() => ExtractDynamicVariable is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ExtractDynamicVariable' but the value was {ToString()}.");
 
         /// <summary>
@@ -338,8 +338,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BridgeTransferTool PickBridgeTransfer() => IsBridgeTransfer
-            ? BridgeTransfer!
+        public global::RetellAI.BridgeTransferTool PickBridgeTransfer() => BridgeTransfer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'BridgeTransfer' but the value was {ToString()}.");
 
         /// <summary>
@@ -375,8 +375,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CancelTransferTool PickCancelTransfer() => IsCancelTransfer
-            ? CancelTransfer!
+        public global::RetellAI.CancelTransferTool PickCancelTransfer() => CancelTransfer is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CancelTransfer' but the value was {ToString()}.");
 
         /// <summary>
@@ -412,8 +412,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MCPTool PickMcp() => IsMcp
-            ? Mcp!
+        public global::RetellAI.MCPTool PickMcp() => Mcp is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Mcp' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -762,49 +762,49 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsEndCall && endCall != null)
+            if (EndCall is { } __value0 && endCall != null)
             {
-                return endCall(EndCall!);
+                return endCall(__value0);
             }
-            else if (IsTransferCall && transferCall != null)
+            else if (TransferCall is { } __value1 && transferCall != null)
             {
-                return transferCall(TransferCall!);
+                return transferCall(__value1);
             }
-            else if (IsAgentSwap && agentSwap != null)
+            else if (AgentSwap is { } __value2 && agentSwap != null)
             {
-                return agentSwap(AgentSwap!);
+                return agentSwap(__value2);
             }
-            else if (IsPressDigit && pressDigit != null)
+            else if (PressDigit is { } __value3 && pressDigit != null)
             {
-                return pressDigit(PressDigit!);
+                return pressDigit(__value3);
             }
-            else if (IsSendSM && sendSM != null)
+            else if (SendSM is { } __value4 && sendSM != null)
             {
-                return sendSM(SendSM!);
+                return sendSM(__value4);
             }
-            else if (IsCustom && custom != null)
+            else if (Custom is { } __value5 && custom != null)
             {
-                return custom(Custom!);
+                return custom(__value5);
             }
-            else if (IsCode && code != null)
+            else if (Code is { } __value6 && code != null)
             {
-                return code(Code!);
+                return code(__value6);
             }
-            else if (IsExtractDynamicVariable && extractDynamicVariable != null)
+            else if (ExtractDynamicVariable is { } __value7 && extractDynamicVariable != null)
             {
-                return extractDynamicVariable(ExtractDynamicVariable!);
+                return extractDynamicVariable(__value7);
             }
-            else if (IsBridgeTransfer && bridgeTransfer != null)
+            else if (BridgeTransfer is { } __value8 && bridgeTransfer != null)
             {
-                return bridgeTransfer(BridgeTransfer!);
+                return bridgeTransfer(__value8);
             }
-            else if (IsCancelTransfer && cancelTransfer != null)
+            else if (CancelTransfer is { } __value9 && cancelTransfer != null)
             {
-                return cancelTransfer(CancelTransfer!);
+                return cancelTransfer(__value9);
             }
-            else if (IsMcp && mcp != null)
+            else if (Mcp is { } __value10 && mcp != null)
             {
-                return mcp(Mcp!);
+                return mcp(__value10);
             }
 
             return default(TResult);
@@ -842,49 +842,49 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsEndCall)
+            if (EndCall is { } __value0)
             {
-                endCall?.Invoke(EndCall!);
+                endCall?.Invoke(__value0);
             }
-            else if (IsTransferCall)
+            else if (TransferCall is { } __value1)
             {
-                transferCall?.Invoke(TransferCall!);
+                transferCall?.Invoke(__value1);
             }
-            else if (IsAgentSwap)
+            else if (AgentSwap is { } __value2)
             {
-                agentSwap?.Invoke(AgentSwap!);
+                agentSwap?.Invoke(__value2);
             }
-            else if (IsPressDigit)
+            else if (PressDigit is { } __value3)
             {
-                pressDigit?.Invoke(PressDigit!);
+                pressDigit?.Invoke(__value3);
             }
-            else if (IsSendSM)
+            else if (SendSM is { } __value4)
             {
-                sendSM?.Invoke(SendSM!);
+                sendSM?.Invoke(__value4);
             }
-            else if (IsCustom)
+            else if (Custom is { } __value5)
             {
-                custom?.Invoke(Custom!);
+                custom?.Invoke(__value5);
             }
-            else if (IsCode)
+            else if (Code is { } __value6)
             {
-                code?.Invoke(Code!);
+                code?.Invoke(__value6);
             }
-            else if (IsExtractDynamicVariable)
+            else if (ExtractDynamicVariable is { } __value7)
             {
-                extractDynamicVariable?.Invoke(ExtractDynamicVariable!);
+                extractDynamicVariable?.Invoke(__value7);
             }
-            else if (IsBridgeTransfer)
+            else if (BridgeTransfer is { } __value8)
             {
-                bridgeTransfer?.Invoke(BridgeTransfer!);
+                bridgeTransfer?.Invoke(__value8);
             }
-            else if (IsCancelTransfer)
+            else if (CancelTransfer is { } __value9)
             {
-                cancelTransfer?.Invoke(CancelTransfer!);
+                cancelTransfer?.Invoke(__value9);
             }
-            else if (IsMcp)
+            else if (Mcp is { } __value10)
             {
-                mcp?.Invoke(Mcp!);
+                mcp?.Invoke(__value10);
             }
         }
 
@@ -910,49 +910,49 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsEndCall)
+            if (EndCall is { } __value0)
             {
-                endCall?.Invoke(EndCall!);
+                endCall?.Invoke(__value0);
             }
-            else if (IsTransferCall)
+            else if (TransferCall is { } __value1)
             {
-                transferCall?.Invoke(TransferCall!);
+                transferCall?.Invoke(__value1);
             }
-            else if (IsAgentSwap)
+            else if (AgentSwap is { } __value2)
             {
-                agentSwap?.Invoke(AgentSwap!);
+                agentSwap?.Invoke(__value2);
             }
-            else if (IsPressDigit)
+            else if (PressDigit is { } __value3)
             {
-                pressDigit?.Invoke(PressDigit!);
+                pressDigit?.Invoke(__value3);
             }
-            else if (IsSendSM)
+            else if (SendSM is { } __value4)
             {
-                sendSM?.Invoke(SendSM!);
+                sendSM?.Invoke(__value4);
             }
-            else if (IsCustom)
+            else if (Custom is { } __value5)
             {
-                custom?.Invoke(Custom!);
+                custom?.Invoke(__value5);
             }
-            else if (IsCode)
+            else if (Code is { } __value6)
             {
-                code?.Invoke(Code!);
+                code?.Invoke(__value6);
             }
-            else if (IsExtractDynamicVariable)
+            else if (ExtractDynamicVariable is { } __value7)
             {
-                extractDynamicVariable?.Invoke(ExtractDynamicVariable!);
+                extractDynamicVariable?.Invoke(__value7);
             }
-            else if (IsBridgeTransfer)
+            else if (BridgeTransfer is { } __value8)
             {
-                bridgeTransfer?.Invoke(BridgeTransfer!);
+                bridgeTransfer?.Invoke(__value8);
             }
-            else if (IsCancelTransfer)
+            else if (CancelTransfer is { } __value9)
             {
-                cancelTransfer?.Invoke(CancelTransfer!);
+                cancelTransfer?.Invoke(__value9);
             }
-            else if (IsMcp)
+            else if (Mcp is { } __value10)
             {
-                mcp?.Invoke(Mcp!);
+                mcp?.Invoke(__value10);
             }
         }
 

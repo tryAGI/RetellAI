@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartShowItemKeywordSource PickKeywordSource() => IsKeywordSource
-            ? KeywordSource!
+        public global::RetellAI.ChartShowItemKeywordSource PickKeywordSource() => KeywordSource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'KeywordSource' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartShowItemNumericSource PickNumericSource() => IsNumericSource
-            ? NumericSource!
+        public global::RetellAI.ChartShowItemNumericSource PickNumericSource() => NumericSource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'NumericSource' but the value was {ToString()}.");
 
         /// <summary>
@@ -116,8 +116,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartShowItemCustomFieldSource PickCustomFieldSource() => IsCustomFieldSource
-            ? CustomFieldSource!
+        public global::RetellAI.ChartShowItemCustomFieldSource PickCustomFieldSource() => CustomFieldSource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomFieldSource' but the value was {ToString()}.");
 
         /// <summary>
@@ -153,8 +153,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartShowItemConcurrencySource PickConcurrencySource() => IsConcurrencySource
-            ? ConcurrencySource!
+        public global::RetellAI.ChartShowItemConcurrencySource PickConcurrencySource() => ConcurrencySource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ConcurrencySource' but the value was {ToString()}.");
 
         /// <summary>
@@ -190,8 +190,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartShowItemCustomToolSource PickCustomToolSource() => IsCustomToolSource
-            ? CustomToolSource!
+        public global::RetellAI.ChartShowItemCustomToolSource PickCustomToolSource() => CustomToolSource is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'CustomToolSource' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -372,25 +372,25 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsKeywordSource && keywordSource != null)
+            if (KeywordSource is { } __value0 && keywordSource != null)
             {
-                return keywordSource(KeywordSource!);
+                return keywordSource(__value0);
             }
-            else if (IsNumericSource && numericSource != null)
+            else if (NumericSource is { } __value1 && numericSource != null)
             {
-                return numericSource(NumericSource!);
+                return numericSource(__value1);
             }
-            else if (IsCustomFieldSource && customFieldSource != null)
+            else if (CustomFieldSource is { } __value2 && customFieldSource != null)
             {
-                return customFieldSource(CustomFieldSource!);
+                return customFieldSource(__value2);
             }
-            else if (IsConcurrencySource && concurrencySource != null)
+            else if (ConcurrencySource is { } __value3 && concurrencySource != null)
             {
-                return concurrencySource(ConcurrencySource!);
+                return concurrencySource(__value3);
             }
-            else if (IsCustomToolSource && customToolSource != null)
+            else if (CustomToolSource is { } __value4 && customToolSource != null)
             {
-                return customToolSource(CustomToolSource!);
+                return customToolSource(__value4);
             }
 
             return default(TResult);
@@ -416,25 +416,25 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsKeywordSource)
+            if (KeywordSource is { } __value0)
             {
-                keywordSource?.Invoke(KeywordSource!);
+                keywordSource?.Invoke(__value0);
             }
-            else if (IsNumericSource)
+            else if (NumericSource is { } __value1)
             {
-                numericSource?.Invoke(NumericSource!);
+                numericSource?.Invoke(__value1);
             }
-            else if (IsCustomFieldSource)
+            else if (CustomFieldSource is { } __value2)
             {
-                customFieldSource?.Invoke(CustomFieldSource!);
+                customFieldSource?.Invoke(__value2);
             }
-            else if (IsConcurrencySource)
+            else if (ConcurrencySource is { } __value3)
             {
-                concurrencySource?.Invoke(ConcurrencySource!);
+                concurrencySource?.Invoke(__value3);
             }
-            else if (IsCustomToolSource)
+            else if (CustomToolSource is { } __value4)
             {
-                customToolSource?.Invoke(CustomToolSource!);
+                customToolSource?.Invoke(__value4);
             }
         }
 
@@ -454,25 +454,25 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsKeywordSource)
+            if (KeywordSource is { } __value0)
             {
-                keywordSource?.Invoke(KeywordSource!);
+                keywordSource?.Invoke(__value0);
             }
-            else if (IsNumericSource)
+            else if (NumericSource is { } __value1)
             {
-                numericSource?.Invoke(NumericSource!);
+                numericSource?.Invoke(__value1);
             }
-            else if (IsCustomFieldSource)
+            else if (CustomFieldSource is { } __value2)
             {
-                customFieldSource?.Invoke(CustomFieldSource!);
+                customFieldSource?.Invoke(__value2);
             }
-            else if (IsConcurrencySource)
+            else if (ConcurrencySource is { } __value3)
             {
-                concurrencySource?.Invoke(ConcurrencySource!);
+                concurrencySource?.Invoke(__value3);
             }
-            else if (IsCustomToolSource)
+            else if (CustomToolSource is { } __value4)
             {
-                customToolSource?.Invoke(CustomToolSource!);
+                customToolSource?.Invoke(__value4);
             }
         }
 

@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartGroupItemVariant1 PickChartGroupItemVariant1() => IsChartGroupItemVariant1
-            ? ChartGroupItemVariant1!
+        public global::RetellAI.ChartGroupItemVariant1 PickChartGroupItemVariant1() => ChartGroupItemVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartGroupItemVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChartGroupItemVariant2 PickChartGroupItemVariant2() => IsChartGroupItemVariant2
-            ? ChartGroupItemVariant2!
+        public global::RetellAI.ChartGroupItemVariant2 PickChartGroupItemVariant2() => ChartGroupItemVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ChartGroupItemVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChartGroupItemVariant1 && chartGroupItemVariant1 != null)
+            if (ChartGroupItemVariant1 is { } __value0 && chartGroupItemVariant1 != null)
             {
-                return chartGroupItemVariant1(ChartGroupItemVariant1!);
+                return chartGroupItemVariant1(__value0);
             }
-            else if (IsChartGroupItemVariant2 && chartGroupItemVariant2 != null)
+            else if (ChartGroupItemVariant2 is { } __value1 && chartGroupItemVariant2 != null)
             {
-                return chartGroupItemVariant2(ChartGroupItemVariant2!);
+                return chartGroupItemVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChartGroupItemVariant1)
+            if (ChartGroupItemVariant1 is { } __value0)
             {
-                chartGroupItemVariant1?.Invoke(ChartGroupItemVariant1!);
+                chartGroupItemVariant1?.Invoke(__value0);
             }
-            else if (IsChartGroupItemVariant2)
+            else if (ChartGroupItemVariant2 is { } __value1)
             {
-                chartGroupItemVariant2?.Invoke(ChartGroupItemVariant2!);
+                chartGroupItemVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsChartGroupItemVariant1)
+            if (ChartGroupItemVariant1 is { } __value0)
             {
-                chartGroupItemVariant1?.Invoke(ChartGroupItemVariant1!);
+                chartGroupItemVariant1?.Invoke(__value0);
             }
-            else if (IsChartGroupItemVariant2)
+            else if (ChartGroupItemVariant2 is { } __value1)
             {
-                chartGroupItemVariant2?.Invoke(ChartGroupItemVariant2!);
+                chartGroupItemVariant2?.Invoke(__value1);
             }
         }
 

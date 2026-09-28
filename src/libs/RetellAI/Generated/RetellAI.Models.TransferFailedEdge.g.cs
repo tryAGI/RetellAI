@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeEdge PickNode() => IsNode
-            ? Node!
+        public global::RetellAI.NodeEdge PickNode() => Node is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TransferFailedEdgeVariant2 PickTransferFailedEdgeVariant2() => IsTransferFailedEdgeVariant2
-            ? TransferFailedEdgeVariant2!
+        public global::RetellAI.TransferFailedEdgeVariant2 PickTransferFailedEdgeVariant2() => TransferFailedEdgeVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TransferFailedEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNode && node != null)
+            if (Node is { } __value0 && node != null)
             {
-                return node(Node!);
+                return node(__value0);
             }
-            else if (IsTransferFailedEdgeVariant2 && transferFailedEdgeVariant2 != null)
+            else if (TransferFailedEdgeVariant2 is { } __value1 && transferFailedEdgeVariant2 != null)
             {
-                return transferFailedEdgeVariant2(TransferFailedEdgeVariant2!);
+                return transferFailedEdgeVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNode)
+            if (Node is { } __value0)
             {
-                node?.Invoke(Node!);
+                node?.Invoke(__value0);
             }
-            else if (IsTransferFailedEdgeVariant2)
+            else if (TransferFailedEdgeVariant2 is { } __value1)
             {
-                transferFailedEdgeVariant2?.Invoke(TransferFailedEdgeVariant2!);
+                transferFailedEdgeVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNode)
+            if (Node is { } __value0)
             {
-                node?.Invoke(Node!);
+                node?.Invoke(__value0);
             }
-            else if (IsTransferFailedEdgeVariant2)
+            else if (TransferFailedEdgeVariant2 is { } __value1)
             {
-                transferFailedEdgeVariant2?.Invoke(TransferFailedEdgeVariant2!);
+                transferFailedEdgeVariant2?.Invoke(__value1);
             }
         }
 

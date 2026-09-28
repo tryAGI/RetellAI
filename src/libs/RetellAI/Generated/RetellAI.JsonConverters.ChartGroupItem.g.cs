@@ -129,13 +129,13 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartGroupItemVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartGroupItemVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartGroupItemVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChartGroupItemVariant1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChartGroupItemVariant1(), typeInfo);
             }
             else if (value.IsChartGroupItemVariant2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartGroupItemVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartGroupItemVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartGroupItemVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChartGroupItemVariant2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChartGroupItemVariant2(), typeInfo);
             }
         }
     }

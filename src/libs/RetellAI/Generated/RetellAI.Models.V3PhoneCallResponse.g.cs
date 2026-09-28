@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.V3PhoneCallResponseVariant1 PickV3PhoneCallResponseVariant1() => IsV3PhoneCallResponseVariant1
-            ? V3PhoneCallResponseVariant1!
+        public global::RetellAI.V3PhoneCallResponseVariant1 PickV3PhoneCallResponseVariant1() => V3PhoneCallResponseVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'V3PhoneCallResponseVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.V3CallBase PickBase() => IsBase
-            ? Base!
+        public global::RetellAI.V3CallBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsV3PhoneCallResponseVariant1 && v3PhoneCallResponseVariant1 != null)
+            if (V3PhoneCallResponseVariant1 is { } __value0 && v3PhoneCallResponseVariant1 != null)
             {
-                return v3PhoneCallResponseVariant1(V3PhoneCallResponseVariant1!);
+                return v3PhoneCallResponseVariant1(__value0);
             }
-            else if (IsBase && @base != null)
+            else if (Base is { } __value1 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsV3PhoneCallResponseVariant1)
+            if (V3PhoneCallResponseVariant1 is { } __value0)
             {
-                v3PhoneCallResponseVariant1?.Invoke(V3PhoneCallResponseVariant1!);
+                v3PhoneCallResponseVariant1?.Invoke(__value0);
             }
-            else if (IsBase)
+            else if (Base is { } __value1)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsV3PhoneCallResponseVariant1)
+            if (V3PhoneCallResponseVariant1 is { } __value0)
             {
-                v3PhoneCallResponseVariant1?.Invoke(V3PhoneCallResponseVariant1!);
+                v3PhoneCallResponseVariant1?.Invoke(__value0);
             }
-            else if (IsBase)
+            else if (Base is { } __value1)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value1);
             }
         }
 

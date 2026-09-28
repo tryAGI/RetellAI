@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AnalysisData PickAnalysisData() => IsAnalysisData
-            ? AnalysisData!.Value
+        public global::RetellAI.AnalysisData PickAnalysisData() => AnalysisData is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'AnalysisData' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatPresetAnalysisData PickPreset() => IsPreset
-            ? Preset!
+        public global::RetellAI.ChatPresetAnalysisData PickPreset() => Preset is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Preset' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAnalysisData && analysisData != null)
+            if (AnalysisData is { } __value0 && analysisData != null)
             {
-                return analysisData(AnalysisData!);
+                return analysisData(__value0);
             }
-            else if (IsPreset && preset != null)
+            else if (Preset is { } __value1 && preset != null)
             {
-                return preset(Preset!);
+                return preset(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAnalysisData)
+            if (AnalysisData is { } __value0)
             {
-                analysisData?.Invoke(AnalysisData!);
+                analysisData?.Invoke(__value0);
             }
-            else if (IsPreset)
+            else if (Preset is { } __value1)
             {
-                preset?.Invoke(Preset!);
+                preset?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsAnalysisData)
+            if (AnalysisData is { } __value0)
             {
-                analysisData?.Invoke(AnalysisData!);
+                analysisData?.Invoke(__value0);
             }
-            else if (IsPreset)
+            else if (Preset is { } __value1)
             {
-                preset?.Invoke(Preset!);
+                preset?.Invoke(__value1);
             }
         }
 

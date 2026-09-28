@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeTransitionMessageBase PickBase() => IsBase
-            ? Base!
+        public global::RetellAI.NodeTransitionMessageBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public object PickNodeTransitionMessageVariant2() => IsNodeTransitionMessageVariant2
-            ? NodeTransitionMessageVariant2!
+        public object PickNodeTransitionMessageVariant2() => NodeTransitionMessageVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'NodeTransitionMessageVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -154,13 +154,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsNodeTransitionMessageVariant2 && nodeTransitionMessageVariant2 != null)
+            else if (NodeTransitionMessageVariant2 is { } __value1 && nodeTransitionMessageVariant2 != null)
             {
-                return nodeTransitionMessageVariant2(NodeTransitionMessageVariant2!);
+                return nodeTransitionMessageVariant2(__value1);
             }
 
             return default(TResult);
@@ -180,13 +180,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsNodeTransitionMessageVariant2)
+            else if (NodeTransitionMessageVariant2 is { } __value1)
             {
-                nodeTransitionMessageVariant2?.Invoke(NodeTransitionMessageVariant2!);
+                nodeTransitionMessageVariant2?.Invoke(__value1);
             }
         }
 
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsNodeTransitionMessageVariant2)
+            else if (NodeTransitionMessageVariant2 is { } __value1)
             {
-                nodeTransitionMessageVariant2?.Invoke(NodeTransitionMessageVariant2!);
+                nodeTransitionMessageVariant2?.Invoke(__value1);
             }
         }
 

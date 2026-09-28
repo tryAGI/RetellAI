@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallInvocationMessageBase PickBase() => IsBase
-            ? Base!
+        public global::RetellAI.ToolCallInvocationMessageBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public object PickToolCallInvocationMessageVariant2() => IsToolCallInvocationMessageVariant2
-            ? ToolCallInvocationMessageVariant2!
+        public object PickToolCallInvocationMessageVariant2() => ToolCallInvocationMessageVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'ToolCallInvocationMessageVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -154,13 +154,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsToolCallInvocationMessageVariant2 && toolCallInvocationMessageVariant2 != null)
+            else if (ToolCallInvocationMessageVariant2 is { } __value1 && toolCallInvocationMessageVariant2 != null)
             {
-                return toolCallInvocationMessageVariant2(ToolCallInvocationMessageVariant2!);
+                return toolCallInvocationMessageVariant2(__value1);
             }
 
             return default(TResult);
@@ -180,13 +180,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsToolCallInvocationMessageVariant2)
+            else if (ToolCallInvocationMessageVariant2 is { } __value1)
             {
-                toolCallInvocationMessageVariant2?.Invoke(ToolCallInvocationMessageVariant2!);
+                toolCallInvocationMessageVariant2?.Invoke(__value1);
             }
         }
 
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsToolCallInvocationMessageVariant2)
+            else if (ToolCallInvocationMessageVariant2 is { } __value1)
             {
-                toolCallInvocationMessageVariant2?.Invoke(ToolCallInvocationMessageVariant2!);
+                toolCallInvocationMessageVariant2?.Invoke(__value1);
             }
         }
 

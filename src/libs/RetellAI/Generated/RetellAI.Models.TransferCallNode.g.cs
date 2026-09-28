@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeBase PickBase() => IsBase
-            ? Base!.Value
+        public global::RetellAI.NodeBase PickBase() => Base is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Base' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TransferCallNodeVariant2 PickTransferCallNodeVariant2() => IsTransferCallNodeVariant2
-            ? TransferCallNodeVariant2!
+        public global::RetellAI.TransferCallNodeVariant2 PickTransferCallNodeVariant2() => TransferCallNodeVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'TransferCallNodeVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase && @base != null)
+            if (Base is { } __value0 && @base != null)
             {
-                return @base(Base!);
+                return @base(__value0);
             }
-            else if (IsTransferCallNodeVariant2 && transferCallNodeVariant2 != null)
+            else if (TransferCallNodeVariant2 is { } __value1 && transferCallNodeVariant2 != null)
             {
-                return transferCallNodeVariant2(TransferCallNodeVariant2!);
+                return transferCallNodeVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsTransferCallNodeVariant2)
+            else if (TransferCallNodeVariant2 is { } __value1)
             {
-                transferCallNodeVariant2?.Invoke(TransferCallNodeVariant2!);
+                transferCallNodeVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsBase)
+            if (Base is { } __value0)
             {
-                @base?.Invoke(Base!);
+                @base?.Invoke(__value0);
             }
-            else if (IsTransferCallNodeVariant2)
+            else if (TransferCallNodeVariant2 is { } __value1)
             {
-                transferCallNodeVariant2?.Invoke(TransferCallNodeVariant2!);
+                transferCallNodeVariant2?.Invoke(__value1);
             }
         }
 

@@ -255,31 +255,31 @@ namespace RetellAI.JsonConverters
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartTimeRangeVariant1), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartTimeRangeVariant1?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartTimeRangeVariant1).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChartTimeRangeVariant1!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChartTimeRangeVariant1(), typeInfo);
             }
             else if (value.IsChartTimeRangeVariant2)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartTimeRangeVariant2), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartTimeRangeVariant2?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartTimeRangeVariant2).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChartTimeRangeVariant2!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChartTimeRangeVariant2(), typeInfo);
             }
             else if (value.IsChartTimeRangeVariant3)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartTimeRangeVariant3), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartTimeRangeVariant3?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartTimeRangeVariant3).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChartTimeRangeVariant3!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChartTimeRangeVariant3(), typeInfo);
             }
             else if (value.IsChartTimeRangeVariant4)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartTimeRangeVariant4), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartTimeRangeVariant4?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartTimeRangeVariant4).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChartTimeRangeVariant4!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChartTimeRangeVariant4(), typeInfo);
             }
             else if (value.IsChartTimeRangeVariant5)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ChartTimeRangeVariant5), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ChartTimeRangeVariant5?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ChartTimeRangeVariant5).Name}");
-                global::System.Text.Json.JsonSerializer.Serialize(writer, value.ChartTimeRangeVariant5!, typeInfo);
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickChartTimeRangeVariant5(), typeInfo);
             }
         }
     }

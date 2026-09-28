@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateSpendBudgetRequestVariant1 PickUpdateSpendBudgetRequestVariant1() => IsUpdateSpendBudgetRequestVariant1
-            ? UpdateSpendBudgetRequestVariant1!
+        public global::RetellAI.UpdateSpendBudgetRequestVariant1 PickUpdateSpendBudgetRequestVariant1() => UpdateSpendBudgetRequestVariant1 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UpdateSpendBudgetRequestVariant1' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateSpendBudgetRequestVariant2 PickUpdateSpendBudgetRequestVariant2() => IsUpdateSpendBudgetRequestVariant2
-            ? UpdateSpendBudgetRequestVariant2!
+        public global::RetellAI.UpdateSpendBudgetRequestVariant2 PickUpdateSpendBudgetRequestVariant2() => UpdateSpendBudgetRequestVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'UpdateSpendBudgetRequestVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsUpdateSpendBudgetRequestVariant1 && updateSpendBudgetRequestVariant1 != null)
+            if (UpdateSpendBudgetRequestVariant1 is { } __value0 && updateSpendBudgetRequestVariant1 != null)
             {
-                return updateSpendBudgetRequestVariant1(UpdateSpendBudgetRequestVariant1!);
+                return updateSpendBudgetRequestVariant1(__value0);
             }
-            else if (IsUpdateSpendBudgetRequestVariant2 && updateSpendBudgetRequestVariant2 != null)
+            else if (UpdateSpendBudgetRequestVariant2 is { } __value1 && updateSpendBudgetRequestVariant2 != null)
             {
-                return updateSpendBudgetRequestVariant2(UpdateSpendBudgetRequestVariant2!);
+                return updateSpendBudgetRequestVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsUpdateSpendBudgetRequestVariant1)
+            if (UpdateSpendBudgetRequestVariant1 is { } __value0)
             {
-                updateSpendBudgetRequestVariant1?.Invoke(UpdateSpendBudgetRequestVariant1!);
+                updateSpendBudgetRequestVariant1?.Invoke(__value0);
             }
-            else if (IsUpdateSpendBudgetRequestVariant2)
+            else if (UpdateSpendBudgetRequestVariant2 is { } __value1)
             {
-                updateSpendBudgetRequestVariant2?.Invoke(UpdateSpendBudgetRequestVariant2!);
+                updateSpendBudgetRequestVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsUpdateSpendBudgetRequestVariant1)
+            if (UpdateSpendBudgetRequestVariant1 is { } __value0)
             {
-                updateSpendBudgetRequestVariant1?.Invoke(UpdateSpendBudgetRequestVariant1!);
+                updateSpendBudgetRequestVariant1?.Invoke(__value0);
             }
-            else if (IsUpdateSpendBudgetRequestVariant2)
+            else if (UpdateSpendBudgetRequestVariant2 is { } __value1)
             {
-                updateSpendBudgetRequestVariant2?.Invoke(UpdateSpendBudgetRequestVariant2!);
+                updateSpendBudgetRequestVariant2?.Invoke(__value1);
             }
         }
 

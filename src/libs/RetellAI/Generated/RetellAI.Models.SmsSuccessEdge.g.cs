@@ -42,8 +42,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeEdge PickNode() => IsNode
-            ? Node!
+        public global::RetellAI.NodeEdge PickNode() => Node is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Node' but the value was {ToString()}.");
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsSuccessEdgeVariant2 PickSmsSuccessEdgeVariant2() => IsSmsSuccessEdgeVariant2
-            ? SmsSuccessEdgeVariant2!
+        public global::RetellAI.SmsSuccessEdgeVariant2 PickSmsSuccessEdgeVariant2() => SmsSuccessEdgeVariant2 is { } value
+            ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'SmsSuccessEdgeVariant2' but the value was {ToString()}.");
         /// <summary>
         ///
@@ -177,13 +177,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNode && node != null)
+            if (Node is { } __value0 && node != null)
             {
-                return node(Node!);
+                return node(__value0);
             }
-            else if (IsSmsSuccessEdgeVariant2 && smsSuccessEdgeVariant2 != null)
+            else if (SmsSuccessEdgeVariant2 is { } __value1 && smsSuccessEdgeVariant2 != null)
             {
-                return smsSuccessEdgeVariant2(SmsSuccessEdgeVariant2!);
+                return smsSuccessEdgeVariant2(__value1);
             }
 
             return default(TResult);
@@ -203,13 +203,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNode)
+            if (Node is { } __value0)
             {
-                node?.Invoke(Node!);
+                node?.Invoke(__value0);
             }
-            else if (IsSmsSuccessEdgeVariant2)
+            else if (SmsSuccessEdgeVariant2 is { } __value1)
             {
-                smsSuccessEdgeVariant2?.Invoke(SmsSuccessEdgeVariant2!);
+                smsSuccessEdgeVariant2?.Invoke(__value1);
             }
         }
 
@@ -226,13 +226,13 @@ namespace RetellAI
                 Validate();
             }
 
-            if (IsNode)
+            if (Node is { } __value0)
             {
-                node?.Invoke(Node!);
+                node?.Invoke(__value0);
             }
-            else if (IsSmsSuccessEdgeVariant2)
+            else if (SmsSuccessEdgeVariant2 is { } __value1)
             {
-                smsSuccessEdgeVariant2?.Invoke(SmsSuccessEdgeVariant2!);
+                smsSuccessEdgeVariant2?.Invoke(__value1);
             }
         }
 
