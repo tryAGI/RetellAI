@@ -185,6 +185,30 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? ScrubbedTranscriptWithToolCalls { get; set; }
 
         /// <summary>
+        /// Tool call invocations and results of integration tools run before the session started (pre-session). Stored separately from the main transcript. Available after call ends if pre-session integration tools ran.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pre_session_transcript_with_tool_calls")]
+        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? PreSessionTranscriptWithToolCalls { get; set; }
+
+        /// <summary>
+        /// Pre-session integration tool call invocations and results, without PII. Available after call ends if pre-session integration tools ran and PII scrubbing is enabled.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scrubbed_pre_session_transcript_with_tool_calls")]
+        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? ScrubbedPreSessionTranscriptWithToolCalls { get; set; }
+
+        /// <summary>
+        /// Tool call invocations and results of integration tools run after post-call analysis (post-session). Stored separately from the main transcript. Available after call ends if post-session integration tools ran.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("post_session_transcript_with_tool_calls")]
+        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? PostSessionTranscriptWithToolCalls { get; set; }
+
+        /// <summary>
+        /// Post-session integration tool call invocations and results, without PII. Available after call ends if post-session integration tools ran and PII scrubbing is enabled.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scrubbed_post_session_transcript_with_tool_calls")]
+        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? ScrubbedPostSessionTranscriptWithToolCalls { get; set; }
+
+        /// <summary>
         /// Recording of the call. Available after call ends.<br/>
         /// Example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording.wav
         /// </summary>
@@ -366,6 +390,18 @@ namespace RetellAI
         /// <param name="scrubbedTranscriptWithToolCalls">
         /// Transcript of the call weaved with tool call invocation and results, without PII. It precisely captures when (at what utterance, which word) the tool was invoked and what was the result. Available after call ends.
         /// </param>
+        /// <param name="preSessionTranscriptWithToolCalls">
+        /// Tool call invocations and results of integration tools run before the session started (pre-session). Stored separately from the main transcript. Available after call ends if pre-session integration tools ran.
+        /// </param>
+        /// <param name="scrubbedPreSessionTranscriptWithToolCalls">
+        /// Pre-session integration tool call invocations and results, without PII. Available after call ends if pre-session integration tools ran and PII scrubbing is enabled.
+        /// </param>
+        /// <param name="postSessionTranscriptWithToolCalls">
+        /// Tool call invocations and results of integration tools run after post-call analysis (post-session). Stored separately from the main transcript. Available after call ends if post-session integration tools ran.
+        /// </param>
+        /// <param name="scrubbedPostSessionTranscriptWithToolCalls">
+        /// Post-session integration tool call invocations and results, without PII. Available after call ends if post-session integration tools ran and PII scrubbing is enabled.
+        /// </param>
         /// <param name="recordingUrl">
         /// Recording of the call. Available after call ends.<br/>
         /// Example: https://retellai.s3.us-west-2.amazonaws.com/Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6/recording.wav
@@ -429,6 +465,10 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.Utterance>? transcriptObject,
             global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? transcriptWithToolCalls,
             global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? scrubbedTranscriptWithToolCalls,
+            global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? preSessionTranscriptWithToolCalls,
+            global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? scrubbedPreSessionTranscriptWithToolCalls,
+            global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? postSessionTranscriptWithToolCalls,
+            global::System.Collections.Generic.IList<global::RetellAI.UtteranceOrToolCall>? scrubbedPostSessionTranscriptWithToolCalls,
             string? recordingUrl,
             string? recordingMultiChannelUrl,
             string? scrubbedRecordingUrl,
@@ -462,6 +502,10 @@ namespace RetellAI
             this.TranscriptObject = transcriptObject;
             this.TranscriptWithToolCalls = transcriptWithToolCalls;
             this.ScrubbedTranscriptWithToolCalls = scrubbedTranscriptWithToolCalls;
+            this.PreSessionTranscriptWithToolCalls = preSessionTranscriptWithToolCalls;
+            this.ScrubbedPreSessionTranscriptWithToolCalls = scrubbedPreSessionTranscriptWithToolCalls;
+            this.PostSessionTranscriptWithToolCalls = postSessionTranscriptWithToolCalls;
+            this.ScrubbedPostSessionTranscriptWithToolCalls = scrubbedPostSessionTranscriptWithToolCalls;
             this.RecordingUrl = recordingUrl;
             this.RecordingMultiChannelUrl = recordingMultiChannelUrl;
             this.ScrubbedRecordingUrl = scrubbedRecordingUrl;

@@ -23,14 +23,21 @@ namespace RetellAI
         public required global::RetellAI.NodeInstructionPrompt Instruction { get; set; }
 
         /// <summary>
-        ///
+        /// For conversation and subagent nodes, transitions after the agent finishes speaking, without waiting for a user response. Use as the node's only outgoing edge.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("skip_response_edge")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.SkipResponseEdgeJsonConverter))]
         public global::RetellAI.SkipResponseEdge? SkipResponseEdge { get; set; }
 
         /// <summary>
-        ///
+        /// Allow skipping this node when its questions are already answered in the current conversation or in saved contact memory when memory reading is enabled.<br/>
+        /// Default Value: false
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("skippable")]
+        public bool? Skippable { get; set; }
+
+        /// <summary>
+        /// For conversation and subagent nodes, transitions unconditionally after the user responds. Use as the node's only outgoing edge.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("always_edge")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AlwaysEdgeJsonConverter))]
@@ -43,7 +50,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? Edges { get; set; }
 
         /// <summary>
-        ///
+        /// Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("else_edge")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ElseEdgeJsonConverter))]
@@ -98,10 +105,20 @@ namespace RetellAI
         /// <param name="type">
         /// Type of the node
         /// </param>
-        /// <param name="skipResponseEdge"></param>
-        /// <param name="alwaysEdge"></param>
+        /// <param name="skipResponseEdge">
+        /// For conversation and subagent nodes, transitions after the agent finishes speaking, without waiting for a user response. Use as the node's only outgoing edge.
+        /// </param>
+        /// <param name="skippable">
+        /// Allow skipping this node when its questions are already answered in the current conversation or in saved contact memory when memory reading is enabled.<br/>
+        /// Default Value: false
+        /// </param>
+        /// <param name="alwaysEdge">
+        /// For conversation and subagent nodes, transitions unconditionally after the user responds. Use as the node's only outgoing edge.
+        /// </param>
         /// <param name="edges"></param>
-        /// <param name="elseEdge"></param>
+        /// <param name="elseEdge">
+        /// Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+        /// </param>
         /// <param name="finetuneConversationExamples"></param>
         /// <param name="finetuneTransitionExamples"></param>
         /// <param name="knowledgeBaseIds">
@@ -121,6 +138,7 @@ namespace RetellAI
             global::RetellAI.NodeInstructionPrompt instruction,
             global::RetellAI.SubagentNodeVariant3Type type,
             global::RetellAI.SkipResponseEdge? skipResponseEdge,
+            bool? skippable,
             global::RetellAI.AlwaysEdge? alwaysEdge,
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
             global::RetellAI.ElseEdge? elseEdge,
@@ -134,6 +152,7 @@ namespace RetellAI
             this.Type = type;
             this.Instruction = instruction ?? throw new global::System.ArgumentNullException(nameof(instruction));
             this.SkipResponseEdge = skipResponseEdge;
+            this.Skippable = skippable;
             this.AlwaysEdge = alwaysEdge;
             this.Edges = edges;
             this.ElseEdge = elseEdge;

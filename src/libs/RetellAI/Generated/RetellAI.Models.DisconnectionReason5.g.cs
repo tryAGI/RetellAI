@@ -15,6 +15,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        BudgetReached,
+        /// <summary>
+        ///
+        /// </summary>
         CallTakeOver,
         /// <summary>
         ///
@@ -24,6 +28,10 @@ namespace RetellAI
         ///
         /// </summary>
         ConcurrencyLimitReached,
+        /// <summary>
+        ///
+        /// </summary>
+        CreditExhausted,
         /// <summary>
         ///
         /// </summary>
@@ -99,6 +107,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        NetworkBlocked,
+        /// <summary>
+        ///
+        /// </summary>
         NoConcurrencyFallback,
         /// <summary>
         ///
@@ -143,6 +155,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        UserRequestedDnc,
+        /// <summary>
+        ///
+        /// </summary>
         VoicemailReached,
     }
 
@@ -159,9 +175,11 @@ namespace RetellAI
             return value switch
             {
                 DisconnectionReason5.AgentHangup => "agent_hangup",
+                DisconnectionReason5.BudgetReached => "budget_reached",
                 DisconnectionReason5.CallTakeOver => "call_take_over",
                 DisconnectionReason5.CallTransfer => "call_transfer",
                 DisconnectionReason5.ConcurrencyLimitReached => "concurrency_limit_reached",
+                DisconnectionReason5.CreditExhausted => "credit_exhausted",
                 DisconnectionReason5.DialBusy => "dial_busy",
                 DisconnectionReason5.DialFailed => "dial_failed",
                 DisconnectionReason5.DialNoAnswer => "dial_no_answer",
@@ -180,6 +198,7 @@ namespace RetellAI
                 DisconnectionReason5.ManualStopped => "manual_stopped",
                 DisconnectionReason5.MarkedAsSpam => "marked_as_spam",
                 DisconnectionReason5.MaxDurationReached => "max_duration_reached",
+                DisconnectionReason5.NetworkBlocked => "network_blocked",
                 DisconnectionReason5.NoConcurrencyFallback => "no_concurrency_fallback",
                 DisconnectionReason5.NoValidPayment => "no_valid_payment",
                 DisconnectionReason5.RegisteredCallTimeout => "registered_call_timeout",
@@ -191,6 +210,7 @@ namespace RetellAI
                 DisconnectionReason5.TransferCancelled => "transfer_cancelled",
                 DisconnectionReason5.UserDeclined => "user_declined",
                 DisconnectionReason5.UserHangup => "user_hangup",
+                DisconnectionReason5.UserRequestedDnc => "user_requested_dnc",
                 DisconnectionReason5.VoicemailReached => "voicemail_reached",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -203,9 +223,11 @@ namespace RetellAI
             return value switch
             {
                 "agent_hangup" => DisconnectionReason5.AgentHangup,
+                "budget_reached" => DisconnectionReason5.BudgetReached,
                 "call_take_over" => DisconnectionReason5.CallTakeOver,
                 "call_transfer" => DisconnectionReason5.CallTransfer,
                 "concurrency_limit_reached" => DisconnectionReason5.ConcurrencyLimitReached,
+                "credit_exhausted" => DisconnectionReason5.CreditExhausted,
                 "dial_busy" => DisconnectionReason5.DialBusy,
                 "dial_failed" => DisconnectionReason5.DialFailed,
                 "dial_no_answer" => DisconnectionReason5.DialNoAnswer,
@@ -224,6 +246,7 @@ namespace RetellAI
                 "manual_stopped" => DisconnectionReason5.ManualStopped,
                 "marked_as_spam" => DisconnectionReason5.MarkedAsSpam,
                 "max_duration_reached" => DisconnectionReason5.MaxDurationReached,
+                "network_blocked" => DisconnectionReason5.NetworkBlocked,
                 "no_concurrency_fallback" => DisconnectionReason5.NoConcurrencyFallback,
                 "no_valid_payment" => DisconnectionReason5.NoValidPayment,
                 "registered_call_timeout" => DisconnectionReason5.RegisteredCallTimeout,
@@ -235,6 +258,7 @@ namespace RetellAI
                 "transfer_cancelled" => DisconnectionReason5.TransferCancelled,
                 "user_declined" => DisconnectionReason5.UserDeclined,
                 "user_hangup" => DisconnectionReason5.UserHangup,
+                "user_requested_dnc" => DisconnectionReason5.UserRequestedDnc,
                 "voicemail_reached" => DisconnectionReason5.VoicemailReached,
                 _ => null,
             };

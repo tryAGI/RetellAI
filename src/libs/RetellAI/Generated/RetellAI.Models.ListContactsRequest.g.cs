@@ -23,7 +23,7 @@ namespace RetellAI
         public double? Skip { get; set; }
 
         /// <summary>
-        /// Sort contacts by `last_conversation_timestamp` in ascending or descending order. Contacts that have never been contacted sort as if their timestamp were 0.<br/>
+        /// Sort contacts by `created_timestamp` in ascending or descending order (newest first by default). Ties are broken by contact ID in the same direction.<br/>
         /// Default Value: desc
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sort_order")]
@@ -49,6 +49,12 @@ namespace RetellAI
         public string? SearchQuery { get; set; }
 
         /// <summary>
+        /// Contact IDs to leave out of both the results and `total`.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("excluded_contact_ids")]
+        public global::System.Collections.Generic.IList<string>? ExcludedContactIds { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -66,7 +72,7 @@ namespace RetellAI
         /// Default Value: 0
         /// </param>
         /// <param name="sortOrder">
-        /// Sort contacts by `last_conversation_timestamp` in ascending or descending order. Contacts that have never been contacted sort as if their timestamp were 0.<br/>
+        /// Sort contacts by `created_timestamp` in ascending or descending order (newest first by default). Ties are broken by contact ID in the same direction.<br/>
         /// Default Value: desc
         /// </param>
         /// <param name="paginationKey">
@@ -78,6 +84,9 @@ namespace RetellAI
         /// <param name="searchQuery">
         /// Case-insensitive substring match against phone number, first name, last name, external ID, and custom field values. This is the only way to match on a contact's name.
         /// </param>
+        /// <param name="excludedContactIds">
+        /// Contact IDs to leave out of both the results and `total`.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -87,7 +96,8 @@ namespace RetellAI
             global::RetellAI.ListContactsRequestSortOrder? sortOrder,
             string? paginationKey,
             global::RetellAI.ContactFilter? filterCriteria,
-            string? searchQuery)
+            string? searchQuery,
+            global::System.Collections.Generic.IList<string>? excludedContactIds)
         {
             this.Limit = limit;
             this.Skip = skip;
@@ -95,6 +105,7 @@ namespace RetellAI
             this.PaginationKey = paginationKey;
             this.FilterCriteria = filterCriteria;
             this.SearchQuery = searchQuery;
+            this.ExcludedContactIds = excludedContactIds;
         }
 
         /// <summary>

@@ -42,7 +42,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// List contacts, newest conversation first by default, with the total count of matches alongside the page. Page through results with `pagination_key`; `skip` is available for offset-style paging but is slower on large contact sets and can repeat or miss rows as contacts are updated.
+        /// List contacts, newest created first by default, with the total count of matches alongside the page. Page through results with `pagination_key`; `skip` is available for offset-style paging but is slower on large contact sets and can repeat or miss rows as contacts are added or deleted.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -64,7 +64,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// List contacts, newest conversation first by default, with the total count of matches alongside the page. Page through results with `pagination_key`; `skip` is available for offset-style paging but is slower on large contact sets and can repeat or miss rows as contacts are updated.
+        /// List contacts, newest created first by default, with the total count of matches alongside the page. Page through results with `pagination_key`; `skip` is available for offset-style paging but is slower on large contact sets and can repeat or miss rows as contacts are added or deleted.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -580,7 +580,7 @@ namespace RetellAI
             }
         }
         /// <summary>
-        /// List contacts, newest conversation first by default, with the total count of matches alongside the page. Page through results with `pagination_key`; `skip` is available for offset-style paging but is slower on large contact sets and can repeat or miss rows as contacts are updated.
+        /// List contacts, newest created first by default, with the total count of matches alongside the page. Page through results with `pagination_key`; `skip` is available for offset-style paging but is slower on large contact sets and can repeat or miss rows as contacts are added or deleted.
         /// </summary>
         /// <param name="limit">
         /// Maximum number of contacts to return.<br/>
@@ -591,7 +591,7 @@ namespace RetellAI
         /// Default Value: 0
         /// </param>
         /// <param name="sortOrder">
-        /// Sort contacts by `last_conversation_timestamp` in ascending or descending order. Contacts that have never been contacted sort as if their timestamp were 0.<br/>
+        /// Sort contacts by `created_timestamp` in ascending or descending order (newest first by default). Ties are broken by contact ID in the same direction.<br/>
         /// Default Value: desc
         /// </param>
         /// <param name="paginationKey">
@@ -603,6 +603,9 @@ namespace RetellAI
         /// <param name="searchQuery">
         /// Case-insensitive substring match against phone number, first name, last name, external ID, and custom field values. This is the only way to match on a contact's name.
         /// </param>
+        /// <param name="excludedContactIds">
+        /// Contact IDs to leave out of both the results and `total`.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -613,6 +616,7 @@ namespace RetellAI
             string? paginationKey = default,
             global::RetellAI.ContactFilter? filterCriteria = default,
             string? searchQuery = default,
+            global::System.Collections.Generic.IList<string>? excludedContactIds = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -624,6 +628,7 @@ namespace RetellAI
                 PaginationKey = paginationKey,
                 FilterCriteria = filterCriteria,
                 SearchQuery = searchQuery,
+                ExcludedContactIds = excludedContactIds,
             };
 
             return await ListContactsAsync(

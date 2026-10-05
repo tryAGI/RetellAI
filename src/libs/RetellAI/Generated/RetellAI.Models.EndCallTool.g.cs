@@ -29,6 +29,12 @@ namespace RetellAI
         public string? Description { get; set; }
 
         /// <summary>
+        /// Custom SIP headers sent on the outgoing BYE when ending the call. Header names must start with X- or x-. Supports dynamic variables.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_sip_headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? CustomSipHeaders { get; set; }
+
+        /// <summary>
         /// If true, will speak during execution.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speak_during_execution")]
@@ -63,6 +69,9 @@ namespace RetellAI
         /// <param name="description">
         /// Describes what the tool does, sometimes can also include information about when to call the tool.
         /// </param>
+        /// <param name="customSipHeaders">
+        /// Custom SIP headers sent on the outgoing BYE when ending the call. Header names must start with X- or x-. Supports dynamic variables.
+        /// </param>
         /// <param name="speakDuringExecution">
         /// If true, will speak during execution.
         /// </param>
@@ -79,6 +88,7 @@ namespace RetellAI
             string name,
             global::RetellAI.EndCallToolType type,
             string? description,
+            global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders,
             bool? speakDuringExecution,
             string? executionMessageDescription,
             global::RetellAI.EndCallToolExecutionMessageType? executionMessageType)
@@ -86,6 +96,7 @@ namespace RetellAI
             this.Type = type;
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
+            this.CustomSipHeaders = customSipHeaders;
             this.SpeakDuringExecution = speakDuringExecution;
             this.ExecutionMessageDescription = executionMessageDescription;
             this.ExecutionMessageType = executionMessageType;

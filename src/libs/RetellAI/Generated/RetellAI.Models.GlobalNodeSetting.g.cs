@@ -9,11 +9,12 @@ namespace RetellAI
     public sealed partial class GlobalNodeSetting
     {
         /// <summary>
-        /// Condition for global node activation, cannot be empty
+        /// Condition for global node activation. A string is a prompt condition and cannot be empty. Also accepts a typed prompt or equation condition.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("condition")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<string, global::RetellAI.PromptCondition, global::RetellAI.EquationCondition>))]
         [global::System.Text.Json.Serialization.JsonRequired]
-        public required string Condition { get; set; }
+        public required global::RetellAI.OneOf<string, global::RetellAI.PromptCondition, global::RetellAI.EquationCondition> Condition { get; set; }
 
         /// <summary>
         /// The conditions for global node go back. There would be no destination_node_id for these edges.
@@ -49,7 +50,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="GlobalNodeSetting" /> class.
         /// </summary>
         /// <param name="condition">
-        /// Condition for global node activation, cannot be empty
+        /// Condition for global node activation. A string is a prompt condition and cannot be empty. Also accepts a typed prompt or equation condition.
         /// </param>
         /// <param name="goBackConditions">
         /// The conditions for global node go back. There would be no destination_node_id for these edges.
@@ -67,13 +68,13 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GlobalNodeSetting(
-            string condition,
+            global::RetellAI.OneOf<string, global::RetellAI.PromptCondition, global::RetellAI.EquationCondition> condition,
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? goBackConditions,
             double? coolDown,
             global::System.Collections.Generic.IList<global::RetellAI.GlobalNodeFinetuneTransitionExample>? positiveFinetuneExamples,
             global::System.Collections.Generic.IList<global::RetellAI.GlobalNodeFinetuneTransitionExample>? negativeFinetuneExamples)
         {
-            this.Condition = condition ?? throw new global::System.ArgumentNullException(nameof(condition));
+            this.Condition = condition;
             this.GoBackConditions = goBackConditions;
             this.CoolDown = coolDown;
             this.PositiveFinetuneExamples = positiveFinetuneExamples;

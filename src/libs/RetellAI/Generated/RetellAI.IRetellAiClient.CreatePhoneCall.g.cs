@@ -5,7 +5,7 @@ namespace RetellAI
     public partial interface IRetellAiClient
     {
         /// <summary>
-        /// Create a new outbound phone call
+        /// Create a new outbound phone call.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -17,7 +17,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create a new outbound phone call
+        /// Create a new outbound phone call.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -29,8 +29,11 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Create a new outbound phone call
+        /// Create a new outbound phone call.
         /// </summary>
+        /// <param name="idempotencyKey">
+        /// Optional key to retry the same request for up to one hour without creating another call. Use a new key for each new call.
+        /// </param>
         /// <param name="fromNumber">
         /// The number you own in E.164 format. Must be a number purchased from Retell or imported to Retell.<br/>
         /// Example: +14157774444
@@ -64,12 +67,17 @@ namespace RetellAI
         /// If true, the e.164 validation will be ignored for the from_number. This can be useful when you want to dial to internal pseudo numbers. This only applies when you are using custom telephony and does not apply when you are using Retell Telephony. If omitted, the default value is false.<br/>
         /// Example: true
         /// </param>
+        /// <param name="honorInternalDnc">
+        /// If true, the call is rejected with a 400 error when the contact for to_number is marked do_not_call. If omitted, the default value is false.<br/>
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.V2PhoneCallResponse> CreatePhoneCallAsync(
             string fromNumber,
             string toNumber,
+            string? idempotencyKey = default,
             string? overrideAgentId = default,
             global::RetellAI.AgentVersionReference? overrideAgentVersion = default,
             global::RetellAI.AgentOverrideRequest? agentOverride = default,
@@ -77,6 +85,7 @@ namespace RetellAI
             global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
             global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders = default,
             bool? ignoreE164Validation = default,
+            bool? honorInternalDnc = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

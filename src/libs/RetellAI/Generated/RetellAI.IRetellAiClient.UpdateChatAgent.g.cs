@@ -86,6 +86,9 @@ namespace RetellAI
         /// The timeout for the webhook in milliseconds. If not set, default value of 10000 will apply.<br/>
         /// Example: 10000
         /// </param>
+        /// <param name="contactMemoryConfig">
+        /// Contact memory settings for phone calls and SMS chats. Creating an agent defaults enable_update to false and enable_read to true. Updates only change the supplied flags; omitted flags stay unchanged and an empty object has no effect. Set a flag to false to disable it. The configuration cannot be cleared. Existing agents without this configuration have both disabled.
+        /// </param>
         /// <param name="dataStorageSetting">
         /// Controls what data is stored for this agent. "everything" stores all data including transcripts and recordings. "everything_except_pii" stores data but excludes PII when possible based on PII configuration. "basic_attributes_only" stores only basic metadata. If not set, defaults to "everything".<br/>
         /// Example: everything
@@ -117,6 +120,12 @@ namespace RetellAI
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
         /// Example: America/New_York
         /// </param>
+        /// <param name="preSessionTools">
+        /// Integration (Agent Functions) tools run as a dependency graph before the chat's first message. Outputs are injected as dynamic variables. Set to null to clear.
+        /// </param>
+        /// <param name="postSessionTools">
+        /// Integration (Agent Functions) tools run as a dependency graph at chat end, after post-chat analysis. Each tool can be gated by a condition. Set to null to clear.
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -134,6 +143,7 @@ namespace RetellAI
             string? webhookUrl = default,
             global::System.Collections.Generic.IList<global::RetellAI.ChatAgentRequestWebhookEvent>? webhookEvents = default,
             int? webhookTimeoutMs = default,
+            global::RetellAI.ContactMemoryConfig? contactMemoryConfig = default,
             global::RetellAI.ChatAgentRequestDataStorageSetting? dataStorageSetting = default,
             int? dataStorageRetentionDays = default,
             bool? optInSignedUrl = default,
@@ -144,6 +154,8 @@ namespace RetellAI
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
             global::RetellAI.ChatHandbookConfig? handbookConfig = default,
             string? timezone = default,
+            global::System.Collections.Generic.IList<global::RetellAI.PreSessionTool>? preSessionTools = default,
+            global::System.Collections.Generic.IList<global::RetellAI.PostSessionTool>? postSessionTools = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }

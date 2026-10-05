@@ -57,7 +57,13 @@ namespace RetellAI
         public bool? KeepCurrentLanguage { get; set; }
 
         /// <summary>
-        ///
+        /// If true, restart the max call duration timer at the swap using the destination agent's max_call_duration_ms, capped so the whole call never exceeds 2 hours. Otherwise, the timer already running is left unchanged. Voice calls only. Defaults to false.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("use_swap_agent_max_duration")]
+        public bool? UseSwapAgentMaxDuration { get; set; }
+
+        /// <summary>
+        /// Transition followed by a transfer_call or agent_swap node when the transfer fails. Evaluated after the transfer attempt finishes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("edge")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.TransferFailedEdgeJsonConverter))]
@@ -90,7 +96,9 @@ namespace RetellAI
         /// The ID of the agent to swap to
         /// </param>
         /// <param name="postCallAnalysisSetting"></param>
-        /// <param name="edge"></param>
+        /// <param name="edge">
+        /// Transition followed by a transfer_call or agent_swap node when the transfer fails. Evaluated after the transfer attempt finishes.
+        /// </param>
         /// <param name="type">
         /// Type of the node
         /// </param>
@@ -103,6 +111,9 @@ namespace RetellAI
         /// </param>
         /// <param name="keepCurrentLanguage">
         /// If true, keep the current language when swapping agents. Defaults to false.
+        /// </param>
+        /// <param name="useSwapAgentMaxDuration">
+        /// If true, restart the max call duration timer at the swap using the destination agent's max_call_duration_ms, capped so the whole call never exceeds 2 hours. Otherwise, the timer already running is left unchanged. Voice calls only. Defaults to false.
         /// </param>
         /// <param name="speakDuringExecution">
         /// If true, will speak during execution
@@ -120,6 +131,7 @@ namespace RetellAI
             global::RetellAI.AgentSwapWebhookSetting? webhookSetting,
             bool? keepCurrentVoice,
             bool? keepCurrentLanguage,
+            bool? useSwapAgentMaxDuration,
             bool? speakDuringExecution,
             global::RetellAI.NodeInstruction? instruction)
         {
@@ -130,6 +142,7 @@ namespace RetellAI
             this.WebhookSetting = webhookSetting;
             this.KeepCurrentVoice = keepCurrentVoice;
             this.KeepCurrentLanguage = keepCurrentLanguage;
+            this.UseSwapAgentMaxDuration = useSwapAgentMaxDuration;
             this.Edge = edge;
             this.SpeakDuringExecution = speakDuringExecution;
             this.Instruction = instruction;

@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class AppCRMConfig
     {
         /// <summary>
-        /// Field mappings applied when syncing CRM records into Retell contacts. Must include phone_number, which is the field the two systems are matched on.
+        /// Field mappings applied when syncing CRM records into Retell contacts. Must include phone_number, which is the field the two systems are matched on. A do_not_call mapping can mark contacts as do-not-call but never clears the flag.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("inbound_sync_mappings")]
         public global::System.Collections.Generic.IList<global::RetellAI.CRMSyncMapping>? InboundSyncMappings { get; set; }
@@ -42,7 +42,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="AppCRMConfig" /> class.
         /// </summary>
         /// <param name="inboundSyncMappings">
-        /// Field mappings applied when syncing CRM records into Retell contacts. Must include phone_number, which is the field the two systems are matched on.
+        /// Field mappings applied when syncing CRM records into Retell contacts. Must include phone_number, which is the field the two systems are matched on. A do_not_call mapping can mark contacts as do-not-call but never clears the flag.
         /// </param>
         /// <param name="outboundSyncMappings">
         /// Field mappings applied when writing Retell contact changes back to the CRM.

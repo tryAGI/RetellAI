@@ -16,6 +16,12 @@ namespace RetellAI
         public global::RetellAI.EndNodeVariant2Type Type { get; set; }
 
         /// <summary>
+        /// Custom SIP headers sent on the outgoing BYE when ending the call. Header names must start with X- or x-. Supports dynamic variables.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_sip_headers")]
+        public global::System.Collections.Generic.Dictionary<string, string>? CustomSipHeaders { get; set; }
+
+        /// <summary>
         /// If true, will speak during execution
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("speak_during_execution")]
@@ -40,6 +46,9 @@ namespace RetellAI
         /// <param name="type">
         /// Type of the node
         /// </param>
+        /// <param name="customSipHeaders">
+        /// Custom SIP headers sent on the outgoing BYE when ending the call. Header names must start with X- or x-. Supports dynamic variables.
+        /// </param>
         /// <param name="speakDuringExecution">
         /// If true, will speak during execution
         /// </param>
@@ -49,10 +58,12 @@ namespace RetellAI
 #endif
         public EndNodeVariant2(
             global::RetellAI.EndNodeVariant2Type type,
+            global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders,
             bool? speakDuringExecution,
             global::RetellAI.NodeInstruction? instruction)
         {
             this.Type = type;
+            this.CustomSipHeaders = customSipHeaders;
             this.SpeakDuringExecution = speakDuringExecution;
             this.Instruction = instruction;
         }

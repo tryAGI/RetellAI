@@ -622,6 +622,9 @@ namespace RetellAI
         /// <param name="appId">
         /// ID of the CRM app to link. Pass null to unlink, which stops syncing. Changing it resets the sync cursor, so the next sync re-reads every contact from the new CRM.
         /// </param>
+        /// <param name="contactMemoryUpdatePrompt">
+        /// Workspace-shared memory rewrite prompt. Pass null to restore the built-in preset. Supports conversation dynamic variables using {{variable_name}}.
+        /// </param>
         /// <param name="customFields">
         /// Replaces the stored list. Names must be snake_case and cannot collide with a built-in contact field or start with `contact`/`external`. Removing a field that an analysis data mapping still targets is rejected — send crm_analysis_data_mappings in the same request to retarget or drop those mappings.
         /// </param>
@@ -629,7 +632,7 @@ namespace RetellAI
         /// Replaces the stored list.
         /// </param>
         /// <param name="contactTags">
-        /// Replaces the organization's available contact tags. Tags are trimmed and deduplicated. Omit to leave unchanged, or send null or an empty array to clear the list. Does not change tags already assigned to contacts.
+        /// Replaces the organization's available contact tags. Tag IDs must be unique 32-character hexadecimal strings and labels are trimmed. Omit to leave unchanged, or send null or an empty array to clear the list. Does not change tags already assigned to contacts.
         /// </param>
         /// <param name="contactColumnsOrder">
         /// Preferred display order of contact fields, for clients that render contacts as a table. Not used by the API itself.
@@ -639,9 +642,10 @@ namespace RetellAI
         /// <exception cref="global::System.InvalidOperationException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.CRMConfig> UpdateCrmConfigAsync(
             string? appId = default,
+            string? contactMemoryUpdatePrompt = default,
             global::System.Collections.Generic.IList<global::RetellAI.CRMCustomFieldSchema>? customFields = default,
             global::System.Collections.Generic.IList<global::RetellAI.CRMAnalysisDataMapping>? crmAnalysisDataMappings = default,
-            global::System.Collections.Generic.IList<string>? contactTags = default,
+            global::System.Collections.Generic.IList<global::RetellAI.AllOf<global::RetellAI.ContactTag, global::RetellAI.UpdateCrmConfigRequestContactTag>>? contactTags = default,
             global::System.Collections.Generic.IList<string>? contactColumnsOrder = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -649,6 +653,7 @@ namespace RetellAI
             var __request = new global::RetellAI.UpdateCrmConfigRequest
             {
                 AppId = appId,
+                ContactMemoryUpdatePrompt = contactMemoryUpdatePrompt,
                 CustomFields = customFields,
                 CrmAnalysisDataMappings = crmAnalysisDataMappings,
                 ContactTags = contactTags,

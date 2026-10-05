@@ -4,16 +4,20 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Dataset queried: call records or chat records. Determines which metrics, groups, and filters are valid.
+    /// Dataset queried. Determines which metrics, groups, and filters are valid.
     /// </summary>
     public enum DashboardSource
     {
         /// <summary>
-        /// call records or chat records. Determines which metrics, groups, and filters are valid.
+        ///
         /// </summary>
         Call,
         /// <summary>
-        /// call records or chat records. Determines which metrics, groups, and filters are valid.
+        ///
+        /// </summary>
+        Campaign,
+        /// <summary>
+        ///
         /// </summary>
         Chat,
     }
@@ -31,6 +35,7 @@ namespace RetellAI
             return value switch
             {
                 DashboardSource.Call => "call",
+                DashboardSource.Campaign => "campaign",
                 DashboardSource.Chat => "chat",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -43,6 +48,7 @@ namespace RetellAI
             return value switch
             {
                 "call" => DashboardSource.Call,
+                "campaign" => DashboardSource.Campaign,
                 "chat" => DashboardSource.Chat,
                 _ => null,
             };

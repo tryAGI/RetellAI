@@ -13,38 +13,38 @@ namespace RetellAI
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        public global::RetellAI.CustomTool? Custom { get; init; }
+        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>? NodeToolVariant1 { get; init; }
 #else
-        public global::RetellAI.CustomTool? Custom { get; }
+        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>? NodeToolVariant1 { get; }
 #endif
 
         /// <summary>
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
-        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Custom))]
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(NodeToolVariant1))]
 #endif
-        public bool IsCustom => Custom != null;
+        public bool IsNodeToolVariant1 => NodeToolVariant1 != null;
 
         /// <summary>
         ///
         /// </summary>
-        public bool TryPickCustom(
+        public bool TryPickNodeToolVariant1(
 #if NET6_0_OR_GREATER
             [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
 #endif
-            out global::RetellAI.CustomTool? value)
+            out global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>? value)
         {
-            value = Custom;
-            return IsCustom;
+            value = NodeToolVariant1;
+            return IsNodeToolVariant1;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomTool PickCustom() => Custom is { } value
+        public global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool> PickNodeToolVariant1() => NodeToolVariant1 is { } value
             ? value
-            : throw new global::System.InvalidOperationException($"Expected union variant 'Custom' but the value was {ToString()}.");
+            : throw new global::System.InvalidOperationException($"Expected union variant 'NodeToolVariant1' but the value was {ToString()}.");
 
         /// <summary>
         ///
@@ -85,25 +85,25 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator NodeTool(global::RetellAI.CustomTool value) => new NodeTool((global::RetellAI.CustomTool?)value);
+        public static implicit operator NodeTool(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool> value) => new NodeTool((global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>?)value);
 
         /// <summary>
         ///
         /// </summary>
-        public static implicit operator global::RetellAI.CustomTool?(NodeTool @this) => @this.Custom;
+        public static implicit operator global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>?(NodeTool @this) => @this.NodeToolVariant1;
 
         /// <summary>
         ///
         /// </summary>
-        public NodeTool(global::RetellAI.CustomTool? value)
+        public NodeTool(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>? value)
         {
-            Custom = value;
+            NodeToolVariant1 = value;
         }
 
         /// <summary>
         ///
         /// </summary>
-        public static NodeTool FromCustom(global::RetellAI.CustomTool? value) => new NodeTool(value);
+        public static NodeTool FromNodeToolVariant1(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>? value) => new NodeTool(value);
 
         /// <summary>
         ///
@@ -132,11 +132,11 @@ namespace RetellAI
         ///
         /// </summary>
         public NodeTool(
-            global::RetellAI.CustomTool? custom,
+            global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>? nodeToolVariant1,
             global::RetellAI.NodeToolVariant2? nodeToolVariant2
             )
         {
-            Custom = custom;
+            NodeToolVariant1 = nodeToolVariant1;
             NodeToolVariant2 = nodeToolVariant2;
         }
 
@@ -145,14 +145,14 @@ namespace RetellAI
         /// </summary>
         public object? Object =>
             NodeToolVariant2 as object ??
-            Custom as object
+            NodeToolVariant1 as object
             ;
 
         /// <summary>
         ///
         /// </summary>
         public override string? ToString() =>
-            Custom?.ToString() ??
+            NodeToolVariant1?.ToString() ??
             NodeToolVariant2?.ToString()
             ;
 
@@ -161,14 +161,14 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsCustom && IsNodeToolVariant2;
+            return IsNodeToolVariant1 && IsNodeToolVariant2;
         }
 
         /// <summary>
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.CustomTool?, TResult>? custom = null,
+            global::System.Func<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>?, TResult>? nodeToolVariant1 = null,
             global::System.Func<global::RetellAI.NodeToolVariant2, TResult>? nodeToolVariant2 = null,
             bool validate = true)
         {
@@ -177,9 +177,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (Custom is { } __value0 && custom != null)
+            if (NodeToolVariant1 is { } __value0 && nodeToolVariant1 != null)
             {
-                return custom(__value0);
+                return nodeToolVariant1(__value0);
             }
             else if (NodeToolVariant2 is { } __value1 && nodeToolVariant2 != null)
             {
@@ -193,7 +193,7 @@ namespace RetellAI
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.CustomTool?>? custom = null,
+            global::System.Action<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>?>? nodeToolVariant1 = null,
 
             global::System.Action<global::RetellAI.NodeToolVariant2>? nodeToolVariant2 = null,
             bool validate = true)
@@ -203,9 +203,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (Custom is { } __value0)
+            if (NodeToolVariant1 is { } __value0)
             {
-                custom?.Invoke(__value0);
+                nodeToolVariant1?.Invoke(__value0);
             }
             else if (NodeToolVariant2 is { } __value1)
             {
@@ -217,7 +217,7 @@ namespace RetellAI
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::RetellAI.CustomTool?>? custom = null,
+            global::System.Action<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>?>? nodeToolVariant1 = null,
             global::System.Action<global::RetellAI.NodeToolVariant2>? nodeToolVariant2 = null,
             bool validate = true)
         {
@@ -226,9 +226,9 @@ namespace RetellAI
                 Validate();
             }
 
-            if (Custom is { } __value0)
+            if (NodeToolVariant1 is { } __value0)
             {
-                custom?.Invoke(__value0);
+                nodeToolVariant1?.Invoke(__value0);
             }
             else if (NodeToolVariant2 is { } __value1)
             {
@@ -243,8 +243,8 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
-                Custom,
-                typeof(global::RetellAI.CustomTool),
+                NodeToolVariant1,
+                typeof(global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>),
                 NodeToolVariant2,
                 typeof(global::RetellAI.NodeToolVariant2),
             };
@@ -263,7 +263,7 @@ namespace RetellAI
         public bool Equals(NodeTool other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.CustomTool?>.Default.Equals(Custom, other.Custom) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.OneOf<global::RetellAI.CustomTool, global::RetellAI.AppTool>?>.Default.Equals(NodeToolVariant1, other.NodeToolVariant1) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.NodeToolVariant2?>.Default.Equals(NodeToolVariant2, other.NodeToolVariant2)
                 ;
         }

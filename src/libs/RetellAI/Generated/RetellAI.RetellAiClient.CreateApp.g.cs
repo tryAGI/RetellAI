@@ -42,7 +42,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider.
+        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider by default, unless a custom limit is configured for the organization.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -64,7 +64,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider.
+        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider by default, unless a custom limit is configured for the organization.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
@@ -580,7 +580,7 @@ namespace RetellAI
             }
         }
         /// <summary>
-        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider.
+        /// Create an App: the connection to one external system (a CRM, calendar, support desk, and so on), holding its credentials and settings. Providers with caller-managed credentials accept auth_config. Providers using the OAuth callback must omit auth_config and be authorized through connect-app. Credentials are stored encrypted and never returned. Up to 20 apps per provider by default, unless a custom limit is configured for the organization.
         /// </summary>
         /// <param name="type">
         /// App integration category.

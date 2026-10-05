@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// A connection between conversation-flow nodes. When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
     /// </summary>
     public sealed partial class NodeEdge
     {

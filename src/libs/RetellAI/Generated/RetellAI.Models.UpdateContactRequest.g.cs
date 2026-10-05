@@ -27,10 +27,16 @@ namespace RetellAI
         public bool? DoNotCall { get; set; }
 
         /// <summary>
-        /// Full replacement set of tags for the contact.
+        /// Contact memory text. Pass null to clear.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("contact_tags")]
-        public global::System.Collections.Generic.IList<string>? ContactTags { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_memory")]
+        public string? ContactMemory { get; set; }
+
+        /// <summary>
+        /// Full replacement set of tag IDs for the contact.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_tag_ids")]
+        public global::System.Collections.Generic.IList<string>? ContactTagIds { get; set; }
 
         /// <summary>
         /// Values must match the types defined in CRM config custom fields. Set a value to null to clear it.
@@ -54,8 +60,11 @@ namespace RetellAI
         /// Last name of the contact.
         /// </param>
         /// <param name="doNotCall"></param>
-        /// <param name="contactTags">
-        /// Full replacement set of tags for the contact.
+        /// <param name="contactMemory">
+        /// Contact memory text. Pass null to clear.
+        /// </param>
+        /// <param name="contactTagIds">
+        /// Full replacement set of tag IDs for the contact.
         /// </param>
         /// <param name="customFields">
         /// Values must match the types defined in CRM config custom fields. Set a value to null to clear it.
@@ -67,13 +76,15 @@ namespace RetellAI
             string? firstName,
             string? lastName,
             bool? doNotCall,
-            global::System.Collections.Generic.IList<string>? contactTags,
+            string? contactMemory,
+            global::System.Collections.Generic.IList<string>? contactTagIds,
             object? customFields)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.DoNotCall = doNotCall;
-            this.ContactTags = contactTags;
+            this.ContactMemory = contactMemory;
+            this.ContactTagIds = contactTagIds;
             this.CustomFields = customFields;
         }
 

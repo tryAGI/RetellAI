@@ -79,6 +79,12 @@ namespace RetellAI
         public int? WebhookTimeoutMs { get; set; }
 
         /// <summary>
+        /// Contact memory settings for phone calls and SMS chats. Creating an agent defaults enable_update to false and enable_read to true. Updates only change the supplied flags; omitted flags stay unchanged and an empty object has no effect. Set a flag to false to disable it. The configuration cannot be cleared. Existing agents without this configuration have both disabled.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_memory_config")]
+        public global::RetellAI.ContactMemoryConfig? ContactMemoryConfig { get; set; }
+
+        /// <summary>
         /// Controls what data is stored for this agent. "everything" stores all data including transcripts and recordings. "everything_except_pii" stores data but excludes PII when possible based on PII configuration. "basic_attributes_only" stores only basic metadata. If not set, defaults to "everything".<br/>
         /// Example: everything
         /// </summary>
@@ -151,6 +157,18 @@ namespace RetellAI
         public string? Timezone { get; set; }
 
         /// <summary>
+        /// Integration (Agent Functions) tools run as a dependency graph before the chat's first message. Outputs are injected as dynamic variables. Set to null to clear.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pre_session_tools")]
+        public global::System.Collections.Generic.IList<global::RetellAI.PreSessionTool>? PreSessionTools { get; set; }
+
+        /// <summary>
+        /// Integration (Agent Functions) tools run as a dependency graph at chat end, after post-chat analysis. Each tool can be gated by a condition. Set to null to clear.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("post_session_tools")]
+        public global::System.Collections.Generic.IList<global::RetellAI.PostSessionTool>? PostSessionTools { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -190,6 +208,9 @@ namespace RetellAI
         /// The timeout for the webhook in milliseconds. If not set, default value of 10000 will apply.<br/>
         /// Example: 10000
         /// </param>
+        /// <param name="contactMemoryConfig">
+        /// Contact memory settings for phone calls and SMS chats. Creating an agent defaults enable_update to false and enable_read to true. Updates only change the supplied flags; omitted flags stay unchanged and an empty object has no effect. Set a flag to false to disable it. The configuration cannot be cleared. Existing agents without this configuration have both disabled.
+        /// </param>
         /// <param name="dataStorageSetting">
         /// Controls what data is stored for this agent. "everything" stores all data including transcripts and recordings. "everything_except_pii" stores data but excludes PII when possible based on PII configuration. "basic_attributes_only" stores only basic metadata. If not set, defaults to "everything".<br/>
         /// Example: everything
@@ -221,6 +242,12 @@ namespace RetellAI
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
         /// Example: America/New_York
         /// </param>
+        /// <param name="preSessionTools">
+        /// Integration (Agent Functions) tools run as a dependency graph before the chat's first message. Outputs are injected as dynamic variables. Set to null to clear.
+        /// </param>
+        /// <param name="postSessionTools">
+        /// Integration (Agent Functions) tools run as a dependency graph at chat end, after post-chat analysis. Each tool can be gated by a condition. Set to null to clear.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -234,6 +261,7 @@ namespace RetellAI
             string? webhookUrl,
             global::System.Collections.Generic.IList<global::RetellAI.ChatAgentRequestWebhookEvent>? webhookEvents,
             int? webhookTimeoutMs,
+            global::RetellAI.ContactMemoryConfig? contactMemoryConfig,
             global::RetellAI.ChatAgentRequestDataStorageSetting? dataStorageSetting,
             int? dataStorageRetentionDays,
             bool? optInSignedUrl,
@@ -243,7 +271,9 @@ namespace RetellAI
             global::RetellAI.PIIConfig? piiConfig,
             global::RetellAI.GuardrailConfig? guardrailConfig,
             global::RetellAI.ChatHandbookConfig? handbookConfig,
-            string? timezone)
+            string? timezone,
+            global::System.Collections.Generic.IList<global::RetellAI.PreSessionTool>? preSessionTools,
+            global::System.Collections.Generic.IList<global::RetellAI.PostSessionTool>? postSessionTools)
         {
             this.ResponseEngine = responseEngine;
             this.AgentName = agentName;
@@ -254,6 +284,7 @@ namespace RetellAI
             this.WebhookUrl = webhookUrl;
             this.WebhookEvents = webhookEvents;
             this.WebhookTimeoutMs = webhookTimeoutMs;
+            this.ContactMemoryConfig = contactMemoryConfig;
             this.DataStorageSetting = dataStorageSetting;
             this.DataStorageRetentionDays = dataStorageRetentionDays;
             this.OptInSignedUrl = optInSignedUrl;
@@ -264,6 +295,8 @@ namespace RetellAI
             this.GuardrailConfig = guardrailConfig;
             this.HandbookConfig = handbookConfig;
             this.Timezone = timezone;
+            this.PreSessionTools = preSessionTools;
+            this.PostSessionTools = postSessionTools;
         }
 
         /// <summary>

@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
     /// </summary>
     public readonly partial struct ElseEdge : global::System.IEquatable<ElseEdge>
     {
         /// <summary>
-        ///
+        /// A connection between conversation-flow nodes. When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeEdge? Node { get; init; }

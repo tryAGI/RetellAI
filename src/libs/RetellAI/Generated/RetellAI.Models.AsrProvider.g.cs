@@ -23,6 +23,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Muse,
+        /// <summary>
+        ///
+        /// </summary>
         Soniox,
     }
 
@@ -41,6 +45,7 @@ namespace RetellAI
                 AsrProvider.Assemblyai => "assemblyai",
                 AsrProvider.Azure => "azure",
                 AsrProvider.Deepgram => "deepgram",
+                AsrProvider.Muse => "muse",
                 AsrProvider.Soniox => "soniox",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -55,6 +60,7 @@ namespace RetellAI
                 "assemblyai" => AsrProvider.Assemblyai,
                 "azure" => AsrProvider.Azure,
                 "deepgram" => AsrProvider.Deepgram,
+                "muse" => AsrProvider.Muse,
                 "soniox" => AsrProvider.Soniox,
                 _ => null,
             };

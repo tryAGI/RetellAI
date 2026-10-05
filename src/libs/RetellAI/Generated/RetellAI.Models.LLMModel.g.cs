@@ -23,7 +23,19 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Claude5Opus,
+        /// <summary>
+        ///
+        /// </summary>
         Claude5Sonnet,
+        /// <summary>
+        ///
+        /// </summary>
+        Claude55Opus,
+        /// <summary>
+        ///
+        /// </summary>
+        Claude55Sonnet,
         /// <summary>
         ///
         /// </summary>
@@ -108,6 +120,22 @@ namespace RetellAI
         ///
         /// </summary>
         Gpt56Terra,
+        /// <summary>
+        ///
+        /// </summary>
+        Gpt6Astra,
+        /// <summary>
+        ///
+        /// </summary>
+        Gpt6Luna,
+        /// <summary>
+        ///
+        /// </summary>
+        Gpt6Sol,
+        /// <summary>
+        ///
+        /// </summary>
+        Gpt61Sol,
     }
 
     /// <summary>
@@ -125,7 +153,10 @@ namespace RetellAI
                 LLMModel.Claude45Haiku => "claude-4.5-haiku",
                 LLMModel.Claude45Sonnet => "claude-4.5-sonnet",
                 LLMModel.Claude46Sonnet => "claude-4.6-sonnet",
+                LLMModel.Claude5Opus => "claude-5-opus",
                 LLMModel.Claude5Sonnet => "claude-5-sonnet",
+                LLMModel.Claude55Opus => "claude-5.5-opus",
+                LLMModel.Claude55Sonnet => "claude-5.5-sonnet",
                 LLMModel.Gemini30Flash => "gemini-3.0-flash",
                 LLMModel.Gemini31FlashLite => "gemini-3.1-flash-lite",
                 LLMModel.Gemini35Flash => "gemini-3.5-flash",
@@ -147,6 +178,10 @@ namespace RetellAI
                 LLMModel.Gpt55 => "gpt-5.5",
                 LLMModel.Gpt56Luna => "gpt-5.6-luna",
                 LLMModel.Gpt56Terra => "gpt-5.6-terra",
+                LLMModel.Gpt6Astra => "gpt-6-astra",
+                LLMModel.Gpt6Luna => "gpt-6-luna",
+                LLMModel.Gpt6Sol => "gpt-6-sol",
+                LLMModel.Gpt61Sol => "gpt-6.1-sol",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -160,7 +195,10 @@ namespace RetellAI
                 "claude-4.5-haiku" => LLMModel.Claude45Haiku,
                 "claude-4.5-sonnet" => LLMModel.Claude45Sonnet,
                 "claude-4.6-sonnet" => LLMModel.Claude46Sonnet,
+                "claude-5-opus" => LLMModel.Claude5Opus,
                 "claude-5-sonnet" => LLMModel.Claude5Sonnet,
+                "claude-5.5-opus" => LLMModel.Claude55Opus,
+                "claude-5.5-sonnet" => LLMModel.Claude55Sonnet,
                 "gemini-3.0-flash" => LLMModel.Gemini30Flash,
                 "gemini-3.1-flash-lite" => LLMModel.Gemini31FlashLite,
                 "gemini-3.5-flash" => LLMModel.Gemini35Flash,
@@ -182,6 +220,10 @@ namespace RetellAI
                 "gpt-5.5" => LLMModel.Gpt55,
                 "gpt-5.6-luna" => LLMModel.Gpt56Luna,
                 "gpt-5.6-terra" => LLMModel.Gpt56Terra,
+                "gpt-6-astra" => LLMModel.Gpt6Astra,
+                "gpt-6-luna" => LLMModel.Gpt6Luna,
+                "gpt-6-sol" => LLMModel.Gpt6Sol,
+                "gpt-6.1-sol" => LLMModel.Gpt61Sol,
                 _ => null,
             };
         }
