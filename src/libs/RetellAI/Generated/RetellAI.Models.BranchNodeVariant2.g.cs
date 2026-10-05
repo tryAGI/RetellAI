@@ -22,7 +22,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? Edges { get; set; }
 
         /// <summary>
-        ///
+        /// Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("else_edge")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ElseEdgeJsonConverter))]
@@ -44,7 +44,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="BranchNodeVariant2" /> class.
         /// </summary>
-        /// <param name="elseEdge"></param>
+        /// <param name="elseEdge">
+        /// Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
+        /// </param>
         /// <param name="type">
         /// Type of the node
         /// </param>

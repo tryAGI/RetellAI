@@ -24,7 +24,7 @@ namespace RetellAI
         public required global::RetellAI.OneOf<global::RetellAI.NodeInstruction?, global::RetellAI.SmsInstructionTemplate> Instruction { get; set; }
 
         /// <summary>
-        ///
+        /// Transition followed by an SMS node after the send operation reports success.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("success_edge")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.SmsSuccessEdgeJsonConverter))]
@@ -32,7 +32,7 @@ namespace RetellAI
         public required global::RetellAI.SmsSuccessEdge SuccessEdge { get; set; }
 
         /// <summary>
-        ///
+        /// Transition followed by an SMS node when generating the message content or sending the message fails.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("failed_edge")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.SmsFailedEdgeJsonConverter))]
@@ -49,8 +49,12 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="SmsNodeVariant2" /> class.
         /// </summary>
         /// <param name="instruction"></param>
-        /// <param name="successEdge"></param>
-        /// <param name="failedEdge"></param>
+        /// <param name="successEdge">
+        /// Transition followed by an SMS node after the send operation reports success.
+        /// </param>
+        /// <param name="failedEdge">
+        /// Transition followed by an SMS node when generating the message content or sending the message fails.
+        /// </param>
         /// <param name="type">
         /// Type of the node
         /// </param>

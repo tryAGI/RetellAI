@@ -32,7 +32,7 @@ namespace RetellAI
         /// Position and span in the dashboard's 24-column grid. Omit from `target.chart`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("size")]
-        public global::RetellAI.ChartConfigSize? Size { get; set; }
+        public global::RetellAI.ChartGridSize? Size { get; set; }
 
         /// <summary>
         /// Metrics to calculate, in output order. Provide at least one. Use multiple metrics only when they should share the same breakdowns.
@@ -119,7 +119,7 @@ namespace RetellAI
             global::RetellAI.ChartConfigType type,
             string? chartId,
             string? title,
-            global::RetellAI.ChartConfigSize? size,
+            global::RetellAI.ChartGridSize? size,
             global::System.Collections.Generic.IList<global::RetellAI.ChartShowItem>? show,
             global::System.Collections.Generic.IList<global::RetellAI.ChartGroupItem>? groupCriteria,
             global::RetellAI.AnyOf<global::RetellAI.StoredCallFilter?, global::RetellAI.ChatFilter>? filterCriteria,

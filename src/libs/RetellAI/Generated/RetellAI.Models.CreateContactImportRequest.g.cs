@@ -29,7 +29,7 @@ namespace RetellAI
         public string? DefaultCountry { get; set; }
 
         /// <summary>
-        /// Tags added to every contact in this import. Existing tags are preserved. Omit to leave tags unchanged.
+        /// Tag labels added to every contact in this import. Labels are trimmed and deduplicated. New labels are added to the org's CRM config with generated tag IDs.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("contact_tags")]
         public global::System.Collections.Generic.IList<string>? ContactTags { get; set; }
@@ -53,7 +53,7 @@ namespace RetellAI
         /// Country for parsing phone numbers without a country code. Defaults to US.
         /// </param>
         /// <param name="contactTags">
-        /// Tags added to every contact in this import. Existing tags are preserved. Omit to leave tags unchanged.
+        /// Tag labels added to every contact in this import. Labels are trimmed and deduplicated. New labels are added to the org's CRM config with generated tag IDs.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

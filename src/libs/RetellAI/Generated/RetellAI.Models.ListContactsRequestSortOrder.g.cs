@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Sort contacts by `last_conversation_timestamp` in ascending or descending order. Contacts that have never been contacted sort as if their timestamp were 0.<br/>
+    /// Sort contacts by `created_timestamp` in ascending or descending order (newest first by default). Ties are broken by contact ID in the same direction.<br/>
     /// Default Value: desc
     /// </summary>
     public enum ListContactsRequestSortOrder

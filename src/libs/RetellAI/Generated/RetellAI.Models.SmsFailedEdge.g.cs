@@ -5,12 +5,12 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Transition followed by an SMS node when generating the message content or sending the message fails.
     /// </summary>
     public readonly partial struct SmsFailedEdge : global::System.IEquatable<SmsFailedEdge>
     {
         /// <summary>
-        ///
+        /// A connection between conversation-flow nodes. When used in a node's edges array, transitions when its condition matches. Equation conditions compare dynamic variables and are checked in array order; the first match wins. If no equation matches, the LLM evaluates prompt conditions against the conversation and selects a matching transition, if any.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.NodeEdge? Node { get; init; }

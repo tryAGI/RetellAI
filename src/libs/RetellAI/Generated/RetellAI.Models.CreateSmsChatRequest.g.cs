@@ -56,6 +56,14 @@ namespace RetellAI
         public global::System.Collections.Generic.Dictionary<string, string>? RetellLlmDynamicVariables { get; set; }
 
         /// <summary>
+        /// If true, the chat is rejected with a 400 error when the contact for to_number is marked do_not_call. If omitted, the default value is false.<br/>
+        /// Example: true
+        /// </summary>
+        /// <example>true</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("honor_internal_dnc")]
+        public bool? HonorInternalDnc { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -86,6 +94,10 @@ namespace RetellAI
         /// Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.<br/>
         /// Example: {"customer_name":"John Doe"}
         /// </param>
+        /// <param name="honorInternalDnc">
+        /// If true, the chat is rejected with a 400 error when the contact for to_number is marked do_not_call. If omitted, the default value is false.<br/>
+        /// Example: true
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -95,7 +107,8 @@ namespace RetellAI
             string? overrideAgentId,
             global::RetellAI.AgentVersionReference? overrideAgentVersion,
             object? metadata,
-            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables)
+            global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
+            bool? honorInternalDnc)
         {
             this.FromNumber = fromNumber ?? throw new global::System.ArgumentNullException(nameof(fromNumber));
             this.ToNumber = toNumber ?? throw new global::System.ArgumentNullException(nameof(toNumber));
@@ -103,6 +116,7 @@ namespace RetellAI
             this.OverrideAgentVersion = overrideAgentVersion;
             this.Metadata = metadata;
             this.RetellLlmDynamicVariables = retellLlmDynamicVariables;
+            this.HonorInternalDnc = honorInternalDnc;
         }
 
         /// <summary>

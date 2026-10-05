@@ -9,6 +9,15 @@ namespace RetellAI
     public sealed partial class GetApiKeyInfoResponse
     {
         /// <summary>
+        /// ID of the org that owns the API key.<br/>
+        /// Example: org_abcd1234
+        /// </summary>
+        /// <example>org_abcd1234</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("org_id")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string OrgId { get; set; }
+
+        /// <summary>
         /// Display name of the org.<br/>
         /// Example: Acme Inc
         /// </summary>
@@ -34,6 +43,10 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="GetApiKeyInfoResponse" /> class.
         /// </summary>
+        /// <param name="orgId">
+        /// ID of the org that owns the API key.<br/>
+        /// Example: org_abcd1234
+        /// </param>
         /// <param name="orgName">
         /// Display name of the org.<br/>
         /// Example: Acme Inc
@@ -46,9 +59,11 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetApiKeyInfoResponse(
+            string orgId,
             string orgName,
             string? apiKeyName)
         {
+            this.OrgId = orgId ?? throw new global::System.ArgumentNullException(nameof(orgId));
             this.OrgName = orgName ?? throw new global::System.ArgumentNullException(nameof(orgName));
             this.ApiKeyName = apiKeyName;
         }

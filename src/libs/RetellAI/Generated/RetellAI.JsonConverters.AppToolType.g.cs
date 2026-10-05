@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class AgentRequestVoiceEmotionNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.AgentRequestVoiceEmotion?>
+    public sealed class AppToolTypeJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.AppToolType>
     {
         /// <inheritdoc />
-        public override global::RetellAI.AgentRequestVoiceEmotion? Read(
+        public override global::RetellAI.AppToolType Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.AgentRequestVoiceEmotionExtensions.ToEnum(stringValue);
+                        return global::RetellAI.AppToolTypeExtensions.ToEnum(stringValue) ?? default;
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.AgentRequestVoiceEmotion)numValue;
+                    return (global::RetellAI.AppToolType)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.AgentRequestVoiceEmotion?);
+                    return default(global::RetellAI.AppToolType);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,19 +42,12 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.AgentRequestVoiceEmotion? value,
+            global::RetellAI.AppToolType value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            if (value == null)
-            {
-                writer.WriteNullValue();
-            }
-            else
-            {
-                writer.WriteStringValue(global::RetellAI.AgentRequestVoiceEmotionExtensions.ToValueString(value.Value));
-            }
+            writer.WriteStringValue(global::RetellAI.AppToolTypeExtensions.ToValueString(value));
         }
     }
 }

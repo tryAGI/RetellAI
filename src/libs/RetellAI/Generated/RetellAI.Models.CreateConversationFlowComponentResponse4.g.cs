@@ -16,9 +16,9 @@ namespace RetellAI
         public global::RetellAI.CreateConversationFlowComponentResponseStatus4? Status { get; set; }
 
         /// <summary>
-        /// Example: Account rate limited, please throttle your requests.
+        /// Example: Resource update conflict.
         /// </summary>
-        /// <example>Account rate limited, please throttle your requests.</example>
+        /// <example>Resource update conflict.</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }
 
@@ -33,7 +33,7 @@ namespace RetellAI
         /// </summary>
         /// <param name="status"></param>
         /// <param name="message">
-        /// Example: Account rate limited, please throttle your requests.
+        /// Example: Resource update conflict.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

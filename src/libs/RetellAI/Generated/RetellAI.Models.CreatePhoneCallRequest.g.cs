@@ -9,6 +9,12 @@ namespace RetellAI
     public sealed partial class CreatePhoneCallRequest
     {
         /// <summary>
+        /// Optional key to retry the same request for up to one hour without creating another call. Use a new key for each new call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("idempotency_key")]
+        public string? IdempotencyKey { get; set; }
+
+        /// <summary>
         /// The number you own in E.164 format. Must be a number purchased from Retell or imported to Retell.<br/>
         /// Example: +14157774444
         /// </summary>
@@ -78,6 +84,14 @@ namespace RetellAI
         public bool? IgnoreE164Validation { get; set; }
 
         /// <summary>
+        /// If true, the call is rejected with a 400 error when the contact for to_number is marked do_not_call. If omitted, the default value is false.<br/>
+        /// Example: true
+        /// </summary>
+        /// <example>true</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("honor_internal_dnc")]
+        public bool? HonorInternalDnc { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -93,6 +107,9 @@ namespace RetellAI
         /// <param name="toNumber">
         /// The number you want to call, in E.164 format. If using a number purchased from Retell, only US numbers are supported as destination.<br/>
         /// Example: +12137774445
+        /// </param>
+        /// <param name="idempotencyKey">
+        /// Optional key to retry the same request for up to one hour without creating another call. Use a new key for each new call.
         /// </param>
         /// <param name="overrideAgentId">
         /// For this particular call, override the agent used with this agent id. This does not bind the agent to this number, this is for one time override.<br/>
@@ -119,20 +136,27 @@ namespace RetellAI
         /// If true, the e.164 validation will be ignored for the from_number. This can be useful when you want to dial to internal pseudo numbers. This only applies when you are using custom telephony and does not apply when you are using Retell Telephony. If omitted, the default value is false.<br/>
         /// Example: true
         /// </param>
+        /// <param name="honorInternalDnc">
+        /// If true, the call is rejected with a 400 error when the contact for to_number is marked do_not_call. If omitted, the default value is false.<br/>
+        /// Example: true
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public CreatePhoneCallRequest(
             string fromNumber,
             string toNumber,
+            string? idempotencyKey,
             string? overrideAgentId,
             global::RetellAI.AgentVersionReference? overrideAgentVersion,
             global::RetellAI.AgentOverrideRequest? agentOverride,
             object? metadata,
             global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
             global::System.Collections.Generic.Dictionary<string, string>? customSipHeaders,
-            bool? ignoreE164Validation)
+            bool? ignoreE164Validation,
+            bool? honorInternalDnc)
         {
+            this.IdempotencyKey = idempotencyKey;
             this.FromNumber = fromNumber ?? throw new global::System.ArgumentNullException(nameof(fromNumber));
             this.ToNumber = toNumber ?? throw new global::System.ArgumentNullException(nameof(toNumber));
             this.OverrideAgentId = overrideAgentId;
@@ -142,6 +166,7 @@ namespace RetellAI
             this.RetellLlmDynamicVariables = retellLlmDynamicVariables;
             this.CustomSipHeaders = customSipHeaders;
             this.IgnoreE164Validation = ignoreE164Validation;
+            this.HonorInternalDnc = honorInternalDnc;
         }
 
         /// <summary>

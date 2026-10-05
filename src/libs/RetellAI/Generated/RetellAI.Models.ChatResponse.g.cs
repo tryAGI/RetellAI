@@ -131,6 +131,30 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? MessageWithToolCalls { get; set; }
 
         /// <summary>
+        /// Tool call invocations and results of integration tools run before the chat's first message (pre-session). Stored separately from the main transcript. Available once pre-session integration tools have run (from the chat's first turn).
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pre_session_message_with_tool_calls")]
+        public global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? PreSessionMessageWithToolCalls { get; set; }
+
+        /// <summary>
+        /// Pre-session integration tool call invocations and results, without PII. Available after chat ends if pre-session integration tools ran and PII scrubbing is enabled.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scrubbed_pre_session_message_with_tool_calls")]
+        public global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? ScrubbedPreSessionMessageWithToolCalls { get; set; }
+
+        /// <summary>
+        /// Tool call invocations and results of integration tools run after post-chat analysis (post-session). Stored separately from the main transcript. Available after chat ends if post-session integration tools ran.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("post_session_message_with_tool_calls")]
+        public global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? PostSessionMessageWithToolCalls { get; set; }
+
+        /// <summary>
+        /// Post-session integration tool call invocations and results, without PII. Available after chat ends if post-session integration tools ran and PII scrubbing is enabled.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("scrubbed_post_session_message_with_tool_calls")]
+        public global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? ScrubbedPostSessionMessageWithToolCalls { get; set; }
+
+        /// <summary>
         /// An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the chat. Not used for processing. You can later get this field from the chat object.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
@@ -216,6 +240,18 @@ namespace RetellAI
         /// <param name="messageWithToolCalls">
         /// Transcript of the chat weaved with tool call invocation and results.
         /// </param>
+        /// <param name="preSessionMessageWithToolCalls">
+        /// Tool call invocations and results of integration tools run before the chat's first message (pre-session). Stored separately from the main transcript. Available once pre-session integration tools have run (from the chat's first turn).
+        /// </param>
+        /// <param name="scrubbedPreSessionMessageWithToolCalls">
+        /// Pre-session integration tool call invocations and results, without PII. Available after chat ends if pre-session integration tools ran and PII scrubbing is enabled.
+        /// </param>
+        /// <param name="postSessionMessageWithToolCalls">
+        /// Tool call invocations and results of integration tools run after post-chat analysis (post-session). Stored separately from the main transcript. Available after chat ends if post-session integration tools ran.
+        /// </param>
+        /// <param name="scrubbedPostSessionMessageWithToolCalls">
+        /// Post-session integration tool call invocations and results, without PII. Available after chat ends if post-session integration tools ran and PII scrubbing is enabled.
+        /// </param>
         /// <param name="metadata">
         /// An arbitrary object for storage purpose only. You can put anything here like your internal customer id associated with the chat. Not used for processing. You can later get this field from the chat object.
         /// </param>
@@ -238,6 +274,10 @@ namespace RetellAI
             long? endTimestamp,
             string? transcript,
             global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? messageWithToolCalls,
+            global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? preSessionMessageWithToolCalls,
+            global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? scrubbedPreSessionMessageWithToolCalls,
+            global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? postSessionMessageWithToolCalls,
+            global::System.Collections.Generic.IList<global::RetellAI.MessageOrToolCall>? scrubbedPostSessionMessageWithToolCalls,
             object? metadata,
             global::RetellAI.ChatResponseChatCost? chatCost,
             global::RetellAI.ChatAnalysis? chatAnalysis)
@@ -255,6 +295,10 @@ namespace RetellAI
             this.EndTimestamp = endTimestamp;
             this.Transcript = transcript;
             this.MessageWithToolCalls = messageWithToolCalls;
+            this.PreSessionMessageWithToolCalls = preSessionMessageWithToolCalls;
+            this.ScrubbedPreSessionMessageWithToolCalls = scrubbedPreSessionMessageWithToolCalls;
+            this.PostSessionMessageWithToolCalls = postSessionMessageWithToolCalls;
+            this.ScrubbedPostSessionMessageWithToolCalls = scrubbedPostSessionMessageWithToolCalls;
             this.Metadata = metadata;
             this.ChatCost = chatCost;
             this.ChatAnalysis = chatAnalysis;

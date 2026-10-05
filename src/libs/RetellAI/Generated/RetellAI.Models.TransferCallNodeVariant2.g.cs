@@ -46,7 +46,7 @@ namespace RetellAI
         public required global::RetellAI.TransferOption TransferOption { get; set; }
 
         /// <summary>
-        ///
+        /// Transition followed by a transfer_call or agent_swap node when the transfer fails. Evaluated after the transfer attempt finishes.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("edge")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.TransferFailedEdgeJsonConverter))]
@@ -77,7 +77,9 @@ namespace RetellAI
         /// </summary>
         /// <param name="transferDestination"></param>
         /// <param name="transferOption"></param>
-        /// <param name="edge"></param>
+        /// <param name="edge">
+        /// Transition followed by a transfer_call or agent_swap node when the transfer fails. Evaluated after the transfer attempt finishes.
+        /// </param>
         /// <param name="type">
         /// Type of the node
         /// </param>

@@ -41,7 +41,7 @@ namespace RetellAI
         /// Country for parsing phone numbers without a country code. Defaults to US.
         /// </param>
         /// <param name="contactTags">
-        /// Tags added to every contact in this import. Existing tags are preserved. Omit to leave tags unchanged.
+        /// Tag labels added to every contact in this import. Labels are trimmed and deduplicated. New labels are added to the org's CRM config with generated tag IDs.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

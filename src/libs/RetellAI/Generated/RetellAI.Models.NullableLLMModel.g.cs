@@ -23,7 +23,19 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Claude5Opus,
+        /// <summary>
+        ///
+        /// </summary>
         Claude5Sonnet,
+        /// <summary>
+        ///
+        /// </summary>
+        Claude55Opus,
+        /// <summary>
+        ///
+        /// </summary>
+        Claude55Sonnet,
         /// <summary>
         ///
         /// </summary>
@@ -111,6 +123,22 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Gpt6Astra,
+        /// <summary>
+        ///
+        /// </summary>
+        Gpt6Luna,
+        /// <summary>
+        ///
+        /// </summary>
+        Gpt6Sol,
+        /// <summary>
+        ///
+        /// </summary>
+        Gpt61Sol,
+        /// <summary>
+        ///
+        /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
     }
 
@@ -129,7 +157,10 @@ namespace RetellAI
                 NullableLLMModel.Claude45Haiku => "claude-4.5-haiku",
                 NullableLLMModel.Claude45Sonnet => "claude-4.5-sonnet",
                 NullableLLMModel.Claude46Sonnet => "claude-4.6-sonnet",
+                NullableLLMModel.Claude5Opus => "claude-5-opus",
                 NullableLLMModel.Claude5Sonnet => "claude-5-sonnet",
+                NullableLLMModel.Claude55Opus => "claude-5.5-opus",
+                NullableLLMModel.Claude55Sonnet => "claude-5.5-sonnet",
                 NullableLLMModel.Gemini30Flash => "gemini-3.0-flash",
                 NullableLLMModel.Gemini31FlashLite => "gemini-3.1-flash-lite",
                 NullableLLMModel.Gemini35Flash => "gemini-3.5-flash",
@@ -151,6 +182,10 @@ namespace RetellAI
                 NullableLLMModel.Gpt55 => "gpt-5.5",
                 NullableLLMModel.Gpt56Luna => "gpt-5.6-luna",
                 NullableLLMModel.Gpt56Terra => "gpt-5.6-terra",
+                NullableLLMModel.Gpt6Astra => "gpt-6-astra",
+                NullableLLMModel.Gpt6Luna => "gpt-6-luna",
+                NullableLLMModel.Gpt6Sol => "gpt-6-sol",
+                NullableLLMModel.Gpt61Sol => "gpt-6.1-sol",
                 NullableLLMModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -165,7 +200,10 @@ namespace RetellAI
                 "claude-4.5-haiku" => NullableLLMModel.Claude45Haiku,
                 "claude-4.5-sonnet" => NullableLLMModel.Claude45Sonnet,
                 "claude-4.6-sonnet" => NullableLLMModel.Claude46Sonnet,
+                "claude-5-opus" => NullableLLMModel.Claude5Opus,
                 "claude-5-sonnet" => NullableLLMModel.Claude5Sonnet,
+                "claude-5.5-opus" => NullableLLMModel.Claude55Opus,
+                "claude-5.5-sonnet" => NullableLLMModel.Claude55Sonnet,
                 "gemini-3.0-flash" => NullableLLMModel.Gemini30Flash,
                 "gemini-3.1-flash-lite" => NullableLLMModel.Gemini31FlashLite,
                 "gemini-3.5-flash" => NullableLLMModel.Gemini35Flash,
@@ -187,6 +225,10 @@ namespace RetellAI
                 "gpt-5.5" => NullableLLMModel.Gpt55,
                 "gpt-5.6-luna" => NullableLLMModel.Gpt56Luna,
                 "gpt-5.6-terra" => NullableLLMModel.Gpt56Terra,
+                "gpt-6-astra" => NullableLLMModel.Gpt6Astra,
+                "gpt-6-luna" => NullableLLMModel.Gpt6Luna,
+                "gpt-6-sol" => NullableLLMModel.Gpt6Sol,
+                "gpt-6.1-sol" => NullableLLMModel.Gpt61Sol,
                 "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => NullableLLMModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
                 _ => null,
             };

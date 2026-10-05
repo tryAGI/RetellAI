@@ -592,8 +592,11 @@ namespace RetellAI
         /// Last name of the contact.
         /// </param>
         /// <param name="doNotCall"></param>
-        /// <param name="contactTags">
-        /// Full set of tags for the contact.
+        /// <param name="contactMemory">
+        /// Contact memory text.
+        /// </param>
+        /// <param name="contactTagIds">
+        /// Full set of tag IDs for the contact.
         /// </param>
         /// <param name="customFields">
         /// Values must match the types defined in CRM config custom fields. Set a value to null to clear it.
@@ -606,7 +609,8 @@ namespace RetellAI
             string? firstName = default,
             string? lastName = default,
             bool? doNotCall = default,
-            global::System.Collections.Generic.IList<string>? contactTags = default,
+            string? contactMemory = default,
+            global::System.Collections.Generic.IList<string>? contactTagIds = default,
             object? customFields = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
@@ -617,7 +621,8 @@ namespace RetellAI
                 FirstName = firstName,
                 LastName = lastName,
                 DoNotCall = doNotCall,
-                ContactTags = contactTags,
+                ContactMemory = contactMemory,
+                ContactTagIds = contactTagIds,
                 CustomFields = customFields,
             };
 

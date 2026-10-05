@@ -415,6 +415,43 @@ namespace RetellAI
         public global::RetellAI.MCPTool PickMcp() => Mcp is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Mcp' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::RetellAI.AppTool? App { get; init; }
+#else
+        public global::RetellAI.AppTool? App { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(App))]
+#endif
+        public bool IsApp => App != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickApp(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.AppTool? value)
+        {
+            value = App;
+            return IsApp;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::RetellAI.AppTool PickApp() => App is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'App' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -671,6 +708,29 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator Tool(global::RetellAI.AppTool value) => new Tool((global::RetellAI.AppTool?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::RetellAI.AppTool?(Tool @this) => @this.App;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public Tool(global::RetellAI.AppTool? value)
+        {
+            App = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static Tool FromApp(global::RetellAI.AppTool? value) => new Tool(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public Tool(
             global::RetellAI.EndCallTool? endCall,
             global::RetellAI.TransferCallTool? transferCall,
@@ -682,7 +742,8 @@ namespace RetellAI
             global::RetellAI.ExtractDynamicVariableTool? extractDynamicVariable,
             global::RetellAI.BridgeTransferTool? bridgeTransfer,
             global::RetellAI.CancelTransferTool? cancelTransfer,
-            global::RetellAI.MCPTool? mcp
+            global::RetellAI.MCPTool? mcp,
+            global::RetellAI.AppTool? app
             )
         {
             EndCall = endCall;
@@ -696,12 +757,14 @@ namespace RetellAI
             BridgeTransfer = bridgeTransfer;
             CancelTransfer = cancelTransfer;
             Mcp = mcp;
+            App = app;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
+            App as object ??
             Mcp as object ??
             CancelTransfer as object ??
             BridgeTransfer as object ??
@@ -729,7 +792,8 @@ namespace RetellAI
             ExtractDynamicVariable?.ToString() ??
             BridgeTransfer?.ToString() ??
             CancelTransfer?.ToString() ??
-            Mcp?.ToString()
+            Mcp?.ToString() ??
+            App?.ToString()
             ;
 
         /// <summary>
@@ -737,7 +801,7 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && IsBridgeTransfer && !IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && IsCancelTransfer && !IsMcp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && IsMcp;
+            return IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && IsApp;
         }
 
         /// <summary>
@@ -755,6 +819,7 @@ namespace RetellAI
             global::System.Func<global::RetellAI.BridgeTransferTool, TResult>? bridgeTransfer = null,
             global::System.Func<global::RetellAI.CancelTransferTool, TResult>? cancelTransfer = null,
             global::System.Func<global::RetellAI.MCPTool, TResult>? mcp = null,
+            global::System.Func<global::RetellAI.AppTool, TResult>? app = null,
             bool validate = true)
         {
             if (validate)
@@ -806,6 +871,10 @@ namespace RetellAI
             {
                 return mcp(__value10);
             }
+            else if (App is { } __value11 && app != null)
+            {
+                return app(__value11);
+            }
 
             return default(TResult);
         }
@@ -835,6 +904,8 @@ namespace RetellAI
             global::System.Action<global::RetellAI.CancelTransferTool>? cancelTransfer = null,
 
             global::System.Action<global::RetellAI.MCPTool>? mcp = null,
+
+            global::System.Action<global::RetellAI.AppTool>? app = null,
             bool validate = true)
         {
             if (validate)
@@ -885,6 +956,10 @@ namespace RetellAI
             else if (Mcp is { } __value10)
             {
                 mcp?.Invoke(__value10);
+            }
+            else if (App is { } __value11)
+            {
+                app?.Invoke(__value11);
             }
         }
 
@@ -903,6 +978,7 @@ namespace RetellAI
             global::System.Action<global::RetellAI.BridgeTransferTool>? bridgeTransfer = null,
             global::System.Action<global::RetellAI.CancelTransferTool>? cancelTransfer = null,
             global::System.Action<global::RetellAI.MCPTool>? mcp = null,
+            global::System.Action<global::RetellAI.AppTool>? app = null,
             bool validate = true)
         {
             if (validate)
@@ -953,6 +1029,10 @@ namespace RetellAI
             else if (Mcp is { } __value10)
             {
                 mcp?.Invoke(__value10);
+            }
+            else if (App is { } __value11)
+            {
+                app?.Invoke(__value11);
             }
         }
 
@@ -985,6 +1065,8 @@ namespace RetellAI
                 typeof(global::RetellAI.CancelTransferTool),
                 Mcp,
                 typeof(global::RetellAI.MCPTool),
+                App,
+                typeof(global::RetellAI.AppTool),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -1011,7 +1093,8 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.ExtractDynamicVariableTool?>.Default.Equals(ExtractDynamicVariable, other.ExtractDynamicVariable) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.BridgeTransferTool?>.Default.Equals(BridgeTransfer, other.BridgeTransfer) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.CancelTransferTool?>.Default.Equals(CancelTransfer, other.CancelTransfer) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.MCPTool?>.Default.Equals(Mcp, other.Mcp)
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.MCPTool?>.Default.Equals(Mcp, other.Mcp) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AppTool?>.Default.Equals(App, other.App)
                 ;
         }
 

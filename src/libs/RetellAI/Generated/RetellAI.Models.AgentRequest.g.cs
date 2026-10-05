@@ -105,15 +105,6 @@ namespace RetellAI
         public double? Volume { get; set; }
 
         /// <summary>
-        /// Controls the emotional tone of the agent's voice. Currently supported for Cartesia and Minimax TTS providers. If unset, no emotion will be used.<br/>
-        /// Example: calm
-        /// </summary>
-        /// <example>calm</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("voice_emotion")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AgentRequestVoiceEmotionJsonConverter))]
-        public global::RetellAI.AgentRequestVoiceEmotion? VoiceEmotion { get; set; }
-
-        /// <summary>
         /// Master toggle for expressive mode. When true, the agent may add expressive voice tags to the audio it generates. Only applicable for platform voices. If unset, defaults to false.<br/>
         /// Example: true
         /// </summary>
@@ -253,6 +244,12 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<string>? BoostedKeywords { get; set; }
 
         /// <summary>
+        /// Contact memory settings for phone calls and SMS chats. Creating an agent defaults enable_update to false and enable_read to true. Updates only change the supplied flags; omitted flags stay unchanged and an empty object has no effect. Set a flag to false to disable it. The configuration cannot be cleared. Existing agents without this configuration have both disabled.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_memory_config")]
+        public global::RetellAI.ContactMemoryConfig? ContactMemoryConfig { get; set; }
+
+        /// <summary>
         /// Granular setting to manage how Retell stores sensitive data (transcripts, recordings, logs, etc.).<br/>
         /// This replaces the deprecated `opt_out_sensitive_data_storage` field.<br/>
         /// - `everything`: Store all data including transcripts, recordings, and logs.<br/>
@@ -295,6 +292,14 @@ namespace RetellAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pronunciation_dictionary")]
         public global::System.Collections.Generic.IList<global::RetellAI.AgentRequestPronunciationDictionaryItem>? PronunciationDictionary { get; set; }
+
+        /// <summary>
+        /// If set to true, the agent recognizes requests to stop calling or contacting the user, confirms once, and on a clear yes ends the call with disconnection reason user_requested_dnc and sets do_not_call to true on the contact for the user's phone number. If unset, default value false will apply.<br/>
+        /// Example: false
+        /// </summary>
+        /// <example>false</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_dnc_detection")]
+        public bool? EnableDncDetection { get; set; }
 
         /// <summary>
         /// If users stay silent for a period after agent speech, end the call. The minimum value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).<br/>
@@ -445,6 +450,18 @@ namespace RetellAI
         public string? Timezone { get; set; }
 
         /// <summary>
+        /// Integration (Agent Functions) tools run as a dependency graph during session setup, before the agent's first message. Outputs are injected as dynamic variables. On calls the graph gets one minute unless an outbound caller will be dialed after setup, in which case it gets five minutes. Past that session initialization continues and any remaining tools finish in the background, so their outputs no longer reach the agent's prompt. Set to null to clear.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("pre_session_tools")]
+        public global::System.Collections.Generic.IList<global::RetellAI.PreSessionTool>? PreSessionTools { get; set; }
+
+        /// <summary>
+        /// Integration (Agent Functions) tools run as a dependency graph during teardown, after post-call analysis. Each tool can be gated by a condition. On calls the graph is stopped after five minutes so teardown can finish. Set to null to clear.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("post_session_tools")]
+        public global::System.Collections.Generic.IList<global::RetellAI.PostSessionTool>? PostSessionTools { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -496,10 +513,6 @@ namespace RetellAI
         /// <param name="volume">
         /// If set, will control the volume of the agent. Value ranging from [0,2]. Lower value means quieter agent speech, while higher value means louder agent speech. If unset, default value 1 will apply.<br/>
         /// Example: 1
-        /// </param>
-        /// <param name="voiceEmotion">
-        /// Controls the emotional tone of the agent's voice. Currently supported for Cartesia and Minimax TTS providers. If unset, no emotion will be used.<br/>
-        /// Example: calm
         /// </param>
         /// <param name="enableExpressiveMode">
         /// Master toggle for expressive mode. When true, the agent may add expressive voice tags to the audio it generates. Only applicable for platform voices. If unset, defaults to false.<br/>
@@ -573,6 +586,9 @@ namespace RetellAI
         /// Provide a customized list of keywords to bias the transcriber model, so that these words are more likely to get transcribed. Commonly used for names, brands, street, etc. Entries may reference dynamic variables with `{{variable}}` syntax.<br/>
         /// Example: [retell, kroger]
         /// </param>
+        /// <param name="contactMemoryConfig">
+        /// Contact memory settings for phone calls and SMS chats. Creating an agent defaults enable_update to false and enable_read to true. Updates only change the supplied flags; omitted flags stay unchanged and an empty object has no effect. Set a flag to false to disable it. The configuration cannot be cleared. Existing agents without this configuration have both disabled.
+        /// </param>
         /// <param name="dataStorageSetting">
         /// Granular setting to manage how Retell stores sensitive data (transcripts, recordings, logs, etc.).<br/>
         /// This replaces the deprecated `opt_out_sensitive_data_storage` field.<br/>
@@ -596,6 +612,10 @@ namespace RetellAI
         /// </param>
         /// <param name="pronunciationDictionary">
         /// A list of words / phrases and their pronunciation to be used to guide the audio synthesize for consistent pronunciation. Check the dashboard to see what provider supports this feature. Set to null to remove pronunciation dictionary from this agent.
+        /// </param>
+        /// <param name="enableDncDetection">
+        /// If set to true, the agent recognizes requests to stop calling or contacting the user, confirms once, and on a clear yes ends the call with disconnection reason user_requested_dnc and sets do_not_call to true on the contact for the user's phone number. If unset, default value false will apply.<br/>
+        /// Example: false
         /// </param>
         /// <param name="endCallAfterSilenceMs">
         /// If users stay silent for a period after agent speech, end the call. The minimum value allowed is 10,000 ms (10 s). By default, this is set to 600000 (10 min).<br/>
@@ -663,6 +683,12 @@ namespace RetellAI
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
         /// Example: America/New_York
         /// </param>
+        /// <param name="preSessionTools">
+        /// Integration (Agent Functions) tools run as a dependency graph during session setup, before the agent's first message. Outputs are injected as dynamic variables. On calls the graph gets one minute unless an outbound caller will be dialed after setup, in which case it gets five minutes. Past that session initialization continues and any remaining tools finish in the background, so their outputs no longer reach the agent's prompt. Set to null to clear.
+        /// </param>
+        /// <param name="postSessionTools">
+        /// Integration (Agent Functions) tools run as a dependency graph during teardown, after post-call analysis. Each tool can be gated by a condition. On calls the graph is stopped after five minutes so teardown can finish. Set to null to clear.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -679,7 +705,6 @@ namespace RetellAI
             bool? enableDynamicVoiceSpeed,
             bool? enableDynamicResponsiveness,
             double? volume,
-            global::RetellAI.AgentRequestVoiceEmotion? voiceEmotion,
             bool? enableExpressiveMode,
             global::System.Collections.Generic.IList<global::RetellAI.AgentRequestExpressiveEmotionTag>? expressiveEmotionTags,
             string? expressiveModePrompt,
@@ -697,11 +722,13 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.AgentRequestWebhookEvent>? webhookEvents,
             int? webhookTimeoutMs,
             global::System.Collections.Generic.IList<string>? boostedKeywords,
+            global::RetellAI.ContactMemoryConfig? contactMemoryConfig,
             global::RetellAI.AgentRequestDataStorageSetting? dataStorageSetting,
             int? dataStorageRetentionDays,
             bool? optInSignedUrl,
             int? signedUrlExpirationMs,
             global::System.Collections.Generic.IList<global::RetellAI.AgentRequestPronunciationDictionaryItem>? pronunciationDictionary,
+            bool? enableDncDetection,
             int? endCallAfterSilenceMs,
             int? maxCallDurationMs,
             global::RetellAI.AgentRequestVoicemailOption? voicemailOption,
@@ -721,7 +748,9 @@ namespace RetellAI
             global::RetellAI.PIIConfig? piiConfig,
             global::RetellAI.GuardrailConfig? guardrailConfig,
             global::RetellAI.VoiceHandbookConfig? handbookConfig,
-            string? timezone)
+            string? timezone,
+            global::System.Collections.Generic.IList<global::RetellAI.PreSessionTool>? preSessionTools,
+            global::System.Collections.Generic.IList<global::RetellAI.PostSessionTool>? postSessionTools)
         {
             this.ResponseEngine = responseEngine;
             this.AgentName = agentName;
@@ -735,7 +764,6 @@ namespace RetellAI
             this.EnableDynamicVoiceSpeed = enableDynamicVoiceSpeed;
             this.EnableDynamicResponsiveness = enableDynamicResponsiveness;
             this.Volume = volume;
-            this.VoiceEmotion = voiceEmotion;
             this.EnableExpressiveMode = enableExpressiveMode;
             this.ExpressiveEmotionTags = expressiveEmotionTags;
             this.ExpressiveModePrompt = expressiveModePrompt;
@@ -753,11 +781,13 @@ namespace RetellAI
             this.WebhookEvents = webhookEvents;
             this.WebhookTimeoutMs = webhookTimeoutMs;
             this.BoostedKeywords = boostedKeywords;
+            this.ContactMemoryConfig = contactMemoryConfig;
             this.DataStorageSetting = dataStorageSetting;
             this.DataStorageRetentionDays = dataStorageRetentionDays;
             this.OptInSignedUrl = optInSignedUrl;
             this.SignedUrlExpirationMs = signedUrlExpirationMs;
             this.PronunciationDictionary = pronunciationDictionary;
+            this.EnableDncDetection = enableDncDetection;
             this.EndCallAfterSilenceMs = endCallAfterSilenceMs;
             this.MaxCallDurationMs = maxCallDurationMs;
             this.VoicemailOption = voicemailOption;
@@ -778,6 +808,8 @@ namespace RetellAI
             this.GuardrailConfig = guardrailConfig;
             this.HandbookConfig = handbookConfig;
             this.Timezone = timezone;
+            this.PreSessionTools = preSessionTools;
+            this.PostSessionTools = postSessionTools;
         }
 
         /// <summary>

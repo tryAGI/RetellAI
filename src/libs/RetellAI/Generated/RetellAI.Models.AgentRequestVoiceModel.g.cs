@@ -27,6 +27,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        ElevenV4Turbo,
+        /// <summary>
+        ///
+        /// </summary>
         Gpt4oMiniTts,
         /// <summary>
         ///
@@ -98,6 +102,7 @@ namespace RetellAI
                 AgentRequestVoiceModel.ElevenFlashV25 => "eleven_flash_v2_5",
                 AgentRequestVoiceModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
                 AgentRequestVoiceModel.ElevenV3 => "eleven_v3",
+                AgentRequestVoiceModel.ElevenV4Turbo => "eleven_v4_turbo",
                 AgentRequestVoiceModel.Gpt4oMiniTts => "gpt-4o-mini-tts",
                 AgentRequestVoiceModel.InworldTts2 => "inworld-tts-2",
                 AgentRequestVoiceModel.InworldTts2Flash => "inworld-tts-2-flash",
@@ -126,6 +131,7 @@ namespace RetellAI
                 "eleven_flash_v2_5" => AgentRequestVoiceModel.ElevenFlashV25,
                 "eleven_multilingual_v2" => AgentRequestVoiceModel.ElevenMultilingualV2,
                 "eleven_v3" => AgentRequestVoiceModel.ElevenV3,
+                "eleven_v4_turbo" => AgentRequestVoiceModel.ElevenV4Turbo,
                 "gpt-4o-mini-tts" => AgentRequestVoiceModel.Gpt4oMiniTts,
                 "inworld-tts-2" => AgentRequestVoiceModel.InworldTts2,
                 "inworld-tts-2-flash" => AgentRequestVoiceModel.InworldTts2Flash,

@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Must be "failed to send" for SMS failed edge
+    /// Must be "Failed to send" for SMS failed edge
     /// </summary>
     public enum SmsFailedEdgeVariant2TransitionConditionPrompt
     {

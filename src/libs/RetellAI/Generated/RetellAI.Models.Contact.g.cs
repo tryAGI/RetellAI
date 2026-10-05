@@ -48,16 +48,22 @@ namespace RetellAI
         public bool? DoNotCall { get; set; }
 
         /// <summary>
+        /// Running brief shared across this contact's phone calls and SMS chats. Omitted when unset.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_memory")]
+        public string? ContactMemory { get; set; }
+
+        /// <summary>
         /// CRM record ID from the external provider.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("external_id")]
         public string? ExternalId { get; set; }
 
         /// <summary>
-        /// Tags assigned to the contact.
+        /// Assigned tag IDs and labels from the organization's CRM config. IDs absent from the config are omitted.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("contact_tags")]
-        public global::System.Collections.Generic.IList<string>? ContactTags { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ContactTag>? ContactTags { get; set; }
 
         /// <summary>
         /// Custom fields defined in CRM config.
@@ -120,11 +126,14 @@ namespace RetellAI
         /// <param name="doNotCall">
         /// Whether this contact should not be called.
         /// </param>
+        /// <param name="contactMemory">
+        /// Running brief shared across this contact's phone calls and SMS chats. Omitted when unset.
+        /// </param>
         /// <param name="externalId">
         /// CRM record ID from the external provider.
         /// </param>
         /// <param name="contactTags">
-        /// Tags assigned to the contact.
+        /// Assigned tag IDs and labels from the organization's CRM config. IDs absent from the config are omitted.
         /// </param>
         /// <param name="customFields">
         /// Custom fields defined in CRM config.
@@ -149,8 +158,9 @@ namespace RetellAI
             string? firstName,
             string? lastName,
             bool? doNotCall,
+            string? contactMemory,
             string? externalId,
-            global::System.Collections.Generic.IList<string>? contactTags,
+            global::System.Collections.Generic.IList<global::RetellAI.ContactTag>? contactTags,
             object? customFields,
             double? conversationCount,
             double? lastConversationTimestamp,
@@ -162,6 +172,7 @@ namespace RetellAI
             this.FirstName = firstName;
             this.LastName = lastName;
             this.DoNotCall = doNotCall;
+            this.ContactMemory = contactMemory;
             this.ExternalId = externalId;
             this.ContactTags = contactTags;
             this.CustomFields = customFields;

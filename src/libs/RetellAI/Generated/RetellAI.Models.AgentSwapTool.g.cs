@@ -89,6 +89,12 @@ namespace RetellAI
         public bool? KeepCurrentLanguage { get; set; }
 
         /// <summary>
+        /// If true, restart the max call duration timer at the swap using the destination agent's max_call_duration_ms, capped so the whole call never exceeds 2 hours. Otherwise, the timer already running is left unchanged. Voice calls only. Defaults to false.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("use_swap_agent_max_duration")]
+        public bool? UseSwapAgentMaxDuration { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -125,6 +131,9 @@ namespace RetellAI
         /// <param name="keepCurrentLanguage">
         /// If true, keep the current language when swapping agents. Defaults to false.
         /// </param>
+        /// <param name="useSwapAgentMaxDuration">
+        /// If true, restart the max call duration timer at the swap using the destination agent's max_call_duration_ms, capped so the whole call never exceeds 2 hours. Otherwise, the timer already running is left unchanged. Voice calls only. Defaults to false.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -140,7 +149,8 @@ namespace RetellAI
             global::RetellAI.AgentSwapToolExecutionMessageType? executionMessageType,
             global::RetellAI.AgentSwapWebhookSetting? webhookSetting,
             bool? keepCurrentVoice,
-            bool? keepCurrentLanguage)
+            bool? keepCurrentLanguage,
+            bool? useSwapAgentMaxDuration)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Type = type;
@@ -154,6 +164,7 @@ namespace RetellAI
             this.WebhookSetting = webhookSetting;
             this.KeepCurrentVoice = keepCurrentVoice;
             this.KeepCurrentLanguage = keepCurrentLanguage;
+            this.UseSwapAgentMaxDuration = useSwapAgentMaxDuration;
         }
 
         /// <summary>

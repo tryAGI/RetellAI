@@ -16,7 +16,7 @@ namespace RetellAI
         public global::RetellAI.SmsFailedEdgeVariant2TransitionConditionType Type { get; set; }
 
         /// <summary>
-        /// Must be "failed to send" for SMS failed edge
+        /// Must be "Failed to send" for SMS failed edge
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("prompt")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.SmsFailedEdgeVariant2TransitionConditionPromptJsonConverter))]
@@ -33,7 +33,7 @@ namespace RetellAI
         /// </summary>
         /// <param name="type"></param>
         /// <param name="prompt">
-        /// Must be "failed to send" for SMS failed edge
+        /// Must be "Failed to send" for SMS failed edge
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

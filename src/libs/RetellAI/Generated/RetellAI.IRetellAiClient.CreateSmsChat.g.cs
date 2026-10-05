@@ -53,6 +53,10 @@ namespace RetellAI
         /// Add optional dynamic variables in key value pairs of string that injects into your Response Engine prompt and tool description. Only applicable for Response Engine.<br/>
         /// Example: {"customer_name":"John Doe"}
         /// </param>
+        /// <param name="honorInternalDnc">
+        /// If true, the chat is rejected with a 400 error when the contact for to_number is marked do_not_call. If omitted, the default value is false.<br/>
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -63,6 +67,7 @@ namespace RetellAI
             global::RetellAI.AgentVersionReference? overrideAgentVersion = default,
             object? metadata = default,
             global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables = default,
+            bool? honorInternalDnc = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
