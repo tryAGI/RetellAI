@@ -155,6 +155,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        UserRequestedCallback,
+        /// <summary>
+        ///
+        /// </summary>
         UserRequestedDnc,
         /// <summary>
         ///
@@ -210,6 +214,7 @@ namespace RetellAI
                 DisconnectionReason5.TransferCancelled => "transfer_cancelled",
                 DisconnectionReason5.UserDeclined => "user_declined",
                 DisconnectionReason5.UserHangup => "user_hangup",
+                DisconnectionReason5.UserRequestedCallback => "user_requested_callback",
                 DisconnectionReason5.UserRequestedDnc => "user_requested_dnc",
                 DisconnectionReason5.VoicemailReached => "voicemail_reached",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -258,6 +263,7 @@ namespace RetellAI
                 "transfer_cancelled" => DisconnectionReason5.TransferCancelled,
                 "user_declined" => DisconnectionReason5.UserDeclined,
                 "user_hangup" => DisconnectionReason5.UserHangup,
+                "user_requested_callback" => DisconnectionReason5.UserRequestedCallback,
                 "user_requested_dnc" => DisconnectionReason5.UserRequestedDnc,
                 "voicemail_reached" => DisconnectionReason5.VoicemailReached,
                 _ => null,

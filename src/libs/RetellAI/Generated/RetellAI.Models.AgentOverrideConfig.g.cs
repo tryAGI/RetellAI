@@ -58,6 +58,12 @@ namespace RetellAI
         public global::RetellAI.AgentOverrideConfigCustomSttConfig? CustomSttConfig { get; set; }
 
         /// <summary>
+        /// If set, replaces the agent-level boosted_keywords while this node is active. Set to an empty list to disable boosted keywords for this node. Entries may reference dynamic variables with `{{variable}}` syntax, resolved when the node is entered.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("boosted_keywords")]
+        public global::System.Collections.Generic.IList<string>? BoostedKeywords { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -84,6 +90,9 @@ namespace RetellAI
         /// <param name="customSttConfig">
         /// Custom transcription settings. Required when stt_mode is custom.
         /// </param>
+        /// <param name="boostedKeywords">
+        /// If set, replaces the agent-level boosted_keywords while this node is active. Set to an empty list to disable boosted keywords for this node. Entries may reference dynamic variables with `{{variable}}` syntax, resolved when the node is entered.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -95,7 +104,8 @@ namespace RetellAI
             double? reminderTriggerMs,
             int? reminderMaxCount,
             global::RetellAI.AgentOverrideConfigSttMode? sttMode,
-            global::RetellAI.AgentOverrideConfigCustomSttConfig? customSttConfig)
+            global::RetellAI.AgentOverrideConfigCustomSttConfig? customSttConfig,
+            global::System.Collections.Generic.IList<string>? boostedKeywords)
         {
             this.InterruptionSensitivity = interruptionSensitivity;
             this.Responsiveness = responsiveness;
@@ -105,6 +115,7 @@ namespace RetellAI
             this.ReminderMaxCount = reminderMaxCount;
             this.SttMode = sttMode;
             this.CustomSttConfig = customSttConfig;
+            this.BoostedKeywords = boostedKeywords;
         }
 
         /// <summary>

@@ -31,11 +31,16 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("high_priority")) __score0++;
             if (__jsonProps.Contains("model")) __score0++;
             if (__jsonProps.Contains("type")) __score0++;
+            var __score1 = 0;
+            if (__jsonProps.Contains("model")) __score1++;
+            if (__jsonProps.Contains("type")) __score1++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
+            if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
 
             global::RetellAI.ModelChoiceCascading? cascading = default;
+            global::RetellAI.ModelChoiceS2S? s2s = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -53,9 +58,24 @@ namespace RetellAI.JsonConverters
                     {
                     }
                 }
+                else if (__bestIndex == 1)
+                {
+                    try
+                    {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ModelChoiceS2S), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ModelChoiceS2S> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ModelChoiceS2S).Name}");
+                        s2s = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                }
             }
 
-            if (cascading == null)
+            if (cascading == null && s2s == null)
             {
                 try
                 {
@@ -72,8 +92,27 @@ namespace RetellAI.JsonConverters
                 }
             }
 
+            if (cascading == null && s2s == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ModelChoiceS2S), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ModelChoiceS2S> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ModelChoiceS2S).Name}");
+                    s2s = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+            }
+
             var __value = new global::RetellAI.ModelChoice(
-                cascading
+                cascading,
+
+                s2s
                 );
 
             return __value;
@@ -93,6 +132,12 @@ namespace RetellAI.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ModelChoiceCascading), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ModelChoiceCascading?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ModelChoiceCascading).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCascading(), typeInfo);
+            }
+            else if (value.IsS2s)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ModelChoiceS2S), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.ModelChoiceS2S?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.ModelChoiceS2S).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickS2s(), typeInfo);
             }
         }
     }

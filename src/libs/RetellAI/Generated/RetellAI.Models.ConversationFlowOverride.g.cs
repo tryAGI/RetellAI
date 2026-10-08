@@ -12,7 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_choice")]
-        public global::RetellAI.ModelChoiceCascading? ModelChoice { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ModelChoiceJsonConverter))]
+        public global::RetellAI.ModelChoice? ModelChoice { get; set; }
 
         /// <summary>
         /// Controls the randomness of the model's responses. Lower values make responses more deterministic.<br/>
@@ -96,7 +97,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ConversationFlowOverride(
-            global::RetellAI.ModelChoiceCascading? modelChoice,
+            global::RetellAI.ModelChoice? modelChoice,
             double? modelTemperature,
             bool? toolCallStrictMode,
             global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
