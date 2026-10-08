@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-08-88ab66c
+  x-retell-spec-revision: 2026-10-08-db79ddd
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -5070,6 +5070,7 @@ components:
       - claude-5.5-opus
       - claude-5-sonnet
       - claude-5.5-sonnet
+      - claude-5.5-haiku
       - claude-4.5-haiku
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
@@ -5763,6 +5764,7 @@ components:
       - claude-5.5-opus
       - claude-5-sonnet
       - claude-5.5-sonnet
+      - claude-5.5-haiku
       - claude-4.5-haiku
       - gemini-3.0-flash
       - gemini-3.1-flash-lite
