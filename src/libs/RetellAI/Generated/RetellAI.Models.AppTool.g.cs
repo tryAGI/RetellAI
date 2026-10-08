@@ -16,7 +16,7 @@ namespace RetellAI
         public global::RetellAI.AppToolType Type { get; set; }
 
         /// <summary>
-        /// Name of the tool. Must be unique within the phase's tools; referenced by depends_on.
+        /// Name of the tool. Must be unique within the phase's tools; referenced by depends_on. Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -112,7 +112,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="AppTool" /> class.
         /// </summary>
         /// <param name="name">
-        /// Name of the tool. Must be unique within the phase's tools; referenced by depends_on.
+        /// Name of the tool. Must be unique within the phase's tools; referenced by depends_on. Must be consisted of a-z, A-Z, 0-9, or contain underscores and dashes, with a maximum length of 64 (no space allowed).
         /// </param>
         /// <param name="appId">
         /// The connection (App) this tool runs against. Must be a connection in the organization whose provider matches this tool's provider.
