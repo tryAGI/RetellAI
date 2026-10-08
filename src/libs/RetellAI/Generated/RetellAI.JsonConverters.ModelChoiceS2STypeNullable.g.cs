@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class RetellLlmOverrideS2sModelJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.RetellLlmOverrideS2sModel>
+    public sealed class ModelChoiceS2STypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.ModelChoiceS2SType?>
     {
         /// <inheritdoc />
-        public override global::RetellAI.RetellLlmOverrideS2sModel Read(
+        public override global::RetellAI.ModelChoiceS2SType? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.RetellLlmOverrideS2sModelExtensions.ToEnum(stringValue) ?? default;
+                        return global::RetellAI.ModelChoiceS2STypeExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.RetellLlmOverrideS2sModel)numValue;
+                    return (global::RetellAI.ModelChoiceS2SType)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.RetellLlmOverrideS2sModel);
+                    return default(global::RetellAI.ModelChoiceS2SType?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,12 +42,19 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.RetellLlmOverrideS2sModel value,
+            global::RetellAI.ModelChoiceS2SType? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
 
-            writer.WriteStringValue(global::RetellAI.RetellLlmOverrideS2sModelExtensions.ToValueString(value));
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteStringValue(global::RetellAI.ModelChoiceS2STypeExtensions.ToValueString(value.Value));
+            }
         }
     }
 }

@@ -858,6 +858,10 @@ namespace RetellAI
         /// If set, determines what denoising mode to use. Use "no-denoise" to bypass all audio denoising. Default to noise-cancellation.<br/>
         /// Example: noise-cancellation
         /// </param>
+        /// <param name="denoisingEnhancementLevel">
+        /// Controls the enhancement level for background voice cancellation. Set to 0 to bypass background voice cancellation without BVC charges. Value ranging from [0,1]. Only applicable when denoising_mode is noise-and-background-speech-cancellation. Defaults to 0.8 if no value is configured. Set to null to clear the configured value. Omitting this field preserves the existing value.<br/>
+        /// Example: 0.8
+        /// </param>
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
         /// <param name="handbookConfig">
@@ -933,6 +937,7 @@ namespace RetellAI
             bool? allowDtmfInterruption = default,
             global::RetellAI.AgentRequestUserDtmfOptions? userDtmfOptions = default,
             global::RetellAI.AgentRequestDenoisingMode? denoisingMode = default,
+            double? denoisingEnhancementLevel = default,
             global::RetellAI.PIIConfig? piiConfig = default,
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
             global::RetellAI.VoiceHandbookConfig? handbookConfig = default,
@@ -996,6 +1001,7 @@ namespace RetellAI
                 AllowDtmfInterruption = allowDtmfInterruption,
                 UserDtmfOptions = userDtmfOptions,
                 DenoisingMode = denoisingMode,
+                DenoisingEnhancementLevel = denoisingEnhancementLevel,
                 PiiConfig = piiConfig,
                 GuardrailConfig = guardrailConfig,
                 HandbookConfig = handbookConfig,

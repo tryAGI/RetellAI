@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-04-3cbc602
+  x-retell-spec-revision: 2026-10-08-88ab66c
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -706,6 +706,8 @@ components:
           - eleven_flash_v2_5
           - eleven_multilingual_v2
           - eleven_v3
+          - eleven_v3_conversational
+          - eleven_v4
           - eleven_v4_turbo
           - sonic-3
           - sonic-3-latest
@@ -1133,6 +1135,14 @@ components:
           - noise-and-background-speech-cancellation
           example: noise-cancellation
           description: If set, determines what denoising mode to use. Use "no-denoise" to bypass all audio denoising. Default to noise-cancellation.
+        denoising_enhancement_level:
+          type: number
+          minimum: 0
+          maximum: 1
+          nullable: true
+          example: 0.8
+          description: Controls the enhancement level for background voice cancellation. Set to 0 to bypass background voice cancellation without BVC charges. Value ranging from [0,1]. Only applicable when
+            denoising_mode is noise-and-background-speech-cancellation. Defaults to 0.8 if no value is configured. Set to null to clear the configured value. Omitting this field preserves the existing value.
         pii_config:
           $ref: '#/components/schemas/PIIConfig'
           description: Configuration for PII scrubbing from transcripts and recordings.
@@ -2895,6 +2905,14 @@ components:
           required:
           - provider
           - endpointing_ms
+        boosted_keywords:
+          type: array
+          items:
+            type: string
+          maxItems: 100
+          nullable: true
+          description: If set, replaces the agent-level boosted_keywords while this node is active. Set to an empty list to disable boosted keywords for this node. Entries may reference dynamic variables
+            with `{{variable}}` syntax, resolved when the node is entered.
     ConversationFlowOverride:
       type: object
       description: Override properties for conversation flow configuration in agent override requests.
@@ -3245,18 +3263,6 @@ components:
           nullable: true
           description: Hosted Stripe invoice URL when available.
           example: https://invoice.stripe.com/i/acct_123/invst_123
-    CreateCreditTopupInvoicePendingResponse:
-      type: object
-      required:
-      - payment_status
-      properties:
-        payment_status:
-          type: string
-          description: Returned instead of an invoice for organizations billed through Metronome. The top-up is submitted as a payment-gated commit; final outcome (credited or failed) arrives asynchronously
-            and is not reflected in this response.
-          enum:
-          - pending
-          example: pending
     OptInCreditBasedRequest:
       type: object
       required:
@@ -4239,6 +4245,7 @@ components:
       - user_hangup
       - agent_hangup
       - user_requested_dnc
+      - user_requested_callback
       - call_transfer
       - voicemail_reached
       - ivr_reached
@@ -4425,6 +4432,32 @@ components:
           enum:
           - or
           - and
+    EquationPromptCondition:
+      type: object
+      required:
+      - type
+      - equations
+      - operator
+      properties:
+        type:
+          type: string
+          enum:
+          - equation_prompt
+        equations:
+          type: array
+          maxItems: 50
+          items:
+            $ref: '#/components/schemas/Equation'
+        operator:
+          type: string
+          enum:
+          - '||'
+          - '&&'
+        prompt_condition:
+          allOf:
+          - $ref: '#/components/schemas/PromptCondition'
+          description: Optional prompt combined with the equations by operator. Omit to evaluate only equations. With no equations, only the prompt is evaluated. Deterministic matches take priority; otherwise
+            the prompt uses normal prompt transition timing.
     Equation:
       type: object
       required:
@@ -4669,7 +4702,8 @@ components:
             minLength: 1
           - $ref: '#/components/schemas/PromptCondition'
           - $ref: '#/components/schemas/EquationCondition'
-          description: Condition for global node activation. A string is a prompt condition and cannot be empty. Also accepts a typed prompt or equation condition.
+          - $ref: '#/components/schemas/EquationPromptCondition'
+          description: Condition for global node activation. A string is a prompt condition and cannot be empty. Also accepts typed PromptCondition, EquationCondition, or EquationPromptCondition objects.
         go_back_conditions:
           type: array
           items:
@@ -5416,9 +5450,34 @@ components:
         high_priority:
           type: boolean
           description: Whether to use high priority pool with more dedicated resource, default false
+    S2SModel:
+      type: string
+      enum:
+      - gpt-realtime-2.1
+      - gpt-realtime-2.1-mini
+      - gpt-realtime-2
+      - gpt-realtime-1.5
+      - gpt-realtime
+      - gpt-realtime-mini
+      description: The speech-to-speech model to use
+    ModelChoiceS2S:
+      type: object
+      required:
+      - type
+      - model
+      properties:
+        type:
+          type: string
+          enum:
+          - s2s
+          description: Type of model choice
+        model:
+          $ref: '#/components/schemas/S2SModel'
+          description: The speech-to-speech model to use
     ModelChoice:
       oneOf:
       - $ref: '#/components/schemas/ModelChoiceCascading'
+      - $ref: '#/components/schemas/ModelChoiceS2S'
     NaturalnessIssue:
       type: string
       enum:
@@ -5715,6 +5774,18 @@ components:
       - null
       nullable: true
       description: Available LLM models for agents.
+    NullableS2SModel:
+      type: string
+      enum:
+      - gpt-realtime-2.1
+      - gpt-realtime-2.1-mini
+      - gpt-realtime-2
+      - gpt-realtime-1.5
+      - gpt-realtime
+      - gpt-realtime-mini
+      - null
+      nullable: true
+      description: The speech-to-speech model to use
     NumberAnalysisData:
       type: object
       required:
@@ -6583,18 +6654,9 @@ components:
           example: gpt-5.6-terra
           description: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
         s2s_model:
-          type: string
-          enum:
-          - gpt-realtime-2.1
-          - gpt-realtime-2.1-mini
-          - gpt-realtime-2
-          - gpt-realtime-1.5
-          - gpt-realtime
-          - gpt-realtime-mini
-          - null
+          $ref: '#/components/schemas/NullableS2SModel'
           example: gpt-realtime-1.5
           description: Select the underlying speech to speech model. Can only set this or model, not both.
-          nullable: true
         model_temperature:
           type: number
           example: 0

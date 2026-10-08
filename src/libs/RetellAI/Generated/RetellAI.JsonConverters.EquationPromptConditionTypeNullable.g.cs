@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class CreateCreditTopupInvoicePendingResponsePaymentStatusNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.CreateCreditTopupInvoicePendingResponsePaymentStatus?>
+    public sealed class EquationPromptConditionTypeNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.EquationPromptConditionType?>
     {
         /// <inheritdoc />
-        public override global::RetellAI.CreateCreditTopupInvoicePendingResponsePaymentStatus? Read(
+        public override global::RetellAI.EquationPromptConditionType? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.CreateCreditTopupInvoicePendingResponsePaymentStatusExtensions.ToEnum(stringValue);
+                        return global::RetellAI.EquationPromptConditionTypeExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.CreateCreditTopupInvoicePendingResponsePaymentStatus)numValue;
+                    return (global::RetellAI.EquationPromptConditionType)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.CreateCreditTopupInvoicePendingResponsePaymentStatus?);
+                    return default(global::RetellAI.EquationPromptConditionType?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.CreateCreditTopupInvoicePendingResponsePaymentStatus? value,
+            global::RetellAI.EquationPromptConditionType? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace RetellAI.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::RetellAI.CreateCreditTopupInvoicePendingResponsePaymentStatusExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::RetellAI.EquationPromptConditionTypeExtensions.ToValueString(value.Value));
             }
         }
     }

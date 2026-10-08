@@ -45,6 +45,43 @@ namespace RetellAI
         public global::RetellAI.ModelChoiceCascading PickCascading() => Cascading is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'Cascading' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::RetellAI.ModelChoiceS2S? S2s { get; init; }
+#else
+        public global::RetellAI.ModelChoiceS2S? S2s { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(S2s))]
+#endif
+        public bool IsS2s => S2s != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickS2s(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.ModelChoiceS2S? value)
+        {
+            value = S2s;
+            return IsS2s;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::RetellAI.ModelChoiceS2S PickS2s() => S2s is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'S2s' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -71,7 +108,43 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator ModelChoice(global::RetellAI.ModelChoiceS2S value) => new ModelChoice((global::RetellAI.ModelChoiceS2S?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::RetellAI.ModelChoiceS2S?(ModelChoice @this) => @this.S2s;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public ModelChoice(global::RetellAI.ModelChoiceS2S? value)
+        {
+            S2s = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static ModelChoice FromS2s(global::RetellAI.ModelChoiceS2S? value) => new ModelChoice(value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public ModelChoice(
+            global::RetellAI.ModelChoiceCascading? cascading,
+            global::RetellAI.ModelChoiceS2S? s2s
+            )
+        {
+            Cascading = cascading;
+            S2s = s2s;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
         public object? Object =>
+            S2s as object ??
             Cascading as object
             ;
 
@@ -79,7 +152,8 @@ namespace RetellAI
         ///
         /// </summary>
         public override string? ToString() =>
-            Cascading?.ToString()
+            Cascading?.ToString() ??
+            S2s?.ToString()
             ;
 
         /// <summary>
@@ -87,7 +161,7 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsCascading;
+            return IsCascading && !IsS2s || !IsCascading && IsS2s;
         }
 
         /// <summary>
@@ -95,6 +169,7 @@ namespace RetellAI
         /// </summary>
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.ModelChoiceCascading, TResult>? cascading = null,
+            global::System.Func<global::RetellAI.ModelChoiceS2S, TResult>? s2s = null,
             bool validate = true)
         {
             if (validate)
@@ -106,6 +181,10 @@ namespace RetellAI
             {
                 return cascading(__value0);
             }
+            else if (S2s is { } __value1 && s2s != null)
+            {
+                return s2s(__value1);
+            }
 
             return default(TResult);
         }
@@ -115,6 +194,8 @@ namespace RetellAI
         /// </summary>
         public void Match(
             global::System.Action<global::RetellAI.ModelChoiceCascading>? cascading = null,
+
+            global::System.Action<global::RetellAI.ModelChoiceS2S>? s2s = null,
             bool validate = true)
         {
             if (validate)
@@ -125,6 +206,10 @@ namespace RetellAI
             if (Cascading is { } __value0)
             {
                 cascading?.Invoke(__value0);
+            }
+            else if (S2s is { } __value1)
+            {
+                s2s?.Invoke(__value1);
             }
         }
 
@@ -133,6 +218,7 @@ namespace RetellAI
         /// </summary>
         public void Switch(
             global::System.Action<global::RetellAI.ModelChoiceCascading>? cascading = null,
+            global::System.Action<global::RetellAI.ModelChoiceS2S>? s2s = null,
             bool validate = true)
         {
             if (validate)
@@ -143,6 +229,10 @@ namespace RetellAI
             if (Cascading is { } __value0)
             {
                 cascading?.Invoke(__value0);
+            }
+            else if (S2s is { } __value1)
+            {
+                s2s?.Invoke(__value1);
             }
         }
 
@@ -155,6 +245,8 @@ namespace RetellAI
             {
                 Cascading,
                 typeof(global::RetellAI.ModelChoiceCascading),
+                S2s,
+                typeof(global::RetellAI.ModelChoiceS2S),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -171,7 +263,8 @@ namespace RetellAI
         public bool Equals(ModelChoice other)
         {
             return
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ModelChoiceCascading?>.Default.Equals(Cascading, other.Cascading)
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ModelChoiceCascading?>.Default.Equals(Cascading, other.Cascading) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.ModelChoiceS2S?>.Default.Equals(S2s, other.S2s)
                 ;
         }
 

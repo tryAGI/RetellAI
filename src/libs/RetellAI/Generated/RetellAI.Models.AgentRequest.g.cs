@@ -424,6 +424,14 @@ namespace RetellAI
         public global::RetellAI.AgentRequestDenoisingMode? DenoisingMode { get; set; }
 
         /// <summary>
+        /// Controls the enhancement level for background voice cancellation. Set to 0 to bypass background voice cancellation without BVC charges. Value ranging from [0,1]. Only applicable when denoising_mode is noise-and-background-speech-cancellation. Defaults to 0.8 if no value is configured. Set to null to clear the configured value. Omitting this field preserves the existing value.<br/>
+        /// Example: 0.8
+        /// </summary>
+        /// <example>0.8</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("denoising_enhancement_level")]
+        public double? DenoisingEnhancementLevel { get; set; }
+
+        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("pii_config")]
@@ -674,6 +682,10 @@ namespace RetellAI
         /// If set, determines what denoising mode to use. Use "no-denoise" to bypass all audio denoising. Default to noise-cancellation.<br/>
         /// Example: noise-cancellation
         /// </param>
+        /// <param name="denoisingEnhancementLevel">
+        /// Controls the enhancement level for background voice cancellation. Set to 0 to bypass background voice cancellation without BVC charges. Value ranging from [0,1]. Only applicable when denoising_mode is noise-and-background-speech-cancellation. Defaults to 0.8 if no value is configured. Set to null to clear the configured value. Omitting this field preserves the existing value.<br/>
+        /// Example: 0.8
+        /// </param>
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
         /// <param name="handbookConfig">
@@ -745,6 +757,7 @@ namespace RetellAI
             bool? allowDtmfInterruption,
             global::RetellAI.AgentRequestUserDtmfOptions? userDtmfOptions,
             global::RetellAI.AgentRequestDenoisingMode? denoisingMode,
+            double? denoisingEnhancementLevel,
             global::RetellAI.PIIConfig? piiConfig,
             global::RetellAI.GuardrailConfig? guardrailConfig,
             global::RetellAI.VoiceHandbookConfig? handbookConfig,
@@ -804,6 +817,7 @@ namespace RetellAI
             this.AllowDtmfInterruption = allowDtmfInterruption;
             this.UserDtmfOptions = userDtmfOptions;
             this.DenoisingMode = denoisingMode;
+            this.DenoisingEnhancementLevel = denoisingEnhancementLevel;
             this.PiiConfig = piiConfig;
             this.GuardrailConfig = guardrailConfig;
             this.HandbookConfig = handbookConfig;

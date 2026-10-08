@@ -16,13 +16,11 @@ namespace RetellAI
         public global::RetellAI.NullableLLMModel? Model { get; set; }
 
         /// <summary>
-        /// Select the underlying speech to speech model. Can only set this or model, not both.<br/>
-        /// Example: gpt-realtime-1.5
+        /// The speech-to-speech model to use
         /// </summary>
-        /// <example>gpt-realtime-1.5</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("s2s_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.RetellLlmOverrideS2sModelJsonConverter))]
-        public global::RetellAI.RetellLlmOverrideS2sModel? S2sModel { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableS2SModelJsonConverter))]
+        public global::RetellAI.NullableS2SModel? S2sModel { get; set; }
 
         /// <summary>
         /// If set, will control the randomness of the response. Value ranging from [0,1]. Lower value means more deterministic, while higher value means more random. If unset, default value 0 will apply. Note that for tool calling, a lower value is recommended.<br/>
@@ -96,8 +94,7 @@ namespace RetellAI
         /// Available LLM models for agents.
         /// </param>
         /// <param name="s2sModel">
-        /// Select the underlying speech to speech model. Can only set this or model, not both.<br/>
-        /// Example: gpt-realtime-1.5
+        /// The speech-to-speech model to use
         /// </param>
         /// <param name="modelTemperature">
         /// If set, will control the randomness of the response. Value ranging from [0,1]. Lower value means more deterministic, while higher value means more random. If unset, default value 0 will apply. Note that for tool calling, a lower value is recommended.<br/>
@@ -131,7 +128,7 @@ namespace RetellAI
 #endif
         public RetellLlmOverride(
             global::RetellAI.NullableLLMModel? model,
-            global::RetellAI.RetellLlmOverrideS2sModel? s2sModel,
+            global::RetellAI.NullableS2SModel? s2sModel,
             double? modelTemperature,
             bool? modelHighPriority,
             bool? toolCallStrictMode,
