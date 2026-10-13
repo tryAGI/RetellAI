@@ -15,10 +15,6 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        Claude45Sonnet,
-        /// <summary>
-        ///
-        /// </summary>
         Claude46Sonnet,
         /// <summary>
         ///
@@ -76,10 +72,6 @@ namespace RetellAI
         ///
         /// </summary>
         Gpt41Mini,
-        /// <summary>
-        ///
-        /// </summary>
-        Gpt41Nano,
         /// <summary>
         ///
         /// </summary>
@@ -159,7 +151,6 @@ namespace RetellAI
             return value switch
             {
                 NullableLLMModel.Claude45Haiku => "claude-4.5-haiku",
-                NullableLLMModel.Claude45Sonnet => "claude-4.5-sonnet",
                 NullableLLMModel.Claude46Sonnet => "claude-4.6-sonnet",
                 NullableLLMModel.Claude5Opus => "claude-5-opus",
                 NullableLLMModel.Claude5Sonnet => "claude-5-sonnet",
@@ -175,7 +166,6 @@ namespace RetellAI
                 NullableLLMModel.Gemini38Flash => "gemini-3.8-flash",
                 NullableLLMModel.Gpt41 => "gpt-4.1",
                 NullableLLMModel.Gpt41Mini => "gpt-4.1-mini",
-                NullableLLMModel.Gpt41Nano => "gpt-4.1-nano",
                 NullableLLMModel.Gpt5 => "gpt-5",
                 NullableLLMModel.Gpt5Mini => "gpt-5-mini",
                 NullableLLMModel.Gpt5Nano => "gpt-5-nano",
@@ -203,7 +193,6 @@ namespace RetellAI
             return value switch
             {
                 "claude-4.5-haiku" => NullableLLMModel.Claude45Haiku,
-                "claude-4.5-sonnet" => NullableLLMModel.Claude45Sonnet,
                 "claude-4.6-sonnet" => NullableLLMModel.Claude46Sonnet,
                 "claude-5-opus" => NullableLLMModel.Claude5Opus,
                 "claude-5-sonnet" => NullableLLMModel.Claude5Sonnet,
@@ -219,7 +208,6 @@ namespace RetellAI
                 "gemini-3.8-flash" => NullableLLMModel.Gemini38Flash,
                 "gpt-4.1" => NullableLLMModel.Gpt41,
                 "gpt-4.1-mini" => NullableLLMModel.Gpt41Mini,
-                "gpt-4.1-nano" => NullableLLMModel.Gpt41Nano,
                 "gpt-5" => NullableLLMModel.Gpt5,
                 "gpt-5-mini" => NullableLLMModel.Gpt5Mini,
                 "gpt-5-nano" => NullableLLMModel.Gpt5Nano,
