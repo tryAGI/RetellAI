@@ -37,6 +37,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("role")) __score1++;
             if (__jsonProps.Contains("thought_signature")) __score1++;
             if (__jsonProps.Contains("tool_call_id")) __score1++;
+            if (__jsonProps.Contains("type")) __score1++;
             var __score2 = 0;
             if (__jsonProps.Contains("content")) __score2++;
             if (__jsonProps.Contains("role")) __score2++;

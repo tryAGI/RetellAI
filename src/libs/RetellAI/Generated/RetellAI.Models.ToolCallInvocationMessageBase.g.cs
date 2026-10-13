@@ -31,11 +31,19 @@ namespace RetellAI
         public required string ToolCallId { get; set; }
 
         /// <summary>
-        /// Name of the function in this tool call.
+        /// Name of the tool. This is the configured tool name, or the node name for a built-in conversation flow node, so it can contain spaces and non-ASCII characters. To identify the kind of tool, use `type`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("name")]
         [global::System.Text.Json.Serialization.JsonRequired]
         public required string Name { get; set; }
+
+        /// <summary>
+        /// Kind of tool. Known values are `custom`, `code`, `mcp`, `integration_app`, `end_call`, `transfer_call`, `bridge_transfer`, `cancel_transfer`, `agent_swap`, `press_digit`, `send_sms`, `extract_dynamic_variable`, `adjust_voice_speed`, `book_appointment_cal`, and `check_availability_cal`. New values can be added. Absent on tool calls sent by a custom LLM, and on some older calls and chats.<br/>
+        /// Example: transfer_call
+        /// </summary>
+        /// <example>transfer_call</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("type")]
+        public string? Type { get; set; }
 
         /// <summary>
         /// Arguments for this tool call, it's a stringified JSON object.
@@ -71,7 +79,7 @@ namespace RetellAI
         /// Tool call id, globally unique.
         /// </param>
         /// <param name="name">
-        /// Name of the function in this tool call.
+        /// Name of the tool. This is the configured tool name, or the node name for a built-in conversation flow node, so it can contain spaces and non-ASCII characters. To identify the kind of tool, use `type`.
         /// </param>
         /// <param name="arguments">
         /// Arguments for this tool call, it's a stringified JSON object.
@@ -82,6 +90,10 @@ namespace RetellAI
         /// </param>
         /// <param name="role">
         /// This is a tool call invocation.
+        /// </param>
+        /// <param name="type">
+        /// Kind of tool. Known values are `custom`, `code`, `mcp`, `integration_app`, `end_call`, `transfer_call`, `bridge_transfer`, `cancel_transfer`, `agent_swap`, `press_digit`, `send_sms`, `extract_dynamic_variable`, `adjust_voice_speed`, `book_appointment_cal`, and `check_availability_cal`. New values can be added. Absent on tool calls sent by a custom LLM, and on some older calls and chats.<br/>
+        /// Example: transfer_call
         /// </param>
         /// <param name="thoughtSignature">
         /// Optional thought signature from Google Gemini thinking models. This is used internally to maintain reasoning chain in multi-turn function calling.
@@ -99,6 +111,7 @@ namespace RetellAI
             string arguments,
             string? messageId,
             global::RetellAI.ToolCallInvocationMessageBaseRole role,
+            string? type,
             string? thoughtSignature,
             long? createdTimestamp)
         {
@@ -106,6 +119,7 @@ namespace RetellAI
             this.Role = role;
             this.ToolCallId = toolCallId ?? throw new global::System.ArgumentNullException(nameof(toolCallId));
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
+            this.Type = type;
             this.Arguments = arguments ?? throw new global::System.ArgumentNullException(nameof(arguments));
             this.ThoughtSignature = thoughtSignature;
             this.CreatedTimestamp = createdTimestamp;
