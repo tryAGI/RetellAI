@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-08-9c780cb
+  x-retell-spec-revision: 2026-10-12-bddd9c8
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -7481,7 +7481,14 @@ components:
           description: Tool call id, globally unique.
         name:
           type: string
-          description: Name of the function in this tool call.
+          description: Name of the tool. This is the configured tool name, or the node name for a built-in conversation flow node, so it can contain spaces and non-ASCII characters. To identify the kind
+            of tool, use `type`.
+        type:
+          type: string
+          example: transfer_call
+          description: Kind of tool. Known values are `custom`, `code`, `mcp`, `integration_app`, `end_call`, `transfer_call`, `bridge_transfer`, `cancel_transfer`, `agent_swap`, `press_digit`, `send_sms`,
+            `extract_dynamic_variable`, `adjust_voice_speed`, `book_appointment_cal`, and `check_availability_cal`. New values can be added. Absent on tool calls sent by a custom LLM, and on some older
+            calls and chats.
         arguments:
           type: string
           description: Arguments for this tool call, it's a stringified JSON object.
@@ -7516,7 +7523,14 @@ components:
           description: Tool call id, globally unique.
         name:
           type: string
-          description: Name of the function in this tool call.
+          description: Name of the tool. This is the configured tool name, or the node name for a built-in conversation flow node, so it can contain spaces and non-ASCII characters. To identify the kind
+            of tool, use `type`.
+        type:
+          type: string
+          example: transfer_call
+          description: Kind of tool. Known values are `custom`, `code`, `mcp`, `integration_app`, `end_call`, `transfer_call`, `bridge_transfer`, `cancel_transfer`, `agent_swap`, `press_digit`, `send_sms`,
+            `extract_dynamic_variable`, `adjust_voice_speed`, `book_appointment_cal`, and `check_availability_cal`. New values can be added. Absent on tool calls sent by a custom LLM, and on some older
+            calls and chats.
         arguments:
           type: string
           description: Arguments for this tool call, it's a stringified JSON object.
