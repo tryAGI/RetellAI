@@ -15,10 +15,6 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        Claude45Sonnet,
-        /// <summary>
-        ///
-        /// </summary>
         Claude46Sonnet,
         /// <summary>
         ///
@@ -76,10 +72,6 @@ namespace RetellAI
         ///
         /// </summary>
         Gpt41Mini,
-        /// <summary>
-        ///
-        /// </summary>
-        Gpt41Nano,
         /// <summary>
         ///
         /// </summary>
@@ -155,7 +147,6 @@ namespace RetellAI
             return value switch
             {
                 LLMModel.Claude45Haiku => "claude-4.5-haiku",
-                LLMModel.Claude45Sonnet => "claude-4.5-sonnet",
                 LLMModel.Claude46Sonnet => "claude-4.6-sonnet",
                 LLMModel.Claude5Opus => "claude-5-opus",
                 LLMModel.Claude5Sonnet => "claude-5-sonnet",
@@ -171,7 +162,6 @@ namespace RetellAI
                 LLMModel.Gemini38Flash => "gemini-3.8-flash",
                 LLMModel.Gpt41 => "gpt-4.1",
                 LLMModel.Gpt41Mini => "gpt-4.1-mini",
-                LLMModel.Gpt41Nano => "gpt-4.1-nano",
                 LLMModel.Gpt5 => "gpt-5",
                 LLMModel.Gpt5Mini => "gpt-5-mini",
                 LLMModel.Gpt5Nano => "gpt-5-nano",
@@ -198,7 +188,6 @@ namespace RetellAI
             return value switch
             {
                 "claude-4.5-haiku" => LLMModel.Claude45Haiku,
-                "claude-4.5-sonnet" => LLMModel.Claude45Sonnet,
                 "claude-4.6-sonnet" => LLMModel.Claude46Sonnet,
                 "claude-5-opus" => LLMModel.Claude5Opus,
                 "claude-5-sonnet" => LLMModel.Claude5Sonnet,
@@ -214,7 +203,6 @@ namespace RetellAI
                 "gemini-3.8-flash" => LLMModel.Gemini38Flash,
                 "gpt-4.1" => LLMModel.Gpt41,
                 "gpt-4.1-mini" => LLMModel.Gpt41Mini,
-                "gpt-4.1-nano" => LLMModel.Gpt41Nano,
                 "gpt-5" => LLMModel.Gpt5,
                 "gpt-5-mini" => LLMModel.Gpt5Mini,
                 "gpt-5-nano" => LLMModel.Gpt5Nano,
