@@ -49,6 +49,14 @@ namespace RetellAI
         public bool? IsPublished { get; set; }
 
         /// <summary>
+        /// Whether the agent is a transfer agent used for agentic warm transfer.<br/>
+        /// Example: false
+        /// </summary>
+        /// <example>false</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_transfer_agent")]
+        public bool? IsTransferAgent { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -76,6 +84,10 @@ namespace RetellAI
         /// Whether the agent is published.<br/>
         /// Example: false
         /// </param>
+        /// <param name="isTransferAgent">
+        /// Whether the agent is a transfer agent used for agentic warm transfer.<br/>
+        /// Example: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -84,13 +96,15 @@ namespace RetellAI
             int version,
             int? baseVersion,
             global::System.Collections.Generic.IList<string>? assignedTags,
-            bool? isPublished)
+            bool? isPublished,
+            bool? isTransferAgent)
         {
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.Version = version;
             this.BaseVersion = baseVersion;
             this.AssignedTags = assignedTags;
             this.IsPublished = isPublished;
+            this.IsTransferAgent = isTransferAgent;
         }
 
         /// <summary>
