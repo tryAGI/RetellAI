@@ -39,6 +39,14 @@ namespace RetellAI
         public bool? ModelHighPriority { get; set; }
 
         /// <summary>
+        /// If set to true, will use the ultrafast tier for much faster response generation, default to false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes precedence over model_high_priority. This feature comes with a higher cost.<br/>
+        /// Example: true
+        /// </summary>
+        /// <example>true</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_ultrafast")]
+        public bool? ModelUltrafast { get; set; }
+
+        /// <summary>
         /// Whether to use strict mode for tool calls. Only applicable when using certain supported models.<br/>
         /// Example: true
         /// </summary>
@@ -104,6 +112,10 @@ namespace RetellAI
         /// If set to true, will use high priority pool with more dedicated resource to ensure lower and more consistent latency, default to false. This feature usually comes with a higher cost.<br/>
         /// Example: true
         /// </param>
+        /// <param name="modelUltrafast">
+        /// If set to true, will use the ultrafast tier for much faster response generation, default to false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes precedence over model_high_priority. This feature comes with a higher cost.<br/>
+        /// Example: true
+        /// </param>
         /// <param name="toolCallStrictMode">
         /// Whether to use strict mode for tool calls. Only applicable when using certain supported models.<br/>
         /// Example: true
@@ -131,6 +143,7 @@ namespace RetellAI
             global::RetellAI.NullableS2SModel? s2sModel,
             double? modelTemperature,
             bool? modelHighPriority,
+            bool? modelUltrafast,
             bool? toolCallStrictMode,
             global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
             global::RetellAI.KBConfig? kbConfig,
@@ -142,6 +155,7 @@ namespace RetellAI
             this.S2sModel = s2sModel;
             this.ModelTemperature = modelTemperature;
             this.ModelHighPriority = modelHighPriority;
+            this.ModelUltrafast = modelUltrafast;
             this.ToolCallStrictMode = toolCallStrictMode;
             this.KnowledgeBaseIds = knowledgeBaseIds;
             this.KbConfig = kbConfig;

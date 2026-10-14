@@ -30,6 +30,12 @@ namespace RetellAI
         public bool? HighPriority { get; set; }
 
         /// <summary>
+        /// Whether to use the ultrafast tier for much faster response generation, default false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes precedence over high_priority.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ultrafast")]
+        public bool? Ultrafast { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -47,17 +53,22 @@ namespace RetellAI
         /// <param name="highPriority">
         /// Whether to use high priority pool with more dedicated resource, default false
         /// </param>
+        /// <param name="ultrafast">
+        /// Whether to use the ultrafast tier for much faster response generation, default false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes precedence over high_priority.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ModelChoiceCascading(
             global::RetellAI.LLMModel model,
             global::RetellAI.ModelChoiceCascadingType type,
-            bool? highPriority)
+            bool? highPriority,
+            bool? ultrafast)
         {
             this.Type = type;
             this.Model = model;
             this.HighPriority = highPriority;
+            this.Ultrafast = ultrafast;
         }
 
         /// <summary>
