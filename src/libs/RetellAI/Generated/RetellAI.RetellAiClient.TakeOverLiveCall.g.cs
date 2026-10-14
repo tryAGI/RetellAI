@@ -44,7 +44,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status.
+        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status. Gateway calls cannot be taken over while a PCI session is active.
         /// </summary>
         /// <param name="callId">
         /// Example: 119c3f8e47135a29e65947eeb34cf12d
@@ -71,7 +71,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status.
+        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status. Gateway calls cannot be taken over while a PCI session is active.
         /// </summary>
         /// <param name="callId">
         /// Example: 119c3f8e47135a29e65947eeb34cf12d
@@ -496,24 +496,61 @@ namespace RetellAI
                                         h => h.Key,
                                         h => h.Value));
                             }
+                            // Conflict
+                            if ((int)__response.StatusCode == 409)
+                            {
+                                string? __content_409 = null;
+                                global::System.Exception? __exception_409 = null;
+                                global::RetellAI.TakeOverLiveCallResponse6? __value_409 = null;
+                                try
+                                {
+                                    if (__effectiveReadResponseAsString)
+                                    {
+                                        __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+                                        __value_409 = global::RetellAI.TakeOverLiveCallResponse6.FromJson(__content_409, JsonSerializerContext);
+                                    }
+                                    else
+                                    {
+                                        __content_409 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
+
+                                        __value_409 = global::RetellAI.TakeOverLiveCallResponse6.FromJson(__content_409, JsonSerializerContext);
+                                    }
+                                }
+                                catch (global::System.Exception __ex)
+                                {
+                                    __exception_409 = __ex;
+                                }
+
+
+                                throw global::RetellAI.ApiException<global::RetellAI.TakeOverLiveCallResponse6>.Create(
+                                    statusCode: __response.StatusCode,
+                                    message: __content_409 ?? __response.ReasonPhrase ?? string.Empty,
+                                    innerException: __exception_409,
+                                    responseBody: __content_409,
+                                    responseObject: __value_409,
+                                    responseHeaders: global::System.Linq.Enumerable.ToDictionary(
+                                        __response.Headers,
+                                        h => h.Key,
+                                        h => h.Value));
+                            }
                             // Internal Server Error
                             if ((int)__response.StatusCode == 500)
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.TakeOverLiveCallResponse6? __value_500 = null;
+                                global::RetellAI.TakeOverLiveCallResponse7? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.TakeOverLiveCallResponse6.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.TakeOverLiveCallResponse7.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.TakeOverLiveCallResponse6.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.TakeOverLiveCallResponse7.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -522,7 +559,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.TakeOverLiveCallResponse6>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.TakeOverLiveCallResponse7>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
@@ -630,7 +667,7 @@ namespace RetellAI
             }
         }
         /// <summary>
-        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status.
+        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status. Gateway calls cannot be taken over while a PCI session is active.
         /// </summary>
         /// <param name="callId">
         /// Example: 119c3f8e47135a29e65947eeb34cf12d

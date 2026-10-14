@@ -6785,1131 +6785,1139 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListCallsResponse2>? Type1688 { get; set; }
+        public global::RetellAI.TakeOverLiveCallResponse7? Type1688 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListCallsResponse2? Type1689 { get; set; }
+        public global::RetellAI.TakeOverLiveCallResponseStatus6? Type1689 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.V3CallResponse>? Type1690 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListCallsResponse2>? Type1690 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListCallsResponse3? Type1691 { get; set; }
+        public global::RetellAI.ListCallsResponse2? Type1691 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListCallsResponseStatus? Type1692 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.V3CallResponse>? Type1692 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListCallsResponse4? Type1693 { get; set; }
+        public global::RetellAI.ListCallsResponse3? Type1693 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListCallsResponseStatus2? Type1694 { get; set; }
+        public global::RetellAI.ListCallsResponseStatus? Type1694 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListCallsResponse5? Type1695 { get; set; }
+        public global::RetellAI.ListCallsResponse4? Type1695 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListCallsResponseStatus3? Type1696 { get; set; }
+        public global::RetellAI.ListCallsResponseStatus2? Type1696 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListCallsResponse6? Type1697 { get; set; }
+        public global::RetellAI.ListCallsResponse5? Type1697 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListCallsResponseStatus4? Type1698 { get; set; }
+        public global::RetellAI.ListCallsResponseStatus3? Type1698 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListExportRequestsResponse2>? Type1699 { get; set; }
+        public global::RetellAI.ListCallsResponse6? Type1699 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponse2? Type1700 { get; set; }
+        public global::RetellAI.ListCallsResponseStatus4? Type1700 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.ListExportRequestsResponseItem>? Type1701 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListExportRequestsResponse2>? Type1701 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponseItem? Type1702 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse2? Type1702 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponseItemChannel? Type1703 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ListExportRequestsResponseItem>? Type1703 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponseItemStatus? Type1704 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseItem? Type1704 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponse3? Type1705 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseItemChannel? Type1705 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponseStatus? Type1706 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseItemStatus? Type1706 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponse4? Type1707 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse3? Type1707 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponseStatus2? Type1708 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseStatus? Type1708 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponse5? Type1709 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse4? Type1709 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponseStatus3? Type1710 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseStatus2? Type1710 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponse6? Type1711 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse5? Type1711 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListExportRequestsResponseStatus4? Type1712 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseStatus3? Type1712 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponse? Type1713 { get; set; }
+        public global::RetellAI.ListExportRequestsResponse6? Type1713 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponseStatus? Type1714 { get; set; }
+        public global::RetellAI.ListExportRequestsResponseStatus4? Type1714 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponse2? Type1715 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponse? Type1715 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponseStatus2? Type1716 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponseStatus? Type1716 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponse3? Type1717 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponse2? Type1717 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponseStatus3? Type1718 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponseStatus2? Type1718 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponse4? Type1719 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponse3? Type1719 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponseStatus4? Type1720 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponseStatus3? Type1720 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponse5? Type1721 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponse4? Type1721 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponseStatus5? Type1722 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponseStatus4? Type1722 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponse6? Type1723 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponse5? Type1723 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RegisterPhoneCallResponseStatus6? Type1724 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponseStatus5? Type1724 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCallMetadataResponse? Type1725 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponse6? Type1725 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCallMetadataResponseStatus? Type1726 { get; set; }
+        public global::RetellAI.RegisterPhoneCallResponseStatus6? Type1726 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCallMetadataResponse2? Type1727 { get; set; }
+        public global::RetellAI.UpdateCallMetadataResponse? Type1727 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCallMetadataResponseStatus2? Type1728 { get; set; }
+        public global::RetellAI.UpdateCallMetadataResponseStatus? Type1728 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCallMetadataResponse3? Type1729 { get; set; }
+        public global::RetellAI.UpdateCallMetadataResponse2? Type1729 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCallMetadataResponseStatus3? Type1730 { get; set; }
+        public global::RetellAI.UpdateCallMetadataResponseStatus2? Type1730 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCallMetadataResponse4? Type1731 { get; set; }
+        public global::RetellAI.UpdateCallMetadataResponse3? Type1731 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCallMetadataResponseStatus4? Type1732 { get; set; }
+        public global::RetellAI.UpdateCallMetadataResponseStatus3? Type1732 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponse? Type1733 { get; set; }
+        public global::RetellAI.UpdateCallMetadataResponse4? Type1733 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponse2? Type1734 { get; set; }
+        public global::RetellAI.UpdateCallMetadataResponseStatus4? Type1734 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponseStatus? Type1735 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponse? Type1735 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponse3? Type1736 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponse2? Type1736 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponseStatus2? Type1737 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponseStatus? Type1737 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponse4? Type1738 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponse3? Type1738 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponseStatus3? Type1739 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponseStatus2? Type1739 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponse5? Type1740 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponse4? Type1740 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponseStatus4? Type1741 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponseStatus3? Type1741 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponse6? Type1742 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponse5? Type1742 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateLiveCallResponseStatus5? Type1743 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponseStatus4? Type1743 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StopCallResponse? Type1744 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponse6? Type1744 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StopCallResponseStatus? Type1745 { get; set; }
+        public global::RetellAI.UpdateLiveCallResponseStatus5? Type1745 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StopCallResponse2? Type1746 { get; set; }
+        public global::RetellAI.StopCallResponse? Type1746 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StopCallResponseStatus2? Type1747 { get; set; }
+        public global::RetellAI.StopCallResponseStatus? Type1747 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StopCallResponse3? Type1748 { get; set; }
+        public global::RetellAI.StopCallResponse2? Type1748 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StopCallResponseStatus3? Type1749 { get; set; }
+        public global::RetellAI.StopCallResponseStatus2? Type1749 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StopCallResponse4? Type1750 { get; set; }
+        public global::RetellAI.StopCallResponse3? Type1750 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StopCallResponseStatus4? Type1751 { get; set; }
+        public global::RetellAI.StopCallResponseStatus3? Type1751 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactResponse? Type1752 { get; set; }
+        public global::RetellAI.StopCallResponse4? Type1752 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactResponseStatus? Type1753 { get; set; }
+        public global::RetellAI.StopCallResponseStatus4? Type1753 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactResponse2? Type1754 { get; set; }
+        public global::RetellAI.CreateContactResponse? Type1754 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactResponseStatus2? Type1755 { get; set; }
+        public global::RetellAI.CreateContactResponseStatus? Type1755 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactResponse3? Type1756 { get; set; }
+        public global::RetellAI.CreateContactResponse2? Type1756 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactResponseStatus3? Type1757 { get; set; }
+        public global::RetellAI.CreateContactResponseStatus2? Type1757 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactResponse4? Type1758 { get; set; }
+        public global::RetellAI.CreateContactResponse3? Type1758 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactResponseStatus4? Type1759 { get; set; }
+        public global::RetellAI.CreateContactResponseStatus3? Type1759 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UploadContactImportFileResponse? Type1760 { get; set; }
+        public global::RetellAI.CreateContactResponse4? Type1760 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UploadContactImportFileResponse2? Type1761 { get; set; }
+        public global::RetellAI.CreateContactResponseStatus4? Type1761 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UploadContactImportFileResponseStatus? Type1762 { get; set; }
+        public global::RetellAI.UploadContactImportFileResponse? Type1762 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UploadContactImportFileResponse3? Type1763 { get; set; }
+        public global::RetellAI.UploadContactImportFileResponse2? Type1763 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UploadContactImportFileResponseStatus2? Type1764 { get; set; }
+        public global::RetellAI.UploadContactImportFileResponseStatus? Type1764 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UploadContactImportFileResponse4? Type1765 { get; set; }
+        public global::RetellAI.UploadContactImportFileResponse3? Type1765 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UploadContactImportFileResponseStatus3? Type1766 { get; set; }
+        public global::RetellAI.UploadContactImportFileResponseStatus2? Type1766 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UploadContactImportFileResponse5? Type1767 { get; set; }
+        public global::RetellAI.UploadContactImportFileResponse4? Type1767 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UploadContactImportFileResponseStatus4? Type1768 { get; set; }
+        public global::RetellAI.UploadContactImportFileResponseStatus3? Type1768 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponse? Type1769 { get; set; }
+        public global::RetellAI.UploadContactImportFileResponse5? Type1769 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponseStatus? Type1770 { get; set; }
+        public global::RetellAI.UploadContactImportFileResponseStatus4? Type1770 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponse2? Type1771 { get; set; }
+        public global::RetellAI.CreateContactImportResponse? Type1771 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponseStatus2? Type1772 { get; set; }
+        public global::RetellAI.CreateContactImportResponseStatus? Type1772 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponse3? Type1773 { get; set; }
+        public global::RetellAI.CreateContactImportResponse2? Type1773 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponseStatus3? Type1774 { get; set; }
+        public global::RetellAI.CreateContactImportResponseStatus2? Type1774 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponse4? Type1775 { get; set; }
+        public global::RetellAI.CreateContactImportResponse3? Type1775 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponseStatus4? Type1776 { get; set; }
+        public global::RetellAI.CreateContactImportResponseStatus3? Type1776 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponse5? Type1777 { get; set; }
+        public global::RetellAI.CreateContactImportResponse4? Type1777 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateContactImportResponseStatus5? Type1778 { get; set; }
+        public global::RetellAI.CreateContactImportResponseStatus4? Type1778 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactImportResponse? Type1779 { get; set; }
+        public global::RetellAI.CreateContactImportResponse5? Type1779 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactImportResponseStatus? Type1780 { get; set; }
+        public global::RetellAI.CreateContactImportResponseStatus5? Type1780 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactImportResponse2? Type1781 { get; set; }
+        public global::RetellAI.GetContactImportResponse? Type1781 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactImportResponseStatus2? Type1782 { get; set; }
+        public global::RetellAI.GetContactImportResponseStatus? Type1782 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactImportResponse3? Type1783 { get; set; }
+        public global::RetellAI.GetContactImportResponse2? Type1783 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactImportResponseStatus3? Type1784 { get; set; }
+        public global::RetellAI.GetContactImportResponseStatus2? Type1784 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactResponse? Type1785 { get; set; }
+        public global::RetellAI.GetContactImportResponse3? Type1785 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactResponseStatus? Type1786 { get; set; }
+        public global::RetellAI.GetContactImportResponseStatus3? Type1786 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactResponse2? Type1787 { get; set; }
+        public global::RetellAI.GetContactResponse? Type1787 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactResponseStatus2? Type1788 { get; set; }
+        public global::RetellAI.GetContactResponseStatus? Type1788 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactResponse3? Type1789 { get; set; }
+        public global::RetellAI.GetContactResponse2? Type1789 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactResponseStatus3? Type1790 { get; set; }
+        public global::RetellAI.GetContactResponseStatus2? Type1790 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactResponse4? Type1791 { get; set; }
+        public global::RetellAI.GetContactResponse3? Type1791 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactResponseStatus4? Type1792 { get; set; }
+        public global::RetellAI.GetContactResponseStatus3? Type1792 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponse? Type1793 { get; set; }
+        public global::RetellAI.GetContactResponse4? Type1793 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponseStatus? Type1794 { get; set; }
+        public global::RetellAI.GetContactResponseStatus4? Type1794 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponse2? Type1795 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponse? Type1795 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponseStatus2? Type1796 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponseStatus? Type1796 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponse3? Type1797 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponse2? Type1797 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponseStatus3? Type1798 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponseStatus2? Type1798 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponse4? Type1799 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponse3? Type1799 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponseStatus4? Type1800 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponseStatus3? Type1800 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponse5? Type1801 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponse4? Type1801 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetContactByPhoneResponseStatus5? Type1802 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponseStatus4? Type1802 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponse? Type1803 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponse5? Type1803 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponseStatus? Type1804 { get; set; }
+        public global::RetellAI.GetContactByPhoneResponseStatus5? Type1804 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponse2? Type1805 { get; set; }
+        public global::RetellAI.UpdateContactResponse? Type1805 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponseStatus2? Type1806 { get; set; }
+        public global::RetellAI.UpdateContactResponseStatus? Type1806 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponse3? Type1807 { get; set; }
+        public global::RetellAI.UpdateContactResponse2? Type1807 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponseStatus3? Type1808 { get; set; }
+        public global::RetellAI.UpdateContactResponseStatus2? Type1808 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponse4? Type1809 { get; set; }
+        public global::RetellAI.UpdateContactResponse3? Type1809 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponseStatus4? Type1810 { get; set; }
+        public global::RetellAI.UpdateContactResponseStatus3? Type1810 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponse5? Type1811 { get; set; }
+        public global::RetellAI.UpdateContactResponse4? Type1811 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateContactResponseStatus5? Type1812 { get; set; }
+        public global::RetellAI.UpdateContactResponseStatus4? Type1812 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponse? Type1813 { get; set; }
+        public global::RetellAI.UpdateContactResponse5? Type1813 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponseStatus? Type1814 { get; set; }
+        public global::RetellAI.UpdateContactResponseStatus5? Type1814 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponse2? Type1815 { get; set; }
+        public global::RetellAI.DeleteContactResponse? Type1815 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponseStatus2? Type1816 { get; set; }
+        public global::RetellAI.DeleteContactResponseStatus? Type1816 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponse3? Type1817 { get; set; }
+        public global::RetellAI.DeleteContactResponse2? Type1817 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponseStatus3? Type1818 { get; set; }
+        public global::RetellAI.DeleteContactResponseStatus2? Type1818 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponse4? Type1819 { get; set; }
+        public global::RetellAI.DeleteContactResponse3? Type1819 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponseStatus4? Type1820 { get; set; }
+        public global::RetellAI.DeleteContactResponseStatus3? Type1820 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponse5? Type1821 { get; set; }
+        public global::RetellAI.DeleteContactResponse4? Type1821 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteContactResponseStatus5? Type1822 { get; set; }
+        public global::RetellAI.DeleteContactResponseStatus4? Type1822 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsResponse? Type1823 { get; set; }
+        public global::RetellAI.DeleteContactResponse5? Type1823 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsResponseStatus? Type1824 { get; set; }
+        public global::RetellAI.DeleteContactResponseStatus5? Type1824 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsResponse2? Type1825 { get; set; }
+        public global::RetellAI.ListContactsResponse? Type1825 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsResponseStatus2? Type1826 { get; set; }
+        public global::RetellAI.ListContactsResponseStatus? Type1826 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsResponse3? Type1827 { get; set; }
+        public global::RetellAI.ListContactsResponse2? Type1827 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsResponseStatus3? Type1828 { get; set; }
+        public global::RetellAI.ListContactsResponseStatus2? Type1828 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsResponse4? Type1829 { get; set; }
+        public global::RetellAI.ListContactsResponse3? Type1829 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsResponseStatus4? Type1830 { get; set; }
+        public global::RetellAI.ListContactsResponseStatus3? Type1830 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactConversationsResponse? Type1831 { get; set; }
+        public global::RetellAI.ListContactsResponse4? Type1831 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactConversationsResponseStatus? Type1832 { get; set; }
+        public global::RetellAI.ListContactsResponseStatus4? Type1832 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactConversationsResponse2? Type1833 { get; set; }
+        public global::RetellAI.ListContactConversationsResponse? Type1833 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactConversationsResponseStatus2? Type1834 { get; set; }
+        public global::RetellAI.ListContactConversationsResponseStatus? Type1834 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactConversationsResponse3? Type1835 { get; set; }
+        public global::RetellAI.ListContactConversationsResponse2? Type1835 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactConversationsResponseStatus3? Type1836 { get; set; }
+        public global::RetellAI.ListContactConversationsResponseStatus2? Type1836 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactConversationsResponse4? Type1837 { get; set; }
+        public global::RetellAI.ListContactConversationsResponse3? Type1837 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactConversationsResponseStatus4? Type1838 { get; set; }
+        public global::RetellAI.ListContactConversationsResponseStatus3? Type1838 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateAppResponse? Type1839 { get; set; }
+        public global::RetellAI.ListContactConversationsResponse4? Type1839 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateAppResponseStatus? Type1840 { get; set; }
+        public global::RetellAI.ListContactConversationsResponseStatus4? Type1840 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateAppResponse2? Type1841 { get; set; }
+        public global::RetellAI.CreateAppResponse? Type1841 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateAppResponseStatus2? Type1842 { get; set; }
+        public global::RetellAI.CreateAppResponseStatus? Type1842 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateAppResponse3? Type1843 { get; set; }
+        public global::RetellAI.CreateAppResponse2? Type1843 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateAppResponseStatus3? Type1844 { get; set; }
+        public global::RetellAI.CreateAppResponseStatus2? Type1844 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateAppResponse4? Type1845 { get; set; }
+        public global::RetellAI.CreateAppResponse3? Type1845 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateAppResponseStatus4? Type1846 { get; set; }
+        public global::RetellAI.CreateAppResponseStatus3? Type1846 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppResponse? Type1847 { get; set; }
+        public global::RetellAI.CreateAppResponse4? Type1847 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppResponseStatus? Type1848 { get; set; }
+        public global::RetellAI.CreateAppResponseStatus4? Type1848 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppResponse2? Type1849 { get; set; }
+        public global::RetellAI.GetAppResponse? Type1849 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppResponseStatus2? Type1850 { get; set; }
+        public global::RetellAI.GetAppResponseStatus? Type1850 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppResponse3? Type1851 { get; set; }
+        public global::RetellAI.GetAppResponse2? Type1851 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppResponseStatus3? Type1852 { get; set; }
+        public global::RetellAI.GetAppResponseStatus2? Type1852 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppResponse4? Type1853 { get; set; }
+        public global::RetellAI.GetAppResponse3? Type1853 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppResponseStatus4? Type1854 { get; set; }
+        public global::RetellAI.GetAppResponseStatus3? Type1854 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponse? Type1855 { get; set; }
+        public global::RetellAI.GetAppResponse4? Type1855 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponseStatus? Type1856 { get; set; }
+        public global::RetellAI.GetAppResponseStatus4? Type1856 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponse2? Type1857 { get; set; }
+        public global::RetellAI.UpdateAppResponse? Type1857 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponseStatus2? Type1858 { get; set; }
+        public global::RetellAI.UpdateAppResponseStatus? Type1858 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponse3? Type1859 { get; set; }
+        public global::RetellAI.UpdateAppResponse2? Type1859 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponseStatus3? Type1860 { get; set; }
+        public global::RetellAI.UpdateAppResponseStatus2? Type1860 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponse4? Type1861 { get; set; }
+        public global::RetellAI.UpdateAppResponse3? Type1861 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponseStatus4? Type1862 { get; set; }
+        public global::RetellAI.UpdateAppResponseStatus3? Type1862 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponse5? Type1863 { get; set; }
+        public global::RetellAI.UpdateAppResponse4? Type1863 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateAppResponseStatus5? Type1864 { get; set; }
+        public global::RetellAI.UpdateAppResponseStatus4? Type1864 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponse? Type1865 { get; set; }
+        public global::RetellAI.UpdateAppResponse5? Type1865 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponseStatus? Type1866 { get; set; }
+        public global::RetellAI.UpdateAppResponseStatus5? Type1866 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponse2? Type1867 { get; set; }
+        public global::RetellAI.DeleteAppResponse? Type1867 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponseStatus2? Type1868 { get; set; }
+        public global::RetellAI.DeleteAppResponseStatus? Type1868 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponse3? Type1869 { get; set; }
+        public global::RetellAI.DeleteAppResponse2? Type1869 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponseStatus3? Type1870 { get; set; }
+        public global::RetellAI.DeleteAppResponseStatus2? Type1870 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponse4? Type1871 { get; set; }
+        public global::RetellAI.DeleteAppResponse3? Type1871 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponseStatus4? Type1872 { get; set; }
+        public global::RetellAI.DeleteAppResponseStatus3? Type1872 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponse5? Type1873 { get; set; }
+        public global::RetellAI.DeleteAppResponse4? Type1873 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DeleteAppResponseStatus5? Type1874 { get; set; }
+        public global::RetellAI.DeleteAppResponseStatus4? Type1874 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppsResponse2>? Type1875 { get; set; }
+        public global::RetellAI.DeleteAppResponse5? Type1875 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppsResponse2? Type1876 { get; set; }
+        public global::RetellAI.DeleteAppResponseStatus5? Type1876 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.AppResponse>? Type1877 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppsResponse2>? Type1877 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppsResponse3? Type1878 { get; set; }
+        public global::RetellAI.ListAppsResponse2? Type1878 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppsResponseStatus? Type1879 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.AppResponse>? Type1879 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppsResponse4? Type1880 { get; set; }
+        public global::RetellAI.ListAppsResponse3? Type1880 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppsResponseStatus2? Type1881 { get; set; }
+        public global::RetellAI.ListAppsResponseStatus? Type1881 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppsResponse5? Type1882 { get; set; }
+        public global::RetellAI.ListAppsResponse4? Type1882 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppsResponseStatus3? Type1883 { get; set; }
+        public global::RetellAI.ListAppsResponseStatus2? Type1883 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppUsagesResponse2>? Type1884 { get; set; }
+        public global::RetellAI.ListAppsResponse5? Type1884 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppUsagesResponse2? Type1885 { get; set; }
+        public global::RetellAI.ListAppsResponseStatus3? Type1885 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.AppUsageResponse>? Type1886 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppUsagesResponse2>? Type1886 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppUsagesResponse3? Type1887 { get; set; }
+        public global::RetellAI.ListAppUsagesResponse2? Type1887 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppUsagesResponseStatus? Type1888 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.AppUsageResponse>? Type1888 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppUsagesResponse4? Type1889 { get; set; }
+        public global::RetellAI.ListAppUsagesResponse3? Type1889 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppUsagesResponseStatus2? Type1890 { get; set; }
+        public global::RetellAI.ListAppUsagesResponseStatus? Type1890 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppUsagesResponse5? Type1891 { get; set; }
+        public global::RetellAI.ListAppUsagesResponse4? Type1891 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppUsagesResponseStatus3? Type1892 { get; set; }
+        public global::RetellAI.ListAppUsagesResponseStatus2? Type1892 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppUsagesResponse6? Type1893 { get; set; }
+        public global::RetellAI.ListAppUsagesResponse5? Type1893 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListAppUsagesResponseStatus4? Type1894 { get; set; }
+        public global::RetellAI.ListAppUsagesResponseStatus3? Type1894 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TestAppAuthResponse? Type1895 { get; set; }
+        public global::RetellAI.ListAppUsagesResponse6? Type1895 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TestAppAuthResponse2? Type1896 { get; set; }
+        public global::RetellAI.ListAppUsagesResponseStatus4? Type1896 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TestAppAuthResponseStatus? Type1897 { get; set; }
+        public global::RetellAI.TestAppAuthResponse? Type1897 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TestAppAuthResponse3? Type1898 { get; set; }
+        public global::RetellAI.TestAppAuthResponse2? Type1898 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TestAppAuthResponseStatus2? Type1899 { get; set; }
+        public global::RetellAI.TestAppAuthResponseStatus? Type1899 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TestAppAuthResponse4? Type1900 { get; set; }
+        public global::RetellAI.TestAppAuthResponse3? Type1900 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TestAppAuthResponseStatus3? Type1901 { get; set; }
+        public global::RetellAI.TestAppAuthResponseStatus2? Type1901 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TestAppAuthResponse5? Type1902 { get; set; }
+        public global::RetellAI.TestAppAuthResponse4? Type1902 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.TestAppAuthResponseStatus4? Type1903 { get; set; }
+        public global::RetellAI.TestAppAuthResponseStatus3? Type1903 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppToolSchemaResponse? Type1904 { get; set; }
+        public global::RetellAI.TestAppAuthResponse5? Type1904 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppToolSchemaResponse2? Type1905 { get; set; }
+        public global::RetellAI.TestAppAuthResponseStatus4? Type1905 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppToolSchemaResponseStatus? Type1906 { get; set; }
+        public global::RetellAI.GetAppToolSchemaResponse? Type1906 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppToolSchemaResponse3? Type1907 { get; set; }
+        public global::RetellAI.GetAppToolSchemaResponse2? Type1907 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppToolSchemaResponseStatus2? Type1908 { get; set; }
+        public global::RetellAI.GetAppToolSchemaResponseStatus? Type1908 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppToolSchemaResponse4? Type1909 { get; set; }
+        public global::RetellAI.GetAppToolSchemaResponse3? Type1909 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppToolSchemaResponseStatus3? Type1910 { get; set; }
+        public global::RetellAI.GetAppToolSchemaResponseStatus2? Type1910 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppToolSchemaResponse5? Type1911 { get; set; }
+        public global::RetellAI.GetAppToolSchemaResponse4? Type1911 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetAppToolSchemaResponseStatus4? Type1912 { get; set; }
+        public global::RetellAI.GetAppToolSchemaResponseStatus3? Type1912 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmConfigResponse? Type1913 { get; set; }
+        public global::RetellAI.GetAppToolSchemaResponse5? Type1913 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmConfigResponseStatus? Type1914 { get; set; }
+        public global::RetellAI.GetAppToolSchemaResponseStatus4? Type1914 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmConfigResponse2? Type1915 { get; set; }
+        public global::RetellAI.GetCrmConfigResponse? Type1915 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmConfigResponseStatus2? Type1916 { get; set; }
+        public global::RetellAI.GetCrmConfigResponseStatus? Type1916 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmConfigResponse3? Type1917 { get; set; }
+        public global::RetellAI.GetCrmConfigResponse2? Type1917 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmConfigResponseStatus3? Type1918 { get; set; }
+        public global::RetellAI.GetCrmConfigResponseStatus2? Type1918 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponse? Type1919 { get; set; }
+        public global::RetellAI.GetCrmConfigResponse3? Type1919 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponseStatus? Type1920 { get; set; }
+        public global::RetellAI.GetCrmConfigResponseStatus3? Type1920 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponse2? Type1921 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponse? Type1921 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponseStatus2? Type1922 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponseStatus? Type1922 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponse3? Type1923 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponse2? Type1923 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponseStatus3? Type1924 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponseStatus2? Type1924 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponse4? Type1925 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponse3? Type1925 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponseStatus4? Type1926 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponseStatus3? Type1926 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponse5? Type1927 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponse4? Type1927 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UpdateCrmConfigResponseStatus5? Type1928 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponseStatus4? Type1928 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RunSyncJobResponse? Type1929 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponse5? Type1929 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RunSyncJobResponseStatus? Type1930 { get; set; }
+        public global::RetellAI.UpdateCrmConfigResponseStatus5? Type1930 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RunSyncJobResponse2? Type1931 { get; set; }
+        public global::RetellAI.RunSyncJobResponse? Type1931 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RunSyncJobResponseStatus2? Type1932 { get; set; }
+        public global::RetellAI.RunSyncJobResponseStatus? Type1932 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RunSyncJobResponse3? Type1933 { get; set; }
+        public global::RetellAI.RunSyncJobResponse2? Type1933 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RunSyncJobResponseStatus3? Type1934 { get; set; }
+        public global::RetellAI.RunSyncJobResponseStatus2? Type1934 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RunSyncJobResponse4? Type1935 { get; set; }
+        public global::RetellAI.RunSyncJobResponse3? Type1935 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RunSyncJobResponseStatus4? Type1936 { get; set; }
+        public global::RetellAI.RunSyncJobResponseStatus3? Type1936 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetSyncJobStatusResponse? Type1937 { get; set; }
+        public global::RetellAI.RunSyncJobResponse4? Type1937 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetSyncJobStatusResponseStatus? Type1938 { get; set; }
+        public global::RetellAI.RunSyncJobResponseStatus4? Type1938 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetSyncJobStatusResponse2? Type1939 { get; set; }
+        public global::RetellAI.GetSyncJobStatusResponse? Type1939 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetSyncJobStatusResponseStatus2? Type1940 { get; set; }
+        public global::RetellAI.GetSyncJobStatusResponseStatus? Type1940 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetSyncJobStatusResponse3? Type1941 { get; set; }
+        public global::RetellAI.GetSyncJobStatusResponse2? Type1941 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetSyncJobStatusResponseStatus3? Type1942 { get; set; }
+        public global::RetellAI.GetSyncJobStatusResponseStatus2? Type1942 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BackfillContactAnalysisDataResponse? Type1943 { get; set; }
+        public global::RetellAI.GetSyncJobStatusResponse3? Type1943 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BackfillContactAnalysisDataResponseStatus? Type1944 { get; set; }
+        public global::RetellAI.GetSyncJobStatusResponseStatus3? Type1944 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BackfillContactAnalysisDataResponse2? Type1945 { get; set; }
+        public global::RetellAI.BackfillContactAnalysisDataResponse? Type1945 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BackfillContactAnalysisDataResponseStatus2? Type1946 { get; set; }
+        public global::RetellAI.BackfillContactAnalysisDataResponseStatus? Type1946 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BackfillContactAnalysisDataResponse3? Type1947 { get; set; }
+        public global::RetellAI.BackfillContactAnalysisDataResponse2? Type1947 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BackfillContactAnalysisDataResponseStatus3? Type1948 { get; set; }
+        public global::RetellAI.BackfillContactAnalysisDataResponseStatus2? Type1948 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BackfillContactAnalysisDataResponse4? Type1949 { get; set; }
+        public global::RetellAI.BackfillContactAnalysisDataResponse3? Type1949 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BackfillContactAnalysisDataResponseStatus4? Type1950 { get; set; }
+        public global::RetellAI.BackfillContactAnalysisDataResponseStatus3? Type1950 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetBackfillContactJobStatusResponse? Type1951 { get; set; }
+        public global::RetellAI.BackfillContactAnalysisDataResponse4? Type1951 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetBackfillContactJobStatusResponseStatus? Type1952 { get; set; }
+        public global::RetellAI.BackfillContactAnalysisDataResponseStatus4? Type1952 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetBackfillContactJobStatusResponse2? Type1953 { get; set; }
+        public global::RetellAI.GetBackfillContactJobStatusResponse? Type1953 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetBackfillContactJobStatusResponseStatus2? Type1954 { get; set; }
+        public global::RetellAI.GetBackfillContactJobStatusResponseStatus? Type1954 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetBackfillContactJobStatusResponse3? Type1955 { get; set; }
+        public global::RetellAI.GetBackfillContactJobStatusResponse2? Type1955 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetBackfillContactJobStatusResponseStatus3? Type1956 { get; set; }
+        public global::RetellAI.GetBackfillContactJobStatusResponseStatus2? Type1956 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponse? Type1957 { get; set; }
+        public global::RetellAI.GetBackfillContactJobStatusResponse3? Type1957 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponse2? Type1958 { get; set; }
+        public global::RetellAI.GetBackfillContactJobStatusResponseStatus3? Type1958 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponseStatus? Type1959 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponse? Type1959 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponse3? Type1960 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponse2? Type1960 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponseStatus2? Type1961 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponseStatus? Type1961 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponse4? Type1962 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponse3? Type1962 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponseStatus3? Type1963 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponseStatus2? Type1963 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponse5? Type1964 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponse4? Type1964 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponseStatus4? Type1965 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponseStatus3? Type1965 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponse6? Type1966 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponse5? Type1966 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponseStatus5? Type1967 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponseStatus4? Type1967 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponse7? Type1968 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponse6? Type1968 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GetCrmSchemaResponseStatus6? Type1969 { get; set; }
+        public global::RetellAI.GetCrmSchemaResponseStatus5? Type1969 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::RetellAI.GetCrmSchemaResponse7? Type1970 { get; set; }
+        /// <summary>
+        ///
+        /// </summary>
+        public global::RetellAI.GetCrmSchemaResponseStatus6? Type1971 { get; set; }
 
         /// <summary>
         ///
