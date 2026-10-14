@@ -16,9 +16,9 @@ namespace RetellAI
         public global::RetellAI.TakeOverLiveCallResponseStatus5? Status { get; set; }
 
         /// <summary>
-        /// Example: An unexpected server error occurred.
+        /// Example: Resource update conflict.
         /// </summary>
-        /// <example>An unexpected server error occurred.</example>
+        /// <example>Resource update conflict.</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }
 
@@ -33,7 +33,7 @@ namespace RetellAI
         /// </summary>
         /// <param name="status"></param>
         /// <param name="message">
-        /// Example: An unexpected server error occurred.
+        /// Example: Resource update conflict.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
