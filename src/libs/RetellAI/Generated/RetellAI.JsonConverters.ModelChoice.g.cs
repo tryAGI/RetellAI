@@ -31,6 +31,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("high_priority")) __score0++;
             if (__jsonProps.Contains("model")) __score0++;
             if (__jsonProps.Contains("type")) __score0++;
+            if (__jsonProps.Contains("ultrafast")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("model")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
