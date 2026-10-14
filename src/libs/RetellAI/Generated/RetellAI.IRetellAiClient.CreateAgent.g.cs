@@ -13,7 +13,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AgentResponse> CreateAgentAsync(
 
-            global::RetellAI.AllOf<global::RetellAI.AgentRequest, object> request,
+            global::RetellAI.AllOf<global::RetellAI.AgentRequest, global::RetellAI.CreateAgentRequest2> request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
@@ -25,7 +25,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.AgentResponse>> CreateAgentAsResponseAsync(
 
-            global::RetellAI.AllOf<global::RetellAI.AgentRequest, object> request,
+            global::RetellAI.AllOf<global::RetellAI.AgentRequest, global::RetellAI.CreateAgentRequest2> request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>

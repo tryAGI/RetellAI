@@ -27,11 +27,11 @@ namespace RetellAI
             };
         partial void PrepareCreateAgentArguments(
             global::System.Net.Http.HttpClient httpClient,
-            global::RetellAI.AllOf<global::RetellAI.AgentRequest, object> request);
+            global::RetellAI.AllOf<global::RetellAI.AgentRequest, global::RetellAI.CreateAgentRequest2> request);
         partial void PrepareCreateAgentRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
-            global::RetellAI.AllOf<global::RetellAI.AgentRequest, object> request);
+            global::RetellAI.AllOf<global::RetellAI.AgentRequest, global::RetellAI.CreateAgentRequest2> request);
         partial void ProcessCreateAgentResponse(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
@@ -50,7 +50,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AgentResponse> CreateAgentAsync(
 
-            global::RetellAI.AllOf<global::RetellAI.AgentRequest, object> request,
+            global::RetellAI.AllOf<global::RetellAI.AgentRequest, global::RetellAI.CreateAgentRequest2> request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -72,7 +72,7 @@ namespace RetellAI
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.AgentResponse>> CreateAgentAsResponseAsync(
 
-            global::RetellAI.AllOf<global::RetellAI.AgentRequest, object> request,
+            global::RetellAI.AllOf<global::RetellAI.AgentRequest, global::RetellAI.CreateAgentRequest2> request,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -587,7 +587,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
-            var __request = new global::RetellAI.AllOf<global::RetellAI.AgentRequest, object>
+            var __request = new global::RetellAI.AllOf<global::RetellAI.AgentRequest, global::RetellAI.CreateAgentRequest2>
             {
             };
 

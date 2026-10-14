@@ -52,6 +52,12 @@ namespace RetellAI
         public required global::System.Collections.Generic.Dictionary<string, global::RetellAI.AgentRootTagState> Tags { get; set; }
 
         /// <summary>
+        /// Whether the agent is a transfer agent used for agentic warm transfer.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_transfer_agent")]
+        public bool? IsTransferAgent { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -78,6 +84,9 @@ namespace RetellAI
         /// <param name="tags">
         /// Authoritative root tags for this agent, keyed by tag name.
         /// </param>
+        /// <param name="isTransferAgent">
+        /// Whether the agent is a transfer agent used for agentic warm transfer.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -86,13 +95,15 @@ namespace RetellAI
             string agentName,
             global::RetellAI.AgentListItemResponseChannel channel,
             long userModifiedTimestamp,
-            global::System.Collections.Generic.Dictionary<string, global::RetellAI.AgentRootTagState> tags)
+            global::System.Collections.Generic.Dictionary<string, global::RetellAI.AgentRootTagState> tags,
+            bool? isTransferAgent)
         {
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.AgentName = agentName ?? throw new global::System.ArgumentNullException(nameof(agentName));
             this.Channel = channel;
             this.UserModifiedTimestamp = userModifiedTimestamp;
             this.Tags = tags ?? throw new global::System.ArgumentNullException(nameof(tags));
+            this.IsTransferAgent = isTransferAgent;
         }
 
         /// <summary>
