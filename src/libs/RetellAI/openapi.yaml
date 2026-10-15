@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-14-ccdba59
+  x-retell-spec-revision: 2026-10-15-b9c4f50
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -3274,32 +3274,6 @@ components:
           nullable: true
           description: Hosted Stripe invoice URL when available.
           example: https://invoice.stripe.com/i/acct_123/invst_123
-    OptInCreditBasedRequest:
-      type: object
-      required:
-      - starting_credits
-      properties:
-        starting_credits:
-          type: integer
-          description: Initial prepaid credit purchase when migrating from Billing V1 to credit-based billing, in cents (same bounds as amount_in_cents on credit top-up). Charged to the card on file via
-            a one-time Stripe invoice before the migration completes.
-          minimum: 1000
-          maximum: 1000000
-          example: 5000
-    OptInCreditBasedResponse:
-      type: object
-      required:
-      - metronome_customer_id
-      - metronome_contract_id
-      - starting_credits_cents
-      properties:
-        metronome_customer_id:
-          type: string
-        metronome_contract_id:
-          type: string
-        starting_credits_cents:
-          type: integer
-          description: Echo of starting_credits from the request (cents).
     CreateOrganizationRequestNew:
       type: object
       required:
