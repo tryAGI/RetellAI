@@ -56,6 +56,27 @@ namespace RetellAI
         public required global::RetellAI.SmsContent SmsContent { get; set; }
 
         /// <summary>
+        /// SMS sender number configuration. If omitted, the message is sent from the agent's phone number.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sms_sender")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsSender2?, object>))]
+        public global::RetellAI.AnyOf<global::RetellAI.SmsSender2?, object>? SmsSender { get; set; }
+
+        /// <summary>
+        /// SMS destination number configuration. If omitted, the message is sent to the customer number on the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sms_destination")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsDestination2?, object>))]
+        public global::RetellAI.AnyOf<global::RetellAI.SmsDestination2?, object>? SmsDestination { get; set; }
+
+        /// <summary>
+        /// Whether the agent should speak after the SMS tool finishes execution.<br/>
+        /// Default Value: true
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("speak_after_execution")]
+        public bool? SpeakAfterExecution { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -81,6 +102,16 @@ namespace RetellAI
         /// <param name="executionMessageType">
         /// Type of execution message. "prompt" means the agent will use execution_message_description as a prompt to generate the message. "static_text" means the agent will speak the execution_message_description directly. Defaults to "prompt".
         /// </param>
+        /// <param name="smsSender">
+        /// SMS sender number configuration. If omitted, the message is sent from the agent's phone number.
+        /// </param>
+        /// <param name="smsDestination">
+        /// SMS destination number configuration. If omitted, the message is sent to the customer number on the call.
+        /// </param>
+        /// <param name="speakAfterExecution">
+        /// Whether the agent should speak after the SMS tool finishes execution.<br/>
+        /// Default Value: true
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -91,7 +122,10 @@ namespace RetellAI
             string? description,
             bool? speakDuringExecution,
             string? executionMessageDescription,
-            global::RetellAI.SendSMSToolExecutionMessageType? executionMessageType)
+            global::RetellAI.SendSMSToolExecutionMessageType? executionMessageType,
+            global::RetellAI.AnyOf<global::RetellAI.SmsSender2?, object>? smsSender,
+            global::RetellAI.AnyOf<global::RetellAI.SmsDestination2?, object>? smsDestination,
+            bool? speakAfterExecution)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Type = type;
@@ -100,6 +134,9 @@ namespace RetellAI
             this.ExecutionMessageDescription = executionMessageDescription;
             this.ExecutionMessageType = executionMessageType;
             this.SmsContent = smsContent;
+            this.SmsSender = smsSender;
+            this.SmsDestination = smsDestination;
+            this.SpeakAfterExecution = speakAfterExecution;
         }
 
         /// <summary>

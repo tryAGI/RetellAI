@@ -5,7 +5,7 @@ namespace RetellAI
     public partial interface IRetellAiClient
     {
         /// <summary>
-        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status. Gateway calls cannot be taken over while a PCI session is active.
+        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status. Calls cannot be taken over while a PCI session is active.
         /// </summary>
         /// <param name="callId">
         /// Example: 119c3f8e47135a29e65947eeb34cf12d
@@ -21,7 +21,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status. Gateway calls cannot be taken over while a PCI session is active.
+        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status. Calls cannot be taken over while a PCI session is active.
         /// </summary>
         /// <param name="callId">
         /// Example: 119c3f8e47135a29e65947eeb34cf12d
@@ -37,7 +37,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status. Gateway calls cannot be taken over while a PCI session is active.
+        /// Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING status. Calls cannot be taken over while a PCI session is active.
         /// </summary>
         /// <param name="callId">
         /// Example: 119c3f8e47135a29e65947eeb34cf12d

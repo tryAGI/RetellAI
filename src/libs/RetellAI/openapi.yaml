@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-15-b9c4f50
+  x-retell-spec-revision: 2026-10-16-5d9ba01
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -881,13 +881,8 @@ components:
           - type: array
             items:
               $ref: '#/components/schemas/Language'
-          - type: string
-            enum:
-            - multi
-            deprecated: true
-          description: Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The
-            scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale
-            array instead. If unset, defaults to `en-US`.
+          description: Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). If unset,
+            defaults to `en-US`.
         webhook_url:
           type: string
           example: https://webhook-url-here
@@ -2004,13 +1999,8 @@ components:
           - type: array
             items:
               $ref: '#/components/schemas/Language'
-          - type: string
-            enum:
-            - multi
-            deprecated: true
-          description: Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The
-            scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale
-            array instead. If unset, defaults to `en-US`.
+          description: Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). If unset,
+            defaults to `en-US`.
         webhook_url:
           type: string
           example: https://webhook-url-here
@@ -6839,6 +6829,22 @@ components:
             directly. Defaults to "prompt".
         sms_content:
           $ref: '#/components/schemas/SmsContent'
+        sms_sender:
+          anyOf:
+          - $ref: '#/components/schemas/SmsSender'
+          - type: object
+            nullable: true
+          description: SMS sender number configuration. If omitted, the message is sent from the agent's phone number.
+        sms_destination:
+          anyOf:
+          - $ref: '#/components/schemas/SmsDestination'
+          - type: object
+            nullable: true
+          description: SMS destination number configuration. If omitted, the message is sent to the customer number on the call.
+        speak_after_execution:
+          type: boolean
+          default: true
+          description: Whether the agent should speak after the SMS tool finishes execution.
       required:
       - type
       - name
@@ -6846,6 +6852,7 @@ components:
     SmsSender:
       oneOf:
       - type: object
+        title: Sender Current Number
         required:
         - type
         properties:
@@ -6854,6 +6861,7 @@ components:
             enum:
             - current_number
       - type: object
+        title: Sender Retell Long Code
         required:
         - type
         properties:
@@ -6864,6 +6872,7 @@ components:
     SmsDestination:
       oneOf:
       - type: object
+        title: Destination Customer Number
         required:
         - type
         properties:
@@ -6872,6 +6881,7 @@ components:
             enum:
             - customer_number
       - type: object
+        title: Destination Phone Number
         required:
         - type
         - phone_number
@@ -7062,6 +7072,18 @@ components:
             $ref: '#/components/schemas/SmsSuccessEdge'
           failed_edge:
             $ref: '#/components/schemas/SmsFailedEdge'
+          sms_sender:
+            anyOf:
+            - $ref: '#/components/schemas/SmsSender'
+            - type: object
+              nullable: true
+            description: SMS sender number configuration. If omitted, the message is sent from the agent's phone number.
+          sms_destination:
+            anyOf:
+            - $ref: '#/components/schemas/SmsDestination'
+            - type: object
+              nullable: true
+            description: SMS destination number configuration. If omitted, the message is sent to the customer number on the call.
     SmsSuccessEdge:
       description: Transition followed by an SMS node after the send operation reports success.
       allOf:
@@ -10095,7 +10117,8 @@ components:
         type:
           type: string
           description: Visualization. Use `number` for aggregate values, `donut` for categorical distributions, `line` for trends, `column` for vertical bars, or `bar` for horizontal bars. `line`, `bar`,
-            and `column` automatically group by time; `number` ignores configured groups; `donut` rejects configured time groups. Concurrency always returns time buckets.
+            and `column` automatically group by time. For `number`, the time entry labels the single aggregate's full range; categorical groups are ignored. `donut` rejects configured time groups. Concurrency
+            always returns time buckets.
           enum:
           - bar
           - column
@@ -13333,7 +13356,7 @@ paths:
   /v2/take-over-live-call/{call_id}:
     post:
       description: Take over an in-progress call from the AI agent. The agent stops responding and the specified live-listen participant is allowed to speak directly to the caller. The call must be in ONGOING
-        status. Gateway calls cannot be taken over while a PCI session is active.
+        status. Calls cannot be taken over while a PCI session is active.
       operationId: takeOverLiveCall
       parameters:
       - in: path
