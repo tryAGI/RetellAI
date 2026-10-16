@@ -40,6 +40,20 @@ namespace RetellAI
         public required global::RetellAI.SmsFailedEdge FailedEdge { get; set; }
 
         /// <summary>
+        /// SMS sender number configuration. If omitted, the message is sent from the agent's phone number.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sms_sender")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsSender2?, object>))]
+        public global::RetellAI.AnyOf<global::RetellAI.SmsSender2?, object>? SmsSender { get; set; }
+
+        /// <summary>
+        /// SMS destination number configuration. If omitted, the message is sent to the customer number on the call.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sms_destination")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsDestination2?, object>))]
+        public global::RetellAI.AnyOf<global::RetellAI.SmsDestination2?, object>? SmsDestination { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -58,6 +72,12 @@ namespace RetellAI
         /// <param name="type">
         /// Type of the node
         /// </param>
+        /// <param name="smsSender">
+        /// SMS sender number configuration. If omitted, the message is sent from the agent's phone number.
+        /// </param>
+        /// <param name="smsDestination">
+        /// SMS destination number configuration. If omitted, the message is sent to the customer number on the call.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -65,12 +85,16 @@ namespace RetellAI
             global::RetellAI.OneOf<global::RetellAI.NodeInstruction?, global::RetellAI.SmsInstructionTemplate> instruction,
             global::RetellAI.SmsSuccessEdge successEdge,
             global::RetellAI.SmsFailedEdge failedEdge,
-            global::RetellAI.SmsNodeVariant2Type type)
+            global::RetellAI.SmsNodeVariant2Type type,
+            global::RetellAI.AnyOf<global::RetellAI.SmsSender2?, object>? smsSender,
+            global::RetellAI.AnyOf<global::RetellAI.SmsDestination2?, object>? smsDestination)
         {
             this.Type = type;
             this.Instruction = instruction;
             this.SuccessEdge = successEdge;
             this.FailedEdge = failedEdge;
+            this.SmsSender = smsSender;
+            this.SmsDestination = smsDestination;
         }
 
         /// <summary>

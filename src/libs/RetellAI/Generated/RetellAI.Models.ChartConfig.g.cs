@@ -21,7 +21,7 @@ namespace RetellAI
         public string? Title { get; set; }
 
         /// <summary>
-        /// Visualization. Use `number` for aggregate values, `donut` for categorical distributions, `line` for trends, `column` for vertical bars, or `bar` for horizontal bars. `line`, `bar`, and `column` automatically group by time; `number` ignores configured groups; `donut` rejects configured time groups. Concurrency always returns time buckets.
+        /// Visualization. Use `number` for aggregate values, `donut` for categorical distributions, `line` for trends, `column` for vertical bars, or `bar` for horizontal bars. `line`, `bar`, and `column` automatically group by time. For `number`, the time entry labels the single aggregate's full range; categorical groups are ignored. `donut` rejects configured time groups. Concurrency always returns time buckets.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartConfigTypeJsonConverter))]
@@ -83,7 +83,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ChartConfig" /> class.
         /// </summary>
         /// <param name="type">
-        /// Visualization. Use `number` for aggregate values, `donut` for categorical distributions, `line` for trends, `column` for vertical bars, or `bar` for horizontal bars. `line`, `bar`, and `column` automatically group by time; `number` ignores configured groups; `donut` rejects configured time groups. Concurrency always returns time buckets.
+        /// Visualization. Use `number` for aggregate values, `donut` for categorical distributions, `line` for trends, `column` for vertical bars, or `bar` for horizontal bars. `line`, `bar`, and `column` automatically group by time. For `number`, the time entry labels the single aggregate's full range; categorical groups are ignored. `donut` rejects configured time groups. Concurrency always returns time buckets.
         /// </param>
         /// <param name="chartId">
         /// Identifier of a chart stored in a dashboard. Omit from `target.chart`.

@@ -1,7 +1,5 @@
 #nullable enable
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 namespace RetellAI
 {
     public partial interface IRetellAiClient
@@ -73,7 +71,7 @@ namespace RetellAI
         /// Example: 3600000
         /// </param>
         /// <param name="language">
-        /// Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). The scalar value `multi` is deprecated but still accepted as a scalar, and is stored and returned as the ten locales it used to mean. It must not appear inside the array form. Send an explicit locale array instead. If unset, defaults to `en-US`.
+        /// Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). If unset, defaults to `en-US`.
         /// </param>
         /// <param name="webhookUrl">
         /// The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
@@ -137,9 +135,7 @@ namespace RetellAI
             string? versionTitle = default,
             string? autoCloseMessage = default,
             int? endChatAfterSilenceMs = default,
-#pragma warning disable CS0618 // Type or member is obsolete
-            global::RetellAI.OneOf<global::RetellAI.Language3?, global::System.Collections.Generic.IList<global::RetellAI.Language3>, global::RetellAI.ChatAgentRequestLanguage?>? language = default,
-#pragma warning disable CS0618 // Type or member is obsolete
+            global::RetellAI.OneOf<global::RetellAI.Language3?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? language = default,
             string? webhookUrl = default,
             global::System.Collections.Generic.IList<global::RetellAI.ChatAgentRequestWebhookEvent>? webhookEvents = default,
             int? webhookTimeoutMs = default,

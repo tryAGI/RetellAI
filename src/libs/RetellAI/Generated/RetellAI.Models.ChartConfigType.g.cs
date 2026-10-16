@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Visualization. Use `number` for aggregate values, `donut` for categorical distributions, `line` for trends, `column` for vertical bars, or `bar` for horizontal bars. `line`, `bar`, and `column` automatically group by time; `number` ignores configured groups; `donut` rejects configured time groups. Concurrency always returns time buckets.
+    /// Visualization. Use `number` for aggregate values, `donut` for categorical distributions, `line` for trends, `column` for vertical bars, or `bar` for horizontal bars. `line`, `bar`, and `column` automatically group by time. For `number`, the time entry labels the single aggregate's full range; categorical groups are ignored. `donut` rejects configured time groups. Concurrency always returns time buckets.
     /// </summary>
     public enum ChartConfigType
     {

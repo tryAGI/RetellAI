@@ -78,6 +78,9 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("execution_message_type")) __score4++;
             if (__jsonProps.Contains("name")) __score4++;
             if (__jsonProps.Contains("sms_content")) __score4++;
+            if (__jsonProps.Contains("sms_destination")) __score4++;
+            if (__jsonProps.Contains("sms_sender")) __score4++;
+            if (__jsonProps.Contains("speak_after_execution")) __score4++;
             if (__jsonProps.Contains("speak_during_execution")) __score4++;
             if (__jsonProps.Contains("type")) __score4++;
             var __score5 = 0;
