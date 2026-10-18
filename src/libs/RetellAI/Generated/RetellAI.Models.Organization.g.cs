@@ -25,12 +25,6 @@ namespace RetellAI
         public string? OrgName2 { get; set; }
 
         /// <summary>
-        /// Whether outage mode is enabled
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outage_mode_enabled")]
-        public bool? OutageModeEnabled { get; set; }
-
-        /// <summary>
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("webhook_urls")]
@@ -165,9 +159,6 @@ namespace RetellAI
         /// Name of the organization<br/>
         /// Example: My Organization
         /// </param>
-        /// <param name="outageModeEnabled">
-        /// Whether outage mode is enabled
-        /// </param>
         /// <param name="webhookUrls"></param>
         /// <param name="webhookKey">
         /// API key for webhook authentication
@@ -216,7 +207,6 @@ namespace RetellAI
         public Organization(
             string? orgName,
             string? orgName2,
-            bool? outageModeEnabled,
             global::System.Collections.Generic.IList<global::RetellAI.OrganizationWebhookUrl>? webhookUrls,
             string? webhookKey,
             int? concurrency,
@@ -239,7 +229,6 @@ namespace RetellAI
         {
             this.OrgName = orgName;
             this.OrgName2 = orgName2;
-            this.OutageModeEnabled = outageModeEnabled;
             this.WebhookUrls = webhookUrls;
             this.WebhookKey = webhookKey;
             this.Concurrency = concurrency;
