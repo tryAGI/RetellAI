@@ -21,12 +21,6 @@ namespace RetellAI
         public string? OrgName2 { get; set; }
 
         /// <summary>
-        /// Whether outage mode is enabled
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("outage_mode_enabled")]
-        public bool? OutageModeEnabled { get; set; }
-
-        /// <summary>
         /// Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge on burst calls.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("concurrency_burst_enabled")]
@@ -72,9 +66,6 @@ namespace RetellAI
         /// <param name="orgName2">
         /// Name of the organization (legacy field)
         /// </param>
-        /// <param name="outageModeEnabled">
-        /// Whether outage mode is enabled
-        /// </param>
         /// <param name="concurrencyBurstEnabled">
         /// Whether burst concurrency mode is enabled. When enabled, allows the org to exceed their normal concurrency limit (up to 3x or +300, whichever is lower) with a $0.10/min surcharge on burst calls.
         /// </param>
@@ -96,7 +87,6 @@ namespace RetellAI
         public UpdateOrganizationRequest(
             string? orgName,
             string? orgName2,
-            bool? outageModeEnabled,
             bool? concurrencyBurstEnabled,
             bool? useStableServer,
             int? reservedInboundConcurrency,
@@ -105,7 +95,6 @@ namespace RetellAI
         {
             this.OrgName = orgName;
             this.OrgName2 = orgName2;
-            this.OutageModeEnabled = outageModeEnabled;
             this.ConcurrencyBurstEnabled = concurrencyBurstEnabled;
             this.UseStableServer = useStableServer;
             this.ReservedInboundConcurrency = reservedInboundConcurrency;
