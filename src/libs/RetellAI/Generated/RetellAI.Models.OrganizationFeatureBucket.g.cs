@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Org feature gates. Includes Dynamo-stored buckets plus computed Redis rollout flags marked exposeToApi; computed flags win on name collision.
+    /// Feature flags evaluated for this org, keyed by flag name.
     /// </summary>
     public sealed partial class OrganizationFeatureBucket
     {
