@@ -124,7 +124,7 @@ namespace RetellAI
         public string? EnterpriseId { get; set; }
 
         /// <summary>
-        /// Org feature gates. Includes Dynamo-stored buckets plus computed Redis rollout flags marked exposeToApi; computed flags win on name collision.
+        /// Feature flags evaluated for this org, keyed by flag name.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("feature_bucket")]
         public object? FeatureBucket { get; set; }
@@ -195,7 +195,7 @@ namespace RetellAI
         /// </param>
         /// <param name="enterpriseId"></param>
         /// <param name="featureBucket">
-        /// Org feature gates. Includes Dynamo-stored buckets plus computed Redis rollout flags marked exposeToApi; computed flags win on name collision.
+        /// Feature flags evaluated for this org, keyed by flag name.
         /// </param>
         /// <param name="useStableServer"></param>
         /// <param name="conductorOverage">
