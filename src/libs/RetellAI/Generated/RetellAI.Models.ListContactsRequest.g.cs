@@ -49,7 +49,7 @@ namespace RetellAI
         public string? SearchQuery { get; set; }
 
         /// <summary>
-        /// Contact IDs to leave out of both the results and `total`.
+        /// Contact IDs to leave out of both the results and `total`, at most 1,000.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("excluded_contact_ids")]
         public global::System.Collections.Generic.IList<string>? ExcludedContactIds { get; set; }
@@ -85,7 +85,7 @@ namespace RetellAI
         /// Case-insensitive substring match against phone number, first name, last name, external ID, and custom field values. This is the only way to match on a contact's name.
         /// </param>
         /// <param name="excludedContactIds">
-        /// Contact IDs to leave out of both the results and `total`.
+        /// Contact IDs to leave out of both the results and `total`, at most 1,000.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
