@@ -604,7 +604,7 @@ namespace RetellAI
         /// Case-insensitive substring match against phone number, first name, last name, external ID, and custom field values. This is the only way to match on a contact's name.
         /// </param>
         /// <param name="excludedContactIds">
-        /// Contact IDs to leave out of both the results and `total`.
+        /// Contact IDs to leave out of both the results and `total`, at most 1,000.
         /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
