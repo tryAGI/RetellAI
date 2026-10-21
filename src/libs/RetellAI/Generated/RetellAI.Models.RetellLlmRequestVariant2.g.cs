@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace RetellAI
@@ -34,6 +36,7 @@ namespace RetellAI
         /// </summary>
         /// <example>[{"name":"information_collection","state_prompt":"You will follow the steps below to collect information...","edges":[{"destination_state_name":"appointment_booking","description":"Transition to book an appointment."}],"tools":[{"type":"transfer_call","name":"transfer_to_support","description":"Transfer to the support team.","transfer_destination":{"type":"predefined","number":"16175551212","ignore_e164_validation":false},"transfer_option":{"type":"cold_transfer","show_transferee_as_caller":false}}]}, {"name":"appointment_booking","state_prompt":"You will follow the steps below to book an appointment...","tools":[{"type":"custom","name":"book_appointment","description":"Book an annual check up.","url":"https://api.example.com/book-appointment","method":"POST"}]}]</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("states")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public global::System.Collections.Generic.IList<global::RetellAI.State>? States { get; set; }
 
         /// <summary>
@@ -87,10 +90,6 @@ namespace RetellAI
         /// - Tools of LLM (no state) = general tools<br/>
         /// Example: [{"type":"end_call","name":"end_call","description":"End the call with user."}]
         /// </param>
-        /// <param name="states">
-        /// States of the LLM. This is to help reduce prompt length and tool choices when the call can be broken into distinct states. With shorter prompts and less tools, the LLM can better focus and follow the rules, minimizing hallucination. If this field is not set, the agent would only have general prompt and general tools (essentially one state).<br/>
-        /// Example: [{"name":"information_collection","state_prompt":"You will follow the steps below to collect information...","edges":[{"destination_state_name":"appointment_booking","description":"Transition to book an appointment."}],"tools":[{"type":"transfer_call","name":"transfer_to_support","description":"Transfer to the support team.","transfer_destination":{"type":"predefined","number":"16175551212","ignore_e164_validation":false},"transfer_option":{"type":"cold_transfer","show_transferee_as_caller":false}}]}, {"name":"appointment_booking","state_prompt":"You will follow the steps below to book an appointment...","tools":[{"type":"custom","name":"book_appointment","description":"Book an annual check up.","url":"https://api.example.com/book-appointment","method":"POST"}]}]
-        /// </param>
         /// <param name="startingState">
         /// Name of the starting state. Required if states is not empty.<br/>
         /// Example: information_collection
@@ -112,7 +111,6 @@ namespace RetellAI
         public RetellLlmRequestVariant2(
             string? generalPrompt,
             global::System.Collections.Generic.IList<global::RetellAI.Tool>? generalTools,
-            global::System.Collections.Generic.IList<global::RetellAI.State>? states,
             string? startingState,
             global::System.Collections.Generic.Dictionary<string, string>? defaultDynamicVariables,
             global::System.Collections.Generic.IList<global::RetellAI.Mcp>? mcps,
@@ -120,7 +118,6 @@ namespace RetellAI
         {
             this.GeneralPrompt = generalPrompt;
             this.GeneralTools = generalTools;
-            this.States = states;
             this.StartingState = startingState;
             this.DefaultDynamicVariables = defaultDynamicVariables;
             this.Mcps = mcps;

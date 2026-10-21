@@ -29,10 +29,16 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<string>? Required { get; set; }
 
         /// <summary>
+        /// On an integration function's response schema, false means the output fields are fixed to properties and no others can be added.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("additionalProperties")]
+        public bool? AdditionalProperties { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
-        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
+        public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties2 { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ToolParameter" /> class.
@@ -46,17 +52,22 @@ namespace RetellAI
         /// <param name="required">
         /// List of names of required property when generating this parameter. LLM will do its best to generate the required properties in its function arguments. Property must exist in properties.
         /// </param>
+        /// <param name="additionalProperties">
+        /// On an integration function's response schema, false means the output fields are fixed to properties and no others can be added.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ToolParameter(
             object properties,
             global::RetellAI.ToolParameterType type,
-            global::System.Collections.Generic.IList<string>? required)
+            global::System.Collections.Generic.IList<string>? required,
+            bool? additionalProperties)
         {
             this.Type = type;
             this.Properties = properties ?? throw new global::System.ArgumentNullException(nameof(properties));
             this.Required = required;
+            this.AdditionalProperties = additionalProperties;
         }
 
         /// <summary>
