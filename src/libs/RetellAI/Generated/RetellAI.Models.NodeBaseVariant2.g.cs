@@ -11,6 +11,13 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_config")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableNodeModelConfigJsonConverter))]
+        public global::RetellAI.NullableNodeModelConfig? ModelConfig { get; set; }
+
+        /// <summary>
+        /// Deprecated, use model_config. When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+        /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_choice")]
         public global::RetellAI.ModelChoiceCascading? ModelChoice { get; set; }
 
@@ -23,14 +30,14 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="NodeBaseVariant2" /> class.
         /// </summary>
-        /// <param name="modelChoice"></param>
+        /// <param name="modelConfig"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public NodeBaseVariant2(
-            global::RetellAI.ModelChoiceCascading? modelChoice)
+            global::RetellAI.NullableNodeModelConfig? modelConfig)
         {
-            this.ModelChoice = modelChoice;
+            this.ModelConfig = modelConfig;
         }
 
         /// <summary>

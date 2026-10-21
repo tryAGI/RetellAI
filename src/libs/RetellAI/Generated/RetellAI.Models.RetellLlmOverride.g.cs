@@ -1,4 +1,6 @@
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 #nullable enable
 
 namespace RetellAI
@@ -9,41 +11,55 @@ namespace RetellAI
     public sealed partial class RetellLlmOverride
     {
         /// <summary>
-        /// Available LLM models for agents.
+        /// Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set, and backup cannot be removed.
         /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("model_config")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ModelConfigJsonConverter))]
+        public global::RetellAI.ModelConfig? ModelConfig { get; set; }
+
+        /// <summary>
+        /// Deprecated, use model_config.primary. Ignored when model_config is set.<br/>
+        /// Example: gpt-5.6-terra
+        /// </summary>
+        /// <example>gpt-5.6-terra</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableLLMModelJsonConverter))]
         public global::RetellAI.NullableLLMModel? Model { get; set; }
 
         /// <summary>
-        /// The speech-to-speech model to use
+        /// Deprecated, use model_config with type s2s. Ignored when model_config is set.<br/>
+        /// Example: gpt-realtime-1.5
         /// </summary>
+        /// <example>gpt-realtime-1.5</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("s2s_model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableS2SModelJsonConverter))]
         public global::RetellAI.NullableS2SModel? S2sModel { get; set; }
 
         /// <summary>
-        /// If set, will control the randomness of the response. Value ranging from [0,1]. Lower value means more deterministic, while higher value means more random. If unset, default value 0 will apply. Note that for tool calling, a lower value is recommended.<br/>
+        /// Deprecated, use model_config.temperature. Ignored when model_config is set.<br/>
         /// Example: 0
         /// </summary>
         /// <example>0</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_temperature")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public double? ModelTemperature { get; set; }
 
         /// <summary>
-        /// If set to true, will use high priority pool with more dedicated resource to ensure lower and more consistent latency, default to false. This feature usually comes with a higher cost.<br/>
+        /// Deprecated, use model_config.primary.tier fast. Ignored when model_config is set.<br/>
         /// Example: true
         /// </summary>
         /// <example>true</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_high_priority")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public bool? ModelHighPriority { get; set; }
 
         /// <summary>
-        /// If set to true, will use the ultrafast tier for much faster response generation, default to false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes precedence over model_high_priority. This feature comes with a higher cost.<br/>
+        /// Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config is set.<br/>
         /// Example: true
         /// </summary>
         /// <example>true</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_ultrafast")]
+        [global::System.Obsolete("This property marked as deprecated.")]
         public bool? ModelUltrafast { get; set; }
 
         /// <summary>
@@ -98,23 +114,8 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="RetellLlmOverride" /> class.
         /// </summary>
-        /// <param name="model">
-        /// Available LLM models for agents.
-        /// </param>
-        /// <param name="s2sModel">
-        /// The speech-to-speech model to use
-        /// </param>
-        /// <param name="modelTemperature">
-        /// If set, will control the randomness of the response. Value ranging from [0,1]. Lower value means more deterministic, while higher value means more random. If unset, default value 0 will apply. Note that for tool calling, a lower value is recommended.<br/>
-        /// Example: 0
-        /// </param>
-        /// <param name="modelHighPriority">
-        /// If set to true, will use high priority pool with more dedicated resource to ensure lower and more consistent latency, default to false. This feature usually comes with a higher cost.<br/>
-        /// Example: true
-        /// </param>
-        /// <param name="modelUltrafast">
-        /// If set to true, will use the ultrafast tier for much faster response generation, default to false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes precedence over model_high_priority. This feature comes with a higher cost.<br/>
-        /// Example: true
+        /// <param name="modelConfig">
+        /// Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set, and backup cannot be removed.
         /// </param>
         /// <param name="toolCallStrictMode">
         /// Whether to use strict mode for tool calls. Only applicable when using certain supported models.<br/>
@@ -139,11 +140,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RetellLlmOverride(
-            global::RetellAI.NullableLLMModel? model,
-            global::RetellAI.NullableS2SModel? s2sModel,
-            double? modelTemperature,
-            bool? modelHighPriority,
-            bool? modelUltrafast,
+            global::RetellAI.ModelConfig? modelConfig,
             bool? toolCallStrictMode,
             global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
             global::RetellAI.KBConfig? kbConfig,
@@ -151,11 +148,7 @@ namespace RetellAI
             int? beginAfterUserSilenceMs,
             string? beginMessage)
         {
-            this.Model = model;
-            this.S2sModel = s2sModel;
-            this.ModelTemperature = modelTemperature;
-            this.ModelHighPriority = modelHighPriority;
-            this.ModelUltrafast = modelUltrafast;
+            this.ModelConfig = modelConfig;
             this.ToolCallStrictMode = toolCallStrictMode;
             this.KnowledgeBaseIds = knowledgeBaseIds;
             this.KbConfig = kbConfig;
