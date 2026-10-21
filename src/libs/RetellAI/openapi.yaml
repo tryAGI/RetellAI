@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-19-becf7f8
+  x-retell-spec-revision: 2026-10-21-9ec4acf
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -652,12 +652,12 @@ components:
             is specified without a version, it uses the latest version.
         retell_llm:
           $ref: '#/components/schemas/RetellLlmOverride'
-          description: Override Retell LLM configuration settings. Only applicable when using Retell LLM as the response engine. Supported attributes - model, s2s_model, model_temperature, model_high_priority,
-            model_ultrafast, tool_call_strict_mode, knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms, begin_message.
+          description: Override Retell LLM configuration settings. Only applicable when using Retell LLM as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids,
+            kb_config, start_speaker, begin_after_user_silence_ms, begin_message. A model_config override cannot remove the backup model or switch a speech-to-speech LLM to a cascading model.
         conversation_flow:
           $ref: '#/components/schemas/ConversationFlowOverride'
-          description: Override conversation flow configuration settings. Only applicable when using conversation flow as the response engine. Supported attributes - model_choice, model_temperature, tool_call_strict_mode,
-            knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms.
+          description: Override conversation flow configuration settings. Only applicable when using conversation flow as the response engine. Supported attributes - model_config, tool_call_strict_mode,
+            knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms. A model_config override cannot remove the backup model.
     ContactMemoryConfig:
       type: object
       additionalProperties: false
@@ -2918,16 +2918,21 @@ components:
       type: object
       description: Override properties for conversation flow configuration in agent override requests.
       properties:
+        model_config:
+          $ref: '#/components/schemas/ModelConfig'
         model_choice:
-          $ref: '#/components/schemas/ModelChoice'
-          description: The model choice for the conversation flow.
+          allOf:
+          - $ref: '#/components/schemas/ModelChoice'
+          description: Deprecated, use model_config. Ignored when model_config is set.
+          deprecated: true
         model_temperature:
           type: number
           minimum: 0
           maximum: 1
           example: 0.7
-          description: Controls the randomness of the model's responses. Lower values make responses more deterministic.
+          description: Deprecated, use model_config.temperature. Ignored when model_config is set.
           nullable: true
+          deprecated: true
         tool_call_strict_mode:
           type: boolean
           example: true
@@ -3220,7 +3225,6 @@ components:
       - type: object
         required:
         - start_speaker
-        - model_choice
         - nodes
     CreateOrganizationRequest:
       oneOf:
@@ -5458,6 +5462,111 @@ components:
       oneOf:
       - $ref: '#/components/schemas/ModelChoiceCascading'
       - $ref: '#/components/schemas/ModelChoiceS2S'
+    ServiceTier:
+      type: string
+      enum:
+      - standard
+      - fast
+      - ultrafast
+      description: Capacity tier for a model. standard is always available. fast draws from dedicated capacity for lower, steadier latency, and ultrafast is faster still on voice agents; faster tiers cost
+        more. Each model offers its own set of tiers, and a tier the model does not offer is rejected.
+    TextModelRef:
+      type: object
+      additionalProperties: false
+      required:
+      - model
+      properties:
+        model:
+          $ref: '#/components/schemas/LLMModel'
+        tier:
+          $ref: '#/components/schemas/ServiceTier'
+    BackupModelRef:
+      type: object
+      additionalProperties: false
+      required:
+      - model
+      properties:
+        model:
+          $ref: '#/components/schemas/LLMModel'
+        tier:
+          $ref: '#/components/schemas/ServiceTier'
+        kick_in_timeout_ms:
+          type: integer
+          minimum: 300
+          maximum: 60000
+          description: How long to prefer the primary model's output while both models run, in milliseconds. Defaults to 1500.
+    S2SModelRef:
+      type: object
+      additionalProperties: false
+      required:
+      - model
+      properties:
+        model:
+          $ref: '#/components/schemas/S2SModel'
+    NullableBackupModelRef:
+      oneOf:
+      - $ref: '#/components/schemas/BackupModelRef'
+      - type: object
+        nullable: true
+        enum:
+        - null
+    ModelConfig:
+      description: Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup
+        to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set, and backup cannot be removed.
+      anyOf:
+      - $ref: '#/components/schemas/CascadingModelConfig'
+      - $ref: '#/components/schemas/S2SModelConfig'
+    CascadingModelConfig:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+          enum:
+          - cascading
+          description: Runs a text LLM with a separate voice. This is the default type.
+        primary:
+          $ref: '#/components/schemas/TextModelRef'
+        backup:
+          $ref: '#/components/schemas/NullableBackupModelRef'
+          description: A text LLM that runs alongside the primary and takes over when the primary is slow.
+        temperature:
+          $ref: '#/components/schemas/ModelTemperature'
+    S2SModelConfig:
+      type: object
+      additionalProperties: false
+      properties:
+        type:
+          type: string
+          enum:
+          - s2s
+          description: Runs a speech-to-speech model.
+        primary:
+          $ref: '#/components/schemas/S2SModelRef'
+        temperature:
+          $ref: '#/components/schemas/ModelTemperature'
+    ModelTemperature:
+      type: number
+      minimum: 0
+      maximum: 1
+      example: 0
+      description: Randomness of the response, from 0 to 1. Defaults to 0; a lower value is recommended for tool calling.
+    NodeModelConfig:
+      type: object
+      additionalProperties: false
+      required:
+      - primary
+      description: Model override for this node. Only cascading flows use it.
+      properties:
+        primary:
+          $ref: '#/components/schemas/TextModelRef'
+    NullableNodeModelConfig:
+      oneOf:
+      - $ref: '#/components/schemas/NodeModelConfig'
+      - type: object
+        nullable: true
+        enum:
+        - null
     NaturalnessIssue:
       type: string
       enum:
@@ -5472,8 +5581,13 @@ components:
       - $ref: '#/components/schemas/NodeBaseCommon'
       - type: object
         properties:
+          model_config:
+            $ref: '#/components/schemas/NullableNodeModelConfig'
           model_choice:
-            $ref: '#/components/schemas/ModelChoiceCascading'
+            allOf:
+            - $ref: '#/components/schemas/ModelChoiceCascading'
+            description: Deprecated, use model_config. When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
+            deprecated: true
     NodeBaseCommon:
       type: object
       required:
@@ -6626,30 +6740,37 @@ components:
       type: object
       description: Override properties for Retell LLM configuration in agent override requests.
       properties:
+        model_config:
+          $ref: '#/components/schemas/ModelConfig'
         model:
-          $ref: '#/components/schemas/NullableLLMModel'
+          allOf:
+          - $ref: '#/components/schemas/NullableLLMModel'
           example: gpt-5.6-terra
-          description: Select the underlying text LLM. If not set, would default to gpt-5.6-terra.
+          description: Deprecated, use model_config.primary. Ignored when model_config is set.
+          deprecated: true
         s2s_model:
-          $ref: '#/components/schemas/NullableS2SModel'
+          allOf:
+          - $ref: '#/components/schemas/NullableS2SModel'
           example: gpt-realtime-1.5
-          description: Select the underlying speech to speech model. Can only set this or model, not both.
+          description: Deprecated, use model_config with type s2s. Ignored when model_config is set.
+          deprecated: true
         model_temperature:
           type: number
           example: 0
-          description: If set, will control the randomness of the response. Value ranging from [0,1]. Lower value means more deterministic, while higher value means more random. If unset, default value
-            0 will apply. Note that for tool calling, a lower value is recommended.
+          description: Deprecated, use model_config.temperature. Ignored when model_config is set.
+          deprecated: true
         model_high_priority:
           type: boolean
           example: true
-          description: If set to true, will use high priority pool with more dedicated resource to ensure lower and more consistent latency, default to false. This feature usually comes with a higher cost.
+          description: Deprecated, use model_config.primary.tier fast. Ignored when model_config is set.
           nullable: true
+          deprecated: true
         model_ultrafast:
           type: boolean
           example: true
-          description: If set to true, will use the ultrafast tier for much faster response generation, default to false. Only supported by gpt-6.1-sol on voice agents; ignored otherwise. Takes precedence
-            over model_high_priority. This feature comes with a higher cost.
+          description: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config is set.
           nullable: true
+          deprecated: true
         tool_call_strict_mode:
           type: boolean
           example: true
