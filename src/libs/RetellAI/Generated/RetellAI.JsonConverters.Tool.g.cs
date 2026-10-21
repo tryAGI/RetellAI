@@ -95,6 +95,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("name")) __score5++;
             if (__jsonProps.Contains("parameter_type")) __score5++;
             if (__jsonProps.Contains("parameters")) __score5++;
+            if (__jsonProps.Contains("parameters.additionalProperties")) __score5++;
             if (__jsonProps.Contains("parameters.properties")) __score5++;
             if (__jsonProps.Contains("parameters.required")) __score5++;
             if (__jsonProps.Contains("parameters.type")) __score5++;
