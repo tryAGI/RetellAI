@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Indicates the provider of voice.<br/>
+    /// Indicates the provider of voice. `xai` voices can only be used with the `grok-voice-3.0` speech-to-speech model.<br/>
     /// Example: elevenlabs
     /// </summary>
     public enum VoiceResponseProvider
@@ -37,6 +37,10 @@ namespace RetellAI
         ///
         /// </summary>
         Platform,
+        /// <summary>
+        ///
+        /// </summary>
+        Xai,
     }
 
     /// <summary>
@@ -58,6 +62,7 @@ namespace RetellAI
                 VoiceResponseProvider.Minimax => "minimax",
                 VoiceResponseProvider.Openai => "openai",
                 VoiceResponseProvider.Platform => "platform",
+                VoiceResponseProvider.Xai => "xai",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -75,6 +80,7 @@ namespace RetellAI
                 "minimax" => VoiceResponseProvider.Minimax,
                 "openai" => VoiceResponseProvider.Openai,
                 "platform" => VoiceResponseProvider.Platform,
+                "xai" => VoiceResponseProvider.Xai,
                 _ => null,
             };
         }

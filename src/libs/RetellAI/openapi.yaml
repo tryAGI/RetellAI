@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-21-0a1facc
+  x-retell-spec-revision: 2026-10-21-b6e4ba0
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -5443,6 +5443,7 @@ components:
       - gpt-realtime-1.5
       - gpt-realtime
       - gpt-realtime-mini
+      - grok-voice-3.0
       description: The speech-to-speech model to use
     ModelChoiceS2S:
       type: object
@@ -5877,6 +5878,7 @@ components:
       - gpt-realtime-1.5
       - gpt-realtime
       - gpt-realtime-mini
+      - grok-voice-3.0
       - null
       nullable: true
       description: The speech-to-speech model to use
@@ -9083,8 +9085,9 @@ components:
           - fish_audio
           - inworld
           - platform
+          - xai
           example: elevenlabs
-          description: Indicates the provider of voice.
+          description: Indicates the provider of voice. `xai` voices can only be used with the `grok-voice-3.0` speech-to-speech model.
         accent:
           type: string
           example: American
@@ -9100,6 +9103,10 @@ components:
           type: string
           example: Young
           description: Age annotation of the voice.
+        avatar_url:
+          type: string
+          example: https://retell-utils-public.s3.us-west-2.amazonaws.com/customvoice-icon.png
+          description: URL to the avatar image of the voice.
         preview_audio_url:
           type: string
           example: https://retell-utils-public.s3.us-west-2.amazonaws.com/adrian.mp3

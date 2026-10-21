@@ -32,6 +32,10 @@ namespace RetellAI
         ///
         /// </summary>
         GptRealtimeMini,
+        /// <summary>
+        ///
+        /// </summary>
+        GrokVoice30,
     }
 
     /// <summary>
@@ -52,6 +56,7 @@ namespace RetellAI
                 S2SModel.GptRealtime21 => "gpt-realtime-2.1",
                 S2SModel.GptRealtime21Mini => "gpt-realtime-2.1-mini",
                 S2SModel.GptRealtimeMini => "gpt-realtime-mini",
+                S2SModel.GrokVoice30 => "grok-voice-3.0",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -68,6 +73,7 @@ namespace RetellAI
                 "gpt-realtime-2.1" => S2SModel.GptRealtime21,
                 "gpt-realtime-2.1-mini" => S2SModel.GptRealtime21Mini,
                 "gpt-realtime-mini" => S2SModel.GptRealtimeMini,
+                "grok-voice-3.0" => S2SModel.GrokVoice30,
                 _ => null,
             };
         }
