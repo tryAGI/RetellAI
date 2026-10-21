@@ -35,6 +35,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        GrokVoice30,
+        /// <summary>
+        ///
+        /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
     }
 
@@ -56,6 +60,7 @@ namespace RetellAI
                 NullableS2SModel.GptRealtime21 => "gpt-realtime-2.1",
                 NullableS2SModel.GptRealtime21Mini => "gpt-realtime-2.1-mini",
                 NullableS2SModel.GptRealtimeMini => "gpt-realtime-mini",
+                NullableS2SModel.GrokVoice30 => "grok-voice-3.0",
                 NullableS2SModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -73,6 +78,7 @@ namespace RetellAI
                 "gpt-realtime-2.1" => NullableS2SModel.GptRealtime21,
                 "gpt-realtime-2.1-mini" => NullableS2SModel.GptRealtime21Mini,
                 "gpt-realtime-mini" => NullableS2SModel.GptRealtimeMini,
+                "grok-voice-3.0" => NullableS2SModel.GrokVoice30,
                 "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => NullableS2SModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
                 _ => null,
             };

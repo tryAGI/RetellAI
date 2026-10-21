@@ -27,7 +27,7 @@ namespace RetellAI
         public required string VoiceName { get; set; }
 
         /// <summary>
-        /// Indicates the provider of voice.<br/>
+        /// Indicates the provider of voice. `xai` voices can only be used with the `grok-voice-3.0` speech-to-speech model.<br/>
         /// Example: elevenlabs
         /// </summary>
         /// <example>elevenlabs</example>
@@ -63,6 +63,14 @@ namespace RetellAI
         public string? Age { get; set; }
 
         /// <summary>
+        /// URL to the avatar image of the voice.<br/>
+        /// Example: https://retell-utils-public.s3.us-west-2.amazonaws.com/customvoice-icon.png
+        /// </summary>
+        /// <example>https://retell-utils-public.s3.us-west-2.amazonaws.com/customvoice-icon.png</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("avatar_url")]
+        public string? AvatarUrl { get; set; }
+
+        /// <summary>
         /// URL to the preview audio of the voice.<br/>
         /// Example: https://retell-utils-public.s3.us-west-2.amazonaws.com/adrian.mp3
         /// </summary>
@@ -88,7 +96,7 @@ namespace RetellAI
         /// Example: Adrian
         /// </param>
         /// <param name="provider">
-        /// Indicates the provider of voice.<br/>
+        /// Indicates the provider of voice. `xai` voices can only be used with the `grok-voice-3.0` speech-to-speech model.<br/>
         /// Example: elevenlabs
         /// </param>
         /// <param name="gender">
@@ -102,6 +110,10 @@ namespace RetellAI
         /// <param name="age">
         /// Age annotation of the voice.<br/>
         /// Example: Young
+        /// </param>
+        /// <param name="avatarUrl">
+        /// URL to the avatar image of the voice.<br/>
+        /// Example: https://retell-utils-public.s3.us-west-2.amazonaws.com/customvoice-icon.png
         /// </param>
         /// <param name="previewAudioUrl">
         /// URL to the preview audio of the voice.<br/>
@@ -117,6 +129,7 @@ namespace RetellAI
             global::RetellAI.VoiceResponseGender gender,
             string? accent,
             string? age,
+            string? avatarUrl,
             string? previewAudioUrl)
         {
             this.VoiceId = voiceId ?? throw new global::System.ArgumentNullException(nameof(voiceId));
@@ -125,6 +138,7 @@ namespace RetellAI
             this.Accent = accent;
             this.Gender = gender;
             this.Age = age;
+            this.AvatarUrl = avatarUrl;
             this.PreviewAudioUrl = previewAudioUrl;
         }
 
