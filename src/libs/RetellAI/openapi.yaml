@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-22-ace4e2e
+  x-retell-spec-revision: 2026-10-22-fc98af9
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -1270,6 +1270,7 @@ components:
       type: object
       required:
       - agent_id
+      - is_suspended
       - agent_name
       - channel
       - user_modified_timestamp
@@ -1279,6 +1280,9 @@ components:
           type: string
           example: agent_1ffdb9717444d0e77346838911
           description: Unique id of agent.
+        is_suspended:
+          type: boolean
+          description: Whether the agent is currently suspended.
         agent_name:
           type: string
           example: Jarvis
