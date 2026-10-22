@@ -39,6 +39,10 @@ namespace RetellAI
         /// If true, E.164 validation for phone_number is skipped. This is useful for internal pseudo numbers when using custom telephony. If omitted, default is true. Must be a boolean literal; string values like "true" or "false" are invalid.<br/>
         /// Example: true
         /// </param>
+        /// <param name="codecs">
+        /// SIP codec preferences for custom phone numbers only, used for inbound and outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not support this setting. An empty list uses the gateway's default codecs. Codec names are extensible and are not limited to the examples.<br/>
+        /// Example: [PCMU, PCMA, G.722]
+        /// </param>
         /// <param name="terminationUri">
         /// The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always end with ".pstn.twilio.com".<br/>
         /// Example: someuri.pstn.twilio.com
@@ -84,6 +88,7 @@ namespace RetellAI
             string phoneNumber,
             string terminationUri,
             bool? ignoreE164Validation = default,
+            global::System.Collections.Generic.IList<string>? codecs = default,
             string? sipTrunkAuthUsername = default,
             string? sipTrunkAuthPassword = default,
             global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? inboundAgents = default,

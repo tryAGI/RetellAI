@@ -26,6 +26,14 @@ namespace RetellAI
         public bool? IgnoreE164Validation { get; set; }
 
         /// <summary>
+        /// SIP codec preferences for custom phone numbers only, used for inbound and outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not support this setting. An empty list uses the gateway's default codecs. Codec names are extensible and are not limited to the examples.<br/>
+        /// Example: [PCMU, PCMA, G.722]
+        /// </summary>
+        /// <example>[PCMU, PCMA, G.722]</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("codecs")]
+        public global::System.Collections.Generic.IList<string>? Codecs { get; set; }
+
+        /// <summary>
         /// The termination uri to uniquely identify your elastic SIP trunk. This is used for outbound calls. For Twilio elastic SIP trunks it always end with ".pstn.twilio.com".<br/>
         /// Example: someuri.pstn.twilio.com
         /// </summary>
@@ -123,6 +131,10 @@ namespace RetellAI
         /// If true, E.164 validation for phone_number is skipped. This is useful for internal pseudo numbers when using custom telephony. If omitted, default is true. Must be a boolean literal; string values like "true" or "false" are invalid.<br/>
         /// Example: true
         /// </param>
+        /// <param name="codecs">
+        /// SIP codec preferences for custom phone numbers only, used for inbound and outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not support this setting. An empty list uses the gateway's default codecs. Codec names are extensible and are not limited to the examples.<br/>
+        /// Example: [PCMU, PCMA, G.722]
+        /// </param>
         /// <param name="sipTrunkAuthUsername">
         /// The username used for authentication for the SIP trunk.<br/>
         /// Example: username
@@ -164,6 +176,7 @@ namespace RetellAI
             string phoneNumber,
             string terminationUri,
             bool? ignoreE164Validation,
+            global::System.Collections.Generic.IList<string>? codecs,
             string? sipTrunkAuthUsername,
             string? sipTrunkAuthPassword,
             global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? inboundAgents,
@@ -176,6 +189,7 @@ namespace RetellAI
         {
             this.PhoneNumber = phoneNumber ?? throw new global::System.ArgumentNullException(nameof(phoneNumber));
             this.IgnoreE164Validation = ignoreE164Validation;
+            this.Codecs = codecs;
             this.TerminationUri = terminationUri ?? throw new global::System.ArgumentNullException(nameof(terminationUri));
             this.SipTrunkAuthUsername = sipTrunkAuthUsername;
             this.SipTrunkAuthPassword = sipTrunkAuthPassword;

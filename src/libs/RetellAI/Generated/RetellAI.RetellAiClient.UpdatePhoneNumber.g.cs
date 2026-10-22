@@ -44,7 +44,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// Update agent bound to a purchased phone number
+        /// Update settings for a phone number. SIP codec preferences apply only to custom phone numbers.
         /// </summary>
         /// <param name="phoneNumber">
         /// Example: +14157774444
@@ -71,7 +71,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// Update agent bound to a purchased phone number
+        /// Update settings for a phone number. SIP codec preferences apply only to custom phone numbers.
         /// </summary>
         /// <param name="phoneNumber">
         /// Example: +14157774444
@@ -593,7 +593,7 @@ namespace RetellAI
             }
         }
         /// <summary>
-        /// Update agent bound to a purchased phone number
+        /// Update settings for a phone number. SIP codec preferences apply only to custom phone numbers.
         /// </summary>
         /// <param name="phoneNumber">
         /// Example: +14157774444
@@ -630,6 +630,10 @@ namespace RetellAI
         /// List of ISO 3166-1 alpha-2 country codes to which outbound calls are allowed. If not set or empty, calls to all countries are allowed.<br/>
         /// Example: [US, CA]
         /// </param>
+        /// <param name="codecs">
+        /// SIP codec preferences for custom phone numbers only, used for inbound and outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not support this setting. An empty list uses the gateway's default codecs. Codec names are extensible and are not limited to the examples.<br/>
+        /// Example: [PCMU, PCMA, G.722]
+        /// </param>
         /// <param name="terminationUri">
         /// The termination uri to update for the phone number. This is used for outbound calls.<br/>
         /// Example: someuri.pstn.twilio.com
@@ -664,6 +668,7 @@ namespace RetellAI
             string? inboundSmsWebhookUrl = default,
             global::System.Collections.Generic.IList<string>? allowedInboundCountryList = default,
             global::System.Collections.Generic.IList<string>? allowedOutboundCountryList = default,
+            global::System.Collections.Generic.IList<string>? codecs = default,
             string? terminationUri = default,
             string? authUsername = default,
             string? authPassword = default,
@@ -683,6 +688,7 @@ namespace RetellAI
                 InboundSmsWebhookUrl = inboundSmsWebhookUrl,
                 AllowedInboundCountryList = allowedInboundCountryList,
                 AllowedOutboundCountryList = allowedOutboundCountryList,
+                Codecs = codecs,
                 TerminationUri = terminationUri,
                 AuthUsername = authUsername,
                 AuthPassword = authPassword,
