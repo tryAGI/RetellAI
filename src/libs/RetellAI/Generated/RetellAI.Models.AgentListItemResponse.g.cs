@@ -18,6 +18,13 @@ namespace RetellAI
         public required string AgentId { get; set; }
 
         /// <summary>
+        /// Whether the agent is currently suspended.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_suspended")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool IsSuspended { get; set; }
+
+        /// <summary>
         /// The name of the agent. Only used for your own reference.<br/>
         /// Example: Jarvis
         /// </summary>
@@ -70,6 +77,9 @@ namespace RetellAI
         /// Unique id of agent.<br/>
         /// Example: agent_1ffdb9717444d0e77346838911
         /// </param>
+        /// <param name="isSuspended">
+        /// Whether the agent is currently suspended.
+        /// </param>
         /// <param name="agentName">
         /// The name of the agent. Only used for your own reference.<br/>
         /// Example: Jarvis
@@ -92,6 +102,7 @@ namespace RetellAI
 #endif
         public AgentListItemResponse(
             string agentId,
+            bool isSuspended,
             string agentName,
             global::RetellAI.AgentListItemResponseChannel channel,
             long userModifiedTimestamp,
@@ -99,6 +110,7 @@ namespace RetellAI
             bool? isTransferAgent)
         {
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
+            this.IsSuspended = isSuspended;
             this.AgentName = agentName ?? throw new global::System.ArgumentNullException(nameof(agentName));
             this.Channel = channel;
             this.UserModifiedTimestamp = userModifiedTimestamp;
