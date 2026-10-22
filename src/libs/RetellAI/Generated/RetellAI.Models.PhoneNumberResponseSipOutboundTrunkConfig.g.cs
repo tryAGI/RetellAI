@@ -33,6 +33,14 @@ namespace RetellAI
         public string? Transport { get; set; }
 
         /// <summary>
+        /// SIP codec preferences for custom phone numbers only, used for inbound and outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not support this setting. An empty list uses the gateway's default codecs. Codec names are extensible and are not limited to the examples.<br/>
+        /// Example: [PCMU, PCMA, G.722]
+        /// </summary>
+        /// <example>[PCMU, PCMA, G.722]</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("codecs")]
+        public global::System.Collections.Generic.IList<string>? Codecs { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -53,17 +61,23 @@ namespace RetellAI
         /// Outbound transport protocol for the SIP trunk for the phone number. Valid values are "TLS", "TCP" and "UDP". Default is "TCP".<br/>
         /// Example: TCP
         /// </param>
+        /// <param name="codecs">
+        /// SIP codec preferences for custom phone numbers only, used for inbound and outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not support this setting. An empty list uses the gateway's default codecs. Codec names are extensible and are not limited to the examples.<br/>
+        /// Example: [PCMU, PCMA, G.722]
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public PhoneNumberResponseSipOutboundTrunkConfig(
             string? terminationUri,
             string? authUsername,
-            string? transport)
+            string? transport,
+            global::System.Collections.Generic.IList<string>? codecs)
         {
             this.TerminationUri = terminationUri;
             this.AuthUsername = authUsername;
             this.Transport = transport;
+            this.Codecs = codecs;
         }
 
         /// <summary>
