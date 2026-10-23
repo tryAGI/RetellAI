@@ -21,6 +21,19 @@ namespace RetellAI
         public global::RetellAI.ChartUpdatesMap? ChartUpdates { get; set; }
 
         /// <summary>
+        /// Dashboard date rule. Rolling presets count calendar days including today in the dashboard timezone; custom fixed dates remain unchanged.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("time")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ChartTimeRangeJsonConverter))]
+        public global::RetellAI.ChartTimeRange? Time { get; set; }
+
+        /// <summary>
+        /// IANA timezone for dashboard date boundaries and time buckets.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
+        public string? Timezone { get; set; }
+
+        /// <summary>
         /// Dashboard-level filter criteria applied to all charts.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("filter_criteria")]
@@ -46,6 +59,12 @@ namespace RetellAI
         /// <param name="chartUpdates">
         /// Per-chart updates merged into the stored charts. Each chart is written on its own key, so concurrent edits to different charts do not conflict.
         /// </param>
+        /// <param name="time">
+        /// Dashboard date rule. Rolling presets count calendar days including today in the dashboard timezone; custom fixed dates remain unchanged.
+        /// </param>
+        /// <param name="timezone">
+        /// IANA timezone for dashboard date boundaries and time buckets.
+        /// </param>
         /// <param name="filterCriteria">
         /// Dashboard-level filter criteria applied to all charts.
         /// </param>
@@ -58,11 +77,15 @@ namespace RetellAI
         public DashboardUpdateRequest(
             string? name,
             global::RetellAI.ChartUpdatesMap? chartUpdates,
+            global::RetellAI.ChartTimeRange? time,
+            string? timezone,
             global::RetellAI.AnyOf<global::RetellAI.StoredCallFilter?, global::RetellAI.ChatFilter>? filterCriteria,
             global::System.Collections.Generic.IList<global::RetellAI.ChartGroupItem>? groupCriteria)
         {
             this.Name = name;
             this.ChartUpdates = chartUpdates;
+            this.Time = time;
+            this.Timezone = timezone;
             this.FilterCriteria = filterCriteria;
             this.GroupCriteria = groupCriteria;
         }

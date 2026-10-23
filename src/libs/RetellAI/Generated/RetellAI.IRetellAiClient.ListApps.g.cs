@@ -7,6 +7,9 @@ namespace RetellAI
         /// <summary>
         /// List Apps in the organization (paginated).
         /// </summary>
+        /// <param name="privacyScope">
+        /// Privacy scope of an integration function.
+        /// </param>
         /// <param name="limit">
         /// Default Value: 50
         /// </param>
@@ -18,6 +21,7 @@ namespace RetellAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppsResponse2>> ListAppsAsync(
+            global::RetellAI.PrivacyScope? privacyScope = default,
             int? limit = default,
             global::RetellAI.ListAppsSortOrder? sortOrder = default,
             string? paginationKey = default,
@@ -26,6 +30,9 @@ namespace RetellAI
         /// <summary>
         /// List Apps in the organization (paginated).
         /// </summary>
+        /// <param name="privacyScope">
+        /// Privacy scope of an integration function.
+        /// </param>
         /// <param name="limit">
         /// Default Value: 50
         /// </param>
@@ -37,6 +44,7 @@ namespace RetellAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppsResponse2>>> ListAppsAsResponseAsync(
+            global::RetellAI.PrivacyScope? privacyScope = default,
             int? limit = default,
             global::RetellAI.ListAppsSortOrder? sortOrder = default,
             string? paginationKey = default,
