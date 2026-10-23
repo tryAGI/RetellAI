@@ -27,12 +27,14 @@ namespace RetellAI
             };
         partial void PrepareListAppsArguments(
             global::System.Net.Http.HttpClient httpClient,
+            ref global::RetellAI.PrivacyScope? privacyScope,
             ref int? limit,
             ref global::RetellAI.ListAppsSortOrder? sortOrder,
             ref string? paginationKey);
         partial void PrepareListAppsRequest(
             global::System.Net.Http.HttpClient httpClient,
             global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::RetellAI.PrivacyScope? privacyScope,
             int? limit,
             global::RetellAI.ListAppsSortOrder? sortOrder,
             string? paginationKey);
@@ -48,6 +50,9 @@ namespace RetellAI
         /// <summary>
         /// List Apps in the organization (paginated).
         /// </summary>
+        /// <param name="privacyScope">
+        /// Privacy scope of an integration function.
+        /// </param>
         /// <param name="limit">
         /// Default Value: 50
         /// </param>
@@ -59,6 +64,7 @@ namespace RetellAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppsResponse2>> ListAppsAsync(
+            global::RetellAI.PrivacyScope? privacyScope = default,
             int? limit = default,
             global::RetellAI.ListAppsSortOrder? sortOrder = default,
             string? paginationKey = default,
@@ -66,6 +72,7 @@ namespace RetellAI
             global::System.Threading.CancellationToken cancellationToken = default)
         {
             var __response = await ListAppsAsResponseAsync(
+                privacyScope: privacyScope,
                 limit: limit,
                 sortOrder: sortOrder,
                 paginationKey: paginationKey,
@@ -78,6 +85,9 @@ namespace RetellAI
         /// <summary>
         /// List Apps in the organization (paginated).
         /// </summary>
+        /// <param name="privacyScope">
+        /// Privacy scope of an integration function.
+        /// </param>
         /// <param name="limit">
         /// Default Value: 50
         /// </param>
@@ -89,6 +99,7 @@ namespace RetellAI
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::RetellAI.ApiException"></exception>
         public async global::System.Threading.Tasks.Task<global::RetellAI.AutoSDKHttpResponse<global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppsResponse2>>> ListAppsAsResponseAsync(
+            global::RetellAI.PrivacyScope? privacyScope = default,
             int? limit = default,
             global::RetellAI.ListAppsSortOrder? sortOrder = default,
             string? paginationKey = default,
@@ -99,6 +110,7 @@ namespace RetellAI
                 client: HttpClient);
             PrepareListAppsArguments(
                 httpClient: HttpClient,
+                privacyScope: ref privacyScope,
                 limit: ref limit,
                 sortOrder: ref sortOrder,
                 paginationKey: ref paginationKey);
@@ -130,6 +142,7 @@ namespace RetellAI
                                 path: "/list-apps",
                                 baseUri: HttpClient.BaseAddress);
                             __pathBuilder
+                                .AddOptionalParameter("privacy_scope", privacyScope?.ToValueString())
                                 .AddOptionalParameter("limit", limit?.ToString())
                                 .AddOptionalParameter("sort_order", sortOrder?.ToValueString())
                                 .AddOptionalParameter("pagination_key", paginationKey)
@@ -174,6 +187,7 @@ namespace RetellAI
                 PrepareListAppsRequest(
                     httpClient: HttpClient,
                     httpRequestMessage: __httpRequest,
+                    privacyScope: privacyScope,
                     limit: limit,
                     sortOrder: sortOrder,
                     paginationKey: paginationKey);
