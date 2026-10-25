@@ -11,11 +11,18 @@ namespace RetellAI
     public sealed partial class ConversationFlowOverride
     {
         /// <summary>
-        /// Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set, and backup cannot be removed.
+        /// Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set; setting backup to null disables it for that call only.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_config")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ModelConfigJsonConverter))]
         public global::RetellAI.ModelConfig? ModelConfig { get; set; }
+
+        /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("backup_model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableBackupModelChoiceJsonConverter))]
+        public global::RetellAI.NullableBackupModelChoice? BackupModel { get; set; }
 
         /// <summary>
         /// Deprecated, use model_config. Ignored when model_config is set.
@@ -82,8 +89,9 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ConversationFlowOverride" /> class.
         /// </summary>
         /// <param name="modelConfig">
-        /// Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set, and backup cannot be removed.
+        /// Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set; setting backup to null disables it for that call only.
         /// </param>
+        /// <param name="backupModel"></param>
         /// <param name="toolCallStrictMode">
         /// Whether to use strict mode for tool calls. Only applicable when using certain supported models.<br/>
         /// Example: true
@@ -106,6 +114,7 @@ namespace RetellAI
 #endif
         public ConversationFlowOverride(
             global::RetellAI.ModelConfig? modelConfig,
+            global::RetellAI.NullableBackupModelChoice? backupModel,
             bool? toolCallStrictMode,
             global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
             global::RetellAI.KBConfig? kbConfig,
@@ -113,6 +122,7 @@ namespace RetellAI
             int? beginAfterUserSilenceMs)
         {
             this.ModelConfig = modelConfig;
+            this.BackupModel = backupModel;
             this.ToolCallStrictMode = toolCallStrictMode;
             this.KnowledgeBaseIds = knowledgeBaseIds;
             this.KbConfig = kbConfig;

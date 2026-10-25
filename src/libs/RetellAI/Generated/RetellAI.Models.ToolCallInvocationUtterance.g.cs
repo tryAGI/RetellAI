@@ -45,6 +45,12 @@ namespace RetellAI
         public required string Arguments { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::RetellAI.ToolCallInvocationUtteranceMetadata? Metadata { get; set; }
+
+        /// <summary>
         /// Optional thought signature from Google Gemini thinking models. This is used internally to maintain reasoning chain in multi-turn function calling.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("thought_signature")]
@@ -75,6 +81,7 @@ namespace RetellAI
         /// Kind of tool. Known values are `custom`, `code`, `mcp`, `integration_app`, `end_call`, `transfer_call`, `bridge_transfer`, `cancel_transfer`, `agent_swap`, `press_digit`, `send_sms`, `extract_dynamic_variable`, `adjust_voice_speed`, `book_appointment_cal`, and `check_availability_cal`. New values can be added. Absent on tool calls sent by a custom LLM, and on some older calls and chats.<br/>
         /// Example: transfer_call
         /// </param>
+        /// <param name="metadata"></param>
         /// <param name="thoughtSignature">
         /// Optional thought signature from Google Gemini thinking models. This is used internally to maintain reasoning chain in multi-turn function calling.
         /// </param>
@@ -87,6 +94,7 @@ namespace RetellAI
             string arguments,
             global::RetellAI.ToolCallInvocationUtteranceRole role,
             string? type,
+            global::RetellAI.ToolCallInvocationUtteranceMetadata? metadata,
             string? thoughtSignature)
         {
             this.Role = role;
@@ -94,6 +102,7 @@ namespace RetellAI
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Type = type;
             this.Arguments = arguments ?? throw new global::System.ArgumentNullException(nameof(arguments));
+            this.Metadata = metadata;
             this.ThoughtSignature = thoughtSignature;
         }
 

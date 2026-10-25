@@ -11,6 +11,13 @@ namespace RetellAI
     public sealed partial class RetellLlmRequestVariant2
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("backup_model")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableBackupModelChoiceJsonConverter))]
+        public global::RetellAI.NullableBackupModelChoice? BackupModel { get; set; }
+
+        /// <summary>
         /// General prompt appended to system prompt no matter what state the agent is in.<br/>
         /// - System prompt (with state) = general prompt + state prompt.<br/>
         /// - System prompt (no state) = general prompt.<br/>

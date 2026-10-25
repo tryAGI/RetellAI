@@ -9,6 +9,12 @@ namespace RetellAI
     public sealed partial class Utterance
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("metadata")]
+        public global::RetellAI.UtteranceMetadata? Metadata { get; set; }
+
+        /// <summary>
         /// Documents whether this utterance is spoken by agent or user.<br/>
         /// Example: agent
         /// </summary>
@@ -57,14 +63,17 @@ namespace RetellAI
         /// Array of words in the utterance with the word timestamp. Useful for understanding what word was spoken at what time. Note that the word timestamp is not guaranteed to be accurate, it's more like an approximation.<br/>
         /// Example: [{"word":"hi","start":0.7,"end":1.3}]
         /// </param>
+        /// <param name="metadata"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public Utterance(
             global::RetellAI.UtteranceRole role,
             string content,
-            global::System.Collections.Generic.IList<global::RetellAI.UtteranceWord> words)
+            global::System.Collections.Generic.IList<global::RetellAI.UtteranceWord> words,
+            global::RetellAI.UtteranceMetadata? metadata)
         {
+            this.Metadata = metadata;
             this.Role = role;
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));
             this.Words = words ?? throw new global::System.ArgumentNullException(nameof(words));

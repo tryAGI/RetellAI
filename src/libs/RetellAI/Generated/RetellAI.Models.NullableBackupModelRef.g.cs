@@ -10,7 +10,7 @@ namespace RetellAI
     public readonly partial struct NullableBackupModelRef : global::System.IEquatable<NullableBackupModelRef>
     {
         /// <summary>
-        ///
+        /// Backup models are supported only for call agents. Response engines with a backup model cannot be used by chat agents.
         /// </summary>
 #if NET6_0_OR_GREATER
         public global::RetellAI.BackupModelRef? BackupModelRef { get; init; }

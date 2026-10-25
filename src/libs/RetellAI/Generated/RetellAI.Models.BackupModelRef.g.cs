@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Backup models are supported only for call agents. Response engines with a backup model cannot be used by chat agents.
     /// </summary>
     public sealed partial class BackupModelRef
     {
