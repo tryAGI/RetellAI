@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-23-8c18b4d
+  x-retell-spec-revision: 2026-10-25-6775164
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -666,11 +666,12 @@ components:
         retell_llm:
           $ref: '#/components/schemas/RetellLlmOverride'
           description: Override Retell LLM configuration settings. Only applicable when using Retell LLM as the response engine. Supported attributes - model_config, tool_call_strict_mode, knowledge_base_ids,
-            kb_config, start_speaker, begin_after_user_silence_ms, begin_message. A model_config override cannot remove the backup model or switch a speech-to-speech LLM to a cascading model.
+            kb_config, start_speaker, begin_after_user_silence_ms, begin_message. A model_config override can set backup to null to remove it for this call, but cannot switch a speech-to-speech LLM to a
+            cascading model.
         conversation_flow:
           $ref: '#/components/schemas/ConversationFlowOverride'
           description: Override conversation flow configuration settings. Only applicable when using conversation flow as the response engine. Supported attributes - model_config, tool_call_strict_mode,
-            knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms. A model_config override cannot remove the backup model.
+            knowledge_base_ids, kb_config, start_speaker, begin_after_user_silence_ms. A model_config override can set backup to null to remove it for this call.
     ContactMemoryConfig:
       type: object
       additionalProperties: false
@@ -2937,6 +2938,10 @@ components:
       properties:
         model_config:
           $ref: '#/components/schemas/ModelConfig'
+        backup_model:
+          $ref: '#/components/schemas/NullableBackupModelChoice'
+          description: Replace backup model configuration for this call only. Omit to inherit the saved configuration, or set null to disable backup. An omitted backup_kick_in_timeout in a supplied configuration
+            defaults to 1500 milliseconds.
         model_choice:
           allOf:
           - $ref: '#/components/schemas/ModelChoice'
@@ -3005,6 +3010,10 @@ components:
       - $ref: '#/components/schemas/ConversationFlowOverride'
       - type: object
         properties:
+          backup_model:
+            allOf:
+            - $ref: '#/components/schemas/NullableBackupModelChoice'
+            deprecated: true
           global_prompt:
             type: string
             example: You are a helpful customer service agent.
@@ -5431,6 +5440,24 @@ components:
         wer:
           $ref: '#/components/schemas/WER'
           description: Word error rate for this utterance.
+    BackupModelChoice:
+      description: Backup models are supported only for call agents. Response engines with a backup model cannot be used by chat agents.
+      allOf:
+      - $ref: '#/components/schemas/ModelChoiceCascading'
+      - type: object
+        properties:
+          backup_kick_in_timeout:
+            type: integer
+            minimum: 300
+            maximum: 60000
+            description: Duration in milliseconds to prefer primary model output while both models run concurrently. Must be between 300 and 60000 milliseconds, inclusive. Defaults to 1500 when omitted.
+    NullableBackupModelChoice:
+      oneOf:
+      - $ref: '#/components/schemas/BackupModelChoice'
+      - type: object
+        nullable: true
+        enum:
+        - null
     ModelChoiceCascading:
       type: object
       required:
@@ -5500,6 +5527,7 @@ components:
           $ref: '#/components/schemas/ServiceTier'
     BackupModelRef:
       type: object
+      description: Backup models are supported only for call agents. Response engines with a backup model cannot be used by chat agents.
       additionalProperties: false
       required:
       - model
@@ -5530,7 +5558,8 @@ components:
         - null
     ModelConfig:
       description: Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup
-        to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set, and backup cannot be removed.
+        to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set; setting backup to null disables
+        it for that call only.
       anyOf:
       - $ref: '#/components/schemas/CascadingModelConfig'
       - $ref: '#/components/schemas/S2SModelConfig'
@@ -6774,6 +6803,10 @@ components:
       properties:
         model_config:
           $ref: '#/components/schemas/ModelConfig'
+        backup_model:
+          $ref: '#/components/schemas/NullableBackupModelChoice'
+          description: Replace backup model configuration for this call only. Omit to inherit the saved configuration, or set null to disable backup. An omitted backup_kick_in_timeout in a supplied configuration
+            defaults to 1500 milliseconds.
         model:
           allOf:
           - $ref: '#/components/schemas/NullableLLMModel'
@@ -6841,6 +6874,10 @@ components:
       - $ref: '#/components/schemas/RetellLlmOverride'
       - type: object
         properties:
+          backup_model:
+            allOf:
+            - $ref: '#/components/schemas/NullableBackupModelChoice'
+            deprecated: true
           general_prompt:
             type: string
             example: You are ...
@@ -7700,6 +7737,13 @@ components:
         arguments:
           type: string
           description: Arguments for this tool call, it's a stringified JSON object.
+        metadata:
+          anyOf:
+          - type: object
+            properties:
+              backup_model_used:
+                $ref: '#/components/schemas/BackupModelUsed'
+                description: Backup model that generated this tool invocation.
         thought_signature:
           type: string
           description: Optional thought signature from Google Gemini thinking models. This is used internally to maintain reasoning chain in multi-turn function calling.
@@ -8256,6 +8300,43 @@ components:
           items:
             type: string
           description: Tool calls made with incorrect arguments.
+    BackupModelUsed:
+      type: object
+      description: Selection details for a winning backup model used in a response or tool invocation. Timings are measured from the start of the candidate race to selection or first usable output, not
+        completion of generation.
+      required:
+      - model
+      - primary_model
+      - backup_model
+      - reason
+      - selection_latency_ms
+      properties:
+        model:
+          type: string
+          description: Actual selected model after routing and retries.
+        primary_model:
+          type: string
+          description: Primary model configured for this request.
+        backup_model:
+          type: string
+          description: Backup model configured for this request.
+        reason:
+          type: string
+          enum:
+          - primary_failed
+          - preference_expired
+          - first_usable
+          description: Why the backup won. primary_failed means primary attempts failed; preference_expired means backup was ready within the primary preference window; first_usable means backup became
+            ready after that window and won the race.
+        selection_latency_ms:
+          type: number
+          description: Elapsed milliseconds from race start to winner selection.
+        primary_ready_ms:
+          type: number
+          description: Elapsed milliseconds until primary produced usable output. Omitted if primary was not ready when the winner was selected.
+        backup_ready_ms:
+          type: number
+          description: Elapsed milliseconds until backup produced usable output. Omitted when unavailable.
     Utterance:
       type: object
       required:
@@ -8263,6 +8344,22 @@ components:
       - content
       - words
       properties:
+        metadata:
+          type: object
+          properties:
+            response_id:
+              type: integer
+              description: Call-scoped agent response identifier, when available.
+            interrupt_id:
+              type: integer
+              description: Custom LLM agent interruption identifier, when available.
+            is_backchannel:
+              type: boolean
+              description: Whether the utterance is a backchannel acknowledgment.
+            backup_model_used:
+              $ref: '#/components/schemas/BackupModelUsed'
+              description: The first backup model used in the Retell-managed response associated with this utterance, including tool-only requests. Does not imply every word was generated by the backup
+                model. Absent when no backup was used or for backchannels.
         role:
           type: string
           enum:
