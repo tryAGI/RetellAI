@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-25-6775164
+  x-retell-spec-revision: 2026-10-26-e7fae61
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -3334,6 +3334,9 @@ components:
           minimum: 1
           maximum: 100
           description: Weight for scoring (1-100)
+    ExecutionStatusVariable:
+      type: string
+      description: Dynamic variable to store execution status as "success" or "failure". Tools skipped by conditions or dependencies leave it unchanged.
     CustomTool:
       type: object
       properties:
@@ -3377,6 +3380,8 @@ components:
           description: Query parameters to append to the request URL.
         parameters:
           $ref: '#/components/schemas/ToolParameter'
+        execution_status_variable:
+          $ref: '#/components/schemas/ExecutionStatusVariable'
         response_variables:
           type: object
           additionalProperties:
@@ -3457,6 +3462,8 @@ components:
           minimum: 5000
           maximum: 60000
           description: The maximum time in milliseconds the code can run before it's considered timeout. Defaults to 30,000 ms (30 s).
+        execution_status_variable:
+          $ref: '#/components/schemas/ExecutionStatusVariable'
         response_variables:
           type: object
           additionalProperties:
@@ -3523,6 +3530,8 @@ components:
             record selected_input_mode, the editor mode the user selected ("const_enum", "const_boolean", "const_value", "description_custom", or "description_preset"); it is stored and returned as-is,
             used only by the tool config UI. Omit the key when no mode is recorded; when set, const_* modes require a non-empty const, and description_* modes must omit const entirely. Each parameter's
             required list must match the schema returned by the corresponding step of the get-app-tool-schema loop.
+        execution_status_variable:
+          $ref: '#/components/schemas/ExecutionStatusVariable'
         response_variables:
           type: object
           additionalProperties:
@@ -4660,6 +4669,8 @@ components:
             minimum: 5000
             maximum: 60000
             description: The maximum time in milliseconds the code can run before it's considered timeout. Defaults to 30,000 ms (30 s).
+          execution_status_variable:
+            $ref: '#/components/schemas/ExecutionStatusVariable'
           response_variables:
             type: object
             additionalProperties:
@@ -5069,6 +5080,7 @@ components:
       - gpt-6-astra
       - gpt-6-sol
       - gpt-6.1-sol
+      - gpt-6.1-terra
       - gpt-6-luna
       - claude-4.6-sonnet
       - claude-5-opus
@@ -5113,6 +5125,8 @@ components:
               $ref: '#/components/schemas/NodeEdge'
           else_edge:
             $ref: '#/components/schemas/ElseEdge'
+          execution_status_variable:
+            $ref: '#/components/schemas/ExecutionStatusVariable'
           response_variables:
             type: object
             additionalProperties:
@@ -5181,6 +5195,8 @@ components:
           additionalProperties:
             type: string
           description: The input schema of the MCP tool.
+        execution_status_variable:
+          $ref: '#/components/schemas/ExecutionStatusVariable'
         response_variables:
           type: object
           additionalProperties:
@@ -5896,6 +5912,7 @@ components:
       - gpt-6-astra
       - gpt-6-sol
       - gpt-6.1-sol
+      - gpt-6.1-terra
       - gpt-6-luna
       - claude-4.6-sonnet
       - claude-5-opus

@@ -50,6 +50,12 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.ToolParameter>? Parameters { get; set; }
 
         /// <summary>
+        /// Dynamic variable to store execution status as "success" or "failure". Tools skipped by conditions or dependencies leave it unchanged.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("execution_status_variable")]
+        public string? ExecutionStatusVariable { get; set; }
+
+        /// <summary>
         /// Mapping of a dynamic-variable name to the response field (dot-path) it is populated from. Missing paths are ignored.<br/>
         /// Example: {"contact_first_name":"data.first_name"}
         /// </summary>
@@ -127,6 +133,9 @@ namespace RetellAI
         /// <param name="parameters">
         /// The resolved input parameters, in order. Properties may pin a value with const (including {{variable}} references) or provide a description for LLM inference. Each property may also record selected_input_mode, the editor mode the user selected ("const_enum", "const_boolean", "const_value", "description_custom", or "description_preset"); it is stored and returned as-is, used only by the tool config UI. Omit the key when no mode is recorded; when set, const_* modes require a non-empty const, and description_* modes must omit const entirely. Each parameter's required list must match the schema returned by the corresponding step of the get-app-tool-schema loop.
         /// </param>
+        /// <param name="executionStatusVariable">
+        /// Dynamic variable to store execution status as "success" or "failure". Tools skipped by conditions or dependencies leave it unchanged.
+        /// </param>
         /// <param name="responseVariables">
         /// Mapping of a dynamic-variable name to the response field (dot-path) it is populated from. Missing paths are ignored.<br/>
         /// Example: {"contact_first_name":"data.first_name"}
@@ -163,6 +172,7 @@ namespace RetellAI
             string appToolTemplateName,
             global::RetellAI.AppToolType type,
             global::System.Collections.Generic.IList<global::RetellAI.ToolParameter>? parameters,
+            string? executionStatusVariable,
             global::System.Collections.Generic.Dictionary<string, string>? responseVariables,
             global::RetellAI.OutputSelection? outputSelection,
             string? description,
@@ -178,6 +188,7 @@ namespace RetellAI
             this.Provider = provider ?? throw new global::System.ArgumentNullException(nameof(provider));
             this.AppToolTemplateName = appToolTemplateName ?? throw new global::System.ArgumentNullException(nameof(appToolTemplateName));
             this.Parameters = parameters;
+            this.ExecutionStatusVariable = executionStatusVariable;
             this.ResponseVariables = responseVariables;
             this.OutputSelection = outputSelection;
             this.Description = description;
