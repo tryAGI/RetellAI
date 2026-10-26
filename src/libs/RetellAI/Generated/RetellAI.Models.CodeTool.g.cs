@@ -42,6 +42,12 @@ namespace RetellAI
         public int? TimeoutMs { get; set; }
 
         /// <summary>
+        /// Dynamic variable to store execution status as "success" or "failure". Tools skipped by conditions or dependencies leave it unchanged.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("execution_status_variable")]
+        public string? ExecutionStatusVariable { get; set; }
+
+        /// <summary>
         /// A mapping of variable names to JSON paths in the code execution result. These mapped values will be extracted and added as dynamic variables.<br/>
         /// Example: {"order_id":"data.order.id"}
         /// </summary>
@@ -103,6 +109,9 @@ namespace RetellAI
         /// <param name="timeoutMs">
         /// The maximum time in milliseconds the code can run before it's considered timeout. Defaults to 30,000 ms (30 s).
         /// </param>
+        /// <param name="executionStatusVariable">
+        /// Dynamic variable to store execution status as "success" or "failure". Tools skipped by conditions or dependencies leave it unchanged.
+        /// </param>
         /// <param name="responseVariables">
         /// A mapping of variable names to JSON paths in the code execution result. These mapped values will be extracted and added as dynamic variables.<br/>
         /// Example: {"order_id":"data.order.id"}
@@ -132,6 +141,7 @@ namespace RetellAI
             global::RetellAI.CodeToolType type,
             string? description,
             int? timeoutMs,
+            string? executionStatusVariable,
             global::System.Collections.Generic.Dictionary<string, string>? responseVariables,
             bool? speakDuringExecution,
             bool? speakAfterExecution,
@@ -144,6 +154,7 @@ namespace RetellAI
             this.Description = description;
             this.Code = code ?? throw new global::System.ArgumentNullException(nameof(code));
             this.TimeoutMs = timeoutMs;
+            this.ExecutionStatusVariable = executionStatusVariable;
             this.ResponseVariables = responseVariables;
             this.SpeakDuringExecution = speakDuringExecution;
             this.SpeakAfterExecution = speakAfterExecution;

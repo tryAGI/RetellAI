@@ -65,6 +65,12 @@ namespace RetellAI
         public global::RetellAI.ToolParameter? Parameters { get; set; }
 
         /// <summary>
+        /// Dynamic variable to store execution status as "success" or "failure". Tools skipped by conditions or dependencies leave it unchanged.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("execution_status_variable")]
+        public string? ExecutionStatusVariable { get; set; }
+
+        /// <summary>
         /// A mapping of variable names to JSON paths in the response body. These values will be extracted from the response and made available as dynamic variables for use.<br/>
         /// Example: {"user_name":"data.user.name"}
         /// </summary>
@@ -161,6 +167,9 @@ namespace RetellAI
         /// <param name="parameters">
         /// The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
         /// </param>
+        /// <param name="executionStatusVariable">
+        /// Dynamic variable to store execution status as "success" or "failure". Tools skipped by conditions or dependencies leave it unchanged.
+        /// </param>
         /// <param name="responseVariables">
         /// A mapping of variable names to JSON paths in the response body. These values will be extracted from the response and made available as dynamic variables for use.<br/>
         /// Example: {"user_name":"data.user.name"}
@@ -204,6 +213,7 @@ namespace RetellAI
             global::System.Collections.Generic.Dictionary<string, string>? headers,
             global::System.Collections.Generic.Dictionary<string, string>? queryParams,
             global::RetellAI.ToolParameter? parameters,
+            string? executionStatusVariable,
             global::System.Collections.Generic.Dictionary<string, string>? responseVariables,
             bool? speakDuringExecution,
             bool? speakAfterExecution,
@@ -223,6 +233,7 @@ namespace RetellAI
             this.Headers = headers;
             this.QueryParams = queryParams;
             this.Parameters = parameters;
+            this.ExecutionStatusVariable = executionStatusVariable;
             this.ResponseVariables = responseVariables;
             this.SpeakDuringExecution = speakDuringExecution;
             this.SpeakAfterExecution = speakAfterExecution;

@@ -43,6 +43,12 @@ namespace RetellAI
         public global::RetellAI.ElseEdge? ElseEdge { get; set; }
 
         /// <summary>
+        /// Dynamic variable to store execution status as "success" or "failure". Tools skipped by conditions or dependencies leave it unchanged.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("execution_status_variable")]
+        public string? ExecutionStatusVariable { get; set; }
+
+        /// <summary>
         /// Response variables to add to dynamic variables, key is the variable name, value is the path to the variable in the response
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("response_variables")]
@@ -105,6 +111,9 @@ namespace RetellAI
         /// <param name="elseEdge">
         /// Fallback transition used when no conditional edge or global-node condition matches. Evaluated at the same point as the node's conditional edges; for conversation and subagent nodes, an unmatched user response follows this edge.
         /// </param>
+        /// <param name="executionStatusVariable">
+        /// Dynamic variable to store execution status as "success" or "failure". Tools skipped by conditions or dependencies leave it unchanged.
+        /// </param>
         /// <param name="responseVariables">
         /// Response variables to add to dynamic variables, key is the variable name, value is the path to the variable in the response
         /// </param>
@@ -126,6 +135,7 @@ namespace RetellAI
             global::RetellAI.MCPNodeVariant2Type type,
             global::System.Collections.Generic.IList<global::RetellAI.NodeEdge>? edges,
             global::RetellAI.ElseEdge? elseEdge,
+            string? executionStatusVariable,
             global::System.Collections.Generic.Dictionary<string, string>? responseVariables,
             bool? speakDuringExecution,
             global::RetellAI.NodeInstruction? instruction,
@@ -137,6 +147,7 @@ namespace RetellAI
             this.McpToolName = mcpToolName ?? throw new global::System.ArgumentNullException(nameof(mcpToolName));
             this.Edges = edges;
             this.ElseEdge = elseEdge;
+            this.ExecutionStatusVariable = executionStatusVariable;
             this.ResponseVariables = responseVariables;
             this.SpeakDuringExecution = speakDuringExecution;
             this.Instruction = instruction;

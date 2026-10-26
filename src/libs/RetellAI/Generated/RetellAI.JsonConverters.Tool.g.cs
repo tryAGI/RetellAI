@@ -89,6 +89,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("enable_typing_sound")) __score5++;
             if (__jsonProps.Contains("execution_message_description")) __score5++;
             if (__jsonProps.Contains("execution_message_type")) __score5++;
+            if (__jsonProps.Contains("execution_status_variable")) __score5++;
             if (__jsonProps.Contains("headers")) __score5++;
             if (__jsonProps.Contains("max_retry")) __score5++;
             if (__jsonProps.Contains("method")) __score5++;
@@ -112,6 +113,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("enable_typing_sound")) __score6++;
             if (__jsonProps.Contains("execution_message_description")) __score6++;
             if (__jsonProps.Contains("execution_message_type")) __score6++;
+            if (__jsonProps.Contains("execution_status_variable")) __score6++;
             if (__jsonProps.Contains("name")) __score6++;
             if (__jsonProps.Contains("response_variables")) __score6++;
             if (__jsonProps.Contains("speak_after_execution")) __score6++;
@@ -143,6 +145,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("enable_typing_sound")) __score10++;
             if (__jsonProps.Contains("execution_message_description")) __score10++;
             if (__jsonProps.Contains("execution_message_type")) __score10++;
+            if (__jsonProps.Contains("execution_status_variable")) __score10++;
             if (__jsonProps.Contains("input_schema")) __score10++;
             if (__jsonProps.Contains("mcp_id")) __score10++;
             if (__jsonProps.Contains("name")) __score10++;
@@ -157,6 +160,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("enable_typing_sound")) __score11++;
             if (__jsonProps.Contains("execution_message_description")) __score11++;
             if (__jsonProps.Contains("execution_message_type")) __score11++;
+            if (__jsonProps.Contains("execution_status_variable")) __score11++;
             if (__jsonProps.Contains("name")) __score11++;
             if (__jsonProps.Contains("output_selection")) __score11++;
             if (__jsonProps.Contains("parameters")) __score11++;
