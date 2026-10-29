@@ -654,6 +654,10 @@ namespace RetellAI
         /// When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or an external number. Set to null to remove. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
         /// Example: +14155551234
         /// </param>
+        /// <param name="inboundFallbackEnabled">
+        /// Whether to enable inbound fallback for this phone number. When enabled, inbound calls are transferred to the fallback number. Requires fallback_number to be set.<br/>
+        /// Example: true
+        /// </param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
@@ -674,6 +678,7 @@ namespace RetellAI
             string? authPassword = default,
             string? transport = default,
             string? fallbackNumber = default,
+            bool? inboundFallbackEnabled = default,
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default)
         {
@@ -694,6 +699,7 @@ namespace RetellAI
                 AuthPassword = authPassword,
                 Transport = transport,
                 FallbackNumber = fallbackNumber,
+                InboundFallbackEnabled = inboundFallbackEnabled,
             };
 
             return await UpdatePhoneNumberAsync(

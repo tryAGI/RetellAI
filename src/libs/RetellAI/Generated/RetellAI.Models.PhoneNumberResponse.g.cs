@@ -131,6 +131,14 @@ namespace RetellAI
         public string? FallbackNumber { get; set; }
 
         /// <summary>
+        /// Whether inbound fallback is enabled for this phone number. When enabled, inbound calls are transferred to the fallback number.<br/>
+        /// Example: false
+        /// </summary>
+        /// <example>false</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("inbound_fallback_enabled")]
+        public bool? InboundFallbackEnabled { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -196,6 +204,10 @@ namespace RetellAI
         /// When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or an external number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
         /// Example: +14155551234
         /// </param>
+        /// <param name="inboundFallbackEnabled">
+        /// Whether inbound fallback is enabled for this phone number. When enabled, inbound calls are transferred to the fallback number.<br/>
+        /// Example: false
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -215,7 +227,8 @@ namespace RetellAI
             string? inboundWebhookUrl,
             string? inboundSmsWebhookUrl,
             global::RetellAI.PhoneNumberResponseSipOutboundTrunkConfig? sipOutboundTrunkConfig,
-            string? fallbackNumber)
+            string? fallbackNumber,
+            bool? inboundFallbackEnabled)
         {
             this.PhoneNumber = phoneNumber ?? throw new global::System.ArgumentNullException(nameof(phoneNumber));
             this.PhoneNumberType = phoneNumberType;
@@ -233,6 +246,7 @@ namespace RetellAI
             this.LastModificationTimestamp = lastModificationTimestamp;
             this.SipOutboundTrunkConfig = sipOutboundTrunkConfig;
             this.FallbackNumber = fallbackNumber;
+            this.InboundFallbackEnabled = inboundFallbackEnabled;
         }
 
         /// <summary>
