@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-29-ea4c727
+  x-retell-spec-revision: 2026-10-29-44c7da2
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -6467,6 +6467,10 @@ components:
           description: When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or an external
             number. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).
           nullable: true
+        inbound_fallback_enabled:
+          type: boolean
+          example: false
+          description: Whether inbound fallback is enabled for this phone number. When enabled, inbound calls are transferred to the fallback number.
     PostCallAnalysisSetting:
       type: string
       enum:
@@ -13290,6 +13294,10 @@ paths:
                   description: When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or
                     an external number. Set to null to remove. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).
                   nullable: true
+                inbound_fallback_enabled:
+                  type: boolean
+                  example: true
+                  description: Whether to enable inbound fallback for this phone number. When enabled, inbound calls are transferred to the fallback number. Requires fallback_number to be set.
             example:
               inbound_agents:
               - agent_id: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD

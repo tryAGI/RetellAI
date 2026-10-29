@@ -121,6 +121,14 @@ namespace RetellAI
         public string? FallbackNumber { get; set; }
 
         /// <summary>
+        /// Whether to enable inbound fallback for this phone number. When enabled, inbound calls are transferred to the fallback number. Requires fallback_number to be set.<br/>
+        /// Example: true
+        /// </summary>
+        /// <example>true</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("inbound_fallback_enabled")]
+        public bool? InboundFallbackEnabled { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -185,6 +193,10 @@ namespace RetellAI
         /// When inbound call concurrency is reached and a slot does not free up after extended ringing, the call will fall back to this number. Can be either a Retell phone number or an external number. Set to null to remove. Cannot be the same as this phone number, and cannot be a number that already has its own fallback configured (prevents nested forwarding).<br/>
         /// Example: +14155551234
         /// </param>
+        /// <param name="inboundFallbackEnabled">
+        /// Whether to enable inbound fallback for this phone number. When enabled, inbound calls are transferred to the fallback number. Requires fallback_number to be set.<br/>
+        /// Example: true
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
@@ -203,7 +215,8 @@ namespace RetellAI
             string? authUsername,
             string? authPassword,
             string? transport,
-            string? fallbackNumber)
+            string? fallbackNumber,
+            bool? inboundFallbackEnabled)
         {
             this.InboundAgents = inboundAgents;
             this.OutboundAgents = outboundAgents;
@@ -220,6 +233,7 @@ namespace RetellAI
             this.AuthPassword = authPassword;
             this.Transport = transport;
             this.FallbackNumber = fallbackNumber;
+            this.InboundFallbackEnabled = inboundFallbackEnabled;
         }
 
         /// <summary>
