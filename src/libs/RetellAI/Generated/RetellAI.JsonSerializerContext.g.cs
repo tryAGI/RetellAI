@@ -881,6 +881,9 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.KnowledgeBaseAppUsage))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AgentAppUsageType), TypeInfoPropertyName = "AgentAppUsageType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.KnowledgeBaseAppUsageType), TypeInfoPropertyName = "KnowledgeBaseAppUsageType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AppToolTemplate))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AppTemplate))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.AppToolTemplate>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CRMCustomFieldSchema))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CRMCustomFieldSchemaType), TypeInfoPropertyName = "CRMCustomFieldSchemaType2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CRMAnalysisDataMapping))]
@@ -1030,9 +1033,6 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AddKnowledgeBaseSourcesResponse5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AddKnowledgeBaseSourcesResponseStatus5), TypeInfoPropertyName = "AddKnowledgeBaseSourcesResponseStatus52")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponseStatus), TypeInfoPropertyName = "CreateAgentResponseStatus2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponseStatus2), TypeInfoPropertyName = "CreateAgentResponseStatus22")]
     internal sealed partial class SourceGenerationContextChunk1 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1053,6 +1053,9 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.S2SModel?), TypeInfoPropertyName = "NullableS2SModel_RetellAI_S2SModel")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double?>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponseStatus), TypeInfoPropertyName = "CreateAgentResponseStatus2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponseStatus2), TypeInfoPropertyName = "CreateAgentResponseStatus22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponse3))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponseStatus3), TypeInfoPropertyName = "CreateAgentResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreateAgentResponse4))]
@@ -1540,9 +1543,6 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.ConversationFlowResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponseStatus), TypeInfoPropertyName = "ListConversationFlowsResponseStatus2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponseStatus2), TypeInfoPropertyName = "ListConversationFlowsResponseStatus22")]
     internal sealed partial class SourceGenerationContextChunk2 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -1563,6 +1563,9 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.S2SModel?), TypeInfoPropertyName = "NullableS2SModel_RetellAI_S2SModel")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double?>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponseStatus), TypeInfoPropertyName = "ListConversationFlowsResponseStatus2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponse4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponseStatus2), TypeInfoPropertyName = "ListConversationFlowsResponseStatus22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponse5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponseStatus3), TypeInfoPropertyName = "ListConversationFlowsResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsResponse6))]
@@ -1632,6 +1635,14 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.DeleteAgentVersionResponseStatus4), TypeInfoPropertyName = "DeleteAgentVersionResponseStatus42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.DeleteAgentVersionResponse5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.DeleteAgentVersionResponseStatus5), TypeInfoPropertyName = "DeleteAgentVersionResponseStatus52")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus), TypeInfoPropertyName = "RefreshKnowledgeBaseResponseStatus2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus2), TypeInfoPropertyName = "RefreshKnowledgeBaseResponseStatus22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus3), TypeInfoPropertyName = "RefreshKnowledgeBaseResponseStatus32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponse4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus4), TypeInfoPropertyName = "RefreshKnowledgeBaseResponseStatus42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RerunCallAnalysisResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RerunCallAnalysisResponseStatus), TypeInfoPropertyName = "RerunCallAnalysisResponseStatus2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RerunCallAnalysisResponse2))]
@@ -2019,6 +2030,15 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.TestAppAuthResponseStatus3), TypeInfoPropertyName = "TestAppAuthResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.TestAppAuthResponse5))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.TestAppAuthResponseStatus4), TypeInfoPropertyName = "TestAppAuthResponseStatus42")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppTemplatesResponse2>), TypeInfoPropertyName = "AllOfPaginatedResponseBaseListAppTemplatesResponse22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::RetellAI.AppTemplate>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponseStatus), TypeInfoPropertyName = "ListAppTemplatesResponseStatus2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponse4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponseStatus2), TypeInfoPropertyName = "ListAppTemplatesResponseStatus22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponse5))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponseStatus3), TypeInfoPropertyName = "ListAppTemplatesResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetAppToolSchemaResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetAppToolSchemaResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetAppToolSchemaResponseStatus), TypeInfoPropertyName = "GetAppToolSchemaResponseStatus2_3")]
@@ -2033,26 +2053,6 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetCrmConfigResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetCrmConfigResponseStatus2), TypeInfoPropertyName = "GetCrmConfigResponseStatus22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetCrmConfigResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetCrmConfigResponseStatus3), TypeInfoPropertyName = "GetCrmConfigResponseStatus32")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus2), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus3), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus32")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus4), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus42")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse5))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus5), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus52")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponse))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponseStatus), TypeInfoPropertyName = "RunSyncJobResponseStatus2_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponse2))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponseStatus2), TypeInfoPropertyName = "RunSyncJobResponseStatus22")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponse3))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponseStatus3), TypeInfoPropertyName = "RunSyncJobResponseStatus32")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponse4))]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponseStatus4), TypeInfoPropertyName = "RunSyncJobResponseStatus42")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetSyncJobStatusResponse))]
     internal sealed partial class SourceGenerationContextChunk3 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -2073,6 +2073,26 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.S2SModel?), TypeInfoPropertyName = "NullableS2SModel_RetellAI_S2SModel")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double?>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetCrmConfigResponseStatus3), TypeInfoPropertyName = "GetCrmConfigResponseStatus32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus2), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus3), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus4), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus42")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponse5))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCrmConfigResponseStatus5), TypeInfoPropertyName = "UpdateCrmConfigResponseStatus52")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponseStatus), TypeInfoPropertyName = "RunSyncJobResponseStatus2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponse2))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponseStatus2), TypeInfoPropertyName = "RunSyncJobResponseStatus22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponse3))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponseStatus3), TypeInfoPropertyName = "RunSyncJobResponseStatus32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponse4))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RunSyncJobResponseStatus4), TypeInfoPropertyName = "RunSyncJobResponseStatus42")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetSyncJobStatusResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetSyncJobStatusResponseStatus), TypeInfoPropertyName = "GetSyncJobStatusResponseStatus2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetSyncJobStatusResponse2))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetSyncJobStatusResponseStatus2), TypeInfoPropertyName = "GetSyncJobStatusResponseStatus22")]
@@ -2549,26 +2569,6 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.OneOf<global::RetellAI.ChartUpdate?, object>?), TypeInfoPropertyName = "NullableOneOfChartUpdateObject2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AllOf<global::RetellAI.AgentRequest, global::RetellAI.CreateAgentRequest2>?), TypeInfoPropertyName = "NullableAllOfAgentRequestCreateAgentRequest22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AllOf<global::RetellAI.TestCaseDefinitionInput, object>?), TypeInfoPropertyName = "NullableAllOfTestCaseDefinitionInputObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AllOf<global::RetellAI.ChatAgentRequest, object>?), TypeInfoPropertyName = "NullableAllOfChatAgentRequestObject2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreatePhoneNumberRequestNumberProvider?), TypeInfoPropertyName = "NullableCreatePhoneNumberRequestNumberProvider2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreatePhoneNumberRequestCountryCode?), TypeInfoPropertyName = "NullableCreatePhoneNumberRequestCountryCode2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CloneVoiceRequestVoiceProvider?), TypeInfoPropertyName = "NullableCloneVoiceRequestVoiceProvider2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AddCommunityVoiceRequestVoiceProvider?), TypeInfoPropertyName = "NullableAddCommunityVoiceRequestVoiceProvider2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SearchCommunityVoiceRequestVoiceProvider?), TypeInfoPropertyName = "NullableSearchCommunityVoiceRequestVoiceProvider2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateChatMetadataRequestDataStorageSetting?), TypeInfoPropertyName = "NullableUpdateChatMetadataRequestDataStorageSetting2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RegisterPhoneCallRequestDirection?), TypeInfoPropertyName = "NullableRegisterPhoneCallRequestDirection2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCallMetadataRequestDataStorageSetting?), TypeInfoPropertyName = "NullableUpdateCallMetadataRequestDataStorageSetting2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateLiveCallRequestFieldsToOverrideDataStorageSetting?), TypeInfoPropertyName = "NullableUpdateLiveCallRequestFieldsToOverrideDataStorageSetting2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AllOf<global::RetellAI.ContactTag, global::RetellAI.UpdateCrmConfigRequestContactTag>?), TypeInfoPropertyName = "NullableAllOfContactTagUpdateCrmConfigRequestContactTag2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListTestCaseDefinitionsType?), TypeInfoPropertyName = "NullableListTestCaseDefinitionsType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListBatchTestsType?), TypeInfoPropertyName = "NullableListBatchTestsType2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAgentVersionsSortOrder?), TypeInfoPropertyName = "NullableListAgentVersionsSortOrder2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAgentsSortOrder?), TypeInfoPropertyName = "NullableListAgentsSortOrder2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowComponentsSortOrder?), TypeInfoPropertyName = "NullableListConversationFlowComponentsSortOrder2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsSortOrder?), TypeInfoPropertyName = "NullableListConversationFlowsSortOrder2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListPhoneNumbersSortOrder?), TypeInfoPropertyName = "NullableListPhoneNumbersSortOrder2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListRetellLLMSortOrder?), TypeInfoPropertyName = "NullableListRetellLLMSortOrder2")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListExportRequestsSortOrder?), TypeInfoPropertyName = "NullableListExportRequestsSortOrder2")]
     internal sealed partial class SourceGenerationContextChunk4 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -2589,6 +2589,26 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.S2SModel?), TypeInfoPropertyName = "NullableS2SModel_RetellAI_S2SModel")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double?>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AllOf<global::RetellAI.ChatAgentRequest, object>?), TypeInfoPropertyName = "NullableAllOfChatAgentRequestObject2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreatePhoneNumberRequestNumberProvider?), TypeInfoPropertyName = "NullableCreatePhoneNumberRequestNumberProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CreatePhoneNumberRequestCountryCode?), TypeInfoPropertyName = "NullableCreatePhoneNumberRequestCountryCode2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.CloneVoiceRequestVoiceProvider?), TypeInfoPropertyName = "NullableCloneVoiceRequestVoiceProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AddCommunityVoiceRequestVoiceProvider?), TypeInfoPropertyName = "NullableAddCommunityVoiceRequestVoiceProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.SearchCommunityVoiceRequestVoiceProvider?), TypeInfoPropertyName = "NullableSearchCommunityVoiceRequestVoiceProvider2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateChatMetadataRequestDataStorageSetting?), TypeInfoPropertyName = "NullableUpdateChatMetadataRequestDataStorageSetting2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RegisterPhoneCallRequestDirection?), TypeInfoPropertyName = "NullableRegisterPhoneCallRequestDirection2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateCallMetadataRequestDataStorageSetting?), TypeInfoPropertyName = "NullableUpdateCallMetadataRequestDataStorageSetting2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.UpdateLiveCallRequestFieldsToOverrideDataStorageSetting?), TypeInfoPropertyName = "NullableUpdateLiveCallRequestFieldsToOverrideDataStorageSetting2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AllOf<global::RetellAI.ContactTag, global::RetellAI.UpdateCrmConfigRequestContactTag>?), TypeInfoPropertyName = "NullableAllOfContactTagUpdateCrmConfigRequestContactTag2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListTestCaseDefinitionsType?), TypeInfoPropertyName = "NullableListTestCaseDefinitionsType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListBatchTestsType?), TypeInfoPropertyName = "NullableListBatchTestsType2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAgentVersionsSortOrder?), TypeInfoPropertyName = "NullableListAgentVersionsSortOrder2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAgentsSortOrder?), TypeInfoPropertyName = "NullableListAgentsSortOrder2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowComponentsSortOrder?), TypeInfoPropertyName = "NullableListConversationFlowComponentsSortOrder2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListConversationFlowsSortOrder?), TypeInfoPropertyName = "NullableListConversationFlowsSortOrder2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListPhoneNumbersSortOrder?), TypeInfoPropertyName = "NullableListPhoneNumbersSortOrder2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListRetellLLMSortOrder?), TypeInfoPropertyName = "NullableListRetellLLMSortOrder2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListExportRequestsSortOrder?), TypeInfoPropertyName = "NullableListExportRequestsSortOrder2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppsSortOrder?), TypeInfoPropertyName = "NullableListAppsSortOrder2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppUsagesSortOrder?), TypeInfoPropertyName = "NullableListAppUsagesSortOrder2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AddKnowledgeBaseSourcesResponseStatus?), TypeInfoPropertyName = "NullableAddKnowledgeBaseSourcesResponseStatus2_3")]
@@ -2868,6 +2888,10 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.DeleteAgentVersionResponseStatus3?), TypeInfoPropertyName = "NullableDeleteAgentVersionResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.DeleteAgentVersionResponseStatus4?), TypeInfoPropertyName = "NullableDeleteAgentVersionResponseStatus42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.DeleteAgentVersionResponseStatus5?), TypeInfoPropertyName = "NullableDeleteAgentVersionResponseStatus52")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus?), TypeInfoPropertyName = "NullableRefreshKnowledgeBaseResponseStatus2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus2?), TypeInfoPropertyName = "NullableRefreshKnowledgeBaseResponseStatus22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus3?), TypeInfoPropertyName = "NullableRefreshKnowledgeBaseResponseStatus32")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus4?), TypeInfoPropertyName = "NullableRefreshKnowledgeBaseResponseStatus42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RerunCallAnalysisResponseStatus?), TypeInfoPropertyName = "NullableRerunCallAnalysisResponseStatus2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RerunCallAnalysisResponseStatus2?), TypeInfoPropertyName = "NullableRerunCallAnalysisResponseStatus22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.RerunCallAnalysisResponseStatus3?), TypeInfoPropertyName = "NullableRerunCallAnalysisResponseStatus32")]
@@ -3055,9 +3079,33 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppUsagesResponseStatus3?), TypeInfoPropertyName = "NullableListAppUsagesResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppUsagesResponseStatus4?), TypeInfoPropertyName = "NullableListAppUsagesResponseStatus42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.TestAppAuthResponseStatus?), TypeInfoPropertyName = "NullableTestAppAuthResponseStatus2_3")]
+    internal sealed partial class SourceGenerationContextChunk5 : global::System.Text.Json.Serialization.JsonSerializerContext
+    {
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
+        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+    )]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NullableLLMModel), TypeInfoPropertyName = "NullableLLMModel_RetellAI_NullableLLMModel")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double?>), TypeInfoPropertyName = "IListDouble_System_Collections_Generic_IList_double")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>), TypeInfoPropertyName = "IListDouble_System_Collections_Generic_IList_double_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NullableBackupModelChoice), TypeInfoPropertyName = "NullableBackupModelChoice_RetellAI_NullableBackupModelChoice")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NullableS2SModel), TypeInfoPropertyName = "NullableS2SModel_RetellAI_NullableS2SModel")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.LLMModel?), TypeInfoPropertyName = "NullableLLMModel_RetellAI_LLMModel")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.BackupModelChoice?), TypeInfoPropertyName = "NullableBackupModelChoice_RetellAI_BackupModelChoice")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.S2SModel?), TypeInfoPropertyName = "NullableS2SModel_RetellAI_S2SModel")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double?>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.TestAppAuthResponseStatus2?), TypeInfoPropertyName = "NullableTestAppAuthResponseStatus22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.TestAppAuthResponseStatus3?), TypeInfoPropertyName = "NullableTestAppAuthResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.TestAppAuthResponseStatus4?), TypeInfoPropertyName = "NullableTestAppAuthResponseStatus42")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.AllOf<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppTemplatesResponse2>?), TypeInfoPropertyName = "NullableAllOfPaginatedResponseBaseListAppTemplatesResponse22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponseStatus?), TypeInfoPropertyName = "NullableListAppTemplatesResponseStatus2_3")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponseStatus2?), TypeInfoPropertyName = "NullableListAppTemplatesResponseStatus22")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.ListAppTemplatesResponseStatus3?), TypeInfoPropertyName = "NullableListAppTemplatesResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetAppToolSchemaResponseStatus?), TypeInfoPropertyName = "NullableGetAppToolSchemaResponseStatus2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetAppToolSchemaResponseStatus2?), TypeInfoPropertyName = "NullableGetAppToolSchemaResponseStatus22")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetAppToolSchemaResponseStatus3?), TypeInfoPropertyName = "NullableGetAppToolSchemaResponseStatus32")]
@@ -3079,26 +3127,6 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetSyncJobStatusResponseStatus3?), TypeInfoPropertyName = "NullableGetSyncJobStatusResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.BackfillContactAnalysisDataResponseStatus?), TypeInfoPropertyName = "NullableBackfillContactAnalysisDataResponseStatus2_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.BackfillContactAnalysisDataResponseStatus2?), TypeInfoPropertyName = "NullableBackfillContactAnalysisDataResponseStatus22")]
-    internal sealed partial class SourceGenerationContextChunk5 : global::System.Text.Json.Serialization.JsonSerializerContext
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    [global::System.Text.Json.Serialization.JsonSourceGenerationOptions(
-        DefaultIgnoreCondition = global::System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
-    )]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NullableLLMModel), TypeInfoPropertyName = "NullableLLMModel_RetellAI_NullableLLMModel")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double?>), TypeInfoPropertyName = "IListDouble_System_Collections_Generic_IList_double")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<double>), TypeInfoPropertyName = "IListDouble_System_Collections_Generic_IList_double_3")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NullableBackupModelChoice), TypeInfoPropertyName = "NullableBackupModelChoice_RetellAI_NullableBackupModelChoice")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.NullableS2SModel), TypeInfoPropertyName = "NullableS2SModel_RetellAI_NullableS2SModel")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.LLMModel?), TypeInfoPropertyName = "NullableLLMModel_RetellAI_LLMModel")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.BackupModelChoice?), TypeInfoPropertyName = "NullableBackupModelChoice_RetellAI_BackupModelChoice")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.S2SModel?), TypeInfoPropertyName = "NullableS2SModel_RetellAI_S2SModel")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double?>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double")]
-    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<double>), TypeInfoPropertyName = "ListDouble_System_Collections_Generic_List_double_3")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.BackfillContactAnalysisDataResponseStatus3?), TypeInfoPropertyName = "NullableBackfillContactAnalysisDataResponseStatus32")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.BackfillContactAnalysisDataResponseStatus4?), TypeInfoPropertyName = "NullableBackfillContactAnalysisDataResponseStatus42")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::RetellAI.GetBackfillContactJobStatusResponseStatus?), TypeInfoPropertyName = "NullableGetBackfillContactJobStatusResponseStatus2_3")]
@@ -3197,6 +3225,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.Contact>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.ContactConversation>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.CRMSyncMapping>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.AppToolTemplate>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.CRMCustomFieldSchema>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.CRMAnalysisDataMapping>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<long>))]
@@ -3224,6 +3253,7 @@ namespace RetellAI
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.ListExportRequestsResponseItem>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.AppResponse>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.AppUsageResponse>))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::RetellAI.AppTemplate>))]
     internal sealed partial class SourceGenerationContextChunk6 : global::System.Text.Json.Serialization.JsonSerializerContext
     {
     }
@@ -3449,6 +3479,7 @@ namespace RetellAI
             options.Converters.Add(new global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListExportRequestsResponse2>());
             options.Converters.Add(new global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppsResponse2>());
             options.Converters.Add(new global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppUsagesResponse2>());
+            options.Converters.Add(new global::RetellAI.JsonConverters.AllOfJsonConverter<global::RetellAI.PaginatedResponseBase, global::RetellAI.ListAppTemplatesResponse2>());
             options.Converters.Add(new global::RetellAI.JsonConverters.UnixTimestampJsonConverter());
             options.Converters.Add(new LazyEnumJsonConverterFactory());
         }
@@ -5791,6 +5822,22 @@ namespace RetellAI
 
                     || typeToConvert == typeof(global::RetellAI.DeleteAgentVersionResponseStatus5?)
 
+                    || typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus)
+
+                    || typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus?)
+
+                    || typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus2)
+
+                    || typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus2?)
+
+                    || typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus3)
+
+                    || typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus3?)
+
+                    || typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus4)
+
+                    || typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus4?)
+
                     || typeToConvert == typeof(global::RetellAI.RerunCallAnalysisResponseStatus)
 
                     || typeToConvert == typeof(global::RetellAI.RerunCallAnalysisResponseStatus?)
@@ -6534,6 +6581,18 @@ namespace RetellAI
                     || typeToConvert == typeof(global::RetellAI.TestAppAuthResponseStatus4)
 
                     || typeToConvert == typeof(global::RetellAI.TestAppAuthResponseStatus4?)
+
+                    || typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus)
+
+                    || typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus?)
+
+                    || typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus2)
+
+                    || typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus2?)
+
+                    || typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus3)
+
+                    || typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus3?)
 
                     || typeToConvert == typeof(global::RetellAI.GetAppToolSchemaResponseStatus)
 
@@ -12468,6 +12527,46 @@ namespace RetellAI
                     return new global::RetellAI.JsonConverters.DeleteAgentVersionResponseStatus5NullableJsonConverter();
                 }
 
+                if (typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus))
+                {
+                    return new global::RetellAI.JsonConverters.RefreshKnowledgeBaseResponseStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus?))
+                {
+                    return new global::RetellAI.JsonConverters.RefreshKnowledgeBaseResponseStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus2))
+                {
+                    return new global::RetellAI.JsonConverters.RefreshKnowledgeBaseResponseStatus2JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus2?))
+                {
+                    return new global::RetellAI.JsonConverters.RefreshKnowledgeBaseResponseStatus2NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus3))
+                {
+                    return new global::RetellAI.JsonConverters.RefreshKnowledgeBaseResponseStatus3JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus3?))
+                {
+                    return new global::RetellAI.JsonConverters.RefreshKnowledgeBaseResponseStatus3NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus4))
+                {
+                    return new global::RetellAI.JsonConverters.RefreshKnowledgeBaseResponseStatus4JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.RefreshKnowledgeBaseResponseStatus4?))
+                {
+                    return new global::RetellAI.JsonConverters.RefreshKnowledgeBaseResponseStatus4NullableJsonConverter();
+                }
+
                 if (typeToConvert == typeof(global::RetellAI.RerunCallAnalysisResponseStatus))
                 {
                     return new global::RetellAI.JsonConverters.RerunCallAnalysisResponseStatusJsonConverter();
@@ -14326,6 +14425,36 @@ namespace RetellAI
                 if (typeToConvert == typeof(global::RetellAI.TestAppAuthResponseStatus4?))
                 {
                     return new global::RetellAI.JsonConverters.TestAppAuthResponseStatus4NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus))
+                {
+                    return new global::RetellAI.JsonConverters.ListAppTemplatesResponseStatusJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus?))
+                {
+                    return new global::RetellAI.JsonConverters.ListAppTemplatesResponseStatusNullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus2))
+                {
+                    return new global::RetellAI.JsonConverters.ListAppTemplatesResponseStatus2JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus2?))
+                {
+                    return new global::RetellAI.JsonConverters.ListAppTemplatesResponseStatus2NullableJsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus3))
+                {
+                    return new global::RetellAI.JsonConverters.ListAppTemplatesResponseStatus3JsonConverter();
+                }
+
+                if (typeToConvert == typeof(global::RetellAI.ListAppTemplatesResponseStatus3?))
+                {
+                    return new global::RetellAI.JsonConverters.ListAppTemplatesResponseStatus3NullableJsonConverter();
                 }
 
                 if (typeToConvert == typeof(global::RetellAI.GetAppToolSchemaResponseStatus))

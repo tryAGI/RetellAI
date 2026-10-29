@@ -16,9 +16,9 @@ namespace RetellAI
         public global::RetellAI.AddKnowledgeBaseSourcesResponseStatus4? Status { get; set; }
 
         /// <summary>
-        /// Example: Account rate limited, please throttle your requests.
+        /// Example: File source addition limit reached for this knowledge base (5 per 30 days). Please contact support.
         /// </summary>
-        /// <example>Account rate limited, please throttle your requests.</example>
+        /// <example>File source addition limit reached for this knowledge base (5 per 30 days). Please contact support.</example>
         [global::System.Text.Json.Serialization.JsonPropertyName("message")]
         public string? Message { get; set; }
 
@@ -33,7 +33,7 @@ namespace RetellAI
         /// </summary>
         /// <param name="status"></param>
         /// <param name="message">
-        /// Example: Account rate limited, please throttle your requests.
+        /// Example: File source addition limit reached for this knowledge base (5 per 30 days). Please contact support.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

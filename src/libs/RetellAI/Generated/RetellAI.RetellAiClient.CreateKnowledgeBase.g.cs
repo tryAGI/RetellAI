@@ -507,7 +507,7 @@ namespace RetellAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Too Many Requests
+                            // Knowledge base source-addition quota exceeded
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
