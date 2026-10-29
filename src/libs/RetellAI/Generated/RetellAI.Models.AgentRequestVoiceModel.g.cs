@@ -11,6 +11,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Drama3,
+        /// <summary>
+        ///
+        /// </summary>
         ElevenFlashV2,
         /// <summary>
         ///
@@ -106,6 +110,7 @@ namespace RetellAI
         {
             return value switch
             {
+                AgentRequestVoiceModel.Drama3 => "drama-3",
                 AgentRequestVoiceModel.ElevenFlashV2 => "eleven_flash_v2",
                 AgentRequestVoiceModel.ElevenFlashV25 => "eleven_flash_v2_5",
                 AgentRequestVoiceModel.ElevenMultilingualV2 => "eleven_multilingual_v2",
@@ -137,6 +142,7 @@ namespace RetellAI
         {
             return value switch
             {
+                "drama-3" => AgentRequestVoiceModel.Drama3,
                 "eleven_flash_v2" => AgentRequestVoiceModel.ElevenFlashV2,
                 "eleven_flash_v2_5" => AgentRequestVoiceModel.ElevenFlashV25,
                 "eleven_multilingual_v2" => AgentRequestVoiceModel.ElevenMultilingualV2,

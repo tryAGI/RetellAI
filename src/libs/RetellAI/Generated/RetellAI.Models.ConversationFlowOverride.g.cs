@@ -41,14 +41,6 @@ namespace RetellAI
         public double? ModelTemperature { get; set; }
 
         /// <summary>
-        /// Whether to use strict mode for tool calls. Only applicable when using certain supported models.<br/>
-        /// Example: true
-        /// </summary>
-        /// <example>true</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("tool_call_strict_mode")]
-        public bool? ToolCallStrictMode { get; set; }
-
-        /// <summary>
         /// Knowledge base IDs for RAG (Retrieval-Augmented Generation).<br/>
         /// Example: [kb_001, kb_002]
         /// </summary>
@@ -92,10 +84,6 @@ namespace RetellAI
         /// Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set; setting backup to null disables it for that call only.
         /// </param>
         /// <param name="backupModel"></param>
-        /// <param name="toolCallStrictMode">
-        /// Whether to use strict mode for tool calls. Only applicable when using certain supported models.<br/>
-        /// Example: true
-        /// </param>
         /// <param name="knowledgeBaseIds">
         /// Knowledge base IDs for RAG (Retrieval-Augmented Generation).<br/>
         /// Example: [kb_001, kb_002]
@@ -115,7 +103,6 @@ namespace RetellAI
         public ConversationFlowOverride(
             global::RetellAI.ModelConfig? modelConfig,
             global::RetellAI.NullableBackupModelChoice? backupModel,
-            bool? toolCallStrictMode,
             global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
             global::RetellAI.KBConfig? kbConfig,
             global::RetellAI.ConversationFlowOverrideStartSpeaker? startSpeaker,
@@ -123,7 +110,6 @@ namespace RetellAI
         {
             this.ModelConfig = modelConfig;
             this.BackupModel = backupModel;
-            this.ToolCallStrictMode = toolCallStrictMode;
             this.KnowledgeBaseIds = knowledgeBaseIds;
             this.KbConfig = kbConfig;
             this.StartSpeaker = startSpeaker;
