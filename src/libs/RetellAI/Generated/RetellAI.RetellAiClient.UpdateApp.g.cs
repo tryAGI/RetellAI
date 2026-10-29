@@ -44,7 +44,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. Providers using the OAuth callback reject auth_config and must be reauthorized through connect-app.
+        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. OAuth-only providers reject auth_config and must be reauthorized through connect-app. Providers supporting caller-managed credentials as well, such as Cal.com, continue to accept those credentials.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="request"></param>
@@ -69,7 +69,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. Providers using the OAuth callback reject auth_config and must be reauthorized through connect-app.
+        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. OAuth-only providers reject auth_config and must be reauthorized through connect-app. Providers supporting caller-managed credentials as well, such as Cal.com, continue to accept those credentials.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="request"></param>
@@ -626,7 +626,7 @@ namespace RetellAI
             }
         }
         /// <summary>
-        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. Providers using the OAuth callback reject auth_config and must be reauthorized through connect-app.
+        /// Partially update an App. Omitted fields remain unchanged. Updating auth_config or tenant metadata invalidates the cached provider token immediately. OAuth-only providers reject auth_config and must be reauthorized through connect-app. Providers supporting caller-managed credentials as well, such as Cal.com, continue to accept those credentials.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="name"></param>
