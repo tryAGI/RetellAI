@@ -82,6 +82,43 @@ namespace RetellAI
         public global::RetellAI.S2SModelConfig PickS2s() => S2s is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'S2s' but the value was {ToString()}.");
+
+        /// <summary>
+        /// Retell LLMs only. A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend and voice_prompt. Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::RetellAI.DuplexModelConfig? Duplex { get; init; }
+#else
+        public global::RetellAI.DuplexModelConfig? Duplex { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(Duplex))]
+#endif
+        public bool IsDuplex => Duplex != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickDuplex(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.DuplexModelConfig? value)
+        {
+            value = Duplex;
+            return IsDuplex;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::RetellAI.DuplexModelConfig PickDuplex() => Duplex is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'Duplex' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -131,19 +168,45 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator ModelConfig(global::RetellAI.DuplexModelConfig value) => new ModelConfig((global::RetellAI.DuplexModelConfig?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::RetellAI.DuplexModelConfig?(ModelConfig @this) => @this.Duplex;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public ModelConfig(global::RetellAI.DuplexModelConfig? value)
+        {
+            Duplex = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static ModelConfig FromDuplex(global::RetellAI.DuplexModelConfig? value) => new ModelConfig(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public ModelConfig(
             global::RetellAI.CascadingModelConfig? cascading,
-            global::RetellAI.S2SModelConfig? s2s
+            global::RetellAI.S2SModelConfig? s2s,
+            global::RetellAI.DuplexModelConfig? duplex
             )
         {
             Cascading = cascading;
             S2s = s2s;
+            Duplex = duplex;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
+            Duplex as object ??
             S2s as object ??
             Cascading as object
             ;
@@ -153,7 +216,8 @@ namespace RetellAI
         /// </summary>
         public override string? ToString() =>
             Cascading?.ToString() ??
-            S2s?.ToString()
+            S2s?.ToString() ??
+            Duplex?.ToString()
             ;
 
         /// <summary>
@@ -161,7 +225,7 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsCascading || IsS2s;
+            return IsCascading || IsS2s || IsDuplex;
         }
 
         /// <summary>
@@ -170,6 +234,7 @@ namespace RetellAI
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.CascadingModelConfig, TResult>? cascading = null,
             global::System.Func<global::RetellAI.S2SModelConfig, TResult>? s2s = null,
+            global::System.Func<global::RetellAI.DuplexModelConfig, TResult>? duplex = null,
             bool validate = true)
         {
             if (validate)
@@ -185,6 +250,10 @@ namespace RetellAI
             {
                 return s2s(__value1);
             }
+            else if (Duplex is { } __value2 && duplex != null)
+            {
+                return duplex(__value2);
+            }
 
             return default(TResult);
         }
@@ -196,6 +265,8 @@ namespace RetellAI
             global::System.Action<global::RetellAI.CascadingModelConfig>? cascading = null,
 
             global::System.Action<global::RetellAI.S2SModelConfig>? s2s = null,
+
+            global::System.Action<global::RetellAI.DuplexModelConfig>? duplex = null,
             bool validate = true)
         {
             if (validate)
@@ -210,6 +281,10 @@ namespace RetellAI
             else if (S2s is { } __value1)
             {
                 s2s?.Invoke(__value1);
+            }
+            else if (Duplex is { } __value2)
+            {
+                duplex?.Invoke(__value2);
             }
         }
 
@@ -219,6 +294,7 @@ namespace RetellAI
         public void Switch(
             global::System.Action<global::RetellAI.CascadingModelConfig>? cascading = null,
             global::System.Action<global::RetellAI.S2SModelConfig>? s2s = null,
+            global::System.Action<global::RetellAI.DuplexModelConfig>? duplex = null,
             bool validate = true)
         {
             if (validate)
@@ -233,6 +309,10 @@ namespace RetellAI
             else if (S2s is { } __value1)
             {
                 s2s?.Invoke(__value1);
+            }
+            else if (Duplex is { } __value2)
+            {
+                duplex?.Invoke(__value2);
             }
         }
 
@@ -247,6 +327,8 @@ namespace RetellAI
                 typeof(global::RetellAI.CascadingModelConfig),
                 S2s,
                 typeof(global::RetellAI.S2SModelConfig),
+                Duplex,
+                typeof(global::RetellAI.DuplexModelConfig),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -264,7 +346,8 @@ namespace RetellAI
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.CascadingModelConfig?>.Default.Equals(Cascading, other.Cascading) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.S2SModelConfig?>.Default.Equals(S2s, other.S2s)
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.S2SModelConfig?>.Default.Equals(S2s, other.S2s) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.DuplexModelConfig?>.Default.Equals(Duplex, other.Duplex)
                 ;
         }
 

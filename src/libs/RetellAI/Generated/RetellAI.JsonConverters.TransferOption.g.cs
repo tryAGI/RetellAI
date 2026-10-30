@@ -36,6 +36,8 @@ namespace RetellAI.JsonConverters
 
             var __score0 = 0;
             if (__jsonProps.Contains("cold_transfer_mode")) __score0++;
+            if (__jsonProps.Contains("custom_on_hold_music_asset_id")) __score0++;
+            if (__jsonProps.Contains("on_hold_music")) __score0++;
             if (__jsonProps.Contains("show_transferee_as_caller")) __score0++;
             if (__jsonProps.Contains("transfer_ring_duration_ms")) __score0++;
             if (__jsonProps.Contains("type")) __score0++;
