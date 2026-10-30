@@ -46,13 +46,25 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("primary.model")) __score1++;
             if (__jsonProps.Contains("temperature")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
+            var __score2 = 0;
+            if (__jsonProps.Contains("backend")) __score2++;
+            if (__jsonProps.Contains("backend.model")) __score2++;
+            if (__jsonProps.Contains("backend.tier")) __score2++;
+            if (__jsonProps.Contains("backup")) __score2++;
+            if (__jsonProps.Contains("primary")) __score2++;
+            if (__jsonProps.Contains("primary.model")) __score2++;
+            if (__jsonProps.Contains("temperature")) __score2++;
+            if (__jsonProps.Contains("type")) __score2++;
+            if (__jsonProps.Contains("voice_prompt")) __score2++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
+            if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
 
             global::RetellAI.CascadingModelConfig? cascading = default;
             global::RetellAI.S2SModelConfig? s2s = default;
+            global::RetellAI.DuplexModelConfig? duplex = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -93,9 +105,28 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
+                else if (__bestIndex == 2)
+                {
+                    try
+                    {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.DuplexModelConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.DuplexModelConfig> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.DuplexModelConfig).Name}");
+                        duplex = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                    catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                    {
+                        // Legacy enum converters signal an incompatible JSON token with this exception.
+                    }
+                }
             }
 
-            if (cascading == null && s2s == null)
+            if (cascading == null && s2s == null && duplex == null)
             {
                 try
                 {
@@ -116,7 +147,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (cascading == null && s2s == null)
+            if (cascading == null && s2s == null && duplex == null)
             {
                 try
                 {
@@ -137,10 +168,33 @@ namespace RetellAI.JsonConverters
                 }
             }
 
+            if (cascading == null && s2s == null && duplex == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.DuplexModelConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.DuplexModelConfig> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.DuplexModelConfig).Name}");
+                    duplex = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+                catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                {
+                    // Legacy enum converters signal an incompatible JSON token with this exception.
+                }
+            }
+
             var __value = new global::RetellAI.ModelConfig(
                 cascading,
 
-                s2s
+                s2s,
+
+                duplex
                 );
 
             return __value;
@@ -166,6 +220,12 @@ namespace RetellAI.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.S2SModelConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.S2SModelConfig?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.S2SModelConfig).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickS2s(), typeInfo);
+            }
+            else if (value.IsDuplex)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.DuplexModelConfig), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.DuplexModelConfig?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.DuplexModelConfig).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickDuplex(), typeInfo);
             }
         }
     }

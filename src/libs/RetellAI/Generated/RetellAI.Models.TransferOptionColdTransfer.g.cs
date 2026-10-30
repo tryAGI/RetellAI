@@ -30,6 +30,21 @@ namespace RetellAI
         public global::RetellAI.TransferOptionColdTransferColdTransferMode? ColdTransferMode { get; set; }
 
         /// <summary>
+        /// The music to play while the caller is being transferred. If omitted, preserves the existing transfer audio behavior. Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("on_hold_music")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.TransferOptionColdTransferOnHoldMusicJsonConverter))]
+        public global::RetellAI.TransferOptionColdTransferOnHoldMusic? OnHoldMusic { get; set; }
+
+        /// <summary>
+        /// Asset ID of the uploaded hold music to play. Required when `on_hold_music` is `custom`. Must reference an audio asset owned by the organization (see create-asset).<br/>
+        /// Example: asset_abc123def456
+        /// </summary>
+        /// <example>asset_abc123def456</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_on_hold_music_asset_id")]
+        public string? CustomOnHoldMusicAssetId { get; set; }
+
+        /// <summary>
         /// Override the ring duration for this specific transfer, in milliseconds. If not set, falls back to the agent-level `ring_duration_ms`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("transfer_ring_duration_ms")]
@@ -54,6 +69,13 @@ namespace RetellAI
         /// The mode of the cold transfer. If set to `sip_refer`, will use SIP REFER to transfer the call. If set to `sip_invite`, will use SIP INVITE to transfer the call.<br/>
         /// Default Value: sip_invite
         /// </param>
+        /// <param name="onHoldMusic">
+        /// The music to play while the caller is being transferred. If omitted, preserves the existing transfer audio behavior. Use `custom` together with `custom_on_hold_music_asset_id` to play an uploaded audio asset.
+        /// </param>
+        /// <param name="customOnHoldMusicAssetId">
+        /// Asset ID of the uploaded hold music to play. Required when `on_hold_music` is `custom`. Must reference an audio asset owned by the organization (see create-asset).<br/>
+        /// Example: asset_abc123def456
+        /// </param>
         /// <param name="transferRingDurationMs">
         /// Override the ring duration for this specific transfer, in milliseconds. If not set, falls back to the agent-level `ring_duration_ms`.
         /// </param>
@@ -64,11 +86,15 @@ namespace RetellAI
             global::RetellAI.TransferOptionColdTransferType type,
             bool? showTransfereeAsCaller,
             global::RetellAI.TransferOptionColdTransferColdTransferMode? coldTransferMode,
+            global::RetellAI.TransferOptionColdTransferOnHoldMusic? onHoldMusic,
+            string? customOnHoldMusicAssetId,
             int? transferRingDurationMs)
         {
             this.Type = type;
             this.ShowTransfereeAsCaller = showTransfereeAsCaller;
             this.ColdTransferMode = coldTransferMode;
+            this.OnHoldMusic = onHoldMusic;
+            this.CustomOnHoldMusicAssetId = customOnHoldMusicAssetId;
             this.TransferRingDurationMs = transferRingDurationMs;
         }
 

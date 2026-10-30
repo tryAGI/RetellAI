@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-29-3b4efad
+  x-retell-spec-revision: 2026-10-30-d91e04e
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -5588,6 +5588,7 @@ components:
       anyOf:
       - $ref: '#/components/schemas/CascadingModelConfig'
       - $ref: '#/components/schemas/S2SModelConfig'
+      - $ref: '#/components/schemas/DuplexModelConfig'
     CascadingModelConfig:
       type: object
       additionalProperties: false
@@ -5615,6 +5616,40 @@ components:
           description: Runs a speech-to-speech model.
         primary:
           $ref: '#/components/schemas/S2SModelRef'
+        temperature:
+          $ref: '#/components/schemas/ModelTemperature'
+    DuplexModelRef:
+      type: object
+      additionalProperties: false
+      required:
+      - model
+      properties:
+        model:
+          type: string
+          enum:
+          - gpt-live-1
+    DuplexModelConfig:
+      type: object
+      additionalProperties: false
+      description: Retell LLMs only. A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend and voice_prompt.
+        Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
+      properties:
+        type:
+          type: string
+          enum:
+          - duplex
+          description: Runs a full-duplex voice model with a cascading backend.
+        primary:
+          $ref: '#/components/schemas/DuplexModelRef'
+        backend:
+          $ref: '#/components/schemas/TextModelRef'
+          description: The text LLM that answers the voice model's delegations.
+        backup:
+          $ref: '#/components/schemas/NullableBackupModelRef'
+          description: A backup for the backend model.
+        voice_prompt:
+          type: string
+          description: The voice model's prompt, at most 15,000 tokens. The LLM's general_prompt is the backend's prompt.
         temperature:
           $ref: '#/components/schemas/ModelTemperature'
     ModelTemperature:
@@ -8112,6 +8147,20 @@ components:
           - sip_invite
           description: The mode of the cold transfer. If set to `sip_refer`, will use SIP REFER to transfer the call. If set to `sip_invite`, will use SIP INVITE to transfer the call.
           default: sip_invite
+        on_hold_music:
+          type: string
+          enum:
+          - none
+          - relaxing_sound
+          - uplifting_beats
+          - ringtone
+          - custom
+          description: The music to play while the caller is being transferred. If omitted, preserves the existing transfer audio behavior. Use `custom` together with `custom_on_hold_music_asset_id` to
+            play an uploaded audio asset.
+        custom_on_hold_music_asset_id:
+          type: string
+          description: Asset ID of the uploaded hold music to play. Required when `on_hold_music` is `custom`. Must reference an audio asset owned by the organization (see create-asset).
+          example: asset_abc123def456
         transfer_ring_duration_ms:
           type: integer
           minimum: 5000
