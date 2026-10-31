@@ -28,6 +28,14 @@ namespace RetellAI
         public string? GeneralPrompt { get; set; }
 
         /// <summary>
+        /// Prompt for the voice model when model_config.type is duplex, at most 15,000 tokens. Required for duplex, where general_prompt is the backend's prompt. Kept when you switch models.<br/>
+        /// Example: You are a friendly voice assistant for ...
+        /// </summary>
+        /// <example>You are a friendly voice assistant for ...</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("voice_prompt")]
+        public string? VoicePrompt { get; set; }
+
+        /// <summary>
         /// A list of tools the model may call (to get external knowledge, call API, etc). You can select from some common predefined tools like end call, transfer call, etc; or you can create your own custom tool for the LLM to use.<br/>
         /// - Tools of LLM (with state) = general tools + state tools + state transitions<br/>
         /// - Tools of LLM (no state) = general tools<br/>
@@ -91,6 +99,10 @@ namespace RetellAI
         /// - System prompt (no state) = general prompt.<br/>
         /// Example: You are ...
         /// </param>
+        /// <param name="voicePrompt">
+        /// Prompt for the voice model when model_config.type is duplex, at most 15,000 tokens. Required for duplex, where general_prompt is the backend's prompt. Kept when you switch models.<br/>
+        /// Example: You are a friendly voice assistant for ...
+        /// </param>
         /// <param name="generalTools">
         /// A list of tools the model may call (to get external knowledge, call API, etc). You can select from some common predefined tools like end call, transfer call, etc; or you can create your own custom tool for the LLM to use.<br/>
         /// - Tools of LLM (with state) = general tools + state tools + state transitions<br/>
@@ -117,6 +129,7 @@ namespace RetellAI
 #endif
         public RetellLlmRequestVariant2(
             string? generalPrompt,
+            string? voicePrompt,
             global::System.Collections.Generic.IList<global::RetellAI.Tool>? generalTools,
             string? startingState,
             global::System.Collections.Generic.Dictionary<string, string>? defaultDynamicVariables,
@@ -124,6 +137,7 @@ namespace RetellAI
             bool? isTransferLlm)
         {
             this.GeneralPrompt = generalPrompt;
+            this.VoicePrompt = voicePrompt;
             this.GeneralTools = generalTools;
             this.StartingState = startingState;
             this.DefaultDynamicVariables = defaultDynamicVariables;

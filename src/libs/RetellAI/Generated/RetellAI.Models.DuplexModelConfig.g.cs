@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Retell LLMs only. A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend and voice_prompt. Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
+    /// Retell LLMs only. A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend, and the Retell LLM's voice_prompt. Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
     /// </summary>
     public sealed partial class DuplexModelConfig
     {
@@ -35,12 +35,6 @@ namespace RetellAI
         public global::RetellAI.NullableBackupModelRef? Backup { get; set; }
 
         /// <summary>
-        /// The voice model's prompt, at most 15,000 tokens. The LLM's general_prompt is the backend's prompt.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("voice_prompt")]
-        public string? VoicePrompt { get; set; }
-
-        /// <summary>
         /// Randomness of the response, from 0 to 1. Defaults to 0; a lower value is recommended for tool calling.<br/>
         /// Example: 0
         /// </summary>
@@ -63,9 +57,6 @@ namespace RetellAI
         /// <param name="primary"></param>
         /// <param name="backend"></param>
         /// <param name="backup"></param>
-        /// <param name="voicePrompt">
-        /// The voice model's prompt, at most 15,000 tokens. The LLM's general_prompt is the backend's prompt.
-        /// </param>
         /// <param name="temperature">
         /// Randomness of the response, from 0 to 1. Defaults to 0; a lower value is recommended for tool calling.<br/>
         /// Example: 0
@@ -78,14 +69,12 @@ namespace RetellAI
             global::RetellAI.DuplexModelRef? primary,
             global::RetellAI.TextModelRef? backend,
             global::RetellAI.NullableBackupModelRef? backup,
-            string? voicePrompt,
             double? temperature)
         {
             this.Type = type;
             this.Primary = primary;
             this.Backend = backend;
             this.Backup = backup;
-            this.VoicePrompt = voicePrompt;
             this.Temperature = temperature;
         }
 
