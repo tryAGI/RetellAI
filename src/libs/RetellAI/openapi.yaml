@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-10-30-d91e04e
+  x-retell-spec-revision: 2026-10-30-78cb81c
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -5631,8 +5631,8 @@ components:
     DuplexModelConfig:
       type: object
       additionalProperties: false
-      description: Retell LLMs only. A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend and voice_prompt.
-        Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
+      description: Retell LLMs only. A full-duplex voice model talks to the user and delegates to a cascading backend model, which runs the LLM's prompt, tools and knowledge base. Requires backend, and
+        the Retell LLM's voice_prompt. Tools' speak_during_execution is ignored, since the voice model covers the wait itself, and speak_after_execution is always on.
       properties:
         type:
           type: string
@@ -5647,9 +5647,6 @@ components:
         backup:
           $ref: '#/components/schemas/NullableBackupModelRef'
           description: A backup for the backend model.
-        voice_prompt:
-          type: string
-          description: The voice model's prompt, at most 15,000 tokens. The LLM's general_prompt is the backend's prompt.
         temperature:
           $ref: '#/components/schemas/ModelTemperature'
     ModelTemperature:
@@ -6947,6 +6944,13 @@ components:
               - System prompt (with state) = general prompt + state prompt.
 
               - System prompt (no state) = general prompt.
+
+              '
+            nullable: true
+          voice_prompt:
+            type: string
+            example: You are a friendly voice assistant for ...
+            description: 'Prompt for the voice model when model_config.type is duplex, at most 15,000 tokens. Required for duplex, where general_prompt is the backend''s prompt. Kept when you switch models.
 
               '
             nullable: true
