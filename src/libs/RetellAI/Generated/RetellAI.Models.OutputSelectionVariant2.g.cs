@@ -16,7 +16,7 @@ namespace RetellAI
         public global::RetellAI.OutputSelectionVariant2Mode Mode { get; set; }
 
         /// <summary>
-        /// The only response fields the agent and the transcript see, as dot-paths into the response schema returned by get-app-tool-schema. Everything else is dropped. Selecting a parent keeps its whole subtree. A plain segment traverses arrays element-wise (deals.properties.amount keeps that field on every deal), while key[n] selects one element (deals[0].id keeps only the first deal's id); paths that match nothing contribute nothing.<br/>
+        /// The only response fields the agent and the transcript see, as dot-paths into the response (for app tools, the response schema returned by get-app-tool-schema). Everything else is dropped. Selecting a parent keeps its whole subtree. A plain segment traverses arrays element-wise (deals.properties.amount keeps that field on every deal), while key[n] selects one element (deals[0].id keeps only the first deal's id); paths that match nothing contribute nothing.<br/>
         /// Example: [id, properties.email]
         /// </summary>
         /// <example>[id, properties.email]</example>
@@ -34,7 +34,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="OutputSelectionVariant2" /> class.
         /// </summary>
         /// <param name="fields">
-        /// The only response fields the agent and the transcript see, as dot-paths into the response schema returned by get-app-tool-schema. Everything else is dropped. Selecting a parent keeps its whole subtree. A plain segment traverses arrays element-wise (deals.properties.amount keeps that field on every deal), while key[n] selects one element (deals[0].id keeps only the first deal's id); paths that match nothing contribute nothing.<br/>
+        /// The only response fields the agent and the transcript see, as dot-paths into the response (for app tools, the response schema returned by get-app-tool-schema). Everything else is dropped. Selecting a parent keeps its whole subtree. A plain segment traverses arrays element-wise (deals.properties.amount keeps that field on every deal), while key[n] selects one element (deals[0].id keeps only the first deal's id); paths that match nothing contribute nothing.<br/>
         /// Example: [id, properties.email]
         /// </param>
         /// <param name="mode"></param>

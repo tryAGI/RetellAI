@@ -64,7 +64,7 @@ namespace RetellAI
         public global::System.Collections.Generic.Dictionary<string, string>? ResponseVariables { get; set; }
 
         /// <summary>
-        /// What the agent and the transcript see of the tool's response. Omit to send the full response. Does not affect response_variables, which are always extracted from the raw response.
+        /// Which fields of a successful JSON tool response the agent and the transcript see. Omit to keep all fields. Does not affect response_variables, which are always extracted from the raw response. Non-JSON responses and failed tool results are not filtered. Response size limits still apply.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("output_selection")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OutputSelectionJsonConverter))]
@@ -141,7 +141,7 @@ namespace RetellAI
         /// Example: {"contact_first_name":"data.first_name"}
         /// </param>
         /// <param name="outputSelection">
-        /// What the agent and the transcript see of the tool's response. Omit to send the full response. Does not affect response_variables, which are always extracted from the raw response.
+        /// Which fields of a successful JSON tool response the agent and the transcript see. Omit to keep all fields. Does not affect response_variables, which are always extracted from the raw response. Non-JSON responses and failed tool results are not filtered. Response size limits still apply.
         /// </param>
         /// <param name="description">
         /// Only applies to during conversation functions; ignored by the pre/post conversation. Overrides the catalog template's LLM-facing description.
