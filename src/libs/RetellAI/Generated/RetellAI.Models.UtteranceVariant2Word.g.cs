@@ -6,7 +6,7 @@ namespace RetellAI
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class UtteranceWord
+    public sealed partial class UtteranceVariant2Word
     {
         /// <summary>
         /// Word transcript (with punctuation if applicable).
@@ -33,7 +33,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UtteranceWord" /> class.
+        /// Initializes a new instance of the <see cref="UtteranceVariant2Word" /> class.
         /// </summary>
         /// <param name="word">
         /// Word transcript (with punctuation if applicable).
@@ -47,7 +47,7 @@ namespace RetellAI
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public UtteranceWord(
+        public UtteranceVariant2Word(
             string? word,
             double? start,
             double? end)
@@ -58,9 +58,9 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UtteranceWord" /> class.
+        /// Initializes a new instance of the <see cref="UtteranceVariant2Word" /> class.
         /// </summary>
-        public UtteranceWord()
+        public UtteranceVariant2Word()
         {
         }
 

@@ -3,10 +3,10 @@
 namespace RetellAI.JsonConverters
 {
     /// <inheritdoc />
-    public sealed class UtteranceRoleNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.UtteranceRole?>
+    public sealed class TextUtteranceRoleNullableJsonConverter : global::System.Text.Json.Serialization.JsonConverter<global::RetellAI.TextUtteranceRole?>
     {
         /// <inheritdoc />
-        public override global::RetellAI.UtteranceRole? Read(
+        public override global::RetellAI.TextUtteranceRole? Read(
             ref global::System.Text.Json.Utf8JsonReader reader,
             global::System.Type typeToConvert,
             global::System.Text.Json.JsonSerializerOptions options)
@@ -18,7 +18,7 @@ namespace RetellAI.JsonConverters
                     var stringValue = reader.GetString();
                     if (stringValue != null)
                     {
-                        return global::RetellAI.UtteranceRoleExtensions.ToEnum(stringValue);
+                        return global::RetellAI.TextUtteranceRoleExtensions.ToEnum(stringValue);
                     }
 
                     break;
@@ -26,11 +26,11 @@ namespace RetellAI.JsonConverters
                 case global::System.Text.Json.JsonTokenType.Number:
                 {
                     var numValue = reader.GetInt32();
-                    return (global::RetellAI.UtteranceRole)numValue;
+                    return (global::RetellAI.TextUtteranceRole)numValue;
                 }
                 case global::System.Text.Json.JsonTokenType.Null:
                 {
-                    return default(global::RetellAI.UtteranceRole?);
+                    return default(global::RetellAI.TextUtteranceRole?);
                 }
                 default:
                     throw new global::System.ArgumentOutOfRangeException(nameof(reader));
@@ -42,7 +42,7 @@ namespace RetellAI.JsonConverters
         /// <inheritdoc />
         public override void Write(
             global::System.Text.Json.Utf8JsonWriter writer,
-            global::RetellAI.UtteranceRole? value,
+            global::RetellAI.TextUtteranceRole? value,
             global::System.Text.Json.JsonSerializerOptions options)
         {
             writer = writer ?? throw new global::System.ArgumentNullException(nameof(writer));
@@ -53,7 +53,7 @@ namespace RetellAI.JsonConverters
             }
             else
             {
-                writer.WriteStringValue(global::RetellAI.UtteranceRoleExtensions.ToValueString(value.Value));
+                writer.WriteStringValue(global::RetellAI.TextUtteranceRoleExtensions.ToValueString(value.Value));
             }
         }
     }

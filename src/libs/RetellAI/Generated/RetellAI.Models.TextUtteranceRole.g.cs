@@ -7,7 +7,7 @@ namespace RetellAI
     /// Documents whether this utterance is spoken by agent or user.<br/>
     /// Example: agent
     /// </summary>
-    public enum UtteranceRole
+    public enum TextUtteranceRole
     {
         /// <summary>
         ///
@@ -26,31 +26,31 @@ namespace RetellAI
     /// <summary>
     /// Enum extensions to do fast conversions without the reflection.
     /// </summary>
-    public static class UtteranceRoleExtensions
+    public static class TextUtteranceRoleExtensions
     {
         /// <summary>
         /// Converts an enum to a string.
         /// </summary>
-        public static string ToValueString(this UtteranceRole value)
+        public static string ToValueString(this TextUtteranceRole value)
         {
             return value switch
             {
-                UtteranceRole.Agent => "agent",
-                UtteranceRole.TransferTarget => "transfer_target",
-                UtteranceRole.User => "user",
+                TextUtteranceRole.Agent => "agent",
+                TextUtteranceRole.TransferTarget => "transfer_target",
+                TextUtteranceRole.User => "user",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
         /// <summary>
         /// Converts an string to a enum.
         /// </summary>
-        public static UtteranceRole? ToEnum(string value)
+        public static TextUtteranceRole? ToEnum(string value)
         {
             return value switch
             {
-                "agent" => UtteranceRole.Agent,
-                "transfer_target" => UtteranceRole.TransferTarget,
-                "user" => UtteranceRole.User,
+                "agent" => TextUtteranceRole.Agent,
+                "transfer_target" => TextUtteranceRole.TransferTarget,
+                "user" => TextUtteranceRole.User,
                 _ => null,
             };
         }

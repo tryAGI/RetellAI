@@ -9,7 +9,7 @@ namespace RetellAI
     public sealed partial class ContactMemoryConfig
     {
         /// <summary>
-        /// Rewrite the contact memory after each conversation. Requires storing conversation data. Chat agents must also have end_chat_after_silence_ms set.
+        /// Rewrite the contact memory after each conversation. Cannot be enabled for payment agents. Requires storing conversation data. Chat agents must also have end_chat_after_silence_ms set.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enable_update")]
         public bool? EnableUpdate { get; set; }
@@ -30,7 +30,7 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="ContactMemoryConfig" /> class.
         /// </summary>
         /// <param name="enableUpdate">
-        /// Rewrite the contact memory after each conversation. Requires storing conversation data. Chat agents must also have end_chat_after_silence_ms set.
+        /// Rewrite the contact memory after each conversation. Cannot be enabled for payment agents. Requires storing conversation data. Chat agents must also have end_chat_after_silence_ms set.
         /// </param>
         /// <param name="enableRead">
         /// Automatically add saved contact memory to the agent prompt. Skippable nodes can use answers from the current conversation even when this setting is disabled. Contact dynamic variables, including contact_memory, remain available regardless of this setting.

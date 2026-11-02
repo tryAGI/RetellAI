@@ -6,7 +6,7 @@ namespace RetellAI
     /// <summary>
     ///
     /// </summary>
-    public sealed partial class UtteranceMetadata
+    public sealed partial class UtteranceVariant2Metadata
     {
         /// <summary>
         /// Call-scoped agent response identifier, when available.
@@ -39,7 +39,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalProperties { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UtteranceMetadata" /> class.
+        /// Initializes a new instance of the <see cref="UtteranceVariant2Metadata" /> class.
         /// </summary>
         /// <param name="responseId">
         /// Call-scoped agent response identifier, when available.
@@ -56,7 +56,7 @@ namespace RetellAI
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
-        public UtteranceMetadata(
+        public UtteranceVariant2Metadata(
             int? responseId,
             int? interruptId,
             bool? isBackchannel,
@@ -69,9 +69,9 @@ namespace RetellAI
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UtteranceMetadata" /> class.
+        /// Initializes a new instance of the <see cref="UtteranceVariant2Metadata" /> class.
         /// </summary>
-        public UtteranceMetadata()
+        public UtteranceVariant2Metadata()
         {
         }
 
