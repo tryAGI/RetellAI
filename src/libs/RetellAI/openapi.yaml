@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-01-8e33b99
+  x-retell-spec-revision: 2026-11-02-326363b
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -3578,7 +3578,8 @@ components:
           description: Only applies to during conversation functions; ignored by the pre/post conversation. If true, play a typing sound on the agent audio track while this tool is executing. Useful when
             the tool takes a noticeable amount of time to prevent silence on the call.
     OutputSelection:
-      description: What the agent and the transcript see of the tool's response. Omit to send the full response. Does not affect response_variables, which are always extracted from the raw response.
+      description: Which fields of a successful JSON tool response the agent and the transcript see. Omit to keep all fields. Does not affect response_variables, which are always extracted from the raw
+        response. Non-JSON responses and failed tool results are not filtered. Response size limits still apply.
       oneOf:
       - type: object
         required:
@@ -3609,9 +3610,9 @@ components:
             example:
             - id
             - properties.email
-            description: The only response fields the agent and the transcript see, as dot-paths into the response schema returned by get-app-tool-schema. Everything else is dropped. Selecting a parent
-              keeps its whole subtree. A plain segment traverses arrays element-wise (deals.properties.amount keeps that field on every deal), while key[n] selects one element (deals[0].id keeps only the
-              first deal's id); paths that match nothing contribute nothing.
+            description: The only response fields the agent and the transcript see, as dot-paths into the response (for app tools, the response schema returned by get-app-tool-schema). Everything else is
+              dropped. Selecting a parent keeps its whole subtree. A plain segment traverses arrays element-wise (deals.properties.amount keeps that field on every deal), while key[n] selects one element
+              (deals[0].id keeps only the first deal's id); paths that match nothing contribute nothing.
     PreSessionTool:
       allOf:
       - oneOf:
