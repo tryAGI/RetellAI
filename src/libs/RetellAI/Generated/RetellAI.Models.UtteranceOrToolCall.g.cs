@@ -488,7 +488,7 @@ namespace RetellAI
         ///
         /// </summary>
         public TResult? Match<TResult>(
-            global::System.Func<global::RetellAI.Utterance, TResult>? utterance = null,
+            global::System.Func<global::RetellAI.Utterance?, TResult>? utterance = null,
             global::System.Func<global::RetellAI.ToolCallInvocationUtterance, TResult>? invocation = null,
             global::System.Func<global::RetellAI.ToolCallResultUtterance, TResult>? result = null,
             global::System.Func<global::RetellAI.NodeTransitionUtterance, TResult>? nodeTransition = null,
@@ -538,7 +538,7 @@ namespace RetellAI
         ///
         /// </summary>
         public void Match(
-            global::System.Action<global::RetellAI.Utterance>? utterance = null,
+            global::System.Action<global::RetellAI.Utterance?>? utterance = null,
 
             global::System.Action<global::RetellAI.ToolCallInvocationUtterance>? invocation = null,
 
@@ -592,7 +592,7 @@ namespace RetellAI
         ///
         /// </summary>
         public void Switch(
-            global::System.Action<global::RetellAI.Utterance>? utterance = null,
+            global::System.Action<global::RetellAI.Utterance?>? utterance = null,
             global::System.Action<global::RetellAI.ToolCallInvocationUtterance>? invocation = null,
             global::System.Action<global::RetellAI.ToolCallResultUtterance>? result = null,
             global::System.Action<global::RetellAI.NodeTransitionUtterance>? nodeTransition = null,

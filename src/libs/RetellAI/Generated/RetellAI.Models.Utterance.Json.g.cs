@@ -2,7 +2,7 @@
 
 namespace RetellAI
 {
-    public sealed partial class Utterance
+    public readonly partial struct Utterance
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -54,7 +54,7 @@ namespace RetellAI
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
                 typeof(global::RetellAI.Utterance),
-                jsonSerializerContext) as global::RetellAI.Utterance;
+                jsonSerializerContext) as global::RetellAI.Utterance?;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace RetellAI
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
                 typeof(global::RetellAI.Utterance),
-                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.Utterance;
+                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.Utterance?;
         }
 
         /// <summary>

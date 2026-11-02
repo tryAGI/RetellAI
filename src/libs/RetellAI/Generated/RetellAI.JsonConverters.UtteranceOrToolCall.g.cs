@@ -23,26 +23,11 @@ namespace RetellAI.JsonConverters
                 foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
                 {
                     __jsonProps.Add(__jsonProp.Name);
-                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
-                    {
-                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
-                        {
-                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
-                        }
-                    }
 
                 }
             }
 
             var __score0 = 0;
-            if (__jsonProps.Contains("content")) __score0++;
-            if (__jsonProps.Contains("metadata")) __score0++;
-            if (__jsonProps.Contains("metadata.backup_model_used")) __score0++;
-            if (__jsonProps.Contains("metadata.interrupt_id")) __score0++;
-            if (__jsonProps.Contains("metadata.is_backchannel")) __score0++;
-            if (__jsonProps.Contains("metadata.response_id")) __score0++;
-            if (__jsonProps.Contains("role")) __score0++;
-            if (__jsonProps.Contains("words")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("arguments")) __score1++;
             if (__jsonProps.Contains("metadata")) __score1++;
@@ -406,7 +391,7 @@ namespace RetellAI.JsonConverters
 
             if (value.IsUtterance)
             {
-                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.Utterance), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.Utterance?> ??
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.Utterance), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.Utterance> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.Utterance).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickUtterance(), typeInfo);
             }

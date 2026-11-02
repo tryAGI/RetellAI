@@ -2,7 +2,7 @@
 
 namespace RetellAI
 {
-    public sealed partial class UtteranceMetadata
+    public sealed partial class TextUtterance
     {
         /// <summary>
         /// Serializes the current instance to a JSON string using the provided JsonSerializerContext.
@@ -47,20 +47,20 @@ namespace RetellAI
         /// <summary>
         /// Deserializes a JSON string using the provided JsonSerializerContext.
         /// </summary>
-        public static global::RetellAI.UtteranceMetadata? FromJson(
+        public static global::RetellAI.TextUtterance? FromJson(
             string json,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return global::System.Text.Json.JsonSerializer.Deserialize(
                 json,
-                typeof(global::RetellAI.UtteranceMetadata),
-                jsonSerializerContext) as global::RetellAI.UtteranceMetadata;
+                typeof(global::RetellAI.TextUtterance),
+                jsonSerializerContext) as global::RetellAI.TextUtterance;
         }
 
         /// <summary>
         /// Deserializes a JSON string using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::RetellAI.UtteranceMetadata? FromJson(
+        public static global::RetellAI.TextUtterance? FromJson(
             string json)
         {
             return FromJson(
@@ -75,7 +75,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::RetellAI.UtteranceMetadata? FromJson(
+        public static global::RetellAI.TextUtterance? FromJson(
             string json,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -86,7 +86,7 @@ namespace RetellAI
                     global::RetellAI.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.Deserialize<global::RetellAI.UtteranceMetadata>(
+            return global::System.Text.Json.JsonSerializer.Deserialize<global::RetellAI.TextUtterance>(
                 json,
                 jsonSerializerOptions);
         }
@@ -94,20 +94,20 @@ namespace RetellAI
         /// <summary>
         /// Deserializes a JSON stream using the provided JsonSerializerContext.
         /// </summary>
-        public static async global::System.Threading.Tasks.ValueTask<global::RetellAI.UtteranceMetadata?> FromJsonStreamAsync(
+        public static async global::System.Threading.Tasks.ValueTask<global::RetellAI.TextUtterance?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.Serialization.JsonSerializerContext jsonSerializerContext)
         {
             return (await global::System.Text.Json.JsonSerializer.DeserializeAsync(
                 jsonStream,
-                typeof(global::RetellAI.UtteranceMetadata),
-                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.UtteranceMetadata;
+                typeof(global::RetellAI.TextUtterance),
+                jsonSerializerContext).ConfigureAwait(false)) as global::RetellAI.TextUtterance;
         }
 
         /// <summary>
         /// Deserializes a JSON stream using the generated default JsonSerializerContext.
         /// </summary>
-        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.UtteranceMetadata?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.TextUtterance?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream)
         {
             return FromJsonStreamAsync(
@@ -122,7 +122,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.RequiresUnreferencedCode("JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.")]
         [global::System.Diagnostics.CodeAnalysis.RequiresDynamicCode("JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.")]
 #endif
-        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.UtteranceMetadata?> FromJsonStreamAsync(
+        public static global::System.Threading.Tasks.ValueTask<global::RetellAI.TextUtterance?> FromJsonStreamAsync(
             global::System.IO.Stream jsonStream,
             global::System.Text.Json.JsonSerializerOptions? jsonSerializerOptions = null)
         {
@@ -133,7 +133,7 @@ namespace RetellAI
                     global::RetellAI.SourceGenerationContext.Default);
             }
 
-            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::RetellAI.UtteranceMetadata?>(
+            return global::System.Text.Json.JsonSerializer.DeserializeAsync<global::RetellAI.TextUtterance?>(
                 jsonStream,
                 jsonSerializerOptions);
         }
