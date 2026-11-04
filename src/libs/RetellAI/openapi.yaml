@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-02-326363b
+  x-retell-spec-revision: 2026-11-04-afcbe8f
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -14356,7 +14356,8 @@ paths:
       - in: path
         name: phone_number
         required: true
-        description: Phone number of the contact, E.164 preferred. Other formats are normalized before the lookup; a number that cannot be parsed is rejected with 400.
+        description: Phone number of the contact, E.164 preferred. An exact stored match is returned first, including contacts with custom SIP caller IDs. If no exact match exists, other formats are normalized
+          for a fallback lookup.
         schema:
           type: string
       responses:
