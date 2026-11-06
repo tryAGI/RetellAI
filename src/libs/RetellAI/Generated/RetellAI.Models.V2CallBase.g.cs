@@ -290,20 +290,6 @@ namespace RetellAI
         public global::RetellAI.V2CallBaseCallCost? CallCost { get; set; }
 
         /// <summary>
-        /// Spans of the call with no user or agent speech and no call event (start of a DTMF entry, SMS, node transition, tool call start or result, or injected message), minus the first 10 seconds of each such gap. A tool call's run time counts as silence, since no LLM or TTS is working then. Payment time is not included. LLM, TTS, realtime (speech-to-speech) model time and the LLM token surcharge are not billed over these spans. Other products, such as the voice engine, and full-duplex (GPT Live) voice models are still billed over them. Each product's reduction is rounded down to whole seconds. Times are in milliseconds from the start of the call. Only present when such spans occurred.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("unbilled_response_periods")]
-        public global::System.Collections.Generic.IList<global::RetellAI.V2CallBaseUnbilledResponsePeriod>? UnbilledResponsePeriods { get; set; }
-
-        /// <summary>
-        /// Total seconds of `unbilled_response_periods`, rounded down. See `unbilled_response_periods` for what is and is not billed over them. Only present when `unbilled_response_periods` is present.<br/>
-        /// Example: 33
-        /// </summary>
-        /// <example>33</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("unbilled_response_seconds")]
-        public double? UnbilledResponseSeconds { get; set; }
-
-        /// <summary>
         /// LLM token usage of the call, available after call ends. Not populated if using custom LLM, realtime API, or no LLM call is made.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("llm_token_usage")]
@@ -452,13 +438,6 @@ namespace RetellAI
         /// <param name="callCost">
         /// Cost of the call, including all the products and their costs and discount.
         /// </param>
-        /// <param name="unbilledResponsePeriods">
-        /// Spans of the call with no user or agent speech and no call event (start of a DTMF entry, SMS, node transition, tool call start or result, or injected message), minus the first 10 seconds of each such gap. A tool call's run time counts as silence, since no LLM or TTS is working then. Payment time is not included. LLM, TTS, realtime (speech-to-speech) model time and the LLM token surcharge are not billed over these spans. Other products, such as the voice engine, and full-duplex (GPT Live) voice models are still billed over them. Each product's reduction is rounded down to whole seconds. Times are in milliseconds from the start of the call. Only present when such spans occurred.
-        /// </param>
-        /// <param name="unbilledResponseSeconds">
-        /// Total seconds of `unbilled_response_periods`, rounded down. See `unbilled_response_periods` for what is and is not billed over them. Only present when `unbilled_response_periods` is present.<br/>
-        /// Example: 33
-        /// </param>
         /// <param name="llmTokenUsage">
         /// LLM token usage of the call, available after call ends. Not populated if using custom LLM, realtime API, or no LLM call is made.
         /// </param>
@@ -501,8 +480,6 @@ namespace RetellAI
             string? transferDestination,
             global::RetellAI.CallAnalysis? callAnalysis,
             global::RetellAI.V2CallBaseCallCost? callCost,
-            global::System.Collections.Generic.IList<global::RetellAI.V2CallBaseUnbilledResponsePeriod>? unbilledResponsePeriods,
-            double? unbilledResponseSeconds,
             global::RetellAI.V2CallBaseLlmTokenUsage? llmTokenUsage)
         {
             this.CallId = callId ?? throw new global::System.ArgumentNullException(nameof(callId));
@@ -540,8 +517,6 @@ namespace RetellAI
             this.TransferDestination = transferDestination;
             this.CallAnalysis = callAnalysis;
             this.CallCost = callCost;
-            this.UnbilledResponsePeriods = unbilledResponsePeriods;
-            this.UnbilledResponseSeconds = unbilledResponseSeconds;
             this.LlmTokenUsage = llmTokenUsage;
         }
 

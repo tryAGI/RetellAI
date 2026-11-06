@@ -23,7 +23,7 @@ namespace RetellAI
         public double? StartTimestamp { get; set; }
 
         /// <summary>
-        /// Number of items processed successfully so far.
+        /// Number of items processed successfully so far. For a CSV import, rows sharing a phone number count once.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("succeeded")]
         public double? Succeeded { get; set; }
@@ -55,7 +55,7 @@ namespace RetellAI
         /// Epoch milliseconds when the job started.
         /// </param>
         /// <param name="succeeded">
-        /// Number of items processed successfully so far.
+        /// Number of items processed successfully so far. For a CSV import, rows sharing a phone number count once.
         /// </param>
         /// <param name="failed">
         /// Number of items that errored so far.
