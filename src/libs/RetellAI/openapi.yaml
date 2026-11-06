@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-04-2622371
+  x-retell-spec-revision: 2026-11-05-6138871
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -118,7 +118,7 @@ components:
                 - error
               message:
                 type: string
-                example: File source addition limit reached for this knowledge base (5 per 30 days). Please contact support.
+                example: File source addition limit reached for this knowledge base (25 per 30 days). Please contact support.
     InternalServerError:
       description: Internal Server Error
       content:
@@ -440,14 +440,6 @@ components:
           description: Unix timestamp when the incident was resolved.
     AlertRuleRequest:
       type: object
-      required:
-      - name
-      - metric_type
-      - threshold_type
-      - threshold_value
-      - comparator
-      - frequency
-      - window
       properties:
         name:
           type: string
@@ -4892,6 +4884,8 @@ components:
       - knowledge_base_id
       - knowledge_base_name
       - status
+      - remaining_ingestion_quota
+      - ingestion_limits
       properties:
         knowledge_base_id:
           type: string
@@ -4901,6 +4895,63 @@ components:
           type: string
           example: Sample KB
           description: Name of the knowledge base. Must be less than 40 characters.
+        remaining_ingestion_quota:
+          type: object
+          nullable: true
+          required:
+          - files
+          - texts
+          - urls
+          properties:
+            files:
+              type: integer
+              minimum: 0
+              description: Remaining additions in the shared uploaded-file and connector bucket.
+            texts:
+              type: integer
+              minimum: 0
+              description: Remaining pasted-text additions.
+            urls:
+              type: integer
+              minimum: 0
+              description: Remaining URL additions.
+          description: 'Ingestion quota available to this knowledge base at response time.
+
+            Includes unused lifetime fill allowance plus remaining rolling
+
+            30-day per-KB capacity. Pending reservations already consume
+
+            capacity. Default per-KB rolling limits are 25 files, 50 texts,
+
+            and 200 URLs; organization-specific increases are reflected in
+
+            these counts.
+
+            Legacy knowledge bases without fill allowance receive rolling
+
+            capacity only. Deleting sources does not restore ingestion quota.
+
+            These counts do not include the separate limits on how many sources
+
+            a KB can hold, and do not guarantee a concurrent request will succeed.
+
+            Create and add-source responses include reservations for accepted
+
+            sources; background discovery and processing may change the counts.
+
+            Returns null if current usage cannot be read. Null means unavailable,
+
+            not zero remaining capacity. Configured ingestion_limits are still
+
+            returned. Quota enforcement remains required for ingestion requests.
+
+            '
+          example:
+            files: 25
+            texts: 50
+            urls: 200
+        ingestion_limits:
+          $ref: '#/components/schemas/KnowledgeBaseEffectiveIngestionLimits'
         status:
           type: string
           enum:
@@ -4937,6 +4988,34 @@ components:
           type: integer
           example: 1703413636133
           description: Last refreshed timestamp (milliseconds since epoch). Only applicable when enable_auto_refresh is true.
+    KnowledgeBaseEffectiveIngestionLimits:
+      type: object
+      description: 'Effective rolling 30-day ingestion limits. Each KB has an independent budget. Lifetime fill allowance
+
+        and structural source-count caps are separate.
+
+        '
+      example:
+        files: 25
+        texts: 50
+        urls: 200
+      required:
+      - files
+      - texts
+      - urls
+      properties:
+        files:
+          type: integer
+          minimum: 0
+          description: Shared limit for uploaded documents and all connected-file sources.
+        texts:
+          type: integer
+          minimum: 0
+          description: Limit for pasted-text sources.
+        urls:
+          type: integer
+          minimum: 0
+          description: Limit for URL sources.
     KnowledgeBaseSourceDocument:
       type: object
       required:
@@ -9914,7 +9993,8 @@ components:
       oneOf:
       - $ref: '#/components/schemas/AgentAppUsage'
       - $ref: '#/components/schemas/KnowledgeBaseAppUsage'
-      description: One agent or knowledge base referencing an app.
+      - $ref: '#/components/schemas/AlertRuleAppUsage'
+      description: One agent, knowledge base, or alert rule referencing an app.
     AgentAppUsage:
       type: object
       required:
@@ -9956,6 +10036,25 @@ components:
         knowledge_base_name:
           type: string
           description: Current knowledge base name; omitted if it was deleted.
+        configured_timestamp:
+          type: number
+          description: When this reference was last recorded, in milliseconds.
+    AlertRuleAppUsage:
+      type: object
+      required:
+      - type
+      - alert_rule_id
+      - configured_timestamp
+      properties:
+        type:
+          type: string
+          enum:
+          - alert_rule
+        alert_rule_id:
+          type: string
+        alert_rule_name:
+          type: string
+          description: Current alert rule name; omitted if it was deleted.
         configured_timestamp:
           type: number
           description: When this reference was last recorded, in milliseconds.
@@ -14719,7 +14818,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /delete-app/{app_id}:
     delete:
-      description: Delete an App. Fails when agents or knowledge bases still reference it, unless force_delete is set. If a CRM config is linked to this App, the link is cleared.
+      description: Delete an App. Fails when agents, knowledge bases, or alert rules still reference it, unless force_delete is set. If a CRM config is linked to this App, the link is cleared.
       operationId: deleteApp
       x-retell-sdk-resource: app
       x-retell-sdk-method: delete
@@ -14783,7 +14882,7 @@ paths:
           $ref: '#/components/responses/InternalServerError'
   /list-app-usages/{app_id}:
     get:
-      description: List the agents and knowledge bases referencing an App, most recently configured first by default.
+      description: List the agents, knowledge bases, and alert rules referencing an App, most recently configured first by default.
       operationId: listAppUsages
       x-retell-sdk-resource: app
       x-retell-sdk-method: list-usages

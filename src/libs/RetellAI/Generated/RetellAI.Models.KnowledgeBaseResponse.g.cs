@@ -27,6 +27,38 @@ namespace RetellAI
         public required string KnowledgeBaseName { get; set; }
 
         /// <summary>
+        /// Ingestion quota available to this knowledge base at response time.<br/>
+        /// Includes unused lifetime fill allowance plus remaining rolling<br/>
+        /// 30-day per-KB capacity. Pending reservations already consume<br/>
+        /// capacity. Default per-KB rolling limits are 25 files, 50 texts,<br/>
+        /// and 200 URLs; organization-specific increases are reflected in<br/>
+        /// these counts.<br/>
+        /// Legacy knowledge bases without fill allowance receive rolling<br/>
+        /// capacity only. Deleting sources does not restore ingestion quota.<br/>
+        /// These counts do not include the separate limits on how many sources<br/>
+        /// a KB can hold, and do not guarantee a concurrent request will succeed.<br/>
+        /// Create and add-source responses include reservations for accepted<br/>
+        /// sources; background discovery and processing may change the counts.<br/>
+        /// Returns null if current usage cannot be read. Null means unavailable,<br/>
+        /// not zero remaining capacity. Configured ingestion_limits are still<br/>
+        /// returned. Quota enforcement remains required for ingestion requests.<br/>
+        /// Example: {"files":25,"texts":50,"urls":200}
+        /// </summary>
+        /// <example>{"files":25,"texts":50,"urls":200}</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("remaining_ingestion_quota")]
+        public global::RetellAI.KnowledgeBaseResponseRemainingIngestionQuota? RemainingIngestionQuota { get; set; }
+
+        /// <summary>
+        /// Effective rolling 30-day ingestion limits. Each KB has an independent budget. Lifetime fill allowance<br/>
+        /// and structural source-count caps are separate.<br/>
+        /// Example: {"files":25,"texts":50,"urls":200}
+        /// </summary>
+        /// <example>{"files":25,"texts":50,"urls":200}</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("ingestion_limits")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::RetellAI.KnowledgeBaseEffectiveIngestionLimits IngestionLimits { get; set; }
+
+        /// <summary>
         /// Current processing state of the knowledge base:<br/>
         /// - `in_progress`: Initial indexing is running. Source metadata may be<br/>
         ///   incomplete until indexing finishes.<br/>
@@ -103,6 +135,11 @@ namespace RetellAI
         /// Name of the knowledge base. Must be less than 40 characters.<br/>
         /// Example: Sample KB
         /// </param>
+        /// <param name="ingestionLimits">
+        /// Effective rolling 30-day ingestion limits. Each KB has an independent budget. Lifetime fill allowance<br/>
+        /// and structural source-count caps are separate.<br/>
+        /// Example: {"files":25,"texts":50,"urls":200}
+        /// </param>
         /// <param name="status">
         /// Current processing state of the knowledge base:<br/>
         /// - `in_progress`: Initial indexing is running. Source metadata may be<br/>
@@ -118,6 +155,24 @@ namespace RetellAI
         ///   paths. Previously indexed sources remain available during the<br/>
         ///   update, and the source list may change when it finishes.<br/>
         /// Example: in_progress
+        /// </param>
+        /// <param name="remainingIngestionQuota">
+        /// Ingestion quota available to this knowledge base at response time.<br/>
+        /// Includes unused lifetime fill allowance plus remaining rolling<br/>
+        /// 30-day per-KB capacity. Pending reservations already consume<br/>
+        /// capacity. Default per-KB rolling limits are 25 files, 50 texts,<br/>
+        /// and 200 URLs; organization-specific increases are reflected in<br/>
+        /// these counts.<br/>
+        /// Legacy knowledge bases without fill allowance receive rolling<br/>
+        /// capacity only. Deleting sources does not restore ingestion quota.<br/>
+        /// These counts do not include the separate limits on how many sources<br/>
+        /// a KB can hold, and do not guarantee a concurrent request will succeed.<br/>
+        /// Create and add-source responses include reservations for accepted<br/>
+        /// sources; background discovery and processing may change the counts.<br/>
+        /// Returns null if current usage cannot be read. Null means unavailable,<br/>
+        /// not zero remaining capacity. Configured ingestion_limits are still<br/>
+        /// returned. Quota enforcement remains required for ingestion requests.<br/>
+        /// Example: {"files":25,"texts":50,"urls":200}
         /// </param>
         /// <param name="maxChunkSize">
         /// Maximum number of characters per chunk when splitting knowledge base content.<br/>
@@ -144,7 +199,9 @@ namespace RetellAI
         public KnowledgeBaseResponse(
             string knowledgeBaseId,
             string knowledgeBaseName,
+            global::RetellAI.KnowledgeBaseEffectiveIngestionLimits ingestionLimits,
             global::RetellAI.KnowledgeBaseResponseStatus status,
+            global::RetellAI.KnowledgeBaseResponseRemainingIngestionQuota? remainingIngestionQuota,
             int? maxChunkSize,
             int? minChunkSize,
             global::System.Collections.Generic.IList<global::RetellAI.OneOf<global::RetellAI.KnowledgeBaseSourceDocument, global::RetellAI.KnowledgeBaseSourceText, global::RetellAI.KnowledgeBaseSourceUrl>>? knowledgeBaseSources,
@@ -153,6 +210,8 @@ namespace RetellAI
         {
             this.KnowledgeBaseId = knowledgeBaseId ?? throw new global::System.ArgumentNullException(nameof(knowledgeBaseId));
             this.KnowledgeBaseName = knowledgeBaseName ?? throw new global::System.ArgumentNullException(nameof(knowledgeBaseName));
+            this.RemainingIngestionQuota = remainingIngestionQuota;
+            this.IngestionLimits = ingestionLimits ?? throw new global::System.ArgumentNullException(nameof(ingestionLimits));
             this.Status = status;
             this.MaxChunkSize = maxChunkSize;
             this.MinChunkSize = minChunkSize;

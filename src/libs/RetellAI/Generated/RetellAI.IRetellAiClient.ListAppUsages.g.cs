@@ -5,7 +5,7 @@ namespace RetellAI
     public partial interface IRetellAiClient
     {
         /// <summary>
-        /// List the agents and knowledge bases referencing an App, most recently configured first by default.
+        /// List the agents, knowledge bases, and alert rules referencing an App, most recently configured first by default.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="limit">
@@ -26,7 +26,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List the agents and knowledge bases referencing an App, most recently configured first by default.
+        /// List the agents, knowledge bases, and alert rules referencing an App, most recently configured first by default.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="limit">

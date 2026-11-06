@@ -39,7 +39,7 @@ namespace RetellAI
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Delete an App. Fails when agents or knowledge bases still reference it, unless force_delete is set. If a CRM config is linked to this App, the link is cleared.
+        /// Delete an App. Fails when agents, knowledge bases, or alert rules still reference it, unless force_delete is set. If a CRM config is linked to this App, the link is cleared.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="forceDelete"></param>
@@ -60,7 +60,7 @@ namespace RetellAI
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Delete an App. Fails when agents or knowledge bases still reference it, unless force_delete is set. If a CRM config is linked to this App, the link is cleared.
+        /// Delete an App. Fails when agents, knowledge bases, or alert rules still reference it, unless force_delete is set. If a CRM config is linked to this App, the link is cleared.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="forceDelete"></param>
