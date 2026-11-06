@@ -38,13 +38,20 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("knowledge_base_id")) __score1++;
             if (__jsonProps.Contains("knowledge_base_name")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
+            var __score2 = 0;
+            if (__jsonProps.Contains("alert_rule_id")) __score2++;
+            if (__jsonProps.Contains("alert_rule_name")) __score2++;
+            if (__jsonProps.Contains("configured_timestamp")) __score2++;
+            if (__jsonProps.Contains("type")) __score2++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
             if (__score1 > __bestScore) { __bestScore = __score1; __bestIndex = 1; }
+            if (__score2 > __bestScore) { __bestScore = __score2; __bestIndex = 2; }
 
             global::RetellAI.AgentAppUsage? agent = default;
             global::RetellAI.KnowledgeBaseAppUsage? knowledgeBase = default;
+            global::RetellAI.AlertRuleAppUsage? alertRule = default;
             if (__bestIndex >= 0)
             {
                 if (__bestIndex == 0)
@@ -85,9 +92,28 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
+                else if (__bestIndex == 2)
+                {
+                    try
+                    {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AlertRuleAppUsage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AlertRuleAppUsage> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AlertRuleAppUsage).Name}");
+                        alertRule = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                    catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                    {
+                        // Legacy enum converters signal an incompatible JSON token with this exception.
+                    }
+                }
             }
 
-            if (agent == null && knowledgeBase == null)
+            if (agent == null && knowledgeBase == null && alertRule == null)
             {
                 try
                 {
@@ -108,7 +134,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (agent == null && knowledgeBase == null)
+            if (agent == null && knowledgeBase == null && alertRule == null)
             {
                 try
                 {
@@ -129,10 +155,33 @@ namespace RetellAI.JsonConverters
                 }
             }
 
+            if (agent == null && knowledgeBase == null && alertRule == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AlertRuleAppUsage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AlertRuleAppUsage> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AlertRuleAppUsage).Name}");
+                    alertRule = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+                catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                {
+                    // Legacy enum converters signal an incompatible JSON token with this exception.
+                }
+            }
+
             var __value = new global::RetellAI.AppUsageResponse(
                 agent,
 
-                knowledgeBase
+                knowledgeBase,
+
+                alertRule
                 );
 
             return __value;
@@ -158,6 +207,12 @@ namespace RetellAI.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.KnowledgeBaseAppUsage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.KnowledgeBaseAppUsage?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.KnowledgeBaseAppUsage).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickKnowledgeBase(), typeInfo);
+            }
+            else if (value.IsAlertRule)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AlertRuleAppUsage), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.AlertRuleAppUsage?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.AlertRuleAppUsage).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickAlertRule(), typeInfo);
             }
         }
     }

@@ -48,7 +48,7 @@ namespace RetellAI
             ref string content);
 
         /// <summary>
-        /// List the agents and knowledge bases referencing an App, most recently configured first by default.
+        /// List the agents, knowledge bases, and alert rules referencing an App, most recently configured first by default.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="limit">
@@ -81,7 +81,7 @@ namespace RetellAI
             return __response.Body;
         }
         /// <summary>
-        /// List the agents and knowledge bases referencing an App, most recently configured first by default.
+        /// List the agents, knowledge bases, and alert rules referencing an App, most recently configured first by default.
         /// </summary>
         /// <param name="appId"></param>
         /// <param name="limit">

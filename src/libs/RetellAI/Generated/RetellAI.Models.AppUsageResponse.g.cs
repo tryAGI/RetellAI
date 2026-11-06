@@ -5,7 +5,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// One agent or knowledge base referencing an app.
+    /// One agent, knowledge base, or alert rule referencing an app.
     /// </summary>
     public readonly partial struct AppUsageResponse : global::System.IEquatable<AppUsageResponse>
     {
@@ -82,6 +82,43 @@ namespace RetellAI
         public global::RetellAI.KnowledgeBaseAppUsage PickKnowledgeBase() => KnowledgeBase is { } value
             ? value
             : throw new global::System.InvalidOperationException($"Expected union variant 'KnowledgeBase' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        public global::RetellAI.AlertRuleAppUsage? AlertRule { get; init; }
+#else
+        public global::RetellAI.AlertRuleAppUsage? AlertRule { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(AlertRule))]
+#endif
+        public bool IsAlertRule => AlertRule != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickAlertRule(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.AlertRuleAppUsage? value)
+        {
+            value = AlertRule;
+            return IsAlertRule;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::RetellAI.AlertRuleAppUsage PickAlertRule() => AlertRule is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'AlertRule' but the value was {ToString()}.");
         /// <summary>
         ///
         /// </summary>
@@ -131,19 +168,45 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator AppUsageResponse(global::RetellAI.AlertRuleAppUsage value) => new AppUsageResponse((global::RetellAI.AlertRuleAppUsage?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::RetellAI.AlertRuleAppUsage?(AppUsageResponse @this) => @this.AlertRule;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public AppUsageResponse(global::RetellAI.AlertRuleAppUsage? value)
+        {
+            AlertRule = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static AppUsageResponse FromAlertRule(global::RetellAI.AlertRuleAppUsage? value) => new AppUsageResponse(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public AppUsageResponse(
             global::RetellAI.AgentAppUsage? agent,
-            global::RetellAI.KnowledgeBaseAppUsage? knowledgeBase
+            global::RetellAI.KnowledgeBaseAppUsage? knowledgeBase,
+            global::RetellAI.AlertRuleAppUsage? alertRule
             )
         {
             Agent = agent;
             KnowledgeBase = knowledgeBase;
+            AlertRule = alertRule;
         }
 
         /// <summary>
         ///
         /// </summary>
         public object? Object =>
+            AlertRule as object ??
             KnowledgeBase as object ??
             Agent as object
             ;
@@ -153,7 +216,8 @@ namespace RetellAI
         /// </summary>
         public override string? ToString() =>
             Agent?.ToString() ??
-            KnowledgeBase?.ToString()
+            KnowledgeBase?.ToString() ??
+            AlertRule?.ToString()
             ;
 
         /// <summary>
@@ -161,7 +225,7 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsAgent && !IsKnowledgeBase || !IsAgent && IsKnowledgeBase;
+            return IsAgent && !IsKnowledgeBase && !IsAlertRule || !IsAgent && IsKnowledgeBase && !IsAlertRule || !IsAgent && !IsKnowledgeBase && IsAlertRule;
         }
 
         /// <summary>
@@ -170,6 +234,7 @@ namespace RetellAI
         public TResult? Match<TResult>(
             global::System.Func<global::RetellAI.AgentAppUsage, TResult>? agent = null,
             global::System.Func<global::RetellAI.KnowledgeBaseAppUsage, TResult>? knowledgeBase = null,
+            global::System.Func<global::RetellAI.AlertRuleAppUsage, TResult>? alertRule = null,
             bool validate = true)
         {
             if (validate)
@@ -185,6 +250,10 @@ namespace RetellAI
             {
                 return knowledgeBase(__value1);
             }
+            else if (AlertRule is { } __value2 && alertRule != null)
+            {
+                return alertRule(__value2);
+            }
 
             return default(TResult);
         }
@@ -196,6 +265,8 @@ namespace RetellAI
             global::System.Action<global::RetellAI.AgentAppUsage>? agent = null,
 
             global::System.Action<global::RetellAI.KnowledgeBaseAppUsage>? knowledgeBase = null,
+
+            global::System.Action<global::RetellAI.AlertRuleAppUsage>? alertRule = null,
             bool validate = true)
         {
             if (validate)
@@ -210,6 +281,10 @@ namespace RetellAI
             else if (KnowledgeBase is { } __value1)
             {
                 knowledgeBase?.Invoke(__value1);
+            }
+            else if (AlertRule is { } __value2)
+            {
+                alertRule?.Invoke(__value2);
             }
         }
 
@@ -219,6 +294,7 @@ namespace RetellAI
         public void Switch(
             global::System.Action<global::RetellAI.AgentAppUsage>? agent = null,
             global::System.Action<global::RetellAI.KnowledgeBaseAppUsage>? knowledgeBase = null,
+            global::System.Action<global::RetellAI.AlertRuleAppUsage>? alertRule = null,
             bool validate = true)
         {
             if (validate)
@@ -233,6 +309,10 @@ namespace RetellAI
             else if (KnowledgeBase is { } __value1)
             {
                 knowledgeBase?.Invoke(__value1);
+            }
+            else if (AlertRule is { } __value2)
+            {
+                alertRule?.Invoke(__value2);
             }
         }
 
@@ -247,6 +327,8 @@ namespace RetellAI
                 typeof(global::RetellAI.AgentAppUsage),
                 KnowledgeBase,
                 typeof(global::RetellAI.KnowledgeBaseAppUsage),
+                AlertRule,
+                typeof(global::RetellAI.AlertRuleAppUsage),
             };
             const int offset = unchecked((int)2166136261);
             const int prime = 16777619;
@@ -264,7 +346,8 @@ namespace RetellAI
         {
             return
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentAppUsage?>.Default.Equals(Agent, other.Agent) &&
-                global::System.Collections.Generic.EqualityComparer<global::RetellAI.KnowledgeBaseAppUsage?>.Default.Equals(KnowledgeBase, other.KnowledgeBase)
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.KnowledgeBaseAppUsage?>.Default.Equals(KnowledgeBase, other.KnowledgeBase) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.AlertRuleAppUsage?>.Default.Equals(AlertRule, other.AlertRule)
                 ;
         }
 
