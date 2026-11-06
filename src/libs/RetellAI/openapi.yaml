@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-05-6138871
+  x-retell-spec-revision: 2026-11-06-e7339fa
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -8815,40 +8815,6 @@ components:
               type: number
               description: Combined cost of all individual costs in cents
               example: 70
-        unbilled_response_periods:
-          type: array
-          description: Spans of the call with no user or agent speech and no call event (start of a DTMF entry, SMS, node transition, tool call start or result, or injected message), minus the first 10
-            seconds of each such gap. A tool call's run time counts as silence, since no LLM or TTS is working then. Payment time is not included. LLM, TTS, realtime (speech-to-speech) model time and the
-            LLM token surcharge are not billed over these spans. Other products, such as the voice engine, and full-duplex (GPT Live) voice models are still billed over them. Each product's reduction is
-            rounded down to whole seconds. Times are in milliseconds from the start of the call. Only present when such spans occurred.
-          items:
-            type: object
-            required:
-            - start_ms
-            - end_ms
-            properties:
-              start_ms:
-                type: number
-                description: Start of the span in milliseconds from call start.
-                example: 12000
-              end_ms:
-                type: number
-                description: End of the span in milliseconds from call start.
-                example: 45000
-              type:
-                type: string
-                enum:
-                - cascading
-                - s2s
-                - duplex
-                description: The engine that ran during the span. A span is split where an agent swap changes the engine. `cascading` credits LLM and TTS time, `s2s` credits the realtime model's time, and
-                  `duplex` credits only the backend model's time, because the duplex voice model is still billed in full. Absent when the engine is not known.
-                example: cascading
-        unbilled_response_seconds:
-          type: number
-          description: Total seconds of `unbilled_response_periods`, rounded down. See `unbilled_response_periods` for what is and is not billed over them. Only present when `unbilled_response_periods`
-            is present.
-          example: 33
         llm_token_usage:
           type: object
           description: LLM token usage of the call, available after call ends. Not populated if using custom LLM, realtime API, or no LLM call is made.
@@ -9174,40 +9140,6 @@ components:
               type: number
               description: Combined cost of all individual costs in cents
               example: 70
-        unbilled_response_periods:
-          type: array
-          description: Spans of the call with no user or agent speech and no call event (start of a DTMF entry, SMS, node transition, tool call start or result, or injected message), minus the first 10
-            seconds of each such gap. A tool call's run time counts as silence, since no LLM or TTS is working then. Payment time is not included. LLM, TTS, realtime (speech-to-speech) model time and the
-            LLM token surcharge are not billed over these spans. Other products, such as the voice engine, and full-duplex (GPT Live) voice models are still billed over them. Each product's reduction is
-            rounded down to whole seconds. Times are in milliseconds from the start of the call. Only present when such spans occurred.
-          items:
-            type: object
-            required:
-            - start_ms
-            - end_ms
-            properties:
-              start_ms:
-                type: number
-                description: Start of the span in milliseconds from call start.
-                example: 12000
-              end_ms:
-                type: number
-                description: End of the span in milliseconds from call start.
-                example: 45000
-              type:
-                type: string
-                enum:
-                - cascading
-                - s2s
-                - duplex
-                description: The engine that ran during the span. A span is split where an agent swap changes the engine. `cascading` credits LLM and TTS time, `s2s` credits the realtime model's time, and
-                  `duplex` credits only the backend model's time, because the duplex voice model is still billed in full. Absent when the engine is not known.
-                example: cascading
-        unbilled_response_seconds:
-          type: number
-          description: Total seconds of `unbilled_response_periods`, rounded down. See `unbilled_response_periods` for what is and is not billed over them. Only present when `unbilled_response_periods`
-            is present.
-          example: 33
         llm_token_usage:
           type: object
           description: LLM token usage of the call, available after call ends. Not populated if using custom LLM, realtime API, or no LLM call is made.
@@ -10209,7 +10141,7 @@ components:
           description: Epoch milliseconds when the job started.
         succeeded:
           type: number
-          description: Number of items processed successfully so far.
+          description: Number of items processed successfully so far. For a CSV import, rows sharing a phone number count once.
         failed:
           type: number
           description: Number of items that errored so far.
