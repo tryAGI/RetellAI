@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-06-e7339fa
+  x-retell-spec-revision: 2026-11-07-5579976
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -6483,6 +6483,7 @@ components:
           enum:
           - retell-twilio
           - retell-telnyx
+          - retell-bandwidth
           - custom
           example: retell-twilio
           description: Type of the phone number.
@@ -11590,8 +11591,9 @@ paths:
                   enum:
                   - twilio
                   - telnyx
+                  - bandwidth
                   example: twilio
-                  description: The provider to purchase the phone number from. Default to twilio.
+                  description: The provider to purchase the phone number from. Default to twilio. Bandwidth numbers only support UDP transport.
                 country_code:
                   type: string
                   enum:
@@ -11610,7 +11612,7 @@ paths:
                 transport:
                   type: string
                   example: TCP
-                  description: Outbound transport protocol to use for the phone number. Valid values are "TLS", "TCP" and "UDP". Default is "TCP".
+                  description: Outbound transport protocol to use for the phone number. Valid values are "TLS", "TCP" and "UDP". Default is "TCP". Bandwidth numbers only support "UDP".
                   nullable: true
                 fallback_number:
                   type: string

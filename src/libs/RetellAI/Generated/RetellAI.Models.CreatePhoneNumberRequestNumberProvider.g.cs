@@ -4,11 +4,15 @@
 namespace RetellAI
 {
     /// <summary>
-    /// The provider to purchase the phone number from. Default to twilio.<br/>
+    /// The provider to purchase the phone number from. Default to twilio. Bandwidth numbers only support UDP transport.<br/>
     /// Example: twilio
     /// </summary>
     public enum CreatePhoneNumberRequestNumberProvider
     {
+        /// <summary>
+        ///
+        /// </summary>
+        Bandwidth,
         /// <summary>
         ///
         /// </summary>
@@ -31,6 +35,7 @@ namespace RetellAI
         {
             return value switch
             {
+                CreatePhoneNumberRequestNumberProvider.Bandwidth => "bandwidth",
                 CreatePhoneNumberRequestNumberProvider.Telnyx => "telnyx",
                 CreatePhoneNumberRequestNumberProvider.Twilio => "twilio",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -43,6 +48,7 @@ namespace RetellAI
         {
             return value switch
             {
+                "bandwidth" => CreatePhoneNumberRequestNumberProvider.Bandwidth,
                 "telnyx" => CreatePhoneNumberRequestNumberProvider.Telnyx,
                 "twilio" => CreatePhoneNumberRequestNumberProvider.Twilio,
                 _ => null,
