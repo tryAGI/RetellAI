@@ -16,6 +16,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        RetellBandwidth,
+        /// <summary>
+        ///
+        /// </summary>
         RetellTelnyx,
         /// <summary>
         ///
@@ -36,6 +40,7 @@ namespace RetellAI
             return value switch
             {
                 PhoneNumberResponsePhoneNumberType.Custom => "custom",
+                PhoneNumberResponsePhoneNumberType.RetellBandwidth => "retell-bandwidth",
                 PhoneNumberResponsePhoneNumberType.RetellTelnyx => "retell-telnyx",
                 PhoneNumberResponsePhoneNumberType.RetellTwilio => "retell-twilio",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -49,6 +54,7 @@ namespace RetellAI
             return value switch
             {
                 "custom" => PhoneNumberResponsePhoneNumberType.Custom,
+                "retell-bandwidth" => PhoneNumberResponsePhoneNumberType.RetellBandwidth,
                 "retell-telnyx" => PhoneNumberResponsePhoneNumberType.RetellTelnyx,
                 "retell-twilio" => PhoneNumberResponsePhoneNumberType.RetellTwilio,
                 _ => null,

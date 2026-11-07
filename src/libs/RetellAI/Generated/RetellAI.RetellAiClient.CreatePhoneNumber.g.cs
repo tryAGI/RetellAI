@@ -572,7 +572,7 @@ namespace RetellAI
         /// Example: [US, CA]
         /// </param>
         /// <param name="numberProvider">
-        /// The provider to purchase the phone number from. Default to twilio.<br/>
+        /// The provider to purchase the phone number from. Default to twilio. Bandwidth numbers only support UDP transport.<br/>
         /// Example: twilio
         /// </param>
         /// <param name="countryCode">
@@ -587,7 +587,7 @@ namespace RetellAI
         /// Example: +14157774444
         /// </param>
         /// <param name="transport">
-        /// Outbound transport protocol to use for the phone number. Valid values are "TLS", "TCP" and "UDP". Default is "TCP".<br/>
+        /// Outbound transport protocol to use for the phone number. Valid values are "TLS", "TCP" and "UDP". Default is "TCP". Bandwidth numbers only support "UDP".<br/>
         /// Example: TCP
         /// </param>
         /// <param name="fallbackNumber">
