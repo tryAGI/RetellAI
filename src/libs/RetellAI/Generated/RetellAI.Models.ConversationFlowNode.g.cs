@@ -198,6 +198,43 @@ namespace RetellAI
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::RetellAI.EscalateChatNode? EscalateChat { get; init; }
+#else
+        public global::RetellAI.EscalateChatNode? EscalateChat { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EscalateChat))]
+#endif
+        public bool IsEscalateChat => EscalateChat != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickEscalateChat(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.EscalateChatNode? value)
+        {
+            value = EscalateChat;
+            return IsEscalateChat;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::RetellAI.EscalateChatNode PickEscalateChat() => EscalateChat is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'EscalateChat' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::RetellAI.TransferCallNode? TransferCall { get; init; }
 #else
         public global::RetellAI.TransferCallNode? TransferCall { get; }
@@ -681,6 +718,29 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator ConversationFlowNode(global::RetellAI.EscalateChatNode value) => new ConversationFlowNode((global::RetellAI.EscalateChatNode?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::RetellAI.EscalateChatNode?(ConversationFlowNode @this) => @this.EscalateChat;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public ConversationFlowNode(global::RetellAI.EscalateChatNode? value)
+        {
+            EscalateChat = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static ConversationFlowNode FromEscalateChat(global::RetellAI.EscalateChatNode? value) => new ConversationFlowNode(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public static implicit operator ConversationFlowNode(global::RetellAI.TransferCallNode value) => new ConversationFlowNode((global::RetellAI.TransferCallNode?)value);
 
         /// <summary>
@@ -917,6 +977,7 @@ namespace RetellAI
             global::RetellAI.EndNode? end,
             global::RetellAI.FunctionNode? function,
             global::RetellAI.CodeNode? code,
+            global::RetellAI.EscalateChatNode? escalateChat,
             global::RetellAI.TransferCallNode? transferCall,
             global::RetellAI.PressDigitNode? pressDigit,
             global::RetellAI.BranchNode? branch,
@@ -934,6 +995,7 @@ namespace RetellAI
             End = end;
             Function = function;
             Code = code;
+            EscalateChat = escalateChat;
             TransferCall = transferCall;
             PressDigit = pressDigit;
             Branch = branch;
@@ -960,6 +1022,7 @@ namespace RetellAI
             Branch as object ??
             PressDigit as object ??
             TransferCall as object ??
+            EscalateChat as object ??
             Code as object ??
             Function as object ??
             End as object ??
@@ -976,6 +1039,7 @@ namespace RetellAI
             End?.ToString() ??
             Function?.ToString() ??
             Code?.ToString() ??
+            EscalateChat?.ToString() ??
             TransferCall?.ToString() ??
             PressDigit?.ToString() ??
             Branch?.ToString() ??
@@ -993,7 +1057,7 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && IsCancelTransfer;
+            return IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && IsMcp && !IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && IsComponent && !IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && IsBridgeTransfer && !IsCancelTransfer || !IsConversationNode && !IsSubagent && !IsEnd && !IsFunction && !IsCode && !IsEscalateChat && !IsTransferCall && !IsPressDigit && !IsBranch && !IsSms && !IsExtractDynamicVariables && !IsAgentSwap && !IsMcp && !IsComponent && !IsBridgeTransfer && IsCancelTransfer;
         }
 
         /// <summary>
@@ -1005,6 +1069,7 @@ namespace RetellAI
             global::System.Func<global::RetellAI.EndNode?, TResult>? end = null,
             global::System.Func<global::RetellAI.FunctionNode?, TResult>? function = null,
             global::System.Func<global::RetellAI.CodeNode?, TResult>? code = null,
+            global::System.Func<global::RetellAI.EscalateChatNode?, TResult>? escalateChat = null,
             global::System.Func<global::RetellAI.TransferCallNode?, TResult>? transferCall = null,
             global::System.Func<global::RetellAI.PressDigitNode?, TResult>? pressDigit = null,
             global::System.Func<global::RetellAI.BranchNode?, TResult>? branch = null,
@@ -1042,45 +1107,49 @@ namespace RetellAI
             {
                 return code(__value4);
             }
-            else if (TransferCall is { } __value5 && transferCall != null)
+            else if (EscalateChat is { } __value5 && escalateChat != null)
             {
-                return transferCall(__value5);
+                return escalateChat(__value5);
             }
-            else if (PressDigit is { } __value6 && pressDigit != null)
+            else if (TransferCall is { } __value6 && transferCall != null)
             {
-                return pressDigit(__value6);
+                return transferCall(__value6);
             }
-            else if (Branch is { } __value7 && branch != null)
+            else if (PressDigit is { } __value7 && pressDigit != null)
             {
-                return branch(__value7);
+                return pressDigit(__value7);
             }
-            else if (Sms is { } __value8 && sms != null)
+            else if (Branch is { } __value8 && branch != null)
             {
-                return sms(__value8);
+                return branch(__value8);
             }
-            else if (ExtractDynamicVariables is { } __value9 && extractDynamicVariables != null)
+            else if (Sms is { } __value9 && sms != null)
             {
-                return extractDynamicVariables(__value9);
+                return sms(__value9);
             }
-            else if (AgentSwap is { } __value10 && agentSwap != null)
+            else if (ExtractDynamicVariables is { } __value10 && extractDynamicVariables != null)
             {
-                return agentSwap(__value10);
+                return extractDynamicVariables(__value10);
             }
-            else if (Mcp is { } __value11 && mcp != null)
+            else if (AgentSwap is { } __value11 && agentSwap != null)
             {
-                return mcp(__value11);
+                return agentSwap(__value11);
             }
-            else if (Component is { } __value12 && component != null)
+            else if (Mcp is { } __value12 && mcp != null)
             {
-                return component(__value12);
+                return mcp(__value12);
             }
-            else if (BridgeTransfer is { } __value13 && bridgeTransfer != null)
+            else if (Component is { } __value13 && component != null)
             {
-                return bridgeTransfer(__value13);
+                return component(__value13);
             }
-            else if (CancelTransfer is { } __value14 && cancelTransfer != null)
+            else if (BridgeTransfer is { } __value14 && bridgeTransfer != null)
             {
-                return cancelTransfer(__value14);
+                return bridgeTransfer(__value14);
+            }
+            else if (CancelTransfer is { } __value15 && cancelTransfer != null)
+            {
+                return cancelTransfer(__value15);
             }
 
             return default(TResult);
@@ -1100,6 +1169,8 @@ namespace RetellAI
 
             global::System.Action<global::RetellAI.CodeNode?>? code = null,
 
+            global::System.Action<global::RetellAI.EscalateChatNode?>? escalateChat = null,
+
             global::System.Action<global::RetellAI.TransferCallNode?>? transferCall = null,
 
             global::System.Action<global::RetellAI.PressDigitNode?>? pressDigit = null,
@@ -1146,45 +1217,49 @@ namespace RetellAI
             {
                 code?.Invoke(__value4);
             }
-            else if (TransferCall is { } __value5)
+            else if (EscalateChat is { } __value5)
             {
-                transferCall?.Invoke(__value5);
+                escalateChat?.Invoke(__value5);
             }
-            else if (PressDigit is { } __value6)
+            else if (TransferCall is { } __value6)
             {
-                pressDigit?.Invoke(__value6);
+                transferCall?.Invoke(__value6);
             }
-            else if (Branch is { } __value7)
+            else if (PressDigit is { } __value7)
             {
-                branch?.Invoke(__value7);
+                pressDigit?.Invoke(__value7);
             }
-            else if (Sms is { } __value8)
+            else if (Branch is { } __value8)
             {
-                sms?.Invoke(__value8);
+                branch?.Invoke(__value8);
             }
-            else if (ExtractDynamicVariables is { } __value9)
+            else if (Sms is { } __value9)
             {
-                extractDynamicVariables?.Invoke(__value9);
+                sms?.Invoke(__value9);
             }
-            else if (AgentSwap is { } __value10)
+            else if (ExtractDynamicVariables is { } __value10)
             {
-                agentSwap?.Invoke(__value10);
+                extractDynamicVariables?.Invoke(__value10);
             }
-            else if (Mcp is { } __value11)
+            else if (AgentSwap is { } __value11)
             {
-                mcp?.Invoke(__value11);
+                agentSwap?.Invoke(__value11);
             }
-            else if (Component is { } __value12)
+            else if (Mcp is { } __value12)
             {
-                component?.Invoke(__value12);
+                mcp?.Invoke(__value12);
             }
-            else if (BridgeTransfer is { } __value13)
+            else if (Component is { } __value13)
             {
-                bridgeTransfer?.Invoke(__value13);
+                component?.Invoke(__value13);
             }
-            else if (CancelTransfer is { } __value14)
+            else if (BridgeTransfer is { } __value14)
             {
-                cancelTransfer?.Invoke(__value14);
+                bridgeTransfer?.Invoke(__value14);
+            }
+            else if (CancelTransfer is { } __value15)
+            {
+                cancelTransfer?.Invoke(__value15);
             }
         }
 
@@ -1197,6 +1272,7 @@ namespace RetellAI
             global::System.Action<global::RetellAI.EndNode?>? end = null,
             global::System.Action<global::RetellAI.FunctionNode?>? function = null,
             global::System.Action<global::RetellAI.CodeNode?>? code = null,
+            global::System.Action<global::RetellAI.EscalateChatNode?>? escalateChat = null,
             global::System.Action<global::RetellAI.TransferCallNode?>? transferCall = null,
             global::System.Action<global::RetellAI.PressDigitNode?>? pressDigit = null,
             global::System.Action<global::RetellAI.BranchNode?>? branch = null,
@@ -1234,45 +1310,49 @@ namespace RetellAI
             {
                 code?.Invoke(__value4);
             }
-            else if (TransferCall is { } __value5)
+            else if (EscalateChat is { } __value5)
             {
-                transferCall?.Invoke(__value5);
+                escalateChat?.Invoke(__value5);
             }
-            else if (PressDigit is { } __value6)
+            else if (TransferCall is { } __value6)
             {
-                pressDigit?.Invoke(__value6);
+                transferCall?.Invoke(__value6);
             }
-            else if (Branch is { } __value7)
+            else if (PressDigit is { } __value7)
             {
-                branch?.Invoke(__value7);
+                pressDigit?.Invoke(__value7);
             }
-            else if (Sms is { } __value8)
+            else if (Branch is { } __value8)
             {
-                sms?.Invoke(__value8);
+                branch?.Invoke(__value8);
             }
-            else if (ExtractDynamicVariables is { } __value9)
+            else if (Sms is { } __value9)
             {
-                extractDynamicVariables?.Invoke(__value9);
+                sms?.Invoke(__value9);
             }
-            else if (AgentSwap is { } __value10)
+            else if (ExtractDynamicVariables is { } __value10)
             {
-                agentSwap?.Invoke(__value10);
+                extractDynamicVariables?.Invoke(__value10);
             }
-            else if (Mcp is { } __value11)
+            else if (AgentSwap is { } __value11)
             {
-                mcp?.Invoke(__value11);
+                agentSwap?.Invoke(__value11);
             }
-            else if (Component is { } __value12)
+            else if (Mcp is { } __value12)
             {
-                component?.Invoke(__value12);
+                mcp?.Invoke(__value12);
             }
-            else if (BridgeTransfer is { } __value13)
+            else if (Component is { } __value13)
             {
-                bridgeTransfer?.Invoke(__value13);
+                component?.Invoke(__value13);
             }
-            else if (CancelTransfer is { } __value14)
+            else if (BridgeTransfer is { } __value14)
             {
-                cancelTransfer?.Invoke(__value14);
+                bridgeTransfer?.Invoke(__value14);
+            }
+            else if (CancelTransfer is { } __value15)
+            {
+                cancelTransfer?.Invoke(__value15);
             }
         }
 
@@ -1293,6 +1373,8 @@ namespace RetellAI
                 typeof(global::RetellAI.FunctionNode),
                 Code,
                 typeof(global::RetellAI.CodeNode),
+                EscalateChat,
+                typeof(global::RetellAI.EscalateChatNode),
                 TransferCall,
                 typeof(global::RetellAI.TransferCallNode),
                 PressDigit,
@@ -1334,6 +1416,7 @@ namespace RetellAI
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.EndNode?>.Default.Equals(End, other.End) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.FunctionNode?>.Default.Equals(Function, other.Function) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.CodeNode?>.Default.Equals(Code, other.Code) &&
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.EscalateChatNode?>.Default.Equals(EscalateChat, other.EscalateChat) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.TransferCallNode?>.Default.Equals(TransferCall, other.TransferCall) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.PressDigitNode?>.Default.Equals(PressDigit, other.PressDigit) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.BranchNode?>.Default.Equals(Branch, other.Branch) &&

@@ -9,6 +9,12 @@ namespace RetellAI
     public sealed partial class ChatResponse
     {
         /// <summary>
+        /// Whether this chat has been handed to a human.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_escalated")]
+        public bool? IsEscalated { get; set; }
+
+        /// <summary>
         /// Unique id of the chat.<br/>
         /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
         /// </summary>
@@ -103,7 +109,7 @@ namespace RetellAI
         public long? EndTimestamp { get; set; }
 
         /// <summary>
-        /// Transcription of the chat.<br/>
+        /// Transcription of the chat, including human replies labeled "Transfer Target".<br/>
         /// Example: Agent: hi how are you doing?<br/>
         /// User: Doing pretty well. How are you?<br/>
         /// Agent: That's great to hear! I'm doing well too, thanks! What's up?<br/>
@@ -196,6 +202,9 @@ namespace RetellAI
         /// - `error`: Chat encountered error.<br/>
         /// Example: ongoing
         /// </param>
+        /// <param name="isEscalated">
+        /// Whether this chat has been handed to a human.
+        /// </param>
         /// <param name="version">
         /// The version of the agent<br/>
         /// Example: 1
@@ -228,7 +237,7 @@ namespace RetellAI
         /// Example: 1703302428855
         /// </param>
         /// <param name="transcript">
-        /// Transcription of the chat.<br/>
+        /// Transcription of the chat, including human replies labeled "Transfer Target".<br/>
         /// Example: Agent: hi how are you doing?<br/>
         /// User: Doing pretty well. How are you?<br/>
         /// Agent: That's great to hear! I'm doing well too, thanks! What's up?<br/>
@@ -264,6 +273,7 @@ namespace RetellAI
             string chatId,
             string agentId,
             global::RetellAI.ChatResponseChatStatus chatStatus,
+            bool? isEscalated,
             int? version,
             string? agentTag,
             global::System.Collections.Generic.Dictionary<string, string>? retellLlmDynamicVariables,
@@ -282,6 +292,7 @@ namespace RetellAI
             global::RetellAI.ChatResponseChatCost? chatCost,
             global::RetellAI.ChatAnalysis? chatAnalysis)
         {
+            this.IsEscalated = isEscalated;
             this.ChatId = chatId ?? throw new global::System.ArgumentNullException(nameof(chatId));
             this.AgentId = agentId ?? throw new global::System.ArgumentNullException(nameof(agentId));
             this.Version = version;

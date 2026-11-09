@@ -13,6 +13,43 @@ namespace RetellAI
         ///
         /// </summary>
 #if NET6_0_OR_GREATER
+        public global::RetellAI.EscalateChatTool? EscalateChat { get; init; }
+#else
+        public global::RetellAI.EscalateChatTool? EscalateChat { get; }
+#endif
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
+        [global::System.Diagnostics.CodeAnalysis.MemberNotNullWhen(true, nameof(EscalateChat))]
+#endif
+        public bool IsEscalateChat => EscalateChat != null;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public bool TryPickEscalateChat(
+#if NET6_0_OR_GREATER
+            [global::System.Diagnostics.CodeAnalysis.NotNullWhen(true)]
+#endif
+            out global::RetellAI.EscalateChatTool? value)
+        {
+            value = EscalateChat;
+            return IsEscalateChat;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public global::RetellAI.EscalateChatTool PickEscalateChat() => EscalateChat is { } value
+            ? value
+            : throw new global::System.InvalidOperationException($"Expected union variant 'EscalateChat' but the value was {ToString()}.");
+
+        /// <summary>
+        ///
+        /// </summary>
+#if NET6_0_OR_GREATER
         public global::RetellAI.EndCallTool? EndCall { get; init; }
 #else
         public global::RetellAI.EndCallTool? EndCall { get; }
@@ -455,6 +492,29 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        public static implicit operator Tool(global::RetellAI.EscalateChatTool value) => new Tool((global::RetellAI.EscalateChatTool?)value);
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static implicit operator global::RetellAI.EscalateChatTool?(Tool @this) => @this.EscalateChat;
+
+        /// <summary>
+        ///
+        /// </summary>
+        public Tool(global::RetellAI.EscalateChatTool? value)
+        {
+            EscalateChat = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public static Tool FromEscalateChat(global::RetellAI.EscalateChatTool? value) => new Tool(value);
+
+        /// <summary>
+        ///
+        /// </summary>
         public static implicit operator Tool(global::RetellAI.EndCallTool value) => new Tool((global::RetellAI.EndCallTool?)value);
 
         /// <summary>
@@ -732,6 +792,7 @@ namespace RetellAI
         ///
         /// </summary>
         public Tool(
+            global::RetellAI.EscalateChatTool? escalateChat,
             global::RetellAI.EndCallTool? endCall,
             global::RetellAI.TransferCallTool? transferCall,
             global::RetellAI.AgentSwapTool? agentSwap,
@@ -746,6 +807,7 @@ namespace RetellAI
             global::RetellAI.AppTool? app
             )
         {
+            EscalateChat = escalateChat;
             EndCall = endCall;
             TransferCall = transferCall;
             AgentSwap = agentSwap;
@@ -775,13 +837,15 @@ namespace RetellAI
             PressDigit as object ??
             AgentSwap as object ??
             TransferCall as object ??
-            EndCall as object
+            EndCall as object ??
+            EscalateChat as object
             ;
 
         /// <summary>
         ///
         /// </summary>
         public override string? ToString() =>
+            EscalateChat?.ToString() ??
             EndCall?.ToString() ??
             TransferCall?.ToString() ??
             AgentSwap?.ToString() ??
@@ -801,13 +865,14 @@ namespace RetellAI
         /// </summary>
         public bool Validate()
         {
-            return IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && IsCancelTransfer && !IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && IsMcp && !IsApp || !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && IsApp;
+            return IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && IsBridgeTransfer && !IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && IsCancelTransfer && !IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && IsMcp && !IsApp || !IsEscalateChat && !IsEndCall && !IsTransferCall && !IsAgentSwap && !IsPressDigit && !IsSendSM && !IsCustom && !IsCode && !IsExtractDynamicVariable && !IsBridgeTransfer && !IsCancelTransfer && !IsMcp && IsApp;
         }
 
         /// <summary>
         ///
         /// </summary>
         public TResult? Match<TResult>(
+            global::System.Func<global::RetellAI.EscalateChatTool, TResult>? escalateChat = null,
             global::System.Func<global::RetellAI.EndCallTool, TResult>? endCall = null,
             global::System.Func<global::RetellAI.TransferCallTool, TResult>? transferCall = null,
             global::System.Func<global::RetellAI.AgentSwapTool, TResult>? agentSwap = null,
@@ -827,53 +892,57 @@ namespace RetellAI
                 Validate();
             }
 
-            if (EndCall is { } __value0 && endCall != null)
+            if (EscalateChat is { } __value0 && escalateChat != null)
             {
-                return endCall(__value0);
+                return escalateChat(__value0);
             }
-            else if (TransferCall is { } __value1 && transferCall != null)
+            else if (EndCall is { } __value1 && endCall != null)
             {
-                return transferCall(__value1);
+                return endCall(__value1);
             }
-            else if (AgentSwap is { } __value2 && agentSwap != null)
+            else if (TransferCall is { } __value2 && transferCall != null)
             {
-                return agentSwap(__value2);
+                return transferCall(__value2);
             }
-            else if (PressDigit is { } __value3 && pressDigit != null)
+            else if (AgentSwap is { } __value3 && agentSwap != null)
             {
-                return pressDigit(__value3);
+                return agentSwap(__value3);
             }
-            else if (SendSM is { } __value4 && sendSM != null)
+            else if (PressDigit is { } __value4 && pressDigit != null)
             {
-                return sendSM(__value4);
+                return pressDigit(__value4);
             }
-            else if (Custom is { } __value5 && custom != null)
+            else if (SendSM is { } __value5 && sendSM != null)
             {
-                return custom(__value5);
+                return sendSM(__value5);
             }
-            else if (Code is { } __value6 && code != null)
+            else if (Custom is { } __value6 && custom != null)
             {
-                return code(__value6);
+                return custom(__value6);
             }
-            else if (ExtractDynamicVariable is { } __value7 && extractDynamicVariable != null)
+            else if (Code is { } __value7 && code != null)
             {
-                return extractDynamicVariable(__value7);
+                return code(__value7);
             }
-            else if (BridgeTransfer is { } __value8 && bridgeTransfer != null)
+            else if (ExtractDynamicVariable is { } __value8 && extractDynamicVariable != null)
             {
-                return bridgeTransfer(__value8);
+                return extractDynamicVariable(__value8);
             }
-            else if (CancelTransfer is { } __value9 && cancelTransfer != null)
+            else if (BridgeTransfer is { } __value9 && bridgeTransfer != null)
             {
-                return cancelTransfer(__value9);
+                return bridgeTransfer(__value9);
             }
-            else if (Mcp is { } __value10 && mcp != null)
+            else if (CancelTransfer is { } __value10 && cancelTransfer != null)
             {
-                return mcp(__value10);
+                return cancelTransfer(__value10);
             }
-            else if (App is { } __value11 && app != null)
+            else if (Mcp is { } __value11 && mcp != null)
             {
-                return app(__value11);
+                return mcp(__value11);
+            }
+            else if (App is { } __value12 && app != null)
+            {
+                return app(__value12);
             }
 
             return default(TResult);
@@ -883,6 +952,8 @@ namespace RetellAI
         ///
         /// </summary>
         public void Match(
+            global::System.Action<global::RetellAI.EscalateChatTool>? escalateChat = null,
+
             global::System.Action<global::RetellAI.EndCallTool>? endCall = null,
 
             global::System.Action<global::RetellAI.TransferCallTool>? transferCall = null,
@@ -913,53 +984,57 @@ namespace RetellAI
                 Validate();
             }
 
-            if (EndCall is { } __value0)
+            if (EscalateChat is { } __value0)
             {
-                endCall?.Invoke(__value0);
+                escalateChat?.Invoke(__value0);
             }
-            else if (TransferCall is { } __value1)
+            else if (EndCall is { } __value1)
             {
-                transferCall?.Invoke(__value1);
+                endCall?.Invoke(__value1);
             }
-            else if (AgentSwap is { } __value2)
+            else if (TransferCall is { } __value2)
             {
-                agentSwap?.Invoke(__value2);
+                transferCall?.Invoke(__value2);
             }
-            else if (PressDigit is { } __value3)
+            else if (AgentSwap is { } __value3)
             {
-                pressDigit?.Invoke(__value3);
+                agentSwap?.Invoke(__value3);
             }
-            else if (SendSM is { } __value4)
+            else if (PressDigit is { } __value4)
             {
-                sendSM?.Invoke(__value4);
+                pressDigit?.Invoke(__value4);
             }
-            else if (Custom is { } __value5)
+            else if (SendSM is { } __value5)
             {
-                custom?.Invoke(__value5);
+                sendSM?.Invoke(__value5);
             }
-            else if (Code is { } __value6)
+            else if (Custom is { } __value6)
             {
-                code?.Invoke(__value6);
+                custom?.Invoke(__value6);
             }
-            else if (ExtractDynamicVariable is { } __value7)
+            else if (Code is { } __value7)
             {
-                extractDynamicVariable?.Invoke(__value7);
+                code?.Invoke(__value7);
             }
-            else if (BridgeTransfer is { } __value8)
+            else if (ExtractDynamicVariable is { } __value8)
             {
-                bridgeTransfer?.Invoke(__value8);
+                extractDynamicVariable?.Invoke(__value8);
             }
-            else if (CancelTransfer is { } __value9)
+            else if (BridgeTransfer is { } __value9)
             {
-                cancelTransfer?.Invoke(__value9);
+                bridgeTransfer?.Invoke(__value9);
             }
-            else if (Mcp is { } __value10)
+            else if (CancelTransfer is { } __value10)
             {
-                mcp?.Invoke(__value10);
+                cancelTransfer?.Invoke(__value10);
             }
-            else if (App is { } __value11)
+            else if (Mcp is { } __value11)
             {
-                app?.Invoke(__value11);
+                mcp?.Invoke(__value11);
+            }
+            else if (App is { } __value12)
+            {
+                app?.Invoke(__value12);
             }
         }
 
@@ -967,6 +1042,7 @@ namespace RetellAI
         ///
         /// </summary>
         public void Switch(
+            global::System.Action<global::RetellAI.EscalateChatTool>? escalateChat = null,
             global::System.Action<global::RetellAI.EndCallTool>? endCall = null,
             global::System.Action<global::RetellAI.TransferCallTool>? transferCall = null,
             global::System.Action<global::RetellAI.AgentSwapTool>? agentSwap = null,
@@ -986,53 +1062,57 @@ namespace RetellAI
                 Validate();
             }
 
-            if (EndCall is { } __value0)
+            if (EscalateChat is { } __value0)
             {
-                endCall?.Invoke(__value0);
+                escalateChat?.Invoke(__value0);
             }
-            else if (TransferCall is { } __value1)
+            else if (EndCall is { } __value1)
             {
-                transferCall?.Invoke(__value1);
+                endCall?.Invoke(__value1);
             }
-            else if (AgentSwap is { } __value2)
+            else if (TransferCall is { } __value2)
             {
-                agentSwap?.Invoke(__value2);
+                transferCall?.Invoke(__value2);
             }
-            else if (PressDigit is { } __value3)
+            else if (AgentSwap is { } __value3)
             {
-                pressDigit?.Invoke(__value3);
+                agentSwap?.Invoke(__value3);
             }
-            else if (SendSM is { } __value4)
+            else if (PressDigit is { } __value4)
             {
-                sendSM?.Invoke(__value4);
+                pressDigit?.Invoke(__value4);
             }
-            else if (Custom is { } __value5)
+            else if (SendSM is { } __value5)
             {
-                custom?.Invoke(__value5);
+                sendSM?.Invoke(__value5);
             }
-            else if (Code is { } __value6)
+            else if (Custom is { } __value6)
             {
-                code?.Invoke(__value6);
+                custom?.Invoke(__value6);
             }
-            else if (ExtractDynamicVariable is { } __value7)
+            else if (Code is { } __value7)
             {
-                extractDynamicVariable?.Invoke(__value7);
+                code?.Invoke(__value7);
             }
-            else if (BridgeTransfer is { } __value8)
+            else if (ExtractDynamicVariable is { } __value8)
             {
-                bridgeTransfer?.Invoke(__value8);
+                extractDynamicVariable?.Invoke(__value8);
             }
-            else if (CancelTransfer is { } __value9)
+            else if (BridgeTransfer is { } __value9)
             {
-                cancelTransfer?.Invoke(__value9);
+                bridgeTransfer?.Invoke(__value9);
             }
-            else if (Mcp is { } __value10)
+            else if (CancelTransfer is { } __value10)
             {
-                mcp?.Invoke(__value10);
+                cancelTransfer?.Invoke(__value10);
             }
-            else if (App is { } __value11)
+            else if (Mcp is { } __value11)
             {
-                app?.Invoke(__value11);
+                mcp?.Invoke(__value11);
+            }
+            else if (App is { } __value12)
+            {
+                app?.Invoke(__value12);
             }
         }
 
@@ -1043,6 +1123,8 @@ namespace RetellAI
         {
             var fields = new object?[]
             {
+                EscalateChat,
+                typeof(global::RetellAI.EscalateChatTool),
                 EndCall,
                 typeof(global::RetellAI.EndCallTool),
                 TransferCall,
@@ -1083,6 +1165,7 @@ namespace RetellAI
         public bool Equals(Tool other)
         {
             return
+                global::System.Collections.Generic.EqualityComparer<global::RetellAI.EscalateChatTool?>.Default.Equals(EscalateChat, other.EscalateChat) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.EndCallTool?>.Default.Equals(EndCall, other.EndCall) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.TransferCallTool?>.Default.Equals(TransferCall, other.TransferCall) &&
                 global::System.Collections.Generic.EqualityComparer<global::RetellAI.AgentSwapTool?>.Default.Equals(AgentSwap, other.AgentSwap) &&

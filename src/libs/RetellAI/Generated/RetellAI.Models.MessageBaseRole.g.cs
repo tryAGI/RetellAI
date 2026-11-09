@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Documents whether this message is sent by agent or user.<br/>
+    /// Whether this message is sent by the AI agent, user, or human transfer target.<br/>
     /// Example: agent
     /// </summary>
     public enum MessageBaseRole
@@ -13,6 +13,10 @@ namespace RetellAI
         ///
         /// </summary>
         Agent,
+        /// <summary>
+        ///
+        /// </summary>
+        TransferTarget,
         /// <summary>
         ///
         /// </summary>
@@ -32,6 +36,7 @@ namespace RetellAI
             return value switch
             {
                 MessageBaseRole.Agent => "agent",
+                MessageBaseRole.TransferTarget => "transfer_target",
                 MessageBaseRole.User => "user",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
@@ -44,6 +49,7 @@ namespace RetellAI
             return value switch
             {
                 "agent" => MessageBaseRole.Agent,
+                "transfer_target" => MessageBaseRole.TransferTarget,
                 "user" => MessageBaseRole.User,
                 _ => null,
             };

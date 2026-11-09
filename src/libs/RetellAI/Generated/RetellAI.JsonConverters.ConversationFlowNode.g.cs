@@ -84,7 +84,7 @@ namespace RetellAI.JsonConverters
             }
             var __score5 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferCallNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EscalateChatNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
@@ -95,7 +95,7 @@ namespace RetellAI.JsonConverters
             }
             var __score6 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.PressDigitNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferCallNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
@@ -106,7 +106,7 @@ namespace RetellAI.JsonConverters
             }
             var __score7 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BranchNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.PressDigitNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
@@ -117,7 +117,7 @@ namespace RetellAI.JsonConverters
             }
             var __score8 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BranchNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
@@ -128,7 +128,7 @@ namespace RetellAI.JsonConverters
             }
             var __score9 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ExtractDynamicVariablesNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.SmsNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
@@ -139,7 +139,7 @@ namespace RetellAI.JsonConverters
             }
             var __score10 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentSwapNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ExtractDynamicVariablesNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
@@ -150,7 +150,7 @@ namespace RetellAI.JsonConverters
             }
             var __score11 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.MCPNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.AgentSwapNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
@@ -161,7 +161,7 @@ namespace RetellAI.JsonConverters
             }
             var __score12 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ComponentNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.MCPNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
@@ -172,7 +172,7 @@ namespace RetellAI.JsonConverters
             }
             var __score13 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BridgeTransferNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.ComponentNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
@@ -183,12 +183,23 @@ namespace RetellAI.JsonConverters
             }
             var __score14 = 0;
             {
-                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CancelTransferNode), options);
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.BridgeTransferNode), options);
                 if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
                 {
                     foreach (var __prop in __ti.Properties)
                     {
                         if (__jsonProps.Contains(__prop.Name)) __score14++;
+                    }
+                }
+            }
+            var __score15 = 0;
+            {
+                var __ti = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CancelTransferNode), options);
+                if (__ti != null && __ti.Kind == global::System.Text.Json.Serialization.Metadata.JsonTypeInfoKind.Object)
+                {
+                    foreach (var __prop in __ti.Properties)
+                    {
+                        if (__jsonProps.Contains(__prop.Name)) __score15++;
                     }
                 }
             }
@@ -209,12 +220,14 @@ namespace RetellAI.JsonConverters
             if (__score12 > __bestScore) { __bestScore = __score12; __bestIndex = 12; }
             if (__score13 > __bestScore) { __bestScore = __score13; __bestIndex = 13; }
             if (__score14 > __bestScore) { __bestScore = __score14; __bestIndex = 14; }
+            if (__score15 > __bestScore) { __bestScore = __score15; __bestIndex = 15; }
 
             global::RetellAI.ConversationNode? conversationNode = default;
             global::RetellAI.SubagentNode? subagent = default;
             global::RetellAI.EndNode? end = default;
             global::RetellAI.FunctionNode? function = default;
             global::RetellAI.CodeNode? code = default;
+            global::RetellAI.EscalateChatNode? escalateChat = default;
             global::RetellAI.TransferCallNode? transferCall = default;
             global::RetellAI.PressDigitNode? pressDigit = default;
             global::RetellAI.BranchNode? branch = default;
@@ -337,6 +350,27 @@ namespace RetellAI.JsonConverters
                     try
                     {
 
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EscalateChatNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EscalateChatNode> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EscalateChatNode).Name}");
+                        escalateChat = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                    catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                    {
+                        // Legacy enum converters signal an incompatible JSON token with this exception.
+                    }
+                }
+
+                else if (__bestIndex == 6)
+                {
+                    try
+                    {
+
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.TransferCallNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.TransferCallNode> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.TransferCallNode).Name}");
                         transferCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -353,7 +387,7 @@ namespace RetellAI.JsonConverters
                     }
                 }
 
-                else if (__bestIndex == 6)
+                else if (__bestIndex == 7)
                 {
                     try
                     {
@@ -374,7 +408,7 @@ namespace RetellAI.JsonConverters
                     }
                 }
 
-                else if (__bestIndex == 7)
+                else if (__bestIndex == 8)
                 {
                     try
                     {
@@ -395,7 +429,7 @@ namespace RetellAI.JsonConverters
                     }
                 }
 
-                else if (__bestIndex == 8)
+                else if (__bestIndex == 9)
                 {
                     try
                     {
@@ -416,7 +450,7 @@ namespace RetellAI.JsonConverters
                     }
                 }
 
-                else if (__bestIndex == 9)
+                else if (__bestIndex == 10)
                 {
                     try
                     {
@@ -437,7 +471,7 @@ namespace RetellAI.JsonConverters
                     }
                 }
 
-                else if (__bestIndex == 10)
+                else if (__bestIndex == 11)
                 {
                     try
                     {
@@ -458,7 +492,7 @@ namespace RetellAI.JsonConverters
                     }
                 }
 
-                else if (__bestIndex == 11)
+                else if (__bestIndex == 12)
                 {
                     try
                     {
@@ -479,7 +513,7 @@ namespace RetellAI.JsonConverters
                     }
                 }
 
-                else if (__bestIndex == 12)
+                else if (__bestIndex == 13)
                 {
                     try
                     {
@@ -500,7 +534,7 @@ namespace RetellAI.JsonConverters
                     }
                 }
 
-                else if (__bestIndex == 13)
+                else if (__bestIndex == 14)
                 {
                     try
                     {
@@ -521,7 +555,7 @@ namespace RetellAI.JsonConverters
                     }
                 }
 
-                else if (__bestIndex == 14)
+                else if (__bestIndex == 15)
                 {
                     try
                     {
@@ -543,7 +577,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -564,7 +598,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -585,7 +619,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -606,7 +640,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -627,7 +661,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -648,7 +682,28 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EscalateChatNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EscalateChatNode> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EscalateChatNode).Name}");
+                    escalateChat = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+                catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                {
+                    // Legacy enum converters signal an incompatible JSON token with this exception.
+                }
+            }
+
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -669,7 +724,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -690,7 +745,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -711,7 +766,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -732,7 +787,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -753,7 +808,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -774,7 +829,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -795,7 +850,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -816,7 +871,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -837,7 +892,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (conversationNode == null && subagent == null && end == null && function == null && code == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
+            if (conversationNode == null && subagent == null && end == null && function == null && code == null && escalateChat == null && transferCall == null && pressDigit == null && branch == null && sms == null && extractDynamicVariables == null && agentSwap == null && mcp == null && component == null && bridgeTransfer == null && cancelTransfer == null)
             {
                 try
                 {
@@ -868,6 +923,8 @@ namespace RetellAI.JsonConverters
                 function,
 
                 code,
+
+                escalateChat,
 
                 transferCall,
 
@@ -931,6 +988,12 @@ namespace RetellAI.JsonConverters
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.CodeNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.CodeNode> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.CodeNode).Name}");
                 global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickCode(), typeInfo);
+            }
+            else if (value.IsEscalateChat)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EscalateChatNode), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EscalateChatNode> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EscalateChatNode).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickEscalateChat(), typeInfo);
             }
             else if (value.IsTransferCall)
             {
