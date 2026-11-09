@@ -5,7 +5,7 @@ namespace RetellAI
     public partial interface IRetellAiClient
     {
         /// <summary>
-        /// Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side — the caller manages conversation state.
+        /// Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side — the caller manages conversation state. Payment agents only support audio testing and cannot use this endpoint.
         /// </summary>
         /// <param name="agentId"></param>
         /// <param name="version">
@@ -23,7 +23,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side — the caller manages conversation state.
+        /// Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side — the caller manages conversation state. Payment agents only support audio testing and cannot use this endpoint.
         /// </summary>
         /// <param name="agentId"></param>
         /// <param name="version">
@@ -41,7 +41,7 @@ namespace RetellAI
             global::RetellAI.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side — the caller manages conversation state.
+        /// Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side — the caller manages conversation state. Payment agents only support audio testing and cannot use this endpoint.
         /// </summary>
         /// <param name="agentId"></param>
         /// <param name="version">

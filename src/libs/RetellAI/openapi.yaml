@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-07-5579976
+  x-retell-spec-revision: 2026-11-08-2aab0a9
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -2183,6 +2183,9 @@ components:
       - agent_id
       - chat_status
       properties:
+        is_escalated:
+          type: boolean
+          description: Whether this chat has been handed to a human.
         chat_id:
           type: string
           example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
@@ -2273,7 +2276,7 @@ components:
             Agent: have a nice day
 
             '
-          description: Transcription of the chat.
+          description: Transcription of the chat, including human replies labeled "Transfer Target".
         message_with_tool_calls:
           type: array
           items:
@@ -2865,6 +2868,7 @@ components:
       - $ref: '#/components/schemas/EndNode'
       - $ref: '#/components/schemas/FunctionNode'
       - $ref: '#/components/schemas/CodeNode'
+      - $ref: '#/components/schemas/EscalateChatNode'
       - $ref: '#/components/schemas/TransferCallNode'
       - $ref: '#/components/schemas/PressDigitNode'
       - $ref: '#/components/schemas/BranchNode'
@@ -4049,6 +4053,8 @@ components:
       type: object
       description: Filter criteria for chats. All conditions are implicitly connected with AND.
       properties:
+        is_escalated:
+          $ref: '#/components/schemas/BooleanFilter'
         agent:
           type: array
           items:
@@ -5372,6 +5378,11 @@ components:
       - role
       - content
       properties:
+        customer_defined_metadata:
+          type: object
+          properties:
+            transfer_target_name:
+              type: string
         message_id:
           type: string
           example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
@@ -5381,7 +5392,8 @@ components:
           enum:
           - agent
           - user
-          description: Documents whether this message is sent by agent or user.
+          - transfer_target
+          description: Whether this message is sent by the AI agent, user, or human transfer target.
           example: agent
         content:
           type: string
@@ -7975,6 +7987,7 @@ components:
           description: On an integration function's response schema, false means the output fields are fixed to properties and no others can be added.
     Tool:
       oneOf:
+      - $ref: '#/components/schemas/EscalateChatTool'
       - $ref: '#/components/schemas/EndCallTool'
       - $ref: '#/components/schemas/TransferCallTool'
       - $ref: '#/components/schemas/AgentSwapTool'
@@ -7987,6 +8000,108 @@ components:
       - $ref: '#/components/schemas/CancelTransferTool'
       - $ref: '#/components/schemas/MCPTool'
       - $ref: '#/components/schemas/AppTool'
+    EscalationDestination:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - destination
+      properties:
+        type:
+          type: string
+          enum:
+          - webhook
+        destination:
+          type: object
+          additionalProperties: false
+          required:
+          - url
+          - method
+          properties:
+            url:
+              type: string
+              description: Customer webhook URL for transfer requests and forwarded SMS messages.
+            method:
+              type: string
+              enum:
+              - POST
+              - PUT
+            timeout_ms:
+              type: integer
+              minimum: 1000
+              maximum: 600000
+            max_retry:
+              type: integer
+              minimum: 0
+              maximum: 5
+            headers:
+              type: object
+              additionalProperties:
+                type: string
+            query_params:
+              type: object
+              additionalProperties:
+                type: string
+            body:
+              type: object
+              description: Customer-defined fields nested in args on chat_transfer_requested events. String values support dynamic variables such as {{customer_id}}, including inside nested objects and
+                arrays. Field names and non-string values are preserved.
+              additionalProperties: true
+    EscalateChatTool:
+      type: object
+      additionalProperties: false
+      required:
+      - type
+      - name
+      - destination
+      properties:
+        type:
+          type: string
+          enum:
+          - escalate_chat
+        name:
+          type: string
+        description:
+          type: string
+        destination:
+          $ref: '#/components/schemas/EscalationDestination'
+    EscalationFailedEdge:
+      allOf:
+      - $ref: '#/components/schemas/NodeEdge'
+      - type: object
+        properties:
+          transition_condition:
+            type: object
+            required:
+            - type
+            - prompt
+            additionalProperties: false
+            properties:
+              type:
+                type: string
+                enum:
+                - prompt
+              prompt:
+                type: string
+                enum:
+                - Escalation failed
+    EscalateChatNode:
+      allOf:
+      - $ref: '#/components/schemas/NodeBase'
+      - type: object
+        required:
+        - type
+        - destination
+        - edge
+        properties:
+          type:
+            type: string
+            enum:
+            - escalate_chat
+          destination:
+            $ref: '#/components/schemas/EscalationDestination'
+          edge:
+            $ref: '#/components/schemas/EscalationFailedEdge'
     TransferCallNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'
@@ -11195,7 +11310,7 @@ paths:
   /agent-playground-completion/{agent_id}:
     post:
       description: Stateless playground completion. Send the full conversation history (same shape as chat completion messages) and receive only the newly generated messages. Nothing is persisted server-side
-        — the caller manages conversation state.
+        — the caller manages conversation state. Payment agents only support audio testing and cannot use this endpoint.
       operationId: agentPlaygroundCompletion
       parameters:
       - name: agent_id
@@ -12089,6 +12204,92 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /record-chat-message/{chat_id}:
+    post:
+      operationId: recordChatMessage
+      x-retell-sdk-resource: chat
+      x-retell-sdk-method: record-message
+      description: Record a user or human transfer-target message in an ongoing escalated chat. SMS chats accept only transfer_target and send SMS before recording. API chats only record; delivery is the
+        customer's responsibility. Idempotency keys are scoped to the organization. Successful results are retained for 24 hours. Concurrent requests with the same key wait for the lock. Reusing a key after
+        success returns 200 with the original message_id and created_timestamp, without sending again. No duplicate-key error is raised. Failures are not cached and release the lock so the same key can
+        be retried. Each execution makes one SMS send attempt. If delivery is uncertain or processing fails after sending, a retried request can send the SMS again and cause duplicates.
+      parameters:
+      - in: path
+        name: chat_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - type: object
+                additionalProperties: false
+                required:
+                - role
+                - message
+                - idempotency_key
+                properties:
+                  role:
+                    type: string
+                    enum:
+                    - user
+                  message:
+                    type: string
+                    minLength: 1
+                  idempotency_key:
+                    type: string
+                    minLength: 1
+                    maxLength: 256
+              - type: object
+                additionalProperties: false
+                required:
+                - role
+                - message
+                - idempotency_key
+                properties:
+                  role:
+                    type: string
+                    enum:
+                    - transfer_target
+                  message:
+                    type: string
+                    minLength: 1
+                  idempotency_key:
+                    type: string
+                    minLength: 1
+                    maxLength: 256
+                  metadata:
+                    type: object
+                    additionalProperties: false
+                    properties:
+                      transfer_target_name:
+                        type: string
+      responses:
+        '200':
+          description: Message recorded successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - message_id
+                - created_timestamp
+                properties:
+                  message_id:
+                    type: string
+                  created_timestamp:
+                    type: integer
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Chat not found in this organization.
         '500':
           $ref: '#/components/responses/InternalServerError'
   /get-chat/{chat_id}:
@@ -13703,7 +13904,8 @@ paths:
                   type: string
                   minLength: 1
                   example: oBeDLoLOeuAbiuaMFXRtDOLriTJ5tSxD
-                  description: Unique id of agent used for the call. Your agent would contain the LLM Websocket url used for this call.
+                  description: Unique id of agent used for the call. Your agent would contain the LLM Websocket url used for this call. A payment agent starts an isolated PCI test call that ends when payment
+                    completes.
                 agent_version:
                   $ref: '#/components/schemas/AgentVersionReference'
                   description: The version of the agent to use for the call.
@@ -13725,7 +13927,7 @@ paths:
                   type: string
                   example: collect_info
                   description: Start the call at this conversation flow node (stage). Must be a valid node id in the agent's conversation flow. Only applicable when the agent uses conversation flow as the
-                    response engine. Ignored for retell-llm agents.
+                    response engine. For a payment agent, the node belongs to its own conversation flow. Ignored for retell-llm agents.
                   nullable: true
                 current_state:
                   type: string

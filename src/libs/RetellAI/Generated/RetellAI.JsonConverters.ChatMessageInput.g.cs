@@ -23,6 +23,13 @@ namespace RetellAI.JsonConverters
                 foreach (var __jsonProp in __jsonDocument.RootElement.EnumerateObject())
                 {
                     __jsonProps.Add(__jsonProp.Name);
+                    if (__jsonProp.Value.ValueKind == global::System.Text.Json.JsonValueKind.Object)
+                    {
+                        foreach (var __nestedJsonProp in __jsonProp.Value.EnumerateObject())
+                        {
+                            __jsonProps.Add(__jsonProp.Name + "." + __nestedJsonProp.Name);
+                        }
+                    }
 
                 }
             }
@@ -30,6 +37,8 @@ namespace RetellAI.JsonConverters
             var __score0 = 0;
             if (__jsonProps.Contains("content")) __score0++;
             if (__jsonProps.Contains("created_timestamp")) __score0++;
+            if (__jsonProps.Contains("customer_defined_metadata")) __score0++;
+            if (__jsonProps.Contains("customer_defined_metadata.transfer_target_name")) __score0++;
             if (__jsonProps.Contains("message_id")) __score0++;
             if (__jsonProps.Contains("multimedia")) __score0++;
             if (__jsonProps.Contains("role")) __score0++;

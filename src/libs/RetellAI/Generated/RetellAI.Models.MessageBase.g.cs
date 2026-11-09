@@ -9,6 +9,12 @@ namespace RetellAI
     public sealed partial class MessageBase
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("customer_defined_metadata")]
+        public global::RetellAI.MessageBaseCustomerDefinedMetadata? CustomerDefinedMetadata { get; set; }
+
+        /// <summary>
         /// Unique id of the message<br/>
         /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
         /// </summary>
@@ -17,7 +23,7 @@ namespace RetellAI
         public string? MessageId { get; set; }
 
         /// <summary>
-        /// Documents whether this message is sent by agent or user.<br/>
+        /// Whether this message is sent by the AI agent, user, or human transfer target.<br/>
         /// Example: agent
         /// </summary>
         /// <example>agent</example>
@@ -59,13 +65,14 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="MessageBase" /> class.
         /// </summary>
         /// <param name="role">
-        /// Documents whether this message is sent by agent or user.<br/>
+        /// Whether this message is sent by the AI agent, user, or human transfer target.<br/>
         /// Example: agent
         /// </param>
         /// <param name="content">
         /// Content of the message<br/>
         /// Example: hi how are you doing?
         /// </param>
+        /// <param name="customerDefinedMetadata"></param>
         /// <param name="messageId">
         /// Unique id of the message<br/>
         /// Example: Jabr9TXYYJHfvl6Syypi88rdAHYHmcq6
@@ -83,10 +90,12 @@ namespace RetellAI
         public MessageBase(
             global::RetellAI.MessageBaseRole role,
             string content,
+            global::RetellAI.MessageBaseCustomerDefinedMetadata? customerDefinedMetadata,
             string? messageId,
             global::System.Collections.Generic.IList<global::RetellAI.SmsMultimediaItem>? multimedia,
             long? createdTimestamp)
         {
+            this.CustomerDefinedMetadata = customerDefinedMetadata;
             this.MessageId = messageId;
             this.Role = role;
             this.Content = content ?? throw new global::System.ArgumentNullException(nameof(content));

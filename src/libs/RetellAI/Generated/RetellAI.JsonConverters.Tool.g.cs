@@ -35,104 +35,104 @@ namespace RetellAI.JsonConverters
             }
 
             var __score0 = 0;
-            if (__jsonProps.Contains("custom_sip_headers")) __score0++;
             if (__jsonProps.Contains("description")) __score0++;
-            if (__jsonProps.Contains("execution_message_description")) __score0++;
-            if (__jsonProps.Contains("execution_message_type")) __score0++;
+            if (__jsonProps.Contains("destination")) __score0++;
+            if (__jsonProps.Contains("destination.destination")) __score0++;
+            if (__jsonProps.Contains("destination.type")) __score0++;
             if (__jsonProps.Contains("name")) __score0++;
-            if (__jsonProps.Contains("speak_during_execution")) __score0++;
             if (__jsonProps.Contains("type")) __score0++;
             var __score1 = 0;
             if (__jsonProps.Contains("custom_sip_headers")) __score1++;
             if (__jsonProps.Contains("description")) __score1++;
             if (__jsonProps.Contains("execution_message_description")) __score1++;
             if (__jsonProps.Contains("execution_message_type")) __score1++;
-            if (__jsonProps.Contains("ignore_e164_validation")) __score1++;
             if (__jsonProps.Contains("name")) __score1++;
             if (__jsonProps.Contains("speak_during_execution")) __score1++;
-            if (__jsonProps.Contains("transfer_destination")) __score1++;
-            if (__jsonProps.Contains("transfer_option")) __score1++;
             if (__jsonProps.Contains("type")) __score1++;
             var __score2 = 0;
-            if (__jsonProps.Contains("agent_id")) __score2++;
-            if (__jsonProps.Contains("agent_version")) __score2++;
+            if (__jsonProps.Contains("custom_sip_headers")) __score2++;
             if (__jsonProps.Contains("description")) __score2++;
             if (__jsonProps.Contains("execution_message_description")) __score2++;
             if (__jsonProps.Contains("execution_message_type")) __score2++;
-            if (__jsonProps.Contains("keep_current_language")) __score2++;
-            if (__jsonProps.Contains("keep_current_voice")) __score2++;
+            if (__jsonProps.Contains("ignore_e164_validation")) __score2++;
             if (__jsonProps.Contains("name")) __score2++;
-            if (__jsonProps.Contains("post_call_analysis_setting")) __score2++;
             if (__jsonProps.Contains("speak_during_execution")) __score2++;
+            if (__jsonProps.Contains("transfer_destination")) __score2++;
+            if (__jsonProps.Contains("transfer_option")) __score2++;
             if (__jsonProps.Contains("type")) __score2++;
-            if (__jsonProps.Contains("use_swap_agent_max_duration")) __score2++;
-            if (__jsonProps.Contains("webhook_setting")) __score2++;
             var __score3 = 0;
-            if (__jsonProps.Contains("delay_ms")) __score3++;
+            if (__jsonProps.Contains("agent_id")) __score3++;
+            if (__jsonProps.Contains("agent_version")) __score3++;
             if (__jsonProps.Contains("description")) __score3++;
+            if (__jsonProps.Contains("execution_message_description")) __score3++;
+            if (__jsonProps.Contains("execution_message_type")) __score3++;
+            if (__jsonProps.Contains("keep_current_language")) __score3++;
+            if (__jsonProps.Contains("keep_current_voice")) __score3++;
             if (__jsonProps.Contains("name")) __score3++;
+            if (__jsonProps.Contains("post_call_analysis_setting")) __score3++;
+            if (__jsonProps.Contains("speak_during_execution")) __score3++;
             if (__jsonProps.Contains("type")) __score3++;
+            if (__jsonProps.Contains("use_swap_agent_max_duration")) __score3++;
+            if (__jsonProps.Contains("webhook_setting")) __score3++;
             var __score4 = 0;
+            if (__jsonProps.Contains("delay_ms")) __score4++;
             if (__jsonProps.Contains("description")) __score4++;
-            if (__jsonProps.Contains("execution_message_description")) __score4++;
-            if (__jsonProps.Contains("execution_message_type")) __score4++;
             if (__jsonProps.Contains("name")) __score4++;
-            if (__jsonProps.Contains("sms_content")) __score4++;
-            if (__jsonProps.Contains("sms_destination")) __score4++;
-            if (__jsonProps.Contains("sms_sender")) __score4++;
-            if (__jsonProps.Contains("speak_after_execution")) __score4++;
-            if (__jsonProps.Contains("speak_during_execution")) __score4++;
             if (__jsonProps.Contains("type")) __score4++;
             var __score5 = 0;
-            if (__jsonProps.Contains("args_at_root")) __score5++;
             if (__jsonProps.Contains("description")) __score5++;
-            if (__jsonProps.Contains("enable_typing_sound")) __score5++;
             if (__jsonProps.Contains("execution_message_description")) __score5++;
             if (__jsonProps.Contains("execution_message_type")) __score5++;
-            if (__jsonProps.Contains("execution_status_variable")) __score5++;
-            if (__jsonProps.Contains("headers")) __score5++;
-            if (__jsonProps.Contains("max_retry")) __score5++;
-            if (__jsonProps.Contains("method")) __score5++;
             if (__jsonProps.Contains("name")) __score5++;
-            if (__jsonProps.Contains("parameter_type")) __score5++;
-            if (__jsonProps.Contains("parameters")) __score5++;
-            if (__jsonProps.Contains("parameters.additionalProperties")) __score5++;
-            if (__jsonProps.Contains("parameters.properties")) __score5++;
-            if (__jsonProps.Contains("parameters.required")) __score5++;
-            if (__jsonProps.Contains("parameters.type")) __score5++;
-            if (__jsonProps.Contains("query_params")) __score5++;
-            if (__jsonProps.Contains("response_variables")) __score5++;
+            if (__jsonProps.Contains("sms_content")) __score5++;
+            if (__jsonProps.Contains("sms_destination")) __score5++;
+            if (__jsonProps.Contains("sms_sender")) __score5++;
             if (__jsonProps.Contains("speak_after_execution")) __score5++;
             if (__jsonProps.Contains("speak_during_execution")) __score5++;
-            if (__jsonProps.Contains("timeout_ms")) __score5++;
             if (__jsonProps.Contains("type")) __score5++;
-            if (__jsonProps.Contains("url")) __score5++;
             var __score6 = 0;
-            if (__jsonProps.Contains("code")) __score6++;
+            if (__jsonProps.Contains("args_at_root")) __score6++;
             if (__jsonProps.Contains("description")) __score6++;
             if (__jsonProps.Contains("enable_typing_sound")) __score6++;
             if (__jsonProps.Contains("execution_message_description")) __score6++;
             if (__jsonProps.Contains("execution_message_type")) __score6++;
             if (__jsonProps.Contains("execution_status_variable")) __score6++;
+            if (__jsonProps.Contains("headers")) __score6++;
+            if (__jsonProps.Contains("max_retry")) __score6++;
+            if (__jsonProps.Contains("method")) __score6++;
             if (__jsonProps.Contains("name")) __score6++;
+            if (__jsonProps.Contains("parameter_type")) __score6++;
+            if (__jsonProps.Contains("parameters")) __score6++;
+            if (__jsonProps.Contains("parameters.additionalProperties")) __score6++;
+            if (__jsonProps.Contains("parameters.properties")) __score6++;
+            if (__jsonProps.Contains("parameters.required")) __score6++;
+            if (__jsonProps.Contains("parameters.type")) __score6++;
+            if (__jsonProps.Contains("query_params")) __score6++;
             if (__jsonProps.Contains("response_variables")) __score6++;
             if (__jsonProps.Contains("speak_after_execution")) __score6++;
             if (__jsonProps.Contains("speak_during_execution")) __score6++;
             if (__jsonProps.Contains("timeout_ms")) __score6++;
             if (__jsonProps.Contains("type")) __score6++;
+            if (__jsonProps.Contains("url")) __score6++;
             var __score7 = 0;
+            if (__jsonProps.Contains("code")) __score7++;
             if (__jsonProps.Contains("description")) __score7++;
             if (__jsonProps.Contains("enable_typing_sound")) __score7++;
+            if (__jsonProps.Contains("execution_message_description")) __score7++;
+            if (__jsonProps.Contains("execution_message_type")) __score7++;
+            if (__jsonProps.Contains("execution_status_variable")) __score7++;
             if (__jsonProps.Contains("name")) __score7++;
+            if (__jsonProps.Contains("response_variables")) __score7++;
+            if (__jsonProps.Contains("speak_after_execution")) __score7++;
+            if (__jsonProps.Contains("speak_during_execution")) __score7++;
+            if (__jsonProps.Contains("timeout_ms")) __score7++;
             if (__jsonProps.Contains("type")) __score7++;
-            if (__jsonProps.Contains("variables")) __score7++;
             var __score8 = 0;
             if (__jsonProps.Contains("description")) __score8++;
-            if (__jsonProps.Contains("execution_message_description")) __score8++;
-            if (__jsonProps.Contains("execution_message_type")) __score8++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score8++;
             if (__jsonProps.Contains("name")) __score8++;
-            if (__jsonProps.Contains("speak_during_execution")) __score8++;
             if (__jsonProps.Contains("type")) __score8++;
+            if (__jsonProps.Contains("variables")) __score8++;
             var __score9 = 0;
             if (__jsonProps.Contains("description")) __score9++;
             if (__jsonProps.Contains("execution_message_description")) __score9++;
@@ -142,33 +142,40 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("type")) __score9++;
             var __score10 = 0;
             if (__jsonProps.Contains("description")) __score10++;
-            if (__jsonProps.Contains("enable_typing_sound")) __score10++;
             if (__jsonProps.Contains("execution_message_description")) __score10++;
             if (__jsonProps.Contains("execution_message_type")) __score10++;
-            if (__jsonProps.Contains("execution_status_variable")) __score10++;
-            if (__jsonProps.Contains("input_schema")) __score10++;
-            if (__jsonProps.Contains("mcp_id")) __score10++;
             if (__jsonProps.Contains("name")) __score10++;
-            if (__jsonProps.Contains("response_variables")) __score10++;
-            if (__jsonProps.Contains("speak_after_execution")) __score10++;
             if (__jsonProps.Contains("speak_during_execution")) __score10++;
             if (__jsonProps.Contains("type")) __score10++;
             var __score11 = 0;
-            if (__jsonProps.Contains("app_id")) __score11++;
-            if (__jsonProps.Contains("app_tool_template_name")) __score11++;
             if (__jsonProps.Contains("description")) __score11++;
             if (__jsonProps.Contains("enable_typing_sound")) __score11++;
             if (__jsonProps.Contains("execution_message_description")) __score11++;
             if (__jsonProps.Contains("execution_message_type")) __score11++;
             if (__jsonProps.Contains("execution_status_variable")) __score11++;
+            if (__jsonProps.Contains("input_schema")) __score11++;
+            if (__jsonProps.Contains("mcp_id")) __score11++;
             if (__jsonProps.Contains("name")) __score11++;
-            if (__jsonProps.Contains("output_selection")) __score11++;
-            if (__jsonProps.Contains("parameters")) __score11++;
-            if (__jsonProps.Contains("provider")) __score11++;
             if (__jsonProps.Contains("response_variables")) __score11++;
             if (__jsonProps.Contains("speak_after_execution")) __score11++;
             if (__jsonProps.Contains("speak_during_execution")) __score11++;
             if (__jsonProps.Contains("type")) __score11++;
+            var __score12 = 0;
+            if (__jsonProps.Contains("app_id")) __score12++;
+            if (__jsonProps.Contains("app_tool_template_name")) __score12++;
+            if (__jsonProps.Contains("description")) __score12++;
+            if (__jsonProps.Contains("enable_typing_sound")) __score12++;
+            if (__jsonProps.Contains("execution_message_description")) __score12++;
+            if (__jsonProps.Contains("execution_message_type")) __score12++;
+            if (__jsonProps.Contains("execution_status_variable")) __score12++;
+            if (__jsonProps.Contains("name")) __score12++;
+            if (__jsonProps.Contains("output_selection")) __score12++;
+            if (__jsonProps.Contains("parameters")) __score12++;
+            if (__jsonProps.Contains("provider")) __score12++;
+            if (__jsonProps.Contains("response_variables")) __score12++;
+            if (__jsonProps.Contains("speak_after_execution")) __score12++;
+            if (__jsonProps.Contains("speak_during_execution")) __score12++;
+            if (__jsonProps.Contains("type")) __score12++;
             var __bestScore = 0;
             var __bestIndex = -1;
             if (__score0 > __bestScore) { __bestScore = __score0; __bestIndex = 0; }
@@ -183,7 +190,9 @@ namespace RetellAI.JsonConverters
             if (__score9 > __bestScore) { __bestScore = __score9; __bestIndex = 9; }
             if (__score10 > __bestScore) { __bestScore = __score10; __bestIndex = 10; }
             if (__score11 > __bestScore) { __bestScore = __score11; __bestIndex = 11; }
+            if (__score12 > __bestScore) { __bestScore = __score12; __bestIndex = 12; }
 
+            global::RetellAI.EscalateChatTool? escalateChat = default;
             global::RetellAI.EndCallTool? endCall = default;
             global::RetellAI.TransferCallTool? transferCall = default;
             global::RetellAI.AgentSwapTool? agentSwap = default;
@@ -202,6 +211,25 @@ namespace RetellAI.JsonConverters
                 {
                     try
                     {
+                        var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EscalateChatTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EscalateChatTool> ??
+                                       throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EscalateChatTool).Name}");
+                        escalateChat = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                    }
+                    catch (global::System.Text.Json.JsonException)
+                    {
+                    }
+                    catch (global::System.InvalidOperationException)
+                    {
+                    }
+                    catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                    {
+                        // Legacy enum converters signal an incompatible JSON token with this exception.
+                    }
+                }
+                else if (__bestIndex == 1)
+                {
+                    try
+                    {
                         var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EndCallTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EndCallTool> ??
                                        throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EndCallTool).Name}");
                         endCall = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
@@ -217,7 +245,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 1)
+                else if (__bestIndex == 2)
                 {
                     try
                     {
@@ -236,7 +264,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 2)
+                else if (__bestIndex == 3)
                 {
                     try
                     {
@@ -255,7 +283,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 3)
+                else if (__bestIndex == 4)
                 {
                     try
                     {
@@ -274,7 +302,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 4)
+                else if (__bestIndex == 5)
                 {
                     try
                     {
@@ -293,7 +321,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 5)
+                else if (__bestIndex == 6)
                 {
                     try
                     {
@@ -312,7 +340,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 6)
+                else if (__bestIndex == 7)
                 {
                     try
                     {
@@ -331,7 +359,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 7)
+                else if (__bestIndex == 8)
                 {
                     try
                     {
@@ -350,7 +378,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 8)
+                else if (__bestIndex == 9)
                 {
                     try
                     {
@@ -369,7 +397,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 9)
+                else if (__bestIndex == 10)
                 {
                     try
                     {
@@ -388,7 +416,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 10)
+                else if (__bestIndex == 11)
                 {
                     try
                     {
@@ -407,7 +435,7 @@ namespace RetellAI.JsonConverters
                         // Legacy enum converters signal an incompatible JSON token with this exception.
                     }
                 }
-                else if (__bestIndex == 11)
+                else if (__bestIndex == 12)
                 {
                     try
                     {
@@ -428,7 +456,28 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            {
+                try
+                {
+
+                    var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EscalateChatTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EscalateChatTool> ??
+                                   throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EscalateChatTool).Name}");
+                    escalateChat = global::System.Text.Json.JsonSerializer.Deserialize(__rawJson, typeInfo);
+                }
+                catch (global::System.Text.Json.JsonException)
+                {
+                }
+                catch (global::System.InvalidOperationException)
+                {
+                }
+                catch (global::System.ArgumentOutOfRangeException __enumTokenException) when (__enumTokenException.ParamName == "reader")
+                {
+                    // Legacy enum converters signal an incompatible JSON token with this exception.
+                }
+            }
+
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -449,7 +498,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -470,7 +519,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -491,7 +540,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -512,7 +561,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -533,7 +582,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -554,7 +603,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -575,7 +624,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -596,7 +645,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -617,7 +666,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -638,7 +687,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -659,7 +708,7 @@ namespace RetellAI.JsonConverters
                 }
             }
 
-            if (endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
+            if (escalateChat == null && endCall == null && transferCall == null && agentSwap == null && pressDigit == null && sendSM == null && custom == null && code == null && extractDynamicVariable == null && bridgeTransfer == null && cancelTransfer == null && mcp == null && app == null)
             {
                 try
                 {
@@ -681,6 +730,8 @@ namespace RetellAI.JsonConverters
             }
 
             var __value = new global::RetellAI.Tool(
+                escalateChat,
+
                 endCall,
 
                 transferCall,
@@ -718,7 +769,13 @@ namespace RetellAI.JsonConverters
             options = options ?? throw new global::System.ArgumentNullException(nameof(options));
             var typeInfoResolver = options.TypeInfoResolver ?? throw new global::System.InvalidOperationException("TypeInfoResolver is not set.");
 
-            if (value.IsEndCall)
+            if (value.IsEscalateChat)
+            {
+                var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EscalateChatTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EscalateChatTool?> ??
+                               throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EscalateChatTool).Name}");
+                global::System.Text.Json.JsonSerializer.Serialize(writer, value.PickEscalateChat(), typeInfo);
+            }
+            else if (value.IsEndCall)
             {
                 var typeInfo = typeInfoResolver.GetTypeInfo(typeof(global::RetellAI.EndCallTool), options) as global::System.Text.Json.Serialization.Metadata.JsonTypeInfo<global::RetellAI.EndCallTool?> ??
                                throw new global::System.InvalidOperationException($"Cannot get type info for {typeof(global::RetellAI.EndCallTool).Name}");

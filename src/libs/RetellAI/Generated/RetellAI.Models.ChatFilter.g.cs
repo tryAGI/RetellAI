@@ -9,6 +9,12 @@ namespace RetellAI
     public sealed partial class ChatFilter
     {
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("is_escalated")]
+        public global::RetellAI.BooleanFilter? IsEscalated { get; set; }
+
+        /// <summary>
         /// Filter by agent(s). Agent filters are connected by OR.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("agent")]
@@ -137,6 +143,7 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="ChatFilter" /> class.
         /// </summary>
+        /// <param name="isEscalated"></param>
         /// <param name="agent">
         /// Filter by agent(s). Agent filters are connected by OR.
         /// </param>
@@ -175,6 +182,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ChatFilter(
+            global::RetellAI.BooleanFilter? isEscalated,
             global::System.Collections.Generic.IList<global::RetellAI.AgentFilter>? agent,
             global::RetellAI.AllOf<global::RetellAI.EnumFilter, object>? agentTag,
             global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? chatId,
@@ -194,6 +202,7 @@ namespace RetellAI
             global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? customAnalysisData,
             global::System.Collections.Generic.IList<global::RetellAI.CustomFieldFilter>? customAttributes)
         {
+            this.IsEscalated = isEscalated;
             this.Agent = agent;
             this.AgentTag = agentTag;
             this.ChatId = chatId;
