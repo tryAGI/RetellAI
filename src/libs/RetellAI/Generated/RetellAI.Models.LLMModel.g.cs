@@ -140,6 +140,10 @@ namespace RetellAI
         ///
         /// </summary>
         Gpt61Terra,
+        /// <summary>
+        ///
+        /// </summary>
+        Tell1,
     }
 
     /// <summary>
@@ -187,6 +191,7 @@ namespace RetellAI
                 LLMModel.Gpt6Sol => "gpt-6-sol",
                 LLMModel.Gpt61Sol => "gpt-6.1-sol",
                 LLMModel.Gpt61Terra => "gpt-6.1-terra",
+                LLMModel.Tell1 => "tell-1",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -230,6 +235,7 @@ namespace RetellAI
                 "gpt-6-sol" => LLMModel.Gpt6Sol,
                 "gpt-6.1-sol" => LLMModel.Gpt61Sol,
                 "gpt-6.1-terra" => LLMModel.Gpt61Terra,
+                "tell-1" => LLMModel.Tell1,
                 _ => null,
             };
         }
