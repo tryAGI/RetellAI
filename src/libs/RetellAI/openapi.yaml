@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-08-2aab0a9
+  x-retell-spec-revision: 2026-11-10-114095e
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -5178,6 +5178,7 @@ components:
       - gpt-6.1-sol
       - gpt-6.1-terra
       - gpt-6-luna
+      - tell-1
       - claude-4.6-sonnet
       - claude-5-opus
       - claude-5.5-opus
@@ -6048,6 +6049,7 @@ components:
       - gpt-6.1-sol
       - gpt-6.1-terra
       - gpt-6-luna
+      - tell-1
       - claude-4.6-sonnet
       - claude-5-opus
       - claude-5.5-opus
@@ -7750,18 +7752,21 @@ components:
             description: Argument values the call must have to match. Only the fields you list here are checked, and each must equal the value in the actual call. Extra fields in the call are ignored, so
               this is a subset match.
     ToolMock:
-      description: A fake response for one tool. During a simulation, when the LLM calls a tool whose name matches `tool_name` and whose arguments satisfy `input_match_rule`, the real tool is not run; `output`
-        is returned to the LLM instead. This keeps runs deterministic and avoids calling live integrations. A tool call that matches no mock falls through to the real tool.
+      description: A fake response for one tool. During a simulation, when a tool call matches `tool_name`, `node_id` and `input_match_rule`, the real tool is not run; `output` is returned to the LLM instead.
+        This keeps runs deterministic and avoids calling live integrations. A tool call that matches no mock falls through to the real tool.
       type: object
       required:
-      - tool_name
       - input_match_rule
       - output
       properties:
         tool_name:
           type: string
           description: The tool's function name, not the tool ID, i.e. the name the LLM uses when it calls the tool (for example `check_availability_cal`, `book_appointment_cal`, or the name you gave a
-            custom function).
+            custom function). Leave it out to match every tool.
+        node_id:
+          type: string
+          description: Conversation flow agents only. The ID of the node the tool runs in. Leave it out to match every node. To mock an SMS or Call Transfer node, set `node_id` and `result`, and leave out
+            `tool_name`.
         input_match_rule:
           $ref: '#/components/schemas/ToolMockInputMatchRule'
           description: Decides which calls to this tool the mock applies to.
@@ -7772,7 +7777,8 @@ components:
         result:
           type: boolean
           nullable: true
-          description: For tool calls like transfer_call that require a boolean result. Optional for most tools.
+          description: Whether the call succeeds (`true`) or fails (`false`). Required to mock SMS, transfer and escalation calls; for those calls, a mock without `result` is ignored. Not used for other
+            tools.
     TimeWindow:
       type: object
       required:
