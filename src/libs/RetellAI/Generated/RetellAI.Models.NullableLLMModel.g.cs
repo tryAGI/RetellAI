@@ -71,6 +71,10 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Gemini4Carbon,
+        /// <summary>
+        ///
+        /// </summary>
         Gpt41,
         /// <summary>
         ///
@@ -177,6 +181,7 @@ namespace RetellAI
                 NullableLLMModel.Gemini37Flash => "gemini-3.7-flash",
                 NullableLLMModel.Gemini38Flash => "gemini-3.8-flash",
                 NullableLLMModel.Gemini4Argon => "gemini-4-argon",
+                NullableLLMModel.Gemini4Carbon => "gemini-4-carbon",
                 NullableLLMModel.Gpt41 => "gpt-4.1",
                 NullableLLMModel.Gpt41Mini => "gpt-4.1-mini",
                 NullableLLMModel.Gpt5 => "gpt-5",
@@ -222,6 +227,7 @@ namespace RetellAI
                 "gemini-3.7-flash" => NullableLLMModel.Gemini37Flash,
                 "gemini-3.8-flash" => NullableLLMModel.Gemini38Flash,
                 "gemini-4-argon" => NullableLLMModel.Gemini4Argon,
+                "gemini-4-carbon" => NullableLLMModel.Gemini4Carbon,
                 "gpt-4.1" => NullableLLMModel.Gpt41,
                 "gpt-4.1-mini" => NullableLLMModel.Gpt41Mini,
                 "gpt-5" => NullableLLMModel.Gpt5,
