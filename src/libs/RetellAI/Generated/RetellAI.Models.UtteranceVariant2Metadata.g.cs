@@ -27,6 +27,12 @@ namespace RetellAI
         public bool? IsBackchannel { get; set; }
 
         /// <summary>
+        /// Whether the user cut off this agent utterance before it finished playing. Only set for Retell LLM and conversation flow agents; absent when the agent was not interrupted.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("interrupted")]
+        public bool? Interrupted { get; set; }
+
+        /// <summary>
         /// Selection details for a winning backup model used in a response or tool invocation. Timings are measured from the start of the candidate race to selection or first usable output, not completion of generation.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("backup_model_used")]
@@ -50,6 +56,9 @@ namespace RetellAI
         /// <param name="isBackchannel">
         /// Whether the utterance is a backchannel acknowledgment.
         /// </param>
+        /// <param name="interrupted">
+        /// Whether the user cut off this agent utterance before it finished playing. Only set for Retell LLM and conversation flow agents; absent when the agent was not interrupted.
+        /// </param>
         /// <param name="backupModelUsed">
         /// Selection details for a winning backup model used in a response or tool invocation. Timings are measured from the start of the candidate race to selection or first usable output, not completion of generation.
         /// </param>
@@ -60,11 +69,13 @@ namespace RetellAI
             int? responseId,
             int? interruptId,
             bool? isBackchannel,
+            bool? interrupted,
             global::RetellAI.BackupModelUsed? backupModelUsed)
         {
             this.ResponseId = responseId;
             this.InterruptId = interruptId;
             this.IsBackchannel = isBackchannel;
+            this.Interrupted = interrupted;
             this.BackupModelUsed = backupModelUsed;
         }
 
