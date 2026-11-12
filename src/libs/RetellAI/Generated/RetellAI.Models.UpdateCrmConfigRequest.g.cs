@@ -21,6 +21,12 @@ namespace RetellAI
         public string? ContactMemoryUpdatePrompt { get; set; }
 
         /// <summary>
+        /// Set true to stop calls and chats from creating or updating contacts, false to resume. Contacts created through the API, CSV import or the linked CRM's sync are unaffected.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("opt_out_contact_sync")]
+        public bool? OptOutContactSync { get; set; }
+
+        /// <summary>
         /// Replaces the stored list. Names must be snake_case and cannot collide with a built-in contact field or start with `contact`/`external`. Removing a field that an analysis data mapping still targets is rejected — send crm_analysis_data_mappings in the same request to retarget or drop those mappings.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("custom_fields")]
@@ -59,6 +65,9 @@ namespace RetellAI
         /// <param name="contactMemoryUpdatePrompt">
         /// Workspace-shared memory rewrite prompt. Pass null to restore the built-in preset. Supports conversation dynamic variables using {{variable_name}}.
         /// </param>
+        /// <param name="optOutContactSync">
+        /// Set true to stop calls and chats from creating or updating contacts, false to resume. Contacts created through the API, CSV import or the linked CRM's sync are unaffected.
+        /// </param>
         /// <param name="customFields">
         /// Replaces the stored list. Names must be snake_case and cannot collide with a built-in contact field or start with `contact`/`external`. Removing a field that an analysis data mapping still targets is rejected — send crm_analysis_data_mappings in the same request to retarget or drop those mappings.
         /// </param>
@@ -77,6 +86,7 @@ namespace RetellAI
         public UpdateCrmConfigRequest(
             string? appId,
             string? contactMemoryUpdatePrompt,
+            bool? optOutContactSync,
             global::System.Collections.Generic.IList<global::RetellAI.CRMCustomFieldSchema>? customFields,
             global::System.Collections.Generic.IList<global::RetellAI.CRMAnalysisDataMapping>? crmAnalysisDataMappings,
             global::System.Collections.Generic.IList<global::RetellAI.AllOf<global::RetellAI.ContactTag, global::RetellAI.UpdateCrmConfigRequestContactTag>>? contactTags,
@@ -84,6 +94,7 @@ namespace RetellAI
         {
             this.AppId = appId;
             this.ContactMemoryUpdatePrompt = contactMemoryUpdatePrompt;
+            this.OptOutContactSync = optOutContactSync;
             this.CustomFields = customFields;
             this.CrmAnalysisDataMappings = crmAnalysisDataMappings;
             this.ContactTags = contactTags;
