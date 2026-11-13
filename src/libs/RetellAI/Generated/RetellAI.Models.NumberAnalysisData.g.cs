@@ -36,13 +36,13 @@ namespace RetellAI
         public required string Description { get; set; }
 
         /// <summary>
-        /// Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+        /// Whether this data is required. Defaults to true. If true and the data is not extracted, the call will be marked as unsuccessful. Set to false to let the field stay empty when the call has no applicable value; this is the "Allow empty value" setting in the dashboard.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("required")]
         public bool? Required { get; set; }
 
         /// <summary>
-        /// Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
+        /// Instruction for deciding whether to populate this field. Only used when required is false.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("conditional_prompt")]
         public string? ConditionalPrompt { get; set; }
@@ -69,10 +69,10 @@ namespace RetellAI
         /// Example: number
         /// </param>
         /// <param name="required">
-        /// Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+        /// Whether this data is required. Defaults to true. If true and the data is not extracted, the call will be marked as unsuccessful. Set to false to let the field stay empty when the call has no applicable value; this is the "Allow empty value" setting in the dashboard.
         /// </param>
         /// <param name="conditionalPrompt">
-        /// Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
+        /// Instruction for deciding whether to populate this field. Only used when required is false.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

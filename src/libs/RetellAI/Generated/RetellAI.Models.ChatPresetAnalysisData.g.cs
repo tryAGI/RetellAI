@@ -38,7 +38,7 @@ namespace RetellAI
         public bool? Required { get; set; }
 
         /// <summary>
-        /// Optional instruction to help decide whether this field needs to be populated. If not set, the field is always included.
+        /// Instruction for deciding whether to populate this field. Only used when required is false.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("conditional_prompt")]
         public string? ConditionalPrompt { get; set; }
@@ -66,7 +66,7 @@ namespace RetellAI
         /// If false, this field is optional in the analysis. If true or unset, the field is required.
         /// </param>
         /// <param name="conditionalPrompt">
-        /// Optional instruction to help decide whether this field needs to be populated. If not set, the field is always included.
+        /// Instruction for deciding whether to populate this field. Only used when required is false.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]

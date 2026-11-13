@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-12-056ac2f
+  x-retell-spec-revision: 2026-11-13-c7a8c18
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -1567,10 +1567,11 @@ components:
           example: Whether the customer converted.
         required:
           type: boolean
-          description: Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+          description: Whether this data is required. Defaults to true. If true and the data is not extracted, the call will be marked as unsuccessful. Set to false to let the field stay empty when the
+            call has no applicable value; this is the "Allow empty value" setting in the dashboard.
         conditional_prompt:
           type: string
-          description: Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
+          description: Instruction for deciding whether to populate this field. Only used when required is false.
     BranchNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'
@@ -4432,10 +4433,11 @@ components:
           - good
         required:
           type: boolean
-          description: Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+          description: Whether this data is required. Defaults to true. If true and the data is not extracted, the call will be marked as unsuccessful. Set to false to let the field stay empty when the
+            call has no applicable value; this is the "Allow empty value" setting in the dashboard.
         conditional_prompt:
           type: string
-          description: Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
+          description: Instruction for deciding whether to populate this field. Only used when required is false.
     EquationCondition:
       type: object
       required:
@@ -5193,6 +5195,7 @@ components:
       - gemini-3.6-flash
       - gemini-3.7-flash
       - gemini-3.8-flash
+      - gemini-4-hydrogen
       - gemini-4-carbon
       - gemini-4-argon
       description: Available LLM models for agents.
@@ -6065,6 +6068,7 @@ components:
       - gemini-3.6-flash
       - gemini-3.7-flash
       - gemini-3.8-flash
+      - gemini-4-hydrogen
       - gemini-4-carbon
       - gemini-4-argon
       - null
@@ -6107,10 +6111,11 @@ components:
           example: How many the customer intend to order.
         required:
           type: boolean
-          description: Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+          description: Whether this data is required. Defaults to true. If true and the data is not extracted, the call will be marked as unsuccessful. Set to false to let the field stay empty when the
+            call has no applicable value; this is the "Allow empty value" setting in the dashboard.
         conditional_prompt:
           type: string
-          description: Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
+          description: Instruction for deciding whether to populate this field. Only used when required is false.
     PresetAnalysisData:
       type: object
       required:
@@ -6144,7 +6149,7 @@ components:
           description: If false, this field is optional in the analysis. If true or unset, the field is required.
         conditional_prompt:
           type: string
-          description: Optional instruction to help decide whether this field needs to be populated. If not set, the field is always included.
+          description: Instruction for deciding whether to populate this field. Only used when required is false.
     CallPresetAnalysisData:
       type: object
       required:
@@ -6174,7 +6179,7 @@ components:
           description: If false, this field is optional in the analysis. If true or unset, the field is required.
         conditional_prompt:
           type: string
-          description: Optional instruction to help decide whether this field needs to be populated. If not set, the field is always included.
+          description: Instruction for deciding whether to populate this field. Only used when required is false.
     ChatPresetAnalysisData:
       type: object
       required:
@@ -6204,7 +6209,7 @@ components:
           description: If false, this field is optional in the analysis. If true or unset, the field is required.
         conditional_prompt:
           type: string
-          description: Optional instruction to help decide whether this field needs to be populated. If not set, the field is always included.
+          description: Instruction for deciding whether to populate this field. Only used when required is false.
     Organization:
       type: object
       properties:
@@ -6483,12 +6488,149 @@ components:
       - G.722
       description: SIP codec preferences for custom phone numbers only, used for inbound and outbound gateway calls. Retell-managed Twilio and Telnyx phone numbers do not support this setting. An empty
         list uses the gateway's default codecs. Codec names are extensible and are not limited to the examples.
+    PhoneNumberSpamStatus:
+      type: string
+      enum:
+      - clean
+      - spam
+      - unknown
+      - not_enrolled
+      description: 'A filter value, not a stored value. It maps to the `spam_check_enabled` and `spam_status` fields of PhoneNumberResponse. clean / spam: enrolled, and `spam_status` equals the value. unknown:
+        enrolled, and `spam_status` is absent. not_enrolled: `spam_check_enabled` is false or absent.'
+    PhoneNumberListFilter:
+      type: object
+      additionalProperties: false
+      description: Filters for listing phone numbers. All provided filters are connected with AND.
+      properties:
+        query:
+          type: string
+          maxLength: 512
+          description: Substring match against the phone number, pretty phone number, or nickname. The nickname match ignores case.
+        spam_status:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - type: object
+            properties:
+              value:
+                type: array
+                minItems: 1
+                maxItems: 4
+                uniqueItems: true
+                items:
+                  $ref: '#/components/schemas/PhoneNumberSpamStatus'
+        sms:
+          description: Matches numbers that have a custom SMS configuration or an approved A2P application.
+          allOf:
+          - $ref: '#/components/schemas/BooleanFilter'
+          - type: object
+            properties:
+              value:
+                enum:
+                - true
+        verified_number:
+          description: Matches numbers that have an active phone verification.
+          allOf:
+          - $ref: '#/components/schemas/BooleanFilter'
+          - type: object
+            properties:
+              value:
+                enum:
+                - true
+        branded_call:
+          description: Matches numbers that have an active branded call registration.
+          allOf:
+          - $ref: '#/components/schemas/BooleanFilter'
+          - type: object
+            properties:
+              value:
+                enum:
+                - true
+        phone_number_type:
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - type: object
+            properties:
+              value:
+                type: array
+                minItems: 1
+                maxItems: 4
+                uniqueItems: true
+                items:
+                  type: string
+                  enum:
+                  - retell-twilio
+                  - retell-telnyx
+                  - retell-bandwidth
+                  - custom
+        inbound_agents:
+          description: Matches numbers with any listed agent among their inbound agents. For an agent with `version`, a number matches when it is bound to a listed version or to a tag in `inbound_agent_tags`.
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AgentFilter'
+            - type: object
+              properties:
+                agent_id:
+                  type: string
+                  maxLength: 64
+                version:
+                  type: array
+                  maxItems: 100
+                  items:
+                    type: number
+        inbound_agent_tags:
+          description: Agent version tags, such as `production`. Without `inbound_agents`, matches numbers whose inbound agent is bound through one of these tags.
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - type: object
+            properties:
+              value:
+                type: array
+                minItems: 1
+                maxItems: 100
+                items:
+                  type: string
+                  maxLength: 256
+        outbound_agents:
+          description: Matches numbers with any listed agent among their outbound agents. For an agent with `version`, a number matches when it is bound to a listed version or to a tag in `outbound_agent_tags`.
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            allOf:
+            - $ref: '#/components/schemas/AgentFilter'
+            - type: object
+              properties:
+                agent_id:
+                  type: string
+                  maxLength: 64
+                version:
+                  type: array
+                  maxItems: 100
+                  items:
+                    type: number
+        outbound_agent_tags:
+          description: Agent version tags, such as `production`. Without `outbound_agents`, matches numbers whose outbound agent is bound through one of these tags.
+          allOf:
+          - $ref: '#/components/schemas/EnumFilter'
+          - type: object
+            properties:
+              value:
+                type: array
+                minItems: 1
+                maxItems: 100
+                items:
+                  type: string
+                  maxLength: 256
     PhoneNumberResponse:
       type: object
       required:
       - phone_number
       - phone_number_type
       - last_modification_timestamp
+      - custom_sms_enabled
       properties:
         phone_number:
           type: string
@@ -6530,6 +6672,25 @@ components:
           type: integer
           example: 415
           description: Area code of the number to obtain. Format is a 3 digit integer. Currently only supports US area code.
+        custom_sms_enabled:
+          type: boolean
+          example: false
+          description: Whether the number has a custom SMS configuration.
+        sms_enabled:
+          type: boolean
+          example: true
+          description: Whether the number can send SMS, through a custom SMS configuration or an approved A2P application. Returned only by `GET` and `POST` `/v2/list-phone-numbers`.
+        spam_status:
+          type: string
+          enum:
+          - clean
+          - spam
+          example: clean
+          description: Latest spam test result for this number. Absent until the first vendor result arrives.
+        spam_check_enabled:
+          type: boolean
+          example: true
+          description: Whether this number is enrolled in daily spam testing.
         inbound_agents:
           type: array
           items:
@@ -7574,10 +7735,11 @@ components:
           - Jane Smith
         required:
           type: boolean
-          description: Whether this data is required. If true and the data is not extracted, the call will be marked as unsuccessful.
+          description: Whether this data is required. Defaults to true. If true and the data is not extracted, the call will be marked as unsuccessful. Set to false to let the field stay empty when the
+            call has no applicable value; this is the "Allow empty value" setting in the dashboard.
         conditional_prompt:
           type: string
-          description: Optional instruction to help decide whether this field needs to be populated in the analysis. If not set, the field is always included. If required is true, this is ignored.
+          description: Instruction for deciding whether to populate this field. Only used when required is false.
     TestCaseBatchJob:
       type: object
       required:
@@ -13106,6 +13268,49 @@ paths:
                         $ref: '#/components/schemas/PhoneNumberResponse'
         '401':
           $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      description: List phone numbers with filters and pagination.
+      operationId: searchPhoneNumbers
+      x-retell-sdk-resource: phone_number
+      x-retell-sdk-method: search
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SortOrderParam'
+      - $ref: '#/components/parameters/PaginationKeyParam'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                filter_criteria:
+                  $ref: '#/components/schemas/PhoneNumberListFilter'
+      responses:
+        '200':
+          description: Successfully retrieved phone numbers.
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/PaginatedResponseBase'
+                - type: object
+                  required:
+                  - items
+                  properties:
+                    items:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/PhoneNumberResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /v2/list-retell-llms:

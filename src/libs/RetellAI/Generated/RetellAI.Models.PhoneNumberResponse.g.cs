@@ -60,6 +60,40 @@ namespace RetellAI
         public int? AreaCode { get; set; }
 
         /// <summary>
+        /// Whether the number has a custom SMS configuration.<br/>
+        /// Example: false
+        /// </summary>
+        /// <example>false</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("custom_sms_enabled")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required bool CustomSmsEnabled { get; set; }
+
+        /// <summary>
+        /// Whether the number can send SMS, through a custom SMS configuration or an approved A2P application. Returned only by `GET` and `POST` `/v2/list-phone-numbers`.<br/>
+        /// Example: true
+        /// </summary>
+        /// <example>true</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("sms_enabled")]
+        public bool? SmsEnabled { get; set; }
+
+        /// <summary>
+        /// Latest spam test result for this number. Absent until the first vendor result arrives.<br/>
+        /// Example: clean
+        /// </summary>
+        /// <example>clean</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("spam_status")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.PhoneNumberResponseSpamStatusJsonConverter))]
+        public global::RetellAI.PhoneNumberResponseSpamStatus? SpamStatus { get; set; }
+
+        /// <summary>
+        /// Whether this number is enrolled in daily spam testing.<br/>
+        /// Example: true
+        /// </summary>
+        /// <example>true</example>
+        [global::System.Text.Json.Serialization.JsonPropertyName("spam_check_enabled")]
+        public bool? SpamCheckEnabled { get; set; }
+
+        /// <summary>
         /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("inbound_agents")]
@@ -155,6 +189,10 @@ namespace RetellAI
         /// Type of the phone number.<br/>
         /// Example: retell-twilio
         /// </param>
+        /// <param name="customSmsEnabled">
+        /// Whether the number has a custom SMS configuration.<br/>
+        /// Example: false
+        /// </param>
         /// <param name="lastModificationTimestamp">
         /// Last modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.<br/>
         /// Example: 1703413636133
@@ -174,6 +212,18 @@ namespace RetellAI
         /// <param name="areaCode">
         /// Area code of the number to obtain. Format is a 3 digit integer. Currently only supports US area code.<br/>
         /// Example: 415
+        /// </param>
+        /// <param name="smsEnabled">
+        /// Whether the number can send SMS, through a custom SMS configuration or an approved A2P application. Returned only by `GET` and `POST` `/v2/list-phone-numbers`.<br/>
+        /// Example: true
+        /// </param>
+        /// <param name="spamStatus">
+        /// Latest spam test result for this number. Absent until the first vendor result arrives.<br/>
+        /// Example: clean
+        /// </param>
+        /// <param name="spamCheckEnabled">
+        /// Whether this number is enrolled in daily spam testing.<br/>
+        /// Example: true
         /// </param>
         /// <param name="inboundAgents">
         /// Inbound agents to bind to the number with weights. If set and non-empty, one agent will be picked randomly for each inbound call, with probability proportional to the weight. Total weights must add up to 1.
@@ -214,11 +264,15 @@ namespace RetellAI
         public PhoneNumberResponse(
             string phoneNumber,
             global::RetellAI.PhoneNumberResponsePhoneNumberType phoneNumberType,
+            bool customSmsEnabled,
             long lastModificationTimestamp,
             string? phoneNumberPretty,
             global::System.Collections.Generic.IList<string>? allowedInboundCountryList,
             global::System.Collections.Generic.IList<string>? allowedOutboundCountryList,
             int? areaCode,
+            bool? smsEnabled,
+            global::RetellAI.PhoneNumberResponseSpamStatus? spamStatus,
+            bool? spamCheckEnabled,
             global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? inboundAgents,
             global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? outboundAgents,
             global::System.Collections.Generic.IList<global::RetellAI.AgentWeight>? inboundSmsAgents,
@@ -236,6 +290,10 @@ namespace RetellAI
             this.AllowedInboundCountryList = allowedInboundCountryList;
             this.AllowedOutboundCountryList = allowedOutboundCountryList;
             this.AreaCode = areaCode;
+            this.CustomSmsEnabled = customSmsEnabled;
+            this.SmsEnabled = smsEnabled;
+            this.SpamStatus = spamStatus;
+            this.SpamCheckEnabled = spamCheckEnabled;
             this.InboundAgents = inboundAgents;
             this.OutboundAgents = outboundAgents;
             this.InboundSmsAgents = inboundSmsAgents;
