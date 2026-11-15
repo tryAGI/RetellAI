@@ -9,6 +9,12 @@ namespace RetellAI
     public sealed partial class AppCRMConfig
     {
         /// <summary>
+        /// Monday.com board used for contact sync. Configure after OAuth. Once phone mappings are saved, use a new connection to change the board or primary phone column. Not accepted by other providers.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("contact_board_id")]
+        public string? ContactBoardId { get; set; }
+
+        /// <summary>
         /// Field mappings applied when syncing CRM records into Retell contacts. Must include phone_number, which is the field the two systems are matched on. A do_not_call mapping can mark contacts as do-not-call but never clears the flag.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("inbound_sync_mappings")]
@@ -41,6 +47,9 @@ namespace RetellAI
         /// <summary>
         /// Initializes a new instance of the <see cref="AppCRMConfig" /> class.
         /// </summary>
+        /// <param name="contactBoardId">
+        /// Monday.com board used for contact sync. Configure after OAuth. Once phone mappings are saved, use a new connection to change the board or primary phone column. Not accepted by other providers.
+        /// </param>
         /// <param name="inboundSyncMappings">
         /// Field mappings applied when syncing CRM records into Retell contacts. Must include phone_number, which is the field the two systems are matched on. A do_not_call mapping can mark contacts as do-not-call but never clears the flag.
         /// </param>
@@ -57,11 +66,13 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public AppCRMConfig(
+            string? contactBoardId,
             global::System.Collections.Generic.IList<global::RetellAI.CRMSyncMapping>? inboundSyncMappings,
             global::System.Collections.Generic.IList<global::RetellAI.CRMSyncMapping>? outboundSyncMappings,
             bool? syncConversationActivity,
             bool? syncNewContacts)
         {
+            this.ContactBoardId = contactBoardId;
             this.InboundSyncMappings = inboundSyncMappings;
             this.OutboundSyncMappings = outboundSyncMappings;
             this.SyncConversationActivity = syncConversationActivity;
