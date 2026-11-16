@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.UpdateLiveCallResponseStatus4JsonConverter))]
-        public global::RetellAI.UpdateLiveCallResponseStatus4? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.UpdateLiveCallResponseStatusJsonConverter))]
+        public global::RetellAI.UpdateLiveCallResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: Cannot find requested asset under given api key.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateLiveCallResponse5(
-            global::RetellAI.UpdateLiveCallResponseStatus4? status,
+            global::RetellAI.UpdateLiveCallResponseStatus? status,
             string? message)
         {
             this.Status = status;

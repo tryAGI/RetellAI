@@ -51,8 +51,8 @@ namespace RetellAI
         /// Specifies what language(s) the agent will operate in. Accepts either a single locale (e.g. `en-US`) or an array of locales for multilingual agents (e.g. `["en-US","es-ES"]`). If unset, defaults to `en-US`.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("language")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.Language3?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>))]
-        public global::RetellAI.OneOf<global::RetellAI.Language3?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? Language { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.OneOfJsonConverter<global::RetellAI.Language?, global::System.Collections.Generic.IList<global::RetellAI.Language>>))]
+        public global::RetellAI.OneOf<global::RetellAI.Language?, global::System.Collections.Generic.IList<global::RetellAI.Language>>? Language { get; set; }
 
         /// <summary>
         /// The webhook for agent to listen to chat events. See what events it would get at [webhook doc](/features/webhook). If set, will binds webhook events for this agent to the specified url, and will ignore the account level webhook for this agent. Set to `null` to remove webhook url from this agent.<br/>
@@ -255,7 +255,7 @@ namespace RetellAI
             string? versionTitle,
             string? autoCloseMessage,
             int? endChatAfterSilenceMs,
-            global::RetellAI.OneOf<global::RetellAI.Language3?, global::System.Collections.Generic.IList<global::RetellAI.Language3>>? language,
+            global::RetellAI.OneOf<global::RetellAI.Language?, global::System.Collections.Generic.IList<global::RetellAI.Language>>? language,
             string? webhookUrl,
             global::System.Collections.Generic.IList<global::RetellAI.ChatAgentRequestWebhookEvent>? webhookEvents,
             int? webhookTimeoutMs,

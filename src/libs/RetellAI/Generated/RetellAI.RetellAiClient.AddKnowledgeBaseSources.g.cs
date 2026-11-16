@@ -423,19 +423,19 @@ namespace RetellAI
                             {
                                 string? __content_401 = null;
                                 global::System.Exception? __exception_401 = null;
-                                global::RetellAI.AddKnowledgeBaseSourcesResponse2? __value_401 = null;
+                                global::RetellAI.AddKnowledgeBaseSourcesResponse? __value_401 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::RetellAI.AddKnowledgeBaseSourcesResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.AddKnowledgeBaseSourcesResponse.FromJson(__content_401, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_401 = global::RetellAI.AddKnowledgeBaseSourcesResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.AddKnowledgeBaseSourcesResponse.FromJson(__content_401, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -444,7 +444,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.AddKnowledgeBaseSourcesResponse2>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.AddKnowledgeBaseSourcesResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
@@ -460,19 +460,19 @@ namespace RetellAI
                             {
                                 string? __content_402 = null;
                                 global::System.Exception? __exception_402 = null;
-                                global::RetellAI.AddKnowledgeBaseSourcesResponse3? __value_402 = null;
+                                global::RetellAI.AddKnowledgeBaseSourcesResponse? __value_402 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_402 = global::RetellAI.AddKnowledgeBaseSourcesResponse3.FromJson(__content_402, JsonSerializerContext);
+                                        __value_402 = global::RetellAI.AddKnowledgeBaseSourcesResponse.FromJson(__content_402, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_402 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_402 = global::RetellAI.AddKnowledgeBaseSourcesResponse3.FromJson(__content_402, JsonSerializerContext);
+                                        __value_402 = global::RetellAI.AddKnowledgeBaseSourcesResponse.FromJson(__content_402, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -481,7 +481,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.AddKnowledgeBaseSourcesResponse3>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.AddKnowledgeBaseSourcesResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_402 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_402,
@@ -497,19 +497,19 @@ namespace RetellAI
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::RetellAI.AddKnowledgeBaseSourcesResponse4? __value_429 = null;
+                                global::RetellAI.AddKnowledgeBaseSourcesResponse? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::RetellAI.AddKnowledgeBaseSourcesResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::RetellAI.AddKnowledgeBaseSourcesResponse.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::RetellAI.AddKnowledgeBaseSourcesResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::RetellAI.AddKnowledgeBaseSourcesResponse.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -518,7 +518,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.AddKnowledgeBaseSourcesResponse4>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.AddKnowledgeBaseSourcesResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
@@ -534,19 +534,19 @@ namespace RetellAI
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.AddKnowledgeBaseSourcesResponse5? __value_500 = null;
+                                global::RetellAI.AddKnowledgeBaseSourcesResponse? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.AddKnowledgeBaseSourcesResponse5.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.AddKnowledgeBaseSourcesResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.AddKnowledgeBaseSourcesResponse5.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.AddKnowledgeBaseSourcesResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -555,7 +555,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.AddKnowledgeBaseSourcesResponse5>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.AddKnowledgeBaseSourcesResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,

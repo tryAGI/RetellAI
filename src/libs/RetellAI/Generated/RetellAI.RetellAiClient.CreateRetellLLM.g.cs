@@ -375,19 +375,19 @@ namespace RetellAI
                             {
                                 string? __content_401 = null;
                                 global::System.Exception? __exception_401 = null;
-                                global::RetellAI.CreateRetellLLMResponse2? __value_401 = null;
+                                global::RetellAI.CreateRetellLLMResponse? __value_401 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::RetellAI.CreateRetellLLMResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.CreateRetellLLMResponse.FromJson(__content_401, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_401 = global::RetellAI.CreateRetellLLMResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.CreateRetellLLMResponse.FromJson(__content_401, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -396,7 +396,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.CreateRetellLLMResponse2>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateRetellLLMResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
@@ -412,19 +412,19 @@ namespace RetellAI
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.CreateRetellLLMResponse3? __value_500 = null;
+                                global::RetellAI.CreateRetellLLMResponse? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.CreateRetellLLMResponse3.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.CreateRetellLLMResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.CreateRetellLLMResponse3.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.CreateRetellLLMResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -433,7 +433,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.CreateRetellLLMResponse3>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateRetellLLMResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,

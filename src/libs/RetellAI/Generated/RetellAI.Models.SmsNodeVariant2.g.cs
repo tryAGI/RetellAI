@@ -43,15 +43,15 @@ namespace RetellAI
         /// SMS sender number configuration. If omitted, the message is sent from the agent's phone number.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sms_sender")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsSender2?, object>))]
-        public global::RetellAI.AnyOf<global::RetellAI.SmsSender2?, object>? SmsSender { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsSender?, object>))]
+        public global::RetellAI.AnyOf<global::RetellAI.SmsSender?, object>? SmsSender { get; set; }
 
         /// <summary>
         /// SMS destination number configuration. If omitted, the message is sent to the customer number on the call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sms_destination")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsDestination2?, object>))]
-        public global::RetellAI.AnyOf<global::RetellAI.SmsDestination2?, object>? SmsDestination { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsDestination?, object>))]
+        public global::RetellAI.AnyOf<global::RetellAI.SmsDestination?, object>? SmsDestination { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -86,8 +86,8 @@ namespace RetellAI
             global::RetellAI.SmsSuccessEdge successEdge,
             global::RetellAI.SmsFailedEdge failedEdge,
             global::RetellAI.SmsNodeVariant2Type type,
-            global::RetellAI.AnyOf<global::RetellAI.SmsSender2?, object>? smsSender,
-            global::RetellAI.AnyOf<global::RetellAI.SmsDestination2?, object>? smsDestination)
+            global::RetellAI.AnyOf<global::RetellAI.SmsSender?, object>? smsSender,
+            global::RetellAI.AnyOf<global::RetellAI.SmsDestination?, object>? smsDestination)
         {
             this.Type = type;
             this.Instruction = instruction;

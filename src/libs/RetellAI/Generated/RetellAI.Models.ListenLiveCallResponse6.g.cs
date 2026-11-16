@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListenLiveCallResponseStatus5JsonConverter))]
-        public global::RetellAI.ListenLiveCallResponseStatus5? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListenLiveCallResponseStatusJsonConverter))]
+        public global::RetellAI.ListenLiveCallResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: An unexpected server error occurred.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListenLiveCallResponse6(
-            global::RetellAI.ListenLiveCallResponseStatus5? status,
+            global::RetellAI.ListenLiveCallResponseStatus? status,
             string? message)
         {
             this.Status = status;

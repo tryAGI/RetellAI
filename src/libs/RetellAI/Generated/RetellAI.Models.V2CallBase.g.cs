@@ -266,8 +266,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disconnection_reason")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.DisconnectionReason5JsonConverter))]
-        public global::RetellAI.DisconnectionReason5? DisconnectionReason { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.DisconnectionReasonJsonConverter))]
+        public global::RetellAI.DisconnectionReason? DisconnectionReason { get; set; }
 
         /// <summary>
         /// The destination number or identifier where the call was transferred to. Only populated when the disconnection reason was `call_transfer`. Can be a phone number or a SIP URI. SIP URIs are prefixed with "sip:" and may include a ";transport=..." portion (if transport is known) where the transport type can be "tls", "tcp" or "udp".<br/>
@@ -476,7 +476,7 @@ namespace RetellAI
             string? publicLogUrl,
             string? knowledgeBaseRetrievedContentsUrl,
             global::RetellAI.V2CallBaseLatency? latency,
-            global::RetellAI.DisconnectionReason5? disconnectionReason,
+            global::RetellAI.DisconnectionReason? disconnectionReason,
             string? transferDestination,
             global::RetellAI.CallAnalysis? callAnalysis,
             global::RetellAI.V2CallBaseCallCost? callCost,

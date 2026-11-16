@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListConversationFlowComponentsResponseStatus2JsonConverter))]
-        public global::RetellAI.ListConversationFlowComponentsResponseStatus2? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListConversationFlowComponentsResponseStatusJsonConverter))]
+        public global::RetellAI.ListConversationFlowComponentsResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: The requested resource was not found.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListConversationFlowComponentsResponse4(
-            global::RetellAI.ListConversationFlowComponentsResponseStatus2? status,
+            global::RetellAI.ListConversationFlowComponentsResponseStatus? status,
             string? message)
         {
             this.Status = status;

@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.RepairAgentResponseStatus3JsonConverter))]
-        public global::RetellAI.RepairAgentResponseStatus3? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.RepairAgentResponseStatusJsonConverter))]
+        public global::RetellAI.RepairAgentResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: Resource update conflict.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RepairAgentResponse4(
-            global::RetellAI.RepairAgentResponseStatus3? status,
+            global::RetellAI.RepairAgentResponseStatus? status,
             string? message)
         {
             this.Status = status;

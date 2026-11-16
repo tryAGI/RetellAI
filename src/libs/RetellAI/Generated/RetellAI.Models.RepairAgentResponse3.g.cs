@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.RepairAgentResponseStatus2JsonConverter))]
-        public global::RetellAI.RepairAgentResponseStatus2? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.RepairAgentResponseStatusJsonConverter))]
+        public global::RetellAI.RepairAgentResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: API key is missing or invalid.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public RepairAgentResponse3(
-            global::RetellAI.RepairAgentResponseStatus2? status,
+            global::RetellAI.RepairAgentResponseStatus? status,
             string? message)
         {
             this.Status = status;

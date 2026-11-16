@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.GetCrmSchemaResponseStatus2JsonConverter))]
-        public global::RetellAI.GetCrmSchemaResponseStatus2? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.GetCrmSchemaResponseStatusJsonConverter))]
+        public global::RetellAI.GetCrmSchemaResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: API key is missing or invalid.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public GetCrmSchemaResponse3(
-            global::RetellAI.GetCrmSchemaResponseStatus2? status,
+            global::RetellAI.GetCrmSchemaResponseStatus? status,
             string? message)
         {
             this.Status = status;

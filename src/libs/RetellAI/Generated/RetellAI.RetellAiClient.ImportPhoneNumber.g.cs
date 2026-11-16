@@ -377,19 +377,19 @@ namespace RetellAI
                             {
                                 string? __content_401 = null;
                                 global::System.Exception? __exception_401 = null;
-                                global::RetellAI.ImportPhoneNumberResponse2? __value_401 = null;
+                                global::RetellAI.ImportPhoneNumberResponse? __value_401 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::RetellAI.ImportPhoneNumberResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.ImportPhoneNumberResponse.FromJson(__content_401, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_401 = global::RetellAI.ImportPhoneNumberResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.ImportPhoneNumberResponse.FromJson(__content_401, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -398,7 +398,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.ImportPhoneNumberResponse2>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.ImportPhoneNumberResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
@@ -414,19 +414,19 @@ namespace RetellAI
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.ImportPhoneNumberResponse3? __value_500 = null;
+                                global::RetellAI.ImportPhoneNumberResponse? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.ImportPhoneNumberResponse3.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.ImportPhoneNumberResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.ImportPhoneNumberResponse3.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.ImportPhoneNumberResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -435,7 +435,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.ImportPhoneNumberResponse3>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.ImportPhoneNumberResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,

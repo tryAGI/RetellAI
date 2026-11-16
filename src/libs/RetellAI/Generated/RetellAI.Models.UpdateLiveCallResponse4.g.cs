@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.UpdateLiveCallResponseStatus3JsonConverter))]
-        public global::RetellAI.UpdateLiveCallResponseStatus3? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.UpdateLiveCallResponseStatusJsonConverter))]
+        public global::RetellAI.UpdateLiveCallResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: The requested resource was not found.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UpdateLiveCallResponse4(
-            global::RetellAI.UpdateLiveCallResponseStatus3? status,
+            global::RetellAI.UpdateLiveCallResponseStatus? status,
             string? message)
         {
             this.Status = status;
