@@ -59,15 +59,15 @@ namespace RetellAI
         /// SMS sender number configuration. If omitted, the message is sent from the agent's phone number.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sms_sender")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsSender2?, object>))]
-        public global::RetellAI.AnyOf<global::RetellAI.SmsSender2?, object>? SmsSender { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsSender?, object>))]
+        public global::RetellAI.AnyOf<global::RetellAI.SmsSender?, object>? SmsSender { get; set; }
 
         /// <summary>
         /// SMS destination number configuration. If omitted, the message is sent to the customer number on the call.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sms_destination")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsDestination2?, object>))]
-        public global::RetellAI.AnyOf<global::RetellAI.SmsDestination2?, object>? SmsDestination { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AnyOfJsonConverter<global::RetellAI.SmsDestination?, object>))]
+        public global::RetellAI.AnyOf<global::RetellAI.SmsDestination?, object>? SmsDestination { get; set; }
 
         /// <summary>
         /// Whether the agent should speak after the SMS tool finishes execution.<br/>
@@ -123,8 +123,8 @@ namespace RetellAI
             bool? speakDuringExecution,
             string? executionMessageDescription,
             global::RetellAI.SendSMSToolExecutionMessageType? executionMessageType,
-            global::RetellAI.AnyOf<global::RetellAI.SmsSender2?, object>? smsSender,
-            global::RetellAI.AnyOf<global::RetellAI.SmsDestination2?, object>? smsDestination,
+            global::RetellAI.AnyOf<global::RetellAI.SmsSender?, object>? smsSender,
+            global::RetellAI.AnyOf<global::RetellAI.SmsDestination?, object>? smsDestination,
             bool? speakAfterExecution)
         {
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));

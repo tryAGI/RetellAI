@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.UploadContactImportFileResponseStatus3JsonConverter))]
-        public global::RetellAI.UploadContactImportFileResponseStatus3? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.UploadContactImportFileResponseStatusJsonConverter))]
+        public global::RetellAI.UploadContactImportFileResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: Account rate limited, please throttle your requests.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UploadContactImportFileResponse4(
-            global::RetellAI.UploadContactImportFileResponseStatus3? status,
+            global::RetellAI.UploadContactImportFileResponseStatus? status,
             string? message)
         {
             this.Status = status;

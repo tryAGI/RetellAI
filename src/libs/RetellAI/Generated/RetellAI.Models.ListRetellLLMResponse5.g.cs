@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListRetellLLMResponseStatus3JsonConverter))]
-        public global::RetellAI.ListRetellLLMResponseStatus3? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListRetellLLMResponseStatusJsonConverter))]
+        public global::RetellAI.ListRetellLLMResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: Forbidden
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListRetellLLMResponse5(
-            global::RetellAI.ListRetellLLMResponseStatus3? status,
+            global::RetellAI.ListRetellLLMResponseStatus? status,
             string? message)
         {
             this.Status = status;

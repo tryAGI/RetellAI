@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.UploadContactImportFileResponseStatus4JsonConverter))]
-        public global::RetellAI.UploadContactImportFileResponseStatus4? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.UploadContactImportFileResponseStatusJsonConverter))]
+        public global::RetellAI.UploadContactImportFileResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: An unexpected server error occurred.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public UploadContactImportFileResponse5(
-            global::RetellAI.UploadContactImportFileResponseStatus4? status,
+            global::RetellAI.UploadContactImportFileResponseStatus? status,
             string? message)
         {
             this.Status = status;

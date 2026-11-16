@@ -375,19 +375,19 @@ namespace RetellAI
                             {
                                 string? __content_401 = null;
                                 global::System.Exception? __exception_401 = null;
-                                global::RetellAI.CreateConversationFlowResponse2? __value_401 = null;
+                                global::RetellAI.CreateConversationFlowResponse? __value_401 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_401 = global::RetellAI.CreateConversationFlowResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.CreateConversationFlowResponse.FromJson(__content_401, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_401 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_401 = global::RetellAI.CreateConversationFlowResponse2.FromJson(__content_401, JsonSerializerContext);
+                                        __value_401 = global::RetellAI.CreateConversationFlowResponse.FromJson(__content_401, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -396,7 +396,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.CreateConversationFlowResponse2>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateConversationFlowResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_401 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_401,
@@ -412,19 +412,19 @@ namespace RetellAI
                             {
                                 string? __content_422 = null;
                                 global::System.Exception? __exception_422 = null;
-                                global::RetellAI.CreateConversationFlowResponse3? __value_422 = null;
+                                global::RetellAI.CreateConversationFlowResponse? __value_422 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_422 = global::RetellAI.CreateConversationFlowResponse3.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::RetellAI.CreateConversationFlowResponse.FromJson(__content_422, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_422 = global::RetellAI.CreateConversationFlowResponse3.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::RetellAI.CreateConversationFlowResponse.FromJson(__content_422, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -433,7 +433,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.CreateConversationFlowResponse3>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateConversationFlowResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_422,
@@ -449,19 +449,19 @@ namespace RetellAI
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::RetellAI.CreateConversationFlowResponse4? __value_429 = null;
+                                global::RetellAI.CreateConversationFlowResponse? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::RetellAI.CreateConversationFlowResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::RetellAI.CreateConversationFlowResponse.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::RetellAI.CreateConversationFlowResponse4.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::RetellAI.CreateConversationFlowResponse.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -470,7 +470,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.CreateConversationFlowResponse4>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateConversationFlowResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
@@ -486,19 +486,19 @@ namespace RetellAI
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.CreateConversationFlowResponse5? __value_500 = null;
+                                global::RetellAI.CreateConversationFlowResponse? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.CreateConversationFlowResponse5.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.CreateConversationFlowResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.CreateConversationFlowResponse5.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.CreateConversationFlowResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -507,7 +507,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.CreateConversationFlowResponse5>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.CreateConversationFlowResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,

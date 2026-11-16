@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-15-5b2a9d0
+  x-retell-spec-revision: 2026-11-16-d4f8101
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -9815,6 +9815,340 @@ components:
             minimum: 0
             maximum: 10000
             description: Max metered overage per month, in USD (max 10000).
+    ConductorFormTag:
+      type: object
+      required:
+      - label
+      description: Small badge next to an option, such as "Recommended".
+      properties:
+        label:
+          type: string
+    ConductorFormOption:
+      type: object
+      required:
+      - label
+      properties:
+        label:
+          type: string
+          description: Text shown for the option. Unique within the field. Answers and default values refer to the option by this label.
+        description:
+          type: string
+          description: Helper text shown under the option.
+        tag:
+          $ref: '#/components/schemas/ConductorFormTag'
+    ConductorFormItemBase:
+      type: object
+      required:
+      - id
+      properties:
+        id:
+          type: string
+          description: Short identifier for the item, such as `opening_hours`. Each item in the form needs a different id. Answers refer to their field by this id.
+        label:
+          type: string
+          description: Text shown above the field, or the heading of a text block.
+        description:
+          type: string
+          description: Helper text shown under the label, or the paragraph of a text block.
+    ConductorFormFieldBase:
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormItemBase'
+      - type: object
+        required:
+        - label
+        properties:
+          required:
+            type: boolean
+            description: When true, the user must answer before submitting. Defaults to false.
+    ConductorFormTextBlock:
+      description: Text only, never answered. A heading (`label`), a paragraph (`description`), or both.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormItemBase'
+      - type: object
+        required:
+        - kind
+        properties:
+          kind:
+            type: string
+            enum:
+            - textBlock
+    ConductorFormChoiceField:
+      description: Options listed as radio buttons, or checkboxes with `multi_select`.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormFieldBase'
+      - type: object
+        required:
+        - kind
+        - options
+        properties:
+          kind:
+            type: string
+            enum:
+            - choice
+          options:
+            type: array
+            minItems: 1
+            items:
+              $ref: '#/components/schemas/ConductorFormOption'
+          multi_select:
+            type: boolean
+            description: When true, the user can pick several options.
+          allows_custom_answer:
+            type: boolean
+            description: Adds an "Other" option the user types into.
+          default_value:
+            type: object
+            required:
+            - selected
+            properties:
+              selected:
+                type: array
+                description: Labels of the options picked to start with.
+                items:
+                  type: string
+    ConductorFormSelectField:
+      description: Dropdown with one answer.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormFieldBase'
+      - type: object
+        required:
+        - kind
+        - options
+        properties:
+          kind:
+            type: string
+            enum:
+            - select
+          options:
+            type: array
+            minItems: 1
+            items:
+              $ref: '#/components/schemas/ConductorFormOption'
+          default_value:
+            type: string
+            description: Label of the option picked to start with.
+    ConductorFormTextField:
+      description: Single-line text.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormFieldBase'
+      - type: object
+        required:
+        - kind
+        properties:
+          kind:
+            type: string
+            enum:
+            - text
+          format:
+            type: string
+            enum:
+            - email
+            - url
+            description: Checks that the answer is a valid email or URL.
+          default_value:
+            type: string
+            description: Value the field starts with.
+    ConductorFormTextareaField:
+      description: Multi-line text.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormFieldBase'
+      - type: object
+        required:
+        - kind
+        properties:
+          kind:
+            type: string
+            enum:
+            - textarea
+          default_value:
+            type: string
+            description: Value the field starts with.
+    ConductorFormNumberField:
+      description: A number.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormFieldBase'
+      - type: object
+        required:
+        - kind
+        properties:
+          kind:
+            type: string
+            enum:
+            - number
+          min:
+            type: number
+            description: Smallest allowed value.
+          max:
+            type: number
+            description: Largest allowed value.
+          integer:
+            type: boolean
+            description: When true, only whole numbers are allowed.
+          default_value:
+            type: number
+            description: Value the field starts with.
+    ConductorFormSwitchField:
+      description: On/off toggle. Always answered, so it has no `required`.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormItemBase'
+      - type: object
+        required:
+        - kind
+        - label
+        - default_value
+        properties:
+          kind:
+            type: string
+            enum:
+            - switch
+          default_value:
+            type: boolean
+            description: Starting position of the switch.
+    ConductorFormTimeField:
+      description: A time of day. The answer includes the time zone the user picked.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormFieldBase'
+      - type: object
+        required:
+        - kind
+        properties:
+          kind:
+            type: string
+            enum:
+            - time
+          default_value:
+            $ref: '#/components/schemas/ConductorFormTimeValue'
+    ConductorFormDateRangeField:
+      description: A start and end date.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormFieldBase'
+      - type: object
+        required:
+        - kind
+        properties:
+          kind:
+            type: string
+            enum:
+            - dateRange
+          includes_time:
+            type: boolean
+            description: 'When true, the user also picks times, and dates are ISO datetimes with an offset (`2026-10-21T09:00:00-07:00`). Otherwise dates are ISO dates (`2026-10-21`).
+
+              '
+          min:
+            type: string
+            description: Earliest allowed date, in the same format as the answer.
+          max:
+            type: string
+            description: Latest allowed date, in the same format as the answer.
+          default_value:
+            $ref: '#/components/schemas/ConductorFormDateRangeValue'
+    ConductorFormFileField:
+      description: File upload. The user can attach several files, and Conductor receives them to read.
+      allOf:
+      - $ref: '#/components/schemas/ConductorFormFieldBase'
+      - type: object
+        required:
+        - kind
+        properties:
+          kind:
+            type: string
+            enum:
+            - file
+          accept:
+            type: array
+            items:
+              type: string
+              enum:
+              - jpg
+              - jpeg
+              - png
+              - gif
+              - webp
+              - pdf
+              - docx
+              - txt
+              - csv
+              - html
+              - htm
+              - md
+              - rtf
+              - json
+              - wav
+              - mp3
+            description: Allowed extensions without the dot. Leave out to allow every supported type.
+    ConductorFormField:
+      description: A form item the user answers, discriminated by `kind`.
+      oneOf:
+      - $ref: '#/components/schemas/ConductorFormChoiceField'
+      - $ref: '#/components/schemas/ConductorFormSelectField'
+      - $ref: '#/components/schemas/ConductorFormTextField'
+      - $ref: '#/components/schemas/ConductorFormTextareaField'
+      - $ref: '#/components/schemas/ConductorFormNumberField'
+      - $ref: '#/components/schemas/ConductorFormSwitchField'
+      - $ref: '#/components/schemas/ConductorFormTimeField'
+      - $ref: '#/components/schemas/ConductorFormDateRangeField'
+      - $ref: '#/components/schemas/ConductorFormFileField'
+    ConductorFormItem:
+      description: One item in a form row.
+      oneOf:
+      - $ref: '#/components/schemas/ConductorFormTextBlock'
+      - $ref: '#/components/schemas/ConductorFormField'
+    ConductorFormStep:
+      type: object
+      required:
+      - rows
+      properties:
+        rows:
+          type: array
+          minItems: 1
+          description: Items in the same row sit side by side.
+          items:
+            type: array
+            minItems: 1
+            items:
+              $ref: '#/components/schemas/ConductorFormItem'
+    ConductorForm:
+      type: object
+      required:
+      - steps
+      - primary_button_label
+      properties:
+        steps:
+          type: array
+          minItems: 1
+          description: Shown one page at a time.
+          items:
+            $ref: '#/components/schemas/ConductorFormStep'
+        primary_button_label:
+          type: string
+          maxLength: 25
+          description: Submit button text.
+    ConductorFormTimeValue:
+      type: object
+      required:
+      - time
+      - time_zone
+      properties:
+        time:
+          type: string
+          description: 24-hour `HH:mm`, such as `21:30`.
+        time_zone:
+          type: string
+          description: IANA time zone name, such as `America/Los_Angeles`.
+    ConductorFormDateRangeValue:
+      type: object
+      required:
+      - from
+      - to
+      description: 'ISO dates (`2026-10-21`), or ISO datetimes with an offset (`2026-10-21T09:00:00-07:00`) when the field `includes_time`.
+
+        '
+      properties:
+        from:
+          type: string
+        to:
+          type: string
     ContactTag:
       type: object
       required:

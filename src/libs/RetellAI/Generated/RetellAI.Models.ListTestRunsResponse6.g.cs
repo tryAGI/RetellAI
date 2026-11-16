@@ -12,8 +12,8 @@ namespace RetellAI
         ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("status")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListTestRunsResponseStatus4JsonConverter))]
-        public global::RetellAI.ListTestRunsResponseStatus4? Status { get; set; }
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ListTestRunsResponseStatusJsonConverter))]
+        public global::RetellAI.ListTestRunsResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Example: Account rate limited, please throttle your requests.
@@ -39,7 +39,7 @@ namespace RetellAI
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
         public ListTestRunsResponse6(
-            global::RetellAI.ListTestRunsResponseStatus4? status,
+            global::RetellAI.ListTestRunsResponseStatus? status,
             string? message)
         {
             this.Status = status;

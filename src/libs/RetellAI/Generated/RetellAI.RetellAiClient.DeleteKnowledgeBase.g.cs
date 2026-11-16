@@ -363,19 +363,19 @@ namespace RetellAI
                             {
                                 string? __content_422 = null;
                                 global::System.Exception? __exception_422 = null;
-                                global::RetellAI.DeleteKnowledgeBaseResponse2? __value_422 = null;
+                                global::RetellAI.DeleteKnowledgeBaseResponse? __value_422 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_422 = global::RetellAI.DeleteKnowledgeBaseResponse2.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::RetellAI.DeleteKnowledgeBaseResponse.FromJson(__content_422, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_422 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_422 = global::RetellAI.DeleteKnowledgeBaseResponse2.FromJson(__content_422, JsonSerializerContext);
+                                        __value_422 = global::RetellAI.DeleteKnowledgeBaseResponse.FromJson(__content_422, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -384,7 +384,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.DeleteKnowledgeBaseResponse2>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.DeleteKnowledgeBaseResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_422 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_422,
@@ -400,19 +400,19 @@ namespace RetellAI
                             {
                                 string? __content_429 = null;
                                 global::System.Exception? __exception_429 = null;
-                                global::RetellAI.DeleteKnowledgeBaseResponse3? __value_429 = null;
+                                global::RetellAI.DeleteKnowledgeBaseResponse? __value_429 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_429 = global::RetellAI.DeleteKnowledgeBaseResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::RetellAI.DeleteKnowledgeBaseResponse.FromJson(__content_429, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_429 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_429 = global::RetellAI.DeleteKnowledgeBaseResponse3.FromJson(__content_429, JsonSerializerContext);
+                                        __value_429 = global::RetellAI.DeleteKnowledgeBaseResponse.FromJson(__content_429, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -421,7 +421,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.DeleteKnowledgeBaseResponse3>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.DeleteKnowledgeBaseResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_429 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_429,
@@ -437,19 +437,19 @@ namespace RetellAI
                             {
                                 string? __content_500 = null;
                                 global::System.Exception? __exception_500 = null;
-                                global::RetellAI.DeleteKnowledgeBaseResponse4? __value_500 = null;
+                                global::RetellAI.DeleteKnowledgeBaseResponse? __value_500 = null;
                                 try
                                 {
                                     if (__effectiveReadResponseAsString)
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
-                                        __value_500 = global::RetellAI.DeleteKnowledgeBaseResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.DeleteKnowledgeBaseResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                     else
                                     {
                                         __content_500 = await __response.Content.ReadAsStringAsync(__effectiveCancellationToken).ConfigureAwait(false);
 
-                                        __value_500 = global::RetellAI.DeleteKnowledgeBaseResponse4.FromJson(__content_500, JsonSerializerContext);
+                                        __value_500 = global::RetellAI.DeleteKnowledgeBaseResponse.FromJson(__content_500, JsonSerializerContext);
                                     }
                                 }
                                 catch (global::System.Exception __ex)
@@ -458,7 +458,7 @@ namespace RetellAI
                                 }
 
 
-                                throw global::RetellAI.ApiException<global::RetellAI.DeleteKnowledgeBaseResponse4>.Create(
+                                throw global::RetellAI.ApiException<global::RetellAI.DeleteKnowledgeBaseResponse>.Create(
                                     statusCode: __response.StatusCode,
                                     message: __content_500 ?? __response.ReasonPhrase ?? string.Empty,
                                     innerException: __exception_500,
