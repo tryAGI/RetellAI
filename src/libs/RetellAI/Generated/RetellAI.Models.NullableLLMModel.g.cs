@@ -151,6 +151,14 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
+        Gpt62Astra,
+        /// <summary>
+        ///
+        /// </summary>
+        Gpt62Sol,
+        /// <summary>
+        ///
+        /// </summary>
         OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
         /// <summary>
         ///
@@ -205,6 +213,8 @@ namespace RetellAI
                 NullableLLMModel.Gpt6Sol => "gpt-6-sol",
                 NullableLLMModel.Gpt61Sol => "gpt-6.1-sol",
                 NullableLLMModel.Gpt61Terra => "gpt-6.1-terra",
+                NullableLLMModel.Gpt62Astra => "gpt-6.2-astra",
+                NullableLLMModel.Gpt62Sol => "gpt-6.2-sol",
                 NullableLLMModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464 => "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464",
                 NullableLLMModel.Tell1 => "tell-1",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
@@ -252,6 +262,8 @@ namespace RetellAI
                 "gpt-6-sol" => NullableLLMModel.Gpt6Sol,
                 "gpt-6.1-sol" => NullableLLMModel.Gpt61Sol,
                 "gpt-6.1-terra" => NullableLLMModel.Gpt61Terra,
+                "gpt-6.2-astra" => NullableLLMModel.Gpt62Astra,
+                "gpt-6.2-sol" => NullableLLMModel.Gpt62Sol,
                 "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464" => NullableLLMModel.OpenapiJsonNullSentinelValue2bf936000fe44250987aE5ddb203e464,
                 "tell-1" => NullableLLMModel.Tell1,
                 _ => null,
