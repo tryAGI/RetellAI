@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// The reason the call disconnected.
     /// </summary>
     public enum DisconnectionReason
     {

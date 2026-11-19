@@ -863,7 +863,10 @@ namespace RetellAI
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
         /// <param name="handbookConfig">
-        /// Behavior presets for voice agents. All presets are available.
+        /// Independently selectable handbook prompts for voice agents. Phase 1 accepts legacy booleans in requests, but responses always return the object form.
+        /// </param>
+        /// <param name="enableColloquialModel">
+        /// Whether to rewrite generated responses with the separately billed colloquial model. This setting is independent of handbook selection and is not supported for speech-to-speech response engines. Defaults to false.
         /// </param>
         /// <param name="timezone">
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
@@ -937,6 +940,7 @@ namespace RetellAI
             global::RetellAI.PIIConfig? piiConfig = default,
             global::RetellAI.GuardrailConfig? guardrailConfig = default,
             global::RetellAI.VoiceHandbookConfig? handbookConfig = default,
+            bool? enableColloquialModel = default,
             string? timezone = default,
             global::System.Collections.Generic.IList<global::RetellAI.PreSessionTool>? preSessionTools = default,
             global::System.Collections.Generic.IList<global::RetellAI.PostSessionTool>? postSessionTools = default,
@@ -1001,6 +1005,7 @@ namespace RetellAI
                 PiiConfig = piiConfig,
                 GuardrailConfig = guardrailConfig,
                 HandbookConfig = handbookConfig,
+                EnableColloquialModel = enableColloquialModel,
                 Timezone = timezone,
                 PreSessionTools = preSessionTools,
                 PostSessionTools = postSessionTools,
