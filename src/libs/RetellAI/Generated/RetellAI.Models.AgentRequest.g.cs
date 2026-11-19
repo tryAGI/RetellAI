@@ -442,10 +442,16 @@ namespace RetellAI
         public global::RetellAI.GuardrailConfig? GuardrailConfig { get; set; }
 
         /// <summary>
-        /// Behavior presets for voice agents. All presets are available.
+        /// Independently selectable handbook prompts for voice agents. Phase 1 accepts legacy booleans in requests, but responses always return the object form.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("handbook_config")]
         public global::RetellAI.VoiceHandbookConfig? HandbookConfig { get; set; }
+
+        /// <summary>
+        /// Whether to rewrite generated responses with the separately billed colloquial model. This setting is independent of handbook selection and is not supported for speech-to-speech response engines. Defaults to false.
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("enable_colloquial_model")]
+        public bool? EnableColloquialModel { get; set; }
 
         /// <summary>
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
@@ -687,7 +693,10 @@ namespace RetellAI
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
         /// <param name="handbookConfig">
-        /// Behavior presets for voice agents. All presets are available.
+        /// Independently selectable handbook prompts for voice agents. Phase 1 accepts legacy booleans in requests, but responses always return the object form.
+        /// </param>
+        /// <param name="enableColloquialModel">
+        /// Whether to rewrite generated responses with the separately billed colloquial model. This setting is independent of handbook selection and is not supported for speech-to-speech response engines. Defaults to false.
         /// </param>
         /// <param name="timezone">
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
@@ -759,6 +768,7 @@ namespace RetellAI
             global::RetellAI.PIIConfig? piiConfig,
             global::RetellAI.GuardrailConfig? guardrailConfig,
             global::RetellAI.VoiceHandbookConfig? handbookConfig,
+            bool? enableColloquialModel,
             string? timezone,
             global::System.Collections.Generic.IList<global::RetellAI.PreSessionTool>? preSessionTools,
             global::System.Collections.Generic.IList<global::RetellAI.PostSessionTool>? postSessionTools)
@@ -819,6 +829,7 @@ namespace RetellAI
             this.PiiConfig = piiConfig;
             this.GuardrailConfig = guardrailConfig;
             this.HandbookConfig = handbookConfig;
+            this.EnableColloquialModel = enableColloquialModel;
             this.Timezone = timezone;
             this.PreSessionTools = preSessionTools;
             this.PostSessionTools = postSessionTools;

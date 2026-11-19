@@ -199,7 +199,7 @@ namespace RetellAI
         public global::RetellAI.V3CallBaseLatency? Latency { get; set; }
 
         /// <summary>
-        ///
+        /// The reason the call disconnected.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("disconnection_reason")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.DisconnectionReasonJsonConverter))]
@@ -334,7 +334,9 @@ namespace RetellAI
         /// <param name="latency">
         /// Latency tracking of the call, available after call ends. Not all fields here will be available, as it depends on the type of call and feature used.
         /// </param>
-        /// <param name="disconnectionReason"></param>
+        /// <param name="disconnectionReason">
+        /// The reason the call disconnected.
+        /// </param>
         /// <param name="transferDestination">
         /// The destination number or identifier where the call was transferred to. Only populated when the disconnection reason was `call_transfer`. Can be a phone number or a SIP URI. SIP URIs are prefixed with "sip:" and may include a ";transport=..." portion (if transport is known) where the transport type can be "tls", "tcp" or "udp".<br/>
         /// Example: +12137771234

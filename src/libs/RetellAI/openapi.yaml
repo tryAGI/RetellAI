@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-18-46541a7
+  x-retell-spec-revision: 2026-11-19-72aeee1
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -1168,7 +1168,11 @@ components:
           description: Configuration for guardrail checks to detect and prevent prohibited topics in agent output and user input.
         handbook_config:
           $ref: '#/components/schemas/VoiceHandbookConfig'
-          description: Toggle behavior presets on/off to influence agent response style and behaviors.
+          description: Enable and customize handbook prompts. Sending this field replaces the complete handbook configuration.
+        enable_colloquial_model:
+          type: boolean
+          description: Whether to rewrite generated responses with the separately billed colloquial model. This setting is independent of handbook selection and is not supported for speech-to-speech response
+            engines. Defaults to false.
         timezone:
           type: string
           description: IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.
@@ -2094,7 +2098,7 @@ components:
           description: Configuration for guardrail checks to detect and prevent prohibited topics in agent output and user input.
         handbook_config:
           $ref: '#/components/schemas/ChatHandbookConfig'
-          description: Toggle behavior presets on/off to influence agent response style and behaviors. Voice-only presets are not available for chat agents.
+          description: Enable and customize handbook prompts. Sending this field replaces the complete handbook configuration. Voice-only handbooks are not available for chat agents.
         timezone:
           type: string
           description: IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.
@@ -4267,6 +4271,9 @@ components:
       description: Day of week. Matches server-side DayOfWeek enum.
     DisconnectionReason:
       type: string
+      description: 'The reason the call disconnected.
+
+        '
       enum:
       - user_hangup
       - agent_hangup
@@ -6400,56 +6407,121 @@ components:
           uniqueItems: true
           description: Selected prohibited user topic categories to check. When user messages contain these topics, the agent will respond with a placeholder message instead of processing the request.
           nullable: true
+    HandbookEntryConfig:
+      type: object
+      additionalProperties: false
+      description: Configuration for an enabled handbook. Omit custom_prompt or set it to null to use the Retell-provided prompt. An empty string intentionally injects no prompt for this handbook.
+      properties:
+        custom_prompt:
+          type: string
+          nullable: true
+          maxLength: 10000
+    HandbookPrompts:
+      type: object
+      additionalProperties: false
+      required:
+      - customer_support
+      - conversational
+      - natural_filler_words
+      - high_empathy
+      - echo_verification
+      - nato_phonetic_alphabet
+      - speech_normalization
+      - smart_matching
+      - ai_disclosure
+      - scope_boundaries
+      properties:
+        customer_support:
+          type: string
+        conversational:
+          type: string
+        natural_filler_words:
+          type: string
+        high_empathy:
+          type: string
+        echo_verification:
+          type: string
+        nato_phonetic_alphabet:
+          type: string
+        speech_normalization:
+          type: string
+        smart_matching:
+          type: string
+        ai_disclosure:
+          type: string
+        scope_boundaries:
+          type: string
+    LegacyBooleanOrHandbookEntryConfig:
+      oneOf:
+      - type: boolean
+        description: Legacy handbook toggle. True enables the Retell-provided prompt; false disables it.
+      - $ref: '#/components/schemas/HandbookEntryConfig'
     VoiceHandbookConfig:
       type: object
-      description: Behavior presets for voice agents. All presets are available.
+      additionalProperties: false
+      description: Independently selectable handbook prompts for voice agents. Phase 1 accepts legacy booleans in requests, but responses always return the object form.
       properties:
+        customer_support:
+          $ref: '#/components/schemas/HandbookEntryConfig'
+          description: Customer Support handbook.
+        conversational:
+          $ref: '#/components/schemas/HandbookEntryConfig'
+          description: Conversational handbook.
         default_personality:
           type: boolean
-          description: Professional call center rep baseline.
+          description: Legacy name for customer_support. Cannot be sent together with customer_support.
         conversational_personality:
           type: boolean
-          description: Enables Conversational Personality. When true, the agent uses the Conversational Personality handbook preset, skips Professional Rep Personality during prompt assembly, and enables
-            internal colloquial rewrite behavior.
+          description: Legacy name for conversational. Cannot be sent together with conversational. For compatibility, true also enables enable_colloquial_model when that field is omitted.
         natural_filler_words:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: Sprinkle natural speech fillers like "um", "you know" for a more human, conversational tone.
         high_empathy:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: Warm acknowledgment of caller concerns.
         echo_verification:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: Repeat back and confirm important details (voice only).
         nato_phonetic_alphabet:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: Spell using NATO phonetic alphabet style (voice only).
         speech_normalization:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: Convert numbers/dates/currency to spoken forms (voice only).
         smart_matching:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: Treat near-match similar words as same entity to reduce impact of transcription error (voice only).
         ai_disclosure:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: When asked, acknowledge being a virtual assistant.
         scope_boundaries:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: Stay within prompt/context scope, don't invent details.
     ChatHandbookConfig:
       type: object
-      description: Behavior presets for chat agents. Voice-only presets are excluded.
+      additionalProperties: false
+      description: Independently selectable handbook prompts for chat agents. Voice-only handbooks are excluded. Phase 1 accepts legacy booleans in requests, but responses always return the object form.
       properties:
+        customer_support:
+          $ref: '#/components/schemas/HandbookEntryConfig'
+          description: Customer Support handbook.
+        conversational:
+          $ref: '#/components/schemas/HandbookEntryConfig'
+          description: Conversational handbook.
         default_personality:
           type: boolean
-          description: Professional call center rep baseline.
-        high_empathy:
+          description: Legacy name for customer_support. Cannot be sent together with customer_support.
+        conversational_personality:
           type: boolean
+          description: Legacy name for conversational. Cannot be sent together with conversational. Colloquial rewriting is not available for chat.
+        high_empathy:
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: Warm acknowledgment of caller concerns.
         ai_disclosure:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: When asked, acknowledge being a virtual assistant.
         scope_boundaries:
-          type: boolean
+          $ref: '#/components/schemas/LegacyBooleanOrHandbookEntryConfig'
           description: Stay within prompt/context scope, don't invent details.
     PerformanceMetricCriteria:
       type: object
@@ -12692,6 +12764,25 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-handbook-presets:
+    get:
+      description: Retrieve all Retell-provided handbook prompts.
+      operationId: getHandbookPresets
+      x-retell-sdk-resource: agent
+      x-retell-sdk-method: get-handbook-presets
+      responses:
+        '200':
+          description: Successfully retrieved the handbook presets.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HandbookPrompts'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
         '500':
           $ref: '#/components/responses/InternalServerError'
   /get-chat-agent/{agent_id}:

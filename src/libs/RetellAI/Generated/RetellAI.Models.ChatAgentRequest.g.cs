@@ -141,7 +141,7 @@ namespace RetellAI
         public global::RetellAI.GuardrailConfig? GuardrailConfig { get; set; }
 
         /// <summary>
-        /// Behavior presets for chat agents. Voice-only presets are excluded.
+        /// Independently selectable handbook prompts for chat agents. Voice-only handbooks are excluded. Phase 1 accepts legacy booleans in requests, but responses always return the object form.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("handbook_config")]
         public global::RetellAI.ChatHandbookConfig? HandbookConfig { get; set; }
@@ -234,7 +234,7 @@ namespace RetellAI
         /// <param name="piiConfig"></param>
         /// <param name="guardrailConfig"></param>
         /// <param name="handbookConfig">
-        /// Behavior presets for chat agents. Voice-only presets are excluded.
+        /// Independently selectable handbook prompts for chat agents. Voice-only handbooks are excluded. Phase 1 accepts legacy booleans in requests, but responses always return the object form.
         /// </param>
         /// <param name="timezone">
         /// IANA timezone for the agent (e.g. America/New_York). Defaults to America/Los_Angeles if not set.<br/>
