@@ -39,7 +39,7 @@ namespace RetellAI
         public global::System.Collections.Generic.Dictionary<string, string>? QueryParams { get; set; }
 
         /// <summary>
-        /// Maximum time to wait for a connection to be established (in milliseconds). Default to 120,000 ms (2 minutes).
+        /// Maximum time to wait for an MCP tool call to return (in milliseconds). Values below 60,000 are treated as 60,000, and values above 600,000 are treated as 600,000. Default to 60,000 ms (1 minute).
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timeout_ms")]
         public int? TimeoutMs { get; set; }
@@ -66,7 +66,7 @@ namespace RetellAI
         /// Example: {"index":"1","key":"value"}
         /// </param>
         /// <param name="timeoutMs">
-        /// Maximum time to wait for a connection to be established (in milliseconds). Default to 120,000 ms (2 minutes).
+        /// Maximum time to wait for an MCP tool call to return (in milliseconds). Values below 60,000 are treated as 60,000, and values above 600,000 are treated as 600,000. Default to 60,000 ms (1 minute).
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
