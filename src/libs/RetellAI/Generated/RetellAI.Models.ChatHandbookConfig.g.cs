@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Independently selectable handbook prompts for chat agents. Voice-only handbooks are excluded. Phase 1 accepts legacy booleans in requests, but responses always return the object form.
+    /// Independently selectable handbook prompts for chat agents. Only the listed chat-supported handbooks are accepted. Phase 1 accepts legacy booleans in requests, but responses return supported chat handbooks in object form.
     /// </summary>
     public sealed partial class ChatHandbookConfig
     {

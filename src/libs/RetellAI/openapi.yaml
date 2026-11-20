@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-19-72aeee1
+  x-retell-spec-revision: 2026-11-19-b12417b
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -6500,7 +6500,8 @@ components:
     ChatHandbookConfig:
       type: object
       additionalProperties: false
-      description: Independently selectable handbook prompts for chat agents. Voice-only handbooks are excluded. Phase 1 accepts legacy booleans in requests, but responses always return the object form.
+      description: Independently selectable handbook prompts for chat agents. Only the listed chat-supported handbooks are accepted. Phase 1 accepts legacy booleans in requests, but responses return supported
+        chat handbooks in object form.
       properties:
         customer_support:
           $ref: '#/components/schemas/HandbookEntryConfig'
