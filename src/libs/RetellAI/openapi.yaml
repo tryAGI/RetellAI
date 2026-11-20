@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-19-b12417b
+  x-retell-spec-revision: 2026-11-20-1580412
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -10128,11 +10128,17 @@ components:
       - type: object
         required:
         - kind
+        - max_files
         properties:
           kind:
             type: string
             enum:
             - file
+          max_files:
+            type: integer
+            minimum: 1
+            maximum: 10
+            description: Most files the user can attach to this field. The max_files of all file fields in a form must add up to 10 or less.
           accept:
             type: array
             items:
