@@ -52,7 +52,7 @@ namespace RetellAI
         public required long UserModifiedTimestamp { get; set; }
 
         /// <summary>
-        /// Authoritative root tags for this agent, keyed by tag name.
+        /// Environment tags for this agent, keyed by tag name.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tags")]
         [global::System.Text.Json.Serialization.JsonRequired]
@@ -92,7 +92,7 @@ namespace RetellAI
         /// Example: 1703413636133
         /// </param>
         /// <param name="tags">
-        /// Authoritative root tags for this agent, keyed by tag name.
+        /// Environment tags for this agent, keyed by tag name.
         /// </param>
         /// <param name="isTransferAgent">
         /// Whether the agent is a transfer agent used for agentic warm transfer.

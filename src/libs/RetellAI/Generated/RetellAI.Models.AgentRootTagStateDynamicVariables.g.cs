@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    ///
+    /// Dynamic variable values supplied when a call uses this tag.
     /// </summary>
     public sealed partial class AgentRootTagStateDynamicVariables
     {

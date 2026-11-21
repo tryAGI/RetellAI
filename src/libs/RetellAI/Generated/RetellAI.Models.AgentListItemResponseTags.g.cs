@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Authoritative root tags for this agent, keyed by tag name.
+    /// Environment tags for this agent, keyed by tag name.
     /// </summary>
     public sealed partial class AgentListItemResponseTags
     {

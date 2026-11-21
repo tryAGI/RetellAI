@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-20-1580412
+  x-retell-spec-revision: 2026-11-21-08b6eea
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -657,10 +657,12 @@ components:
           type: integer
           minimum: 0
           example: 15
+          description: Version that the tag points to. Absent when the tag follows the latest version.
         dynamic_variables:
           type: object
           additionalProperties:
             type: string
+          description: Dynamic variable values supplied when a call uses this tag.
     AgentOverrideRequest:
       type: object
       description: Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
@@ -1325,7 +1327,7 @@ components:
           description: User modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.
         tags:
           type: object
-          description: Authoritative root tags for this agent, keyed by tag name.
+          description: Environment tags for this agent, keyed by tag name.
           additionalProperties:
             $ref: '#/components/schemas/AgentRootTagState'
         is_transfer_agent:
@@ -5204,6 +5206,7 @@ components:
       - gemini-3.6-flash
       - gemini-3.7-flash
       - gemini-3.8-flash
+      - gemini-4-neon
       - gemini-4-hydrogen
       - gemini-4-carbon
       - gemini-4-argon
@@ -6080,6 +6083,7 @@ components:
       - gemini-3.6-flash
       - gemini-3.7-flash
       - gemini-3.8-flash
+      - gemini-4-neon
       - gemini-4-hydrogen
       - gemini-4-carbon
       - gemini-4-argon
