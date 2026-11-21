@@ -9,6 +9,7 @@ namespace RetellAI
     public sealed partial class AgentRootTagState
     {
         /// <summary>
+        /// Version that the tag points to. Absent when the tag follows the latest version.<br/>
         /// Example: 15
         /// </summary>
         /// <example>15</example>
@@ -16,7 +17,7 @@ namespace RetellAI
         public int? Version { get; set; }
 
         /// <summary>
-        ///
+        /// Dynamic variable values supplied when a call uses this tag.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("dynamic_variables")]
         public global::System.Collections.Generic.Dictionary<string, string>? DynamicVariables { get; set; }
@@ -31,9 +32,12 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="AgentRootTagState" /> class.
         /// </summary>
         /// <param name="version">
+        /// Version that the tag points to. Absent when the tag follows the latest version.<br/>
         /// Example: 15
         /// </param>
-        /// <param name="dynamicVariables"></param>
+        /// <param name="dynamicVariables">
+        /// Dynamic variable values supplied when a call uses this tag.
+        /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
 #endif
