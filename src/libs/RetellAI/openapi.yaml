@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-21-08b6eea
+  x-retell-spec-revision: 2026-11-22-669f372
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -663,6 +663,76 @@ components:
           additionalProperties:
             type: string
           description: Dynamic variable values supplied when a call uses this tag.
+    AgentRootTagUpdate:
+      type: object
+      additionalProperties: false
+      properties:
+        version:
+          type: integer
+          nullable: true
+          minimum: 0
+          example: 15
+          description: Version for the tag to point to. Set to null to make the tag follow the latest version. If omitted, the tag keeps its current version.
+        dynamic_variables:
+          type: object
+          nullable: true
+          additionalProperties:
+            type: string
+          description: Dynamic variable values supplied when a call uses this tag. Replaces all of the tag's current values. Set to null to remove them. If omitted, the tag keeps its current values.
+    AgentRootResponse:
+      type: object
+      required:
+      - agent_id
+      - is_suspended
+      - tags
+      - user_modified_timestamp
+      properties:
+        agent_id:
+          type: string
+          example: agent_xxx
+          description: Unique id of the agent.
+        is_suspended:
+          type: boolean
+          example: false
+          description: Whether the agent is currently suspended.
+        tags:
+          type: object
+          description: Environment tags for this agent, keyed by tag name. Every agent has prod and staging tags.
+          example:
+            prod:
+              version: 3
+            staging: {}
+          additionalProperties:
+            $ref: '#/components/schemas/AgentRootTagState'
+        user_modified_timestamp:
+          type: integer
+          format: int64
+          example: 1746105600000
+          description: User modification timestamp (milliseconds since epoch). Either the time of last update or creation if no updates available.
+    UpdateAgentRootRequest:
+      type: object
+      additionalProperties: false
+      properties:
+        tags:
+          type: object
+          description: Environment tags to add, change, or delete, keyed by tag name. Set a tag to an object to add or change it, or to null to delete it. Tags you leave out stay as they are. The prod and
+            staging tags cannot be deleted. An agent can have up to 10 tags. Tag names must be 1-20 characters, start with a lowercase letter, use only lowercase letters, digits, underscores, or hyphens,
+            and cannot be "latest", "latest_published", or "v" followed only by digits, such as "v2".
+          example:
+            prod:
+              version: 3
+          properties:
+            prod:
+              $ref: '#/components/schemas/AgentRootTagUpdate'
+            staging:
+              $ref: '#/components/schemas/AgentRootTagUpdate'
+          additionalProperties:
+            oneOf:
+            - $ref: '#/components/schemas/AgentRootTagUpdate'
+            - type: object
+              nullable: true
+              enum:
+              - null
     AgentOverrideRequest:
       type: object
       description: Override configuration for agent, retell LLM, or conversation flow settings for a specific call.
@@ -8025,6 +8095,749 @@ components:
           nullable: true
           description: Whether the call succeeds (`true`) or fails (`false`). Required to mock SMS, transfer and escalation calls; for those calls, a mock without `result` is ignored. Not used for other
             tools.
+    TestCaseInputTranscript:
+      description: Conversation turns, in order.
+      type: array
+      items:
+        allOf:
+        - $ref: '#/components/schemas/TextUtterance'
+        - type: object
+          properties:
+            role:
+              type: string
+              enum:
+              - agent
+              - user
+    TestCaseCallerInstructions:
+      description: How the simulated caller behaves during the test.
+      oneOf:
+      - type: object
+        additionalProperties: false
+        required:
+        - type
+        - user_prompt
+        properties:
+          type:
+            type: string
+            enum:
+            - user_prompt
+            description: The simulated caller is an LLM that follows `user_prompt`.
+          user_prompt:
+            type: string
+            description: Instructions for the simulated caller, such as who they are and what they want.
+          caller_behavior:
+            type: string
+            description: Extra instructions added to the end of the caller's prompt, such as how they speak or react.
+          starting_transcript:
+            $ref: '#/components/schemas/TestCaseInputTranscript'
+            description: Conversation that has already happened before the simulation starts. The agent continues from the end of it.
+          starting_node:
+            type: string
+            description: ID of the conversation flow node to start the simulation at.
+      - type: object
+        additionalProperties: false
+        required:
+        - type
+        - transcript
+        properties:
+          type:
+            type: string
+            enum:
+            - transcript
+            description: The simulated caller follows the user turns of `transcript`. It adapts to the live agent's questions while preserving the caller's wording, facts, and intent.
+          transcript:
+            $ref: '#/components/schemas/TestCaseInputTranscript'
+            description: The conversation to replay.
+    TestCaseEvalCriterion:
+      description: One check the conversation must pass for the test to pass.
+      oneOf:
+      - type: object
+        additionalProperties: false
+        required:
+        - type
+        - prompt
+        properties:
+          type:
+            type: string
+            enum:
+            - prompt
+            description: An LLM judges the transcript against `prompt`.
+          prompt:
+            type: string
+            description: What a passing conversation looks like, for example "The agent books an appointment for Tuesday."
+      - type: object
+        additionalProperties: false
+        required:
+        - type
+        - equation
+        properties:
+          type:
+            type: string
+            enum:
+            - equation
+            description: Checks a value from the run. Refer to a dynamic variable as `{{variable_name}}`, including ones extracted during the conversation. Refer to a performance metric as `{{metrics.category.field}}`,
+              for example `{{metrics.latency.p50}}`. Use the `exists` operator to check whether a metric was measured.
+          equation:
+            $ref: '#/components/schemas/Equation'
+    TestCasePaidPerformanceMetric:
+      type: string
+      enum:
+      - agent_hallucination
+      - node_transition_inaccuracy
+      - rag_accuracy
+      - tool_call_inaccuracy
+      - transcription
+      description: A paid performance metric category. `node_transition_inaccuracy` only applies to conversation flow agents, and `transcription` only to audio test cases.
+    TextTestCasePerformanceMetrics:
+      type: object
+      description: Performance metrics measured during the run. Paid metrics are only present when listed in the test case's `enabled_performance_metrics`.
+      required:
+      - custom_tool_error
+      properties:
+        custom_tool_error:
+          type: object
+          description: Free.
+          required:
+          - count
+          properties:
+            rate:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: Share of custom tool executions that failed. Omitted when there were none.
+            count:
+              type: integer
+              description: Custom tool executions that failed.
+        agent_hallucination:
+          type: object
+          description: Paid.
+          required:
+          - count
+          properties:
+            rate:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: Share of agent responses that contained a hallucination. Omitted when there were none.
+            count:
+              type: integer
+              description: Agent responses that contained a hallucination.
+        node_transition_inaccuracy:
+          type: object
+          description: Paid. Only for conversation flow agents.
+          required:
+          - count
+          properties:
+            rate:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: Share of node transitions that went to the wrong node. Omitted when there were none.
+            count:
+              type: integer
+              description: Node transitions that went to the wrong node.
+        rag_accuracy:
+          type: object
+          description: Knowledge base retrievals. Paid. Omitted when nothing was retrieved.
+          required:
+          - rate
+          properties:
+            rate:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: Share of retrievals that returned every relevant chunk.
+        tool_call_inaccuracy:
+          type: object
+          description: Paid.
+          required:
+          - count
+          properties:
+            rate:
+              type: number
+              minimum: 0
+              maximum: 1
+              description: Share of agent responses that called the wrong tools or passed wrong arguments. Omitted when there were none.
+            count:
+              type: integer
+              description: Agent responses that called the wrong tools or passed wrong arguments.
+    AudioTestCasePerformanceMetrics:
+      allOf:
+      - $ref: '#/components/schemas/TextTestCasePerformanceMetrics'
+      - type: object
+        required:
+        - interruption
+        - talk_ratio
+        properties:
+          tool_latency:
+            type: object
+            required:
+            - p50
+            - p90
+            - p95
+            - p99
+            properties:
+              p50:
+                type: number
+              p90:
+                type: number
+              p95:
+                type: number
+              p99:
+                type: number
+            description: Custom tool execution time percentiles, in milliseconds. Free. Omitted when no custom tool ran.
+          latency:
+            type: object
+            required:
+            - p50
+            - p90
+            - p95
+            - p99
+            properties:
+              p50:
+                type: number
+              p90:
+                type: number
+              p95:
+                type: number
+              p99:
+                type: number
+            description: End-to-end latency percentiles (from the caller stopping to the agent starting to talk), in milliseconds. Free.
+          interruption:
+            type: object
+            required:
+            - count
+            properties:
+              count:
+                type: integer
+                description: Times the agent and the caller talked over each other.
+          talk_ratio:
+            type: object
+            required:
+            - agent
+            - user
+            properties:
+              agent:
+                type: number
+                minimum: 0
+                maximum: 1
+                description: Share of the call duration the agent spent talking.
+              user:
+                type: number
+                minimum: 0
+                maximum: 1
+                description: Share of the call duration the caller spent talking.
+          transcription:
+            type: object
+            description: Accuracy of the agent's transcription of the caller. Paid.
+            required:
+            - wer
+            - critical_errors
+            properties:
+              wer:
+                type: number
+                minimum: 0
+                description: Word error rate.
+              critical_errors:
+                type: integer
+                description: Caller utterances with at least one mistranscription that changes meaning, such as a wrong name, number, or key fact.
+    TestCaseAsrAudioSource:
+      description: The audio to transcribe.
+      oneOf:
+      - type: object
+        additionalProperties: false
+        required:
+        - type
+        - audio_url
+        properties:
+          type:
+            type: string
+            enum:
+            - upload
+            description: Audio from an uploaded file.
+          audio_url:
+            type: string
+            description: URL of a test audio upload from the same organization. Each definition returns the URL of its own retained copy.
+      - type: object
+        additionalProperties: false
+        required:
+        - type
+        - call_id
+        properties:
+          type:
+            type: string
+            enum:
+            - call_clip
+            description: Audio from part of an existing call's multichannel recording. The source call must have PII scrubbing disabled.
+          call_id:
+            type: string
+            description: ID of the call to take the audio from.
+          start_ms:
+            type: integer
+            minimum: 0
+            description: Where the clip starts, in milliseconds from the start of the call. Defaults to the start of the call.
+          end_ms:
+            type: integer
+            minimum: 0
+            description: Where the clip ends, in milliseconds from the start of the call. Defaults to the end of the call.
+    TestCaseDefinitionV3Base:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        tags:
+          type: array
+          nullable: true
+          items:
+            type: string
+          description: Labels for grouping and filtering test cases.
+    ConversationTestCaseDefinitionV3Base:
+      allOf:
+      - $ref: '#/components/schemas/TestCaseDefinitionV3Base'
+      - type: object
+        properties:
+          caller_instructions:
+            $ref: '#/components/schemas/TestCaseCallerInstructions'
+          user_model_config:
+            $ref: '#/components/schemas/CascadingModelConfig'
+            description: Model that plays the simulated caller.
+          eval_criteria:
+            type: array
+            minItems: 1
+            items:
+              $ref: '#/components/schemas/TestCaseEvalCriterion'
+            description: Checks the conversation must pass. All must pass for the test to pass.
+          eval_criteria_model:
+            $ref: '#/components/schemas/LLMModel'
+            description: Model that judges the prompt-based `eval_criteria`.
+          dynamic_variables:
+            type: object
+            nullable: true
+            additionalProperties:
+              type: string
+            description: Dynamic variables to inject into the agent.
+          tool_mocks:
+            type: array
+            nullable: true
+            items:
+              $ref: '#/components/schemas/ToolMock'
+            description: Fake tool responses used instead of calling the real tools.
+          enabled_performance_metrics:
+            type: array
+            nullable: true
+            items:
+              $ref: '#/components/schemas/TestCasePaidPerformanceMetric'
+            description: Paid performance metrics to measure during the run. Free performance metrics are always measured.
+    TextTestCaseDefinitionV3Fields:
+      allOf:
+      - $ref: '#/components/schemas/ConversationTestCaseDefinitionV3Base'
+    TextTestCaseDefinitionV3Input:
+      allOf:
+      - $ref: '#/components/schemas/TextTestCaseDefinitionV3Fields'
+      - type: object
+        required:
+        - type
+        - name
+        - caller_instructions
+        - user_model_config
+        - eval_criteria
+        - eval_criteria_model
+        properties:
+          type:
+            type: string
+            enum:
+            - text
+            description: The agent and the simulated caller talk in text.
+    AudioTestCaseDefinitionV3Fields:
+      allOf:
+      - $ref: '#/components/schemas/ConversationTestCaseDefinitionV3Base'
+      - type: object
+        properties:
+          voice_id:
+            type: string
+            description: Voice of the simulated caller.
+          caller_audio_conditions:
+            type: object
+            nullable: true
+            description: Conditions applied to the simulated caller's audio.
+            properties:
+              background_noise:
+                type: object
+                required:
+                - sound
+                properties:
+                  sound:
+                    type: string
+                    enum:
+                    - coffee-shop
+                    - convention-hall
+                    - summer-outdoor
+                    - mountain-outdoor
+                    - static-noise
+                    - call-center
+                    description: Background sound mixed into the caller's audio.
+                  volume:
+                    type: number
+                    minimum: 0
+                    maximum: 2
+                    description: Volume of the background sound, from 0 to 2. Defaults to 1.
+    AudioTestCaseDefinitionV3Input:
+      allOf:
+      - $ref: '#/components/schemas/AudioTestCaseDefinitionV3Fields'
+      - type: object
+        required:
+        - type
+        - name
+        - caller_instructions
+        - user_model_config
+        - eval_criteria
+        - eval_criteria_model
+        - voice_id
+        properties:
+          type:
+            type: string
+            enum:
+            - audio
+            description: The agent and the simulated caller talk over audio.
+    AsrGroundTruthUtterance:
+      allOf:
+      - $ref: '#/components/schemas/TextUtterance'
+      - type: object
+        required:
+        - start
+        - end
+        properties:
+          role:
+            type: string
+            enum:
+            - agent
+            - user
+          start:
+            type: number
+            minimum: 0
+            description: When the utterance starts, in seconds from the start of the audio.
+          end:
+            type: number
+            minimum: 0
+            description: When the utterance ends, in seconds from the start of the audio.
+    AsrTestCaseDefinitionV3Fields:
+      allOf:
+      - $ref: '#/components/schemas/TestCaseDefinitionV3Base'
+      - type: object
+        properties:
+          audio_source:
+            $ref: '#/components/schemas/TestCaseAsrAudioSource'
+          ground_truth:
+            type: array
+            minItems: 1
+            items:
+              $ref: '#/components/schemas/AsrGroundTruthUtterance'
+            description: The correct transcript of the audio, as utterances in time order. The transcription is compared against the user utterances only. In user utterances, put square brackets around
+              words that must appear in the transcription, for example `my dog [Biscuit]`.
+          max_wer:
+            type: number
+            nullable: true
+            minimum: 0
+            description: Highest word error rate that still passes, for example 0.1 for 10%. Required unless a user utterance in `ground_truth` has a word in square brackets.
+    AsrTestCaseDefinitionV3Input:
+      allOf:
+      - $ref: '#/components/schemas/AsrTestCaseDefinitionV3Fields'
+      - type: object
+        required:
+        - type
+        - name
+        - audio_source
+        - ground_truth
+        properties:
+          type:
+            type: string
+            enum:
+            - asr
+            description: Transcribes audio with the agent's speech recognition settings and compares it to `ground_truth`.
+    TestCaseDefinitionV3Input:
+      allOf:
+      - oneOf:
+        - $ref: '#/components/schemas/TextTestCaseDefinitionV3Input'
+        - $ref: '#/components/schemas/AudioTestCaseDefinitionV3Input'
+        - $ref: '#/components/schemas/AsrTestCaseDefinitionV3Input'
+      - type: object
+        required:
+        - agent_id
+        properties:
+          agent_id:
+            type: string
+            description: ID of the agent the test case runs against.
+    TestCaseDefinitionV3Metadata:
+      type: object
+      required:
+      - test_case_definition_id
+      - creation_timestamp
+      - user_modified_timestamp
+      properties:
+        test_case_definition_id:
+          type: string
+          description: Unique ID of the test case.
+        creation_timestamp:
+          type: integer
+          description: When the test case was created, in milliseconds since epoch.
+        user_modified_timestamp:
+          type: integer
+          description: When the test case was last modified, in milliseconds since epoch.
+    TestCaseDefinitionV3:
+      allOf:
+      - $ref: '#/components/schemas/TestCaseDefinitionV3Input'
+      - $ref: '#/components/schemas/TestCaseDefinitionV3Metadata'
+    TestCaseJobV3Base:
+      type: object
+      required:
+      - test_case_job_id
+      - test_case_definition_id
+      - test_case_batch_job_id
+      - definition_snapshot
+      - agent_id
+      - agent_version
+      - status
+      - creation_timestamp
+      - user_modified_timestamp
+      - combined_cost
+      properties:
+        test_case_job_id:
+          type: string
+          description: Unique ID of the test run.
+        test_case_definition_id:
+          type: string
+          description: ID of the test case this run is for.
+        test_case_batch_job_id:
+          type: string
+          description: ID of the batch test this run belongs to.
+        definition_snapshot:
+          $ref: '#/components/schemas/TestCaseDefinitionV3'
+          description: The test case as it was when the run was created.
+        agent_id:
+          type: string
+          description: ID of the agent tested.
+        agent_version:
+          type: integer
+          description: Version of the agent tested.
+        status:
+          type: string
+          enum:
+          - pending
+          - in_progress
+          - pass
+          - fail
+          - error
+          - cancelled
+          description: Status of the test run. `pending` means the run is queued but has not started yet; it becomes `in_progress` once it starts, then resolves to `pass`, `fail`, or `error`. `cancelled`
+            means the batch test was cancelled before the run finished.
+        creation_timestamp:
+          type: integer
+          description: When the run was created, in milliseconds since epoch.
+        user_modified_timestamp:
+          type: integer
+          description: When the run was last modified, in milliseconds since epoch.
+        completion_timestamp:
+          type: integer
+          description: When the run finished, in milliseconds since epoch.
+        combined_cost:
+          type: number
+          description: Cost of the run in cents.
+        error_message:
+          type: string
+          description: Why the run failed to complete. Only set when `status` is `error`.
+    ConversationTestCaseJobV3Base:
+      allOf:
+      - $ref: '#/components/schemas/TestCaseJobV3Base'
+      - type: object
+        properties:
+          eval_criteria_results:
+            type: array
+            items:
+              type: object
+              required:
+              - metric_index
+              - status
+              properties:
+                metric_index:
+                  type: integer
+                  minimum: 0
+                  description: Position of the criterion in `definition_snapshot.eval_criteria`.
+                status:
+                  type: string
+                  enum:
+                  - pass
+                  - fail
+                reason:
+                  type: string
+                  description: Why the criterion passed or failed. Only set for prompt-based criteria.
+    TextTestCaseJobV3:
+      allOf:
+      - $ref: '#/components/schemas/ConversationTestCaseJobV3Base'
+      - type: object
+        required:
+        - type
+        properties:
+          type:
+            type: string
+            enum:
+            - text
+          transcript_url:
+            type: string
+            description: URL of the run's transcript, as JSON.
+          performance_metrics:
+            $ref: '#/components/schemas/TextTestCasePerformanceMetrics'
+    AudioTestCaseJobV3:
+      allOf:
+      - $ref: '#/components/schemas/ConversationTestCaseJobV3Base'
+      - type: object
+        required:
+        - type
+        properties:
+          type:
+            type: string
+            enum:
+            - audio
+          transcript_url:
+            type: string
+            description: URL of the run's transcript, as JSON.
+          recording_url:
+            type: string
+            description: URL of the run's audio recording.
+          performance_metrics:
+            $ref: '#/components/schemas/AudioTestCasePerformanceMetrics'
+    AsrTestCaseJobV3:
+      allOf:
+      - $ref: '#/components/schemas/TestCaseJobV3Base'
+      - type: object
+        required:
+        - type
+        properties:
+          type:
+            type: string
+            enum:
+            - asr
+          transcript_url:
+            type: string
+            description: URL of the replay's transcript, as JSON. User utterances come from speech recognition and include only committed turns. Agent utterances come from the source call or the upload's
+              ground truth.
+          wer:
+            type: number
+            description: Word error rate of committed user turns against the user utterances in the ground truth.
+          missing_words:
+            type: array
+            items:
+              type: string
+            description: Words in square brackets in the ground truth that did not appear in committed user turns.
+    TestCaseJobV3:
+      oneOf:
+      - $ref: '#/components/schemas/TextTestCaseJobV3'
+      - $ref: '#/components/schemas/AudioTestCaseJobV3'
+      - $ref: '#/components/schemas/AsrTestCaseJobV3'
+    TestCaseBatchJobV3:
+      type: object
+      required:
+      - test_case_batch_job_id
+      - agent_id
+      - agent_version
+      - test_cases
+      - status
+      - pass_count
+      - fail_count
+      - error_count
+      - cancelled_count
+      - total_count
+      - creation_timestamp
+      - user_modified_timestamp
+      properties:
+        test_case_batch_job_id:
+          type: string
+          description: Unique ID of the batch test.
+        agent_id:
+          type: string
+          description: ID of the agent tested.
+        agent_version:
+          type: integer
+          description: Version of the agent tested.
+        test_cases:
+          type: array
+          items:
+            type: object
+            required:
+            - test_case_definition_id
+            - run_count
+            properties:
+              test_case_definition_id:
+                type: string
+                description: ID of the test case to run.
+              run_count:
+                type: integer
+                description: Number of times to run the test case. Must be 1 for ASR test cases.
+          description: Test cases in the batch.
+        status:
+          type: string
+          enum:
+          - in_progress
+          - complete
+          - cancelling
+          - cancelled
+          description: Status of the batch test. `cancelling` means cancellation was requested and runs are still stopping; it becomes `cancelled` once they have stopped.
+        pass_count:
+          type: integer
+          minimum: 0
+          description: Number of runs that passed.
+        fail_count:
+          type: integer
+          minimum: 0
+          description: Number of runs that failed.
+        error_count:
+          type: integer
+          minimum: 0
+          description: Number of runs that encountered errors.
+        cancelled_count:
+          type: integer
+          minimum: 0
+          description: Number of runs that were cancelled.
+        total_count:
+          type: integer
+          minimum: 0
+          description: Total number of runs in the batch, counting each run of a test case separately.
+        creation_timestamp:
+          type: integer
+          description: When the batch test was created, in milliseconds since epoch.
+        user_modified_timestamp:
+          type: integer
+          description: When the batch test was last modified, in milliseconds since epoch.
+        completion_timestamp:
+          type: integer
+          description: When the batch test finished, in milliseconds since epoch.
+        total_cost:
+          type: number
+          description: Cost of all runs in cents. Only set when the batch test is `complete` or `cancelled`.
+        ai_summary:
+          type: object
+          required:
+          - failure_cases
+          description: Summary of the failures in the batch test. Only set when the batch test is `complete`.
+          properties:
+            failure_cases:
+              type: array
+              items:
+                type: object
+                required:
+                - title
+                - description
+                - test_case_job_ids
+                properties:
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  test_case_job_ids:
+                    type: array
+                    items:
+                      type: string
+                    description: IDs of the test runs where the failure was seen.
     TimeWindow:
       type: object
       required:
@@ -13910,6 +14723,92 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '404':
           $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /get-agent-root/{agent_id}:
+    get:
+      description: Get the settings and status that apply to all versions of an agent, such as its environment tags.
+      operationId: getAgentRoot
+      parameters:
+      - in: path
+        name: agent_id
+        schema:
+          type: string
+          minLength: 1
+          example: agent_xxx
+        required: true
+        description: Unique id of the agent.
+      responses:
+        '200':
+          description: Agent settings returned successfully.
+          headers:
+            ETag:
+              schema:
+                type: string
+              description: Pass this value in If-Match when you update the agent settings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentRootResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableContent'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+  /update-agent-root/{agent_id}:
+    patch:
+      description: Change settings that apply to all versions of an agent, such as its environment tags.
+      operationId: updateAgentRoot
+      parameters:
+      - in: path
+        name: agent_id
+        schema:
+          type: string
+          minLength: 1
+          example: agent_xxx
+        required: true
+        description: Unique id of the agent.
+      - in: header
+        name: If-Match
+        schema:
+          type: string
+          pattern: ^("[0-9]+"|[0-9]+)$
+          example: '"1744761835123"'
+        required: false
+        description: ETag from an earlier get-agent-root or update-agent-root response. If the agent changed since then, the update returns 412 and changes nothing.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAgentRootRequest'
+      responses:
+        '200':
+          description: Agent settings updated successfully.
+          headers:
+            ETag:
+              schema:
+                type: string
+              description: Pass this value in If-Match on your next update of the agent settings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgentRootResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '412':
+          $ref: '#/components/responses/PreconditionFailed'
         '422':
           $ref: '#/components/responses/UnprocessableContent'
         '500':
