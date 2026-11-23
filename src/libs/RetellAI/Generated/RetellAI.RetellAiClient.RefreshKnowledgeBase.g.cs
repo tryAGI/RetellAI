@@ -37,7 +37,7 @@ namespace RetellAI
             global::System.Net.Http.HttpResponseMessage httpResponseMessage);
 
         /// <summary>
-        /// Manually refresh a knowledge base
+        /// Manually refresh a knowledge base. Refreshes do not consume ingestion quota, including URLs discovered through auto-crawling paths. Refreshes the refreshable sources present when background processing begins.
         /// </summary>
         /// <param name="knowledgeBaseId">
         /// Example: knowledge_base_1234567890
@@ -57,7 +57,7 @@ namespace RetellAI
             ).ConfigureAwait(false);
         }
         /// <summary>
-        /// Manually refresh a knowledge base
+        /// Manually refresh a knowledge base. Refreshes do not consume ingestion quota, including URLs discovered through auto-crawling paths. Refreshes the refreshable sources present when background processing begins.
         /// </summary>
         /// <param name="knowledgeBaseId">
         /// Example: knowledge_base_1234567890
@@ -395,7 +395,7 @@ namespace RetellAI
                                         h => h.Key,
                                         h => h.Value));
                             }
-                            // Knowledge base source-addition quota exceeded
+                            // Too Many Requests
                             if ((int)__response.StatusCode == 429)
                             {
                                 string? __content_429 = null;
