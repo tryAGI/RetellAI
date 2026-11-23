@@ -35,7 +35,7 @@ namespace RetellAI
         public global::System.Collections.Generic.IList<global::RetellAI.AllOf<global::RetellAI.TextUtterance, global::RetellAI.TestCaseInputTranscriptItem2>>? StartingTranscript { get; set; }
 
         /// <summary>
-        /// ID of the conversation flow node to start the simulation at.
+        /// ID of the conversation flow node to start the simulation at. Not supported for flex mode agents, which always start from the start node.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("starting_node")]
         public string? StartingNode { get; set; }
@@ -62,7 +62,7 @@ namespace RetellAI
         /// Conversation turns, in order.
         /// </param>
         /// <param name="startingNode">
-        /// ID of the conversation flow node to start the simulation at.
+        /// ID of the conversation flow node to start the simulation at. Not supported for flex mode agents, which always start from the start node.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
