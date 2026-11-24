@@ -11,27 +11,39 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        CallCenter,
+        Airport,
         /// <summary>
         ///
         /// </summary>
-        CoffeeShop,
+        BusyStreet,
         /// <summary>
         ///
         /// </summary>
-        ConventionHall,
+        CarInterior,
         /// <summary>
         ///
         /// </summary>
-        MountainOutdoor,
+        Construction,
         /// <summary>
         ///
         /// </summary>
-        StaticNoise,
+        CracklingStatic,
         /// <summary>
         ///
         /// </summary>
-        SummerOutdoor,
+        CrowdedBar,
+        /// <summary>
+        ///
+        /// </summary>
+        Subway,
+        /// <summary>
+        ///
+        /// </summary>
+        TvInRestaurant,
+        /// <summary>
+        ///
+        /// </summary>
+        Wind,
     }
 
     /// <summary>
@@ -46,12 +58,15 @@ namespace RetellAI
         {
             return value switch
             {
-                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CallCenter => "call-center",
-                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CoffeeShop => "coffee-shop",
-                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.ConventionHall => "convention-hall",
-                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.MountainOutdoor => "mountain-outdoor",
-                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.StaticNoise => "static-noise",
-                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.SummerOutdoor => "summer-outdoor",
+                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.Airport => "airport",
+                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.BusyStreet => "busy-street",
+                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CarInterior => "car-interior",
+                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.Construction => "construction",
+                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CracklingStatic => "crackling-static",
+                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CrowdedBar => "crowded-bar",
+                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.Subway => "subway",
+                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.TvInRestaurant => "tv-in-restaurant",
+                AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.Wind => "wind",
                 _ => throw new global::System.ArgumentOutOfRangeException(nameof(value), value, null),
             };
         }
@@ -62,12 +77,15 @@ namespace RetellAI
         {
             return value switch
             {
-                "call-center" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CallCenter,
-                "coffee-shop" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CoffeeShop,
-                "convention-hall" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.ConventionHall,
-                "mountain-outdoor" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.MountainOutdoor,
-                "static-noise" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.StaticNoise,
-                "summer-outdoor" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.SummerOutdoor,
+                "airport" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.Airport,
+                "busy-street" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.BusyStreet,
+                "car-interior" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CarInterior,
+                "construction" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.Construction,
+                "crackling-static" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CracklingStatic,
+                "crowded-bar" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.CrowdedBar,
+                "subway" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.Subway,
+                "tv-in-restaurant" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.TvInRestaurant,
+                "wind" => AudioTestCaseDefinitionV3FieldsVariant2CallerAudioConditionsBackgroundNoiseSound.Wind,
                 _ => null,
             };
         }
