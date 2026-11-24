@@ -51,13 +51,13 @@ namespace RetellAI
         public string? Name { get; set; }
 
         /// <summary>
-        /// Per-tenant API base URL. Set by providers with per-org hosts; omitted by providers on a single global host. For OneDrive for Business, this is the tenant's -my.sharepoint.com origin used by File Picker v8; personal OneDrive omits it.
+        /// Per-tenant API base URL. Set by providers with per-org hosts; omitted by providers on a single global host.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tenant_url")]
         public string? TenantUrl { get; set; }
 
         /// <summary>
-        /// Microsoft OneDrive account type discovered during OAuth.
+        /// Account type discovered during OAuth.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("tenant_type")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.AppResponseTenantTypeJsonConverter))]
@@ -120,10 +120,10 @@ namespace RetellAI
         /// </param>
         /// <param name="name"></param>
         /// <param name="tenantUrl">
-        /// Per-tenant API base URL. Set by providers with per-org hosts; omitted by providers on a single global host. For OneDrive for Business, this is the tenant's -my.sharepoint.com origin used by File Picker v8; personal OneDrive omits it.
+        /// Per-tenant API base URL. Set by providers with per-org hosts; omitted by providers on a single global host.
         /// </param>
         /// <param name="tenantType">
-        /// Microsoft OneDrive account type discovered during OAuth.
+        /// Account type discovered during OAuth.
         /// </param>
         /// <param name="tenantId">
         /// Sub-account id, for providers that scope requests by a sub-account id on a shared host. Omitted by every other provider.

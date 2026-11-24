@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Microsoft OneDrive account type discovered during OAuth.
+    /// Account type discovered during OAuth.
     /// </summary>
     public enum AppResponseTenantType
     {
