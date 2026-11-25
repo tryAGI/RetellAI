@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace RetellAI
@@ -16,58 +14,6 @@ namespace RetellAI
         [global::System.Text.Json.Serialization.JsonPropertyName("model_config")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ModelConfigJsonConverter))]
         public global::RetellAI.ModelConfig? ModelConfig { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("backup_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableBackupModelChoiceJsonConverter))]
-        public global::RetellAI.NullableBackupModelChoice? BackupModel { get; set; }
-
-        /// <summary>
-        /// Deprecated, use model_config.primary. Ignored when model_config is set.<br/>
-        /// Example: gpt-5.6-terra
-        /// </summary>
-        /// <example>gpt-5.6-terra</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableLLMModelJsonConverter))]
-        public global::RetellAI.NullableLLMModel? Model { get; set; }
-
-        /// <summary>
-        /// Deprecated, use model_config with type s2s. Ignored when model_config is set.<br/>
-        /// Example: gpt-realtime-1.5
-        /// </summary>
-        /// <example>gpt-realtime-1.5</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("s2s_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableS2SModelJsonConverter))]
-        public global::RetellAI.NullableS2SModel? S2sModel { get; set; }
-
-        /// <summary>
-        /// Deprecated, use model_config.temperature. Ignored when model_config is set.<br/>
-        /// Example: 0
-        /// </summary>
-        /// <example>0</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_temperature")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public double? ModelTemperature { get; set; }
-
-        /// <summary>
-        /// Deprecated, use model_config.primary.tier fast. Ignored when model_config is set.<br/>
-        /// Example: true
-        /// </summary>
-        /// <example>true</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_high_priority")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public bool? ModelHighPriority { get; set; }
-
-        /// <summary>
-        /// Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config is set.<br/>
-        /// Example: true
-        /// </summary>
-        /// <example>true</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_ultrafast")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public bool? ModelUltrafast { get; set; }
 
         /// <summary>
         /// A list of knowledge base ids to use for this resource.
@@ -116,7 +62,6 @@ namespace RetellAI
         /// <param name="modelConfig">
         /// Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set; setting backup to null disables it for that call only.
         /// </param>
-        /// <param name="backupModel"></param>
         /// <param name="knowledgeBaseIds">
         /// A list of knowledge base ids to use for this resource.
         /// </param>
@@ -137,7 +82,6 @@ namespace RetellAI
 #endif
         public RetellLlmOverride(
             global::RetellAI.ModelConfig? modelConfig,
-            global::RetellAI.NullableBackupModelChoice? backupModel,
             global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
             global::RetellAI.KBConfig? kbConfig,
             global::RetellAI.RetellLlmOverrideStartSpeaker? startSpeaker,
@@ -145,7 +89,6 @@ namespace RetellAI
             string? beginMessage)
         {
             this.ModelConfig = modelConfig;
-            this.BackupModel = backupModel;
             this.KnowledgeBaseIds = knowledgeBaseIds;
             this.KbConfig = kbConfig;
             this.StartSpeaker = startSpeaker;

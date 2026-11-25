@@ -13,7 +13,8 @@ namespace RetellAI
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.DuplexModelRefModelJsonConverter))]
-        public global::RetellAI.DuplexModelRefModel Model { get; set; }
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::RetellAI.DuplexModelRefModel Model { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema

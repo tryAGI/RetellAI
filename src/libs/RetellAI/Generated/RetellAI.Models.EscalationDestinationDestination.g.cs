@@ -48,10 +48,10 @@ namespace RetellAI
         public global::System.Collections.Generic.Dictionary<string, string>? QueryParams { get; set; }
 
         /// <summary>
-        /// Customer-defined fields nested in args on chat_transfer_requested events. String values support dynamic variables such as {{customer_id}}, including inside nested objects and arrays. Field names and non-string values are preserved.
+        /// The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("body")]
-        public object? Body { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("parameters")]
+        public global::RetellAI.ToolParameter? Parameters { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -70,8 +70,8 @@ namespace RetellAI
         /// <param name="maxRetry"></param>
         /// <param name="headers"></param>
         /// <param name="queryParams"></param>
-        /// <param name="body">
-        /// Customer-defined fields nested in args on chat_transfer_requested events. String values support dynamic variables such as {{customer_id}}, including inside nested objects and arrays. Field names and non-string values are preserved.
+        /// <param name="parameters">
+        /// The parameters the functions accepts, described as a JSON Schema object. See [JSON Schema reference](https://json-schema.org/understanding-json-schema/) for documentation about the format. Omitting parameters defines a function with an empty parameter list.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -83,7 +83,7 @@ namespace RetellAI
             int? maxRetry,
             global::System.Collections.Generic.Dictionary<string, string>? headers,
             global::System.Collections.Generic.Dictionary<string, string>? queryParams,
-            object? body)
+            global::RetellAI.ToolParameter? parameters)
         {
             this.Url = url ?? throw new global::System.ArgumentNullException(nameof(url));
             this.Method = method;
@@ -91,7 +91,7 @@ namespace RetellAI
             this.MaxRetry = maxRetry;
             this.Headers = headers;
             this.QueryParams = queryParams;
-            this.Body = body;
+            this.Parameters = parameters;
         }
 
         /// <summary>

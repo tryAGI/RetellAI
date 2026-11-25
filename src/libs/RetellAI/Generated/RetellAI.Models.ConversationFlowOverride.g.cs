@@ -1,6 +1,4 @@
 
-#pragma warning disable CS0618 // Type or member is obsolete
-
 #nullable enable
 
 namespace RetellAI
@@ -16,29 +14,6 @@ namespace RetellAI
         [global::System.Text.Json.Serialization.JsonPropertyName("model_config")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ModelConfigJsonConverter))]
         public global::RetellAI.ModelConfig? ModelConfig { get; set; }
-
-        /// <summary>
-        ///
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("backup_model")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NullableBackupModelChoiceJsonConverter))]
-        public global::RetellAI.NullableBackupModelChoice? BackupModel { get; set; }
-
-        /// <summary>
-        /// Deprecated, use model_config. Ignored when model_config is set.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_choice")]
-        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.ModelChoiceJsonConverter))]
-        public global::RetellAI.ModelChoice? ModelChoice { get; set; }
-
-        /// <summary>
-        /// Deprecated, use model_config.temperature. Ignored when model_config is set.<br/>
-        /// Example: 0.7
-        /// </summary>
-        /// <example>0.7</example>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_temperature")]
-        [global::System.Obsolete("This property marked as deprecated.")]
-        public double? ModelTemperature { get; set; }
 
         /// <summary>
         /// Knowledge base IDs for RAG (Retrieval-Augmented Generation).<br/>
@@ -83,7 +58,6 @@ namespace RetellAI
         /// <param name="modelConfig">
         /// Model settings for the response engine. type decides which models primary and backup accept. On update, each top-level key replaces the current one and omitted keys are kept; set backup to null to remove it. Changing type requires primary and clears backup, while temperature carries over. In agent_override, type is required whenever primary is set; setting backup to null disables it for that call only.
         /// </param>
-        /// <param name="backupModel"></param>
         /// <param name="knowledgeBaseIds">
         /// Knowledge base IDs for RAG (Retrieval-Augmented Generation).<br/>
         /// Example: [kb_001, kb_002]
@@ -102,14 +76,12 @@ namespace RetellAI
 #endif
         public ConversationFlowOverride(
             global::RetellAI.ModelConfig? modelConfig,
-            global::RetellAI.NullableBackupModelChoice? backupModel,
             global::System.Collections.Generic.IList<string>? knowledgeBaseIds,
             global::RetellAI.KBConfig? kbConfig,
             global::RetellAI.ConversationFlowOverrideStartSpeaker? startSpeaker,
             int? beginAfterUserSilenceMs)
         {
             this.ModelConfig = modelConfig;
-            this.BackupModel = backupModel;
             this.KnowledgeBaseIds = knowledgeBaseIds;
             this.KbConfig = kbConfig;
             this.StartSpeaker = startSpeaker;
