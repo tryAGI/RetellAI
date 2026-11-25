@@ -16,12 +16,6 @@ namespace RetellAI
         public global::RetellAI.NullableNodeModelConfig? ModelConfig { get; set; }
 
         /// <summary>
-        /// Deprecated, use model_config. When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("model_choice")]
-        public global::RetellAI.ModelChoiceCascading? ModelChoice { get; set; }
-
-        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]

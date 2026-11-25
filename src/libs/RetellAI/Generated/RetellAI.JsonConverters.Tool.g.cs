@@ -39,6 +39,7 @@ namespace RetellAI.JsonConverters
             if (__jsonProps.Contains("destination")) __score0++;
             if (__jsonProps.Contains("destination.destination")) __score0++;
             if (__jsonProps.Contains("destination.type")) __score0++;
+            if (__jsonProps.Contains("handoff_message")) __score0++;
             if (__jsonProps.Contains("name")) __score0++;
             if (__jsonProps.Contains("type")) __score0++;
             var __score1 = 0;

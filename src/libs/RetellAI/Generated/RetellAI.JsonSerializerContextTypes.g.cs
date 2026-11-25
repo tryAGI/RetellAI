@@ -1102,931 +1102,931 @@ namespace RetellAI
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ModelChoice? Type266 { get; set; }
+        public global::RetellAI.KBConfig? Type266 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KBConfig? Type267 { get; set; }
+        public global::RetellAI.ConversationFlowOverrideStartSpeaker? Type267 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationFlowOverrideStartSpeaker? Type268 { get; set; }
+        public global::RetellAI.ConversationFlowResponse? Type268 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationFlowResponse? Type269 { get; set; }
+        public global::RetellAI.ConversationFlow? Type269 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationFlow? Type270 { get; set; }
+        public global::RetellAI.ConversationFlowResponseVariant2? Type270 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationFlowResponseVariant2? Type271 { get; set; }
+        public global::RetellAI.ConversationFlowVariant2? Type271 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationFlowVariant2? Type272 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.CreateConversationFlowComponentRequest>? Type272 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.CreateConversationFlowComponentRequest>? Type273 { get; set; }
+        public global::RetellAI.ConversationFlowVariant2BeginTagDisplayPosition? Type273 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationFlowVariant2BeginTagDisplayPosition? Type274 { get; set; }
+        public global::RetellAI.ConversationNodeVariant3? Type274 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationNodeVariant3? Type275 { get; set; }
+        public global::RetellAI.ConversationNodeVariant3Type? Type275 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ConversationNodeVariant3Type? Type276 { get; set; }
+        public global::RetellAI.SkipResponseEdge? Type276 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SkipResponseEdge? Type277 { get; set; }
+        public global::RetellAI.AlwaysEdge? Type277 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AlwaysEdge? Type278 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneConversationExample>? Type278 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.NodeFinetuneConversationExample>? Type279 { get; set; }
+        public global::RetellAI.NodeFinetuneConversationExample? Type279 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeFinetuneConversationExample? Type280 { get; set; }
+        public global::RetellAI.SubagentNodeVariant3? Type280 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SubagentNodeVariant3? Type281 { get; set; }
+        public global::RetellAI.SubagentNodeVariant3Type? Type281 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SubagentNodeVariant3Type? Type282 { get; set; }
+        public global::RetellAI.NodeInstructionPrompt? Type282 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeInstructionPrompt? Type283 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.Tool>? Type283 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.Tool>? Type284 { get; set; }
+        public global::RetellAI.Tool? Type284 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.Tool? Type285 { get; set; }
+        public global::RetellAI.CpsConfig? Type285 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CpsConfig? Type286 { get; set; }
+        public global::RetellAI.CreateConversationFlowRequest? Type286 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateConversationFlowRequest? Type287 { get; set; }
+        public global::RetellAI.CreateOrganizationRequest? Type287 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateOrganizationRequest? Type288 { get; set; }
+        public global::RetellAI.CreateOrganizationRequestNew? Type288 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateOrganizationRequestNew? Type289 { get; set; }
+        public global::RetellAI.CreateOrganizationRequestOld? Type289 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateOrganizationRequestOld? Type290 { get; set; }
+        public global::RetellAI.CreateCreditTopupInvoiceRequest? Type290 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateCreditTopupInvoiceRequest? Type291 { get; set; }
+        public global::RetellAI.CreateCreditTopupInvoiceResponse? Type291 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CreateCreditTopupInvoiceResponse? Type292 { get; set; }
+        public global::RetellAI.CustomMetricCriteria? Type292 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomMetricCriteria? Type293 { get; set; }
+        public global::RetellAI.CustomTool? Type293 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomTool? Type294 { get; set; }
+        public global::RetellAI.CustomToolType? Type294 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomToolType? Type295 { get; set; }
+        public global::RetellAI.CustomToolMethod? Type295 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomToolMethod? Type296 { get; set; }
+        public global::RetellAI.ToolParameter? Type296 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolParameter? Type297 { get; set; }
+        public global::RetellAI.CustomToolExecutionMessageType? Type297 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomToolExecutionMessageType? Type298 { get; set; }
+        public global::RetellAI.CustomToolParameterType? Type298 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomToolParameterType? Type299 { get; set; }
+        public global::RetellAI.CodeTool? Type299 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CodeTool? Type300 { get; set; }
+        public global::RetellAI.CodeToolType? Type300 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CodeToolType? Type301 { get; set; }
+        public global::RetellAI.CodeToolExecutionMessageType? Type301 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CodeToolExecutionMessageType? Type302 { get; set; }
+        public global::RetellAI.AppTool? Type302 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AppTool? Type303 { get; set; }
+        public global::RetellAI.AppToolType? Type303 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AppToolType? Type304 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ToolParameter>? Type304 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.ToolParameter>? Type305 { get; set; }
+        public global::RetellAI.OutputSelection? Type305 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OutputSelection? Type306 { get; set; }
+        public global::RetellAI.AppToolExecutionMessageType? Type306 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AppToolExecutionMessageType? Type307 { get; set; }
+        public global::RetellAI.OutputSelectionVariant1? Type307 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OutputSelectionVariant1? Type308 { get; set; }
+        public global::RetellAI.OutputSelectionVariant1Mode? Type308 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OutputSelectionVariant1Mode? Type309 { get; set; }
+        public global::RetellAI.OutputSelectionVariant2? Type309 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OutputSelectionVariant2? Type310 { get; set; }
+        public global::RetellAI.OutputSelectionVariant2Mode? Type310 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OutputSelectionVariant2Mode? Type311 { get; set; }
+        public global::RetellAI.OneOf<global::RetellAI.AppTool, global::RetellAI.CustomTool, global::RetellAI.CodeTool>? Type311 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OneOf<global::RetellAI.AppTool, global::RetellAI.CustomTool, global::RetellAI.CodeTool>? Type312 { get; set; }
+        public global::RetellAI.PreSessionToolVariant2? Type312 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PreSessionToolVariant2? Type313 { get; set; }
+        public global::RetellAI.OneOf<global::RetellAI.AppTool, global::RetellAI.CustomTool, global::RetellAI.CodeTool, global::RetellAI.SendSMSTool>? Type313 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OneOf<global::RetellAI.AppTool, global::RetellAI.CustomTool, global::RetellAI.CodeTool, global::RetellAI.SendSMSTool>? Type314 { get; set; }
+        public global::RetellAI.SendSMSTool? Type314 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SendSMSTool? Type315 { get; set; }
+        public global::RetellAI.PostSessionToolVariant2? Type315 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PostSessionToolVariant2? Type316 { get; set; }
+        public global::RetellAI.EquationCondition? Type316 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EquationCondition? Type317 { get; set; }
+        public global::RetellAI.DTMFUtterance? Type317 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DTMFUtterance? Type318 { get; set; }
+        public global::RetellAI.DTMFUtteranceRole? Type318 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.DTMFUtteranceRole? Type319 { get; set; }
+        public global::RetellAI.SmsUtterance? Type319 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsUtterance? Type320 { get; set; }
+        public global::RetellAI.SmsUtteranceRole? Type320 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsUtteranceRole? Type321 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.SmsMultimediaItem>? Type321 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.SmsMultimediaItem>? Type322 { get; set; }
+        public global::RetellAI.SmsMultimediaItem? Type322 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsMultimediaItem? Type323 { get; set; }
+        public global::RetellAI.InjectedUtterance? Type323 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.InjectedUtterance? Type324 { get; set; }
+        public global::RetellAI.InjectedUtteranceRole? Type324 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.InjectedUtteranceRole? Type325 { get; set; }
+        public global::RetellAI.StringFilterType? Type325 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StringFilterType? Type326 { get; set; }
+        public global::RetellAI.StringFilterOp? Type326 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StringFilterOp? Type327 { get; set; }
+        public global::RetellAI.NumberFilterType? Type327 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NumberFilterType? Type328 { get; set; }
+        public global::RetellAI.NumberFilterOp? Type328 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NumberFilterOp? Type329 { get; set; }
+        public global::RetellAI.BooleanFilterType? Type329 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BooleanFilterType? Type330 { get; set; }
+        public global::RetellAI.BooleanFilterOp? Type330 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BooleanFilterOp? Type331 { get; set; }
+        public global::RetellAI.RangeFilterType? Type331 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RangeFilterType? Type332 { get; set; }
+        public global::RetellAI.RangeFilterOp? Type332 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.RangeFilterOp? Type333 { get; set; }
+        public global::RetellAI.EnumFilterType? Type333 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EnumFilterType? Type334 { get; set; }
+        public global::RetellAI.EnumFilterOp? Type334 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EnumFilterOp? Type335 { get; set; }
+        public global::RetellAI.PresentFilter? Type335 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PresentFilter? Type336 { get; set; }
+        public global::RetellAI.PresentFilterType? Type336 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PresentFilterType? Type337 { get; set; }
+        public global::RetellAI.PresentFilterOp? Type337 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PresentFilterOp? Type338 { get; set; }
+        public global::RetellAI.ValueFilter? Type338 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ValueFilter? Type339 { get; set; }
+        public global::RetellAI.CustomFieldFilterVariant2? Type339 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CustomFieldFilterVariant2? Type340 { get; set; }
+        public global::RetellAI.ToolCallFilter? Type340 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallFilter? Type341 { get; set; }
+        public global::RetellAI.CallFilter? Type341 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilter? Type342 { get; set; }
+        public global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? Type342 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.EnumFilter>? Type343 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterCallStatus>? Type343 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterCallStatus>? Type344 { get; set; }
+        public global::RetellAI.CallFilterCallStatus? Type344 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterCallStatus? Type345 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterCallStatusValueItem>? Type345 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterCallStatusValueItem>? Type346 { get; set; }
+        public global::RetellAI.CallFilterCallStatusValueItem? Type346 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterCallStatusValueItem? Type347 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterDisconnectionReason>? Type347 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterDisconnectionReason>? Type348 { get; set; }
+        public global::RetellAI.CallFilterDisconnectionReason? Type348 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterDisconnectionReason? Type349 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterCallType>? Type349 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterCallType>? Type350 { get; set; }
+        public global::RetellAI.CallFilterCallType? Type350 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterCallType? Type351 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterCallTypeValueItem>? Type351 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterCallTypeValueItem>? Type352 { get; set; }
+        public global::RetellAI.CallFilterCallTypeValueItem? Type352 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterCallTypeValueItem? Type353 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterDirection>? Type353 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterDirection>? Type354 { get; set; }
+        public global::RetellAI.CallFilterDirection? Type354 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterDirection? Type355 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterDirectionValueItem>? Type355 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterDirectionValueItem>? Type356 { get; set; }
+        public global::RetellAI.CallFilterDirectionValueItem? Type356 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterDirectionValueItem? Type357 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterUserSentiment>? Type357 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterUserSentiment>? Type358 { get; set; }
+        public global::RetellAI.CallFilterUserSentiment? Type358 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterUserSentiment? Type359 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterUserSentimentValueItem>? Type359 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterUserSentimentValueItem>? Type360 { get; set; }
+        public global::RetellAI.CallFilterUserSentimentValueItem? Type360 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterUserSentimentValueItem? Type361 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterDataStorageSetting>? Type361 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.CallFilterDataStorageSetting>? Type362 { get; set; }
+        public global::RetellAI.CallFilterDataStorageSetting? Type362 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterDataStorageSetting? Type363 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterDataStorageSettingValueItem>? Type363 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.CallFilterDataStorageSettingValueItem>? Type364 { get; set; }
+        public global::RetellAI.CallFilterDataStorageSettingValueItem? Type364 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CallFilterDataStorageSettingValueItem? Type365 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ToolCallFilter>? Type365 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.ToolCallFilter>? Type366 { get; set; }
+        public global::RetellAI.StoredCallFilter? Type366 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StoredCallFilter? Type367 { get; set; }
+        public global::RetellAI.StoredCallFilterVariant2? Type367 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StoredCallFilterVariant2? Type368 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatType>? Type368 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatType>? Type369 { get; set; }
+        public global::RetellAI.ChatFilterChatType? Type369 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterChatType? Type370 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterChatTypeValueItem>? Type370 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterChatTypeValueItem>? Type371 { get; set; }
+        public global::RetellAI.ChatFilterChatTypeValueItem? Type371 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterChatTypeValueItem? Type372 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDirection>? Type372 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDirection>? Type373 { get; set; }
+        public global::RetellAI.ChatFilterDirection? Type373 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterDirection? Type374 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterDirectionValueItem>? Type374 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterDirectionValueItem>? Type375 { get; set; }
+        public global::RetellAI.ChatFilterDirectionValueItem? Type375 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterDirectionValueItem? Type376 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDataStorageSetting>? Type376 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDataStorageSetting>? Type377 { get; set; }
+        public global::RetellAI.ChatFilterDataStorageSetting? Type377 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterDataStorageSetting? Type378 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterDataStorageSettingValueItem>? Type378 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterDataStorageSettingValueItem>? Type379 { get; set; }
+        public global::RetellAI.ChatFilterDataStorageSettingValueItem? Type379 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterDataStorageSettingValueItem? Type380 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatStatus>? Type380 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterChatStatus>? Type381 { get; set; }
+        public global::RetellAI.ChatFilterChatStatus? Type381 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterChatStatus? Type382 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterChatStatusValueItem>? Type382 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterChatStatusValueItem>? Type383 { get; set; }
+        public global::RetellAI.ChatFilterChatStatusValueItem? Type383 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterChatStatusValueItem? Type384 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDisconnectionReason>? Type384 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterDisconnectionReason>? Type385 { get; set; }
+        public global::RetellAI.ChatFilterDisconnectionReason? Type385 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterDisconnectionReason? Type386 { get; set; }
+        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterUserSentiment>? Type386 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.AllOf<global::RetellAI.EnumFilter, global::RetellAI.ChatFilterUserSentiment>? Type387 { get; set; }
+        public global::RetellAI.ChatFilterUserSentiment? Type387 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterUserSentiment? Type388 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterUserSentimentValueItem>? Type388 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.ChatFilterUserSentimentValueItem>? Type389 { get; set; }
+        public global::RetellAI.ChatFilterUserSentimentValueItem? Type389 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatFilterUserSentimentValueItem? Type390 { get; set; }
+        public global::RetellAI.ContactFilter? Type390 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ContactFilter? Type391 { get; set; }
+        public global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.PresentFilter>? Type391 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OneOf<global::RetellAI.StringFilter, global::RetellAI.PresentFilter>? Type392 { get; set; }
+        public global::RetellAI.ListContactsRequest? Type392 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsRequest? Type393 { get; set; }
+        public global::RetellAI.ListContactsRequestSortOrder? Type393 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ListContactsRequestSortOrder? Type394 { get; set; }
+        public global::RetellAI.Duration? Type394 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.Duration? Type395 { get; set; }
+        public global::RetellAI.ElseEdgeVariant2? Type395 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ElseEdgeVariant2? Type396 { get; set; }
+        public global::RetellAI.ElseEdgeVariant2TransitionCondition? Type396 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ElseEdgeVariant2TransitionCondition? Type397 { get; set; }
+        public global::RetellAI.ElseEdgeVariant2TransitionConditionType? Type397 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ElseEdgeVariant2TransitionConditionType? Type398 { get; set; }
+        public global::RetellAI.ElseEdgeVariant2TransitionConditionPrompt? Type398 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ElseEdgeVariant2TransitionConditionPrompt? Type399 { get; set; }
+        public global::RetellAI.EndCallTool? Type399 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EndCallTool? Type400 { get; set; }
+        public global::RetellAI.EndCallToolType? Type400 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EndCallToolType? Type401 { get; set; }
+        public global::RetellAI.EndCallToolExecutionMessageType? Type401 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EndCallToolExecutionMessageType? Type402 { get; set; }
+        public global::RetellAI.EndNodeVariant2? Type402 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EndNodeVariant2? Type403 { get; set; }
+        public global::RetellAI.EndNodeVariant2Type? Type403 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EndNodeVariant2Type? Type404 { get; set; }
+        public global::RetellAI.EnumAnalysisDataType? Type404 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EnumAnalysisDataType? Type405 { get; set; }
+        public global::RetellAI.EquationConditionType? Type405 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EquationConditionType? Type406 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.Equation>? Type406 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.Equation>? Type407 { get; set; }
+        public global::RetellAI.Equation? Type407 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.Equation? Type408 { get; set; }
+        public global::RetellAI.EquationConditionOperator? Type408 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EquationConditionOperator? Type409 { get; set; }
+        public global::RetellAI.EquationPromptCondition? Type409 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EquationPromptCondition? Type410 { get; set; }
+        public global::RetellAI.EquationPromptConditionType? Type410 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EquationPromptConditionType? Type411 { get; set; }
+        public global::RetellAI.EquationPromptConditionOperator? Type411 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EquationPromptConditionOperator? Type412 { get; set; }
+        public global::RetellAI.PromptCondition? Type412 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PromptCondition? Type413 { get; set; }
+        public global::RetellAI.EquationOperator? Type413 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.EquationOperator? Type414 { get; set; }
+        public global::RetellAI.ExtractDynamicVariableTool? Type414 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ExtractDynamicVariableTool? Type415 { get; set; }
+        public global::RetellAI.ExtractDynamicVariableToolType? Type415 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ExtractDynamicVariableToolType? Type416 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>? Type416 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.AnalysisData>? Type417 { get; set; }
+        public global::RetellAI.ExtractDynamicVariablesNodeVariant2? Type417 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ExtractDynamicVariablesNodeVariant2? Type418 { get; set; }
+        public global::RetellAI.ExtractDynamicVariablesNodeVariant2Type? Type418 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ExtractDynamicVariablesNodeVariant2Type? Type419 { get; set; }
+        public global::RetellAI.FinetuneExampleUtterance? Type419 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FinetuneExampleUtterance? Type420 { get; set; }
+        public global::RetellAI.FinetuneExampleUtteranceVariant1? Type420 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FinetuneExampleUtteranceVariant1? Type421 { get; set; }
+        public global::RetellAI.FinetuneExampleUtteranceVariant1Role? Type421 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FinetuneExampleUtteranceVariant1Role? Type422 { get; set; }
+        public global::RetellAI.FinetuneExampleUtteranceVariant2? Type422 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FinetuneExampleUtteranceVariant2? Type423 { get; set; }
+        public global::RetellAI.FinetuneExampleUtteranceVariant2Role? Type423 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FinetuneExampleUtteranceVariant2Role? Type424 { get; set; }
+        public global::RetellAI.FinetuneExampleUtteranceVariant3? Type424 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FinetuneExampleUtteranceVariant3? Type425 { get; set; }
+        public global::RetellAI.FinetuneExampleUtteranceVariant3Role? Type425 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FinetuneExampleUtteranceVariant3Role? Type426 { get; set; }
+        public global::RetellAI.FunctionNodeVariant2? Type426 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FunctionNodeVariant2? Type427 { get; set; }
+        public global::RetellAI.FunctionNodeVariant2Type? Type427 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FunctionNodeVariant2Type? Type428 { get; set; }
+        public global::RetellAI.FunctionNodeVariant2ToolType? Type428 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.FunctionNodeVariant2ToolType? Type429 { get; set; }
+        public global::RetellAI.CodeNodeVariant2? Type429 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CodeNodeVariant2? Type430 { get; set; }
+        public global::RetellAI.CodeNodeVariant2Type? Type430 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.CodeNodeVariant2Type? Type431 { get; set; }
+        public global::RetellAI.GlobalNodeFinetuneTransitionExample? Type431 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GlobalNodeFinetuneTransitionExample? Type432 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.FinetuneExampleUtterance>? Type432 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.FinetuneExampleUtterance>? Type433 { get; set; }
+        public global::RetellAI.GlobalNodeSetting? Type433 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.GlobalNodeSetting? Type434 { get; set; }
+        public global::RetellAI.OneOf<string, global::RetellAI.PromptCondition, global::RetellAI.EquationCondition, global::RetellAI.EquationPromptCondition>? Type434 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OneOf<string, global::RetellAI.PromptCondition, global::RetellAI.EquationCondition, global::RetellAI.EquationPromptCondition>? Type435 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.GlobalNodeFinetuneTransitionExample>? Type435 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.GlobalNodeFinetuneTransitionExample>? Type436 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceHallucination>? Type436 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceHallucination>? Type437 { get; set; }
+        public global::RetellAI.UtteranceHallucination? Type437 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UtteranceHallucination? Type438 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.Duration>? Type438 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.Duration>? Type439 { get; set; }
+        public global::RetellAI.KnowledgeBaseAddSourcesRequest? Type439 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseAddSourcesRequest? Type440 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.KnowledgeBaseAddSourcesRequestKnowledgeBaseText>? Type440 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.KnowledgeBaseAddSourcesRequestKnowledgeBaseText>? Type441 { get; set; }
+        public global::RetellAI.KnowledgeBaseAddSourcesRequestKnowledgeBaseText? Type441 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseAddSourcesRequestKnowledgeBaseText? Type442 { get; set; }
+        public global::System.Collections.Generic.IList<byte[]>? Type442 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<byte[]>? Type443 { get; set; }
+        public byte[]? Type443 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public byte[]? Type444 { get; set; }
+        public global::RetellAI.KnowledgeBaseRequest? Type444 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseRequest? Type445 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.KnowledgeBaseRequestKnowledgeBaseText>? Type445 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.KnowledgeBaseRequestKnowledgeBaseText>? Type446 { get; set; }
+        public global::RetellAI.KnowledgeBaseRequestKnowledgeBaseText? Type446 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseRequestKnowledgeBaseText? Type447 { get; set; }
+        public global::RetellAI.KnowledgeBaseResponse? Type447 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseResponse? Type448 { get; set; }
+        public global::RetellAI.KnowledgeBaseResponseRemainingIngestionQuota? Type448 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseResponseRemainingIngestionQuota? Type449 { get; set; }
+        public global::RetellAI.KnowledgeBaseEffectiveIngestionLimits? Type449 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseEffectiveIngestionLimits? Type450 { get; set; }
+        public global::RetellAI.KnowledgeBaseResponseStatus? Type450 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseResponseStatus? Type451 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.OneOf<global::RetellAI.KnowledgeBaseSourceDocument, global::RetellAI.KnowledgeBaseSourceText, global::RetellAI.KnowledgeBaseSourceUrl>>? Type451 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.OneOf<global::RetellAI.KnowledgeBaseSourceDocument, global::RetellAI.KnowledgeBaseSourceText, global::RetellAI.KnowledgeBaseSourceUrl>>? Type452 { get; set; }
+        public global::RetellAI.OneOf<global::RetellAI.KnowledgeBaseSourceDocument, global::RetellAI.KnowledgeBaseSourceText, global::RetellAI.KnowledgeBaseSourceUrl>? Type452 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OneOf<global::RetellAI.KnowledgeBaseSourceDocument, global::RetellAI.KnowledgeBaseSourceText, global::RetellAI.KnowledgeBaseSourceUrl>? Type453 { get; set; }
+        public global::RetellAI.KnowledgeBaseSourceDocument? Type453 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseSourceDocument? Type454 { get; set; }
+        public global::RetellAI.KnowledgeBaseSourceText? Type454 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseSourceText? Type455 { get; set; }
+        public global::RetellAI.KnowledgeBaseSourceUrl? Type455 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseSourceUrl? Type456 { get; set; }
+        public global::RetellAI.KnowledgeBaseSourceDocumentType? Type456 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseSourceDocumentType? Type457 { get; set; }
+        public global::RetellAI.KnowledgeBaseSourceTextType? Type457 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseSourceTextType? Type458 { get; set; }
+        public global::RetellAI.KnowledgeBaseSourceUrlType? Type458 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.KnowledgeBaseSourceUrlType? Type459 { get; set; }
+        public global::RetellAI.MCPNodeVariant2? Type459 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MCPNodeVariant2? Type460 { get; set; }
+        public global::RetellAI.MCPNodeVariant2Type? Type460 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MCPNodeVariant2Type? Type461 { get; set; }
+        public global::RetellAI.MCPToolDefinition? Type461 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MCPToolDefinition? Type462 { get; set; }
+        public global::RetellAI.MCPTool? Type462 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MCPTool? Type463 { get; set; }
+        public global::RetellAI.MCPToolType? Type463 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MCPToolType? Type464 { get; set; }
+        public global::RetellAI.MCPToolExecutionMessageType? Type464 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MCPToolExecutionMessageType? Type465 { get; set; }
+        public global::RetellAI.Message? Type465 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.Message? Type466 { get; set; }
+        public global::RetellAI.ToolCallInvocationMessage? Type466 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallInvocationMessage? Type467 { get; set; }
+        public global::RetellAI.ToolCallResultMessage? Type467 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallResultMessage? Type468 { get; set; }
+        public global::RetellAI.NodeTransitionMessage? Type468 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeTransitionMessage? Type469 { get; set; }
+        public global::RetellAI.StateTransitionMessage? Type469 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StateTransitionMessage? Type470 { get; set; }
+        public global::RetellAI.InjectedMessage? Type470 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.InjectedMessage? Type471 { get; set; }
+        public global::RetellAI.SmsMessage? Type471 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsMessage? Type472 { get; set; }
+        public global::RetellAI.ChatMessageInput? Type472 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ChatMessageInput? Type473 { get; set; }
+        public global::RetellAI.MessageBase? Type473 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MessageBase? Type474 { get; set; }
+        public global::RetellAI.ToolCallInvocationMessageBase? Type474 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallInvocationMessageBase? Type475 { get; set; }
+        public global::RetellAI.ToolCallResultMessageBase? Type475 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ToolCallResultMessageBase? Type476 { get; set; }
+        public global::RetellAI.NodeTransitionMessageBase? Type476 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.NodeTransitionMessageBase? Type477 { get; set; }
+        public global::RetellAI.StateTransitionMessageBase? Type477 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.StateTransitionMessageBase? Type478 { get; set; }
+        public global::RetellAI.InjectedMessageBase? Type478 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.InjectedMessageBase? Type479 { get; set; }
+        public global::RetellAI.SmsMessageBase? Type479 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsMessageBase? Type480 { get; set; }
+        public global::RetellAI.MessageBaseCustomerDefinedMetadata? Type480 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MessageBaseCustomerDefinedMetadata? Type481 { get; set; }
+        public global::RetellAI.MessageBaseRole? Type481 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.MessageBaseRole? Type482 { get; set; }
+        public global::RetellAI.InjectedMessageBaseRole? Type482 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.InjectedMessageBaseRole? Type483 { get; set; }
+        public global::RetellAI.SmsMessageBaseRole? Type483 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.SmsMessageBaseRole? Type484 { get; set; }
+        public global::RetellAI.OneOf<global::RetellAI.PerformanceMetricCriteria, global::RetellAI.CustomMetricCriteria>? Type484 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OneOf<global::RetellAI.PerformanceMetricCriteria, global::RetellAI.CustomMetricCriteria>? Type485 { get; set; }
+        public global::RetellAI.PerformanceMetricCriteria? Type485 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.PerformanceMetricCriteria? Type486 { get; set; }
+        public global::RetellAI.OneOf<double?, bool?, string>? Type486 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.OneOf<double?, bool?, string>? Type487 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceTranscriptionError>? Type487 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceTranscriptionError>? Type488 { get; set; }
+        public global::RetellAI.UtteranceTranscriptionError? Type488 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UtteranceTranscriptionError? Type489 { get; set; }
+        public global::RetellAI.Wer? Type489 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.Wer? Type490 { get; set; }
+        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceTranscriptionErrorMieDetail>? Type490 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::System.Collections.Generic.IList<global::RetellAI.UtteranceTranscriptionErrorMieDetail>? Type491 { get; set; }
+        public global::RetellAI.UtteranceTranscriptionErrorMieDetail? Type491 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.UtteranceTranscriptionErrorMieDetail? Type492 { get; set; }
+        public global::RetellAI.ModelChoiceCascading? Type492 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ModelChoiceCascading? Type493 { get; set; }
+        public global::RetellAI.BackupModelChoiceVariant2? Type493 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.BackupModelChoiceVariant2? Type494 { get; set; }
+        public global::RetellAI.ModelChoiceCascadingType? Type494 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ModelChoiceCascadingType? Type495 { get; set; }
+        public global::RetellAI.ModelChoiceS2S? Type495 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ModelChoiceS2S? Type496 { get; set; }
+        public global::RetellAI.ModelChoiceS2SType? Type496 { get; set; }
         /// <summary>
         ///
         /// </summary>
-        public global::RetellAI.ModelChoiceS2SType? Type497 { get; set; }
+        public global::RetellAI.ModelChoice? Type497 { get; set; }
         /// <summary>
         ///
         /// </summary>

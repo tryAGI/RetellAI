@@ -36,6 +36,14 @@ namespace RetellAI
         public required global::RetellAI.EscalationDestination Destination { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("handoff_message")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NodeInstructionJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::RetellAI.NodeInstruction HandoffMessage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -46,6 +54,7 @@ namespace RetellAI
         /// </summary>
         /// <param name="name"></param>
         /// <param name="destination"></param>
+        /// <param name="handoffMessage"></param>
         /// <param name="type"></param>
         /// <param name="description"></param>
 #if NET7_0_OR_GREATER
@@ -54,6 +63,7 @@ namespace RetellAI
         public EscalateChatTool(
             string name,
             global::RetellAI.EscalationDestination destination,
+            global::RetellAI.NodeInstruction handoffMessage,
             global::RetellAI.EscalateChatToolType type,
             string? description)
         {
@@ -61,6 +71,7 @@ namespace RetellAI
             this.Name = name ?? throw new global::System.ArgumentNullException(nameof(name));
             this.Description = description;
             this.Destination = destination ?? throw new global::System.ArgumentNullException(nameof(destination));
+            this.HandoffMessage = handoffMessage;
         }
 
         /// <summary>

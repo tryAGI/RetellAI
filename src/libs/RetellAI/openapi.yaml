@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-24-cf220c4
+  x-retell-spec-revision: 2026-11-25-2a1c087
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -3026,23 +3026,6 @@ components:
       properties:
         model_config:
           $ref: '#/components/schemas/ModelConfig'
-        backup_model:
-          $ref: '#/components/schemas/NullableBackupModelChoice'
-          description: Replace backup model configuration for this call only. Omit to inherit the saved configuration, or set null to disable backup. An omitted backup_kick_in_timeout in a supplied configuration
-            defaults to 1500 milliseconds.
-        model_choice:
-          allOf:
-          - $ref: '#/components/schemas/ModelChoice'
-          description: Deprecated, use model_config. Ignored when model_config is set.
-          deprecated: true
-        model_temperature:
-          type: number
-          minimum: 0
-          maximum: 1
-          example: 0.7
-          description: Deprecated, use model_config.temperature. Ignored when model_config is set.
-          nullable: true
-          deprecated: true
         knowledge_base_ids:
           type: array
           items:
@@ -3093,10 +3076,6 @@ components:
       - $ref: '#/components/schemas/ConversationFlowOverride'
       - type: object
         properties:
-          backup_model:
-            allOf:
-            - $ref: '#/components/schemas/NullableBackupModelChoice'
-            deprecated: true
           global_prompt:
             type: string
             example: You are a helpful customer service agent.
@@ -5808,6 +5787,7 @@ components:
         model:
           type: string
           enum:
+          - gpt-live-1.1
           - gpt-live-1
     DuplexModelConfig:
       type: object
@@ -5868,11 +5848,6 @@ components:
         properties:
           model_config:
             $ref: '#/components/schemas/NullableNodeModelConfig'
-          model_choice:
-            allOf:
-            - $ref: '#/components/schemas/ModelChoiceCascading'
-            description: Deprecated, use model_config. When a request sends both and they differ, the one that differs from the stored node is used, and model_config wins if both changed.
-            deprecated: true
     NodeBaseCommon:
       type: object
       required:
@@ -7276,39 +7251,6 @@ components:
       properties:
         model_config:
           $ref: '#/components/schemas/ModelConfig'
-        backup_model:
-          $ref: '#/components/schemas/NullableBackupModelChoice'
-          description: Replace backup model configuration for this call only. Omit to inherit the saved configuration, or set null to disable backup. An omitted backup_kick_in_timeout in a supplied configuration
-            defaults to 1500 milliseconds.
-        model:
-          allOf:
-          - $ref: '#/components/schemas/NullableLLMModel'
-          example: gpt-5.6-terra
-          description: Deprecated, use model_config.primary. Ignored when model_config is set.
-          deprecated: true
-        s2s_model:
-          allOf:
-          - $ref: '#/components/schemas/NullableS2SModel'
-          example: gpt-realtime-1.5
-          description: Deprecated, use model_config with type s2s. Ignored when model_config is set.
-          deprecated: true
-        model_temperature:
-          type: number
-          example: 0
-          description: Deprecated, use model_config.temperature. Ignored when model_config is set.
-          deprecated: true
-        model_high_priority:
-          type: boolean
-          example: true
-          description: Deprecated, use model_config.primary.tier fast. Ignored when model_config is set.
-          nullable: true
-          deprecated: true
-        model_ultrafast:
-          type: boolean
-          example: true
-          description: Deprecated, use model_config.primary.tier ultrafast. Ignored when model_config is set.
-          nullable: true
-          deprecated: true
         knowledge_base_ids:
           type: array
           items:
@@ -7342,10 +7284,6 @@ components:
       - $ref: '#/components/schemas/RetellLlmOverride'
       - type: object
         properties:
-          backup_model:
-            allOf:
-            - $ref: '#/components/schemas/NullableBackupModelChoice'
-            deprecated: true
           general_prompt:
             type: string
             example: You are ...
@@ -9110,11 +9048,10 @@ components:
               type: object
               additionalProperties:
                 type: string
-            body:
-              type: object
-              description: Customer-defined fields nested in args on chat_transfer_requested events. String values support dynamic variables such as {{customer_id}}, including inside nested objects and
-                arrays. Field names and non-string values are preserved.
-              additionalProperties: true
+            parameters:
+              $ref: '#/components/schemas/ToolParameter'
+              description: Customer-defined fields nested in args on chat_transfer_requested events, in the same format as custom function parameters. A property with const is sent as that fixed value,
+                with dynamic variables such as {{customer_id}} resolved. Any other property is inferred by the LLM from its description.
     EscalateChatTool:
       type: object
       additionalProperties: false
@@ -9122,6 +9059,7 @@ components:
       - type
       - name
       - destination
+      - handoff_message
       properties:
         type:
           type: string
@@ -9133,6 +9071,9 @@ components:
           type: string
         destination:
           $ref: '#/components/schemas/EscalationDestination'
+        handoff_message:
+          $ref: '#/components/schemas/NodeInstruction'
+          description: What the agent says once the destination webhook returns a 2xx response, right before the human takes over.
     EscalationFailedEdge:
       allOf:
       - $ref: '#/components/schemas/NodeEdge'
@@ -9161,6 +9102,7 @@ components:
         - type
         - destination
         - edge
+        - handoff_message
         properties:
           type:
             type: string
@@ -9170,6 +9112,9 @@ components:
             $ref: '#/components/schemas/EscalationDestination'
           edge:
             $ref: '#/components/schemas/EscalationFailedEdge'
+          handoff_message:
+            $ref: '#/components/schemas/NodeInstruction'
+            description: The last message the AI agent sends to the end user after a successful escalation.
     TransferCallNode:
       allOf:
       - $ref: '#/components/schemas/NodeBase'

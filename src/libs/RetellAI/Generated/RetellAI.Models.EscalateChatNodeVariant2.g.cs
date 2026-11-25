@@ -31,6 +31,14 @@ namespace RetellAI
         public required global::RetellAI.EscalationFailedEdge Edge { get; set; }
 
         /// <summary>
+        ///
+        /// </summary>
+        [global::System.Text.Json.Serialization.JsonPropertyName("handoff_message")]
+        [global::System.Text.Json.Serialization.JsonConverter(typeof(global::RetellAI.JsonConverters.NodeInstructionJsonConverter))]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required global::RetellAI.NodeInstruction HandoffMessage { get; set; }
+
+        /// <summary>
         /// Additional properties that are not explicitly defined in the schema
         /// </summary>
         [global::System.Text.Json.Serialization.JsonExtensionData]
@@ -41,6 +49,7 @@ namespace RetellAI
         /// </summary>
         /// <param name="destination"></param>
         /// <param name="edge"></param>
+        /// <param name="handoffMessage"></param>
         /// <param name="type"></param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -48,11 +57,13 @@ namespace RetellAI
         public EscalateChatNodeVariant2(
             global::RetellAI.EscalationDestination destination,
             global::RetellAI.EscalationFailedEdge edge,
+            global::RetellAI.NodeInstruction handoffMessage,
             global::RetellAI.EscalateChatNodeVariant2Type type)
         {
             this.Type = type;
             this.Destination = destination ?? throw new global::System.ArgumentNullException(nameof(destination));
             this.Edge = edge;
+            this.HandoffMessage = handoffMessage;
         }
 
         /// <summary>
