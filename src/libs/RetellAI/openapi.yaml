@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Retell SDK
   version: 3.0.0
-  x-retell-spec-revision: 2026-11-25-2a1c087
+  x-retell-spec-revision: 2026-11-26-93fdcb9
   contact:
     name: Retell Support
     url: https://www.retellai.com/
@@ -246,6 +246,18 @@ components:
       - assemblyai
       - muse
       description: ASR provider name.
+    AsrModel:
+      type: string
+      enum:
+      - nova-3
+      - stt-rt-v6
+      - stt-rt-v5
+      - universal-3-6-pro
+      - assemblyai-stt-3-7-realtime-agent
+      - azure-speech
+      description: STT model to pin for the custom provider. Deepgram offers nova-3 (Nova 3); vocab_specialization medical still selects Deepgram's medical model for English. Soniox offers stt-rt-v6 (Soniox
+        v6) and stt-rt-v5 (Soniox v5). AssemblyAI offers universal-3-6-pro (Universal 3.6 Pro) and assemblyai-stt-3-7-realtime-agent (AssemblyAI 3.7 Agent). Azure offers azure-speech (Azure AI Speech).
+        Omit to use the provider's default model.
     AsrProviderModeRouting:
       type: object
       description: Routing for one mode (fast or accurate). `provider` is the dominant provider (what most calls hit). When traffic is split across a chance gate, `split` is present and lists every provider
@@ -1176,6 +1188,8 @@ components:
               description: Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI, 100 for Muse. For AssemblyAI, this sets min_turn_silence (100-3000
                 ms). max_turn_silence adds half of this value, rounded to the nearest millisecond and bounded to 500-1000 ms, with a total cap of 3000 ms. Muse detects turn ends itself and ignores this
                 value.
+            model:
+              $ref: '#/components/schemas/AsrModel'
           required:
           - provider
           - endpointing_ms
@@ -3009,6 +3023,8 @@ components:
               type: integer
               description: Endpointing timeout in milliseconds. Minimum is 100 for Azure, 10 for Deepgram, 500 for Soniox, 100 for AssemblyAI, and 100 for Muse. Muse detects turn ends itself and ignores
                 this value.
+            model:
+              $ref: '#/components/schemas/AsrModel'
           required:
           - provider
           - endpointing_ms
