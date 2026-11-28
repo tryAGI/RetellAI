@@ -30,13 +30,6 @@ namespace RetellAI
         public string DefaultContactMemoryUpdatePrompt { get; set; } = default!;
 
         /// <summary>
-        /// When true, calls and chats do not create or update contacts: no contact memory, analysis data or campaign outcome fields are written, and no conversation activity is pushed to the linked CRM. Existing contacts are kept.
-        /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("opt_out_contact_sync")]
-        [global::System.Text.Json.Serialization.JsonRequired]
-        public required bool OptOutContactSync { get; set; }
-
-        /// <summary>
         /// The connected CRM integration app ID.
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("app_id")]
@@ -82,9 +75,6 @@ namespace RetellAI
         /// Initializes a new instance of the <see cref="CRMConfig" /> class.
         /// </summary>
         /// <param name="orgId"></param>
-        /// <param name="optOutContactSync">
-        /// When true, calls and chats do not create or update contacts: no contact memory, analysis data or campaign outcome fields are written, and no conversation activity is pushed to the linked CRM. Existing contacts are kept.
-        /// </param>
         /// <param name="contactMemoryUpdatePrompt">
         /// Workspace-shared memory rewrite prompt. Null uses the built-in preset. Supports conversation dynamic variables using {{variable_name}}.
         /// </param>
@@ -111,7 +101,6 @@ namespace RetellAI
 #endif
         public CRMConfig(
             string orgId,
-            bool optOutContactSync,
             string? contactMemoryUpdatePrompt,
             string? appId,
             double? lastSyncTimestamp,
@@ -124,7 +113,6 @@ namespace RetellAI
             this.OrgId = orgId ?? throw new global::System.ArgumentNullException(nameof(orgId));
             this.ContactMemoryUpdatePrompt = contactMemoryUpdatePrompt;
             this.DefaultContactMemoryUpdatePrompt = defaultContactMemoryUpdatePrompt;
-            this.OptOutContactSync = optOutContactSync;
             this.AppId = appId;
             this.LastSyncTimestamp = lastSyncTimestamp;
             this.CustomFields = customFields;
@@ -138,6 +126,18 @@ namespace RetellAI
         /// </summary>
         public CRMConfig()
         {
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="CRMConfig"/> from its single non-const required field,
+        /// hardcoding any const discriminator fields.
+        /// </summary>
+        public static CRMConfig FromOrgId(string orgId)
+        {
+            return new CRMConfig
+            {
+                OrgId = orgId,
+            };
         }
 
     }
