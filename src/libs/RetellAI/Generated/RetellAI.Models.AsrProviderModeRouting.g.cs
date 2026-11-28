@@ -4,7 +4,7 @@
 namespace RetellAI
 {
     /// <summary>
-    /// Routing for one mode (fast or accurate). `provider` is the dominant provider (what most calls hit). When traffic is split across a chance gate, `split` is present and lists every provider with its explicit traffic `fraction` (dominant first); otherwise all calls hit `provider`.
+    /// Routing for one mode (fast or accurate), resolved for the caller's org. `provider` is the provider that the org's calls attempt first.
     /// </summary>
     public sealed partial class AsrProviderModeRouting
     {
@@ -24,10 +24,11 @@ namespace RetellAI
         public required int EndpointingMs { get; set; }
 
         /// <summary>
-        /// Present only when traffic is split across a chance gate. Each entry is a provider and the `fraction` (0–1) of calls routed to it, stably bucketed by call id; fractions sum to 1. Sorted by `fraction` descending, so the first entry matches the top-level `provider`.
+        /// STT model that the org's calls use for `provider` in this mode, such as nova-3. Deepgram falls back to nova-2 for languages that nova-3 lacks. A medical agent on Deepgram uses nova-3-medical instead.
         /// </summary>
-        [global::System.Text.Json.Serialization.JsonPropertyName("split")]
-        public global::System.Collections.Generic.IList<global::RetellAI.AsrProviderModeRoutingSplitItem>? Split { get; set; }
+        [global::System.Text.Json.Serialization.JsonPropertyName("model")]
+        [global::System.Text.Json.Serialization.JsonRequired]
+        public required string Model { get; set; }
 
         /// <summary>
         /// Additional properties that are not explicitly defined in the schema
@@ -42,8 +43,8 @@ namespace RetellAI
         /// ASR provider name.
         /// </param>
         /// <param name="endpointingMs"></param>
-        /// <param name="split">
-        /// Present only when traffic is split across a chance gate. Each entry is a provider and the `fraction` (0–1) of calls routed to it, stably bucketed by call id; fractions sum to 1. Sorted by `fraction` descending, so the first entry matches the top-level `provider`.
+        /// <param name="model">
+        /// STT model that the org's calls use for `provider` in this mode, such as nova-3. Deepgram falls back to nova-2 for languages that nova-3 lacks. A medical agent on Deepgram uses nova-3-medical instead.
         /// </param>
 #if NET7_0_OR_GREATER
         [global::System.Diagnostics.CodeAnalysis.SetsRequiredMembers]
@@ -51,11 +52,11 @@ namespace RetellAI
         public AsrProviderModeRouting(
             global::RetellAI.AsrProvider provider,
             int endpointingMs,
-            global::System.Collections.Generic.IList<global::RetellAI.AsrProviderModeRoutingSplitItem>? split)
+            string model)
         {
             this.Provider = provider;
             this.EndpointingMs = endpointingMs;
-            this.Split = split;
+            this.Model = model ?? throw new global::System.ArgumentNullException(nameof(model));
         }
 
         /// <summary>
